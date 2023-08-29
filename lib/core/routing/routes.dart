@@ -7,5 +7,7 @@ class Routes {
   static const String carList = "/car_list";
   static const String carDetails = "/car_details";
   static const String navigationBar = "/navigation_bar";
+  static const String filterPage  = "/filter_page";
+
 
 }

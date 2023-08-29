@@ -15,7 +15,7 @@ class AuthBg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 230.h,
+      height: 240.h,
       width: double.infinity,
       decoration:  BoxDecoration(
           color: primaryColor ,

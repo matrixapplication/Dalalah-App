@@ -20,12 +20,9 @@ class CarCard extends StatelessWidget {
           padding: EdgeInsets.all(8.h),
           margin: EdgeInsets.only(right: 10.w),
           decoration: BoxDecoration(
-              color: Colors.white ,
-              border: Border.all(
-                  color: grayScaleE4E4E4
-              ) ,
-              borderRadius: BorderRadius.circular(8.r)
-          ),
+              color: Colors.white,
+              border: Border.all(color: grayScaleE4E4E4),
+              borderRadius: BorderRadius.circular(8.r)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -35,52 +32,72 @@ class CarCard extends StatelessWidget {
                 height: 116.h,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
-                  child: const CustomShimmerImage(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s"),
+                  child: const CustomShimmerImage(
+                      image:
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s" ,
+
+                  ),
                 ),
               ),
-
               Row(
                 children: [
-                  CustomText("Marcides" , color: Colors.black, size: 16.h,bold: true,)
+                  CustomText(
+                    "Marcides",
+                    color: Colors.black,
+                    size: 16.h,
+                    bold: true,
+                  )
                 ],
-              ) ,
-
+              ),
               Row(
                 children: [
-                  CustomText("150,000" , color: Colors.black, size: 16.h,bold: false,) ,
-                  CustomText("EGP" , color: Colors.black, size: 12.h,bold: false,) ,
+                  CustomText(
+                    "150,000",
+                    color: Colors.black,
+                    size: 16.h,
+                    bold: false,
+                  ),
+                  CustomText(
+                    "EGP",
+                    color: Colors.black,
+                    size: 12.h,
+                    bold: false,
+                  ),
                 ],
-              ) ,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin :EdgeInsets.symmetric(horizontal: 10.w) ,
-                    padding: EdgeInsets.symmetric( horizontal: 4.w),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
+                    padding: EdgeInsets.symmetric(horizontal: 4.w),
                     decoration: BoxDecoration(
-                      color: grayScaleE4E4E4 ,
+                      color: grayScaleE4E4E4,
                       borderRadius: BorderRadius.circular(4.h),
                     ),
                     child: const Center(
-                      child: CustomText("2023" , color: primaryColor,),
+                      child: CustomText(
+                        "2023",
+                        color: primaryColor,
+                      ),
                     ),
-                  ) ,
-
-
+                  ),
                   Container(
                     padding: EdgeInsets.all(8.h),
                     decoration: const BoxDecoration(
-                      color: primaryColor ,
-                      shape: BoxShape.circle ,
+                      color: primaryColor,
+                      shape: BoxShape.circle,
                     ),
                     child: const Center(
-                      child: Icon(Icons.arrow_forward_ios , color: Colors.white, ),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
                     ),
                   )
-
                 ],
-              ) ,
+              ),
             ],
           ),
         )

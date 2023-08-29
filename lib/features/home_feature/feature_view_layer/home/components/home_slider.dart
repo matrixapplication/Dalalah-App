@@ -1,9 +1,12 @@
 import 'package:arabitac/core/extensions/num_extensions.dart';
 import 'package:arabitac/core/resources/assets_menager.dart';
 import 'package:arabitac/core/resources/color.dart';
+import 'package:arabitac/core/routing/navigation_services.dart';
+import 'package:arabitac/core/routing/routes.dart';
 import 'package:arabitac/features/home_feature/feature_view_layer/home/components/home_slider_component.dart';
 import 'package:arabitac/widgets/custom_svg_image.dart';
 import 'package:arabitac/widgets/custom_text.dart';
+import 'package:arabitac/widgets/search_text_field.dart';
 import 'package:arabitac/widgets/spaces.dart';
 import 'package:arabitac/widgets/tap_effect.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +38,10 @@ class homeSlider extends StatelessWidget {
                     color: Colors.white,
                   ),
                 )),
-            const HorizontalSpace(45),
+            const HorizontalSpace(20),
+            SearchBarRes(
+
+            )
 
             //Search
             // SearchBarRes(
@@ -86,7 +92,9 @@ class homeSlider extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TapEffect(
-                        onClick: () {},
+                        onClick: () {
+                          NavigationService.push(Routes.filterPage) ;
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -102,7 +110,9 @@ class homeSlider extends StatelessWidget {
                   ),
                   Expanded(
                     child: TapEffect(
-                        onClick: () {},
+                        onClick: () {
+                          NavigationService.push(Routes.carList) ;
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

@@ -2,6 +2,8 @@
 import 'package:arabitac/core/routing/routes.dart';
 import 'package:arabitac/features/auth_features/feature_view_layer/login/login_screen.dart';
 import 'package:arabitac/features/auth_features/feature_view_layer/register/register_screen.dart';
+import 'package:arabitac/features/car_filter_feature/filter_view_feature/filter_screen.dart';
+import 'package:arabitac/features/car_list_feature/car_list_screen.dart';
 import 'package:arabitac/features/home_feature/feature_view_layer/home/home_screen.dart';
 import 'package:arabitac/features/navigationbar/navigation_bar_screen.dart';
 import 'package:arabitac/features/splash_onboarding_feature/view_layer/onboarding/onboarding_screen.dart';
@@ -34,6 +36,14 @@ class RouteGenerator {
     }
     if (settings.name == Routes.navigationBar) {
       return platformPageRoute( BottomNavigationPage());
+    }
+    if (settings.name == Routes.carList) {
+      final args = settings.arguments as Map<String, dynamic>;
+      return platformPageRoute(  CarListScreen(title: args['title'],));
+    }
+    if (settings.name == Routes.filterPage) {
+
+      return platformPageRoute( const FilterScreen());
     }
      else {
       return platformPageRoute(UndefinedRouteScreen(settings.name));

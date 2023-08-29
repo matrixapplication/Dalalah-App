@@ -20,7 +20,7 @@ class LoginBody extends StatelessWidget {
         SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(32.h),
-            height: 460.h,
+            height: 480.h,
             margin: EdgeInsets.only(top: 180.h , left: 10.w , right: 10.w),
             width: 380.w,
             decoration: BoxDecoration(
