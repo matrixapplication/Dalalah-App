@@ -1,8 +1,11 @@
-import 'package:flutter/foundation.dart';
 
-class Constants {
-  static const String empty = "";
-  static const Duration connectTimeout = kDebugMode ? Duration(milliseconds: 15000 ): Duration(milliseconds: 240000);
-  //TODO check before deploy
-  static bool hideForIos = true;
-}
+const String kMaterialAppTitle = 'Flutter Clean Architecture';
+
+// API
+const String kTestBaseUrl = 'https://newsapi.org/v2/';
+const String kApiKey = 'ff957763c54c44d8b00e5e082bc76cb0';
+ const String baseApiUrl = "https://stage.eljokermarket.com/api";
+
+const kBaseUrl =kIsTestVersion ? baseApiUrl : kTestBaseUrl;
+
+const kIsTestVersion = true ;
