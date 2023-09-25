@@ -18,13 +18,13 @@ class SellCarRepo extends BaseSellCarRepo{
   @override
   Future<List<Shipment>> fetchShipments() async {
     final data = await datasource.fetchShipments();
-    return data.payload!;
+    return data.data!;
   }
 
   @override
   Future<ShipmentDetails> fetchShipmentDetails(int shipmentId) async {
     final data = await datasource.fetchShipmentDetails(shipmentId);
-    return data.payload!;
+    return data.data!;
   }
 
   @override

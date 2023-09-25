@@ -17,6 +17,7 @@ class PrimaryIconButton extends StatelessWidget {
   final Decoration? decoration;
   final EdgeInsetsGeometry? padding;
   final double? radius;
+  final double? width;
   const PrimaryIconButton(
       {Key? key,
       this.title,
@@ -30,6 +31,7 @@ class PrimaryIconButton extends StatelessWidget {
       this.decoration,
       this.padding,
       this.radius,
+      this.width,
       })
       : super(key: key);
 
@@ -37,7 +39,8 @@ class PrimaryIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Container(
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      padding: padding ?? const EdgeInsets.symmetric(vertical: 8),
+      width: width,
       decoration: decoration ??  Decorations.shapeDecorationShadow(
         color: backgroundColor ?? theme.primaryColor,
         colorShadow: context.disabledColor,
@@ -51,10 +54,10 @@ class PrimaryIconButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppIcon(icon: icon, color: iconColor ?? theme.primaryColor, size: 22),
+            AppIcon(icon: icon, color: iconColor, size: 20),
             const SizedBox(width: 10),
             Text(title!,
-              style: titleStyle ?? theme.textTheme.headlineMedium,
+              style: titleStyle ?? theme.textTheme.labelMedium,
               textAlign: TextAlign.center,
             )
 

@@ -1,13 +1,15 @@
 class LoginParams {
-  final String phoneNumber;
-  final String password;
+  String? email;
+  String? password;
+  String? fcmToken;
 
-  LoginParams({required this.phoneNumber, required this.password});
+  LoginParams({this.email, this.password, this.fcmToken});
 
   Map<String, dynamic> toJson() {
     return {
-      'email': phoneNumber,
+      'email': email,
       'password': password,
+      'fcm_token': fcmToken,
     };
   }
 }

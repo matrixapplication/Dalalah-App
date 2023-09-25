@@ -1,20 +1,27 @@
+import 'dart:io';
+
+import '../../../auth/data/models/register_params.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/profile.dart';
+import '../widgets/edit_profile_image.dart';
 import '../widgets/edit_text_form_field.dart';
 
 class EditProfileScreen extends BaseStatelessWidget {
   final Profile profile;
-  final Function() onEdit;
+  final Function(RegisterParams params) onEdit;
+  final Function(File file) onEditImage;
 
-  EditProfileScreen({Key? key, required this.profile, required this.onEdit}) : super(key: key);
+  EditProfileScreen({Key? key, required this.profile, required this.onEdit, required this.onEditImage}) : super(key: key);
 
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController passwordController = TextEditingController();
+ static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    _initData();
     return AppScaffold(
       bottomNavigationBar: editButton(),
       backgroundColor: context.secondaryContainer,
@@ -24,8 +31,14 @@ class EditProfileScreen extends BaseStatelessWidget {
           key: formKey,
           child: Column(
             children: [
+              EditProfileImage(
+              image: profile.image ?? '',
+                onSelectImage: (file){
+                  onEditImage(file);
+                },
+              ),
               EditTextField(
-                title: strings.email,
+                title: strings.full_name,
                 controller: fullNameController,
               ),
               EditTextField(
@@ -35,6 +48,11 @@ class EditProfileScreen extends BaseStatelessWidget {
               EditTextField(
                 title: strings.phone_number,
                 controller: phoneController,
+              ),
+              EditTextField(
+                title: strings.password,
+                controller: passwordController,
+                isPasswordVisible: false,
               ),
             ],
           ),
@@ -54,7 +72,22 @@ class EditProfileScreen extends BaseStatelessWidget {
 
   onEditPressed(){
     if (formKey.currentState!.validate()) {
-      onEdit();
+      onEdit(
+        RegisterParams(
+          name: fullNameController.text,
+          email: emailController.text,
+          phone: phoneController.text,
+          password: passwordController.text,
+          passwordConfirmation: passwordController.text,
+        ),
+      );
     }
+  }
+
+  _initData() {
+    print('profile: ${profile.toJson()}');
+    fullNameController.text = profile.name ?? '';
+    emailController.text = profile.email ?? '';
+    phoneController.text = profile.phone  ?? '';
   }
 }

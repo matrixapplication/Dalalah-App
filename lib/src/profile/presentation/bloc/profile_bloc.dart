@@ -1,7 +1,13 @@
+import 'dart:io';
+
+import 'package:arabitac/core/utils/helper_methods.dart';
+import 'package:arabitac/src/profile/data/models/profile_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
+import '../../../../core/di/injector.dart';
 import '../../../../core/resources/data_state.dart';
+import '../../../auth/data/models/register_params.dart';
 import '../../domain/entities/profile.dart';
 import '../../domain/use_cases/profile_usecase.dart';
 
@@ -11,10 +17,21 @@ class ProfileBloc extends BaseCubit {
 
   ProfileBloc(this.usecase);
 
+  ProfileDto? profileDto = ProfileDto();
   fetchProfileData() async {
-    emit(DataLoading());
+    emit(LoadingStateListener());
+    profileDto = await HelperMethods.getProfile();
+    Profile profile = Profile();
+
     try {
-      final profile = await usecase.fetchProfileData();
+      if(profileDto?.id != null){
+        print('shared ${profile}');
+        profile = Profile.fromDto(profileDto!);
+      }else{
+        print('fetchProfileData ${profile.token}');
+        profile = await usecase.fetchProfileData();
+        HelperMethods.saveProfile(ProfileDto.fromJson(profile.toJson()));
+      }
       emit(DataSuccess<Profile>(profile));
     } catch (e) {
       emit(DataFailed(e));
@@ -22,16 +39,14 @@ class ProfileBloc extends BaseCubit {
   }
 
   deleteProfileData() async {
-    emit(DataLoading());
-    try {
-      final response = await usecase.deleteProfileData();
-      emit(DataSuccess(response));
-    } catch (e) {
-      emit(DataFailed(e));
-    }
+    executeEmitterListener(() => usecase.deleteProfileData());
   }
 
-  editProfileData() async {
-    executeEmitterListener(() => usecase.editProfileData());
+  editProfileData(RegisterParams params) async {
+    executeEmitterListener(() => usecase.editProfileData(params));
+  }
+
+  editProfileImage(File file) async {
+    executeEmitterListener(() => usecase.editProfileImage(file));
   }
 }

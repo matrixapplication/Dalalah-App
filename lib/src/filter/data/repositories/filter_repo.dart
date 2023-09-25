@@ -14,7 +14,7 @@ class FilterRepo extends BaseFilterRepo{
   @override
   Future<List<Invoice>> fetchInvoices() async {
     final invoices = await datasource.fetchInvoices();
-    return invoices.payload!;
+    return invoices.data!;
   }
 
 }

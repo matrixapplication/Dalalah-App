@@ -2,60 +2,16 @@ import 'package:flutter/services.dart';
 import 'progress_dialog.dart';
 import '../../../src/main_index.dart';
 
-
 class DialogsManager {
   static CustomProgressDialog createProgress() {
-    return ProgressDialog.createProgress(injector<ServicesLocator>().navigatorKey.currentContext!);
-  }
-
-  static showErrorDialog(BuildContext context, String text) {
-    AlertDialog alert = AlertDialog(
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text(
-            'context.getStrings().ok_button',
-            style: kTextBold.copyWith(color: kPrimaryDark, fontSize: 14),
-          ),
-        )
-      ],
-      content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 60,
-              child: Image.asset(
-                'images/error.gif',
-                height: 60,
-              ),
-            ),
-            Text(
-              text,
-              style: kTextMedium.copyWith(color: kPrimaryDark, fontSize: 12),
-            ),
-          ],
-        ),
-      ),
-    );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await showDialog(
-        barrierDismissible: true,
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
-    });
+    return ProgressDialog.createProgress(
+        injector<ServicesLocator>().navigatorKey.currentContext!);
   }
 
   static showAlertDialog(BuildContext context, Widget content) {
     AlertDialog alert = AlertDialog(
       content: Container(
-        child:content,
+        child: content,
       ),
     );
 
@@ -72,5 +28,90 @@ class DialogsManager {
 
   static onBackPress(BuildContext context) {
     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  }
+
+  static baseDialog(
+    BuildContext context, {
+    String? confirmButtonName,
+    required String message,
+    Function()? onClickOk,
+    bool? dismissible = true,
+    Function()? negativeTap,
+    required IconData icon,
+    String? negativeButtonName,
+    bool hideCancelButton = true,
+  }) {
+    showGeneralDialog(
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: const Duration(milliseconds: 300),
+      context: context,
+      pageBuilder: (context, anim1, anim2) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          title: Icon(icon, size: 60, color: icon == Icons.error ? Colors.red : Colors.green),
+          content: WillPopScope(
+            onWillPop: () async {
+              return dismissible == true;
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(message, style: kTextMedium.copyWith(fontSize: 14)),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                if (onClickOk != null) {
+                  onClickOk();
+                } else {
+                  Navigator.pop(context);
+                }
+              },
+              child: Text(
+                confirmButtonName ?? context.strings.ok,
+                style: kTextBold.copyWith(
+                    color: context.primaryColor, fontSize: 14),
+              ),
+            ),
+            hideCancelButton == true
+                ? const SizedBox.shrink()
+                : TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      if (negativeTap != null) {
+                        negativeTap();
+                      }
+                    },
+                    child: Text(
+                      negativeButtonName ?? context.strings.cancel,
+                      style:
+                          kTextBold.copyWith(color: Colors.grey, fontSize: 14),
+                    ),
+                  ),
+          ],
+        );
+      },
+      transitionBuilder: (context, a1, a2, child) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(opacity: a1.value, child: child),
+        );
+      },
+    );
+  }
+
+  static showSuccessDialog(BuildContext context,
+      {required String message, Function()? onClickOk}) {
+    return baseDialog(context,
+        message: message, icon: Icons.check_circle, onClickOk: onClickOk);
+  }
+
+  static showErrorDialog(BuildContext context, String text) {
+    baseDialog(context, message: text, icon: Icons.error, );
   }
 }

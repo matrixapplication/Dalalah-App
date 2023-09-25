@@ -1,41 +1,32 @@
-
-import '../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../main_index.dart';
 
-class AuthWidget extends BaseStatelessWidget {
-  final String title;
-  final Widget representative;
-  final Widget agent;
-  AuthWidget({Key? key, required this.title, required this.representative, required this.agent}) : super(key: key);
+class AuthWidget extends StatelessWidget {
+  final Widget child;
+  const AuthWidget(
+      {Key? key, required this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
-    return Container(
-      color: theme.cardColor,
-      child: Column(
-        children: [
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(vertical: 20),
-          //   child: Text(title, style: theme.textTheme.titleLarge!.copyWith(fontSize: 22)),
-          // ),
-          // Expanded(
-          //   child: TabBarWidget(
-          //
-          //     tabs: [
-          //       TabItemModel(
-          //         label: strings.as_representative,
-          //         page:  representative,
-          //       ),
-          //       TabItemModel(
-          //         label: strings.as_agent,
-          //         page:  agent,
-          //       )
-          //     ],
-          //   ),
-          // ),
-        ],
-      ),
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Container(
+          height: 300.h,
+          width: MediaQuery.of(context).size.width,
+          padding: 10.paddingTop,
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+              color: context.primaryColor,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(70.r),
+                  bottomRight: Radius.circular(70.r))),
+          child: Image.asset(AppImages.logo_white, width: 280.w),
+        ),
+        Align(
+alignment: Alignment.center,
+            child: child),
+      ],
     );
   }
 }

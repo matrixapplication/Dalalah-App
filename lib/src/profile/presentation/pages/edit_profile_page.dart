@@ -16,9 +16,11 @@ class EditProfilePage extends BaseBlocWidget<UnInitState, ProfileBloc>{
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
+    Profile profile = getArguments(context);
     return EditProfileScreen(
-      profile: Profile(),
-      onEdit: () => bloc.deleteProfileData(),
+      profile: profile,
+      onEdit: (params) => bloc.editProfileData(params),
+      onEditImage: (fil) => bloc.editProfileImage(fil),
     );
   }
 

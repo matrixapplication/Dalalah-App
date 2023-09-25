@@ -1,6 +1,7 @@
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/buttons/app_circular_icon.dart';
 import '../../../main_index.dart';
+import '../../../settings/domain/entities/about_us_types_.dart';
 import '../../domain/entities/profile.dart';
 import '../widgets/profile_header.dart';
 import '../widgets/profile_item.dart';
@@ -33,30 +34,30 @@ class ProfileScreen extends BaseStatelessWidget {
                 padding: 16.paddingBottom,
                 child: Column(
                   children: [
-                    ProfileItem(
-                      title: strings.my_ads,
-                      icon: AppIcons.ads,
-                      backgroundColor: context.primaryColor,
-                      margin: 16.paddingHoriz + 20.paddingBottom,
-                      iconBackgroundColor: context.primaryColor,
-                      colorTitle: context.cardColor,
-                      contentPadding: 16.paddingHoriz + 16.paddingVert,
-                      decoration: Decorations.kDecorationRadius(
-                        color: context.primaryColor,
-                        radius: 8,
-                      ),
-                      isLast: true,
-                      onTap: () {
-                        Navigators.pushNamed(Routes.editProfilePage);
-                      },
-                    ),
+                    // ProfileItem(
+                    //   title: strings.my_ads,
+                    //   icon: AppIcons.ads,
+                    //   backgroundColor: context.primaryColor,
+                    //   margin: 16.paddingHoriz + 20.paddingBottom,
+                    //   iconBackgroundColor: context.primaryColor,
+                    //   colorTitle: context.cardColor,
+                    //   contentPadding: 16.paddingHoriz + 16.paddingVert,
+                    //   decoration: Decorations.kDecorationRadius(
+                    //     color: context.primaryColor,
+                    //     radius: 8,
+                    //   ),
+                    //   isLast: true,
+                    //   onTap: () {
+                    //     Navigators.pushNamed(Routes.editProfilePage);
+                    //   },
+                    // ),
                     ProfileItem(
                       title: strings.edit_profile,
                       icon: AppIcons.edit,
                       iconColor: context.cardColor,
                       iconBackgroundColor: theme.colorScheme.tertiaryContainer,
                       onTap: () {
-                        Navigators.pushNamed(Routes.editProfilePage);
+                        Navigators.pushNamed(Routes.editProfilePage, arguments: profile);
                       },
                     ),
                     ProfileItem(
@@ -71,25 +72,41 @@ class ProfileScreen extends BaseStatelessWidget {
                       title: strings.settings,
                       icon: AppIcons.settings,
                       iconBackgroundColor: theme.primaryColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigators.pushNamed(Routes.settings);
+                      },
                     ),
                     ProfileItem(
                       title: strings.about_us,
                       iconData: Icons.home_work_outlined,
                       iconBackgroundColor: theme.hintColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigators.pushNamed(Routes.aboutUs, arguments: AboutUsTypes.ABOUT_US);
+                      },
+                    ),
+                    ProfileItem(
+                      title: strings.buying_and_selling_about,
+                      iconData: Icons.home_work_outlined,
+                      iconBackgroundColor: theme.hintColor,
+                      onTap: () {
+                        Navigators.pushNamed(Routes.aboutUs, arguments: AboutUsTypes.BUYING_AND_SELLING_ABOUT);
+                      },
                     ),
                     ProfileItem(
                       title: strings.terms_and_conditions,
                       iconData: Icons.description_outlined,
                       iconBackgroundColor: theme.hintColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigators.pushNamed(Routes.aboutUs, arguments: AboutUsTypes.TERMS_AND_CONDITIONS);
+                      },
                     ),
                     ProfileItem(
                       title: strings.privacy_policy,
                       iconData: Icons.privacy_tip_outlined,
                       iconBackgroundColor: theme.hintColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigators.pushNamed(Routes.aboutUs, arguments: AboutUsTypes.PRIVACY);
+                      },
                     ),
                     ProfileItem(
                       title: strings.logout,

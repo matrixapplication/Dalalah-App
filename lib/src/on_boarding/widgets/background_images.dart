@@ -1,7 +1,4 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:flutter/material.dart';
-
-import '../../../core/assets/app_images.dart';
+import 'package:arabitac/src/main_index.dart';
 import 'onboarding_item.dart';
 
 ///  Created by harbey on 9/7/2023.

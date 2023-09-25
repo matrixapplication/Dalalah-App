@@ -1,9 +1,8 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
+import 'package:arabitac/src/main_index.dart';
 
-import '../../../core/routes/routes.dart';
+
 import '../../../core/utils/navigator.dart';
 import '../widgets/background_images.dart';
 

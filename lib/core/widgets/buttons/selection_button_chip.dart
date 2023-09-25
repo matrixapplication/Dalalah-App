@@ -60,25 +60,23 @@ class SelectionButtonChip extends StatelessWidget {
     );
   }
   Widget _buildChips(BuildContext context, void Function(void Function()) setState) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: types
-            .map((e) => SelectItem(
-                  item: e,
-                  types: types,
-                  setState: setState,
-          selectedType:  selectedType ?? types.first,
-          onSelected: (bool value) {
-            setState(() {
-              selectedType = e;
-              onSelected!(value);
-            });
-          },
-                  padding: padding,
-                ))
-            .toList(),
-      ),
+    return Wrap(
+      children: types
+          .map((e) => SelectItem(
+        isWrap: true,
+                item: e,
+                types: types,
+                setState: setState,
+        selectedType:  selectedType ?? types.first,
+        onSelected: (bool value) {
+          setState(() {
+            selectedType = e;
+            onSelected!(value);
+          });
+        },
+                padding: padding,
+              ))
+          .toList(),
     );
   }
 }
@@ -97,48 +95,24 @@ class SelectItem extends StatelessWidget {
   final void Function(bool)? onSelected;
   final ChipItem selectedType;
   final EdgeInsetsGeometry? padding;
-  const SelectItem({Key? key, required this.item, required this.types, required this.setState, this.onSelected, this.padding, required this.selectedType}) : super(key: key);
+  final bool isWrap;
+  const SelectItem({Key? key, required this.item, required this.types, required this.setState, this.onSelected, this.padding, required this.selectedType, this.isWrap = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: item == types.first
-          ? 10.paddingEnd
+          ? 0.paddingEnd
           : 10.paddingStart,
       child: ChoiceChip(
-        label: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (item.icon != null && item.icon!.isNotEmpty) ...[
-              Image.network(item.icon ?? '',
-                  height: 25,
-                  width: 25,
-                  color: selectedType == item
-                      ? context.cardColor
-                      : context.primaryColor),
-              10.pw,
-            ],
-            FittedBox(
-              child: Text(item.title,
-                style: context.textTheme.headlineMedium!
-                    .copyWith(
-                  color: selectedType == item
-                      ? context.cardColor
-                      : context.primaryColor,
-                  fontSize: 15,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
-        ),
+        label: isWrap ? text(context) : row(context),
         selected: selectedType == item,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
         ),
         selectedColor: context.primaryColor,
         backgroundColor: context.cardColor,
+        visualDensity: VisualDensity(horizontal: -4, vertical: -4),
         side: BorderSide(
           color: selectedType == item
               ? context.secondaryContainer
@@ -147,9 +121,47 @@ class SelectItem extends StatelessWidget {
         ),
         padding: padding ??
             const EdgeInsets.symmetric(
-                vertical: 14),
+                vertical: 18, horizontal: 5),
         onSelected: onSelected,
       ),
+    );
+  }
+
+  Widget image(BuildContext context) {
+    return Image.network(item.icon ?? '',
+        height: 25,
+        width: 25,
+        color: selectedType == item
+            ? context.cardColor
+            : context.primaryColor);
+  }
+
+  Widget text(BuildContext context) {
+    return FittedBox(
+      child: Text(item.title,
+        style: context.textTheme.headlineMedium!
+            .copyWith(
+          color: selectedType == item
+              ? context.cardColor
+              : context.primaryColor,
+          fontSize: 15,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget row(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (item.icon != null && item.icon!.isNotEmpty) ...[
+          image(context),
+          10.pw,
+        ],
+        text(context),
+      ],
     );
   }
 }

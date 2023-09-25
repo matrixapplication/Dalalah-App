@@ -1,8 +1,6 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:flutter/material.dart';
+import 'package:arabitac/src/main_index.dart';
 
 import '../../../../core/resources/validation.dart';
-import '../../../../core/widgets/buttons/app_icon.dart';
 import '../../../home/presentation/widgets/tap_effect.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -109,7 +107,7 @@ class AuthTextField extends StatelessWidget {
                     : const SizedBox()),
             controller: controller,
             onTap: onTep,
-            onChanged: onChange,
+      //      onChanged: onChange,
             onSaved: onSubmit,
             validator: validator ?? (value) =>  Validation.validateRequired(value ?? ''),
             obscureText: isPassword!

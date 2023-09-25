@@ -28,3 +28,4 @@ export 'package:arabitac/core/widgets/texts/custom_container.dart';
 export 'package:arabitac/core/widgets/buttons/primary_button.dart';
 export 'package:arabitac/core/assets/app_images.dart';
 export 'package:arabitac/core/exceptions/extensions.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';

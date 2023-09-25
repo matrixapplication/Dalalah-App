@@ -13,18 +13,18 @@ class ForgotPasswordRepo extends BaseForgotPasswordRepo{
   @override
   Future<String> enterPhoneNumber(String phoneNumber) async{
     final response = await apiProvider.enterPhoneNumber(phoneNumber);
-    return response.payload!;
+    return response.data!;
   }
 
   @override
   Future<String> enterCode(String code) async{
     final response = await apiProvider.enterCode(code);
-    return response.payload!;
+    return response.data!;
   }
 
   @override
   Future<String> forgotPassword(ForgotPasswordParams params) async{
     final response = await apiProvider.forgotPassword(params);
-    return response.payload!;
+    return response.data!;
   }
 }

@@ -34,7 +34,8 @@ class AppIcons{
   static const String lock = "$_iconsPath/lock.svg";
   static const String heart_solid = "$_iconsPath/heart_solid.svg";
   static const String ads = "$_iconsPath/ads.svg";
-
+  static const String id_card = "$_iconsPath/id_card.svg";
+  static const String refresh = "$_iconsPath/refresh.svg";
 
 
 

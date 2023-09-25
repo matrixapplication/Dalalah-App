@@ -29,24 +29,25 @@ class HeaderCarDetails extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "A/T / M SPORT",
                 style: context.bodyMedium,
               ),
+              20.pw,
               chipBorder(
                 context,
                 label: "BMW",
               ),
-              chipBorder(
-                context,
-                label: '140.000km',
-              ),
-              ShareIconButton(
-                iconColor: context.primaryColor,
-                backgroundColor: context.scaffoldBackgroundColor,
-              ),
+              // chipBorder(
+              //   context,
+              //   label: '140.000km',
+              // ),
+              // ShareIconButton(
+              //   iconColor: context.primaryColor,
+              //   backgroundColor: context.scaffoldBackgroundColor,
+              // ),
             ],
           ),
         ],

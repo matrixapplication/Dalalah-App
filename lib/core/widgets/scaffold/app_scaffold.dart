@@ -14,6 +14,7 @@ class AppScaffold extends StatelessWidget {
   final Color? foregroundColor;
   final List<Widget>? actions;
   final Widget? leading;
+  final bool? resizeToAvoidBottomInset;
 
   const AppScaffold(
       {Key? key,
@@ -29,21 +30,21 @@ class AppScaffold extends StatelessWidget {
       this.actions,
       this.titleStyle,
       this.foregroundColor,
-      this.leading})
+      this.leading,
+      this.resizeToAvoidBottomInset,
+      })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
-
+    print('resizeToAvoidBottomInset: $resizeToAvoidBottomInset ');
     ThemeData theme = Theme.of(context);
     return Scaffold(
-      key: globalKey,
-      // resizeToAvoidBottomInset: false, // this code remove the keyboard overflow.
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset, // this code remove the keyboard overflow.
      // drawer: isDrawer! ? SideMenuPage(isCaptain: true) : null,
       //SafeArea to save content from the phone top par.
       body: body,
-      extendBody: true,
+      // extendBody: true,
       backgroundColor: backgroundColor ?? theme.scaffoldBackgroundColor,
       floatingActionButton: floatingActionButton,
       bottomSheet: bottomSheet,

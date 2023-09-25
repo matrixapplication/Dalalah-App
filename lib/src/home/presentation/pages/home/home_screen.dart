@@ -21,26 +21,26 @@ class HomeScreen extends BaseStatelessWidget {
               routeName: Routes.brandsPage,
               title: context.strings.popular_brand,
             ),
-            const SizedBox(
-              height: 220,
+            SizedBox(
+              height: 200.h,
               child: BrandsList(
                 isHome: true,
               ),
             ),
             RowSeeAllText(
-              title: strings.latest_new_cars,
+              title: strings.year_models,
               routeName: Routes.carsPage,
             ),
             CarsList(
-              title: strings.latest_new_cars,
+              title: strings.year_models,
               routeName: Routes.carsPage,
             ),
             RowSeeAllText(
-              title: strings.top_cars,
+              title: strings.other_models,
               routeName: Routes.carsPage,
             ),
             CarsList(
-              title: strings.top_cars,
+              title: strings.other_models,
               routeName: Routes.carsPage,
             ),
           ],

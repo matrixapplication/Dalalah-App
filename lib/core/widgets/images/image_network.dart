@@ -52,6 +52,7 @@ class ImageNetwork extends StatelessWidget {
       width: size ?? width,
       margin: margin ?? EdgeInsets.zero,
       padding: padding ?? EdgeInsets.zero,
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
       ),
@@ -65,8 +66,8 @@ class ImageNetwork extends StatelessWidget {
           placeholderCacheWidth: 5,
           placeholderFit: BoxFit.contain,
           image: image ?? '',
-          width: size ?? height ?? 50,
-          height: size ?? width ?? 50,
+          width: size ?? height,
+          height: size ?? width,
           imageErrorBuilder: (c, o, s) {
             // print('imageErrorBuilder error  $s ');
             return const Center(

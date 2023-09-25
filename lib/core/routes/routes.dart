@@ -7,6 +7,7 @@ import '../../src/auth/presentation/pages/forget-password/new_password_page.dart
 import '../../src/auth/presentation/pages/login/login_page.dart';
 import '../../src/auth/presentation/pages/sign-up/register_page.dart';
 import '../../src/cars/presentation/cars/pages/cars_page.dart';
+import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/favorites/presentation/pages/favorites_page.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
@@ -38,6 +39,7 @@ class Routes{
   static const String favoritesPage = 'favoritesPage';
   static const String brandsPage = 'brandsPage';
   static const String filterPage = 'filterPage';
+  static const String sortByPage = 'sortByPage';
 
   static const String enterPhoneNumberPage = 'enterPhoneNumberPage';
   static const String enterPinCodePage = 'enterPinCodePage';
@@ -53,7 +55,7 @@ class Routes{
   static const String complaints = 'complaints';
   static const String settings = 'settings';
   static const String changeLanguage = 'changeLanguagePage';
-  static const String aboutLogeste = 'aboutLogestePage';
+  static const String aboutUs = 'aboutLogestePage';
   static const String qrCodePage = 'QrCodePage';
   static const String complaintsDetailsPage = 'complaintsDetailsPage';
   static const String addComplaintPage = 'addComplaintPage';
@@ -75,6 +77,7 @@ class Routes{
     favoritesPage: (context) => FavoritesPage(),
     brandsPage: (context) => BrandsScreen(),
     filterPage: (context) => FilterPage(),
+    sortByPage: (context) => SortByPage(),
 
     enterPhoneNumberPage: (context) => EnterPhoneNumberPage(),
     enterPinCodePage: (context) => EnterPinCodePage(),
@@ -82,7 +85,7 @@ class Routes{
     carDetailsPage: (context) => CarsDetailsPage(),
     settings: (context) => SettingsPage(),
     changeLanguage: (context) => ChangLanguagePage(),
-    aboutLogeste: (context) => AboutUsPage(),
+    aboutUs: (context) => AboutUsPage(),
   };
 
 }

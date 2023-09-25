@@ -1,7 +1,9 @@
 
+import 'package:arabitac/src/settings/domain/entities/about_us.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../exceptions/empty_list_exception.dart';
 import '../network/api_response.dart';
 import '../resources/data_state.dart';
 
@@ -12,7 +14,13 @@ abstract class BaseCubit extends Cubit<DataState>{
     try {
       emit(DataLoading());
       final response = await invoke();
-      emit(DataSuccess<T>(response));
+      if(response == null || response is List && response.isEmpty || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
+        print('invoke $response');
+        throw EmptyListException();
+      } else {
+        print('response  sscc $response');
+        emit(DataSuccess<T>(response));
+      }
     } catch (e) {
       emit(DataFailed(e));
     }
@@ -24,7 +32,13 @@ abstract class BaseCubit extends Cubit<DataState>{
         emit(DataLoading());
       }
       final response = await invoke();
-      onSuccess(response);
+      if(response == null || response is List && response.isEmpty || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
+        print('invoke $response');
+        throw EmptyListException();
+      } else {
+        print('response  sscc $response');
+        onSuccess(response);
+      }
     } catch (e) {
       if(onError!=null){
         onError(e);
@@ -42,10 +56,11 @@ abstract class BaseCubit extends Cubit<DataState>{
     } catch (e) {
       print(e);
       emit(FailureStateListener(e));
+      rethrow;
     }
   }
 
-  executeEmitterListener(Future<ApiResponse> Function() invoke) {
+  executeEmitterListener(Future Function() invoke) {
     executeListener(() => invoke(), onSuccess: (v) {
       emit((SuccessStateListener(v.toString())));
     });

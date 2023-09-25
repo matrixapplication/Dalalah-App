@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../src/main_index.dart';
+import '../../src/profile/data/models/profile_dto.dart';
 
 class HelperMethods {
 
@@ -98,5 +100,25 @@ class HelperMethods {
   static Future<String> getLanguage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('language') ?? 'en';
+  }
+
+  // save ProfileDto to shared preferences
+  static saveProfile(ProfileDto profile) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('profile', jsonEncode(profile.toJson()));
+  }
+
+  // get ProfileDto from shared preferences
+  static Future<ProfileDto?>? getProfile() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final data = ProfileDto.fromJson(jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
+      print('getProfile ${data.toJson()}');
+      if(data.id == null) return null;
+      return data;
+    } on Exception catch (e) {
+      print('getProfile ${e.toString()}');
+      return null;
+    }
   }
 }

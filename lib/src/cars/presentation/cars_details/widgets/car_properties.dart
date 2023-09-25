@@ -17,7 +17,8 @@ class CarProperties extends StatelessWidget {
           HeaderCarDetails(),
           Divider(color: context.dividerColor, thickness: 1, height: 40),
           Wrap(
-              children: properties.map((e) => CarPropertyItem(property: e)).toList()),
+              children:
+                  properties.map((e) => CarPropertyItem(property: e)).toList()),
         ],
       ),
     );
@@ -32,34 +33,33 @@ class CarPropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-        decoration: Decorations.decorationBorderShadow(
-          color: context.scaffoldBackgroundColor,
-          borderColor: context.dividerColor,
-          colorShadow: context.outline,
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+      decoration: Decorations.decorationBorderShadow(
+        color: context.scaffoldBackgroundColor,
+        borderColor: context.dividerColor,
+        colorShadow: context.outline,
+      ),
+      child: IntrinsicWidth(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(property.title,
+                    style: context.bodyLarge.copyWith(fontSize: 14)),
+                const SizedBox(width: 30),
+                AppIcon(icon: property.icon),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Text(property.subtitle,
+                style: context.displaySmall.copyWith(fontSize: 12)),
+          ],
         ),
-        child: IntrinsicWidth(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    property.title,
-                    style: context.bodyLarge.copyWith(fontSize: 14)
-                  ),
-                  const SizedBox(width: 30),
-                  AppIcon(icon: property.icon),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Text(property.subtitle,
-                  style: context.displaySmall.copyWith(fontSize: 12)),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
 

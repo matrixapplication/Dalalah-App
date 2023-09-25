@@ -11,10 +11,10 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     ApiResponse<T>(
-      status: json['status'] as String?,
+      status: json['status'] as bool?,
       message: json['message'] as String?,
-      payload: _$nullableGenericFromJson(json['payload'], fromJsonT),
-    )..code = json['code'] as String?;
+      data: _$nullableGenericFromJson(json['data'], fromJsonT),
+    )..code = json['code'] as int?;
 
 Map<String, dynamic> _$ApiResponseToJson<T>(
   ApiResponse<T> instance,
@@ -24,7 +24,7 @@ Map<String, dynamic> _$ApiResponseToJson<T>(
       'status': instance.status,
       'code': instance.code,
       'message': instance.message,
-      'payload': _$nullableGenericToJson(instance.payload, toJsonT),
+      'data': _$nullableGenericToJson(instance.data, toJsonT),
     };
 
 T? _$nullableGenericFromJson<T>(

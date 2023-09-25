@@ -1,11 +1,7 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
 import 'package:arabitac/core/widgets/chip/price_widget.dart';
-import 'package:arabitac/core/widgets/scaffold/custom_divider.dart';
 import 'package:arabitac/core/widgets/texts/row_texts.dart';
-import 'package:flutter/material.dart';
+import 'package:arabitac/src/main_index.dart';
 
-import '../../../../../core/decorations/decorations.dart';
-import '../../../../../core/widgets/expansionTile/custom_expansion_tile.dart';
 import 'border_widget.dart';
 
 ///  Created by harbey on 9/6/2023.

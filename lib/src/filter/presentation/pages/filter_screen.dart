@@ -81,7 +81,7 @@ class FilterScreen extends BaseStatelessWidget {
               Expanded(
                 child: DropDownField(
                   title: strings.year,
-                  hint: context.strings.start_price,
+                  hint: context.strings.start_year,
                   items: items,
                   onChanged: (value){
 
@@ -92,7 +92,7 @@ class FilterScreen extends BaseStatelessWidget {
               Expanded(
                 child: DropDownField(
                   title: '',
-                  hint: context.strings.end_price,
+                  hint: context.strings.end_year,
                   items: items,
                   onChanged: (value){
 
@@ -116,7 +116,8 @@ class FilterScreen extends BaseStatelessWidget {
           ),
           SelectionButtonChip(
             title: strings.fuel_type,
-            types: ['Gas', 'Diesel', 'Automatic']
+              isScrollable: true,
+            types: ['All', 'Gas', 'Diesel', 'Automatic']
                 .map((e) => ChipItem(title: e))
                 .toList(),
             onSelected: (value) {},

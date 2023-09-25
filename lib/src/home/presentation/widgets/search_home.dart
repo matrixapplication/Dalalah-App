@@ -13,29 +13,16 @@ class SearchHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppIconButton(
-          icon: AppIcons.drawer,
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
-        const SizedBox(width: 15),
-        Expanded(
-          child: CustomTextField(
-            radius: 50,
-            fillColor: Color(0xff95989A),
-            colorBorderSide: Color(0xff95989A),
-            iconPath: AppIcons.search,
-            hintText: context.strings.search_here,
-    hintStyle: context.displaySmall.copyWith(color: context.hintColor,),
-            onTap: () {
-              onSearch(context);
-            },
-          ),
-        ),
-      ],
+    return CustomTextField(
+      radius: 50,
+      fillColor: Color(0xff95989A),
+      colorBorderSide: Color(0xff95989A),
+      iconPath: AppIcons.search,
+      hintText: context.strings.search_here,
+      hintStyle: context.displaySmall.copyWith(color: context.hintColor,),
+      onTap: () {
+        onSearch(context);
+      },
     );
   }
 

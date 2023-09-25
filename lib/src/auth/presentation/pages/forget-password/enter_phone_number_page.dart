@@ -3,7 +3,7 @@ import 'package:arabitac/core/components/base_widget_bloc.dart';
 
 import '../../../../main_index.dart';
 import '../../bloc/forgot_password_bloc.dart';
-import '../../widgets/auth_app_scaffold.dart';
+import '../../widgets/auth_widget.dart';
 import 'enter_phone_number_screen.dart';
 
 class EnterPhoneNumberPage extends BaseBlocWidget<UnInitState, ForgotPasswordCubit> {

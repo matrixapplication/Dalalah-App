@@ -88,7 +88,7 @@ class Decorations {
 
   static ShapeDecoration shapeDecorationShadow({Color? color, required Color colorShadow, double? radius, BorderRadiusGeometry? borderRadius}) {
     return ShapeDecoration(
-      color: color,
+      color: color ?? injector<ServicesLocator>().appContext.cardColor,
       shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 5)),
       shadows: [

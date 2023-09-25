@@ -22,6 +22,8 @@ class SellCarScreen extends BaseStatelessWidget {
       padding: 16.paddingHoriz,
       child: Column(
         children: [
+
+          TextFormField(),
           DropDownField(
             title: strings.select_badge_type,
             hint: strings.select_badge_type,
@@ -85,9 +87,13 @@ class SellCarScreen extends BaseStatelessWidget {
 
             },
           ),
-          CustomTextField(
-            labelText: strings.number_car_cylinders,
-            hintText: strings.number_car_cylinders,
+          DropDownField(
+            title: strings.number_car_cylinders,
+            hint: strings.number_car_cylinders,
+            items: items,
+            onChanged: (value){
+
+            },
           ),
           CustomTextField(
             labelText: strings.number_kilometers_km,

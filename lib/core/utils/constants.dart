@@ -2,10 +2,10 @@
 const String kMaterialAppTitle = 'Flutter Clean Architecture';
 
 // API
-const String kTestBaseUrl = 'https://newsapi.org/v2/';
+const String kTestBaseUrl = 'https://arabitac.matrixclouds.net/api';
 const String kApiKey = 'ff957763c54c44d8b00e5e082bc76cb0';
- const String baseApiUrl = "https://stage.eljokermarket.com/api";
+ const String baseApiUrl = "https://arabitac.matrixclouds.net/api";
 
-const kBaseUrl =kIsTestVersion ? baseApiUrl : kTestBaseUrl;
+const kBaseUrl = kIsTestVersion ? kTestBaseUrl : baseApiUrl;
 
 const kIsTestVersion = true ;

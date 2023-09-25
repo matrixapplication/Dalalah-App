@@ -13,7 +13,7 @@ class _SettingsDatasource implements SettingsDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'kBASE_URL';
+    baseUrl ??= 'https://arabitac.matrixclouds.net/api';
   }
 
   final Dio _dio;
@@ -21,20 +21,20 @@ class _SettingsDatasource implements SettingsDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<String>> fetchAbout() async {
+  Future<ApiResponse<AboutUsDto>> fetchAboutUs() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+        _setStreamType<ApiResponse<AboutUsDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/about-us',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,9 +43,99 @@ class _SettingsDatasource implements SettingsDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<AboutUsDto>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => AboutUsDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<AboutUsDto>> fetchBuyingAndSellingAbout() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<AboutUsDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/buying-and-selling-privacy',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<AboutUsDto>.fromJson(
+      _result.data!,
+      (json) => AboutUsDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<AboutUsDto>> fetchTermsAndConditions() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<AboutUsDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/terms-and-conditions',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<AboutUsDto>.fromJson(
+      _result.data!,
+      (json) => AboutUsDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<AboutUsDto>> fetchPrivacy() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<AboutUsDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/privacy',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<AboutUsDto>.fromJson(
+      _result.data!,
+      (json) => AboutUsDto.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

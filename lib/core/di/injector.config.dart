@@ -73,7 +73,7 @@ import '../../src/settings/data/data_sources/settings_datasource.dart' as _i18;
 import '../../src/settings/data/repositories/settings_repo.dart' as _i37;
 import '../../src/settings/domain/repositories/base_settings_repo.dart' as _i36;
 import '../../src/settings/domain/use_cases/settings_usecase.dart' as _i46;
-import '../../src/settings/presentation/bloc/about_logeste_bloc.dart' as _i47;
+import '../../src/settings/presentation/bloc/about_us_bloc.dart' as _i47;
 import '../../src/settings/presentation/bloc/language_bloc.dart' as _i12;
 import 'injection_module.dart' as _i57;
 
@@ -146,8 +146,8 @@ Future<_i1.GetIt> $initGetIt(
       () => _i45.SellCarCubit(gh<_i16.SellCarUseCase>()));
   gh.factory<_i46.SettingsUseCase>(
       () => _i46.SettingsUseCase(gh<_i36.BaseSettingsRepo>()));
-  gh.factory<_i47.AboutLogesteCubit>(
-      () => _i47.AboutLogesteCubit(gh<_i46.SettingsUseCase>()));
+  gh.factory<_i47.AboutUsCubit>(
+      () => _i47.AboutUsCubit(gh<_i46.SettingsUseCase>()));
   gh.factory<_i48.AuthCubit>(() => _i48.AuthCubit(gh<_i20.AuthUseCase>()));
   gh.factory<_i49.CarsCubit>(() => _i49.CarsCubit(gh<_i38.CarsUseCase>()));
   gh.factory<_i50.CarsDetailsCubit>(

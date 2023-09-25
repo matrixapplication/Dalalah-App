@@ -13,7 +13,7 @@ class _ProfileDataSource implements ProfileDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'kBASE_URL';
+    baseUrl ??= 'https://arabitac.matrixclouds.net/api';
   }
 
   final Dio _dio;
@@ -21,20 +21,20 @@ class _ProfileDataSource implements ProfileDataSource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<Profile>> fetchProfileData() async {
+  Future<ApiResponse<ProfileDto>> fetchProfileData() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<Profile>>(Options(
-      method: 'POST',
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/get-user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,9 +43,9 @@ class _ProfileDataSource implements ProfileDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<Profile>.fromJson(
+    final value = ApiResponse<ProfileDto>.fromJson(
       _result.data!,
-      (json) => Profile.fromJson(json as Map<String, dynamic>),
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
@@ -58,13 +58,13 @@ class _ProfileDataSource implements ProfileDataSource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<String>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/deleteAccount',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -81,20 +81,21 @@ class _ProfileDataSource implements ProfileDataSource {
   }
 
   @override
-  Future<ApiResponse<String>> editProfileData() async {
+  Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
-      method: 'GET',
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/edit-user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -103,9 +104,46 @@ class _ProfileDataSource implements ProfileDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<ProfileDto>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileImage(File image) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'image',
+      MultipartFile.fromFileSync(
+        image.path,
+        filename: image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/edit-user-image',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<ProfileDto>.fromJson(
+      _result.data!,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

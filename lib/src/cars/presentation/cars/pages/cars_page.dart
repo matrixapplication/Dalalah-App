@@ -16,7 +16,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>{
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
     return CarsScreen(
-      isFilter: gerArguments(context)?.paramsFilter != null,
+      isFilter: gerArguments(context)?.paramsFilter == null,
       tasks: state.data ?? [],
     );
   }

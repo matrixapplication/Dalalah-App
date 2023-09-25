@@ -1,8 +1,9 @@
 
+import 'package:animation_wrappers/animations/faded_slide_animation.dart';
+
 import '../../src/main_index.dart';
 
-abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
-    extends BaseStatelessWidget {
+abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStatelessWidget  {
   BuildContext? context = injector<ServicesLocator>().navigatorKey.currentContext;
   late B bloc;
 
@@ -54,17 +55,38 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     return true;
   }
 
+  @protected
+  bool? resizeToAvoidBottomInset(BuildContext context) {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     this.context = context;
     //onBuild(bloc);
-    return AppScaffold(
-      title: title(context),
-      isDrawer: isNotBack(context),
-      body: buildConsumer(context),
-    );
+    return mainFrame(body: buildConsumer(context));
   }
 
+  Widget mainFrame({required Widget body}) {
+    return WillPopScope(
+      onWillPop: () => _onWillPop(context!),
+      child: AppScaffold(
+        title: title(context!),
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
+        isDrawer: isNotBack(context!),
+        body: body,
+      ),
+    );
+  }
+  _onWillPop(BuildContext context) {
+    print('onBackPress');
+    if (Navigator.canPop(context)) {
+      //onBackPress();
+      return Future.value(true);
+    } else {
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    }
+  }
   Widget handleUiState(DataState state, BuildContext context) {
     print('handleUiState $T == $state => ${state is T}');
     if (state is DataLoading) {
@@ -94,7 +116,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   void handleApiError(error,
       {required Function(String message, String code) onHandleMessage}) {
     final errorApi = injector<ServicesLocator>().navigatorKey.currentContext!.handleApiError(exception: error);
-    onHandleMessage(errorApi.code, "0");
+    onHandleMessage(errorApi.code.toString(), "0");
   }
 
   void showErrorDialog(error, BuildContext context) {
@@ -102,6 +124,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         context, context.handleApiErrorMessage(exception: error));
   }
 
+  @protected
   onClickReload() {}
 
   void onRequestFail() {}

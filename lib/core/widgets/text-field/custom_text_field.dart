@@ -66,6 +66,8 @@ class CustomTextField extends BaseStatelessWidget {
           ],
           TextFormField(
             onTap: onTap,
+            controller: controller,
+            readOnly: onTap != null,
             textAlign: textAlign ?? TextAlign.start,
             maxLines: maxLines,
             keyboardType: keyboardType,

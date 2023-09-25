@@ -12,15 +12,15 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
       title: 'Seat belts'
     ),
     DropDownItem(
-        id: '1',
+        id: '2',
         title: 'Seat belts'
     ),
     DropDownItem(
-        id: '1',
+        id: '3',
         title: 'Seat belts'
     ),
     DropDownItem(
-        id: '1',
+        id: '4',
         title: 'Seat belts'
     ),
   ];
@@ -43,43 +43,34 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
             style: context.bodyMedium.copyWith(fontSize: 16),
           ),
         ),
-        Padding(
-          padding: 16.paddingAll,
-          child: GridView.builder(
-            shrinkWrap: true,
-            padding: 10.paddingStart,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 6,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemCount: items!.length,
-            itemBuilder: (context, index) {
-              return StatefulBuilder(
-                  builder: (context, setState) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(items[index].title ?? '', style: context.bodyMedium,),
-                        Checkbox(
-                          value: selected.contains(items[index]),
-                          onChanged: (value) {
-                            setState(() {
-                              if(value == true){
-                                selected.add(items[index]);
-                              }else{
-                                selected.remove(items[index]);
-                              }
-                            });
-                          },
-                        ),
-                      ],
-                    );
-                  }
-              );
-            },
+        GridView.builder(
+          shrinkWrap: true,
+          padding: 10.paddingStart + 3.paddingEnd,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 5,
           ),
+          itemCount: items!.length,
+          itemBuilder: (context, index) {
+            return StatefulBuilder(
+                builder: (context, setState) {
+                  return CheckboxListTile(
+                    title: Text(items[index].title ?? '', style: context.bodyMedium,),
+                    value: selected.contains(items[index]),
+                    visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+                    onChanged: (value) {
+                      setState(() {
+                        if(value == true){
+                          selected.add(items[index]);
+                        }else{
+                          selected.remove(items[index]);
+                        }
+                      });
+                    },
+                  );
+                }
+            );
+          },
         ),
         Spacer(),
         PrimaryButton(

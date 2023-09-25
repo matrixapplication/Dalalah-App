@@ -1,10 +1,13 @@
 
+import 'dart:io';
+
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
-import '../../domain/entities/profile.dart';
+import '../../../auth/data/models/register_params.dart';
 import '../../domain/repositories/base_profile_repo.dart';
 import '../data_sources/profile_datasource.dart';
+import '../models/profile_dto.dart';
 
 
 @Injectable(as: BaseProfileRepo)
@@ -13,20 +16,25 @@ class ProfileRepo extends BaseProfileRepo{
   ProfileRepo(this.apiProvider);
 
   @override
-  Future<Profile> fetchProfileData() async{
+  Future<ProfileDto> fetchProfileData() async{
     final response = await apiProvider.fetchProfileData();
-    return response.payload!;
+    return response.data!;
   }
 
   @override
   Future<String> deleteProfileData() async{
     final response = await apiProvider.deleteProfileData();
-    return response.payload!;
+    return response.data!;
   }
 
   @override
-  Future<ApiResponse<String>> editProfileData() async{
-    return await apiProvider.deleteProfileData();
+  Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params) async{
+    return await apiProvider.editProfileData(params);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileImage(File image) async{
+    return await apiProvider.editProfileImage(image);
   }
 
 

@@ -41,6 +41,7 @@ class TabBarWidget  extends StatelessWidget{
               labelStyle: kTextRegular.copyWith(fontSize: 11),
               labelColor: Colors.white,
               unselectedLabelColor:kPrimaryDark ,
+
               indicator: const BoxDecoration(
                   color: kPrimaryDark,
                   borderRadius: BorderRadius.all(Radius.circular(21))

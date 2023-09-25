@@ -47,7 +47,7 @@ class EditTextField extends StatelessWidget {
               //   ),
               // ),
             ),
-
+            isValidator: isPasswordVisible,
           ),
         ],
       ),

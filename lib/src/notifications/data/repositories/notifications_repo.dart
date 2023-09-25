@@ -14,7 +14,7 @@ class WalletRepo extends BaseNotificationsRepo{
   @override
   Future<List<Notifications>> fetchNotifications() async{
     final data = await datasource.fetchNotifications();
-    return data.payload!;
+    return data.data!;
   }
 
 }

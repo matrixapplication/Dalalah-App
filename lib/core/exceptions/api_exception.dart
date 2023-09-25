@@ -1,6 +1,6 @@
 class ApiException implements Exception {
   final String message;
-  final String code;
+  final int code;
 
   ApiException(this.message, this.code);
   @override

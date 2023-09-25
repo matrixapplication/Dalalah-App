@@ -1,0 +1,8 @@
+
+enum AboutUsTypes {
+  ABOUT_US,
+  BUYING_AND_SELLING_ABOUT,
+  TERMS_AND_CONDITIONS,
+  PRIVACY
+}
+

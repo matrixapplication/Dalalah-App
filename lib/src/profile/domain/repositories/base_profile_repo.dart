@@ -1,11 +1,16 @@
 
+import 'dart:io';
+
 import '../../../../core/network/api_response.dart';
+import '../../../auth/data/models/register_params.dart';
+import '../../data/models/profile_dto.dart';
 import '../entities/profile.dart';
 
 
 
 abstract class BaseProfileRepo<T>{
-  Future<Profile> fetchProfileData();
+  Future<ProfileDto> fetchProfileData();
   Future<String> deleteProfileData();
-  Future<ApiResponse<String>> editProfileData();
+  Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params);
+  Future<ApiResponse<ProfileDto>> editProfileImage(File image);
 }

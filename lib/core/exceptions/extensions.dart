@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:arabitac/core/di/injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/responsive_service.dart';
 import 'api_exception.dart';
+import 'empty_list_exception.dart';
 
 extension AppResource on BuildContext {
 
@@ -21,10 +24,12 @@ extension AppResource on BuildContext {
   }
 
 
-  String handleApiErrorMessage({required dynamic exception}) {
-    String message = 'undefine_error';
 
-    if (exception is DioError) {
+  String handleApiErrorMessage({required dynamic exception}) {
+    String message = injector<ServicesLocator>().appContext.strings.something_went_wrong;
+    String code = "0";
+    print('handleApiError is dio   ${exception is DioException}');
+    if (exception is DioException) {
 
 
       if (exception.error is WebSocketException ||
@@ -39,9 +44,6 @@ extension AppResource on BuildContext {
         message = (exception.error as ApiException).message;
         print('handleApiError whenApiException is dio   $message');
 
-      }
-      else {
-        message = 'undefine_error';
       }
     }
 
@@ -59,12 +61,20 @@ extension AppResource on BuildContext {
       message = 'check_network_connection';
     }
 
+    if (exception is EmptyListException) {
+      print('handleApiError is EmptyListException   ${exception.toString()}' );
+      message = exception.toString();
+    }
+    // if (exception is DioException && exception.response?.data != null) {
+    //   message = exception.response?.data['message']['message'];
+    // }
     return message;
   }
 
   ApiException handleApiError({required dynamic exception}) {
-    String message = 'undefine_error';
-    String code = "0";
+    String message = injector<ServicesLocator>().appContext.strings.something_went_wrong;
+    int code = 0;
+    List<String> errors = [];
     if (exception is DioError) {
       print('handleApiError is dio   ${exception.error is ApiException}');
 
@@ -79,8 +89,6 @@ extension AppResource on BuildContext {
       else if (exception.error is ApiException) {
         message = (exception.error as ApiException).message;
         code = (exception.error as ApiException).code ;
-      } else {
-        message = 'undefine_error';
       }
     }
 
@@ -98,9 +106,8 @@ extension AppResource on BuildContext {
       // placeHolderImage = Image.asset(Res.connection_error);
       message = 'check_network_connection';
     }
-
-    print('handleApiError message ${message}');
-    return ApiException(message ,code );
+    print('handleApiError message $message');
+    return ApiException(message ,code);
   }
 
 
@@ -144,6 +151,8 @@ extension ThemesExtension on BuildContext {
   Color get outline => colorScheme.outline;
 
   Color get disabledColor => Theme.of(this).disabledColor;
+
+  Color get surface => colorScheme.surface;
 
   TextStyle get titleLarge => textTheme.titleLarge!;
 
@@ -194,32 +203,32 @@ extension StringExtension on BuildContext {
 
 extension PaddingExtension on num {
 
-  EdgeInsetsDirectional get paddingAll => EdgeInsetsDirectional.all(toDouble());
+  EdgeInsetsDirectional get paddingAll => EdgeInsetsDirectional.all(toDouble().h);
 
-  EdgeInsetsDirectional get paddingVert => EdgeInsetsDirectional.symmetric(vertical: toDouble());
+  EdgeInsetsDirectional get paddingVert => EdgeInsetsDirectional.symmetric(vertical: toDouble().h);
 
-  EdgeInsetsDirectional get paddingHoriz => EdgeInsetsDirectional.symmetric(horizontal: toDouble());
+  EdgeInsetsDirectional get paddingHoriz => EdgeInsetsDirectional.symmetric(horizontal: toDouble().h);
 
-  EdgeInsetsDirectional get paddingStart => EdgeInsetsDirectional.only(start: toDouble());
+  EdgeInsetsDirectional get paddingStart => EdgeInsetsDirectional.only(start: toDouble().h);
 
-  EdgeInsetsDirectional get paddingEnd => EdgeInsetsDirectional.only(end: toDouble());
+  EdgeInsetsDirectional get paddingEnd => EdgeInsetsDirectional.only(end: toDouble().h);
 
-  EdgeInsetsDirectional get paddingTop => EdgeInsetsDirectional.only(top: toDouble());
+  EdgeInsetsDirectional get paddingTop => EdgeInsetsDirectional.only(top: toDouble().h);
 
-  EdgeInsetsDirectional get paddingBottom => EdgeInsetsDirectional.only(bottom: toDouble());
+  EdgeInsetsDirectional get paddingBottom => EdgeInsetsDirectional.only(bottom: toDouble().h);
 }
 
 extension EmptyPaadding on num {
-  SizedBox get ph => SizedBox(height: toDouble());
-  SizedBox get pw => SizedBox(width: toDouble());
+  SizedBox get ph => SizedBox(height: toDouble().h);
+  SizedBox get pw => SizedBox(width: toDouble().h);
 }
-
-extension SizeExtension on num {
-  double get w => ResponsiveService.scaleWidth() * this;
-
-  double get h => ResponsiveService.scaleHeight() * this;
-
-  double get r => ResponsiveService.scaleRadius() * this;
-
-  double get sp => ResponsiveService.scaleText() * this;
-}
+//
+// extension SizeExtension on num {
+//   double get w => ResponsiveService.scaleWidth() * this;
+//
+//   double get h => ResponsiveService.scaleHeight() * this;
+//
+//   double get r => ResponsiveService.scaleRadius() * this;
+//
+//   double get sp => ResponsiveService.scaleText() * this;
+// }

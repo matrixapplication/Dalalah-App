@@ -1,4 +1,5 @@
 
+import 'package:arabitac/src/favorites/presentation/pages/favorites_page.dart';
 import 'package:arabitac/src/notifications/presentation/pages/notifications_page.dart';
 import 'package:arabitac/src/profile/presentation/pages/profile_page.dart';
 import 'package:arabitac/src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
@@ -15,6 +16,7 @@ class NavigationPages extends BaseStatelessWidget {
   List<Widget> pages = [
     const HomePage(),
     SellCarPage(),
+ //   FavoritesPage(),
     NotificationsPage(),
     ProfilePage(),
   ];
@@ -52,6 +54,8 @@ class NavigationPages extends BaseStatelessWidget {
                 BottomNavigatorBarItem(
                   icon: AppIcons.add_car,
                   label: strings.sell_car,
+                  // icon: AppIcons.heart_solid,
+                  // label: strings.favorites,
                   color: getColor(context, 1),
                   onTap: () {
                     setState(() {

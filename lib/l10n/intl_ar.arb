@@ -85,6 +85,12 @@
   "light_mode": "الوضع النهاري",
   "next": "التالي",
   "confirm": "تأكيد",
-  "this_field_is_required": "هذا الحقل مطلوب"
-
+  "this_field_is_required": "هذا الحقل مطلوب",
+  "user": "المستخدم",
+  "exhibition": "المعرض",
+  "id_number": "رقم الهوية",
+  "ascending": "تصاعدي",
+  "descending": "تنازلي",
+  "buying_and_selling_about": "عن البيع والشراء",
+  "something_went_wrong": "حدث خطأ ما"
 }

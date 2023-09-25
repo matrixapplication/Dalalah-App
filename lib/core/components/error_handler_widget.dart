@@ -1,3 +1,5 @@
+import 'package:arabitac/core/widgets/buttons/primary_icon_button.dart';
+
 import '/src/main_index.dart';
 // ignore: must_be_immutable
 class ErrorPlaceHolderWidget extends StatelessWidget {
@@ -44,13 +46,23 @@ class ErrorPlaceHolderWidget extends StatelessWidget {
                 child: placeHolderImage,
               ):Container(),
               title!=null ?Text(title!,style: kTextMedium.copyWith(color: kPrimaryDark,fontSize: 12),):Container(),
-
               Text(
                 message.toString().trim(),
                 style:
                     kTextRegular.copyWith(color: kPrimaryDark, fontSize: 12),
                 textAlign: TextAlign.center,
               ),
+              20.ph,
+              PrimaryIconButton(
+                icon: AppIcons.refresh,
+                iconColor: context.cardColor,
+                title: context.strings.reload,
+                width: 100,
+                radius: 50,
+                onPressed: (){
+                  onClickReload!();
+                },
+              )
             ],
           ),
         ));

@@ -21,6 +21,7 @@ class ProfileHeader extends StatelessWidget {
             child: ImageNetworkText(
               image: profile?.image,
               text: profile?.name,
+              size: 50,
             ),
           ),
           const SizedBox(

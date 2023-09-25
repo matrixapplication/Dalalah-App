@@ -12,23 +12,11 @@ class AuthCubit extends BaseCubit {
 
   AuthCubit(this.usecase);
 
-  login(LoginParams params) async {
-    emit(DataLoading());
-    try {
-     final response = await usecase.login(params);
-      emit(SuccessStateListener(response));
-    } catch (e) {
-      emit(DataFailed(e));
-    }
+  login(LoginParams params)  {
+    executeEmitterListener(() => usecase.loginAsUser(params));
   }
 
   register(RegisterParams params) async {
-    emit(DataLoading());
-    try {
-    final response = await usecase.register(params);
-      emit( SuccessStateListener(response));
-    } catch (e) {
-      emit(DataFailed(e));
-    }
+    executeEmitterListener(() => usecase.register(params));
   }
 }
