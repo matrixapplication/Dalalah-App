@@ -22,7 +22,7 @@ class HomeScreen extends BaseStatelessWidget {
               title: context.strings.popular_brand,
             ),
             SizedBox(
-              height: 200.h,
+              height: 200,
               child: BrandsList(
                 isHome: true,
               ),

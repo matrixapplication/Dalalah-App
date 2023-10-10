@@ -1,6 +1,4 @@
 
-import 'package:animation_wrappers/animations/faded_slide_animation.dart';
-
 import '../../src/main_index.dart';
 
 abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStatelessWidget  {
@@ -28,9 +26,13 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
       showErrorDialog(state.error, context);
     }
 
+    if (state is SuccessStateListener<String>) {
+      dismissProgress();
+      onRequestSuccess(state.data);
+    }
     if (state is SuccessStateListener) {
       dismissProgress();
-      onRequestSuccess('Successfully');
+      onSuccessDismissed();
     }
   }
 
@@ -129,7 +131,16 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
 
   void onRequestFail() {}
 
-  void onRequestSuccess(String? message) {}
+  void onSuccessDismissed() {}
+
+  void onRequestSuccess(String? message) {
+    if (message != null && message.isNotEmpty) {
+      DialogsManager.showSuccessDialog(context!, message: message, onClickOk: () {
+        Navigator.pop(context!);
+        onSuccessDismissed();
+      });
+    }
+  }
 
   BlocConsumer buildConsumer(BuildContext context) {
     bloc = injector.get<B>();

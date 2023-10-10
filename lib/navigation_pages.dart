@@ -1,4 +1,5 @@
 
+import 'package:arabitac/core/utils/helper_methods.dart';
 import 'package:arabitac/src/favorites/presentation/pages/favorites_page.dart';
 import 'package:arabitac/src/notifications/presentation/pages/notifications_page.dart';
 import 'package:arabitac/src/profile/presentation/pages/profile_page.dart';
@@ -13,81 +14,81 @@ class NavigationPages extends BaseStatelessWidget {
 
   NavigationPages({Key? key, this.isCaptain = false}) : super(key: key);
 
-  List<Widget> pages = [
-    const HomePage(),
-    SellCarPage(),
- //   FavoritesPage(),
-    NotificationsPage(),
-    ProfilePage(),
-  ];
-
   int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return StatefulBuilder(
-      builder:
-          (BuildContext context, void Function(void Function()) setState) {
-        return Scaffold(
-          body: pages[pageIndex],
-          bottomNavigationBar: Container(
-            height: 65,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: Decorations.shapeTopShadow(
-              color: context.scaffoldBackgroundColor,
-              colorShadow: context.disabledColor,
-              radius: 0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                BottomNavigatorBarItem(
-                  icon: AppIcons.home,
-                  label: strings.home,
-                  color: getColor(context, 0),
-                  onTap: () {
-                    setState(() {
-                      pageIndex = 0;
-                    });
-                  },
+
+    return FutureBuilder(
+      future: HelperMethods.isAdmin(),
+      initialData: false,
+      builder: (context, snapshot) {
+        return StatefulBuilder(
+          builder:
+              (BuildContext context, void Function(void Function()) setState) {
+            return Scaffold(
+              body: snapshot.hasData ? getPagesBaseRole(snapshot.data as bool)[pageIndex] : Container(),
+              bottomNavigationBar: snapshot.connectionState == ConnectionState.waiting ? LoadingView() :
+              Container(
+                height: 65,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: Decorations.shapeTopShadow(
+                  color: context.scaffoldBackgroundColor,
+                  colorShadow: context.disabledColor,
+                  radius: 0,
                 ),
-                BottomNavigatorBarItem(
-                  icon: AppIcons.add_car,
-                  label: strings.sell_car,
-                  // icon: AppIcons.heart_solid,
-                  // label: strings.favorites,
-                  color: getColor(context, 1),
-                  onTap: () {
-                    setState(() {
-                      pageIndex = 1;
-                    });
-                  },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    BottomNavigatorBarItem(
+                      icon: AppIcons.home,
+                      label: strings.home,
+                      color: getColor(context, 0),
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 0;
+                        });
+                      },
+                    ),
+                    BottomNavigatorBarItem(
+                      icon: snapshot.data! ? AppIcons.add_car : AppIcons.heart_solid,
+                      label: snapshot.data! ? strings.sell_car : strings.favorites,
+                      // icon: AppIcons.heart_solid,
+                      // label: strings.favorites,
+                      color: getColor(context, 1),
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 1;
+                        });
+                      },
+                    ),
+                    BottomNavigatorBarItem(
+                      icon: AppIcons.notification,
+                      label: strings.notifications,
+                      color: getColor(context, 2),
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 2;
+                        });
+                      },
+                    ),
+                    BottomNavigatorBarItem(
+                      icon: AppIcons.profile,
+                      label: strings.profile ,
+                      color: getColor(context, 3),
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 3;
+                        });
+                      },
+                    ),
+                  ],
                 ),
-                BottomNavigatorBarItem(
-                  icon: AppIcons.notification,
-                  label: strings.notifications,
-                  color: getColor(context, 2),
-                  onTap: () {
-                    setState(() {
-                      pageIndex = 2;
-                    });
-                  },
-                ),
-                BottomNavigatorBarItem(
-                  icon: AppIcons.profile,
-                  label: strings.profile ,
-                  color: getColor(context, 3),
-                  onTap: () {
-                    setState(() {
-                      pageIndex = 3;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
-      },
+      }
     );
   }
   getColor(BuildContext context,int index) {
@@ -97,5 +98,15 @@ class NavigationPages extends BaseStatelessWidget {
     } else {
       return theme.disabledColor;
     }
+  }
+
+  getPagesBaseRole(bool isAdmin){
+    print('isAdmin $isAdmin');
+    return [
+      const HomePage(),
+      isAdmin ? SellCarPage() : FavoritesPage(),
+      NotificationsPage(),
+      ProfilePage(),
+    ];
   }
 }

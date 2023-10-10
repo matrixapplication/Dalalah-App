@@ -28,5 +28,11 @@ class EditProfilePage extends BaseBlocWidget<UnInitState, ProfileBloc>{
   String? title(BuildContext context) {
     return strings.edit_profile;
   }
+
+  @override
+  onSuccessDismissed() {
+    bloc.fetchProfileData();
+    Navigator.pop(context!, true);
+  }
 }
 

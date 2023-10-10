@@ -24,6 +24,6 @@ abstract class  AuthDataSource{
   Future<ApiResponse<ProfileDto>> loginAsShowroom(@Body() ShowroomLoginParams params);
 
   @POST('/end-user/register')
-  Future<ApiResponse<ProfileDto>> register(RegisterParams params);
+  Future<ApiResponse<ProfileDto>> register(@Body() RegisterParams params);
 
 }

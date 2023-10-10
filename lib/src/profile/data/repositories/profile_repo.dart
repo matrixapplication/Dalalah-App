@@ -24,7 +24,7 @@ class ProfileRepo extends BaseProfileRepo{
   @override
   Future<String> deleteProfileData() async{
     final response = await apiProvider.deleteProfileData();
-    return response.data!;
+    return response.message ?? 'error';
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:arabitac/src/profile/domain/entities/roles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,7 +13,6 @@ import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
 
 class HelperMethods {
-
   static Future<CroppedFile?> getImagePicker() async {
     XFile? imageFile;
     imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -30,10 +30,13 @@ class HelperMethods {
   }
 
   static Future<File> getImageFromGallery() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     return File(pickedFile!.path);
   }
-  static  showErrorToast(String msg, {Color? color, ToastGravity? gravity}) async {
+
+  static showErrorToast(String msg,
+      {Color? color, ToastGravity? gravity}) async {
     return Fluttertoast.showToast(
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
@@ -41,10 +44,11 @@ class HelperMethods {
         timeInSecForIosWeb: 1,
         backgroundColor: color ?? Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
-  static  showSuccessToast(String msg, {Color? color, ToastGravity? gravity}) async {
+
+  static showSuccessToast(String msg,
+      {Color? color, ToastGravity? gravity}) async {
     return Fluttertoast.showToast(
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
@@ -52,9 +56,9 @@ class HelperMethods {
         timeInSecForIosWeb: 1,
         backgroundColor: color ?? Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
+
   static Future<void> launchCallPhone(String phoneNumber) async {
     Uri telephoneUrl = Uri.parse("tel:$phoneNumber");
     if (await canLaunchUrl(telephoneUrl)) {
@@ -105,20 +109,55 @@ class HelperMethods {
   // save ProfileDto to shared preferences
   static saveProfile(ProfileDto profile) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('profile', jsonEncode(profile.toJson()));
+    if (profile.token == null || profile.token!.isEmpty) {
+      String token = await isAuth();
+      profile.token = token;
+      prefs.setString('profile', jsonEncode(profile.toJson()));
+    } else {
+      prefs.setString('profile', jsonEncode(profile.toJson()));
+    }
   }
 
   // get ProfileDto from shared preferences
   static Future<ProfileDto?>? getProfile() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      final data = ProfileDto.fromJson(jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
+      final data = ProfileDto.fromJson(
+          jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
       print('getProfile ${data.toJson()}');
-      if(data.id == null) return null;
+      if (data.id == null) return null;
       return data;
     } on Exception catch (e) {
       print('getProfile ${e.toString()}');
       return null;
     }
   }
+
+  static removeProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('profile');
+  }
+
+  static Future<String> isAuth() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      if (profile?.token == null || profile!.token!.isEmpty) return '';
+      return profile.token!;
+    } on Exception catch (e) {
+      print('profile?.token ${e.toString()}');
+      return '';
+    }
+  }
+
+  static Future<bool> isAdmin() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      if (profile?.role == null || profile!.role!.isEmpty) return false;
+      return profile.role != Roles.USER;
+    } on Exception catch (e) {
+      print('profile?.token ${e.toString()}');
+      return false;
+    }
+  }
+
 }

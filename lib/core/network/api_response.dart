@@ -1,3 +1,4 @@
+import 'package:arabitac/core/network/pagination.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 
@@ -9,9 +10,10 @@ class ApiResponse<T> {
   int? code;
   String? message;
   T? data;
+  Pagination? pagination;
 
 
-  ApiResponse({this.status, this.message, this.data});
+  ApiResponse({this.status, this.code, this.message, this.data, this.pagination});
 
   factory ApiResponse.fromJson(
     Map<String, dynamic> json,

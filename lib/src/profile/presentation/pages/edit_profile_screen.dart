@@ -49,11 +49,11 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.phone_number,
                 controller: phoneController,
               ),
-              EditTextField(
-                title: strings.password,
-                controller: passwordController,
-                isPasswordVisible: false,
-              ),
+              // EditTextField(
+              //   title: strings.password,
+              //   controller: passwordController,
+              //   isPasswordVisible: false,
+              // ),
             ],
           ),
         ),

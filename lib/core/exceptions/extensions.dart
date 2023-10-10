@@ -6,9 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/responsive_service.dart';
 import 'api_exception.dart';
 import 'empty_list_exception.dart';
 
@@ -203,24 +201,29 @@ extension StringExtension on BuildContext {
 
 extension PaddingExtension on num {
 
-  EdgeInsetsDirectional get paddingAll => EdgeInsetsDirectional.all(toDouble().h);
+  EdgeInsetsDirectional get paddingAll => EdgeInsetsDirectional.all(toDouble());
 
-  EdgeInsetsDirectional get paddingVert => EdgeInsetsDirectional.symmetric(vertical: toDouble().h);
+  EdgeInsetsDirectional get paddingVert => EdgeInsetsDirectional.symmetric(vertical: toDouble());
 
-  EdgeInsetsDirectional get paddingHoriz => EdgeInsetsDirectional.symmetric(horizontal: toDouble().h);
+  EdgeInsetsDirectional get paddingHoriz => EdgeInsetsDirectional.symmetric(horizontal: toDouble());
 
-  EdgeInsetsDirectional get paddingStart => EdgeInsetsDirectional.only(start: toDouble().h);
+  EdgeInsetsDirectional get paddingStart => EdgeInsetsDirectional.only(start: toDouble());
 
-  EdgeInsetsDirectional get paddingEnd => EdgeInsetsDirectional.only(end: toDouble().h);
+  EdgeInsetsDirectional get paddingEnd => EdgeInsetsDirectional.only(end: toDouble());
 
-  EdgeInsetsDirectional get paddingTop => EdgeInsetsDirectional.only(top: toDouble().h);
+  EdgeInsetsDirectional get paddingTop => EdgeInsetsDirectional.only(top: toDouble());
 
-  EdgeInsetsDirectional get paddingBottom => EdgeInsetsDirectional.only(bottom: toDouble().h);
+  EdgeInsetsDirectional get paddingBottom => EdgeInsetsDirectional.only(bottom: toDouble());
 }
 
 extension EmptyPaadding on num {
-  SizedBox get ph => SizedBox(height: toDouble().h);
-  SizedBox get pw => SizedBox(width: toDouble().h);
+  SizedBox get ph => SizedBox(height: toDouble());
+  SizedBox get pw => SizedBox(width: toDouble());
+}
+
+extension MediaQueryExtension on BuildContext{
+  double get width => MediaQuery.of(this).size.width;
+  double get height => MediaQuery.of(this).size.height;
 }
 //
 // extension SizeExtension on num {

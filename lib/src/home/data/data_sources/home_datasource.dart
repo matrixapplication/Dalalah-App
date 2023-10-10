@@ -14,8 +14,8 @@ abstract class  HomeDatasource{
   @factoryMethod
   factory HomeDatasource(Dio dio) = _HomeDatasource;
 
-  @GET('/api/v1/user/GetClientStatus')
-  Future<ApiResponse<bool>> fetchClientStatus();
+  @GET('/sliders')
+  Future<ApiResponse<bool>> fetchSliders();
 
   @POST('/api/v1/user/DisconnectClient')
   Future<ApiResponse<String>> reasonForDisconnection(@Body() String reason);

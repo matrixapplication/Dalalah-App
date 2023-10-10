@@ -51,7 +51,7 @@ class AuthTextField extends StatelessWidget {
           offset: const Offset(0, 0),
           blurRadius: 10,
         ),
-      ], borderRadius: BorderRadius.circular(8.h)),
+      ], borderRadius: BorderRadius.circular(8)),
       child: StatefulBuilder(
         builder: (context, setState) {
           return TextFormField(
@@ -110,9 +110,7 @@ class AuthTextField extends StatelessWidget {
       //      onChanged: onChange,
             onSaved: onSubmit,
             validator: validator ?? (value) =>  Validation.validateRequired(value ?? ''),
-            obscureText: isPassword!
-                    ? secure
-                    : false
+            obscureText: isPassword ? secure : false
           );
         }
       ),

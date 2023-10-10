@@ -7,7 +7,6 @@ import 'package:retrofit/retrofit.dart';
 import 'package:arabitac/core/network/api_response.dart';
 
 import '../../../../core/utils/constants.dart';
-import '../../domain/entities/profile.dart';
 import '../models/profile_dto.dart';
 
 

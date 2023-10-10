@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:arabitac/core/network/api_response.dart';
+import 'package:arabitac/core/utils/helper_methods.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../auth/data/models/register_params.dart';
@@ -20,16 +21,21 @@ class ProfileUseCase {
     return Profile.fromDto(data);
   }
 
-  Future<String> deleteProfileData() {
+  Future<String> deleteProfileData() async {
     return repository.deleteProfileData();
   }
 
-  Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params) {
-    return repository.editProfileData(params);
+  Future<String> editProfileData(RegisterParams params) async {
+    final data = await repository.editProfileData(params);
+    await HelperMethods.saveProfile(data.data!);
+    print('data.message ${data.message}');
+    return data.message ?? 'error';
   }
 
-  Future<ApiResponse<ProfileDto>> editProfileImage(File image) {
-    return repository.editProfileImage(image);
+  Future<String> editProfileImage(File image) async {
+    final data = await repository.editProfileImage(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? 'error';
   }
 
 

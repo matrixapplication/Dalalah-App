@@ -13,7 +13,7 @@ class HomeRepo extends BaseHomeRepo{
 
   @override
   Future<bool> fetchClientStatus() async {
-    final response =  await datasource.fetchClientStatus();
+    final response =  await datasource.fetchSliders();
     return response.data!;
   }
 

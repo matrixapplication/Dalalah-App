@@ -37,7 +37,7 @@ class PriceCarDetails extends StatelessWidget {
             margin: 6.paddingBottom,
             decoration: Decorations.kDecorationRadius(
               color: context.primaryColor,
-              radius: 8.r,
+              radius: 8,
             ),
             child: RowTexts(
               title: context.strings.total_price,

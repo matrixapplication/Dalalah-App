@@ -73,7 +73,7 @@ class Decorations {
   }) {
     return BoxDecoration(
       color: color,
-      borderRadius: BorderRadius.all(Radius.circular(radius ?? 12.r)),
+      borderRadius: BorderRadius.all(Radius.circular(radius ?? 12)),
     );
   }
 
@@ -144,7 +144,7 @@ class Decorations {
         BoxShadow(
           color: colorShadow.withOpacity(0.5),
           blurRadius: 10,
-          offset: Offset(0, 0),
+          offset: const Offset(0, 0),
           spreadRadius: 0,
         )
       ],

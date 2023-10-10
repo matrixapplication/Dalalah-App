@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "801294018776",
+    "project_id": "arabitac-2023",
+    "storage_bucket": "arabitac-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801294018776:android:6b9ee767718e6537fb4fad",
+        "android_client_info": {
+          "package_name": "com.arabitac.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ8NhmIAnSPB8ChfEqEtY7KgkRGso8ocE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,7 +21,7 @@ class _HomeDatasource implements HomeDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<bool>> fetchClientStatus() async {
+  Future<ApiResponse<bool>> fetchSliders() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,7 +34,7 @@ class _HomeDatasource implements HomeDatasource {
     )
             .compose(
               _dio.options,
-              '/api/v1/user/GetClientStatus',
+              '/sliders',
               queryParameters: queryParameters,
               data: _data,
             )

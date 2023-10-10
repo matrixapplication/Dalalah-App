@@ -7,7 +7,7 @@ class BackgroundImages {
  static List<Widget> backgroundImages = [
     Image.asset(
       AppImages.on_boarding1,
-      width: 200.w,
+      width: 200,
       // width: context.width * 0.8,
     ),
     Image.asset(

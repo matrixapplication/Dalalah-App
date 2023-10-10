@@ -18,13 +18,13 @@ class ProfileBloc extends BaseCubit {
   ProfileBloc(this.usecase);
 
   ProfileDto? profileDto = ProfileDto();
-  fetchProfileData() async {
-    emit(LoadingStateListener());
+  fetchProfileData({bool? isRefresh}) async {
+    emit(DataLoading());
     profileDto = await HelperMethods.getProfile();
     Profile profile = Profile();
 
     try {
-      if(profileDto?.id != null){
+      if(isRefresh != true){
         print('shared ${profile}');
         profile = Profile.fromDto(profileDto!);
       }else{
@@ -34,12 +34,20 @@ class ProfileBloc extends BaseCubit {
       }
       emit(DataSuccess<Profile>(profile));
     } catch (e) {
-      emit(DataFailed(e));
+      emit(FailureStateListener(e));
     }
   }
 
-  deleteProfileData() async {
-    executeEmitterListener(() => usecase.deleteProfileData());
+  deleteAccount() async {
+    executeListener(() => usecase.deleteProfileData(), onSuccess: (value) async {
+      await HelperMethods.removeProfile();
+      emit(SuccessStateListener<String>(value));
+    });
+  }
+
+  logout() async {
+
+    executeEmitterListener(() => HelperMethods.removeProfile());
   }
 
   editProfileData(RegisterParams params) async {

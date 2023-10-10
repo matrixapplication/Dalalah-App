@@ -15,13 +15,6 @@ class RegisterPage extends BaseBlocWidget<UnInitState, AuthCubit> {
     return AuthWidget(
       child: RegisterScreen(
         onRegister: (RegisterParams params) {
-          RegisterParams params = RegisterParams(
-            email: 'test1@gmail.com',
-            password: '12345678',
-            passwordConfirmation: '12345678',
-            name: 'Test1',
-            phone: '01000000000',
-          );
           bloc.register(params);
           //Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
         },
@@ -32,5 +25,10 @@ class RegisterPage extends BaseBlocWidget<UnInitState, AuthCubit> {
   @override
   bool? resizeToAvoidBottomInset(BuildContext context) {
     return false;
+  }
+
+  @override
+  onSuccessDismissed() {
+    Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
   }
 }

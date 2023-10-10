@@ -6,8 +6,9 @@ import '../../../data/models/login_params.dart';
 
 class LoginScreen extends StatefulWidget {
   final Function(LoginParams)? onLogin;
+  final Function(LoginParams)? onShowRoomLogin;
 
-  const LoginScreen({Key? key, this.onLogin}) : super(key: key);
+  const LoginScreen({Key? key, this.onLogin, this.onShowRoomLogin}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -29,18 +30,18 @@ class _LoginScreenState extends State<LoginScreen>
     _tabController.dispose();
   }
 
-  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
 
     return Container(
       alignment: Alignment.center,
       padding: 20.paddingHoriz + 8.paddingTop,
-      height: 0.65.sh,
-      margin: 16.paddingHoriz + 10.paddingTop,
+      height: 480,
+      margin: 16.paddingHoriz + (kToolbarHeight).paddingTop,
       decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(context.strings.welcome,
               style:
@@ -54,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen>
             child: TabBarWidget(
               height: 10,
               tabs: [
-                TabItemModel(label: context.strings.user, page: LoginBody(onLogin: widget.onLogin,formKey: formKey,)),
-                TabItemModel(label: context.strings.exhibition, page: LoginBody(isUser: false, onLogin: widget.onLogin,formKey: formKey,)),
+                TabItemModel(label: context.strings.user, page: LoginBody(onLogin: widget.onLogin)),
+                TabItemModel(label: context.strings.exhibition, page: LoginBody(isUser: false, onLogin: widget.onShowRoomLogin)),
               ],
             ),
           ),

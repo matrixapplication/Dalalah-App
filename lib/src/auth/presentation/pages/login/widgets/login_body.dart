@@ -6,14 +6,14 @@ import '../../../widgets/auth_text_field.dart';
 
 class LoginBody extends BaseStatelessWidget {
   final bool isUser;
-  final GlobalKey<FormState> formKey;
   final Function(LoginParams)? onLogin;
 
-  LoginBody({Key? key, this.onLogin, this.isUser = true, required this.formKey}) : super(key: key);
+  LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,7 +24,9 @@ class LoginBody extends BaseStatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AuthTextField(
-              hint: isUser ? context.strings.phone_number : context.strings.id_number,
+              hint: isUser
+                  ? context.strings.phone_number
+                  : context.strings.id_number,
               prefixIcon: isUser ? AppIcons.smartphone : AppIcons.id_card,
               controller: emailController,
               validator: (phone) => Validation.validatePhone(phone ?? ''),
@@ -39,26 +41,27 @@ class LoginBody extends BaseStatelessWidget {
             ),
             PrimaryButton(
               title: strings.login.toUpperCase(),
-              radius: 30.r,
-              height: 42.h,
-              margin: EdgeInsets.only(
-                  top: 20.h, left: 50.w, right: 50.w),
+              radius: 30,
+              height: 42,
+              margin: EdgeInsets.only(top: 20, left: 50, right: 50),
               onPressed: () {
-                onLogin!(LoginParams(
-                    email: emailController.text,
-                    password: passwordController.text,
-                ),
-                );
+                if (_formKey.currentState!.validate())
+                  onLogin!(
+                    LoginParams(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    ),
+                  );
               },
             ),
-            12.h.ph,
+            12.ph,
             FittedBox(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(strings.dont_have_an_account,
                       style: context.displaySmall),
-                  5.w.pw,
+                  5.pw,
                   UnderlineTextButton(
                     title: strings.create_new_now,
                     routeName: Routes.register,
@@ -66,10 +69,9 @@ class LoginBody extends BaseStatelessWidget {
                 ],
               ),
             ),
-            10.h.ph,
-            Text(strings.or,
-                style: context.displaySmall),
-            10.h.ph,
+            10.ph,
+            Text(strings.or, style: context.displaySmall),
+            10.ph,
             UnderlineTextButton(
               title: strings.as_guest,
               routeName: Routes.navigationPages,

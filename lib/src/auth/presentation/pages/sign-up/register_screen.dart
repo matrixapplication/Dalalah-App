@@ -9,25 +9,27 @@ class RegisterScreen extends BaseStatelessWidget {
 
   RegisterScreen({Key? key, this.onRegister}) : super(key: key);
 
-  static final TextEditingController fullNameController = TextEditingController();
+  static final TextEditingController fullNameController =
+      TextEditingController();
 
-  static final TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
-  static final TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
-  static final TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  static final TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
-  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: 20.paddingHoriz + 20.paddingTop,
-      height: 0.68.sh,
-      margin: 16.paddingAll+ 30.paddingTop,
-      decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor),
+      height: 500,
+      margin: 16.paddingAll + 30.paddingTop,
+      decoration:
+          Decorations.shapeDecorationShadow(colorShadow: context.primaryColor),
       child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Form(
@@ -50,28 +52,30 @@ class RegisterScreen extends BaseStatelessWidget {
                 hint: context.strings.phone_number,
                 prefixIcon: AppIcons.smartphone,
                 controller: phoneNumberController,
-               // validator: (phone) => Validation.validatePhone(phone ?? ''),
+                // validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
               AuthTextField(
                 isPassword: true,
                 hint: context.strings.password,
                 prefixIcon: AppIcons.lock,
                 controller: passwordController,
-                validator: (password) => Validation.validatePassword(password ?? ''),
+                validator: (password) =>
+                    Validation.validatePassword(password ?? ''),
               ),
               AuthTextField(
                 isPassword: true,
                 hint: context.strings.password,
                 prefixIcon: AppIcons.lock,
                 controller: confirmPasswordController,
-                validator: (password) => Validation.validateConfirmPassword(password ?? '', passwordController.text),
+                validator: (password) => Validation.validateConfirmPassword(
+                    password ?? '', passwordController.text),
               ),
               PrimaryButton(
                 title: strings.create.toUpperCase(),
-                radius: 30.r,
-                height: 42.h,
-                margin: EdgeInsets.only(
-                    top: 20.h, bottom: 20.h, left: 40.w, right: 40.w),
+                radius: 30,
+                height: 42,
+                margin:
+                    EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
                 onPressed: () {
                   onRegisterPressed();
                 },
@@ -79,8 +83,9 @@ class RegisterScreen extends BaseStatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(strings.dont_have_an_account, style: context.displaySmall),
-                  5.w.pw,
+                  Text(strings.dont_have_an_account,
+                      style: context.displaySmall),
+                  5.pw,
                   GestureDetector(
                     onTap: () {
                       Navigators.pop();
@@ -102,15 +107,17 @@ class RegisterScreen extends BaseStatelessWidget {
   }
 
   onRegisterPressed() {
-    onRegister!(
-      RegisterParams(
-        name: fullNameController.text,
-        email: emailController.text,
-        phone: phoneNumberController.text,
-        password: passwordController.text,
-        passwordConfirmation: confirmPasswordController.text,
-        fcmToken: '',
-      ),
-    );
+    if (formKey.currentState!.validate()) {
+      onRegister!(
+        RegisterParams(
+          name: fullNameController.text,
+          email: emailController.text,
+          phone: phoneNumberController.text,
+          password: passwordController.text,
+          passwordConfirmation: confirmPasswordController.text,
+          fcmToken: '',
+        ),
+      );
+    }
   }
 }

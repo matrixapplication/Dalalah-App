@@ -33,7 +33,7 @@ class OnBoardingScreen extends StatelessWidget {
       speed: 1.8,
       pageBodies: BackgroundImages.pages,
       centerBackground: true,
-      imageVerticalOffset: 260.h,
+      imageVerticalOffset: 260,
       background: BackgroundImages.backgroundImages,
     );
   }

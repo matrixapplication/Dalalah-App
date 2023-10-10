@@ -92,5 +92,8 @@
   "ascending": "تصاعدي",
   "descending": "تنازلي",
   "buying_and_selling_about": "عن البيع والشراء",
-  "something_went_wrong": "حدث خطأ ما"
+  "something_went_wrong": "حدث خطأ ما",
+  "delete_account": "حذف الحساب",
+  "delete_account_description": "هل أنت متأكد من حذف الحساب؟",
+  "logout_description": "هل أنت متأكد من تسجيل الخروج؟"
 }

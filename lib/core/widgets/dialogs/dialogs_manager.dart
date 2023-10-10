@@ -51,7 +51,11 @@ class DialogsManager {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          title: Icon(icon, size: 60, color: icon == Icons.error ? Colors.red : Colors.green),
+          title: Icon(icon,
+              size: 60,
+              color: icon == Icons.error
+                  ? Colors.red
+                  : (icon == Icons.info ? Colors.orange : Colors.green)),
           content: WillPopScope(
             onWillPop: () async {
               return dismissible == true;
@@ -111,7 +115,17 @@ class DialogsManager {
         message: message, icon: Icons.check_circle, onClickOk: onClickOk);
   }
 
+  static showInfoDialog(BuildContext context,
+      {required String message, Function()? onClickOk}) {
+    return baseDialog(context,
+        message: message, icon: Icons.info, onClickOk: onClickOk, hideCancelButton: false);
+  }
+
   static showErrorDialog(BuildContext context, String text) {
-    baseDialog(context, message: text, icon: Icons.error, );
+    baseDialog(
+      context,
+      message: text,
+      icon: Icons.error,
+    );
   }
 }

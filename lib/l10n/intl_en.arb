@@ -113,5 +113,8 @@
   "or": "OR",
   "as_guest": "As Guest",
   "ok": "Ok",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+  "delete_account": "Delete Account",
+  "delete_account_description": "Are you sure you want to delete your account?",
+  "logout_description": "Are you sure you want to logout?"
 }
