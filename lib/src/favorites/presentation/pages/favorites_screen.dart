@@ -18,7 +18,7 @@ class FavoritesScreen extends StatelessWidget {
       ),
       padding: 16.paddingVert + 6.paddingHoriz,
       itemBuilder: (context, index) {
-        return CarVert(
+        return CarVert(index: index,
 
         );
       },

@@ -1,16 +1,44 @@
 import 'package:delala/src/main_index.dart';
 
-class Section{
+class Section {
   final String title;
   final String image;
   final String routeName;
 
   Section({required this.title, required this.image, required this.routeName});
 
-
-  static getSections(BuildContext context){
+  static getSections(BuildContext context) {
     return [
-      Section(title: context.strings.cars, image: AppImages.logo_white, routeName: Routes.login),
+      Section(
+        // title: context.strings.cars,
+        title: 'cars',
+        image: AppImages.car_with_background,
+        routeName: Routes.login,
+      ),
+      Section(
+        // title: context.strings.cars,
+        title: 'cars',
+        image: AppImages.car_with_background,
+        routeName: Routes.login,
+      ),
+      Section(
+        // title: context.strings.cars,
+        title: 'cars',
+        image: AppImages.car_with_background,
+        routeName: Routes.login,
+      ),
+      Section(
+        // title: context.strings.cars,
+        title: 'cars',
+        image: AppImages.car_with_background,
+        routeName: Routes.login,
+      ),
+      Section(
+        // title: context.strings.cars,
+        title: 'cars',
+        image: AppImages.car_with_background,
+        routeName: Routes.login,
+      ),
     ];
   }
 }

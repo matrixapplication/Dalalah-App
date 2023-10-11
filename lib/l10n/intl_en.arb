@@ -11,7 +11,6 @@
   "find_your_next_match": "Find your next\nmatch",
   "filter": "Filter",
   "sort_by": "Sort by",
-  "sea_all": "See all",
   "popular_brand": "Popular Brand",
   "latest_new_cars": "Latest New Cars",
   "top_cars": "Top Cars",
@@ -117,5 +116,13 @@
   "cancel": "Cancel",
   "delete_account": "Delete Account",
   "delete_account_description": "Are you sure you want to delete your account?",
-  "logout_description": "Are you sure you want to logout?"
+  "logout_description": "Are you sure you want to logout?",
+  "sections" : "Sections",
+  "see_all" : "See all",
+  "latest_cars" : "Latest cars",
+  "latest_paintings" : "Latest paintings",
+  "new_" : "New",
+  "rs" : "Rs {num}",
+  "details" : "Details",
+  "categories" : "Categories"
 }

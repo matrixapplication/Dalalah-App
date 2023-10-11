@@ -22,7 +22,7 @@ class ChipBorder extends StatelessWidget {
     return Padding(
       padding: margin ?? const EdgeInsets.all(0),
       child: Chip(
-        visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+        // visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
         side: BorderSide(color: borderColor ?? context.dividerColor, width: 1.5),
         padding: padding ?? const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
         shape: RoundedRectangleBorder(

@@ -14,7 +14,7 @@ final lightTheme = ThemeData(
   brightness: Brightness.light,
 
   primaryColorDark: const Color(0xff010C11),
-  scaffoldBackgroundColor: const Color(0xffFCFCFC),
+  scaffoldBackgroundColor: const Color(0xffffffff),
   hintColor: const Color(0xffC7C7C7),
   disabledColor: const Color(0xff8F9BB3),
   cardColor: const Color(0xffffffff),

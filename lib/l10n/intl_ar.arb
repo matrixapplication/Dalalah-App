@@ -11,7 +11,6 @@
   "email": "البريد الالكترونى",
     "phone_number": "رقم الجوال",
   "save": "حفظ",
-  "sea_all": "عرض الكل",
   "find_your_next_match": "ابحث عن سيارتك المفضلة",
   "filter": "فلتر",
   "sort_by": "ترتيب حسب",
@@ -99,5 +98,14 @@
   "something_went_wrong": "حدث خطأ ما",
   "delete_account": "حذف الحساب",
   "delete_account_description": "هل أنت متأكد من حذف الحساب؟",
-  "logout_description": "هل أنت متأكد من تسجيل الخروج؟"
+  "logout_description": "هل أنت متأكد من تسجيل الخروج؟",
+  "sections" : "الأقسام",
+  "see_all" : "مشاهدة الكل",
+  "latest_cars" : "أحدث السيارات",
+  "latest_paintings" : "أحدث اللوحات",
+  "new_" : "جديد",
+  "rs" : "{num} رس",
+  "details" : "التفاصيل",
+  "categories" : "الفئات",
+  "price" : "السعر"
 }

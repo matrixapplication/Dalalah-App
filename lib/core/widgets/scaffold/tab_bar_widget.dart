@@ -24,12 +24,21 @@ class TabBarWidget extends StatelessWidget {
   final void Function(int)? onTap;
   final EdgeInsetsGeometry? marginTabs;
   final double? height;
-  const TabBarWidget({Key? key, required this.tabs, this.backgroundColor, this.tabsText, this.onTap, this.marginTabs, this.height}) : super(key: key);
+
+  const TabBarWidget(
+      {Key? key,
+      required this.tabs,
+      this.backgroundColor,
+      this.tabsText,
+      this.onTap,
+      this.marginTabs,
+      this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return  DefaultTabController(
+    return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
         backgroundColor: theme.cardColor,
@@ -37,17 +46,24 @@ class TabBarWidget extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(height ?? 50),
           child: AppBar(
-          //  backgroundColor: theme.cardColor,
-            leading: const SizedBox(),
+            //  backgroundColor: theme.cardColor,
+            // leading: const SizedBox(),
             flexibleSpace: Container(
               margin: marginTabs ?? EdgeInsets.zero,
-              decoration: Decorations.kDecorationBorderRadius(radius: 50),
+              // decoration: Decorations.kDecorationBorderRadius(radius: 50),
               child: TabBar(
-          //      controller: _tabController,
+                //      controller: _tabController,
                 onTap: onTap,
-                labelStyle: context.labelLarge.copyWith(fontWeight: FontWeight.bold),
-                unselectedLabelStyle: context.displayLarge.copyWith(fontWeight: FontWeight.bold),
-                indicator:  Decorations.kDecorationRadius(radius: 50, color: context.primaryColor),
+                labelStyle: context.labelLarge.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                unselectedLabelStyle: context.displayLarge.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                indicator: Decorations.kDecorationRadius(
+                  radius: 50,
+                  color: context.primaryColor,
+                ),
                 unselectedLabelColor: context.displayLarge.color,
                 labelPadding: 20.paddingHoriz,
                 tabs: tabs.map((e) => e.builder()).toList(),

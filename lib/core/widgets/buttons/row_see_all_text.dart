@@ -2,6 +2,7 @@ import 'package:delala/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../src/cars/presentation/cars/pages/cars_page.dart';
+import '../../themes/colors.dart';
 import '../../utils/navigator.dart';
 
 ///  Created by harbey on 9/5/2023.
@@ -26,17 +27,21 @@ class RowSeeAllText extends StatelessWidget {
         children: [
           Text(
             title,
-            style: context.bodyLarge.copyWith(fontSize: 16),
+            style: context.textTheme.displaySmall!.copyWith(
+              color: AppColors.grey_5c,
+            ),
           ),
           GestureDetector(
-            onTap: onTap ?? () {
-              Navigators.pushNamed(routeName, arguments: CarsPageArgs(categoryName: title));
-            },
+            onTap: onTap ??
+                () {
+                  Navigators.pushNamed(routeName,
+                      arguments: CarsPageArgs(categoryName: title));
+                },
             child: Text(
-              context.strings.sea_all,
-              style: context.bodyLarge.copyWith(
-                fontSize: 14,
-                color: context.colorScheme.surface,
+              context.strings.see_all,
+              style: context.headlineSmall.copyWith(
+                fontSize: 12,
+                color: AppColors.blue_31,
               ),
             ),
           ),
