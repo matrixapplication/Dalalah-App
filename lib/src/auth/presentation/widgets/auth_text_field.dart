@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 import '../../../../core/resources/validation.dart';
 import '../../../home/presentation/widgets/tap_effect.dart';
@@ -61,15 +61,19 @@ class AuthTextField extends StatelessWidget {
             decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 disabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 errorBorder: InputBorder.none,
                 focusedErrorBorder: InputBorder.none,
@@ -86,8 +90,7 @@ class AuthTextField extends StatelessWidget {
                         size: 20,
                       )
                     : null),
-                hintStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: context.primaryColorDark, fontWeight: FontWeight.w400),
+                hintStyle: context.displaySmall!.copyWith(),
                 suffixIcon: isPassword
                     ? TapEffect(
                         onClick: () {

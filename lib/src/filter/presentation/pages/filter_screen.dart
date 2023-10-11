@@ -1,5 +1,5 @@
-import 'package:arabitac/core/widgets/drop_down/drop_down.dart';
-import 'package:arabitac/src/cars/presentation/cars/widgets/brands_filter.dart';
+import 'package:delala/core/widgets/drop_down/drop_down.dart';
+import 'package:delala/src/cars/presentation/cars/widgets/brands_filter.dart';
 
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/buttons/selection_button_chip.dart';

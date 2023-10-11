@@ -1,6 +1,6 @@
-import 'package:arabitac/core/assets/app_icons.dart';
-import 'package:arabitac/core/widgets/buttons/row_texts_icons_buttons.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/assets/app_icons.dart';
+import 'package:delala/core/widgets/buttons/row_texts_icons_buttons.dart';
+import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/helper_methods.dart';

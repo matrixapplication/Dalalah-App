@@ -1,4 +1,4 @@
-import 'package:arabitac/core/assets/app_images.dart';
+import 'package:delala/core/assets/app_images.dart';
 import 'package:flutter/material.dart';
 
 ///  Created by harbey on 9/3/2023.

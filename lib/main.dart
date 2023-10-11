@@ -1,5 +1,5 @@
-import 'package:arabitac/src/settings/presentation/bloc/locale_cubit.dart';
-import 'package:arabitac/src/settings/presentation/bloc/locale_state.dart';
+import 'package:delala/src/settings/presentation/bloc/locale_cubit.dart';
+import 'package:delala/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'core/themes/light_theme.dart';
@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseNotification firebase = FirebaseNotification();
-    firebase.initialize(context);
+    // FirebaseNotification firebase = FirebaseNotification();
+    // firebase.initialize(context);
     return BlocProvider(
       create: (BuildContext context) =>
       LocaleCubit()
@@ -60,11 +60,11 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: const [
-              Locale('en'), // English, no country code
+              Locale('ar'), // English, no country code
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: token.isNotEmpty ? Routes.navigationPages : Routes.login,
+            initialRoute: !token.isNotEmpty ? Routes.navigationPages : Routes.login,
           );
         },
       ),

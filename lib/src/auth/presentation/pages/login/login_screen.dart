@@ -1,4 +1,5 @@
-import 'package:arabitac/src/auth/presentation/pages/login/widgets/login_body.dart';
+import 'package:delala/src/auth/presentation/pages/login/widgets/login_body.dart';
+import 'package:delala/src/auth/presentation/pages/sign-up/register_screen.dart';
 
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../main_index.dart';
@@ -35,32 +36,16 @@ class _LoginScreenState extends State<LoginScreen>
 
     return Container(
       alignment: Alignment.center,
-      padding: 20.paddingHoriz + 8.paddingTop,
-      height: 480,
-      margin: 16.paddingHoriz + (kToolbarHeight).paddingTop,
-      decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(context.strings.welcome,
-              style:
-              context.titleLarge.copyWith(color: context.outlineVariant)),
-
-          Text(context.strings.please_login_to_your_account,
-              style:
-              context.bodyMedium.copyWith(color: context.outlineVariant)),
-          16.ph,
-          Expanded(
-            child: TabBarWidget(
-              height: 10,
-              tabs: [
-                TabItemModel(label: context.strings.user, page: LoginBody(onLogin: widget.onLogin)),
-                TabItemModel(label: context.strings.exhibition, page: LoginBody(isUser: false, onLogin: widget.onShowRoomLogin)),
-              ],
-            ),
-          ),
-
+      padding: 10.paddingHoriz + 8.paddingTop,
+      margin: 16.paddingHoriz + (180).paddingTop + 50.paddingBottom,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor, radius: 30),
+      child: TabBarWidget(
+        height: 20,
+        marginTabs: 16.paddingHoriz + 20.paddingTop,
+        tabs: [
+          TabItemModel(label: context.strings.login, page: LoginBody(onLogin: widget.onLogin)),
+          TabItemModel(label: context.strings.sign_up, page: RegisterScreen()),
         ],
       ),
     );

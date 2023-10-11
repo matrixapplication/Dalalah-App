@@ -1,6 +1,6 @@
 
 import 'package:injectable/injectable.dart';
-import 'package:arabitac/src/auth/data/models/login_params.dart';
+import 'package:delala/src/auth/data/models/login_params.dart';
 
 import '../../../profile/data/models/profile_dto.dart';
 import '../../domain/repositories/base_auth_repo.dart';

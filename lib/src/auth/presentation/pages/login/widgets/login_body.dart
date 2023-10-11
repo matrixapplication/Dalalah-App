@@ -21,8 +21,16 @@ class LoginBody extends BaseStatelessWidget {
       child: Form(
         key: _formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(context.strings.welcome,
+                style:
+                context.titleMedium.copyWith()),
+            12.ph,
+            Text(context.strings.please_login_to_your_account,
+                style:
+                context.bodySmall.copyWith(fontSize: 12)),
+            20.ph,
             AuthTextField(
               hint: isUser
                   ? context.strings.phone_number
@@ -42,8 +50,8 @@ class LoginBody extends BaseStatelessWidget {
             PrimaryButton(
               title: strings.login.toUpperCase(),
               radius: 30,
-              height: 42,
-              margin: EdgeInsets.only(top: 20, left: 50, right: 50),
+              height: 48,
+              margin: EdgeInsets.only(top: 50, left: 35, right: 35),
               onPressed: () {
                 if (_formKey.currentState!.validate())
                   onLogin!(
@@ -55,26 +63,10 @@ class LoginBody extends BaseStatelessWidget {
               },
             ),
             12.ph,
-            FittedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(strings.dont_have_an_account,
-                      style: context.displaySmall),
-                  5.pw,
-                  UnderlineTextButton(
-                    title: strings.create_new_now,
-                    routeName: Routes.register,
-                  ),
-                ],
-              ),
-            ),
-            10.ph,
-            Text(strings.or, style: context.displaySmall),
-            10.ph,
-            UnderlineTextButton(
-              title: strings.as_guest,
-              routeName: Routes.navigationPages,
+            Align(
+              alignment: Alignment.center,
+              child: Text(strings.forgot_password,
+                  style: context.bodySmall.copyWith(fontSize: 10)),
             ),
           ],
         ),

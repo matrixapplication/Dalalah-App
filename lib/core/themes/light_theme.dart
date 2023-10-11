@@ -1,13 +1,13 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 
-const String fontBold = 'Regular';
+const String fontBold = 'Bold';
 const String fontRegular = 'Regular';
 
 
-const Color primaryColor = Color(0xff022332);
+const Color primaryColor = Color(0xff1E232C);
 const Color lighterDarkColor = Color(0xff252525);
-const kGreyColor = Color(0xff989898);
+const kGreyColor = Color(0xffC7C7C7);
 
 final lightTheme = ThemeData(
   primaryColor: primaryColor,
@@ -15,10 +15,10 @@ final lightTheme = ThemeData(
 
   primaryColorDark: const Color(0xff010C11),
   scaffoldBackgroundColor: const Color(0xffFCFCFC),
-  hintColor: const Color(0xffF4F4F4),
+  hintColor: const Color(0xffC7C7C7),
   disabledColor: const Color(0xff8F9BB3),
   cardColor: const Color(0xffffffff),
-  dividerColor: const Color(0xffEDF1F7),
+  dividerColor: Color(0xffEBEBEB),
   iconTheme: const IconThemeData(
     color: kYellowColor,
   ),
@@ -82,48 +82,48 @@ final lightTheme = ThemeData(
     titleSmall: TextStyle(
       fontSize: 20.0,
       color: Colors.black,
-      fontFamily: fontRegular,
+      fontFamily: fontBold,
     ),
 
     bodyLarge: TextStyle(
-      fontSize: 16.0,
+      fontSize: 18.0,
       color: Colors.black,
       fontFamily: fontBold,
       fontWeight: FontWeight.w600,
     ),
     bodyMedium: TextStyle(
-      fontSize: 14.0,
+      fontSize: 16.0,
       color: Colors.black,
       fontFamily: fontBold,
       fontWeight: FontWeight.w600,
     ),
     bodySmall: TextStyle(
-      fontSize: 12.0,
+      fontSize: 14.0,
       color: Colors.black,
-      fontFamily: fontRegular,
+      fontFamily: fontBold,
     ),
     displayLarge: TextStyle(
       fontSize: 18.0,
       color: kGreyColor,
       fontFamily: fontBold,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     ),
     displayMedium: TextStyle(
       fontSize: 16.0,
       color: kGreyColor,
       fontFamily: fontBold,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     ),
     displaySmall: TextStyle(
       fontSize: 14.0,
       color: kGreyColor,
-      fontFamily: fontRegular,
+      fontFamily: fontBold,
     ),
     labelLarge: TextStyle(
       fontSize: 16.0,
       color: Colors.white,
       fontFamily: fontBold,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     ),
     labelMedium: TextStyle(
       fontSize: 14.0,
@@ -134,14 +134,14 @@ final lightTheme = ThemeData(
     labelSmall: TextStyle(
       fontSize: 12.0,
       color: Colors.white,
-      fontFamily: fontRegular,
+      fontFamily: fontBold,
       letterSpacing: 1.0,
       wordSpacing: 0.0,
     ),
     headlineSmall: TextStyle(
       fontSize: 14.0,
       color: primaryColor,
-      fontFamily: fontRegular,
+      fontFamily: fontBold,
     ),
     headlineMedium: TextStyle(
       fontSize: 16.0,

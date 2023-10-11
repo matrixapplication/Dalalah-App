@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:arabitac/core/network/api_response.dart';
-import 'package:arabitac/core/utils/helper_methods.dart';
+import 'package:delala/core/network/api_response.dart';
+import 'package:delala/core/utils/helper_methods.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../auth/data/models/register_params.dart';

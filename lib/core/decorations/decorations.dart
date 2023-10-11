@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 class Decorations {
   static BoxDecoration kDecorationOnlyRadius({
@@ -56,10 +56,10 @@ class Decorations {
     double? t,
   }) {
     return BoxDecoration(
-      color: color,
+      color: color ?? injector<ServicesLocator>().appContext.cardColor,
       borderRadius: BorderRadius.all(Radius.circular(radius ?? 12)),
       border: Border.all(
-        color: borderColor ?? kBorderColor,
+        color: borderColor ?? injector<ServicesLocator>().appContext.dividerColor,
         width: borderWidth ?? 1.0,
       ),
     );

@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:arabitac/src/auth/data/models/register_params.dart';
+import 'package:delala/src/auth/data/models/register_params.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:arabitac/core/network/api_response.dart';
+import 'package:delala/core/network/api_response.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../models/profile_dto.dart';

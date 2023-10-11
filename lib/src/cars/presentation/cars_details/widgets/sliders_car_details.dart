@@ -1,5 +1,5 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/widgets/images/image_network.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/widgets/images/image_network.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 

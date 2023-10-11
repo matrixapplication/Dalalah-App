@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:arabitac/core/utils/helper_methods.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/utils/helper_methods.dart';
+import 'package:delala/src/main_index.dart';
 
 ///  Created by harbey on 9/7/2023.
 class PickerCarImages extends StatelessWidget {

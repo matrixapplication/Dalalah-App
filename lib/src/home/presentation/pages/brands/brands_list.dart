@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/widgets/images/image_network.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/decorations/decorations.dart';

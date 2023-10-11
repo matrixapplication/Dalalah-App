@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:arabitac/core/widgets/buttons/app_icon_button.dart';
+import 'package:delala/core/widgets/buttons/app_icon_button.dart';
 
 import '../../assets/app_icons.dart';
 import '../../utils/helper_methods.dart';

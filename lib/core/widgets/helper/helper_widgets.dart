@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 import '../animations/slide_animation.dart';
 import '../text-field/material_text_field.dart';

@@ -1,5 +1,5 @@
 
-import 'package:arabitac/core/utils/helper_methods.dart';
+import 'package:delala/core/utils/helper_methods.dart';
 
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/buttons/primary_icon_button.dart';

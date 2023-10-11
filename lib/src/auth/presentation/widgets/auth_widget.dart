@@ -20,7 +20,7 @@ class AuthWidget extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(70),
                   bottomRight: Radius.circular(70))),
-          child: Image.asset(AppImages.logo_white, width: 280),
+          child: AppIcon(icon: AppIcons.logo_white, size: 280, color: Colors.white),
         ),
         Align(alignment: Alignment.center, child: child),
       ],

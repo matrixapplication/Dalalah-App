@@ -3,7 +3,7 @@ const String _iconsPath = "assets/icons";
 
 class AppIcons{
 
-  static String logo_white = '$_iconsPath/logo_white.svg';
+  static String logo_white = '$_iconsPath/logo_light.svg';
   static const String profile = "$_iconsPath/profile.svg";
   static const String heart = "$_iconsPath/heart.svg";
   static const String share = "$_iconsPath/share.svg";

@@ -1,6 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 
 import '../../../core/utils/navigator.dart';

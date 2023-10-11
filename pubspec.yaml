@@ -1,4 +1,4 @@
-name: arabitac
+name: delala
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -116,11 +116,12 @@ dev_dependencies:
 flutter_native_splash:
   android: true
   ios: true
-  color: "#ffffff"
+  color: "#002731"
   image: assets/logo/logo.png
   android12: true
   android_12:
     image: assets/logo/logo.png
+    color: "#002731"
 
 flutter_icons:
   android: true
@@ -146,7 +147,7 @@ flutter:
     #        - asset: assets/font/ProductSans/ProductSans-Black.ttf
     - family: Bold
       fonts:
-        - asset: assets/font/SegoeUI/SegoeUI-Bold.ttf
+        - asset: assets/font/LBC/LBC-Bold.otf
     #    - family: ProductSans-ExtraBold
     #      fonts:
     #        - asset: assets/font/ProductSans/ProductSans-ExtraBold.ttf
@@ -161,5 +162,5 @@ flutter:
     #        - asset: assets/font/ProductSans/ProductSans-Medium.ttf
     - family: Regular
       fonts:
-        - asset: assets/font/SegoeUI/SegoeUI-Regular.ttf
+        - asset: assets/font/LBC/LBC-Regular.otf
 

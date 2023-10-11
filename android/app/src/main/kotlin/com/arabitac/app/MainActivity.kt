@@ -1,4 +1,4 @@
-package com.arabitac.app
+package com.delala.app
 
 import io.flutter.embedding.android.FlutterActivity
 

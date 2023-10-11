@@ -1,5 +1,5 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/routes/routes.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/navigator.dart';

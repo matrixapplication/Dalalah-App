@@ -1,5 +1,5 @@
-import 'package:arabitac/core/widgets/buttons/primary_icon_button.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/widgets/buttons/primary_icon_button.dart';
+import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 class RowTextsIconsButtons extends StatelessWidget {

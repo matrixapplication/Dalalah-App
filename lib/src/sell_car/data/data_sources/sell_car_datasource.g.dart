@@ -13,7 +13,7 @@ class _SellCarDatasource implements SellCarDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://arabitac.matrixclouds.net/api';
+    baseUrl ??= 'https://delala.matrixclouds.net/api';
   }
 
   final Dio _dio;

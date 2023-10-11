@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 import '../../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../../core/widgets/scaffold/tab_bar_widget.dart';
@@ -18,7 +18,7 @@ class SortByPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
   Widget build(BuildContext context) {
     return mainFrame(
       body: TabBarWidget(
-        paddingTabs: 10.paddingTop + 10.paddingHoriz,
+        marginTabs: 10.paddingTop + 10.paddingHoriz,
         tabs: [
           TabItemModel(
             label: context.strings.ascending,

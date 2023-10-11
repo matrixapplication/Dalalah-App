@@ -1,4 +1,4 @@
-import 'package:arabitac/core/utils/helper_methods.dart';
+import 'package:delala/core/utils/helper_methods.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../profile/data/models/profile_dto.dart';

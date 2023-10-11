@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 
 

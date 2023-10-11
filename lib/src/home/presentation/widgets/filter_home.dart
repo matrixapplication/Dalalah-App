@@ -1,6 +1,6 @@
-import 'package:arabitac/core/widgets/buttons/icon_text_button.dart';
-import 'package:arabitac/src/home/presentation/widgets/tap_effect.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/widgets/buttons/icon_text_button.dart';
+import 'package:delala/src/home/presentation/widgets/tap_effect.dart';
+import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/navigator.dart';

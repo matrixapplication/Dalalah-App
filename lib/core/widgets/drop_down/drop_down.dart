@@ -1,6 +1,6 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/resources/validation.dart';
-import 'package:arabitac/core/widgets/drop_down/drop_down_style.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/resources/validation.dart';
+import 'package:delala/core/widgets/drop_down/drop_down_style.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 

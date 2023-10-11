@@ -1,10 +1,10 @@
 
-import 'package:arabitac/core/utils/helper_methods.dart';
-import 'package:arabitac/src/favorites/presentation/pages/favorites_page.dart';
-import 'package:arabitac/src/notifications/presentation/pages/notifications_page.dart';
-import 'package:arabitac/src/profile/presentation/pages/profile_page.dart';
-import 'package:arabitac/src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
-import 'package:arabitac/src/sell_car/presentation/pages/sell_car_page.dart';
+import 'package:delala/core/utils/helper_methods.dart';
+import 'package:delala/src/favorites/presentation/pages/favorites_page.dart';
+import 'package:delala/src/notifications/presentation/pages/notifications_page.dart';
+import 'package:delala/src/profile/presentation/pages/profile_page.dart';
+import 'package:delala/src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
+import 'package:delala/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'core/widgets/base/bottom_navigator_bar_item.dart';
 import 'src/home/presentation/pages/home/home_page.dart';
 import 'src/main_index.dart';

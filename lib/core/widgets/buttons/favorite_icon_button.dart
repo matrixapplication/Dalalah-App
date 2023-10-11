@@ -1,5 +1,5 @@
-import 'package:arabitac/core/widgets/buttons/app_circular_icon_button.dart';
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:delala/src/main_index.dart';
 
 ///  Created by harbey on 9/6/2023.
 class FavoriteIconButton extends StatelessWidget {

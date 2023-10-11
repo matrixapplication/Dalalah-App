@@ -1,5 +1,5 @@
 
-import 'package:arabitac/core/components/base_widget_bloc.dart';
+import 'package:delala/core/components/base_widget_bloc.dart';
 
 import '../../../main_index.dart';
 import '../../../sell_car/domain/entities/shipment.dart';

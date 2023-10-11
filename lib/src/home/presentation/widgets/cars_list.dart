@@ -1,7 +1,7 @@
-import 'package:arabitac/core/assets/app_icons.dart';
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/widgets/buttons/app_circular_icon_button.dart';
-import 'package:arabitac/core/widgets/images/image_network.dart';
+import 'package:delala/core/assets/app_icons.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:delala/core/widgets/images/image_network.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/decorations/decorations.dart';

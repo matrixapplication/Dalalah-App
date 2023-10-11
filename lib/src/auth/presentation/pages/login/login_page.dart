@@ -1,4 +1,4 @@
-import 'package:arabitac/core/components/base_widget_bloc.dart';
+import 'package:delala/core/components/base_widget_bloc.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';

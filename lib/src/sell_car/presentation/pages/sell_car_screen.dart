@@ -1,6 +1,6 @@
 
-import 'package:arabitac/core/widgets/drop_down/drop_down.dart';
-import 'package:arabitac/core/widgets/text-field/custom_text_field.dart';
+import 'package:delala/core/widgets/drop_down/drop_down.dart';
+import 'package:delala/core/widgets/text-field/custom_text_field.dart';
 
 import '../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../main_index.dart';

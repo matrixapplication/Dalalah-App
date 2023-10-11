@@ -1,5 +1,5 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/core/widgets/list-tile/custom_list_tile2.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/widgets/list-tile/custom_list_tile2.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/buttons/app_circular_icon.dart';

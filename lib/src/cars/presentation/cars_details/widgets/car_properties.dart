@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 
 import 'border_widget.dart';
 import 'header_car_details.dart';

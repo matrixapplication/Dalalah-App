@@ -1,7 +1,7 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
-import 'package:arabitac/src/home/presentation/widgets/search_text_field.dart';
-import 'package:arabitac/src/home/presentation/widgets/slider_widget.dart';
-import 'package:arabitac/src/home/presentation/widgets/tap_effect.dart';
+import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/src/home/presentation/widgets/search_text_field.dart';
+import 'package:delala/src/home/presentation/widgets/slider_widget.dart';
+import 'package:delala/src/home/presentation/widgets/tap_effect.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_icons.dart';

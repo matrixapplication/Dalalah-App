@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 import 'onboarding_item.dart';
 
 ///  Created by harbey on 9/7/2023.
@@ -21,17 +21,17 @@ class BackgroundImages {
    OnboardingItem(
        item: OnboardingModel(
          image: AppImages.on_boarding1,
-         title: "Welcome to Arabitac",
+         title: "Welcome to delala",
          description:
-         "Arabitac is a car rental app that allows you to rent a car in a few clicks",
+         "delala is a car rental app that allows you to rent a car in a few clicks",
          isImageStart: false,
        )),
    OnboardingItem(
        item: OnboardingModel(
          image: AppImages.on_boarding2,
-         title: "Welcome to Arabitac",
+         title: "Welcome to delala",
          description:
-         "Arabitac is a car rental app that allows you to rent a car in a few clicks",
+         "delala is a car rental app that allows you to rent a car in a few clicks",
          isImageStart: true,
        )),
 

@@ -1,6 +1,6 @@
 
-import 'package:arabitac/core/components/base_widget_bloc.dart';
-import 'package:arabitac/src/home/presentation/bloc/home_bloc.dart';
+import 'package:delala/core/components/base_widget_bloc.dart';
+import 'package:delala/src/home/presentation/bloc/home_bloc.dart';
 
 import '../../../main_index.dart';
 import '../../domain/entities/shipment.dart';

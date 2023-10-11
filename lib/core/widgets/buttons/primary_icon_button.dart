@@ -1,4 +1,4 @@
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../assets/app_icons.dart';

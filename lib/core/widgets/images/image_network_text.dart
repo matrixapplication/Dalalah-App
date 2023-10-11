@@ -1,4 +1,4 @@
-import 'package:arabitac/core/exceptions/extensions.dart';
+import 'package:delala/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import 'image_network.dart';

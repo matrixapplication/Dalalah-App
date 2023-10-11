@@ -1,5 +1,5 @@
 
-import 'package:arabitac/src/main_index.dart';
+import 'package:delala/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../domain/entities/tasks.dart';
 import '../bloc/cars_bloc.dart';

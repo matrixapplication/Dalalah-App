@@ -13,7 +13,7 @@ class _FilterDatasource implements FilterDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://arabitac.matrixclouds.net/api';
+    baseUrl ??= 'https://delala.matrixclouds.net/api';
   }
 
   final Dio _dio;
