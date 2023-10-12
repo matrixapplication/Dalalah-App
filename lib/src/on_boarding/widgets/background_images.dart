@@ -5,39 +5,36 @@ import 'onboarding_item.dart';
 class BackgroundImages {
 
  static List<Widget> backgroundImages = [
+   const SizedBox(),
     Image.asset(
       AppImages.on_boarding1,
-      width: 200,
+      width: 300,
       // width: context.width * 0.8,
     ),
     Image.asset(
       AppImages.on_boarding2,
     ),
-    const SizedBox(),
   ];
 
 
- static List<Widget> pages = [
-   OnboardingItem(
-       item: OnboardingModel(
-         image: AppImages.on_boarding1,
-         title: "Welcome to delala",
-         description:
-         "delala is a car rental app that allows you to rent a car in a few clicks",
-         isImageStart: false,
-       )),
-   OnboardingItem(
-       item: OnboardingModel(
-         image: AppImages.on_boarding2,
-         title: "Welcome to delala",
-         description:
-         "delala is a car rental app that allows you to rent a car in a few clicks",
-         isImageStart: true,
-       )),
-
-   Padding(
-     padding: 20.paddingAll,
-     child: Image.asset(AppImages.on_boarding3),
+ static List<OnboardingModel> data = [
+   OnboardingModel(
+     image: AppImages.on_boarding1,
+     title: "استمتع بالفخامة",
+     description: "سيارات مميزة وفخمة يومياً. استمتع بالإثارة\nبسعر أقل",
+     isImageStart: false,
+   ),
+   OnboardingModel(
+     image: AppImages.on_boarding2,
+     title: "تميز بالفخامة بلوحة سيارتك",
+     description: "سيارات مميزة وفخمة يومياً. استمتع بالإثارة\nبسعر أقل",
+     isImageStart: false,
+   ),
+   OnboardingModel(
+     image: AppImages.on_boarding3,
+     title: "دلالة العقارية استمتع بالرفاهية",
+     description: "عقارات فخمة ومميزة. استمتع بالرفاهية\nبسعر أقل",
+     isImageStart: false,
    ),
  ];
 

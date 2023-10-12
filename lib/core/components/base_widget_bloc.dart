@@ -62,6 +62,8 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
     return true;
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     this.context = context;

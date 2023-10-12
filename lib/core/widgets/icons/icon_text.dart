@@ -88,8 +88,8 @@ class IconText extends StatelessWidget {
         ),
       );
 
-  Widget buildIconOrImage(BuildContext context) => isImage
-      ? ImageNetwork(image: icon ?? '', height: iconSize, width: iconSize)
+  Widget buildIconOrImage(BuildContext context) => icon?.split('/').last.contains('.png') ?? false
+      ? Image.asset(icon ?? '', height: iconSize, width: iconSize)
       : isIconData
           ? Icon(iconData, size: iconSize ?? 20, color: iconColor)
           : AppIcon(

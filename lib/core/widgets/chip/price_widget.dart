@@ -12,10 +12,10 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      padding: padding ?? 4.paddingVert + 16.paddingHoriz,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: backgroundColor ?? context.scaffoldBackgroundColor,
+        color: backgroundColor ?? context.primaryColor,
       ),
       child:  Row(
         crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -24,11 +24,11 @@ class PriceWidget extends StatelessWidget {
         children: [
           Text(
             price,
-            style: textStyle ?? context.labelLarge.copyWith(fontSize: 16),
+            style: textStyle ?? context.labelMedium,
           ),
           Text(
-            " ${context.strings.egp}",
-            style: egpStyle ?? context.labelSmall.copyWith(fontSize: 12),
+            ' ${context.strings.rs}',
+            style: egpStyle ?? context.labelMedium,
           ),
         ],
       ),

@@ -4,6 +4,9 @@ import 'package:delala/core/widgets/drop_down/drop_down_style.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+import '../../assets/app_icons.dart';
+import '../buttons/app_icon.dart';
+
 class DropDownField extends StatelessWidget {
   final List<DropDownItem> items;
   final String? title;
@@ -16,89 +19,94 @@ class DropDownField extends StatelessWidget {
   final bool isValidator;
   final String? Function(dynamic)? validator;
   final TextStyle? style;
-  const DropDownField({Key? key, required this.items, this.title, this.hint, this.onChanged, this.prefixIcon, this.texStyle, this.value, this.iconWidget, this.isValidator = true, this.validator, this.style}) : super(key: key);
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? marginDropDown;
+  const DropDownField({Key? key, required this.items, this.title, this.hint, this.onChanged, this.prefixIcon, this.texStyle, this.value, this.iconWidget, this.isValidator = true, this.validator, this.style, this.margin, this.marginDropDown}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if(title != null)
-          20.ph,
-       ...[ Text(
-          title ?? '',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        5.ph,],
-        DropdownButtonFormField2<DropDownItem>(
-          isExpanded: true,
-          decoration: InputDecoration(
-            // Add Horizontal padding using menuItemStyleData.padding so it matches
-            // the menu padding when button's width is not specified.
-            // label: Text(
-            //   hint ?? '',
-            //   style: context.displaySmall,
-            // ),
-            contentPadding: const EdgeInsets.symmetric(vertical: 16),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: context.primaryColor,
+    return Padding(
+      padding: margin ?? EdgeInsets.zero,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if(title != null)
+         ...[ Text(
+            title ?? '',
+            style: context.labelLarge,
+          ),
+          10.ph,],
+          Padding(
+            padding: marginDropDown ?? EdgeInsets.zero,
+            child: DropdownButtonFormField2<DropDownItem>(
+              isExpanded: true,
+              decoration: InputDecoration(
+                // Add Horizontal padding using menuItemStyleData.padding so it matches
+                // the menu padding when button's width is not specified.
+                contentPadding: 10.paddingEnd,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: context.primaryColor,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: context.colorScheme.secondary,
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: context.outline,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                // Add more decoration..
               ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: context.colorScheme.secondary,
-                width: 1.5,
+              hint: Text(
+                hint ?? '',
+                style: context.displaySmall,
               ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: context.outline,
+              items: items
+                  .map((item) => DropdownMenuItem<DropDownItem>(
+                value: item,
+                child: Text(
+                  item.title ?? '',
+                  style: context.titleSmall,
+                  textAlign: TextAlign.center,
+                ),
+              )).toList(),
+              validator: isValidator ? (value) => Validation.validateRequired(value?.title ?? '') : null,
+              onChanged: onChanged,
+              onSaved: (value) {
+                //  selectedValue = value.toString();
+              },
+              buttonStyleData: ButtonStyleData(
+                padding: 0.paddingAll,
               ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            // Add more decoration..
-          ),
-          hint: Text(
-            hint ?? '',
-            style: context.displaySmall,
-          ),
-          items: items
-              .map((item) => DropdownMenuItem<DropDownItem>(
-            value: item,
-            child: Text(
-              item.title ?? '',
-              style: context.titleSmall,
-              textAlign: TextAlign.center,
-            ),
-          )).toList(),
-          validator: isValidator ? (value) => Validation.validateRequired(value?.title ?? '') : null,
-          onChanged: onChanged,
-          onSaved: (value) {
-            //  selectedValue = value.toString();
-          },
-          buttonStyleData: const ButtonStyleData(
-            padding: EdgeInsets.only(right: 8),
-          ),
-          iconStyleData: const IconStyleData(
-            icon: Icon(
-              Icons.keyboard_arrow_down_rounded,
-              color: Colors.black,
-            ),
-            iconSize: 24,
-          ),
-          dropdownStyleData: DropdownStyleData(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+
+              iconStyleData: IconStyleData(
+                icon: AppIcon(
+                  icon: AppIcons.drop_down,
+                  color: Colors.black,
+                  size: 10,
+                ),
+                iconSize: 10,
+              ),
+              dropdownStyleData: DropdownStyleData(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              menuItemStyleData: const MenuItemStyleData(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+              ),
             ),
           ),
-          menuItemStyleData: const MenuItemStyleData(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -50,7 +50,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                 alignment: AlignmentDirectional.centerEnd,
                 child: SubCustomContainer(
                   backgroundColor: AppColors.blue_31,
-                  label: context.strings.rs(800000),
+                  label: context.strings.rs + ' 1,000,000',
                   fontSize: 18,
                   padding: 5.paddingVert,
                   width: 170,

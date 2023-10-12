@@ -1,9 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/navigator.dart';
-import '../../../core/widgets/scaffold/app_scaffold.dart';
 import 'onboarding_screen.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -12,16 +8,5 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OnBoardingScreen();
-    //   AppScaffold(
-    //     backgroundAppBar: context.primaryColor,
-    //   actions: [TextButton(
-    //     child: Text('Skip'),
-    //     onPressed: () {
-    //       Navigators.pushReplacementNamed(Routes.login);
-    //     },
-    //   )],
-    //   backgroundColor: context.primaryColor,
-    //   body: OnBoardingScreen(),
-    // );
   }
 }

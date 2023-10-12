@@ -15,6 +15,9 @@ import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
+import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
+import '../../src/plates/presentation/plates/pages/plate_filter_page.dart';
+import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
 import '../../src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
@@ -28,6 +31,12 @@ class Routes{
   static const String intro = '/';
   static const String login = 'loginUI';
   static const String register = 'registerPage';
+  static const String platesPage = 'PlatesPage';
+  static const String platesDetailsPage = 'PlatesDetailsPage';
+  static const String plateFilterPage = 'plateFilterPage';
+
+
+  ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
   static const String editProfilePage = 'editProfilePage';
   static const String notificationsPage = 'notificationsPage';
@@ -64,6 +73,11 @@ class Routes{
   static final routes = <String, Widget Function(BuildContext)>{
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
+    platesPage: (context) => PlatesPage(),
+    platesDetailsPage: (context) => PlatesDetailsPage(),
+    plateFilterPage: (context) => PlateFilterPage(),
+
+    ////////////////////////////////
     register: (context) => RegisterPage(),
     profilePage: (context) => ProfilePage(),
     editProfilePage: (context) => EditProfilePage(),

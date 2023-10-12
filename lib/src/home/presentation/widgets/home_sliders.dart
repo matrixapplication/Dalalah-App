@@ -9,29 +9,11 @@ import '../../../../core/decorations/decorations.dart';
 import '../../../../core/widgets/buttons/app_icon.dart';
 import 'filter_home.dart';
 
-class HomeSliders extends StatelessWidget {
-  const HomeSliders({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      //color: context.scaffoldBackgroundColor,
-      padding: const EdgeInsets.only(bottom: 5),
-      decoration: Decorations.kDecorationBottomRadius(
-          color: context.scaffoldBackgroundColor),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Container(
-            clipBehavior: Clip.antiAlias,
-            margin: const EdgeInsets.only(bottom: 30),
-            decoration: Decorations.kDecorationBottomRadius(
-                color: context.primaryColor),
-            child: SliderWidget(),
-          ),
-          FilterHome(),
-        ],
-      ),
-    );
-  }
-}
+// class HomeSliders extends StatelessWidget {
+//   const HomeSliders({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return  SliderWidget(),;
+//   }
+// }

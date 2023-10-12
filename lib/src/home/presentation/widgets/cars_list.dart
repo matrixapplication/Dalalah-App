@@ -25,10 +25,10 @@ class CarsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 270,
+      height: 260,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: 4.paddingHoriz,
+
         itemBuilder: (_, index) {
           return CarVert(index: index);
         },
@@ -49,24 +49,24 @@ class CarVert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int startPadding = index == 0 ? 20 : 0;
-    return ClickableWidget(
+    return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, Routes.carDetailsPage);
       },
       child: Container(
-        height: 270,
-        width: 250,
+        height: 250,
+        width: 240,
         padding: const EdgeInsets.all(5),
         margin: startPadding.paddingStart + 10.paddingEnd,
         decoration: Decorations.kDecorationBorderRadius(
           borderColor: context.dividerColor,
           color: AppColors.grey_f1,
-          radius: 16,
+          radius: 25,
         ),
         child: Column(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(25),
               child: Stack(
                 alignment: AlignmentDirectional.topEnd,
                 children: [
@@ -112,7 +112,7 @@ class CarVert extends StatelessWidget {
                           flex: 3,
                           child: SubCustomContainer(
                             backgroundColor: AppColors.blue_31,
-                            label: context.strings.rs(800000),
+                            label:  '1,000,000 ' + context.strings.rs,
                             padding: 4.paddingVert,
                           ),
                         ),
@@ -182,12 +182,16 @@ class CarDetailsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SubCustomContainer(
       childIsText: false,
-      padding: 8.paddingAll,
+      padding: 8.paddingHoriz + 4.paddingVert,
       radius: 5,
       backgroundColor: AppColors.blue_da,
       child: IconText(
         text: label,
         icon: icon,
+        textStyle: context.bodyMedium.copyWith(
+          fontWeight: FontWeight.w500,
+          fontSize: 15,
+        ),
       ),
     );
   }

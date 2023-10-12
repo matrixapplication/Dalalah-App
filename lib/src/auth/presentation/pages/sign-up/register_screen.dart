@@ -76,7 +76,9 @@ class RegisterScreen extends BaseStatelessWidget {
               margin:
                   EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
               onPressed: () {
-                onRegisterPressed();
+              //  onRegisterPressed();
+
+                Navigator.pushNamed(context, Routes.navigationPages);
               },
             ),
             // Row(

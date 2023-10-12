@@ -8,49 +8,49 @@ import '../../../../core/utils/navigator.dart';
 ///  Created by harbey on 9/5/2023.
 class FilterHome extends StatelessWidget {
   final bool isDecoration;
-  const FilterHome({Key? key, this.isDecoration = true}) : super(key: key);
+  final String routeName;
+  final Function() onFilterOrder;
+  const FilterHome({Key? key, this.isDecoration = true, required this.routeName, required this.onFilterOrder}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = context.textTheme.displayMedium?.copyWith(
-      fontSize: 15,
+      fontSize: 16,
+      color: context.outline,
     );
     return Container(
-      height: 45,
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      color: !isDecoration ? context.cardColor : null,
-      decoration: isDecoration ?Decorations.shapeDecorationShadow(
-        color: context.cardColor,
-        colorShadow: context.disabledColor,
-        radius: 25,
-      ) : null,
+      decoration: Decorations.kDecorationBottomBorder(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconTextButton(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            icon: AppIcons.arrow_up_filter_solid,
-            text: context.strings.filter,
-            iconSize: 16,
+            icon: AppIcons.filter,
+            text: context.strings.detailed_research,
+            isFirstIcon: false,
+            iconSize: 22,
+            space: 12,
             textStyle:textStyle,
             onTap: () {
-              Navigators.pushNamed(Routes.filterPage);
+              Navigators.pushNamed(routeName);
             },
           ),
-          VerticalDivider(
-            endIndent: 10,
-            indent: 10,
-            thickness: 0.9,
-            width: 1,
-            color: context.disabledColor.withOpacity(0.5),
+          SizedBox(
+            height: 50,
+            child: VerticalDivider(
+              thickness: 1,
+              indent: 5,
+              endIndent: 3,
+              width: 1,
+              color: context.dividerColor,
+            ),
           ),
           IconTextButton(
-            icon: AppIcons.sort_solid,
+            icon: AppIcons.filter_order,
             text: context.strings.sort_by,
             textStyle:textStyle,
-            iconSize: 16,
-            onTap: () {
-              Navigators.pushNamed(Routes.sortByPage);
-            },
+            iconSize: 30,
+            isFirstIcon: false,
+            onTap: onFilterOrder,
           ),
         ],
       ),

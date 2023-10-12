@@ -6,10 +6,11 @@ class Decorations {
     double? radius,
   }) {
     return BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.all(Radius.circular(radius ?? 12)),
+      color: color,
+      borderRadius: BorderRadius.all(Radius.circular(radius ?? 12)),
     );
   }
+
   static BoxDecoration kDecorationTopRadius({
     required Color color,
     double? radius,
@@ -19,6 +20,21 @@ class Decorations {
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(radius ?? 12),
         topRight: Radius.circular(radius ?? 12),
+      ),
+    );
+  }
+
+  static ShapeDecoration mainShapeDecoration({
+    double? radius,
+  }) {
+    return ShapeDecoration(
+      gradient: const LinearGradient(
+        begin: Alignment(0.00, -1.00),
+        end: Alignment(0, 1),
+        colors: [Color(0xFF033E4D), Color(0xFF055C72)],
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
       ),
     );
   }
@@ -48,6 +64,19 @@ class Decorations {
       ),
     );
   }
+
+  static BoxDecoration kDecorationTopEndRadius({
+    required Color color,
+    double? radius,
+  }) {
+    return BoxDecoration(
+      color: color,
+      borderRadius: BorderRadiusDirectional.only(
+        topEnd: Radius.circular(radius ?? 15),
+      ),
+    );
+  }
+
   static BoxDecoration kDecorationBorderRadius({
     Color? color,
     double? radius,
@@ -59,11 +88,32 @@ class Decorations {
       color: color ?? injector<ServicesLocator>().appContext.cardColor,
       borderRadius: BorderRadius.all(Radius.circular(radius ?? 12)),
       border: Border.all(
-        color: borderColor ?? injector<ServicesLocator>().appContext.dividerColor,
+        color:
+            borderColor ?? injector<ServicesLocator>().appContext.dividerColor,
         width: borderWidth ?? 1.0,
       ),
     );
   }
+
+  static BoxDecoration kDecorationBottomBorder({
+    Color? color,
+    double? radius,
+    Color? borderColor,
+    double? borderWidth,
+    double? t,
+  }) {
+    return BoxDecoration(
+      // only bottom border
+      border: Border(
+        bottom: BorderSide(
+          color: borderColor ??
+              injector<ServicesLocator>().appContext.dividerColor,
+          width: borderWidth ?? 1.0,
+        ),
+      ),
+    );
+  }
+
   static BoxDecoration kDecorationRadius({
     Color? color,
     double? radius,
@@ -86,7 +136,11 @@ class Decorations {
     );
   }
 
-  static ShapeDecoration shapeDecorationShadow({Color? color, required Color colorShadow, double? radius, BorderRadiusGeometry? borderRadius}) {
+  static ShapeDecoration shapeDecorationShadow(
+      {Color? color,
+      required Color colorShadow,
+      double? radius,
+      BorderRadiusGeometry? borderRadius}) {
     return ShapeDecoration(
       color: color ?? injector<ServicesLocator>().appContext.cardColor,
       shape: RoundedRectangleBorder(
@@ -95,13 +149,15 @@ class Decorations {
         BoxShadow(
           color: colorShadow.withOpacity(0.5),
           blurRadius: 10,
-          offset: Offset(0, 0),
+          offset: const Offset(0, 0),
           spreadRadius: 0,
         )
       ],
     );
   }
-  static ShapeDecoration shapeBottomShadow({required Color color, required Color colorShadow, double? radius}) {
+
+  static ShapeDecoration shapeBottomShadow(
+      {required Color color, required Color colorShadow, double? radius}) {
     return ShapeDecoration(
       color: color,
       shape: RoundedRectangleBorder(
@@ -110,13 +166,14 @@ class Decorations {
         BoxShadow(
           color: colorShadow.withOpacity(0.05),
           blurStyle: BlurStyle.solid,
-          offset: Offset(100, 100),
+          offset: const Offset(100, 100),
         )
       ],
     );
   }
 
-  static ShapeDecoration shapeTopShadow({required Color color, required Color colorShadow, double? radius}) {
+  static ShapeDecoration shapeTopShadow(
+      {required Color color, required Color colorShadow, double? radius}) {
     return ShapeDecoration(
       color: color,
       shape: RoundedRectangleBorder(
@@ -126,16 +183,19 @@ class Decorations {
           color: colorShadow.withOpacity(0.2),
           blurRadius: 20,
           spreadRadius: 0,
-
         )
       ],
     );
   }
 
-  static BoxDecoration decorationBorderShadow({Color? color, required Color borderColor, required Color colorShadow, double? radius}) {
+  static BoxDecoration decorationBorderShadow(
+      {Color? color,
+      required Color borderColor,
+      required Color colorShadow,
+      double? radius}) {
     return BoxDecoration(
       color: color,
-     borderRadius: BorderRadius.circular(radius ?? 12),
+      borderRadius: BorderRadius.circular(radius ?? 12),
       border: Border.all(
         color: borderColor,
         width: 1.0,

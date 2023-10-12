@@ -31,6 +31,7 @@ class BottomNavigatorBarItem extends StatelessWidget {
                     label!,
                     style: context.labelSmall.copyWith(
                       color: color ?? Theme.of(context).primaryColor,
+                      fontSize: 10,
                     )
                   ),
                 ],

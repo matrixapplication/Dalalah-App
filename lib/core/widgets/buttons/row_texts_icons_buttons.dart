@@ -18,7 +18,9 @@ class RowTextsIconsButtons extends StatelessWidget {
   final double? iconSize2;
   final BorderRadiusGeometry? borderRadius1;
   final BorderRadiusGeometry? borderRadius2;
-  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2}) : super(key: key);
+  final Decoration? decoration1;
+  final Decoration? decoration2;
+  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2, this.decoration1, this.decoration2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class RowTextsIconsButtons extends StatelessWidget {
               backgroundColor: backgroundColor1 ?? context.outline,
               borderRadius: borderRadius1,
               radius: 10,
+              decoration: decoration1,
               onPressed: onPressed1,
             ),
           ),
@@ -47,6 +50,7 @@ class RowTextsIconsButtons extends StatelessWidget {
               titleStyle: context.labelMedium.copyWith(),
               backgroundColor: backgroundColor2 ?? theme.primaryColor,
               borderRadius: borderRadius2,
+              decoration: decoration2,
               radius: 10,
               onPressed: onPressed2,
             ),

@@ -116,7 +116,7 @@ class SelectItem extends StatelessWidget {
         side: BorderSide(
           color: selectedType == item
               ? context.secondaryContainer
-              : context.outline,
+              : context.hintColor,
           width: 1,
         ),
         padding: padding ??

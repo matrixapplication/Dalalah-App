@@ -32,10 +32,8 @@ class LoginBody extends BaseStatelessWidget {
                 context.bodySmall.copyWith(fontSize: 12)),
             20.ph,
             AuthTextField(
-              hint: isUser
-                  ? context.strings.phone_number
-                  : context.strings.id_number,
-              prefixIcon: isUser ? AppIcons.smartphone : AppIcons.id_card,
+              hint: context.strings.phone_number,
+              prefixIcon: AppIcons.phone,
               controller: emailController,
               validator: (phone) => Validation.validatePhone(phone ?? ''),
             ),
@@ -53,13 +51,14 @@ class LoginBody extends BaseStatelessWidget {
               height: 48,
               margin: EdgeInsets.only(top: 50, left: 35, right: 35),
               onPressed: () {
-                if (_formKey.currentState!.validate())
-                  onLogin!(
-                    LoginParams(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    ),
-                  );
+                // if (_formKey.currentState!.validate())
+                //   onLogin!(
+                //     LoginParams(
+                //       email: emailController.text,
+                //       password: passwordController.text,
+                //     ),
+                //   );
+                Navigator.pushNamed(context, Routes.navigationPages);
               },
             ),
             12.ph,

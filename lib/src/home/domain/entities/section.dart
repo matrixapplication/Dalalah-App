@@ -11,32 +11,24 @@ class Section {
     return [
       Section(
         // title: context.strings.cars,
-        title: 'cars',
-        image: AppImages.car_with_background,
+        title: context.strings.cars,
+        image: AppImages.car_section,
         routeName: Routes.login,
       ),
       Section(
         // title: context.strings.cars,
-        title: 'cars',
-        image: AppImages.car_with_background,
+        title: context.strings.plates,
+        image: AppImages.double_plate,
+        routeName: Routes.platesPage,
+      ),
+      Section(
+        title: context.strings.real_estate,
+        image: AppImages.house_location,
         routeName: Routes.login,
       ),
       Section(
-        // title: context.strings.cars,
-        title: 'cars',
-        image: AppImages.car_with_background,
-        routeName: Routes.login,
-      ),
-      Section(
-        // title: context.strings.cars,
-        title: 'cars',
-        image: AppImages.car_with_background,
-        routeName: Routes.login,
-      ),
-      Section(
-        // title: context.strings.cars,
-        title: 'cars',
-        image: AppImages.car_with_background,
+        title: context.strings.financing_services,
+        image: AppImages.car_section,
         routeName: Routes.login,
       ),
     ];

@@ -52,7 +52,7 @@ class ProfileItem extends StatelessWidget {
           leading: AppCircularIcon(
             icon: icon,
             iconData: iconData,
-            background: iconBackgroundColor,
+            backgroundColor: iconBackgroundColor,
             color: iconColor,
           ),
           trailing: Icon(

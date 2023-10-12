@@ -15,10 +15,10 @@ final lightTheme = ThemeData(
 
   primaryColorDark: const Color(0xff010C11),
   scaffoldBackgroundColor: const Color(0xffffffff),
-  hintColor: const Color(0xffC7C7C7),
+  hintColor: const Color(0xffC6C6C6),
   disabledColor: const Color(0xff8F9BB3),
   cardColor: const Color(0xffffffff),
-  dividerColor: Color(0xffEBEBEB),
+  dividerColor: Color(0xffF2F2F2),
   iconTheme: const IconThemeData(
     color: kYellowColor,
   ),
@@ -38,7 +38,7 @@ final lightTheme = ThemeData(
     onError: kRedColorEB,
     surface: const Color(0xffFFA010),
      tertiaryContainer: const Color(0xff0095FF),
-    outline: const Color(0xffD6D6D6),
+    outline: const Color(0xff606060),
     outlineVariant: const Color(0xff494949),
   ),
   appBarTheme: const AppBarTheme(

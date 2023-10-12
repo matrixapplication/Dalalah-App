@@ -22,6 +22,8 @@ class CustomTextField extends BaseStatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final double? radius;
   final bool? isValidator;
+  final double? maxHeight;
+  final TextStyle? labelStyle;
 
   CustomTextField(
       {Key? key,
@@ -45,7 +47,10 @@ class CustomTextField extends BaseStatelessWidget {
       this.suffixIcon,
       this.radius,
       this.iconPath,
-      this.isValidator = true})
+      this.isValidator = true,
+      this.maxHeight,
+      this.labelStyle,
+      })
       : super(key: key);
 
   @override
@@ -57,10 +62,12 @@ class CustomTextField extends BaseStatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (labelText != null) ...[
-            20.ph,
-            Text(
-              labelText ?? '',
-              style: Theme.of(context).textTheme.bodyMedium,
+            10.ph,
+            SizedBox(
+              child: Text(
+                labelText ?? '',
+                style: labelStyle ?? Theme.of(context).textTheme.bodyMedium,
+              ),
             ),
             5.ph,
           ],
@@ -89,7 +96,7 @@ class CustomTextField extends BaseStatelessWidget {
                   fillColor: fillColor ?? theme.colorScheme.background,
                   filled: true,
                   constraints: BoxConstraints(
-                    maxHeight: 45,
+                    maxHeight: maxHeight ?? 45,
                   ),
                   prefixIcon: iconPath != null
                       ? AppIcon(

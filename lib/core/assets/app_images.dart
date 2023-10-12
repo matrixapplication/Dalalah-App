@@ -11,5 +11,10 @@ class AppImages{
   static String on_boarding3  = '$_imagesPath/on_boarding3.png';
   static String slider_car  = '$_imagesPath/slider_car.png';
   static String car_with_background  = '$_imagesPath/car_with_background.png';
+  static String car_name = '$_imagesPath/car_name.png';
+  static String img = '$_imagesPath/img.png';
+  static String car_section = '$_imagesPath/car_section.png';
+  static String double_plate = '$_imagesPath/double_plate.png';
+  static String house_location = '$_imagesPath/house_location.png';
 
 }

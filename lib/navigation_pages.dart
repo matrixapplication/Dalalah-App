@@ -51,8 +51,8 @@ class NavigationPages extends BaseStatelessWidget {
                       },
                     ),
                     BottomNavigatorBarItem(
-                      icon: snapshot.data! ? AppIcons.add_car : AppIcons.heart_solid,
-                      label: snapshot.data! ? strings.sell_car : strings.favorites,
+                      icon: AppIcons.sections,
+                      label: strings.sections,
                       // icon: AppIcons.heart_solid,
                       // label: strings.favorites,
                       color: getColor(context, 1),
@@ -63,8 +63,8 @@ class NavigationPages extends BaseStatelessWidget {
                       },
                     ),
                     BottomNavigatorBarItem(
-                      icon: AppIcons.notification,
-                      label: strings.notifications,
+                      icon: AppIcons.add,
+                      label: strings.add,
                       color: getColor(context, 2),
                       onTap: () {
                         setState(() {
@@ -73,12 +73,22 @@ class NavigationPages extends BaseStatelessWidget {
                       },
                     ),
                     BottomNavigatorBarItem(
-                      icon: AppIcons.profile,
-                      label: strings.profile ,
+                      icon: AppIcons.showrooms,
+                      label: strings.show_rooms,
                       color: getColor(context, 3),
                       onTap: () {
                         setState(() {
                           pageIndex = 3;
+                        });
+                      },
+                    ),
+                    BottomNavigatorBarItem(
+                      icon: AppIcons.more,
+                      label: strings.more ,
+                      color: getColor(context, 4),
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 4;
                         });
                       },
                     ),
@@ -104,9 +114,10 @@ class NavigationPages extends BaseStatelessWidget {
     print('isAdmin $isAdmin');
     return [
       const HomePage(),
-      isAdmin ? SellCarPage() : FavoritesPage(),
-      NotificationsPage(),
-      ProfilePage(),
+      isAdmin ? HomePage() : HomePage(),
+      HomePage(),
+      HomePage(),
+      HomePage(),
     ];
   }
 }

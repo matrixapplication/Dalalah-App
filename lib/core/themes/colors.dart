@@ -91,3 +91,28 @@ const kOrangeColor = Color(0xffF25E02);
 const kYellowColor = Color(0xffF2C94C);
 const kRedColorEB = Color(0xffEB5757);
 const kGreenColor_60 = Color(0xff27AE60);
+
+extension ColorsExtension on BuildContext {
+  // get mode if dark or light
+  bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
+
+  Color get gray_f8 => isDarkMode ? Color(0xffF8F8F8) : Color(0xffF8F8F8);
+
+  Color get gray_fb => isDarkMode ? Color(0xffFBFBFB) : Color(0xffFBFBFB);
+
+  Color get gray_ac => isDarkMode ? Color(0xff5C5C5C) : Color(0xffACACAC);
+
+  Color get gray_80 => isDarkMode ? Color(0xff404040) : Color(0xff808080);
+
+  Color get gray_5c => isDarkMode ? Color(0xffE0E0E0) : Color(0xffE0E0E0);
+
+  Color get gray_68 => isDarkMode ? Color(0xff686868) : Color(0xff686868);
+
+  Color get gray_87 => isDarkMode ? Color(0xff878787) : Color(0xff878787);
+
+  Color get blue_3F => isDarkMode ? Color(0xff03173F) : Color(0xff03173F);
+
+  Color get gray_F6 => isDarkMode ? Color(0xffF6F6F6) : Color(0xffF6F6F6);
+
+  Color get gray_E2 => isDarkMode ? Color(0xffE2E2E2) : Color(0xffE2E2E2);
+}

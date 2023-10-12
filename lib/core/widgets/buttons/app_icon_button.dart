@@ -17,8 +17,8 @@ class AppIconButton extends StatelessWidget {
         onTap: onPressed,
         child: SvgPicture.asset(
           icon,
-          height: size ?? 20,
-          width: size ?? 20,
+          height: size,
+          width: size,
           color: color,
         )
       ),

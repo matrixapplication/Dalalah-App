@@ -42,8 +42,9 @@ class ImageNetwork extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
   final double? radius;
+  final Decoration? decoration;
 
-  const ImageNetwork({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius});
+  const ImageNetwork({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class ImageNetwork extends StatelessWidget {
       margin: margin ?? EdgeInsets.zero,
       padding: padding ?? EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
+      decoration: decoration ?? BoxDecoration(
         borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
       ),
       child: ClipRRect(

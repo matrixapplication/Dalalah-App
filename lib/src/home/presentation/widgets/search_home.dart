@@ -4,6 +4,7 @@ import 'package:delala/src/home/presentation/widgets/tap_effect.dart';
 
 import '../../../main_index.dart';
 import '../pages/search_screen.dart';
+import 'home_header.dart';
 
 ///  Created by harbey on 9/5/2023.
 class SearchHome extends StatelessWidget {
@@ -13,16 +14,25 @@ class SearchHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextField(
-      radius: 50,
-      fillColor: Color(0xff95989A),
-      colorBorderSide: Color(0xff95989A),
-      iconPath: AppIcons.search,
-      hintText: context.strings.search_here,
-      hintStyle: context.displaySmall.copyWith(color: context.hintColor,),
-      onTap: () {
-        onSearch(context);
-      },
+    return Column(
+      children: [
+        HomeHeader(),
+        10.ph,
+        CustomTextField(
+          padding: 16.paddingHoriz,
+         // radius: 50,
+   //   fillColor: Color(0xff95989A),
+          maxHeight: 70,
+          colorBorderSide: context.cardColor,
+          iconPath: AppIcons.search,
+          hintText: context.strings.search_here,
+          hintStyle: context.displaySmall.copyWith(color: context.hintColor,),
+
+          onTap: () {
+            onSearch(context);
+          },
+        ),
+      ],
     );
   }
 

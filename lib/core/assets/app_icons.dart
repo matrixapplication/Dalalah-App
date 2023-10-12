@@ -5,10 +5,20 @@ class AppIcons {
   static String fuel = '$_iconsPath/fuel.svg';
   static String timer = '$_iconsPath/timer.svg';
   static String chair = '$_iconsPath/chair.svg';
+  static String filter = '$_iconsPath/filter.svg';
+  static String filter_order = '$_iconsPath/filter_order.svg';
+  static String car_name = '$_iconsPath/car_name.svg';
+  static String arrow_down = '$_iconsPath/arrow_down.svg';
+  static String drop_down = '$_iconsPath/drop_down.svg';
+  static String add = '$_iconsPath/add.svg';
+  static String sections = '$_iconsPath/sections.svg';
+  static String showrooms = '$_iconsPath/showrooms.svg';
+  static String more = '$_iconsPath/more.svg';
+
 
   /* =================================================== */
 
-  static String logo_white = '$_iconsPath/logo_light.svg';
+  static String logo_light = '$_iconsPath/logo_light.svg';
   static const String profile = "$_iconsPath/profile.svg";
   static const String heart = "$_iconsPath/heart.svg";
   static const String share = "$_iconsPath/share.svg";
