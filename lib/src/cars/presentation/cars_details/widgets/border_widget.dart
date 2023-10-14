@@ -18,7 +18,7 @@ class BorderWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: padding ?? const EdgeInsets.symmetric(vertical: 10),
       margin: const EdgeInsets.symmetric(vertical: 3),
-      decoration: Decorations.kDecorationBorderRadius(
+      decoration: Decorations.kDecorationBorderWithRadius(
         radius: 10,
         borderWidth: 1.5,
         borderColor: context.dividerColor,

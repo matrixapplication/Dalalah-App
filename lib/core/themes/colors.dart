@@ -64,14 +64,27 @@ class AppColors {
       const Color.fromRGBO(235, 87, 87, 0.25);
 
   /* =========================================================================== */
-
   static Color grey_5c = const Color(0xff5C5C5C);
   static Color grey_40 = const Color(0xff404040);
+  static Color grey_68 = const Color(0xff686868);
+  static Color grey_CA = const Color(0xffCACACA);
+  static Color grey_5F = const Color(0xff5B5D5F);
+  static Color grey_51 = const Color(0xff515151);
+  static Color grey_41 = const Color(0xff414141);
+  static Color grey_95 = const Color(0xff959595);
+  static Color grey_4B = const Color(0xff4B4B4B);
+  static Color grey_2C = const Color(0xff2C2C2C);
   static Color grey_d9 = const Color(0xffD9D9D9);
-  static Color grey_f1 = const Color(0xffFAFAFA);
+  static Color grey_fa = const Color(0xffFAFAFA);
   static Color blue_da = const Color(0xff1CB1DA).withOpacity(0.14);
+  static Color blue_F7 = const Color(0xff13C6F7);
   static Color blue_31 = const Color(0xff002731);
   static Color blue_4d = const Color(0xff003C4D);
+  static Color blue_49 = const Color(0xff033B49);
+  static Color yellow_00 = const Color(0xffF8B200);
+  static Color yellow_15 = const Color(0xffFFA115);
+
+
 }
 
 const kPrimaryDark = Color(0xff000000);

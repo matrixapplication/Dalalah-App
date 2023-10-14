@@ -151,5 +151,15 @@
   "latest_paintings": "Latest paintings",
   "new_": "New",
   "details": "Details",
-  "categories": "Categories"
+  "categories": "Categories",
+  "official_price" : "Official price",
+  "monthly_installment" : "Monthly installment",
+  "buy_car_from" : "Buy {car_name} from",
+  "contact" : "Contact",
+  "request_for_quotation" : "Request for Quotation",
+  "location" : "Location",
+  "new_cars" : "New cars",
+  "used_cars" : "Used cars",
+  "branches" : "Branches",
+  "used" : "Used"
 }

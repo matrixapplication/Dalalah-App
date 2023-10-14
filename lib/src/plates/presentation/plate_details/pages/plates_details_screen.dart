@@ -86,7 +86,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     padding: 16.paddingStart,
                     margin: 20.paddingBottom,
-                    decoration: Decorations.kDecorationBorderRadius(
+                    decoration: Decorations.kDecorationBorderWithRadius(
                         color: context.scaffoldBackgroundColor,
                         borderColor: context.gray_5c,
                         radius: 50

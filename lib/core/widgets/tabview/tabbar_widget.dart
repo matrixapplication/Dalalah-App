@@ -18,9 +18,14 @@ class TabWidgetItemBuilder extends Tab {
 }
 
 class TabBarWidget extends StatelessWidget {
+  final double? labelSize;
   final List<TabItemModel> tabs;
 
-  const TabBarWidget({Key? key, required this.tabs}) : super(key: key);
+  const TabBarWidget({
+    Key? key,
+    required this.tabs,
+    this.labelSize,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +39,22 @@ class TabBarWidget extends StatelessWidget {
             margin: 15.paddingHoriz,
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                  width: 2,
-                  color: Colors.grey[100]!
-                ),
+                bottom: BorderSide(width: 2, color: Colors.grey[100]!),
               ),
             ),
             child: TabBar(
               // indicatorColor: Colors.white,
-              unselectedLabelStyle: context.textTheme.headlineMedium!
-                  .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
-              labelStyle: context.textTheme.headlineMedium!
-                  .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
-              labelColor: context.primaryColor,
-              unselectedLabelColor: kPrimaryDark,
+              unselectedLabelStyle: context.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: labelSize ?? 18,
+              ),
+              labelStyle: context.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: labelSize ?? 18,
+                // height: 0.5,
+              ),
+              labelColor: AppColors.blue_49,
+              unselectedLabelColor: AppColors.grey_4B,
               // indicator: const BoxDecoration(
               //   color: kPrimaryDark,
               //   borderRadius: BorderRadius.all(
@@ -55,7 +62,12 @@ class TabBarWidget extends StatelessWidget {
               //   ),
               // ),
               overlayColor: MaterialStateProperty.all(Colors.transparent),
-              indicatorWeight: 2.6,
+              indicatorWeight: 3,
+              // indicator: BoxDecoration(
+              //   borderRadius: BorderRadiusDirectional.circular(20),
+              //   color: Colors.red,
+              // ),
+              indicatorColor: AppColors.blue_49,
               indicatorSize: TabBarIndicatorSize.tab,
 
               tabs: tabs.map((e) => e.builder()).toList(),
@@ -64,7 +76,12 @@ class TabBarWidget extends StatelessWidget {
         ),
         body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
-          children: tabs.map((e) => e.page).toList(),
+          children: tabs
+              .map((e) => Padding(
+                    padding: 0.paddingTop,
+                    child: e.page,
+                  ))
+              .toList(),
         ),
       ),
     );

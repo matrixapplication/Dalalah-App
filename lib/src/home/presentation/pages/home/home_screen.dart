@@ -33,7 +33,7 @@ class HomeScreen extends BaseStatelessWidget {
               child: Column(
                 children: [
                   RowSeeAllText(
-                    routeName: 'Routes.brandsPage',
+                    routeName: Routes.carsPage,
                     title: context.strings.latest_cars,
                   ),
                   CarsList(

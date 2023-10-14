@@ -11,6 +11,16 @@ class Decorations {
     );
   }
 
+  static BoxDecoration kDecorationBorderRadius({
+    required Color color,
+    BorderRadiusDirectional? borderRadius,
+  }) {
+    return BoxDecoration(
+      color: color,
+      borderRadius: borderRadius ?? BorderRadiusDirectional.circular(10),
+    );
+  }
+
   static BoxDecoration kDecorationTopRadius({
     required Color color,
     double? radius,
@@ -77,7 +87,7 @@ class Decorations {
     );
   }
 
-  static BoxDecoration kDecorationBorderRadius({
+  static BoxDecoration kDecorationBorderWithRadius({
     Color? color,
     double? radius,
     Color? borderColor,
@@ -188,11 +198,12 @@ class Decorations {
     );
   }
 
-  static BoxDecoration decorationBorderShadow(
-      {Color? color,
-      required Color borderColor,
-      required Color colorShadow,
-      double? radius}) {
+  static BoxDecoration decorationBorderShadow({
+    Color? color,
+    required Color borderColor,
+    required Color colorShadow,
+    double? radius,
+  }) {
     return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius ?? 12),
@@ -208,6 +219,58 @@ class Decorations {
           spreadRadius: 0,
         )
       ],
+    );
+  }
+
+  static BoxDecoration kDecorationBorder({
+    Color? backgroundColor,
+    double? radius,
+    BorderRadiusDirectional? borderRadius,
+    Color? borderColor,
+    double? borderWidth,
+    BorderStyle? borderStyle,
+  }) {
+    return BoxDecoration(
+      color: backgroundColor ?? Colors.white,
+      borderRadius: borderRadius ??
+          BorderRadius.all(
+            Radius.circular(radius ?? 16),
+          ),
+      border: Border.all(
+        color: borderColor ?? const Color(0xffEAEAEA),
+        width: borderWidth ?? 0,
+        style: borderStyle ?? BorderStyle.solid,
+      ),
+    );
+  }
+
+  static BoxDecoration kDecorationBoxShadow({
+    Color? color,
+    Color? colorShadow,
+    double blurRadius = 4,
+    double spreadRadius = 0.5,
+    double radius = 10,
+    BorderRadiusDirectional? borderRadius,
+    Color? borderColor,
+    double? borderWidth,
+    Offset offset = const Offset(-2, 5),
+  }) {
+    return BoxDecoration(
+      color: color ?? Colors.white,
+      borderRadius: borderRadius ?? BorderRadius.circular(radius),
+      boxShadow: [
+        BoxShadow(
+          color: colorShadow ?? const Color(0xffD6D6D6).withOpacity(0.25),
+          blurRadius: blurRadius,
+          spreadRadius: spreadRadius,
+          offset: offset,
+        ),
+      ],
+      border: Border.all(
+        color: borderColor ?? Colors.white,
+        width: borderWidth ?? 0,
+        style: BorderStyle.solid,
+      ),
     );
   }
 }

@@ -1,10 +1,14 @@
 import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
+import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/tasks.dart';
 import '../widgets/car_details.dart';
 import '../widgets/price_car_details.dart';
 import '../widgets/sliders_car_details.dart';
+import 'views/car_details_category_view.dart';
+import 'views/car_details_details_view.dart';
+import 'views/car_details_price_view.dart';
 
 class CarsDetailsScreen extends BaseStatelessWidget {
   final List<Task> tasks;
@@ -16,15 +20,38 @@ class CarsDetailsScreen extends BaseStatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SlidersCarDetails(
-          images: ['', '', '', ''],
+        Stack(
+          children: [
+            SlidersCarDetails(
+              images: ['', '', '', ''],
+            ),
+            PositionedDirectional(
+              bottom: 0,
+              end: 10,
+              child: AppCircularIconButton(
+                icon: AppIcons.heart,
+                color: AppColors.blue_31,
+                circleSize: 45,
+                backgroundColor: context.cardColor,
+                shadowColor: context.cardColor.withOpacity(0.2),
+                padding: 12,
+                size: 22,
+                margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
+              ),
+            ),
+          ],
         ),
         Padding(
           padding: 15.paddingHoriz,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('بي ام دبليو  X6 218i X6 218i '),
+              Text(
+                'بي ام دبليو  X6 218i X6 218i',
+                style: context.textTheme.titleSmall!.copyWith(
+                  color: AppColors.grey_2C,
+                ),
+              ),
               15.ph,
               Row(
                 children: [
@@ -35,13 +62,13 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     labelColor: AppColors.blue_31,
                     width: 55,
                   ),
-                  12.pw,
+                  14.pw,
                   SubCustomContainer(
                     backgroundColor: AppColors.grey_d9,
                     label: '2023',
                     fontSize: 14,
                     labelColor: AppColors.blue_31,
-                    width: 55,
+                    width: 58,
                   ),
                 ],
               ),
@@ -49,8 +76,8 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: SubCustomContainer(
-                  backgroundColor: AppColors.blue_31,
-                  label: context.strings.rs + ' 1,000,000',
+                  backgroundColor: AppColors.blue_49,
+                  label: '800,000 ${context.strings.rs}',
                   fontSize: 18,
                   padding: 5.paddingVert,
                   width: 170,
@@ -65,15 +92,15 @@ class CarsDetailsScreen extends BaseStatelessWidget {
             tabs: [
               TabItemModel(
                 label: context.strings.price,
-                page: 0.ph,
+                page: CarDetailsPriceView(),
               ),
               TabItemModel(
                 label: context.strings.details,
-                  page: 0.ph,
+                page: CarDetailsDetailsView(),
               ),
               TabItemModel(
                 label: context.strings.categories,
-                page: 0.ph,
+                page: CarDetailsCategoryView(),
               ),
             ],
           ),

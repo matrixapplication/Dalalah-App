@@ -43,7 +43,7 @@ class BrandsList extends StatelessWidget {
               maxWidth: 100,
             ),
             padding: const EdgeInsets.symmetric(vertical: 10),
-            decoration: Decorations.kDecorationBorderRadius(
+            decoration: Decorations.kDecorationBorderWithRadius(
               borderColor: context.outline,
               color: context.scaffoldBackgroundColor,
               radius: 8,

@@ -16,7 +16,7 @@ class PlatesDetailsProperty extends StatelessWidget {
       alignment: Alignment.center,
       padding: 8.paddingAll,
       margin: 12.paddingBottom,
-      decoration: Decorations.kDecorationBorderRadius(
+      decoration: Decorations.kDecorationBorderWithRadius(
         color: context.gray_fb,
         borderColor: context.gray_5c,
         radius: 10

@@ -50,7 +50,7 @@ class TabBarWidget extends StatelessWidget {
             // leading: const SizedBox(),
             flexibleSpace: Container(
               margin: marginTabs ?? EdgeInsets.zero,
-              decoration: Decorations.kDecorationBorderRadius(radius: 50),
+              decoration: Decorations.kDecorationBorderWithRadius(radius: 50),
               child: TabBar(
                 //      controller: _tabController,
                 onTap: onTap,

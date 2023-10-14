@@ -14,8 +14,26 @@ class RowTexts extends StatelessWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final bool? isSizedBox;
   final EdgeInsetsGeometry? padding;
+  final EdgeInsetsDirectional? valuePadding;
   final bool isExpanded;
-  const RowTexts({Key? key, required this.title,  required this.value, this.titleStyle,  this.valueStyle, this.crossAxisAlignment, this.mainAxisAlignment, this.titleStrutStyle, this.valueStrutStyle, this.isSizedBox = true, this.padding, this.isExpanded = false, this.titleWidget, this.valueWidget}) : super(key: key);
+
+  const RowTexts(
+      {Key? key,
+      required this.title,
+      required this.value,
+      this.titleStyle,
+      this.valueStyle,
+      this.crossAxisAlignment,
+      this.mainAxisAlignment,
+      this.titleStrutStyle,
+      this.valueStrutStyle,
+      this.isSizedBox = true,
+      this.padding,
+      this.isExpanded = false,
+      this.titleWidget,
+      this.valueWidget,
+      this.valuePadding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,24 +43,30 @@ class RowTexts extends StatelessWidget {
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
         children: [
-          isExpanded ? Expanded(child: titleWidget ?? buildTitle(context)) :
-          titleWidget ?? buildTitle(context),
-          if(isSizedBox!)
-            isExpanded ? Expanded(child: valueWidget ?? buildValue(context)) : valueWidget ?? buildValue(context),
+          isExpanded
+              ? Expanded(child: titleWidget ?? buildTitle(context))
+              : titleWidget ?? buildTitle(context),
+          if (isSizedBox!)
+            isExpanded
+                ? Expanded(child: valueWidget ?? buildValue(context))
+                : valueWidget ?? buildValue(context),
         ],
       ),
     );
   }
 
   Widget buildTitle(BuildContext context) => Text(
-    title,
-    style: titleStyle ?? context.bodyMedium,
-    strutStyle: titleStrutStyle,
-  );
+        title,
+        style: titleStyle ?? context.bodyMedium,
+        strutStyle: titleStrutStyle,
+      );
 
-  Widget buildValue(BuildContext context) => Text(
-    value,
-    style: valueStyle ?? context.bodyMedium,
-    strutStyle: valueStrutStyle,
+  Widget buildValue(BuildContext context) => Padding(
+    padding: valuePadding ?? 0.paddingAll,
+    child: Text(
+          value,
+          style: valueStyle ?? context.bodyMedium,
+          strutStyle: valueStrutStyle,
+        ),
   );
 }

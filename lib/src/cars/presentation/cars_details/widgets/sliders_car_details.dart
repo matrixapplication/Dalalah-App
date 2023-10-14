@@ -11,77 +11,60 @@ class SlidersCarDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          height: 240,
-          child: Swiper(
-            itemCount: images.length,
-            index: images.length - 1,
-            itemBuilder: (BuildContext context, int index) {
-              return ImageNetwork(
-                padding: 20.paddingBottom,
-                borderRadius: const BorderRadiusDirectional.only(
-                  bottomEnd: Radius.circular(12),
-                  bottomStart: Radius.circular(12),
-                ),
-                image:
-                    'https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960',
-                width: double.infinity,
-                fit: BoxFit.fill,
-              );
-            },
-            // duration: 3,
-            pagination: SwiperCustomPagination(
-              builder: (BuildContext context, SwiperPluginConfig config) {
-                return Center(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      config.itemCount,
-                      (index) => Container(
-                        height: 10,
-                        width: 10,
-                        margin: 150.paddingTop + 3.paddingHoriz,
-                        decoration: Decorations.kDecorationOnlyRadius(
-                          // color: config.activeIndex == index
-                          //     ? context.primaryColor
-                          //     : context.outline,
-                          color: config.activeIndex == index
-                              ? Colors.white
-                              : const Color(0xff7A7A7A),
-                          radius: 50,
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                    ),
-                  ),
-                );
-              },
+    return SizedBox(
+      height: 240,
+      child: Swiper(
+        itemCount: images.length,
+        index: images.length - 1,
+        itemBuilder: (BuildContext context, int index) {
+          return ImageNetwork(
+            padding: 20.paddingBottom,
+            borderRadius: const BorderRadiusDirectional.only(
+              bottomEnd: Radius.circular(12),
+              bottomStart: Radius.circular(12),
             ),
-            viewportFraction: 1,
-            scale: 0.99,
-            autoplay: true,
-            autoplayDelay: 5000,
-            autoplayDisableOnInteraction: true,
-            allowImplicitScrolling: false,
-          ),
+            image:
+                'https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960',
+            width: double.infinity,
+            fit: BoxFit.fill,
+          );
+        },
+        // duration: 3,
+        pagination: SwiperCustomPagination(
+          builder: (BuildContext context, SwiperPluginConfig config) {
+            return Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  config.itemCount,
+                  (index) => Container(
+                    height: 10,
+                    width: 10,
+                    margin: 150.paddingTop + 3.paddingHoriz,
+                    decoration: Decorations.kDecorationOnlyRadius(
+                      // color: config.activeIndex == index
+                      //     ? context.primaryColor
+                      //     : context.outline,
+                      color: config.activeIndex == index
+                          ? Colors.white
+                          : const Color(0xff7A7A7A),
+                      radius: 50,
+                    ),
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+            );
+          },
         ),
-        PositionedDirectional(
-          bottom: 0,
-          end: 10,
-          child: AppCircularIconButton(
-            icon: AppIcons.heart,
-            color: AppColors.blue_31,
-            backgroundColor: context.cardColor,
-            shadowColor: context.cardColor.withOpacity(0.2),
-            padding: 12,
-            size: 22,
-            margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
-          ),
-        ),
-      ],
+        viewportFraction: 1,
+        scale: 0.99,
+        autoplay: true,
+        autoplayDelay: 5000,
+        autoplayDisableOnInteraction: true,
+        allowImplicitScrolling: false,
+      ),
     );
   }
 }

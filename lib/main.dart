@@ -20,20 +20,20 @@ Future<void> main() async {
   ServicesLocator().init();
   injector.registerSingleton(ClientCreator(
       interceptor: HeaderInterceptor(
-        accessToken: token,
-      )).create());
+    accessToken: token,
+  )).create());
   runApp(
     MyApp(token: token),
-  //   DevicePreview(
-  //   enabled: kReleaseMode,
-  //   builder: (context) => MyApp(token: token), // Wrap your app
-  // ),
+    //   DevicePreview(
+    //   enabled: kReleaseMode,
+    //   builder: (context) => MyApp(token: token), // Wrap your app
+    // ),
   );
-
 }
 
 class MyApp extends StatelessWidget {
   final String token;
+
   const MyApp({super.key, required this.token});
 
   @override
@@ -41,9 +41,7 @@ class MyApp extends StatelessWidget {
     // FirebaseNotification firebase = FirebaseNotification();
     // firebase.initialize(context);
     return BlocProvider(
-      create: (BuildContext context) =>
-      LocaleCubit()
-        ..getLanguageData(),
+      create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(
         // bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
@@ -64,7 +62,8 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.plateFilterPage : Routes.login,
+            initialRoute:
+                !token.isNotEmpty ? Routes.exhibitionPage : Routes.login,
           );
         },
       ),

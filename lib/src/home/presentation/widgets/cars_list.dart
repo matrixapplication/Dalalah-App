@@ -58,9 +58,9 @@ class CarVert extends StatelessWidget {
         width: 240,
         padding: const EdgeInsets.all(5),
         margin: startPadding.paddingStart + 10.paddingEnd,
-        decoration: Decorations.kDecorationBorderRadius(
+        decoration: Decorations.kDecorationBorderWithRadius(
           borderColor: context.dividerColor,
-          color: AppColors.grey_f1,
+          color: AppColors.grey_fa,
           radius: 25,
         ),
         child: Column(

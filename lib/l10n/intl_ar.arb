@@ -27,16 +27,13 @@
   "third_letter": "الحرف الثالث",
   "back": "رجوع",
   "cancel": "إلغاء",
-
-
-
   "favorites": "المفضلة",
   "edit_profile": "تعديل الحساب",
   "settings": "الإعدادات",
   "logout": "تسجيل الخروج",
   "full_name": "الاسم بالكامل",
   "email": "البريد الالكترونى",
-    "phone_number": "رقم الجوال",
+  "phone_number": "رقم الجوال",
   "save": "حفظ",
   "find_your_next_match": "ابحث عن سيارتك المفضلة",
   "filter": "فلتر",
@@ -51,8 +48,6 @@
   "all": "الكل",
   "skip": "تخطى",
   "my_ads": "إعلاناتى",
-
-
   "select_badge_type": "اختر نوع الشارة",
   "select_car_model": "اختر موديل السيارة",
   "extend_car_model": "تمديد موديل السيارة",
@@ -63,7 +58,6 @@
   "number_kilometers_km": "عدد الكيلومترات (كم)",
   "price_egp": "السعر (جنيه)",
   "car_description": "وصف السيارة",
-
   "select_properties": "اختر الخصائص",
   "add_main_images": "إضافة الصور الرئيسية",
   "add_main_image": "إضافة الصورة الرئيسية",
@@ -126,12 +120,22 @@
   "delete_account": "حذف الحساب",
   "delete_account_description": "هل أنت متأكد من حذف الحساب؟",
   "logout_description": "هل أنت متأكد من تسجيل الخروج؟",
-  "sections" : "الأقسام",
-  "see_all" : "مشاهدة الكل",
-  "latest_cars" : "أحدث السيارات",
-  "latest_paintings" : "أحدث اللوحات",
-  "new_" : "جديد",
-  "details" : "التفاصيل",
-  "categories" : "الفئات",
-  "price" : "السعر"
+  "sections": "الأقسام",
+  "see_all": "مشاهدة الكل",
+  "latest_cars": "أحدث السيارات",
+  "latest_paintings": "أحدث اللوحات",
+  "new_": "جديد",
+  "details": "التفاصيل",
+  "categories": "الفئات",
+  "price": "السعر",
+  "official_price": "السعر الرسمي",
+  "monthly_installment": "القسط الشهري",
+  "buy_car_from": "إشتري {car_name} من",
+  "contact": "اتصال",
+  "request_for_quotation": "طلب عرض سعر",
+  "location": "الموقع",
+  "new_cars": "السيارات الجديدة",
+  "used_cars": "السيارات المستعملة",
+  "branches": "الفروع",
+  "used" : "مستعمل"
 }

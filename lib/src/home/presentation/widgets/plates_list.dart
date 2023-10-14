@@ -56,7 +56,7 @@ class PlateVert extends StatelessWidget {
       child: Container(
           margin: 8.paddingHoriz,
           padding: 4.paddingAll,
-          decoration: Decorations.kDecorationBorderRadius(),
+          decoration: Decorations.kDecorationBorderWithRadius(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -62,7 +62,7 @@ class SectionsItem extends StatelessWidget {
         margin: startPadding.paddingStart + 10.paddingEnd ,
         padding: 10.paddingVert,
         width: 100,
-        decoration: Decorations.kDecorationBorderRadius(
+        decoration: Decorations.kDecorationBorderWithRadius(
           radius: 20,
         ),
         child: Stack(

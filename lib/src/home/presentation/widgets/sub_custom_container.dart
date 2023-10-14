@@ -38,7 +38,7 @@ class SubCustomContainer extends StatelessWidget {
       alignment: Alignment.center,
       decoration: Decorations.kDecorationOnlyRadius(
         color: backgroundColor ?? Colors.white,
-        radius: radius ?? 12,
+        radius: radius ?? 15,
       ),
       child: childIsText
           ? Text(

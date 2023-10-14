@@ -14,6 +14,13 @@ class AppIcons {
   static String sections = '$_iconsPath/sections.svg';
   static String showrooms = '$_iconsPath/showrooms.svg';
   static String more = '$_iconsPath/more.svg';
+  static String call = '$_iconsPath/call.svg';
+  static String location_2 = '$_iconsPath/location_2.svg';
+  static String down_arrow = '$_iconsPath/down_down.svg';
+  static String left_arrow = '$_iconsPath/right_arrow.svg';
+  static String whatsapp_2 = '$_iconsPath/whatsapp_2.svg';
+  static String yellow_location = '$_iconsPath/yellow_location.svg';
+
 
 
   /* =================================================== */

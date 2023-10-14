@@ -14,7 +14,7 @@ class CarProperties extends StatelessWidget {
     return BorderWidget(
       child: Column(
         children: [
-          HeaderCarDetails(),
+          // HeaderCarDetails(),
           Divider(color: context.dividerColor, thickness: 1, height: 40),
           Wrap(
               children:
@@ -33,31 +33,37 @@ class CarPropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100,
+      width: 90,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-      decoration: Decorations.decorationBorderShadow(
-        color: context.scaffoldBackgroundColor,
-        borderColor: context.dividerColor,
-        colorShadow: context.outline,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: Decorations.kDecorationBorderWithRadius(
+        borderColor: AppColors.grey_CA,
+        radius: 4,
       ),
-      child: IntrinsicWidth(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(property.title,
-                    style: context.bodyLarge.copyWith(fontSize: 14)),
-                const SizedBox(width: 30),
-                AppIcon(icon: property.icon),
-              ],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          AppIcon(icon: property.icon),
+          Text(
+            property.title,
+            style: context.textTheme.labelMedium!.copyWith(
+              color: AppColors.grey_5F,
             ),
-            const SizedBox(height: 5),
-            Text(property.subtitle,
-                style: context.displaySmall.copyWith(fontSize: 12)),
-          ],
-        ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            property.subtitle,
+            style: context.textTheme.labelLarge!.copyWith(
+              color: AppColors.grey_5F,
+            ),
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+          ),
+        ],
       ),
     );
   }

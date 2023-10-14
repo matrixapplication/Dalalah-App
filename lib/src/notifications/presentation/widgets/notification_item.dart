@@ -20,7 +20,7 @@ class NotificationItem extends StatelessWidget {
     return  Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(left: 10, right: 10, top: 12, bottom: 8),
-      decoration: Decorations.kDecorationBorderRadius(color: context.cardColor, borderColor: context.colorScheme.onSecondary),
+      decoration: Decorations.kDecorationBorderWithRadius(color: context.cardColor, borderColor: context.colorScheme.onSecondary),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
