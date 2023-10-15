@@ -6,23 +6,30 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   final Function() firstOnTap;
   final Function() secondOnTap;
   final Widget secondButtonLabel;
+  final Color? secondButtonColor;
+  final bool secondButtonHasShadow;
   final Widget firstRow;
+  final Decoration? decoration;
 
   CustomCompanyContainer({
     super.key,
+    this.decoration,
     required this.firstOnTap,
+    this.secondButtonColor,
     required this.secondOnTap,
     required this.secondButtonLabel,
     required this.firstRow,
+    this.secondButtonHasShadow = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsetsDirectional.only(bottom: 20),
-      decoration: Decorations.kDecorationBorder(
-        radius: 8,
-      ),
+      margin: 20.paddingBottom,
+      decoration: decoration ??
+          Decorations.kDecorationBorder(
+            radius: 8,
+          ),
       child: Column(
         children: [
           firstRow,
@@ -50,14 +57,16 @@ class CustomCompanyContainer extends BaseStatelessWidget {
                 flex: 1,
                 child: SecondaryButton(
                   height: 45,
-                  backgroundColor: const Color(0xffF0F0F0),
+
+                  backgroundColor: secondButtonColor ?? const Color(0xffF0F0F0),
                   borderRadius: const BorderRadiusDirectional.only(
                     bottomEnd: Radius.circular(8),
                   ),
                   onPressed: secondOnTap,
                   // label: strings.request_for_quotation,
                   // labelColor: AppColors.grey_68,
-                  shadowColor: const Color(0xffE9E9E9).withOpacity(0.25),
+                  // shadowColor: const Color(0xffE9E9E9).withOpacity(0.25),
+                  shadowColor: secondButtonHasShadow ? null : Colors.white,
                   child: secondButtonLabel,
                 ),
               ),

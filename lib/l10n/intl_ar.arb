@@ -137,5 +137,11 @@
   "new_cars": "السيارات الجديدة",
   "used_cars": "السيارات المستعملة",
   "branches": "الفروع",
-  "used" : "مستعمل"
+  "used" : "مستعمل",
+  "privacy_policy_about_us_terms_and_conditions" : "ساسة الخصوصية, من نحن, الشروط والاحكام",
+  "account_settings" : "اعدادات الحساب",
+  "dealers_showrooms_agents" : "التجار, المعارض, الوكلاء",
+  "edit_name_email_picture_change_password" : "تعديل الاسم, الايميل, الصورة, تغيير كلمة السر",
+  "exhibitions" : "المعارض",
+  "buildings" : "العقارات" 
 }

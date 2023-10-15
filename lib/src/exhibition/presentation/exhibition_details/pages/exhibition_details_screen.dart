@@ -5,6 +5,7 @@ import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../main_index.dart';
 import '../../exhibitions/widgets/custom_exhibition_circle_logo.dart';
+import 'views/branches_view.dart';
 import 'views/new_cars_view.dart';
 import 'views/used_cars_view.dart';
 
@@ -99,7 +100,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
               ),
               TabItemModel(
                 label: context.strings.branches,
-                page: 0.ph,
+                page: BranchesView(),
               ),
             ],
           ),

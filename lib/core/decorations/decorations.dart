@@ -11,8 +11,10 @@ class Decorations {
     );
   }
 
+
+
   static BoxDecoration kDecorationBorderRadius({
-    required Color color,
+    Color? color,
     BorderRadiusDirectional? borderRadius,
   }) {
     return BoxDecoration(
@@ -36,6 +38,7 @@ class Decorations {
 
   static ShapeDecoration mainShapeDecoration({
     double? radius,
+    BorderRadiusDirectional? borderRadius,
   }) {
     return ShapeDecoration(
       gradient: const LinearGradient(
@@ -44,7 +47,7 @@ class Decorations {
         colors: [Color(0xFF033E4D), Color(0xFF055C72)],
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
       ),
     );
   }

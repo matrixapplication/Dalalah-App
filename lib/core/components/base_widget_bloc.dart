@@ -1,8 +1,10 @@
-
 import '../../src/main_index.dart';
+import '../widgets/tabview/animated_tabs_bar.dart';
 
-abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStatelessWidget  {
-  BuildContext? context = injector<ServicesLocator>().navigatorKey.currentContext;
+abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
+    extends BaseStatelessWidget {
+  BuildContext? context =
+      injector<ServicesLocator>().navigatorKey.currentContext;
   late B bloc;
 
   BaseBlocWidget({Key? key}) : super(key: key);
@@ -53,6 +55,21 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
   }
 
   @protected
+  bool hasTabBarView(BuildContext context) {
+    return false;
+  }
+
+  // @protected
+  // List<TabModel> tabs(BuildContext context) {
+  //   return [];
+  // }
+
+  @protected
+  List<Widget> tabViews(BuildContext context) {
+    return [];
+  }
+
+  @protected
   bool? isNotBack(BuildContext context) {
     return true;
   }
@@ -62,8 +79,6 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
     return true;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     this.context = context;
@@ -71,7 +86,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
     return mainFrame(body: buildConsumer(context));
   }
 
-  Widget mainFrame({required Widget body}) {
+  Widget mainFrame({
+    required Widget body,
+    List<TabModel>? tabs,
+  }) {
     return WillPopScope(
       onWillPop: () => _onWillPop(context!),
       child: AppScaffold(
@@ -79,9 +97,13 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
         isDrawer: isNotBack(context!),
         body: body,
+        tabs: tabs,
+        tabViews: tabViews(context!),
+        hasTabBarView: hasTabBarView(context!),
       ),
     );
   }
+
   _onWillPop(BuildContext context) {
     print('onBackPress');
     if (Navigator.canPop(context)) {
@@ -91,6 +113,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
       SystemChannels.platform.invokeMethod('SystemNavigator.pop');
     }
   }
+
   Widget handleUiState(DataState state, BuildContext context) {
     print('handleUiState $T == $state => ${state is T}');
     if (state is DataLoading) {
@@ -119,7 +142,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
 
   void handleApiError(error,
       {required Function(String message, String code) onHandleMessage}) {
-    final errorApi = injector<ServicesLocator>().navigatorKey.currentContext!.handleApiError(exception: error);
+    final errorApi = injector<ServicesLocator>()
+        .navigatorKey
+        .currentContext!
+        .handleApiError(exception: error);
     onHandleMessage(errorApi.code.toString(), "0");
   }
 
@@ -137,7 +163,8 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>> extends BaseStat
 
   void onRequestSuccess(String? message) {
     if (message != null && message.isNotEmpty) {
-      DialogsManager.showSuccessDialog(context!, message: message, onClickOk: () {
+      DialogsManager.showSuccessDialog(context!, message: message,
+          onClickOk: () {
         Navigator.pop(context!);
         onSuccessDismissed();
       });

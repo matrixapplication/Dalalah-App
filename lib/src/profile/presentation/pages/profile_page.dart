@@ -5,21 +5,21 @@ import '../../domain/entities/profile.dart';
 import '../bloc/profile_bloc.dart';
 import 'profile_screen.dart';
 
-class ProfilePage extends BaseBlocWidget<DataSuccess<Profile>, ProfileBloc> {
+class ProfilePage extends BaseBlocWidget<UnInitState, ProfileBloc> {
   ProfilePage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchProfileData();
+    // bloc.fetchProfileData();
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<Profile> state) {
+  Widget buildWidget(BuildContext context, UnInitState state) {
     return ProfileScreen(
-      profile: state.data!,
-      obRefresh: () => bloc.fetchProfileData(isRefresh: true),
-      onDeleteAccount: () => deleteAccount(),
-      onLogout: () => logout(),
+      // profile: state.data!,
+      // obRefresh: () => bloc.fetchProfileData(isRefresh: true),
+      // onDeleteAccount: () => deleteAccount(),
+      // onLogout: () => logout(),
     );
   }
 

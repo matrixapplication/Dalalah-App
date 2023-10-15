@@ -102,16 +102,17 @@ class DetailsViewListTile extends StatelessWidget {
             onTap: () {
               isOpen = !isOpen;
               setState(() {});
-              print(isOpen);
             },
             contentPadding: 30.paddingHoriz,
             title: Text(
               title,
-              style: context.textTheme.titleSmall,
+              style: context.textTheme.displayMedium!.copyWith(
+                color: AppColors.grey_2C
+              ),
             ),
             trailing: AppIcon(
               icon: isOpen ? AppIcons.down_arrow : AppIcons.left_arrow,
-              size: isOpen ? 10 : 25,
+              size: isOpen ? 10 : 27,
               color: const Color(0xff222222),
             ),
           ),

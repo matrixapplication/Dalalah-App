@@ -45,7 +45,7 @@ class AppCircularIconButton extends StatelessWidget {
       //   ],
       // ),
       decoration: Decorations.kDecorationBoxShadow(
-          radius: 100,
+          radius: radius ??  100,
           offset: const Offset(0, 4),
           colorShadow: const Color(0xff8E8E8E).withOpacity(0.25)),
       child: AppIconButton(

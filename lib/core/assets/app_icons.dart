@@ -19,6 +19,10 @@ class AppIcons {
   static String down_arrow = '$_iconsPath/down_down.svg';
   static String left_arrow = '$_iconsPath/right_arrow.svg';
   static String whatsapp_2 = '$_iconsPath/whatsapp_2.svg';
+  static String box = '$_iconsPath/box.svg';
+  static String menu = '$_iconsPath/menu.svg';
+  static String save = '$_iconsPath/save.svg';
+  static String off = '$_iconsPath/off.svg';
   static String yellow_location = '$_iconsPath/yellow_location.svg';
 
 
@@ -64,7 +68,6 @@ class AppIcons {
       "$_iconsPath/direct_arrow_outline.svg";
   static const String rightArrow = "$_iconsPath/right_arrow.svg";
   static const String leftArrow = "$_iconsPath/left_arrow.svg";
-  static const String menu = "$_iconsPath/menu.svg";
   static const String notificationOutline =
       "$_iconsPath/notification_outline.svg";
   static const String scan = "$_iconsPath/qr_scan.svg";

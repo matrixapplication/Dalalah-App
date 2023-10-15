@@ -20,11 +20,19 @@ class TabWidgetItemBuilder extends Tab {
 class TabBarWidget extends StatelessWidget {
   final double? labelSize;
   final List<TabItemModel> tabs;
+  final Color? selectedLabelColor;
+  final Color? unSelectedLabelColor;
+  final TextStyle? textStyle;
+  final Decoration? indicatorDecoration;
 
   const TabBarWidget({
     Key? key,
     required this.tabs,
     this.labelSize,
+    this.indicatorDecoration,
+    this.selectedLabelColor,
+    this.unSelectedLabelColor,
+    this.textStyle,
   }) : super(key: key);
 
   @override
@@ -38,6 +46,7 @@ class TabBarWidget extends StatelessWidget {
           child: Container(
             margin: 15.paddingHoriz,
             decoration: BoxDecoration(
+              color: Colors.transparent,
               border: Border(
                 bottom: BorderSide(width: 2, color: Colors.grey[100]!),
               ),
@@ -53,8 +62,8 @@ class TabBarWidget extends StatelessWidget {
                 fontSize: labelSize ?? 18,
                 // height: 0.5,
               ),
-              labelColor: AppColors.blue_49,
-              unselectedLabelColor: AppColors.grey_4B,
+              labelColor: selectedLabelColor ?? AppColors.blue_49,
+              unselectedLabelColor: unSelectedLabelColor ?? AppColors.grey_4B,
               // indicator: const BoxDecoration(
               //   color: kPrimaryDark,
               //   borderRadius: BorderRadius.all(
@@ -63,10 +72,7 @@ class TabBarWidget extends StatelessWidget {
               // ),
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               indicatorWeight: 3,
-              // indicator: BoxDecoration(
-              //   borderRadius: BorderRadiusDirectional.circular(20),
-              //   color: Colors.red,
-              // ),
+              indicator: indicatorDecoration,
               indicatorColor: AppColors.blue_49,
               indicatorSize: TabBarIndicatorSize.tab,
 

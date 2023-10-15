@@ -111,8 +111,6 @@
 // }
 
 import 'package:delala/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
-
-import '../../../../../core/widgets/buttons/secondary_button.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../main_index.dart';
 import '../../cars/widgets/custom_company_container.dart';
@@ -161,7 +159,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
             children: [
               Text(
                 "الحمد للسيارات",
-                style: context.textTheme.bodyLarge!.copyWith(
+                style: context.textTheme.bodyMedium!.copyWith(
                   color: AppColors.grey_41,
                 ),
               ),

@@ -40,11 +40,26 @@ class ExhibitionItem extends BaseStatelessWidget {
                 logoAlignment: AlignmentDirectional.center,
               ),
               20.pw,
-              Text(
-                "الحمد للسيارات",
-                style: context.textTheme.bodyLarge!
-                    .copyWith(color: AppColors.grey_41),
-              )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "الحمد للسيارات",
+                    style: context.textTheme.bodyLarge!
+                        .copyWith(color: AppColors.grey_41),
+                  ),
+                  10.ph,
+                  IconText(
+                    text: "جدة",
+                    textStyle: context.textTheme.displayLarge!.copyWith(
+                      color: AppColors.grey_68,
+                    ),
+                    icon: AppIcons.yellow_location,
+                    iconSize: 28,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                  ),
+                ],
+              ),
             ],
           ),
         ),

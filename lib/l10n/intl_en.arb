@@ -161,5 +161,11 @@
   "new_cars" : "New cars",
   "used_cars" : "Used cars",
   "branches" : "Branches",
-  "used" : "Used"
+  "used" : "Used",
+  "account_settings" : "Account settings",
+  "privacy_policy_about_us_terms_and_conditions" : "Privacy Policy, About Us, Terms and Conditions",
+  "dealers_showrooms_agents" : "Dealers, showrooms, agents",
+  "edit_name_email_picture_change_password" : "Edit name, email, picture, change password",
+  "exhibitions" : "Exhibitions",
+  "buildings" : "Buildings"
 }
