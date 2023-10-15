@@ -94,7 +94,7 @@ class IconText extends StatelessWidget {
           ? Icon(iconData, size: iconSize ?? 20, color: iconColor)
           : AppIcon(
               icon: icon ?? '',
-              size: iconSize ?? 15,
+              size: iconSize,
               color: iconColor,
             );
 }

@@ -32,7 +32,7 @@ class CarVerticalItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: isCatItem ? 160 : 168,
+          height: isCatItem ? 140 : 148,
           margin: EdgeInsetsDirectional.only(
               bottom: isCatItem ? 0 : bottomMargin ?? 20),
           decoration: Decorations.kDecorationBorderRadius(
@@ -72,14 +72,14 @@ class CarVerticalItem extends StatelessWidget {
                           style: context.textTheme.labelLarge!.copyWith(
                             color: AppColors.grey_2C,
                           ),
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       8.ph,
                       Row(
                         children: [
-                          SubCustomContainer(
+                          CustomChip(
                             backgroundColor: AppColors.grey_d9,
                             label: carStatus ?? context.strings.new_,
                             fontSize: 14,
@@ -87,7 +87,7 @@ class CarVerticalItem extends StatelessWidget {
                             padding: 3.paddingVert + 10.paddingHoriz,
                           ),
                           14.pw,
-                          SubCustomContainer(
+                          CustomChip(
                             backgroundColor: AppColors.grey_d9,
                             label: '2023',
                             fontSize: 14,
@@ -97,7 +97,7 @@ class CarVerticalItem extends StatelessWidget {
                         ],
                       ),
                       15.ph,
-                      SubCustomContainer(
+                      CustomChip(
                         radius: 15,
                         backgroundColor: AppColors.blue_49,
                         label: '800,000 ${context.strings.rs}',
@@ -163,19 +163,10 @@ class CarVerticalItem extends StatelessWidget {
               // )
               Expanded(
                 flex: 2,
-                child: ClipRRect(
-                  borderRadius: imageHasOnlyTopRadius
-                      ? const BorderRadiusDirectional.only(
-                          topStart: Radius.circular(5),
-                          topEnd: Radius.circular(5),
-                        )
-                      : BorderRadiusDirectional.circular(5),
-                  child: Image.asset(
-                    AppImages.beuti_car,
-                    height: double.infinity,
-                    // width: double.infinity,
-                    fit: BoxFit.fill,
-                  ),
+                child: ImageNetwork(
+                  image:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
+                  height: double.infinity,
                 ),
               ),
             ],

@@ -55,7 +55,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               15.ph,
               Row(
                 children: [
-                  SubCustomContainer(
+                  CustomChip(
                     backgroundColor: AppColors.grey_d9,
                     label: context.strings.new_,
                     fontSize: 14,
@@ -63,7 +63,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     width: 55,
                   ),
                   14.pw,
-                  SubCustomContainer(
+                  CustomChip(
                     backgroundColor: AppColors.grey_d9,
                     label: '2023',
                     fontSize: 14,
@@ -75,7 +75,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               10.ph,
               Align(
                 alignment: AlignmentDirectional.centerEnd,
-                child: SubCustomContainer(
+                child: CustomChip(
                   backgroundColor: AppColors.blue_49,
                   label: '800,000 ${context.strings.rs}',
                   fontSize: 18,

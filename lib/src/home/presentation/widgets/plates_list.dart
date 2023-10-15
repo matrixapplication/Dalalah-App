@@ -123,7 +123,7 @@ class CarDetailsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SubCustomContainer(
+    return CustomChip(
       childIsText: false,
       padding: 8.paddingHoriz + 4.paddingVert,
       radius: 5,

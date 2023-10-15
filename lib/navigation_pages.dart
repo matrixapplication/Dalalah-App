@@ -1,4 +1,5 @@
 import 'package:delala/core/utils/helper_methods.dart';
+import 'package:delala/src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import 'package:delala/src/favorites/presentation/pages/favorites_page.dart';
 import 'package:delala/src/notifications/presentation/pages/notifications_page.dart';
 import 'package:delala/src/profile/presentation/pages/profile_page.dart';
@@ -118,8 +119,8 @@ class NavigationPages extends BaseStatelessWidget {
       const HomePage(),
       isAdmin ? HomePage() : HomePage(),
       HomePage(),
-      HomePage(),
-      HomePage(),
+      ExhibitionPage(),
+      ProfilePage(),
     ];
   }
 }

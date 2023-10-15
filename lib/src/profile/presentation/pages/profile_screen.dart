@@ -20,8 +20,6 @@ class ProfileScreen extends BaseStatelessWidget {
     // required this.onLogout,
   }) : super(key: key);
 
-  ScrollController scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -35,71 +33,62 @@ class ProfileScreen extends BaseStatelessWidget {
               // profile: profile,
               ),
           Expanded(
-            child: Container(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              padding: 40.paddingTop,
-              decoration: Decorations.kDecorationTopRadius(
-                color: context.cardColor,
-                radius: 25,
-              ),
-              child: SingleChildScrollView(
-                padding: 16.paddingBottom,
-                controller: scrollController,
-                child: Column(
-                  children: [
-                    ProfileItem(
-                      title: strings.account_settings,
-                      icon: AppIcons.profile,
-                      iconColor: context.cardColor,
-                      subTitle: strings.edit_name_email_picture_change_password,
-                      onTap: () async {
-                        // final isRefresh = await Navigators.pushNamed(
-                        //     Routes.editProfilePage,
-                        //     arguments: profile);
-                        // if (isRefresh is bool) {
-                        //   print('isRefresh $isRefresh');
-                        //   obRefresh();
-                        // }
-                      },
-                    ),
-                    ProfileItem(
-                      title: strings.exhibitions,
-                      icon: AppIcons.box,
-                      subTitle: strings.dealers_showrooms_agents,
-                      onTap: () {
-                        // Navigators.pushNamed(Routes.aboutUs,
-                        //     arguments: AboutUsTypes.ABOUT_US);
-                      },
-                    ),
-                    ProfileItem(
-                      title: strings.favorites,
-                      icon: AppIcons.heart_solid,
-                      subTitle: strings.favorites,
-                      iconColor: Colors.white,
-                      onTap: () {
-                        Navigators.pushNamed(Routes.favoritesPage);
-                      },
-                    ),
-                    ProfileItem(
-                      title: strings.my_ads,
-                      icon: AppIcons.save,
-                      subTitle: strings.my_ads,
-                      iconBackgroundColor: theme.primaryColor,
-                      onTap: () {
-                        Navigators.pushNamed(Routes.settings);
-                      },
-                    ),
-                    ProfileItem(
-                      title: strings.logout,
-                      icon: AppIcons.off,
-                      isLogoutTile: true,
-                      isLast: true,
-                      onTap: () {
-                        // onLogout();
-                      },
-                    ),
-                  ],
-                ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  20.ph,
+                  ProfileItem(
+                    title: strings.account_settings,
+                    icon: AppIcons.profile,
+                    iconColor: context.cardColor,
+                    subTitle: strings.edit_name_email_picture_change_password,
+                    onTap: () async {
+                      // final isRefresh = await Navigators.pushNamed(
+                      //     Routes.editProfilePage,
+                      //     arguments: profile);
+                      // if (isRefresh is bool) {
+                      //   print('isRefresh $isRefresh');
+                      //   obRefresh();
+                      // }
+                    },
+                  ),
+                  ProfileItem(
+                    title: strings.exhibitions,
+                    icon: AppIcons.box,
+                    subTitle: strings.dealers_showrooms_agents,
+                    onTap: () {
+                      // Navigators.pushNamed(Routes.aboutUs,
+                      //     arguments: AboutUsTypes.ABOUT_US);
+                    },
+                  ),
+                  ProfileItem(
+                    title: strings.favorites,
+                    icon: AppIcons.heart_solid,
+                    subTitle: strings.favorites,
+                    iconColor: Colors.white,
+                    onTap: () {
+                      Navigators.pushNamed(Routes.favoritesPage);
+                    },
+                  ),
+                  ProfileItem(
+                    title: strings.my_ads,
+                    icon: AppIcons.save,
+                    subTitle: strings.my_ads,
+                    iconBackgroundColor: theme.primaryColor,
+                    onTap: () {
+                      Navigators.pushNamed(Routes.settings);
+                    },
+                  ),
+                  ProfileItem(
+                    title: strings.logout,
+                    icon: AppIcons.off,
+                    isLogoutTile: true,
+                    isLast: true,
+                    onTap: () {
+                      // onLogout();
+                    },
+                  ),
+                ],
               ),
             ),
           ),

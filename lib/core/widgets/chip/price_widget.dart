@@ -7,8 +7,9 @@ class PriceWidget extends StatelessWidget {
   final Color? backgroundColor;
   final TextStyle? textStyle;
   final TextStyle? egpStyle;
+  final double? fontSize;
   final EdgeInsetsGeometry? padding;
-  const PriceWidget({Key? key, required this.price, this.backgroundColor, this.textStyle, this.egpStyle, this.padding}) : super(key: key);
+  const PriceWidget({Key? key, required this.price, this.backgroundColor, this.textStyle, this.egpStyle, this.padding, this.fontSize}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +25,7 @@ class PriceWidget extends StatelessWidget {
         children: [
           Text(
             price,
-            style: textStyle ?? context.labelMedium,
+            style: textStyle ?? context.labelMedium.copyWith(fontSize: fontSize),
           ),
           Text(
             ' ${context.strings.rs}',

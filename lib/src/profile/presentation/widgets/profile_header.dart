@@ -49,14 +49,14 @@ class ProfileHeader extends StatelessWidget {
                 17.ph,
                 Text(
                   "Jorge David",
-                  style: context.textTheme.titleMedium!.copyWith(
+                  style: context.titleSmall!.copyWith(
                     color: Colors.white,
                   ),
                 ),
                 10.ph,
                 Text(
                   "jorge@mail.com",
-                  style: context.textTheme.displayMedium,
+                  style: context.displaySmall,
                 )
               ],
             ),

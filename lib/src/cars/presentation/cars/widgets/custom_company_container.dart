@@ -29,6 +29,7 @@ class CustomCompanyContainer extends BaseStatelessWidget {
       decoration: decoration ??
           Decorations.kDecorationBorder(
             radius: 8,
+            borderWidth: 1
           ),
       child: Column(
         children: [

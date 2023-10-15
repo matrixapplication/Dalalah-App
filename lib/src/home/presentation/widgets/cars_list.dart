@@ -2,6 +2,7 @@ import 'package:delala/core/assets/app_icons.dart';
 import 'package:delala/core/exceptions/extensions.dart';
 import 'package:delala/core/themes/colors.dart';
 import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:delala/core/widgets/chip/price_widget.dart';
 import 'package:delala/core/widgets/images/image_network.dart';
 import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
@@ -106,37 +107,29 @@ class CarVert extends StatelessWidget {
                       ),
                     ),
                     10.ph,
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: SubCustomContainer(
-                            backgroundColor: AppColors.blue_31,
-                            label:  '1,000,000 ' + context.strings.rs,
-                            padding: 4.paddingVert,
+                    FittedBox(
+                      child: Row(
+                        children: [
+                          PriceWidget(
+                            price:  '1,000,000',
+                              fontSize: 12,
                           ),
-                        ),
-                        10.pw,
-                        Expanded(
-                          flex: 1,
-                          child: SubCustomContainer(
+                          10.pw,
+                          CustomChip(
                             backgroundColor: AppColors.grey_d9,
                             label: context.strings.new_,
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
-                        ),
-                        10.pw,
-                        Expanded(
-                          flex: 1,
-                          child: SubCustomContainer(
+                          10.pw,
+                          CustomChip(
                             backgroundColor: AppColors.grey_d9,
                             label: '2023',
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     const Spacer(),
                     Row(
@@ -180,7 +173,7 @@ class CarDetailsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SubCustomContainer(
+    return CustomChip(
       childIsText: false,
       padding: 8.paddingHoriz + 4.paddingVert,
       radius: 5,
@@ -188,9 +181,10 @@ class CarDetailsContainer extends StatelessWidget {
       child: IconText(
         text: label,
         icon: icon,
+        iconSize: 15,
         textStyle: context.bodyMedium.copyWith(
           fontWeight: FontWeight.w500,
-          fontSize: 15,
+          fontSize: 12,
         ),
       ),
     );

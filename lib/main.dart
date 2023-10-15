@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
             ],
             routes: Routes.routes,
             initialRoute:
-                !token.isNotEmpty ? Routes.profilePage : Routes.login,
+                !token.isNotEmpty ? Routes.navigationPages : Routes.navigationPages,
           );
         },
       ),

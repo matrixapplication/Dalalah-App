@@ -1,8 +1,8 @@
-import 'package:delala/core/widgets/clickable_widget.dart';
+import 'package:delala/core/widgets/images/image_network.dart';
 
+import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../cars/presentation/cars/widgets/custom_company_container.dart';
-import '../../../../cars/presentation/cars/widgets/custom_square_company_logo.dart';
 import '../../../../main_index.dart';
 
 class ExhibitionItem extends BaseStatelessWidget {
@@ -10,10 +10,9 @@ class ExhibitionItem extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClickableWidget(
+    return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-          context,
+        Navigators.pushNamed(
           Routes.exhibitionDetailsPage,
         );
       },
@@ -25,7 +24,6 @@ class ExhibitionItem extends BaseStatelessWidget {
           icon: AppIcons.location_2,
           textColor: AppColors.grey_68,
           fontSize: 16,
-          iconSize: 25,
           iconColor: AppColors.blue_49,
           isIconLift: true,
         ),
@@ -33,32 +31,18 @@ class ExhibitionItem extends BaseStatelessWidget {
           padding: 10.paddingVert + 15.paddingHoriz,
           child: Row(
             children: [
-              CustomSquareCompanyLogo(
-                logoPath: AppImages.car_name,
-                height: 75,
-                width: 83,
-                logoAlignment: AlignmentDirectional.center,
+              const ImageNetwork(
+                image: 'https://play-lh.googleusercontent.com/joJ9c93sLgHTIgkK3Um6vkXKtv4lA9Am3WECHkZCdLAALlzB8CiyUoEE4urjWZbYIA',
+                size: 75,
+                borderWidth: 1.5,
               ),
               20.pw,
-              Column(
+              ColumnTexts(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "الحمد للسيارات",
-                    style: context.textTheme.bodyLarge!
-                        .copyWith(color: AppColors.grey_41),
-                  ),
-                  10.ph,
-                  IconText(
-                    text: "جدة",
-                    textStyle: context.textTheme.displayLarge!.copyWith(
-                      color: AppColors.grey_68,
-                    ),
-                    icon: AppIcons.yellow_location,
-                    iconSize: 28,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                  ),
-                ],
+                title: "الحمد للسيارات",
+                value: "جدة",
+                titleStyle: context.textTheme.bodyMedium,
+                valueStyle: context.textTheme.displaySmall,
               ),
             ],
           ),

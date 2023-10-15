@@ -56,7 +56,7 @@ class ProfileItem extends StatelessWidget {
             backgroundColor: backgroundColor,
             margin: margin,
             decoration: decoration,
-            contentPadding: contentPadding ?? 32.paddingHoriz,
+            contentPadding: contentPadding ?? 16.paddingHoriz,
             leading: AppCircularIcon(
               icon: icon,
               iconData: iconData,
@@ -68,7 +68,7 @@ class ProfileItem extends StatelessWidget {
                 ? 0.ph
                 : Icon(
                     Icons.arrow_forward_ios_rounded,
-                    color: context.outline,
+                    color: context.hintColor,
                     size: 18,
                   ),
             onTap: onTap,

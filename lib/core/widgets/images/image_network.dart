@@ -1,3 +1,4 @@
+import 'package:delala/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 ///  Created by harbey on 9/3/2023.
@@ -43,8 +44,9 @@ class ImageNetwork extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final double? radius;
   final Decoration? decoration;
+  final double borderWidth;
 
-  const ImageNetwork({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration});
+  const ImageNetwork({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration, this.borderWidth = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class ImageNetwork extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: decoration ?? BoxDecoration(
         borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
+        border: borderWidth == 0 ? null : Border.all(color: context.dividerColor, width: borderWidth),
       ),
       child: ClipRRect(
         borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),

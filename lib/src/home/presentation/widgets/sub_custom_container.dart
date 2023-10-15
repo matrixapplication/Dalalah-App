@@ -2,7 +2,7 @@ import 'package:delala/core/decorations/decorations.dart';
 import 'package:delala/src/main_index.dart';
 import 'package:flutter/material.dart';
 
-class SubCustomContainer extends StatelessWidget {
+class CustomChip extends StatelessWidget {
   final String? label;
   final Color? backgroundColor;
   final Color? borderColor;
@@ -15,7 +15,7 @@ class SubCustomContainer extends StatelessWidget {
   final double? radius;
   final double? width;
 
-  const SubCustomContainer({
+  const CustomChip({
     super.key,
     this.label,
     this.backgroundColor,
@@ -32,7 +32,7 @@ class SubCustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? 3.paddingVert,
+      padding: padding ?? 3.paddingVert + 8.paddingHoriz,
       margin: margin,
       width: width,
       alignment: Alignment.center,
