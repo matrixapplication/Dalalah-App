@@ -13,6 +13,7 @@ class NewCarItem extends BaseStatelessWidget {
         children: [
           const CarVerticalItem(
             bottomMargin: 0,
+            imageHasOnlyTopRadius: true,
           ),
           Container(
             width: double.infinity,

@@ -23,8 +23,8 @@ class ExhibitionItem extends BaseStatelessWidget {
           text: strings.location,
           icon: AppIcons.location_2,
           textColor: AppColors.grey_68,
+          iconColor: context.primaryColor,
           fontSize: 16,
-          iconColor: AppColors.blue_49,
           isIconLift: true,
         ),
         firstRow: Padding(

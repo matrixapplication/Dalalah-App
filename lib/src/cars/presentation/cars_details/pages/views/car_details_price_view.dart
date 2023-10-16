@@ -16,7 +16,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
           Container(
             padding: 60.paddingHoriz + 8.paddingVert,
             decoration: Decorations.kDecorationOnlyRadius(
-              color: AppColors.blue_49,
+              color: context.primaryColor,
             ),
             child: Column(
               children: [
@@ -46,10 +46,8 @@ class CarDetailsPriceView extends BaseStatelessWidget {
               ),
               15.pw,
               Text(
-                '500 ${context.strings.rs}',
-                style: context.textTheme.bodyMedium!.copyWith(
-                  color: AppColors.blue_49,
-                ),
+                '5000 ${context.strings.rs}',
+                style: context.headlineMedium,
               ),
             ],
           ),

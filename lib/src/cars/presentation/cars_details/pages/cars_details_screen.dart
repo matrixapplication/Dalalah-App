@@ -30,7 +30,6 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               end: 10,
               child: AppCircularIconButton(
                 icon: AppIcons.heart,
-                color: AppColors.blue_31,
                 circleSize: 45,
                 backgroundColor: context.cardColor,
                 shadowColor: context.cardColor.withOpacity(0.2),
@@ -76,7 +75,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: CustomChip(
-                  backgroundColor: AppColors.blue_49,
+                  backgroundColor: context.primaryColor,
                   label: '800,000 ${context.strings.rs}',
                   fontSize: 18,
                   padding: 5.paddingVert,

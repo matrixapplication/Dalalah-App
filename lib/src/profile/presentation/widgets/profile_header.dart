@@ -19,7 +19,14 @@ class ProfileHeader extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 290,
-      decoration: Decorations.mainShapeDecoration(
+      // decoration: Decorations.mainShapeDecoration(
+      // borderRadius: const BorderRadiusDirectional.only(
+      //   bottomStart: Radius.circular(8),
+      //   bottomEnd: Radius.circular(8),
+      // ),
+      // ),
+      decoration: Decorations.kDecorationBorderRadius(
+        color: context.primaryColor,
         borderRadius: const BorderRadiusDirectional.only(
           bottomStart: Radius.circular(8),
           bottomEnd: Radius.circular(8),

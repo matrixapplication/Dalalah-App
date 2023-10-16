@@ -10,26 +10,28 @@ import 'change_language_popup.dart';
 ///  Created by harbey on 10/12/2023.
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        10.pw,
+        15.pw,
         AppCircularIconButton(
           icon: AppIcons.notification,
           backgroundColor: context.cardColor,
-          padding: 10,
-          size: 26,
+          color: context.primaryColor,
+          padding: 9,
+          size: 28,
+          circleSize: 40,
           onPressed: () {},
         ),
         10.pw,
-        ChangeLanguagePopup(),
-        Spacer(),
-        Logo(
-          size: 65,
-        ),
+        // ChangeLanguagePopup(),
+        const Spacer(),
+        const Logo(size: 65),
+        // 5.pw,
       ],
     );
   }

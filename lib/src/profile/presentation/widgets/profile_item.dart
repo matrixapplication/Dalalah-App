@@ -61,7 +61,7 @@ class ProfileItem extends StatelessWidget {
               icon: icon,
               iconData: iconData,
               radius: 23,
-              backgroundColor: iconBackgroundColor ?? AppColors.blue_49,
+              backgroundColor: iconBackgroundColor ?? context.primaryColor,
               color: iconColor,
             ),
             trailing: isLogoutTile

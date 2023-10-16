@@ -23,7 +23,7 @@ class BranchItem extends BaseStatelessWidget {
         textColor: AppColors.grey_68,
         fontSize: 16,
         iconSize: 25,
-        iconColor: AppColors.blue_49,
+        iconColor: context.primaryColor,
         isIconLift: true,
       ),
       firstRow: Padding(

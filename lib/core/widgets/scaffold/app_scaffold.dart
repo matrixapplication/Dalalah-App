@@ -76,19 +76,30 @@ class AppScaffold extends StatelessWidget {
             ? null
             : appBar ??
                 AppBar(
-                  title: Text(
-                    title ?? '',
-                    style: titleStyle ??
-                        theme.appBarTheme.titleTextStyle!.copyWith(
-                          color: Colors.white,
-                        ),
+                  title: Padding(
+                    padding: 10.paddingTop,
+                    child: Text(
+                      title ?? '',
+                      style: titleStyle ??
+                          theme.appBarTheme.titleTextStyle!.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
                   ),
                   backgroundColor:
                       backgroundAppBar ?? theme.appBarTheme.backgroundColor,
                   flexibleSpace: Container(
-                    decoration: Decorations.mainShapeDecoration(
-                      radius: 0,
-                    ),
+                    // decoration: Decorations.mainShapeDecoration(
+                    //   radius: 0,
+                    // ),
+                    // decoration: Decorations.kDecorationBorderRadius(
+                    //   color: context.primaryColor,
+                    // borderRadius: const BorderRadiusDirectional.only(
+                    //   bottomStart: Radius.circular(8),
+                    //   bottomEnd: Radius.circular(8),
+                    // ),
+                    // ),
+                    color: context.primaryColor,
                   ),
                   // leading: Container(
                   //   height: 50,
@@ -101,7 +112,7 @@ class AppScaffold extends StatelessWidget {
                       [
                         AppCircularIconButton(
                           margin:
-                              30.paddingEnd + 12.paddingTop + 7.paddingBottom,
+                              31.paddingEnd + 16.paddingTop + 4.paddingBottom,
                           icon: AppIcons.rightArrow,
                           size: 28,
                           padding: 3,
@@ -117,100 +128,96 @@ class AppScaffold extends StatelessWidget {
                         backgroundAppBar ?? theme.appBarTheme.backgroundColor,
                     statusBarBrightness: Brightness.light,
                   ),
-                  bottom: !hasTabBarView
-                      ? null
-                      : PreferredSize(
-                          preferredSize: const Size.fromHeight(45),
-                          child: Container(
-                            height: 45.5,
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(
-                              top: 0,
-                              bottom: 0,
-                              right: 10,
-                              left: 10,
+                  bottom: PreferredSize(
+                    preferredSize: Size.fromHeight(hasTabBarView ? 70 : 20),
+                    child: !hasTabBarView
+                        ? 0.ph
+                        : TabBar(
+                            // splashBorderRadius: BorderRadius.circular(8),
+                            // tabAlignment: TabAlignment.fill,
+                            // padding: 15.paddingHoriz,
+                            onTap: (index) {
+                              // if (onTabSelected != null) onTabSelected!(index);
+                            },
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.transparent),
+                            // isScrollable: true,
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            labelStyle: context.textTheme.labelMedium!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
-                            decoration: Decorations.kDecorationOnlyRadius(
-                              radius: 50,
-                              color: Colors.transparent,
+                            labelColor: Colors.white,
+                            unselectedLabelStyle:
+                                context.textTheme.labelMedium!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
-                            child: TabBar(
-                              splashBorderRadius: BorderRadius.circular(8),
-                              onTap: (index) {
-                                // if (onTabSelected != null) onTabSelected!(index);
-                              },
-                              overlayColor: MaterialStateProperty.all(
-                                  Colors.transparent),
-                              // isScrollable: true,
-                              indicatorSize: TabBarIndicatorSize.tab,
-                              labelStyle:
-                                  context.textTheme.labelMedium!.copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                              labelColor: Colors.white,
-                              unselectedLabelStyle:
-                                  context.textTheme.labelMedium!.copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                              unselectedLabelColor: Colors.white,
-                              indicatorPadding: EdgeInsets.zero,
-                              labelPadding: EdgeInsets.zero,
-                              indicatorColor: Colors.white,
-                              indicatorWeight: 3,
-                              tabs: tabs!
-                                  .map(
-                                    (tab) => Tab(
-                                      child: Text(tab.label),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
+                            unselectedLabelColor: Colors.white,
+                            indicatorPadding: 15.paddingHoriz,
+                            indicatorColor: Colors.white,
+                            indicatorWeight: 3,
+                            tabs: tabs!
+                                .map(
+                                  (tab) => Tab(
+                                    child: Text(tab.label),
+                                  ),
+                                )
+                                .toList(),
                           ),
+                  ),
 
-                          // child: hasTabBarView
-                          //     ? Expanded(
-                          //         child: AnimatedTabsBar(
-                          //           isMainTabBar: true,
-                          //           backgroundColor: Colors.transparent,
-                          //           tabs: tabs!,
-                          //           children: tabViews ?? [],
-                          //         ),
-                          //       )
-                          //     : 0.ph,
-                        ),
-                  // leading: leading != null
-                  //     ? Padding(
-                  //         padding: const EdgeInsets.only(right: 5),
-                  //         child: Row(
-                  //           children: [
-                  //             if (isDrawer!)
-                  //               AppIconButton(
-                  //                 icon: AppIcons.menu,
-                  //                 size: 28,
-                  //                 color: theme.cardColor,
-                  //                 onPressed: () {
-                  //                   globalKey.currentState?.openDrawer();
-                  //                 },
-                  //               ),
-                  //             leading!,
-                  //           ],
+                  // child: hasTabBarView
+                  //     ? Expanded(
+                  //         child: AnimatedTabsBar(
+                  //           isMainTabBar: true,
+                  //           backgroundColor: Colors.transparent,
+                  //           tabs: tabs!,
+                  //           children: tabViews ?? [],
                   //         ),
                   //       )
-                  //     : isDrawer!
-                  //         ? AppIconButton(
-                  //             icon: AppIcons.menu,
-                  //             padding: const EdgeInsets.only(left: 22, top: 18, bottom:5,),
-                  //             color: theme.cardColor,
-                  //             size: 15,
-                  //             onPressed: () {
-                  //               globalKey.currentState?.openDrawer();
-                  //             },
-                  //           )
-                  //         : null,
+                  //     : 0.ph,
                 ),
+        // leading: leading != null
+        //     ? Padding(
+        //         padding: const EdgeInsets.only(right: 5),
+        //         child: Row(
+        //           children: [
+        //             if (isDrawer!)
+        //               AppIconButton(
+        //                 icon: AppIcons.menu,
+        //                 size: 28,
+        //                 color: theme.cardColor,
+        //                 onPressed: () {
+        //                   globalKey.currentState?.openDrawer();
+        //                 },
+        //               ),
+        //             leading!,
+        //           ],
+        //         ),
+        //       )
+        //     : isDrawer!
+        //         ? AppIconButton(
+        //             icon: AppIcons.menu,
+        //             padding: const EdgeInsets.only(left: 22, top: 18, bottom:5,),
+        //             color: theme.cardColor,
+        //             size: 15,
+        //             onPressed: () {
+        //               globalKey.currentState?.openDrawer();
+        //             },
+        //           )
+        //         : null,
       ),
     );
   }
 }
+
+// Container(
+// height: 45.5,
+// width: double.infinity,
+// margin: 10.paddingHoriz,
+// decoration: Decorations.kDecorationOnlyRadius(
+// radius: 50,
+// color: Colors.transparent,
+// ),
+// ),

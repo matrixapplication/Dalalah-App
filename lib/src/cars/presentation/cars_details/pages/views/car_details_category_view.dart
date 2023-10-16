@@ -63,13 +63,13 @@ class CategoryRowText extends StatelessWidget {
       children: [
         RowTexts(
           title: title,
-          titleStyle: context.textTheme.labelLarge!.copyWith(
-            color: textColor ?? AppColors.blue_49,
+          titleStyle: context.headlineMedium.copyWith(
+            color: textColor,
             decoration: TextDecoration.underline,
           ),
           value: value,
-          valueStyle: context.textTheme.labelLarge!.copyWith(
-            color: textColor ?? AppColors.blue_49,
+          valueStyle: context.headlineMedium.copyWith(
+            color: textColor
           ),
           valuePadding: 30.paddingEnd,
         ),

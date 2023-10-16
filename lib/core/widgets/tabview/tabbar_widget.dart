@@ -62,7 +62,7 @@ class TabBarWidget extends StatelessWidget {
                 fontSize: labelSize ?? 18,
                 // height: 0.5,
               ),
-              labelColor: selectedLabelColor ?? AppColors.blue_49,
+              labelColor: selectedLabelColor ?? context.primaryColor,
               unselectedLabelColor: unSelectedLabelColor ?? AppColors.grey_4B,
               // indicator: const BoxDecoration(
               //   color: kPrimaryDark,
@@ -73,7 +73,7 @@ class TabBarWidget extends StatelessWidget {
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               indicatorWeight: 3,
               indicator: indicatorDecoration,
-              indicatorColor: AppColors.blue_49,
+              indicatorColor: context.primaryColor,
               indicatorSize: TabBarIndicatorSize.tab,
 
               tabs: tabs.map((e) => e.builder()).toList(),

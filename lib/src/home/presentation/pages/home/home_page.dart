@@ -7,8 +7,6 @@ class HomePage extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -18,13 +16,14 @@ class HomePage extends StatelessWidget {
             Container(
               height: context.height * 0.4,
               width: double.infinity,
-              decoration: const ShapeDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment(0.00, -1.00),
-                  end: Alignment(0, 1),
-                  colors: [Color(0xFF023947), Color(0xFF025F77)],
-                ),
-                shape: RoundedRectangleBorder(
+              decoration: ShapeDecoration(
+                // gradient: LinearGradient(
+                //   begin: Alignment(0.00, -1.00),
+                //   end: Alignment(0, 1),
+                //   colors: [Color(0xFF023947), Color(0xFF025F77)],
+                // ),
+                color: context.primaryColor,
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(0),
                     bottomRight: Radius.circular(0),
@@ -40,7 +39,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
         HomeScreen(),
-
       ],
     );
   }

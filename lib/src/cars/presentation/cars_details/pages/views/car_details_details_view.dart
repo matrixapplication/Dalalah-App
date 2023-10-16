@@ -67,7 +67,7 @@ class DetailsViewListTile extends StatelessWidget {
       ),
       CarPropertyItem(
         property: CarProperty(
-          title: "سعة المحرك",
+          title: "سعة",
           subtitle: '2000',
           icon: AppIcons.timer,
         ),

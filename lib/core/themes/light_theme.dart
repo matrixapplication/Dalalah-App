@@ -5,7 +5,7 @@ const String fontBold = 'Bold';
 const String fontRegular = 'Regular';
 
 
-const Color primaryColor = Color(0xff1E232C);
+const Color primaryColor = Color(0xff0396BE);
 const Color lighterDarkColor = Color(0xff252525);
 const kGreyColor = Color(0xffC7C7C7);
 

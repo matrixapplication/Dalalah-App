@@ -31,7 +31,7 @@ class CarsList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
 
         itemBuilder: (_, index) {
-          return CarVert(index: index);
+          return CarHorizontalItem(index: index);
         },
         itemCount: 8,
       ),
@@ -39,10 +39,10 @@ class CarsList extends StatelessWidget {
   }
 }
 
-class CarVert extends StatelessWidget {
+class CarHorizontalItem extends StatelessWidget {
   final int index;
 
-  const CarVert({
+  const CarHorizontalItem({
     super.key,
     required this.index,
   });
@@ -82,7 +82,7 @@ class CarVert extends StatelessWidget {
                     start: 5,
                     child: AppCircularIconButton(
                       icon: AppIcons.heart_solid,
-                      color: AppColors.blue_31,
+                      color: context.primaryColor,
                       backgroundColor: context.cardColor,
                       shadowColor: context.cardColor.withOpacity(0.2),
                       padding: 8,
@@ -182,8 +182,8 @@ class CarDetailsContainer extends StatelessWidget {
         text: label,
         icon: icon,
         iconSize: 15,
-        textStyle: context.bodyMedium.copyWith(
-          fontWeight: FontWeight.w500,
+        iconColor: context.primaryColor,
+        textStyle: context.headlineMedium.copyWith(
           fontSize: 12,
         ),
       ),

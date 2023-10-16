@@ -54,7 +54,7 @@ class AnimatedTabsBar extends StatelessWidget {
                 indicator: isMainTabBar
                     ? null
                     : Decorations.kDecorationOnlyRadius(
-                        color: const Color(0xff024C5F),
+                        color: context.primaryColor,
                         radius: 50,
                       ),
 

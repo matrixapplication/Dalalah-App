@@ -64,7 +64,7 @@ class SecondaryButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: decoration ??
             Decorations.kDecorationBoxShadow(
-              color: backgroundColor ?? AppColors.blue_49,
+              color: backgroundColor ?? context.primaryColor,
               radius: radius,
               borderRadius: borderRadius,
               borderColor: borderColor,

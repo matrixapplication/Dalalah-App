@@ -145,7 +145,8 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                 20.pw,
                 CustomColumn(
                   title: strings.monthly_installment,
-                  value: '5400',
+                  value: '5400 ${context.strings.rs}',
+                  textColor: AppColors.grey_41,
                 ),
               ],
             ),
@@ -184,11 +185,13 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
 class CustomColumn extends StatelessWidget {
   final String title;
   final String value;
+  final Color? textColor;
 
   const CustomColumn({
     super.key,
     required this.title,
     required this.value,
+    this.textColor,
   });
 
   @override
@@ -202,7 +205,12 @@ class CustomColumn extends StatelessWidget {
           ),
         ),
         15.ph,
-        Text(value),
+        Text(
+          value,
+          style: context.headlineMedium.copyWith(
+            color: textColor
+          ),
+        ),
       ],
     );
   }

@@ -33,7 +33,7 @@ class CarPropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 120,
       width: 90,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -48,8 +48,8 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   10.pw,
                   AppCircularIconButton(
                     icon: AppIcons.phone_solid,
-                    color: AppColors.blue_31,
                     backgroundColor: context.cardColor,
+                    color: context.primaryColor,
                     circleSize: 45,
                     shadowColor: context.cardColor.withOpacity(0.2),
                     padding: 12,
@@ -79,6 +79,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   color: AppColors.grey_68,
                 ),
                 icon: AppIcons.yellow_location,
+                // iconColor: Colors.yellow,
                 iconSize: 28,
                 mainAxisAlignment: MainAxisAlignment.start,
               ),
@@ -88,14 +89,13 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
         20.ph,
         Expanded(
           child: TabBarWidget(
-            labelSize: 14,
             tabs: [
               TabItemModel(
-                label: context.strings.new_cars,
+                label: context.strings.new_,
                 page: NewCarsView(),
               ),
               TabItemModel(
-                label: context.strings.used_cars,
+                label: context.strings.used,
                 page: UsedCarsView(),
               ),
               TabItemModel(

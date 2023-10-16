@@ -99,7 +99,7 @@ class CarVerticalItem extends StatelessWidget {
                       15.ph,
                       CustomChip(
                         radius: 15,
-                        backgroundColor: AppColors.blue_49,
+                        backgroundColor: context.primaryColor,
                         label: '800,000 ${context.strings.rs}',
                         fontSize: 16,
                         padding: 4.paddingVert,
@@ -165,8 +165,14 @@ class CarVerticalItem extends StatelessWidget {
                 flex: 2,
                 child: ImageNetwork(
                   image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
                   height: double.infinity,
+                  borderRadius: imageHasOnlyTopRadius
+                      ? const BorderRadiusDirectional.only(
+                          topStart: Radius.circular(5),
+                          topEnd: Radius.circular(5),
+                        )
+                      : BorderRadiusDirectional.circular(5),
                 ),
               ),
             ],
