@@ -24,7 +24,7 @@ class NotificationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: 20.paddingHoriz + 20.paddingVert,
+      padding: 20.paddingHoriz + 28.paddingVert,
       decoration: Decorations.kDecorationBorderWithRadius(
           color: context.cardColor,
           borderColor: context.colorScheme.onSecondary),
@@ -33,10 +33,10 @@ class NotificationItem extends StatelessWidget {
         children: [
           CustomSquareCompanyLogo(
             logoPath: AppImages.car_name,
-            width: 70,
-            height: 70,
+            width: 60,
+            height: 60,
           ),
-          30.pw,
+          25.pw,
           Expanded(
             child: ListTile(
               dense: true,
@@ -46,16 +46,16 @@ class NotificationItem extends StatelessWidget {
                 // notification.title ?? '',
                 "قسط عربيتك الجديدة مع الحمد للسيارات",
                 style: context.bodyMedium.copyWith(
-                  fontSize: 15
+                  // fontSize: 15
                 ),
               ),
               subtitle: Padding(
-                padding: 6.paddingTop,
+                padding: 7.paddingTop,
                 child: Text(
                   // notification.description ?? '',
                   "أقل فايده, اطول فترة سداد",
                   style: context.displayMedium.copyWith(
-                    fontSize: 13
+                    // fontSize: 13
                   ),
                 ),
               ),
