@@ -9,12 +9,20 @@ import '../../../../core/assets/app_icons.dart';
 class FavoriteButton extends StatelessWidget {
   final bool isFavorite;
   final EdgeInsetsGeometry? margin;
-  const FavoriteButton({Key? key, this.margin, this.isFavorite = false}) : super(key: key);
+  final double? iconSize;
+
+  const FavoriteButton({
+    Key? key,
+    this.margin,
+    this.isFavorite = false,
+    this.iconSize,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         color: Colors.white,
         shape: OvalBorder(),
         shadows: [
@@ -28,12 +36,10 @@ class FavoriteButton extends StatelessWidget {
       ),
       child: AppIconButton(
         padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
-        size: 20,
+        size: iconSize ?? 20,
         icon: isFavorite ? AppIcons.heart_solid : AppIcons.heart,
         color: context.primaryColor,
-        onPressed: () {
-
-        },
+        onPressed: () {},
       ),
     );
   }

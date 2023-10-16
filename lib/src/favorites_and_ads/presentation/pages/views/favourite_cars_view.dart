@@ -1,10 +1,13 @@
-
-
 import '../../../../cars/presentation/cars/widgets/cars_vertical_item.dart';
 import '../../../../main_index.dart';
 
-class FavouriteCarsView extends StatelessWidget {
-  const FavouriteCarsView({super.key});
+class FavouriteAndAdsCarsView extends StatelessWidget {
+  final bool isAddView;
+
+  const FavouriteAndAdsCarsView({
+    super.key,
+    required this.isAddView,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,10 @@ class FavouriteCarsView extends StatelessWidget {
       padding: 15.paddingAll,
       itemCount: 5,
       itemBuilder: (context, index) {
-        return const CarVerticalItem();
+        return CarVerticalItem(
+          isFavouriteView: true,
+          isAddView: isAddView,
+        );
       },
     );
   }

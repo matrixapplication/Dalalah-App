@@ -36,13 +36,16 @@ import '../../src/exhibition/presentation/exhibition_details/bloc/exhibition_det
     as _i9;
 import '../../src/exhibition/presentation/exhibitions/bloc/exhibition_bloc.dart'
     as _i8;
-import '../../src/favorites/data/data_sources/favorites_datasource.dart'
+import '../../src/favorites_and_ads/data/data_sources/favorites_datasource.dart'
     as _i10;
-import '../../src/favorites/data/repositories/favorites_repo.dart' as _i27;
-import '../../src/favorites/domain/repositories/base_favorites_repo.dart'
+import '../../src/favorites_and_ads/data/repositories/favorites_repo.dart'
+    as _i27;
+import '../../src/favorites_and_ads/domain/repositories/base_favorites_repo.dart'
     as _i26;
-import '../../src/favorites/domain/use_cases/favorites_usecase.dart' as _i44;
-import '../../src/favorites/presentation/bloc/favorites_bloc.dart' as _i57;
+import '../../src/favorites_and_ads/domain/use_cases/favorites_usecase.dart'
+    as _i44;
+import '../../src/favorites_and_ads/presentation/bloc/favorites_bloc.dart'
+    as _i57;
 import '../../src/filter/data/data_sources/filter_datasource.dart' as _i11;
 import '../../src/filter/data/repositories/filter_repo.dart' as _i29;
 import '../../src/filter/domain/repositories/base_filter_repo.dart' as _i28;

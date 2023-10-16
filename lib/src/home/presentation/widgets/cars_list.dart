@@ -4,6 +4,7 @@ import 'package:delala/core/themes/colors.dart';
 import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:delala/core/widgets/chip/price_widget.dart';
 import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,6 @@ class CarsList extends StatelessWidget {
       height: 260,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-
         itemBuilder: (_, index) {
           return CarHorizontalItem(index: index);
         },
@@ -68,26 +68,21 @@ class CarHorizontalItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: Stack(
+              child: const Stack(
                 alignment: AlignmentDirectional.topEnd,
                 children: [
-                  const ImageNetwork(
+                  ImageNetwork(
                     image:
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
                     width: double.infinity,
                     height: 140,
                   ),
                   PositionedDirectional(
-                    top: 2,
-                    start: 5,
-                    child: AppCircularIconButton(
-                      icon: AppIcons.heart_solid,
-                      color: context.primaryColor,
-                      backgroundColor: context.cardColor,
-                      shadowColor: context.cardColor.withOpacity(0.2),
-                      padding: 8,
-                      size: 18,
-                      margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
+                    top: 8,
+                    start: 10,
+                    child: FavoriteButton(
+                      iconSize: 15,
+                      // isFavorite: true,
                     ),
                   ),
                 ],
@@ -111,8 +106,8 @@ class CarHorizontalItem extends StatelessWidget {
                       child: Row(
                         children: [
                           PriceWidget(
-                            price:  '1,000,000',
-                              fontSize: 12,
+                            price: '1,000,000',
+                            fontSize: 12,
                           ),
                           10.pw,
                           CustomChip(

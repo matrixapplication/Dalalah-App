@@ -3,7 +3,7 @@ import 'package:delala/core/exceptions/extensions.dart';
 import 'package:delala/core/themes/colors.dart';
 import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:delala/core/widgets/images/image_network.dart';
-import 'package:delala/src/favorites/presentation/widgets/favorite_button.dart';
+import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
@@ -86,7 +86,7 @@ class PlateVert extends StatelessWidget {
                       width: 50,
                       child: FavoriteButton(
                         margin: 20.paddingTop + 10.paddingHoriz,
-                        isFavorite: true,
+                        // isFavorite: true,
                       )),
                 ],
               ),

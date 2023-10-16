@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import '../../../home/presentation/widgets/cars_list.dart';
 import '../../../sell_car/domain/entities/shipment.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class FavoritesAndAdsScreen extends StatelessWidget {
   final List<String> favorites;
 
-  const FavoritesScreen({Key? key, required this.favorites}) : super(key: key);
+  const FavoritesAndAdsScreen({Key? key, required this.favorites}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

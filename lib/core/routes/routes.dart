@@ -1,3 +1,4 @@
+import 'package:delala/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../navigation_pages.dart';
@@ -11,7 +12,7 @@ import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
 import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
-import '../../src/favorites/presentation/pages/favorites_page.dart';
+import '../../src/favorites_and_ads/presentation/pages/favorites_page.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
@@ -46,7 +47,7 @@ class Routes {
   static const String sellCarPage = 'sellCarPage';
   static const String sellCarImagePickerPage = 'sellCarImagePickerPage';
   static const String sellCarPropertiesPage = 'sellCarPropertiesPage';
-  static const String favoritesPage = 'favoritesPage';
+  static const String favoritesAndAdsPage = 'favoritesAndAdsPage';
   static const String brandsPage = 'brandsPage';
   static const String filterPage = 'filterPage';
   static const String sortByPage = 'sortByPage';
@@ -91,10 +92,10 @@ class Routes {
     homePage: (context) => HomePage(),
     carsPage: (context) => CarsPage(),
     onBoardingPage: (context) => OnBoardingPage(),
-    sellCarPage: (context) => CarsPage(),
+    sellCarPage: (context) => SellCarPage(),
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),
-    favoritesPage: (context) => FavoritesPage(),
+    favoritesAndAdsPage: (context) => FavoritesAndAdsPage(),
     brandsPage: (context) => BrandsScreen(),
     filterPage: (context) => FilterPage(),
     sortByPage: (context) => SortByPage(),

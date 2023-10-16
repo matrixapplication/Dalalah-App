@@ -1,13 +1,11 @@
 import 'package:delala/core/assets/app_images.dart';
 import 'package:delala/core/exceptions/extensions.dart';
 import 'package:delala/core/themes/colors.dart';
-import 'package:delala/core/widgets/buttons/row_buttons.dart';
 import 'package:delala/core/widgets/chip/price_widget.dart';
 import 'package:delala/core/widgets/icons/icon_text.dart';
 import 'package:delala/core/widgets/images/image_network.dart';
 import 'package:delala/core/widgets/scaffold/app_scaffold.dart';
-import 'package:delala/src/favorites/presentation/pages/favorites_page.dart';
-import 'package:delala/src/favorites/presentation/widgets/favorite_button.dart';
+import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/assets/app_icons.dart';
