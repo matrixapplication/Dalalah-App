@@ -13,7 +13,7 @@ class FavouriteBuildingView extends BaseStatelessWidget {
     return Center(
       child: Text(
         strings.soon,
-        style: context.headlineLarge!.copyWith(
+        style: context.headlineLarge.copyWith(
           fontSize: 34,
         ),
       ),

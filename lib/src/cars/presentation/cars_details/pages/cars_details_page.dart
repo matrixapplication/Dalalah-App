@@ -19,6 +19,10 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>
   String? title(context) => strings.car_details;
 
   @override
+  Widget leading(context) => const ShareIconButton();
+
+
+  @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
     return CarsDetailsScreen(
       tasks: state.data ?? [],
@@ -30,7 +34,6 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>
     this.context = context;
     return mainFrame(
       body: buildConsumer(context),
-      leading: const ShareIconButton(),
     );
   }
 

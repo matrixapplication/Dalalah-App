@@ -14,6 +14,9 @@ class NotificationsPage extends BaseBlocWidget<DataSuccess<List<Notifications>>,
      bloc.fetchNotifications();
    }
 
+   @override
+   Widget? leading(BuildContext context) => 0.ph;
+
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Notifications>> state) {
    return NotificationsScreen(

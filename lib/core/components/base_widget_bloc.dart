@@ -59,6 +59,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     return false;
   }
 
+  @protected
+  Widget? leading(BuildContext context) {
+    return null;
+  }
+
   // @protected
   // List<TabModel> tabs(BuildContext context) {
   //   return [];
@@ -95,14 +100,14 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     required Widget body,
     List<TabModel>? tabs,
     bool hasFilter = false,
-    Widget? leading,
+    // Widget? leading,
   }) {
     return WillPopScope(
       onWillPop: () => _onWillPop(context!),
       child: AppScaffold(
         hasFilter: hasFilter,
         title: title(context!),
-        leading: leading,
+        leading: leading(context!),
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
         isDrawer: isNotBack(context!),
         body: body,
