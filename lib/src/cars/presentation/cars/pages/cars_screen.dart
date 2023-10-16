@@ -17,7 +17,11 @@ class CarsScreen extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        20.ph,
+        // FilterHome(
+        //   routeName: '',
+        //   onFilterOrder: () {},
+        // ),
+        10.ph,
         if (isFilter) ...[
           //FilterHome(isDecoration: false),
           BrandsFilter(
@@ -30,7 +34,8 @@ class CarsScreen extends BaseStatelessWidget {
         10.ph,
         Expanded(
           child: ListView.builder(
-            itemCount: tasks.length,
+            // itemCount: tasks.length,
+            itemCount: 5,
             shrinkWrap: true,
             padding: const EdgeInsets.all(10),
             itemBuilder: (context, index) {

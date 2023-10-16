@@ -1,6 +1,7 @@
 import 'package:delala/core/widgets/tabview/tabbar_widget.dart';
 import 'package:delala/src/main_index.dart';
 
+import '../../../src/home/presentation/widgets/filter_home.dart';
 import '../buttons/app_circular_icon_button.dart';
 import '../tabview/animated_tabs_bar.dart';
 
@@ -22,6 +23,7 @@ class AppScaffold extends StatelessWidget {
   final Widget? leading;
   final bool? resizeToAvoidBottomInset;
   final bool hasTabBarView;
+  final bool hasFilter;
 
   const AppScaffold({
     Key? key,
@@ -42,6 +44,7 @@ class AppScaffold extends StatelessWidget {
     this.hasTabBarView = false,
     this.tabs,
     this.tabViews,
+    this.hasFilter = false,
   }) : super(key: key);
 
   @override
@@ -63,9 +66,21 @@ class AppScaffold extends StatelessWidget {
         // ),
         body: tabs == null
             ? body
-            : TabBarView(
-                physics: const NeverScrollableScrollPhysics(),
-                children: tabViews ?? [],
+            : Column(
+                children: [
+                  hasFilter
+                      ? FilterHome(
+                          routeName: '',
+                          onFilterOrder: () {},
+                        )
+                      : 0.ph,
+                  Expanded(
+                    child: TabBarView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: tabViews ?? [],
+                    ),
+                  )
+                ],
               ),
         // extendBody: true,
         backgroundColor: backgroundColor ?? theme.scaffoldBackgroundColor,
@@ -101,11 +116,19 @@ class AppScaffold extends StatelessWidget {
                     // ),
                     color: context.primaryColor,
                   ),
-                  // leading: Container(
-                  //   height: 50,
-                  //   width: 50,
-                  //   color: Colors.white,
-                  // ),
+
+                  leading: Padding(
+                    padding: 31.paddingEnd +
+                        20.paddingTop +
+                        5.paddingBottom +
+                        25.paddingStart,
+                    child: leading ??
+                        AppCircularIconButton(
+                          icon: AppIcons.add,
+                          color: context.primaryColor,
+                          padding: 9,
+                        ),
+                  ),
                   foregroundColor:
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??
@@ -122,7 +145,7 @@ class AppScaffold extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                         ),
                       ],
-                  leadingWidth: 83,
+                  leadingWidth: 88,
                   systemOverlayStyle: SystemUiOverlayStyle(
                     statusBarColor:
                         backgroundAppBar ?? theme.appBarTheme.backgroundColor,

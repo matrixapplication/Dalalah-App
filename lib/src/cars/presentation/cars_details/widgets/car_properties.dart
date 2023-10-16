@@ -44,7 +44,10 @@ class CarPropertyItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          AppIcon(icon: property.icon),
+          AppIcon(
+            icon: property.icon,
+            color: context.primaryColor,
+          ),
           Text(
             property.title,
             style: context.textTheme.labelMedium!.copyWith(

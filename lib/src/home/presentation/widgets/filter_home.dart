@@ -28,6 +28,7 @@ class FilterHome extends StatelessWidget {
             text: context.strings.detailed_research,
             isFirstIcon: false,
             iconSize: 22,
+            iconColor: context.primaryColor,
             space: 12,
             textStyle:textStyle,
             onTap: () {
@@ -48,6 +49,7 @@ class FilterHome extends StatelessWidget {
             icon: AppIcons.filter_order,
             text: context.strings.sort_by,
             textStyle:textStyle,
+            iconColor: context.primaryColor,
             iconSize: 30,
             isFirstIcon: false,
             onTap: onFilterOrder,

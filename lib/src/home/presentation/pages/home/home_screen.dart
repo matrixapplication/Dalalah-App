@@ -42,7 +42,7 @@ class HomeScreen extends BaseStatelessWidget {
                   ),
                   RowSeeAllText(
                     title: strings.latest_paintings,
-                    routeName: Routes.carsPage,
+                    routeName: Routes.platesPage,
                   ),
                   PlatesList(
                     title: strings.plates,

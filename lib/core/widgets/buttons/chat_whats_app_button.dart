@@ -1,25 +1,30 @@
-import 'package:flutter/material.dart';
-import 'package:delala/core/utils/helper_methods.dart';
-import 'package:delala/core/widgets/buttons/app_icon_button.dart';
+// import 'package:flutter/material.dart';
+// import 'package:delala/core/utils/helper_methods.dart';
+// import 'package:delala/core/widgets/buttons/app_icon_button.dart';
+//
+// import '../../assets/app_icons.dart';
+// import '../../components/base_stateless_widget.dart';
 
-import '../../assets/app_icons.dart';
-import '../../components/base_stateless_widget.dart';
+import '../../../src/main_index.dart';
+import '../../utils/helper_methods.dart';
+import 'app_circular_icon_button.dart';
 
 class ChatWhatsAppButton extends BaseStatelessWidget {
   final String phone;
+
   ChatWhatsAppButton({Key? key, required this.phone}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: theme.colorScheme.secondaryContainer.withOpacity(0.1),
-      child: AppIconButton(
-        icon: AppIcons.whatsapp,
-        color: theme.colorScheme.secondaryContainer,
-        onPressed: () {
-          HelperMethods.launchWhatsApp(phone);
-        },
-      ),
+    return AppCircularIconButton(
+      padding: 8,
+      size: 30,
+      circleSize: 45,
+      icon: AppIcons.whatsapp_2,
+      backgroundColor: context.cardColor,
+      shadowColor: context.cardColor.withOpacity(0.2),
+      margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
+      onPressed: () => HelperMethods.launchWhatsApp(phone),
     );
   }
 }

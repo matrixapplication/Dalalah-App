@@ -75,6 +75,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   }
 
   @protected
+  bool hasFilter(BuildContext context) {
+    return false;
+  }
+
+  @protected
   bool? resizeToAvoidBottomInset(BuildContext context) {
     return true;
   }
@@ -89,11 +94,15 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   Widget mainFrame({
     required Widget body,
     List<TabModel>? tabs,
+    bool hasFilter = false,
+    Widget? leading,
   }) {
     return WillPopScope(
       onWillPop: () => _onWillPop(context!),
       child: AppScaffold(
+        hasFilter: hasFilter,
         title: title(context!),
+        leading: leading,
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
         isDrawer: isNotBack(context!),
         body: body,

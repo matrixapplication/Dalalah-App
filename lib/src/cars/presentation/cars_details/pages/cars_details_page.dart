@@ -1,6 +1,7 @@
 
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
+import '../../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/tasks.dart';
 import '../../cars/bloc/cars_bloc.dart';
@@ -21,6 +22,15 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
     return CarsDetailsScreen(
       tasks: state.data ?? [],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    this.context = context;
+    return mainFrame(
+      body: buildConsumer(context),
+      leading: const ShareIconButton(),
     );
   }
 
