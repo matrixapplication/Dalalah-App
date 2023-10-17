@@ -11,6 +11,9 @@ class DropDownField extends StatelessWidget {
   final String? title;
   final String? hint;
   final double? height;
+  final Color? fillColor;
+  final Color? hintColor;
+  final Color? dropDownIconColor;
   final dynamic value;
   final TextStyle? texStyle;
   final IconData? prefixIcon;
@@ -36,7 +39,11 @@ class DropDownField extends StatelessWidget {
       this.validator,
       this.style,
       this.margin,
-      this.marginDropDown, this.height})
+      this.marginDropDown,
+      this.height,
+      this.fillColor,
+      this.hintColor,
+      this.dropDownIconColor})
       : super(key: key);
 
   @override
@@ -65,6 +72,8 @@ class DropDownField extends StatelessWidget {
                 //   minHeight: 60,
                 //   maxHeight: 60,
                 // ),
+                filled: true,
+                fillColor: fillColor,
 
                 contentPadding: 10.paddingEnd + 0.paddingVert,
                 border: OutlineInputBorder(
@@ -90,7 +99,10 @@ class DropDownField extends StatelessWidget {
               ),
               hint: Text(
                 hint ?? '',
-                style: context.displaySmall.copyWith(fontSize: 12),
+                style: context.displaySmall.copyWith(
+                  fontSize: 12,
+                  color: hintColor
+                ),
               ),
               items: items
                   .map((item) => DropdownMenuItem<DropDownItem>(
@@ -113,6 +125,7 @@ class DropDownField extends StatelessWidget {
               },
               buttonStyleData: ButtonStyleData(
                 // padding: 10.paddingVert,
+
                 height: height,
               ),
               iconStyleData: IconStyleData(
@@ -120,7 +133,7 @@ class DropDownField extends StatelessWidget {
                   padding: 10.paddingEnd,
                   child: AppIcon(
                     icon: AppIcons.down_arrow,
-                    color: AppColors.blue_49,
+                    color: dropDownIconColor ?? AppColors.blue_49,
                     size: 10,
                   ),
                 ),

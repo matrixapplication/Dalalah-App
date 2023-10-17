@@ -119,18 +119,19 @@ class AppScaffold extends StatelessWidget {
                     color: context.primaryColor,
                   ),
 
-                  leading: Padding(
-                    padding: 31.paddingEnd +
-                        20.paddingTop +
-                        5.paddingBottom +
-                        25.paddingStart,
-                    child: leading ??
-                        AppCircularIconButton(
-                          icon: AppIcons.add,
-                          color: context.primaryColor,
-                          padding: 9,
-                        ),
-                  ),
+                  leading: leading ??
+                      Padding(
+                        padding: 31.paddingEnd +
+                            20.paddingTop +
+                            5.paddingBottom +
+                            25.paddingStart,
+                        child: leading ??
+                            AppCircularIconButton(
+                              icon: AppIcons.add,
+                              color: context.primaryColor,
+                              padding: 9,
+                            ),
+                      ),
                   foregroundColor:
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??

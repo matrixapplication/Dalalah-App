@@ -13,6 +13,14 @@ class InstallmentPage extends BaseBlocWidget<UnInitState, ProfileBloc> {
   }
 
   @override
+  String? title(BuildContext context) => strings.installment;
+
+  @override
+  Widget? leading(BuildContext context) => 0.ph;
+
+
+
+  @override
   Widget buildWidget(BuildContext context, UnInitState state) {
     return InstallmentScreen(
       // profile: state.data!,

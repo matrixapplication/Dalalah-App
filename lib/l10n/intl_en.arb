@@ -151,6 +151,7 @@
   "latest_cars": "Latest cars",
   "latest_paintings": "Latest paintings",
   "new_": "New",
+
   "details": "Details",
   "categories": "Categories",
   "official_price" : "Official price",
@@ -188,5 +189,15 @@
   "select_image" : "Select image",
   "add_car_image_at_most_10" : "Add car image at most 10 images",
   "share" : "Share",
-  "select_images" : "Select images"
+  "select_images" : "Select images",
+  "total_salary" : "Total salary",
+  "employer" : "Employer",
+  "exist" : "Exist",
+  "see_available_cars" : "See available cars",
+  "enter_the_credit_limit" : "Enter the credit limit",
+  "not_exist" : "Not exist",
+  "personal_finance": "Personal finance",
+  "installment" : "Installment",
+  "enter_the_value_in_saudi_riyals" : "Enter the value in Saudi Riyals",
+  "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget" : "Calculate the monthly installment and installment period, or determine your budget"
 }
