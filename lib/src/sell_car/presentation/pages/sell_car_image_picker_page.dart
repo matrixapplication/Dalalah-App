@@ -17,8 +17,8 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState, HomeCubit> {
   //   bloc.fetchShipments(1);
   // }
 
-  @override
-  String? title (context)=> strings.add_main_images;
+  // @override
+  // String? title (context)=> strings.add_main_images;
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {

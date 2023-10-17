@@ -27,22 +27,37 @@ class CarProperties extends StatelessWidget {
 
 class CarPropertyItem extends StatelessWidget {
   final CarProperty property;
+  final double? width;
+  final double? height;
+  final double? radius;
+  final TextStyle? textStyle;
+  final MainAxisAlignment? mainAxisAlignment;
+  final EdgeInsetsDirectional? padding;
 
-  const CarPropertyItem({Key? key, required this.property}) : super(key: key);
+  const CarPropertyItem({
+    Key? key,
+    required this.property,
+    this.width,
+    this.height,
+    this.radius,
+    this.mainAxisAlignment,
+    this.padding,
+    this.textStyle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
-      width: 90,
+      height: height ?? 120,
+      width: width ?? 90,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 10),
       decoration: Decorations.kDecorationBorderWithRadius(
         borderColor: AppColors.grey_CA,
-        radius: 4,
+        radius: radius ?? 4,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceEvenly,
         children: [
           AppIcon(
             icon: property.icon,
@@ -50,22 +65,24 @@ class CarPropertyItem extends StatelessWidget {
           ),
           Text(
             property.title,
-            style: context.textTheme.labelMedium!.copyWith(
+            style: textStyle ?? context.labelMedium.copyWith(
               color: AppColors.grey_5F,
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
-          Text(
-            property.subtitle,
-            style: context.textTheme.labelLarge!.copyWith(
-              color: AppColors.grey_5F,
-            ),
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-          ),
+          property.subtitle == null
+              ? 0.ph
+              : Text(
+                  property.subtitle!,
+                  style: context.textTheme.labelLarge!.copyWith(
+                    color: AppColors.grey_5F,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                ),
         ],
       ),
     );
@@ -74,12 +91,13 @@ class CarPropertyItem extends StatelessWidget {
 
 class CarProperty {
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final String icon;
 
-  const CarProperty(
-      {Key? key,
-      required this.title,
-      required this.subtitle,
-      required this.icon});
+  const CarProperty({
+    Key? key,
+    required this.title,
+    this.subtitle,
+    required this.icon,
+  });
 }

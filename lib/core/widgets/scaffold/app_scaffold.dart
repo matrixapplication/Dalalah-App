@@ -24,6 +24,7 @@ class AppScaffold extends StatelessWidget {
   final bool? resizeToAvoidBottomInset;
   final bool hasTabBarView;
   final bool hasFilter;
+  final bool hasAppBar;
 
   const AppScaffold({
     Key? key,
@@ -45,6 +46,7 @@ class AppScaffold extends StatelessWidget {
     this.tabs,
     this.tabViews,
     this.hasFilter = false,
+    this.hasAppBar = true,
   }) : super(key: key);
 
   @override

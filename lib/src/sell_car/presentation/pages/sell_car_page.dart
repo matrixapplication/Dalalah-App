@@ -17,8 +17,11 @@ class SellCarPage extends BaseBlocWidget<UnInitState, HomeCubit> {
   //   bloc.fetchClientStatus();
   // }
 
+  // @override
+  // String? title(context)=> strings.sell_car;
+
   @override
-  String? title(context)=> strings.sell_car;
+  bool hasAppBar(BuildContext context) => false;
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {

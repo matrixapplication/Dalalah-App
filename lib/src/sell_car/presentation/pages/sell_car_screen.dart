@@ -1,128 +1,165 @@
-
 import 'package:delala/core/widgets/drop_down/drop_down.dart';
 import 'package:delala/core/widgets/text-field/custom_text_field.dart';
-
+import '../../../../core/themes/light_theme.dart';
+import '../../../../core/utils/navigator.dart';
+import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/shipment.dart';
 
 class SellCarScreen extends BaseStatelessWidget {
   final List<Shipment>? shipments;
+
   SellCarScreen({Key? key, this.shipments}) : super(key: key);
   final List<DropDownItem> items = [
-    DropDownItem(
-      id: '1',
-      title: 'sa'
-    ),
+    const DropDownItem(id: '1', title: 'sa', value: 'val'),
   ];
+
   @override
   Widget build(BuildContext context) {
     final strings = context.strings;
     return SingleChildScrollView(
-      padding: 16.paddingHoriz,
+      padding: 15.paddingAll,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          TextFormField(),
+          20.ph,
+          Text(
+            '1/3',
+            style: context.displayMedium.copyWith(
+              fontFamily: fontRegular,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          15.ph,
+          Text(
+            strings.add_car,
+            style: context.titleSmall,
+          ),
+          25.ph,
+          SelectionButtonChip(
+            title: strings.car_status,
+            types: [
+              ChipItem(title: strings.new_),
+              ChipItem(title: strings.used),
+            ],
+            onSelected: (value) {},
+          ),
+          24.ph,
           DropDownField(
-            title: strings.select_badge_type,
+            title: strings.car_type,
             hint: strings.select_badge_type,
             items: items,
-            onChanged: (value){
-
-            },
+            height: 55,
+            onChanged: (value) {},
           ),
+          24.ph,
           DropDownField(
-            title: strings.select_car_model,
+            title: strings.car_model,
             hint: strings.select_car_model,
             items: items,
-            onChanged: (value){
-
-            },
+            height: 55,
+            onChanged: (value) {},
           ),
-          DropDownField(
-            title: strings.extend_car_model,
-            hint: strings.extend_car_model,
-            items: items,
-            onChanged: (value){
-
-            },
-          ),
+          24.ph,
           DropDownField(
             title: strings.year_car_production,
-            hint: strings.year_car_production,
+            hint: strings.select_year,
             items: items,
-            onChanged: (value){
-
-            },
+            height: 55,
+            onChanged: (value) {},
           ),
           20.ph,
           SelectionButtonChip(
             title: strings.type_vehicle_transmission_engine,
             types: [
               ChipItem(
-                  icon: 'https://cdn-icons-png.flaticon.com/512/6471/6471695.png',
-                  title: 'Automatic'),
+                icon: 'https://cdn-icons-png.flaticon.com/512/6471/6471695.png',
+                title: strings.automatic,
+              ),
               ChipItem(
-                  icon: 'https://i.stack.imgur.com/tWFGc.png',
-                  title: 'Manual',),
+                icon: 'https://i.stack.imgur.com/tWFGc.png',
+                title: strings.manual,
+              ),
             ],
             onSelected: (value) {},
           ),
-
+          24.ph,
           DropDownField(
-            title: strings.car_shape,
-            hint: strings.year_car_production,
+            title: strings.external_car_shape,
+            hint: strings.select_shape,
             items: items,
-            onChanged: (value){
-
-            },
+            onChanged: (value) {},
+            height: 55,
           ),
-
+          24.ph,
+          DropDownField(
+            title: strings.external_car_shape_status,
+            hint: strings.select_status,
+            items: items,
+            onChanged: (value) {},
+            height: 55,
+          ),
+          24.ph,
           DropDownField(
             title: strings.fuel_type,
-            hint: strings.year_car_production,
+            hint: strings.select_fuel,
             items: items,
-            onChanged: (value){
-
-            },
+            height: 55,
+            onChanged: (value) {},
           ),
+          24.ph,
           DropDownField(
             title: strings.number_car_cylinders,
             hint: strings.number_car_cylinders,
             items: items,
-            onChanged: (value){
-
-            },
+            onChanged: (value) {},
+            height: 55,
           ),
+          15.ph,
           CustomTextField(
             labelText: strings.number_kilometers_km,
             hintText: strings.number_kilometers_km,
+            contentPadding: 16.paddingHoriz + 17.paddingVert,
+            maxHeight: 62,
+            radius: 8,
           ),
-
-          DropDownField(
-            title: strings.car_color,
-            hint: strings.car_color,
-            items: items,
-            onChanged: (value){
-
-            },
-          ),
+          10.ph,
           CustomTextField(
             labelText: strings.price_egp,
             hintText: strings.price_egp,
+            contentPadding: 16.paddingHoriz + 17.paddingVert,
+            maxHeight: 62,
+            radius: 8,
           ),
+          10.ph,
           CustomTextField(
             labelText: strings.car_description,
             hintText: strings.car_description,
+            contentPadding: 16.paddingHoriz + 17.paddingVert,
+            maxHeight: 62,
+            radius: 8,
           ),
-          PrimaryButton(
-            title: strings.next,
-            margin: 20.paddingVert,
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.sellCarPropertiesPage);
+          15.ph,
+          DropDownField(
+            title: strings.car_color,
+            hint: strings.select_color,
+            items: items,
+            height: 55,
+            onChanged: (value) {},
+          ),
+          24.ph,
+          PrimaryOutlinesButtons(
+            title1: strings.next,
+            title2: strings.cancel,
+            onPressed2: () {
+              Navigator.pop(context);
+            },
+            onPressed1: () {
+              Navigators.pushNamed(Routes.sellCarPropertiesPage);
             },
           ),
+          24.ph,
         ],
       ),
     );
