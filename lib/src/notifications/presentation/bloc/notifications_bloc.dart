@@ -12,12 +12,6 @@ class NotificationsCubit extends BaseCubit {
   NotificationsCubit(this.usecase);
 
   fetchNotifications() async {
-    try {
-      emit(LoadingStateListener());
-      final notifications = await usecase.fetchNotifications();
-      emit(DataSuccess<List<Notifications>>(notifications));
-    }  catch (e) {
-      emit(FailureStateListener(e));
-    }
+    executeSuccess(() => usecase.fetchNotifications());
   }
 }
