@@ -38,14 +38,14 @@ class InstallmentScreen extends BaseStatelessWidget {
           children: [
             60.ph,
             Text(
-              strings.calculate_the_monthly_installment_and_installment_period_or_determine_your_budget,
+              strings
+                  .calculate_the_monthly_installment_and_installment_period_or_determine_your_budget,
               style: context.textTheme.displaySmall,
             ),
             30.ph,
             InstallmentStepTile(
               stepNumber: 1,
               title: strings.total_salary,
-
               child: CustomTextField(
                 controller: totalSalaryController,
                 hintText: strings.enter_the_value_in_saudi_riyals,
@@ -69,41 +69,42 @@ class InstallmentScreen extends BaseStatelessWidget {
               spaceBetweenTitleAndChild: 25,
               child: const CustomChooseWidget(),
             ),
-            InstallmentStepTile(
-              stepNumber: 4,
-              dottedLineHeight: 14,
-              title: strings.enter_the_credit_limit,
-              child: StatefulBuilder(builder: (context, setState) {
-                return Column(
-                  children: [
-                    CustomRadioListTile2(
-                      title: strings.exist,
-                      groupValue: isExist,
-                      value: true,
-                      onChanged: (value) {
-                        isExist = value;
-                        setState(() {});
-                      },
-                    ),
-                    isExist ? CustomTextField(
-                      radius: 8,
-                      maxHeight: 55,
-                      hintText: strings.enter_the_value_in_saudi_riyals,
-                      controller: creditLimitController,
-                    ) : 0.ph,
-                    CustomRadioListTile2(
-                      title: strings.not_exist,
-                      groupValue: isExist,
-                      value: false,
-                      onChanged: (value) {
-                        isExist = value;
-                        setState(() {});
-                      },
-                    ),
-                  ],
-                );
-              }),
-            ),
+            StatefulBuilder(builder: (context, setState) {
+              return InstallmentStepTile(
+                  stepNumber: 4,
+                  dottedLineHeight: isExist ? 16 : 10,
+                  title: strings.enter_the_credit_limit,
+                  child: Column(
+                    children: [
+                      CustomRadioListTile2(
+                        title: strings.exist,
+                        groupValue: isExist,
+                        value: true,
+                        onChanged: (value) {
+                          isExist = value;
+                          setState(() {});
+                        },
+                      ),
+                      isExist
+                          ? CustomTextField(
+                              radius: 8,
+                              maxHeight: 55,
+                              hintText: strings.enter_the_value_in_saudi_riyals,
+                              controller: creditLimitController,
+                            )
+                          : 0.ph,
+                      CustomRadioListTile2(
+                        title: strings.not_exist,
+                        groupValue: isExist,
+                        value: false,
+                        onChanged: (value) {
+                          isExist = value;
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ));
+            }),
             80.ph,
             RowTexts(
               title: strings.monthly_installment,
