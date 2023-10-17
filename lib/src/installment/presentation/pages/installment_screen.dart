@@ -66,6 +66,7 @@ class InstallmentScreen extends BaseStatelessWidget {
             InstallmentStepTile(
               stepNumber: 3,
               title: strings.personal_finance,
+              spaceBetweenTitleAndChild: 25,
               child: const CustomChooseWidget(),
             ),
             InstallmentStepTile(

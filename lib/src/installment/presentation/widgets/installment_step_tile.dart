@@ -6,6 +6,7 @@ class InstallmentStepTile extends BaseStatelessWidget {
   final String title;
   final Widget child;
   final int dottedLineHeight;
+  final double spaceBetweenTitleAndChild;
 
   InstallmentStepTile({
     super.key,
@@ -13,6 +14,7 @@ class InstallmentStepTile extends BaseStatelessWidget {
     required this.title,
     required this.child,
     this.dottedLineHeight = 8,
+    this.spaceBetweenTitleAndChild = 15,
   });
 
   @override
@@ -36,7 +38,7 @@ class InstallmentStepTile extends BaseStatelessWidget {
                   padding: 5.paddingStart,
                   child: Text(title),
                 ),
-                15.ph,
+                spaceBetweenTitleAndChild.ph,
                 child,
               ],
             ),
