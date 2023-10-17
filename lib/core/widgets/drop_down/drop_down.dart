@@ -10,6 +10,7 @@ class DropDownField extends StatelessWidget {
   final List<DropDownItem> items;
   final String? title;
   final String? hint;
+  final double? height;
   final dynamic value;
   final TextStyle? texStyle;
   final IconData? prefixIcon;
@@ -35,7 +36,7 @@ class DropDownField extends StatelessWidget {
       this.validator,
       this.style,
       this.margin,
-      this.marginDropDown})
+      this.marginDropDown, this.height})
       : super(key: key);
 
   @override
@@ -48,7 +49,7 @@ class DropDownField extends StatelessWidget {
           if (title != null) ...[
             Text(
               title ?? '',
-              style: context.labelLarge,
+              style: context.bodySmall,
             ),
             10.ph,
           ],
@@ -60,23 +61,28 @@ class DropDownField extends StatelessWidget {
               decoration: InputDecoration(
                 // Add Horizontal padding using menuItemStyleData.padding so it matches
                 // the menu padding when button's width is not specified.
-                contentPadding: 10.paddingEnd,
+                // constraints: BoxConstraints(
+                //   minHeight: 60,
+                //   maxHeight: 60,
+                // ),
+
+                contentPadding: 10.paddingEnd + 0.paddingVert,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: AppColors.grey_DB,
+                    color: context.colorScheme.outline,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: AppColors.grey_DB,
+                    color: context.colorScheme.outline,
                     width: 1.5,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: AppColors.grey_DB,
+                    color: context.colorScheme.outline,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -84,7 +90,7 @@ class DropDownField extends StatelessWidget {
               ),
               hint: Text(
                 hint ?? '',
-                style: context.displaySmall,
+                style: context.displaySmall.copyWith(fontSize: 12),
               ),
               items: items
                   .map((item) => DropdownMenuItem<DropDownItem>(
@@ -106,7 +112,8 @@ class DropDownField extends StatelessWidget {
                 //  selectedValue = value.toString();
               },
               buttonStyleData: ButtonStyleData(
-                padding: 0.paddingAll,
+                // padding: 10.paddingVert,
+                height: height,
               ),
               iconStyleData: IconStyleData(
                 icon: Padding(

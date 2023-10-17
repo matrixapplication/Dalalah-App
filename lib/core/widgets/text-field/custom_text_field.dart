@@ -25,33 +25,32 @@ class CustomTextField extends BaseStatelessWidget {
   final double? maxHeight;
   final TextStyle? labelStyle;
 
-  CustomTextField(
-      {Key? key,
-      this.controller,
-      this.hintText,
-      this.labelText,
-      this.isPassword,
-      this.onTap,
-      this.onChanged,
-      this.validator,
-      this.inputDecoration,
-      this.keyboardType,
-      this.fillColor,
-      this.hintStyle,
-      this.textAlign,
-      this.prefixIcon,
-      this.maxLines,
-      this.colorBorderSide,
-      this.padding,
-      this.contentPadding,
-      this.suffixIcon,
-      this.radius,
-      this.iconPath,
-      this.isValidator = true,
-      this.maxHeight,
-      this.labelStyle,
-      })
-      : super(key: key);
+  CustomTextField({
+    Key? key,
+    this.controller,
+    this.hintText,
+    this.labelText,
+    this.isPassword,
+    this.onTap,
+    this.onChanged,
+    this.validator,
+    this.inputDecoration,
+    this.keyboardType,
+    this.fillColor,
+    this.hintStyle,
+    this.textAlign,
+    this.prefixIcon,
+    this.maxLines,
+    this.colorBorderSide,
+    this.padding,
+    this.contentPadding,
+    this.suffixIcon,
+    this.radius,
+    this.iconPath,
+    this.isValidator = true,
+    this.maxHeight,
+    this.labelStyle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +65,10 @@ class CustomTextField extends BaseStatelessWidget {
             SizedBox(
               child: Text(
                 labelText ?? '',
-                style: labelStyle ?? Theme.of(context).textTheme.bodyMedium,
+                style: labelStyle ?? context.bodySmall,
               ),
             ),
-            5.ph,
+            10.ph,
           ],
           TextFormField(
             onTap: onTap,
@@ -92,12 +91,12 @@ class CustomTextField extends BaseStatelessWidget {
 
                   //         label: Text(labelText ?? '', style: theme.textTheme.headlineMedium!.copyWith()),
                   hintText: hintText,
-                  hintStyle: hintStyle ?? theme.textTheme.displaySmall,
+                  hintStyle: hintStyle ??
+                      context.displaySmall.copyWith(fontSize: 12),
                   fillColor: fillColor ?? theme.colorScheme.background,
                   filled: true,
                   constraints: BoxConstraints(
-                    maxHeight: maxHeight ?? 45,
-                  ),
+                      maxHeight: maxHeight ?? 45, minHeight: maxHeight ?? 45),
                   prefixIcon: iconPath != null
                       ? AppIcon(
                           padding: const EdgeInsets.all(12),
@@ -107,8 +106,7 @@ class CustomTextField extends BaseStatelessWidget {
                         )
                       : prefixIcon,
                   suffixIcon: suffixIcon,
-                  contentPadding: contentPadding ??
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  contentPadding: contentPadding ?? 16.paddingAll,
                   border: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(radius ?? 12)),

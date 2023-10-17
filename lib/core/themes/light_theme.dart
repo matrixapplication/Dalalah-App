@@ -38,7 +38,7 @@ final lightTheme = ThemeData(
     onError: kRedColorEB,
     surface: const Color(0xffFFA010),
      tertiaryContainer: const Color(0xff0095FF),
-    outline: const Color(0xff606060),
+    outline: const Color(0xffE9E9E9),
     outlineVariant: const Color(0xff494949),
   ),
   appBarTheme: const AppBarTheme(

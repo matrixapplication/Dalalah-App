@@ -17,5 +17,6 @@ class AppImages{
   static String double_plate = '$_imagesPath/double_plate.png';
   static String house_location = '$_imagesPath/house_location.png';
   static String beuti_car = '$_imagesPath/beuti_car.png';
+  static String photo = '$_imagesPath/photo.png';
 
 }

@@ -28,7 +28,7 @@ class SelectionButtonChip extends StatelessWidget {
       children: [
         Text(
           title ?? '',
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: context.bodySmall,
         ),
         10.ph,
         StatefulBuilder(

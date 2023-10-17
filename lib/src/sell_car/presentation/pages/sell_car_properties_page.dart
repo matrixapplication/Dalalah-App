@@ -19,8 +19,8 @@ class SellCarPropertiesPage extends BaseBlocWidget<UnInitState, HomeCubit> {
   //   bloc.fetchClientStatus();
   // }
 
-  @override
-  String? title (context)=> strings.select_properties;
+  // @override
+  // String? title (context)=> strings.select_properties;
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {

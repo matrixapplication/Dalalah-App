@@ -60,6 +60,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   }
 
   @protected
+  bool hasAppBar(BuildContext context) {
+    return false;
+  }
+
+  @protected
   Widget? leading(BuildContext context) {
     return null;
   }
@@ -110,6 +115,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         leading: leading(context!),
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
         isDrawer: isNotBack(context!),
+        hasAppBar: hasAppBar(context!),
         body: body,
         tabs: tabs,
         tabViews: tabViews(context!),
