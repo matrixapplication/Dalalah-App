@@ -1,9 +1,9 @@
 import 'package:delala/core/widgets/text-field/custom_text_field.dart';
 import 'package:delala/core/widgets/texts/row_texts.dart';
+import '../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/radio/custom_radio_list_tile2.dart';
 import '../../../main_index.dart';
-import '../widgets/custom_choose_widget.dart';
 import '../widgets/installment_step_tile.dart';
 
 class InstallmentScreen extends BaseStatelessWidget {
@@ -66,7 +66,19 @@ class InstallmentScreen extends BaseStatelessWidget {
               stepNumber: 3,
               title: strings.personal_finance,
               spaceBetweenTitleAndChild: 25,
-              child: const CustomChooseWidget(),
+              child: CustomChooseWidget(
+                onTap: (value) {},
+                items: [
+                  ChooseItemModel(
+                    label: "يوجد",
+                    value: true,
+                  ),
+                  ChooseItemModel(
+                    label: "لا يوجد",
+                    value: false,
+                  ),
+                ],
+              ),
             ),
             StatefulBuilder(builder: (context, setState) {
               return InstallmentStepTile(

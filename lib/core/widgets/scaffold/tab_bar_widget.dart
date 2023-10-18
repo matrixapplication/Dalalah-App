@@ -48,7 +48,7 @@ class TabBarWidget extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(height ?? 50),
           child: AppBar(
-            //  backgroundColor: theme.cardColor,
+             backgroundColor: Colors.white,
             // leading: const SizedBox(),
             flexibleSpace: Container(
               margin: marginTabs ?? EdgeInsets.zero,

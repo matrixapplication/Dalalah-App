@@ -41,6 +41,7 @@ class PrimaryOutlinesButtons extends StatelessWidget {
             flex: 2,
             child: SecondaryButton(
               title: title2 ?? context.strings.back,
+              borderColor: context.primaryColor,
               radius: 4,
               onPressed: onPressed2,
             ),

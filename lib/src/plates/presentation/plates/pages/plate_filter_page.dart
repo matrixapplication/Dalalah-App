@@ -34,50 +34,58 @@ class PlateFilterPage extends BaseStatelessWidget {
               types: types,
               onSelected: (bool value) {},
             ),
+            35.ph,
             Container(
               margin: 10.paddingTop,
               padding: 16.paddingVert + 10.paddingHoriz,
-              decoration: Decorations.mainShapeDecoration(),
+              // decoration: Decorations.mainShapeDecoration(),
+              decoration: Decorations.kDecorationOnlyRadius(
+                color: context.primaryColor,
+
+              ),
               child: Column(
                 children: [
                   DropDownField(
                     items: items,
                     marginDropDown: 8.paddingHoriz,
                     title: strings.numbers_type,
+                    titleStyle: context.labelMedium,
                     hint: strings.numbers_type,
                     onChanged: (value) {},
                   ),
-                  14.ph,
+                  40.ph,
                   FilterItem(
                     title: strings.arabic_letters,
                     controllers: controllersArLetters,
                   ),
-                  14.ph,
+                  40.ph,
                   FilterItem(
                     title: strings.english_letters,
                     controllers: controllersEnLetters,
                   ),
-                  14.ph,
+                  40.ph,
                   FilterItem(
                     title: strings.numbers,
                     controllers: controllersNumbers,
                   ),
+                  30.ph,
                 ],
               ),
             ),
-            20.ph,
-            isAddPage ? PrimaryButton(
-              title: strings.save,
-              onPressed: (){},
-            ) :
-            PrimaryOutlinesButtons(
-              title1: strings.show_results,
-              title2: strings.cancel,
-              onPressed2: () {
-                Navigator.pop(context);
-              },
-              onPressed1: () {},
-            ),
+            40.ph,
+            isAddPage
+                ? PrimaryButton(
+                    title: strings.save,
+                    onPressed: () {},
+                  )
+                : PrimaryOutlinesButtons(
+                    title1: strings.show_results,
+                    title2: strings.cancel,
+                    onPressed2: () {
+                      Navigator.pop(context);
+                    },
+                    onPressed1: () {},
+                  ),
           ],
         ),
       ),

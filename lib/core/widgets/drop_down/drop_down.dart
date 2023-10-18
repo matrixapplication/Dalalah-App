@@ -10,6 +10,7 @@ class DropDownField extends StatelessWidget {
   final List<DropDownItem> items;
   final String? title;
   final String? hint;
+  final double? radius;
   final double? height;
   final Color? fillColor;
   final Color? hintColor;
@@ -22,6 +23,8 @@ class DropDownField extends StatelessWidget {
   final bool isValidator;
   final String? Function(dynamic)? validator;
   final TextStyle? style;
+  final TextStyle? titleStyle;
+  final double? hintFontSize;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? marginDropDown;
 
@@ -43,7 +46,8 @@ class DropDownField extends StatelessWidget {
       this.height,
       this.fillColor,
       this.hintColor,
-      this.dropDownIconColor})
+      this.dropDownIconColor,
+      this.hintFontSize, this.radius, this.titleStyle})
       : super(key: key);
 
   @override
@@ -56,7 +60,7 @@ class DropDownField extends StatelessWidget {
           if (title != null) ...[
             Text(
               title ?? '',
-              style: context.bodySmall,
+              style: titleStyle ?? context.bodySmall,
             ),
             10.ph,
           ],
@@ -68,41 +72,38 @@ class DropDownField extends StatelessWidget {
               decoration: InputDecoration(
                 // Add Horizontal padding using menuItemStyleData.padding so it matches
                 // the menu padding when button's width is not specified.
-                // constraints: BoxConstraints(
-                //   minHeight: 60,
-                //   maxHeight: 60,
-                // ),
+                constraints: BoxConstraints(
+                  minHeight: height ?? 48,
+                  maxHeight: height ?? 48,
+                ),
                 filled: true,
                 fillColor: fillColor,
-
                 contentPadding: 2.paddingEnd + 0.paddingVert,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: context.colorScheme.outline,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: context.colorScheme.outline,
                     width: 1.5,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: context.colorScheme.outline,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
                 // Add more decoration..
               ),
               hint: Text(
                 hint ?? '',
-                style: context.displaySmall.copyWith(
-                  fontSize: 12,
-                  color: hintColor
-                ),
+                style: context.displaySmall
+                    .copyWith(fontSize: hintFontSize ?? 12, color: hintColor),
               ),
               items: items
                   .map((item) => DropdownMenuItem<DropDownItem>(
@@ -141,7 +142,7 @@ class DropDownField extends StatelessWidget {
               ),
               dropdownStyleData: DropdownStyleData(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
               ),
               menuItemStyleData: const MenuItemStyleData(

@@ -39,8 +39,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
         SliverAppBar(
           forceElevated: innerBoxIsScrolled,
+          backgroundColor: Colors.white,
           bottom: PreferredSize(
-            preferredSize: const Size(0,312),
+            preferredSize: const Size(0,305),
             child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

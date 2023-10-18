@@ -10,6 +10,7 @@ import '../../src/auth/presentation/pages/sign-up/register_page.dart';
 import '../../src/cars/presentation/cars/pages/cars_page.dart';
 import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
+import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
 import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
 import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import '../../src/favorites_and_ads/presentation/pages/favorites_page.dart';
@@ -80,6 +81,7 @@ class Routes {
   /* ============================================== */
   static const String exhibitionPage = 'exhibitionPage';
   static const String exhibitionDetailsPage = 'exhibitionDetailsPage';
+  static const String carsSearchPage = 'carsSearchPage';
 
   static final routes = <String, Widget Function(BuildContext)>{
     navigationPages: (context) => NavigationPages(),
@@ -115,5 +117,6 @@ class Routes {
     aboutUs: (context) => AboutUsPage(),
     exhibitionPage: (context) => ExhibitionPage(),
     exhibitionDetailsPage: (context) => ExhibitionDetailsPage(),
+    carsSearchPage: (context) => CarsSearchPage(),
   };
 }

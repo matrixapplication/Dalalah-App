@@ -241,7 +241,7 @@ class Decorations {
           ),
       border: Border.all(
         color: borderColor ?? const Color(0xffEAEAEA),
-        width: borderWidth ?? 0,
+        width: borderWidth ?? 1,
         style: borderStyle ?? BorderStyle.solid,
       ),
     );
