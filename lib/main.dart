@@ -1,6 +1,8 @@
 import 'package:delala/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:delala/src/settings/presentation/bloc/locale_state.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
@@ -23,11 +25,11 @@ Future<void> main() async {
     accessToken: token,
   )).create());
   runApp(
-    MyApp(token: token),
-    //   DevicePreview(
-    //   enabled: kReleaseMode,
-    //   builder: (context) => MyApp(token: token), // Wrap your app
-    // ),
+   // MyApp(token: token),
+      DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(token: token), // Wrap your app
+    ),
   );
 }
 
