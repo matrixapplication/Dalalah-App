@@ -26,7 +26,8 @@ class ContactSocialButtons extends StatelessWidget {
           Expanded(
             child: ContactButton(
               label: context.strings.call,
-              icon: AppIcons.phone,
+              icon: AppIcons.phone_solid,
+              iconColor: context.primaryColor,
               iconSize: 20,
             ),
           ),
@@ -52,6 +53,7 @@ class ContactButton extends StatelessWidget {
   final String icon;
   final double? iconSize;
   final Color? labelColor;
+  final Color? iconColor;
   final Color? backgroundColor;
   final Color? iconBackgroundColor;
   final bool? isRadius;
@@ -61,6 +63,7 @@ class ContactButton extends StatelessWidget {
     required this.label,
     required this.icon,
     this.iconSize,
+    this.iconColor,
     this.backgroundColor,
     this.iconBackgroundColor,
     this.labelColor,
@@ -89,6 +92,7 @@ class ContactButton extends StatelessWidget {
             icon: icon,
             backgroundColor: iconBackgroundColor ?? context.cardColor,
             size: iconSize,
+            color: iconColor,
             radius: 18,
           ),
         ],

@@ -75,7 +75,7 @@ class DropDownField extends StatelessWidget {
                 filled: true,
                 fillColor: fillColor,
 
-                contentPadding: 10.paddingEnd + 0.paddingVert,
+                contentPadding: 2.paddingEnd + 0.paddingVert,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: context.colorScheme.outline,
@@ -134,7 +134,7 @@ class DropDownField extends StatelessWidget {
                   child: AppIcon(
                     icon: AppIcons.down_arrow,
                     color: dropDownIconColor ?? AppColors.blue_49,
-                    size: 10,
+                    size: 8,
                   ),
                 ),
                 iconSize: 10,

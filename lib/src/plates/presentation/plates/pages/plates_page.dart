@@ -2,6 +2,7 @@
 import 'package:delala/core/components/base_widget_bloc.dart';
 import 'package:delala/src/home/presentation/widgets/filter_home.dart';
 
+import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
 import '../../../../sell_car/domain/entities/shipment.dart';
 import '../../../domain/entities/plate.dart';
@@ -10,7 +11,8 @@ import 'plates_screen.dart';
 
 
 class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
-  PlatesPage({Key? key}) : super(key: key);
+  final bool isFilter;
+  PlatesPage({Key? key, this.isFilter = true}) : super(key: key);
 
 
   @override
@@ -20,15 +22,16 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
 
   @override
-  String? title(context)=> strings.plates;
+  String? title(context)=> isFilter ? strings.plates : null;
 
   @override
   Widget build(BuildContext context) {
     return mainFrame(
       body: Column(
         children: [
+          if(isFilter ?? true)
           FilterHome(
-            routeName: '',
+            routeName: Routes.plateFilterPage,
             onFilterOrder: (){},
           ),
           Expanded(child: buildConsumer(context)),
@@ -43,4 +46,13 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
     return PlatesScreen(plates: state.data ?? []);
   }
 
+  @override
+  onAddButtonPressed() {
+    Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+  }
+
+  @override
+  bool isAddButton() {
+    return true;
+  }
 }

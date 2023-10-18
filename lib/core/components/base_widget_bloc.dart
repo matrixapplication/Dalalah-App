@@ -93,7 +93,15 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   bool? resizeToAvoidBottomInset(BuildContext context) {
     return true;
   }
+  @protected
+  bool isAddButton() {
+    return false;
+  }
 
+  @protected
+  Function()? onAddButtonPressed() {
+    return null;
+  }
   @override
   Widget build(BuildContext context) {
     this.context = context;
@@ -118,6 +126,8 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         hasAppBar: hasAppBar(context!),
         body: body,
         tabs: tabs,
+        onAddButtonPressed: onAddButtonPressed,
+        isAddButton: isAddButton(),
         tabViews: tabViews(context!),
         hasTabBarView: hasTabBarView(context!),
       ),

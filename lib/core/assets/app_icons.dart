@@ -11,6 +11,7 @@ class AppIcons {
   static String arrow_down = '$_iconsPath/arrow_down.svg';
   static String drop_down = '$_iconsPath/drop_down.svg';
   static String add = '$_iconsPath/add.svg';
+  static String add_circular = '$_iconsPath/add_circular.svg';
   static String sections = '$_iconsPath/sections.svg';
   static String showrooms = '$_iconsPath/showrooms.svg';
   static String more = '$_iconsPath/more.svg';

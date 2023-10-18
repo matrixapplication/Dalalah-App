@@ -176,5 +176,6 @@
   "not_exist" : "لا يوجد",
   "personal_finance": "التمويل الشخصي",
   "enter_the_value_in_saudi_riyals": "أدخل القيمة بالريال السعودي",
-  "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget": "احسب القسط الشهرى و مدة الأقساط أو حدد ميزانيتك"
+  "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget": "احسب القسط الشهرى و مدة الأقساط أو حدد ميزانيتك",
+  "add_plate": "اضافة لوحة"
 }

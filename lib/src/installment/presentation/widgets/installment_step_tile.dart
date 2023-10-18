@@ -79,7 +79,7 @@ class CustomStep extends StatelessWidget {
               width: 2,
               height: 5,
               margin: 4.paddingBottom,
-              color: context.primaryColor,
+              decoration: Decorations.kDecorationOnlyRadius(color: context.primaryColor, radius: 2),
             );
           },
         )

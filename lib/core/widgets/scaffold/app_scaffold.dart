@@ -25,6 +25,8 @@ class AppScaffold extends StatelessWidget {
   final bool hasTabBarView;
   final bool hasFilter;
   final bool hasAppBar;
+  final Function()? onAddButtonPressed;
+  final bool isAddButton;
 
   const AppScaffold({
     Key? key,
@@ -47,6 +49,8 @@ class AppScaffold extends StatelessWidget {
     this.tabViews,
     this.hasFilter = false,
     this.hasAppBar = true,
+    this.onAddButtonPressed,
+    this.isAddButton = false,
   }) : super(key: key);
 
   @override
@@ -57,33 +61,7 @@ class AppScaffold extends StatelessWidget {
       length: tabs == null ? 0 : tabs!.length,
       child: Scaffold(
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-        // this code remove the keyboard overflow.
-        // drawer: isDrawer! ? SideMenuPage(isCaptain: true) : null,
-        //SafeArea to save content from the phone top par.
-        // body: AnimatedTabsBar(
-        //   isMainTabBar: true,
-        //   backgroundColor: Colors.red,
-        //   tabs: tabs!,
-        //   children: tabViews ?? [],
-        // ),
-        body: tabs == null
-            ? body
-            : Column(
-                children: [
-                  hasFilter
-                      ? FilterHome(
-                          routeName: '',
-                          onFilterOrder: () {},
-                        )
-                      : 0.ph,
-                  Expanded(
-                    child: TabBarView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: tabViews ?? [],
-                    ),
-                  )
-                ],
-              ),
+        body: body,
         // extendBody: true,
         backgroundColor: backgroundColor ?? theme.scaffoldBackgroundColor,
         floatingActionButton: floatingActionButton,
@@ -93,69 +71,44 @@ class AppScaffold extends StatelessWidget {
             ? null
             : appBar ??
                 AppBar(
-                  title: Padding(
-                    padding: 10.paddingTop,
-                    child: Text(
-                      title ?? '',
-                      style: titleStyle ??
-                          theme.appBarTheme.titleTextStyle!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
+                  title: Text(
+                    title ?? '',
+                    style: titleStyle ??
+                        theme.appBarTheme.titleTextStyle!.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor:
+                        backgroundAppBar ?? theme.appBarTheme.backgroundColor,
+                    statusBarBrightness: Brightness.light,
                   ),
                   backgroundColor:
                       backgroundAppBar ?? theme.appBarTheme.backgroundColor,
-                  flexibleSpace: Container(
-                    // decoration: Decorations.mainShapeDecoration(
-                    //   radius: 0,
-                    // ),
-                    // decoration: Decorations.kDecorationBorderRadius(
-                    //   color: context.primaryColor,
-                    // borderRadius: const BorderRadiusDirectional.only(
-                    //   bottomStart: Radius.circular(8),
-                    //   bottomEnd: Radius.circular(8),
-                    // ),
-                    // ),
-                    color: context.primaryColor,
-                  ),
-
-                  leading: leading ??
-                      Padding(
-                        padding: 31.paddingEnd +
-                            20.paddingTop +
-                            5.paddingBottom +
-                            25.paddingStart,
-                        child: leading ??
-                            AppCircularIconButton(
-                              icon: AppIcons.add,
-                              color: context.primaryColor,
-                              padding: 9,
-                            ),
-                      ),
+                  leading: isAddButton ?
+                          AppIconButton(
+                            icon: AppIcons.add_circular,
+                            padding: 14.paddingAll,
+                            onPressed: onAddButtonPressed,
+                          ) : leading,
                   foregroundColor:
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??
                       [
                         AppCircularIconButton(
                           margin:
-                              31.paddingEnd + 16.paddingTop + 4.paddingBottom,
+                              20.paddingEnd + 12.paddingTop + 12.paddingBottom,
                           icon: AppIcons.rightArrow,
-                          size: 28,
                           padding: 3,
-                          circleSize: 38,
+                          circleSize: 33,
                           radius: 12,
                           color: const Color(0xff1E232C),
                           onPressed: () => Navigator.pop(context),
                         ),
                       ],
-                  leadingWidth: 88,
-                  systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor:
-                        backgroundAppBar ?? theme.appBarTheme.backgroundColor,
-                    statusBarBrightness: Brightness.light,
-                  ),
+                  leadingWidth: 60,
                   bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(hasTabBarView ? 70 : 20),
+                    preferredSize: Size.fromHeight(hasTabBarView ? 50 : 20),
                     child: !hasTabBarView
                         ? 0.ph
                         : TabBar(
@@ -192,58 +145,8 @@ class AppScaffold extends StatelessWidget {
                                 .toList(),
                           ),
                   ),
-
-                  // child: hasTabBarView
-                  //     ? Expanded(
-                  //         child: AnimatedTabsBar(
-                  //           isMainTabBar: true,
-                  //           backgroundColor: Colors.transparent,
-                  //           tabs: tabs!,
-                  //           children: tabViews ?? [],
-                  //         ),
-                  //       )
-                  //     : 0.ph,
                 ),
-        // leading: leading != null
-        //     ? Padding(
-        //         padding: const EdgeInsets.only(right: 5),
-        //         child: Row(
-        //           children: [
-        //             if (isDrawer!)
-        //               AppIconButton(
-        //                 icon: AppIcons.menu,
-        //                 size: 28,
-        //                 color: theme.cardColor,
-        //                 onPressed: () {
-        //                   globalKey.currentState?.openDrawer();
-        //                 },
-        //               ),
-        //             leading!,
-        //           ],
-        //         ),
-        //       )
-        //     : isDrawer!
-        //         ? AppIconButton(
-        //             icon: AppIcons.menu,
-        //             padding: const EdgeInsets.only(left: 22, top: 18, bottom:5,),
-        //             color: theme.cardColor,
-        //             size: 15,
-        //             onPressed: () {
-        //               globalKey.currentState?.openDrawer();
-        //             },
-        //           )
-        //         : null,
       ),
     );
   }
 }
-
-// Container(
-// height: 45.5,
-// width: double.infinity,
-// margin: 10.paddingHoriz,
-// decoration: Decorations.kDecorationOnlyRadius(
-// radius: 50,
-// color: Colors.transparent,
-// ),
-// ),

@@ -71,14 +71,13 @@ class PlateItem extends StatelessWidget {
             Padding(
               padding: 8.paddingVert + 10.paddingHoriz,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     plate.name,
                     style: context.bodyMedium,
                   ),
-                  10.pw,
                   PriceWidget(price: plate.price),
-                  const Spacer(),
                   isAddView
                       ? const EditIconButton(
                           iconSize: 30,
@@ -86,6 +85,7 @@ class PlateItem extends StatelessWidget {
                         )
                       : FavoriteButton(
                           isFavorite: isFavouriteView,
+                    iconSize: 15,
                         ),
                 ],
               ),

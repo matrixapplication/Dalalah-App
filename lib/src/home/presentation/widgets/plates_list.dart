@@ -51,7 +51,7 @@ class PlateVert extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.carDetailsPage);
+        Navigator.pushNamed(context, Routes.platesDetailsPage);
       },
       child: Container(
           margin: 8.paddingHoriz,

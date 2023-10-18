@@ -19,7 +19,7 @@ abstract class BaseStatelessWidget extends StatelessWidget {
 
 
   T? getArguments<T>(BuildContext context ){
-    return context.getArguments();
+    return context?.getArguments();
   }
 
   handleErrorDialogBuilder(dynamic exception) {

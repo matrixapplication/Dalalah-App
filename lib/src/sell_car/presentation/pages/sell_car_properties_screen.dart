@@ -1,6 +1,7 @@
 import '../../../../core/themes/light_theme.dart';
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
+import '../../../../core/widgets/multi_grid_view_selection.dart';
 import '../../../cars/presentation/cars_details/widgets/car_properties.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/shipment.dart';
@@ -203,9 +204,9 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
             style: context.bodyMedium,
           ),
           20.ph,
-          Wrap(
-            children: properties,
-          ),
+          MultiGridViewSelection(onSelected: (selected) {
+            print(selected);
+          }),
           100.ph,
           PrimaryOutlinesButtons(
             title1: strings.next,

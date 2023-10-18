@@ -13,7 +13,7 @@ class Section {
         // title: context.strings.cars,
         title: context.strings.cars,
         image: AppImages.car_section,
-        routeName: Routes.login,
+        routeName: Routes.carsPage,
       ),
       Section(
         // title: context.strings.cars,
@@ -22,13 +22,13 @@ class Section {
         routeName: Routes.platesPage,
       ),
       Section(
-        title: context.strings.real_estate,
-        image: AppImages.house_location,
-        routeName: Routes.login,
-      ),
-      Section(
         title: context.strings.financing_services,
         image: AppImages.car_section,
+        routeName: Routes.installmentPage,
+      ),
+      Section(
+        title: context.strings.real_estate,
+        image: AppImages.house_location,
         routeName: Routes.login,
       ),
     ];

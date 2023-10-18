@@ -53,7 +53,7 @@ final lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
       color: const Color(0xff000000),
     ),
-    backgroundColor: Color(0xffffffff),
+    backgroundColor: primaryColor,
     centerTitle: true,
     elevation: 0,
   ),

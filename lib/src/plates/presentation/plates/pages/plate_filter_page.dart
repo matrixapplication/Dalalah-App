@@ -1,4 +1,5 @@
 import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/widgets/buttons/primary_button.dart';
 import 'package:delala/core/widgets/drop_down/drop_down.dart';
 import 'package:delala/core/widgets/scaffold/app_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ import '../widgets/filter_item.dart';
 class PlateFilterPage extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool? isAddPage = getArguments(context) ?? false;
     List<DropDownItem> items = [DropDownItem()];
     List<ChipItem> types = [ChipItem(title: 'خصوصي'), ChipItem(title: 'نقل')];
     List<TextEditingController> controllersArLetters =
@@ -22,7 +24,7 @@ class PlateFilterPage extends BaseStatelessWidget {
     List<TextEditingController> controllersNumbers =
         List.generate(4, (index) => TextEditingController());
     return AppScaffold(
-      title: strings.detailed_research,
+      title: isAddPage ? strings.add_plate : strings.detailed_research,
       body: SingleChildScrollView(
         padding: 16.paddingAll,
         child: Column(
@@ -64,6 +66,10 @@ class PlateFilterPage extends BaseStatelessWidget {
               ),
             ),
             20.ph,
+            isAddPage ? PrimaryButton(
+              title: strings.save,
+              onPressed: (){},
+            ) :
             PrimaryOutlinesButtons(
               title1: strings.show_results,
               title2: strings.cancel,

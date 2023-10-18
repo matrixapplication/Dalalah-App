@@ -36,11 +36,10 @@ class InstallmentScreen extends BaseStatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            60.ph,
             Text(
               strings
                   .calculate_the_monthly_installment_and_installment_period_or_determine_your_budget,
-              style: context.textTheme.displaySmall,
+              style: context.bodyMedium,
             ),
             30.ph,
             InstallmentStepTile(

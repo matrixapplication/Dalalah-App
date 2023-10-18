@@ -24,16 +24,18 @@ class TabBarWidget extends StatelessWidget {
   final void Function(int)? onTap;
   final EdgeInsetsGeometry? marginTabs;
   final double? height;
+  final bool isLineDecoration;
 
-  const TabBarWidget(
-      {Key? key,
-      required this.tabs,
-      this.backgroundColor,
-      this.tabsText,
-      this.onTap,
-      this.marginTabs,
-      this.height})
-      : super(key: key);
+  const TabBarWidget({
+    Key? key,
+    required this.tabs,
+    this.backgroundColor,
+    this.tabsText,
+    this.onTap,
+    this.marginTabs,
+    this.height,
+    this.isLineDecoration = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

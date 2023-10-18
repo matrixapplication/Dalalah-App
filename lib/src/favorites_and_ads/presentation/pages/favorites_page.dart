@@ -16,42 +16,7 @@ class FavoritesAndAdsPage
     bloc.fetchFavorites();
   }
 
-  @override
-  String? title(context) {
-    return !getArguments(context) ? strings.favorites : strings.my_ads;
-  }
 
-  @override
-  bool hasTabBarView(context) => true;
-
-  @override
-  Widget build(BuildContext context) {
-    this.context = context;
-    return mainFrame(
-      body: buildConsumer(context),
-      tabs: [
-        TabModel(label: context.strings.cars),
-        TabModel(label: context.strings.plates),
-        TabModel(label: context.strings.buildings),
-      ],
-    );
-  }
-
-  @override
-  List<Widget> tabViews(BuildContext context) {
-    bool isAddView = getArguments(context);
-    return [
-      FavouriteAndAdsCarsView(
-        isAddView: isAddView,
-      ),
-      FavouritePlatesView(
-        isAddView: isAddView,
-      ),
-      FavouriteBuildingView(
-        isFavouriteView: isAddView,
-      ),
-    ];
-  }
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<String>> state) {

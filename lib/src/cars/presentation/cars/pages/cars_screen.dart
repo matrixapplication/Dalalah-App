@@ -15,38 +15,39 @@ class CarsScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // FilterHome(
-        //   routeName: '',
-        //   onFilterOrder: () {},
-        // ),
-        10.ph,
-        if (isFilter) ...[
-          //FilterHome(isDecoration: false),
-          BrandsFilter(
-            items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-                .map((e) => e.toString())
-                .toList(),
-            onFilter: (value) {},
-          )
-        ],
-        10.ph,
-        Expanded(
-          child: ListView.builder(
-            // itemCount: tasks.length,
-            itemCount: 5,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(10),
-            itemBuilder: (context, index) {
-              return const CarVerticalItem(
-                imageHasOnlyTopRadius: false,
-                // task: tasks[index],
-              );
-            },
-          ),
+    return Material(
+      color: context.scaffoldBackgroundColor,
+      child: Padding(
+        padding: 10.paddingTop,
+        child: Column(
+          children: [
+            if (isFilter) ...[
+              //FilterHome(isDecoration: false),
+              BrandsFilter(
+                items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                    .map((e) => e.toString())
+                    .toList(),
+                onFilter: (value) {},
+              ),
+              10.ph,
+            ],
+            Expanded(
+              child: ListView.builder(
+                // itemCount: tasks.length,
+                itemCount: 5,
+                shrinkWrap: true,
+                padding: 10.paddingHoriz,
+                itemBuilder: (context, index) {
+                  return const CarVerticalItem(
+                    imageHasOnlyTopRadius: false,
+                    // task: tasks[index],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

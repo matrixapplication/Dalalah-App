@@ -18,7 +18,7 @@ extension AppResource on BuildContext {
   }
 
   T? getArguments<T>(){
-    return ModalRoute.of(this)!.settings.arguments as T;
+    return ModalRoute.of(this)?.settings?.arguments as T?;
   }
 
 

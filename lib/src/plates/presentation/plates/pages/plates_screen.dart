@@ -10,14 +10,17 @@ class PlatesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: plates.length,
-      padding: 16.paddingAll,
-      itemBuilder: (context, index) {
-        return PlateItem(
-          plate: plates[index],
-        );
-      },
+    return Material(
+      color: context.scaffoldBackgroundColor,
+      child: ListView.builder(
+        itemCount: plates.length,
+        padding: 16.paddingAll,
+        itemBuilder: (context, index) {
+          return PlateItem(
+            plate: plates[index],
+          );
+        },
+      ),
     );
   }
 }

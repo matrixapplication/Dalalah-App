@@ -18,7 +18,7 @@ class CarProperties extends StatelessWidget {
           Divider(color: context.dividerColor, thickness: 1, height: 40),
           Wrap(
               children:
-                  properties.map((e) => CarPropertyItem(property: e)).toList()),
+              properties.map((e) => CarPropertyItem(property: e)).toList()),
         ],
       ),
     );
@@ -33,6 +33,7 @@ class CarPropertyItem extends StatelessWidget {
   final TextStyle? textStyle;
   final MainAxisAlignment? mainAxisAlignment;
   final EdgeInsetsDirectional? padding;
+  final Color? backgroundColor;
 
   const CarPropertyItem({
     Key? key,
@@ -43,6 +44,7 @@ class CarPropertyItem extends StatelessWidget {
     this.mainAxisAlignment,
     this.padding,
     this.textStyle,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class CarPropertyItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       padding: padding ?? const EdgeInsets.symmetric(horizontal: 10),
       decoration: Decorations.kDecorationBorderWithRadius(
+        color: backgroundColor,
         borderColor: AppColors.grey_CA,
         radius: radius ?? 4,
       ),
@@ -61,8 +64,10 @@ class CarPropertyItem extends StatelessWidget {
         children: [
           AppIcon(
             icon: property.icon,
-            color: context.primaryColor,
+            color: property.color ?? context.primaryColor,
+
           ),
+          5.ph,
           Text(
             property.title,
             style: textStyle ?? context.labelMedium.copyWith(
@@ -75,14 +80,14 @@ class CarPropertyItem extends StatelessWidget {
           property.subtitle == null
               ? 0.ph
               : Text(
-                  property.subtitle!,
-                  style: context.textTheme.labelLarge!.copyWith(
-                    color: AppColors.grey_5F,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                ),
+            property.subtitle!,
+            style: context.textTheme.labelLarge!.copyWith(
+              color: AppColors.grey_5F,
+            ),
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+          ),
         ],
       ),
     );
@@ -93,11 +98,13 @@ class CarProperty {
   final String title;
   final String? subtitle;
   final String icon;
+  final Color? color;
 
   const CarProperty({
     Key? key,
     required this.title,
     this.subtitle,
     required this.icon,
+    this.color,
   });
 }

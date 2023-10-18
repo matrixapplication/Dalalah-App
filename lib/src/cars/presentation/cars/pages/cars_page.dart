@@ -1,9 +1,12 @@
 import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:delala/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
+import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
+import '../../../../home/presentation/widgets/filter_home.dart';
 import '../../../domain/entities/tasks.dart';
 import '../bloc/cars_bloc.dart';
+import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
 class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
@@ -24,57 +27,52 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
     this.context = context;
     //onBuild(bloc);
     return mainFrame(
-      body: buildConsumer(context),
+      body: Column(
+        children: [
+          FilterHome(
+            routeName: '',
+            onFilterOrder: () {},
+          ),
+          10.ph,
+          BrandsFilter(
+            items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                .map((e) => e.toString())
+                .toList(),
+            onFilter: (value) {},
+          ),
+          Expanded(child: buildConsumer(context)),
+        ],
+      ),
       tabs: [
         TabModel(label: context.strings.all),
         TabModel(label: context.strings.new_),
         TabModel(label: context.strings.used),
       ],
-      hasFilter: true,
-      // leading: AppCircularIconButton(
-      //   icon: AppIcons.add,
-      // ),
     );
-  }
-
-  // @override
-  // bool hasFilter(BuildContext context) {
-  //   return true;
-  // }
-
-  @override
-  List<Widget> tabViews(BuildContext context) {
-    return [
-      CarsScreen(
-        isFilter: gerArguments(context)?.paramsFilter == null,
-        tasks: [],
-      ),
-      CarsScreen(
-        isFilter: gerArguments(context)?.paramsFilter == null,
-        tasks: [],
-      ),
-      CarsScreen(
-        isFilter: gerArguments(context)?.paramsFilter == null,
-        tasks: [],
-      ),
-    ];
   }
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
     return CarsScreen(
-      isFilter: gerArguments(context)?.paramsFilter == null,
+      isFilter: false,
       tasks: state.data ?? [],
     );
   }
 
   @override
   String? title(BuildContext context) {
-    return gerArguments(context)?.categoryName;
+    return strings.cars;
   }
 
-  CarsPageArgs? gerArguments(BuildContext context) {
-    return ModalRoute.of(context)?.settings.arguments as CarsPageArgs?;
+  @override
+  onAddButtonPressed() {
+    Navigators.pushNamed(Routes.sellCarPage);
+  }
+
+
+  @override
+  bool isAddButton() {
+    return true;
   }
 }
 

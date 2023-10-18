@@ -25,8 +25,8 @@ class BrandsFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     String? item = context.strings.all;
     return Container(
-      margin: 20.paddingHoriz,
-      padding: 10.paddingHoriz + 5.paddingVert,
+      margin: 10.paddingHoriz,
+      padding: 10.paddingHoriz,
       decoration: Decorations.kDecorationBorderWithRadius(
         color: backgroundColor ?? context.cardColor,
         // color: Colors.red,
@@ -55,7 +55,7 @@ class BrandsFilter extends StatelessWidget {
                               image:
                                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPP9unyFq5H4PuKaRmW9bcIYFnvkHeVemueQ&usqp=CAU",
                               fit: BoxFit.cover,
-                              size: 34,
+                              size: 25,
                             ),
                             selected: item == e,
                             backgroundColor: context.scaffoldBackgroundColor,

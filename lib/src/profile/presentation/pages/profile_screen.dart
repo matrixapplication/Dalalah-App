@@ -68,7 +68,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     iconColor: Colors.white,
                     onTap: () {
                       Navigators.pushNamed(
-                        Routes.favoritesAndAdsPage,
+                        Routes.favoritesAndAdsTabs,
                         arguments: false,
                       );
                     },
@@ -80,7 +80,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     iconBackgroundColor: theme.primaryColor,
                     onTap: () {
                       Navigators.pushNamed(
-                        Routes.favoritesAndAdsPage,
+                        Routes.favoritesAndAdsTabs,
                         arguments: true,
                       );
                     },

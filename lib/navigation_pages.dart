@@ -1,6 +1,7 @@
 import 'package:delala/core/utils/helper_methods.dart';
 import 'package:delala/src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import 'package:delala/src/profile/presentation/pages/profile_page.dart';
+import 'package:delala/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'core/widgets/base/bottom_navigator_bar_item.dart';
 import 'src/home/presentation/pages/home/home_page.dart';
 import 'src/main_index.dart';
@@ -49,11 +50,21 @@ class NavigationPages extends BaseStatelessWidget {
                                     });
                                   },
                                 ),
+                                // BottomNavigatorBarItem(
+                                //   icon: AppIcons.sections,
+                                //   label: strings.sections,
+                                //   // icon: AppIcons.heart_solid,
+                                //   // label: strings.favorites,
+                                //   color: getColor(context, 1),
+                                //   onTap: () {
+                                //     setState(() {
+                                //       pageIndex = 1;
+                                //     });
+                                //   },
+                                // ),
                                 BottomNavigatorBarItem(
-                                  icon: AppIcons.sections,
-                                  label: strings.sections,
-                                  // icon: AppIcons.heart_solid,
-                                  // label: strings.favorites,
+                                  icon: AppIcons.add,
+                                  label: strings.add,
                                   color: getColor(context, 1),
                                   onTap: () {
                                     setState(() {
@@ -62,8 +73,8 @@ class NavigationPages extends BaseStatelessWidget {
                                   },
                                 ),
                                 BottomNavigatorBarItem(
-                                  icon: AppIcons.add,
-                                  label: strings.add,
+                                  icon: AppIcons.showrooms,
+                                  label: strings.show_rooms,
                                   color: getColor(context, 2),
                                   onTap: () {
                                     setState(() {
@@ -72,22 +83,12 @@ class NavigationPages extends BaseStatelessWidget {
                                   },
                                 ),
                                 BottomNavigatorBarItem(
-                                  icon: AppIcons.showrooms,
-                                  label: strings.show_rooms,
+                                  icon: AppIcons.more,
+                                  label: strings.more,
                                   color: getColor(context, 3),
                                   onTap: () {
                                     setState(() {
                                       pageIndex = 3;
-                                    });
-                                  },
-                                ),
-                                BottomNavigatorBarItem(
-                                  icon: AppIcons.more,
-                                  label: strings.more,
-                                  color: getColor(context, 4),
-                                  onTap: () {
-                                    setState(() {
-                                      pageIndex = 4;
                                     });
                                   },
                                 ),
@@ -113,8 +114,8 @@ class NavigationPages extends BaseStatelessWidget {
     print('isAdmin $isAdmin');
     return [
       const HomePage(),
-      isAdmin ? HomePage() : HomePage(),
-      HomePage(),
+   //   isAdmin ? HomePage() : HomePage(),
+      SellCarPage(),
       ExhibitionPage(),
       ProfilePage(),
     ];

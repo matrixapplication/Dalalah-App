@@ -96,7 +96,7 @@ class PickerMainImage extends StatelessWidget {
                           //   textAlign: TextAlign.center,
                           // ),
                           Padding(
-                            padding: 90.paddingHoriz,
+                            padding: 70.paddingHoriz,
                             child: PrimaryIconButton(
                               height: 45,
                               icon: '',
@@ -143,7 +143,7 @@ class PickerSubImages extends StatelessWidget {
               ),
               25.ph,
               Padding(
-                padding: 90.paddingHoriz,
+                padding: 70.paddingHoriz,
                 child: PrimaryIconButton(
                   height: 45,
                   icon: '',

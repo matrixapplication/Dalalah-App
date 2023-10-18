@@ -13,6 +13,7 @@ import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
 import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import '../../src/favorites_and_ads/presentation/pages/favorites_page.dart';
+import '../../src/favorites_and_ads/presentation/pages/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
@@ -39,6 +40,7 @@ class Routes {
   static const String platesDetailsPage = 'PlatesDetailsPage';
   static const String plateFilterPage = 'plateFilterPage';
   static const String installmentPage = 'installmentPage';
+  static const String favoritesAndAdsTabs = 'favoritesAndAdsTabs';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -86,6 +88,7 @@ class Routes {
     platesDetailsPage: (context) => PlatesDetailsPage(),
     plateFilterPage: (context) => PlateFilterPage(),
     installmentPage: (context) => InstallmentPage(),
+    favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),
