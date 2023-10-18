@@ -10,7 +10,14 @@ class FilterHome extends StatelessWidget {
   final bool isDecoration;
   final String routeName;
   final Function() onFilterOrder;
-  const FilterHome({Key? key, this.isDecoration = true, required this.routeName, required this.onFilterOrder}) : super(key: key);
+
+  const FilterHome({
+    Key? key,
+    this.isDecoration = true,
+    required this.routeName,
+    required this.onFilterOrder,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = context.textTheme.displayMedium?.copyWith(
@@ -30,7 +37,7 @@ class FilterHome extends StatelessWidget {
             iconSize: 22,
             iconColor: context.primaryColor,
             space: 12,
-            textStyle:textStyle,
+            textStyle: textStyle,
             onTap: () {
               Navigators.pushNamed(routeName);
             },
@@ -48,7 +55,7 @@ class FilterHome extends StatelessWidget {
           IconTextButton(
             icon: AppIcons.filter_order,
             text: context.strings.sort_by,
-            textStyle:textStyle,
+            textStyle: textStyle,
             iconColor: context.primaryColor,
             iconSize: 30,
             isFirstIcon: false,

@@ -74,10 +74,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   //   return [];
   // }
 
-  @protected
-  List<Widget> tabViews(BuildContext context) {
-    return [];
-  }
+  // @protected
+  // List<Widget> tabViews(BuildContext context) {
+  //   return [];
+  // }
 
   @protected
   bool? isNotBack(BuildContext context) {
@@ -113,6 +113,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     required Widget body,
     List<TabModel>? tabs,
     bool hasFilter = false,
+    List<Widget>? tabViews,
     // Widget? leading,
   }) {
     return WillPopScope(
@@ -128,7 +129,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         tabs: tabs,
         onAddButtonPressed: onAddButtonPressed,
         isAddButton: isAddButton(),
-        tabViews: tabViews(context!),
+        tabViews: tabViews,
         hasTabBarView: hasTabBarView(context!),
       ),
     );

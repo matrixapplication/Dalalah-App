@@ -19,9 +19,10 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
         SliverAppBar(
+          backgroundColor: Colors.white,
           forceElevated: innerBoxIsScrolled,
           bottom: PreferredSize(
-            preferredSize: const Size(0, 267),
+            preferredSize: const Size(0, 265),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

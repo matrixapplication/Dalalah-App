@@ -30,7 +30,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
       body: Column(
         children: [
           FilterHome(
-            routeName: '',
+            routeName: Routes.carsSearchPage,
             onFilterOrder: () {},
           ),
           10.ph,
@@ -43,11 +43,26 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
           Expanded(child: buildConsumer(context)),
         ],
       ),
+      // body: buildConsumer(context),
       tabs: [
         TabModel(label: context.strings.all),
         TabModel(label: context.strings.new_),
         TabModel(label: context.strings.used),
       ],
+      // tabViews: [
+      //   CarsScreen(
+      //     isFilter: false,
+      //     tasks: [],
+      //   ),
+      //   CarsScreen(
+      //     isFilter: false,
+      //     tasks:  [],
+      //   ),
+      //   CarsScreen(
+      //     isFilter: false,
+      //     tasks:  [],
+      //   )
+      // ]
     );
   }
 
@@ -57,6 +72,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
       isFilter: false,
       tasks: state.data ?? [],
     );
+    // return 0.ph;
   }
 
   @override

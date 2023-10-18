@@ -18,7 +18,7 @@ final lightTheme = ThemeData(
   hintColor: const Color(0xffC6C6C6),
   disabledColor: const Color(0xff8F9BB3),
   cardColor: const Color(0xffffffff),
-  dividerColor: Color(0xffF2F2F2),
+  dividerColor: const Color(0xffF2F2F2),
   iconTheme: const IconThemeData(
     color: kYellowColor,
   ),

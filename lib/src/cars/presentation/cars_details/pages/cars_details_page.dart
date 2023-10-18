@@ -19,7 +19,10 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>
   String? title(context) => strings.car_details;
 
   @override
-  Widget leading(context) => const ShareIconButton();
+  Widget leading(context) => Padding(
+    padding: 11.paddingAll,
+    child: const ShareIconButton(),
+  );
 
 
   @override

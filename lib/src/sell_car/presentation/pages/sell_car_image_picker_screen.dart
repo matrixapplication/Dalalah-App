@@ -27,7 +27,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          20.ph,
+          40.ph,
           Text(
             '3/3',
             style: context.displayMedium.copyWith(

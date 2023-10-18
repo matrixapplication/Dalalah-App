@@ -13,6 +13,12 @@ import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
 
 class HelperMethods {
+
+
+  static String numberFormat(int number) {
+   return NumberFormat('#,###').format(number);
+  }
+
   static Future<CroppedFile?> getImagePicker() async {
     XFile? imageFile;
     imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);

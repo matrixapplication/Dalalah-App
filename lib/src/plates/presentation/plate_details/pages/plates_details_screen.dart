@@ -7,7 +7,6 @@ import 'package:delala/core/widgets/images/image_network.dart';
 import 'package:delala/core/widgets/scaffold/app_scaffold.dart';
 import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/decorations/decorations.dart';
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
