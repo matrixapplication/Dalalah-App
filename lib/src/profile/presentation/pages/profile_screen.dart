@@ -53,12 +53,11 @@ class ProfileScreen extends BaseStatelessWidget {
                     },
                   ),
                   ProfileItem(
-                    title: strings.exhibitions,
+                    title: strings.favorite_agencies,
                     icon: AppIcons.box,
                     subTitle: strings.dealers_showrooms_agents,
                     onTap: () {
-                      // Navigators.pushNamed(Routes.aboutUs,
-                      //     arguments: AboutUsTypes.ABOUT_US);
+                      Navigators.pushNamed(Routes.exhibitionPage, arguments: strings.favorite_agencies);
                     },
                   ),
                   ProfileItem(

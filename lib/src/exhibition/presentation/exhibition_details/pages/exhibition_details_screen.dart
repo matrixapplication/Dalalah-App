@@ -1,4 +1,5 @@
 import 'package:delala/core/widgets/icons/icon_text.dart';
+import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/buttons/call_button.dart';
@@ -22,7 +23,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
           backgroundColor: Colors.white,
           forceElevated: innerBoxIsScrolled,
           bottom: PreferredSize(
-            preferredSize: const Size(0, 265),
+            preferredSize: const Size(0, 245),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -30,6 +31,9 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   children: [
                     SlidersCarDetails(
                       images: const ['', '', '', ''],
+                    ),
+                    FavoriteButton(
+                      margin: 15.paddingTop + 15.paddingStart,
                     ),
                     PositionedDirectional(
                       top: 12,
@@ -63,7 +67,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                           color: AppColors.grey_41,
                         ),
                       ),
-                      15.ph,
+                      10.ph,
                       IconText(
                         text: "جدة",
                         textStyle: context.textTheme.displayLarge!.copyWith(
@@ -71,13 +75,13 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                         ),
                         icon: AppIcons.yellow_location,
                         // iconColor: Colors.yellow,
-                        iconSize: 28,
+                        iconSize: 22,
                         mainAxisAlignment: MainAxisAlignment.start,
                       ),
+                      3.ph,
                     ],
                   ),
                 ),
-                20.ph,
               ],
             ),
           ),

@@ -69,12 +69,12 @@ class PlateVert extends StatelessWidget {
                     padding: 10.paddingHoriz + 14.paddingVert,
                     margin: 20.paddingBottom,
                     decoration: ShapeDecoration(
-                      color: Color(0xB2004D63),
+                      color: index == 0 ? context.primaryColor : const Color(0xB2004D63),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: ImageNetwork(
+                    child: const ImageNetwork(
                       image:
                           'https://i0.wp.com/almrj3.com/wp-content/uploads/2022/01/6.jpg?resize=520%2C288&ssl=1',
                       fit: BoxFit.fill,

@@ -12,7 +12,7 @@ class SlidersCarDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 240,
+      height: 245,
       child: Swiper(
         itemCount: images.length,
         index: images.length - 1,

@@ -41,7 +41,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           bottom: PreferredSize(
-            preferredSize: const Size(0,305),
+            preferredSize: const Size(0,325),
             child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

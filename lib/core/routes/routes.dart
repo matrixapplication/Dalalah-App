@@ -18,6 +18,7 @@ import '../../src/favorites_and_ads/presentation/pages/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
+import '../../src/home/presentation/pages/home/sections_screen.dart';
 import '../../src/installment/presentation/pages/installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
@@ -42,6 +43,7 @@ class Routes {
   static const String plateFilterPage = 'plateFilterPage';
   static const String installmentPage = 'installmentPage';
   static const String favoritesAndAdsTabs = 'favoritesAndAdsTabs';
+  static const String sectionsScreen = 'sectionsScreen';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -91,6 +93,7 @@ class Routes {
     plateFilterPage: (context) => PlateFilterPage(),
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
+    sectionsScreen: (context) => SectionsScreen(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

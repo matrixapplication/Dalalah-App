@@ -4,8 +4,10 @@ class Section {
   final String title;
   final String image;
   final String routeName;
+  final double width;
+  final double imageSize;
 
-  Section({required this.title, required this.image, required this.routeName});
+  Section({required this.title, required this.image, required this.routeName, this.imageSize = 80, this.width = 100});
 
   static getSections(BuildContext context) {
     return [

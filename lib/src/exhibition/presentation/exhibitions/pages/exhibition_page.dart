@@ -18,7 +18,7 @@ class ExhibitionPage extends BaseBlocWidget<UnInitState, ExhibitionCubit> {
 
   @override
   String? title(BuildContext context) {
-    return "التجار و المعارض";
+    return getArguments(context) ?? strings.exhibitions;
   }
 
 }

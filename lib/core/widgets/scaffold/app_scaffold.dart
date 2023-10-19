@@ -95,6 +95,7 @@ class AppScaffold extends StatelessWidget {
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??
                       [
+                        if(Navigator.canPop(context))
                         AppCircularIconButton(
                           margin:
                               20.paddingEnd + 12.paddingTop + 12.paddingBottom,

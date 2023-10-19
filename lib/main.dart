@@ -25,11 +25,11 @@ Future<void> main() async {
     accessToken: token,
   )).create());
   runApp(
-   // MyApp(token: token),
-      DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(token: token), // Wrap your app
-    ),
+    MyApp(token: token),
+    //   DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(token: token), // Wrap your app
+    // ),
   );
 }
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.navigationPages : Routes.navigationPages,
+            initialRoute: !token.isNotEmpty ? Routes.onBoardingPage : Routes.onBoardingPage,
           );
         },
       ),
