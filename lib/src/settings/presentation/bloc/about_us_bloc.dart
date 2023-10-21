@@ -1,3 +1,4 @@
+import 'package:delala/core/resources/data_state.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
@@ -11,12 +12,13 @@ class AboutUsCubit extends BaseCubit {
   AboutUsCubit(this.usecase);
 
   fetchInitialData(AboutUsTypes type) async {
-    executeSuccess(() => type == AboutUsTypes.ABOUT_US
-        ? usecase.fetchAboutUs()
-        : type == AboutUsTypes.BUYING_AND_SELLING_ABOUT
-            ? usecase.fetchBuyingAndSellingAbout()
-            : type == AboutUsTypes.TERMS_AND_CONDITIONS
-                ? usecase.fetchTermsAndConditions()
-                : usecase.fetchPrivacy());
+    // executeSuccess(() => type == AboutUsTypes.ABOUT_US
+    //     ? usecase.fetchAboutUs()
+    //     : type == AboutUsTypes.BUYING_AND_SELLING_ABOUT
+    //         ? usecase.fetchBuyingAndSellingAbout()
+    //         : type == AboutUsTypes.TERMS_AND_CONDITIONS
+    //             ? usecase.fetchTermsAndConditions()
+    //             : usecase.fetchPrivacy());
+    emit(DataSuccess(''));
   }
 }

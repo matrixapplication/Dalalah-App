@@ -14,4 +14,9 @@ class InstallmentUseCase {
     return '';
   }
 
+  Future<String> fetchInstallmentValue(String data) async{
+   // final data = await repository.fetchInstallmentValue(data);
+    return '5000';
+  }
+
 }

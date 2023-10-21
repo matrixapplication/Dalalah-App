@@ -7,7 +7,7 @@ import '../../../../../core/widgets/chip/chip_border.dart';
 import '../../../../../core/widgets/chip/price_widget.dart';
 import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../../core/widgets/list-tile/custom_list_tile2.dart';
-import '../../../../home/presentation/widgets/cars_list.dart';
+import '../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/tasks.dart';

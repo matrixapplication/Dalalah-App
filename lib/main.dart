@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.onBoardingPage : Routes.onBoardingPage,
+            initialRoute: !token.isNotEmpty ? Routes.navigationPages : Routes.navigationPages,
           );
         },
       ),

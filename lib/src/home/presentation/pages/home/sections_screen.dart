@@ -6,7 +6,7 @@ import '../../widgets/plates_list.dart';
 import '../../widgets/search_home.dart';
 import '../../widgets/sections_list.dart';
 import '../../widgets/slider_widget.dart';
-import '../../widgets/cars_list.dart';
+import '../../widgets/cars_home_list.dart';
 
 class SectionsScreen extends BaseStatelessWidget {
   SectionsScreen({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class SectionsScreen extends BaseStatelessWidget {
               child: _SectionsItem(
                 section: Section(
                   title: strings.add_car,
-                  image: AppImages.car_section,
+                  image: AppImages.add_car,
                   routeName: Routes.sellCarPage,
                   imageSize: 500,
                   width: double.infinity,
@@ -38,7 +38,7 @@ class SectionsScreen extends BaseStatelessWidget {
               child: _SectionsItem(
                 section: Section(
                   title: strings.add_plate,
-                  image: AppImages.double_plate,
+                  image: AppImages.add_plate,
                   routeName: Routes.plateFilterPage,
                   imageSize: 500,
                   width: double.infinity,
@@ -77,20 +77,22 @@ class _SectionsItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            CircleAvatar(
-              backgroundColor: context.gray_E2,
-              radius: 25,
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: context.gray_E2,
+                  radius: 90,
+                ),
+                Image.asset(
+                  section.image,
+                  height: 200,
+                  width: 200,
+                  scale: 1,
+                ),
+              ],
             ),
-            Container(
-              color: Colors.red,
-              padding: 0.paddingBottom,
-              child: Image.asset(
-                AppImages.double_plate,
-                height: 200,
-                width: 200,
-                scale: 1,
-              ),
-            ),
+            15.ph,
             Positioned(
               bottom: 0,
               child: Text(

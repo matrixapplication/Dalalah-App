@@ -96,7 +96,7 @@ class CustomTextField extends BaseStatelessWidget {
                   fillColor: fillColor ?? theme.colorScheme.background,
                   filled: true,
                   constraints: BoxConstraints(
-                      maxHeight: maxHeight ?? 45, minHeight: maxHeight ?? 45),
+                      maxHeight: maxHeight ?? 70, minHeight: maxHeight ?? 45),
                   prefixIcon: iconPath != null
                       ? AppIcon(
                           padding: const EdgeInsets.all(12),

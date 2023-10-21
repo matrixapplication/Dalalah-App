@@ -31,7 +31,7 @@ class Section {
       Section(
         title: context.strings.real_estate,
         image: AppImages.house_location,
-        routeName: Routes.login,
+        routeName: Routes.realEstatePage,
       ),
     ];
   }

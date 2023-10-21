@@ -2,7 +2,7 @@ import 'package:delala/core/exceptions/extensions.dart';
 import 'package:delala/src/cars/presentation/cars/widgets/cars_vertical_item.dart';
 import 'package:flutter/material.dart';
 
-import '../../../home/presentation/widgets/cars_list.dart';
+import '../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../sell_car/domain/entities/shipment.dart';
 
 class FavoritesAndAdsScreen extends StatelessWidget {

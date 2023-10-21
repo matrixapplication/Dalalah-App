@@ -17,11 +17,11 @@ import '../../../../core/widgets/clickable_widget.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 
 ///  Created by harbey on 9/5/2023.
-class CarsList extends StatelessWidget {
+class CarsHomeListHoriz extends StatelessWidget {
   final String title;
   final String routeName;
 
-  const CarsList({Key? key, required this.title, required this.routeName})
+  const CarsHomeListHoriz({Key? key, required this.title, required this.routeName})
       : super(key: key);
 
   @override

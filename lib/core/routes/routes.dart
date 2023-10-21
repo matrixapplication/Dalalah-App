@@ -20,6 +20,7 @@ import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
 import '../../src/home/presentation/pages/home/sections_screen.dart';
 import '../../src/installment/presentation/pages/installment_page.dart';
+import '../../src/installment/presentation/pages/monthly_installment/monthly_installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
@@ -27,6 +28,7 @@ import '../../src/plates/presentation/plates/pages/plate_filter_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
+import '../../src/real_estate/presentation/pages/real_estate_page.dart';
 import '../../src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
 import '../../src/sell_car/presentation/pages/sell_car_properties_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
@@ -44,6 +46,8 @@ class Routes {
   static const String installmentPage = 'installmentPage';
   static const String favoritesAndAdsTabs = 'favoritesAndAdsTabs';
   static const String sectionsScreen = 'sectionsScreen';
+  static const String monthlyInstallmentPage = 'monthlyInstallmentPage';
+  static const String realEstatePage = 'realEstatePage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -94,6 +98,8 @@ class Routes {
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
     sectionsScreen: (context) => SectionsScreen(),
+    monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
+    realEstatePage: (context) => RealEstatePage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

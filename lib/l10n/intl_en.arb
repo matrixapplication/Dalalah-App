@@ -29,6 +29,8 @@
   "cancel": "Cancel",
   "add_plate": "Add Plate",
   "favorite_agencies": "Preferred Agencies",
+  "calculate_your_installment": "Calculate your installment",
+  "remove_filters": "Remove Filters",
 
 
   "favorites": "Favorites",
@@ -207,5 +209,10 @@
   "installment" : "Installment",
   "price_currency" : "{num} RS",
   "enter_the_value_in_saudi_riyals" : "Enter the value in Saudi Riyals",
-  "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget" : "Calculate the monthly installment and installment period, or determine your budget"
+  "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget" : "Calculate the monthly installment and installment period, or determine your budget",
+  "mortgage": "Mortgage",
+  "credit_card": "Credit card",
+  "enter_credit_limit": "Enter the credit limit",
+  "select_employer": "Select employer",
+  "privacy_policy_about_us_terms_conditions": "Privacy Policy, About Us, Terms and Conditions"
 }

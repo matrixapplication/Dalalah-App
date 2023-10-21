@@ -26,6 +26,7 @@ class AppIcons {
   static String off = '$_iconsPath/off.svg';
   static String share_solid = '$_iconsPath/share_solid.svg';
   static String yellow_location = '$_iconsPath/yellow_location.svg';
+  static String privacy_policy = '$_iconsPath/privacy_policy.svg';
 
 
 

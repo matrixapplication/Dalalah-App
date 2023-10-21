@@ -186,5 +186,12 @@
   "enter_the_value_in_saudi_riyals": "أدخل القيمة بالريال السعودي",
   "calculate_the_monthly_installment_and_installment_period_or_determine_your_budget": "احسب القسط الشهرى و مدة الأقساط أو حدد ميزانيتك",
   "add_plate": "اضافة لوحة",
-  "favorite_agencies": "المعارض المفضله"
+  "favorite_agencies": "المعارض المفضله",
+  "calculate_your_installment": "احسب قسطك",
+  "remove_filters": "حذف الفلتر",
+  "mortgage": "التمويل العقاري",
+  "credit_card": "البطاقة الائتمانية",
+  "enter_credit_limit": "أدخل الحد الائتماني",
+  "select_employer": "اختر جهة العمل",
+  "privacy_policy_about_us_terms_conditions": "سياسة الخصوصية, من نحن, الشروط والاحكام"
 }

@@ -5,7 +5,7 @@ import '../../widgets/search_home.dart';
 import '../../widgets/sections_list.dart';
 import '../../widgets/slider_widget.dart';
 import '../brands/brands_list.dart';
-import '../../widgets/cars_list.dart';
+import '../../widgets/cars_home_list.dart';
 import '../../widgets/home_sliders.dart';
 
 class HomeScreen extends BaseStatelessWidget {
@@ -36,7 +36,7 @@ class HomeScreen extends BaseStatelessWidget {
                     routeName: Routes.carsPage,
                     title: context.strings.latest_cars,
                   ),
-                  CarsList(
+                  CarsHomeListHoriz(
                     title: strings.year_models,
                     routeName: Routes.carsPage,
                   ),

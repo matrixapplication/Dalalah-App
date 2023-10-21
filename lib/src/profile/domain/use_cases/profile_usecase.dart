@@ -17,8 +17,13 @@ class ProfileUseCase {
   ProfileUseCase(this.repository);
 
   Future<Profile> fetchProfileData() async{
-    final data = await repository.fetchProfileData();
-    return Profile.fromDto(data);
+    // final data = await repository.fetchProfileData();
+    // return Profile.fromDto(data);
+    return Profile(
+      name: 'Jorge David',
+      phone: '0912345678',
+      email: 'jorge@mail.com',
+    );
   }
 
   Future<String> deleteProfileData() async {

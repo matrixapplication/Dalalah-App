@@ -1,6 +1,6 @@
 import '../../../../main_index.dart';
 import 'brands_list.dart';
-import '../../widgets/cars_list.dart';
+import '../../widgets/cars_home_list.dart';
 import '../../widgets/home_sliders.dart';
 
 class BrandsScreen extends BaseStatelessWidget {

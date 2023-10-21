@@ -1,13 +1,22 @@
+import 'package:delala/core/widgets/buttons/row_buttons.dart';
 import 'package:delala/core/widgets/text-field/custom_text_field.dart';
 import 'package:delala/core/widgets/texts/row_texts.dart';
+import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/radio/custom_radio_list_tile2.dart';
 import '../../../main_index.dart';
 import '../widgets/installment_step_tile.dart';
+import '../widgets/installment_value.dart';
 
 class InstallmentScreen extends BaseStatelessWidget {
-  InstallmentScreen({Key? key});
+  final StreamStateInitial<String?> installmentValueStream;
+  final Function(String) onFetchInstallmentValue;
+
+  InstallmentScreen(
+      {super.key,
+      required this.installmentValueStream,
+      required this.onFetchInstallmentValue});
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +57,12 @@ class InstallmentScreen extends BaseStatelessWidget {
               child: CustomTextField(
                 controller: totalSalaryController,
                 hintText: strings.enter_the_value_in_saudi_riyals,
-                maxHeight: 55,
                 radius: 8,
               ),
             ),
             InstallmentStepTile(
               stepNumber: 2,
-              title: strings.employer,
+              title: strings.select_employer,
               child: DropDownField(
                 hint: strings.employer,
                 items: items,
@@ -70,11 +78,29 @@ class InstallmentScreen extends BaseStatelessWidget {
                 onTap: (value) {},
                 items: [
                   ChooseItemModel(
-                    label: "يوجد",
+                    label: strings.exist,
                     value: true,
                   ),
                   ChooseItemModel(
-                    label: "لا يوجد",
+                    label: strings.not_exist,
+                    value: false,
+                  ),
+                ],
+              ),
+            ),
+            InstallmentStepTile(
+              stepNumber: 4,
+              title: strings.mortgage,
+              spaceBetweenTitleAndChild: 25,
+              child: CustomChooseWidget(
+                onTap: (value) {},
+                items: [
+                  ChooseItemModel(
+                    label: strings.exist,
+                    value: true,
+                  ),
+                  ChooseItemModel(
+                    label: strings.not_exist,
                     value: false,
                   ),
                 ],
@@ -82,9 +108,9 @@ class InstallmentScreen extends BaseStatelessWidget {
             ),
             StatefulBuilder(builder: (context, setState) {
               return InstallmentStepTile(
-                  stepNumber: 4,
+                  stepNumber: 5,
                   dottedLineHeight: isExist ? 16 : 10,
-                  title: strings.enter_the_credit_limit,
+                  title: strings.credit_card,
                   child: Column(
                     children: [
                       CustomRadioListTile2(
@@ -98,9 +124,7 @@ class InstallmentScreen extends BaseStatelessWidget {
                       ),
                       isExist
                           ? CustomTextField(
-                              radius: 8,
-                              maxHeight: 55,
-                              hintText: strings.enter_the_value_in_saudi_riyals,
+                              hintText: strings.enter_credit_limit,
                               controller: creditLimitController,
                             )
                           : 0.ph,
@@ -116,17 +140,42 @@ class InstallmentScreen extends BaseStatelessWidget {
                     ],
                   ));
             }),
-            80.ph,
-            RowTexts(
-              title: strings.monthly_installment,
-              value: "20,000 رس",
-              valueStyle: context.headlineMedium,
-            ),
+            40.ph,
+            StreamBuilder<String?>(
+                stream: installmentValueStream.stream,
+                initialData: '',
+                builder: (context, snapshot) {
+                  return snapshot.data!.isNullOrEmpty()
+                      ? 0.ph
+                      : InstallmentValue(
+                          installmentValue: snapshot.data ?? '',
+                        );
+                }),
             30.ph,
-            PrimaryButton(
-              title: strings.see_available_cars,
-              onPressed: () {},
-            ),
+            StreamBuilder<String?>(
+                stream: installmentValueStream.stream,
+                initialData: '',
+                builder: (context, snapshot) {
+                  return PrimaryOutlinesButtons(
+                    title1: snapshot.data!.isNullOrEmpty()
+                        ? strings.calculate_your_installment
+                        : strings.see_available_cars,
+                    title2: strings.remove_filters,
+                    onPressed1: () {
+                      if (snapshot.data!.isNullOrEmpty()) {
+                        onFetchInstallmentValue(totalSalaryController.text);
+                      } else {
+                        Navigator.pushNamed(
+                            context, Routes.monthlyInstallmentPage);
+                      }
+                    },
+                    onPressed2: () {
+                      totalSalaryController.clear();
+                      creditLimitController.clear();
+                      installmentValueStream.setData('');
+                    },
+                  );
+                }),
             20.ph,
           ],
         ),

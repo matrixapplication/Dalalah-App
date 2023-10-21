@@ -1,7 +1,9 @@
 import 'package:delala/core/exceptions/extensions.dart';
+import 'package:delala/core/utils/navigator.dart';
 import 'package:delala/core/widgets/list-tile/custom_list_tile2.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/routes/routes.dart';
 import '../../../../core/themes/colors.dart';
 import '../../../../core/widgets/buttons/app_circular_icon.dart';
 
@@ -12,7 +14,7 @@ class ProfileItem extends StatelessWidget {
   final String? icon;
   final IconData? iconData;
   final bool isLast;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color? iconBackgroundColor;
   final Color? backgroundColor;
   final Color? iconColor;
@@ -21,13 +23,15 @@ class ProfileItem extends StatelessWidget {
   final Color? colorTitle;
   final EdgeInsetsGeometry? contentPadding;
   final bool isLogoutTile;
+  final String? routeName;
+  final dynamic arguments;
 
   const ProfileItem({
     Key? key,
     required this.title,
     this.icon,
     this.isLast = false,
-    required this.onTap,
+    this.onTap,
     this.iconBackgroundColor,
     this.backgroundColor,
     this.iconColor,
@@ -38,54 +42,46 @@ class ProfileItem extends StatelessWidget {
     this.contentPadding,
     this.subTitle,
     this.isLogoutTile = false,
+    this.routeName,
+    this.arguments,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: 30.paddingBottom,
-          child: CustomListTile2(
-            title: title,
-            subtitle: subTitle,
-            titleStyle:
-                context.titleSmall.copyWith(fontSize: 16, color: colorTitle),
-            backgroundColor: backgroundColor,
-            margin: margin,
-            decoration: decoration,
-            contentPadding: contentPadding ?? 16.paddingHoriz,
-            leading: AppCircularIcon(
-              icon: icon,
-              iconData: iconData,
-              radius: 23,
-              backgroundColor: iconBackgroundColor ?? context.primaryColor,
-              color: iconColor,
-            ),
-            trailing: isLogoutTile
-                ? 0.ph
-                : Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: context.hintColor,
-                    size: 18,
-                  ),
-            onTap: onTap,
-          ),
+    return Padding(
+      padding: 30.paddingBottom,
+      child: CustomListTile2(
+        title: title,
+        subtitle: subTitle,
+        titleStyle:
+            context.titleSmall.copyWith(fontSize: 16, color: colorTitle),
+        backgroundColor: backgroundColor,
+        margin: margin,
+        decoration: decoration,
+        contentPadding: contentPadding ?? 16.paddingHoriz,
+        leading: AppCircularIcon(
+          icon: icon,
+          iconData: iconData,
+          radius: 23,
+          size: 22,
+          backgroundColor: iconBackgroundColor ?? context.primaryColor,
+          color: iconColor ?? context.cardColor,
         ),
-        // if (!isLast)
-        //   Padding(
-        //     padding: const EdgeInsets.only(top: 16, bottom: 15),
-        //     child: Divider(
-        //       height: 1,
-        //       thickness: 1,
-        //       indent: 70,
-        //       endIndent: 16,
-        //       color: context.dividerColor,
-        //     ),
-        //   ),
-      ],
+        trailing: isLogoutTile
+            ? 0.ph
+            : Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: context.hintColor,
+                size: 18,
+              ),
+        onTap: () {
+            if (routeName != null) {
+              Navigators.pushNamed(routeName ?? '', arguments: arguments);
+            } else {
+              onTap!();
+            }
+        },
+      ),
     );
   }
 }
