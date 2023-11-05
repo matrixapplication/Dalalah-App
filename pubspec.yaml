@@ -111,6 +111,7 @@ dev_dependencies:
   analyzer: ^6.2.0
   flutter_lints: ^2.0.3
 
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -139,6 +140,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/done.png
     - assets/images/error.gif
     - assets/images/loading.gif
     - assets/images/on_boarding1.png

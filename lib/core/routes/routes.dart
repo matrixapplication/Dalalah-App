@@ -24,6 +24,7 @@ import '../../src/installment/presentation/pages/monthly_installment/monthly_ins
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
+import '../../src/plates/presentation/plates/pages/ad_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plate_filter_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
@@ -48,6 +49,7 @@ class Routes {
   static const String sectionsScreen = 'sectionsScreen';
   static const String monthlyInstallmentPage = 'monthlyInstallmentPage';
   static const String realEstatePage = 'realEstatePage';
+  static const String addPremiumPage = 'AddPremiumPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -100,6 +102,7 @@ class Routes {
     sectionsScreen: (context) => SectionsScreen(),
     monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
     realEstatePage: (context) => RealEstatePage(),
+    addPremiumPage: (context) => AddPremiumPage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

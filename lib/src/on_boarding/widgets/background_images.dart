@@ -26,14 +26,14 @@ class BackgroundImages {
    ),
    OnboardingModel(
      image: AppImages.on_boarding2,
-     title: "تميز بالفخامة بلوحة سيارتك",
-     description: "سيارات مميزة وفخمة يومياً. استمتع بالإثارة\nبسعر أقل",
+     title: "دلالة العقارية استمتع بالرفاهية",
+     description: "عقارات فخمة ومميزة. استمتع بالرفاهية\nبسعر أقل",
      isImageStart: false,
    ),
    OnboardingModel(
      image: AppImages.on_boarding3,
-     title: "دلالة العقارية استمتع بالرفاهية",
-     description: "عقارات فخمة ومميزة. استمتع بالرفاهية\nبسعر أقل",
+     title: "تميز بالفخامة بلوحة سيارتك",
+     description: "سيارات مميزة وفخمة يومياً. استمتع بالإثارة\nبسعر أقل",
      isImageStart: false,
    ),
  ];

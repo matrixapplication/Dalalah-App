@@ -5,6 +5,7 @@
 class AssetsRes {
   static const String PLUGIN_NAME = 'dalalah';
   static const String PLUGIN_VERSION = '1.0.0+1';
+  static const String DONE = 'assets/images/done.png';
   static const String ERROR = 'assets/images/error.gif';
   static const String LOADING = 'assets/images/loading.gif';
   static const String ON_BOARDING1 = 'assets/images/on_boarding1.png';
