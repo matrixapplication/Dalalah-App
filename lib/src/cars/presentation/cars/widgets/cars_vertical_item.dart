@@ -52,7 +52,7 @@ class CarVerticalItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Container(
                 padding: 8.paddingHoriz + 5.paddingBottom,
                 // width: 220,

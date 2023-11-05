@@ -177,7 +177,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
           ),
           15.ph,
           SelectionButtonChip(
-            isScrollable: true,
+            isScrollableGrid: true,
             types: [
               ChipItem(
                 title: strings.banzene,

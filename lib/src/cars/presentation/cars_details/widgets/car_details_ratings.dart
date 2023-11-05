@@ -79,14 +79,15 @@ class RatingItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               (isRating ? 10 : 0).ph,
-              Text('سياره رائعة', style: context.displayMedium.copyWith(color: context.gray_7C)),
-              15.ph,
               RowTexts(
                 title: '@yousuf',
                 value: 'منذ 2 يوم',
-                titleStyle: context.bodySmall.copyWith(fontSize: 10),
+                titleStyle: context.bodySmall.copyWith(fontSize: 14),
                 valueStyle: context.displaySmall.copyWith(color: context.gray_7C, fontSize: 10),
               ),
+              15.ph,
+              Text('سياره رائعة', style: context.displayMedium.copyWith(color: context.gray_7C)),
+
             ],
           )
         ],

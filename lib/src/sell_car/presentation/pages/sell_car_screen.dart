@@ -101,12 +101,27 @@ class SellCarScreen extends BaseStatelessWidget {
             height: 55,
           ),
           24.ph,
-          DropDownField(
+          SelectionButtonChip(
             title: strings.fuel_type,
-            hint: strings.select_fuel,
-            items: items,
-            height: 55,
-            onChanged: (value) {},
+            types: [
+              ChipItem(
+                title: strings.banzene,
+                icon: AppIcons.fuel,
+              ),
+              ChipItem(
+                icon: AppIcons.fuel,
+                title: strings.dizel,
+              ),
+              ChipItem(
+                icon: AppIcons.fuel,
+                title: strings.natural_gas,
+              ),
+              ChipItem(
+                icon: AppIcons.fuel,
+                title: strings.electricity,
+              ),
+            ],
+            onSelected: (value) {},
           ),
           24.ph,
           DropDownField(

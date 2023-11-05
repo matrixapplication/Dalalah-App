@@ -101,7 +101,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_native_splash: ^2.3.3
+  flutter_native_splash: ^2.3.5
   flutter_launcher_icons: ^0.13.1
   change_app_package_name: ^1.1.0
   retrofit_generator: ^8.0.0
@@ -120,9 +120,11 @@ flutter_native_splash:
   color: "#002731"
   image: assets/logo/logo.png
   android12: true
+  fullscreen: true
   android_12:
     image: assets/logo/logo.png
     color: "#002731"
+    fullscreen: true
 
 flutter_icons:
   android: true
