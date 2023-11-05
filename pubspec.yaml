@@ -1,4 +1,4 @@
-name: delala
+name: dalalah
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -137,31 +137,18 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    - assets/images/loading.gif
     - assets/images/error.gif
+    - assets/images/loading.gif
+    - assets/images/plate_background.png
     - assets/images/success.gif
     - assets/logo/
+    - assets/logo/logo.png
 
   fonts:
-    #    - family: ProductSans-Black
-    #      fonts:
-    #        - asset: assets/font/ProductSans/ProductSans-Black.ttf
-    - family: Bold
+    - family: LBC-Bold
       fonts:
         - asset: assets/font/LBC/LBC-Bold.otf
-    #    - family: ProductSans-ExtraBold
-    #      fonts:
-    #        - asset: assets/font/ProductSans/ProductSans-ExtraBold.ttf
-    #    - family: ProductSans-ExtraLight
-    #      fonts:
-    #        - asset: assets/font/ProductSans/ProductSans-ExtraLight.ttf
-    #    - family: ProductSans-Light
-    #      fonts:
-    #        - asset: assets/font/ProductSans/ProductSans-Light.ttf
-    #    - family: ProductSans-Medium
-    #      fonts:
-    #        - asset: assets/font/ProductSans/ProductSans-Medium.ttf
-    - family: Regular
+    - family: LBC-Regular
       fonts:
         - asset: assets/font/LBC/LBC-Regular.otf
 

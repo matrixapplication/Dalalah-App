@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:delala/core/di/injector.dart';
+import 'package:dalalah/core/di/injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,6 +149,8 @@ extension ThemesExtension on BuildContext {
   Color get disabledColor => Theme.of(this).disabledColor;
 
   Color get surface => colorScheme.surface;
+
+  Color get scrim => colorScheme.scrim;
 
   TextStyle get titleLarge => textTheme.titleLarge!;
 

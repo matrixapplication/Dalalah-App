@@ -1,5 +1,5 @@
-import 'package:delala/src/cars/presentation/cars/bloc/cars_search_bloc.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/cars/presentation/cars/bloc/cars_search_bloc.dart';
+import 'package:dalalah/src/main_index.dart';
 import '../../../../../../core/components/base_widget_bloc.dart';
 import 'cars_search_screen.dart';
 

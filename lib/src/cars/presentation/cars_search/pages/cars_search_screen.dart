@@ -1,7 +1,8 @@
-import 'package:delala/core/widgets/drop_down/drop_down.dart';
-import 'package:delala/core/widgets/texts/row_texts.dart';
+import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
+import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../main_index.dart';
 import '../../cars/widgets/brands_filter.dart';
@@ -175,26 +176,27 @@ class CarsSearchScreen extends BaseStatelessWidget {
             style: context.textTheme.bodyLarge,
           ),
           15.ph,
-          CarSearchChooseWidget(
-            isIconText: true,
-            items: [
-              ChooseItemModel(
-                value: 'all',
-                label: strings.banzene,
+          SelectionButtonChip(
+            isScrollable: true,
+            types: [
+              ChipItem(
+                title: strings.banzene,
                 icon: AppIcons.fuel,
               ),
-              ChooseItemModel(
+              ChipItem(
                 icon: AppIcons.fuel,
-                label: strings.dizel,
-                value: 'new',
+                title: strings.dizel,
               ),
-              ChooseItemModel(
+              ChipItem(
                 icon: AppIcons.fuel,
-                label: strings.natural_gas,
-                value: 'used',
+                title: strings.natural_gas,
+              ),
+              ChipItem(
+                icon: AppIcons.fuel,
+                title: strings.electricity,
               ),
             ],
-            onSelect: (value) {},
+            onSelected: (value) {},
           ),
           50.ph,
           PrimaryOutlinesButtons(

@@ -1,5 +1,5 @@
-import 'package:delala/src/settings/presentation/bloc/locale_cubit.dart';
-import 'package:delala/src/settings/presentation/bloc/locale_state.dart';
+import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
+import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'core/themes/light_theme.dart';
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.onBoardingPage : Routes.onBoardingPage,
+            initialRoute: !token.isNotEmpty ? Routes.login : Routes.onBoardingPage,
           );
         },
       ),

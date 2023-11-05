@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/texts/row_texts.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import '../../../../../main_index.dart';
 import '../../../cars/widgets/cars_vertical_item.dart';
 

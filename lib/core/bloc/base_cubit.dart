@@ -1,5 +1,5 @@
 
-import 'package:delala/src/settings/domain/entities/about_us.dart';
+import 'package:dalalah/src/settings/domain/entities/about_us.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 

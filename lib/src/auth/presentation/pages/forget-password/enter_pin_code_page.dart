@@ -11,6 +11,7 @@ class EnterPinCodePage
   Widget buildWidget(
       BuildContext context, UnInitState state) {
     return EnterPinCodeScreen(
+      email: getArguments(context),
       onPinCode: (String code) {
         Navigator.pushNamed(context, Routes.newPasswordPage);
         // bloc.enterPinCode(code);

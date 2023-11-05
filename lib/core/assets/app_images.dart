@@ -22,5 +22,6 @@ class AppImages{
   static String add_plate = '$_imagesPath/add_plate.png';
   static String primary_car = '$_imagesPath/primary_car.png';
   static String add_real_estate = '$_imagesPath/add_real_estate.png';
+  static String plate_backgound = '$_imagesPath/plate_background.png';
 
 }

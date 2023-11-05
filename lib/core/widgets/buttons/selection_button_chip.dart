@@ -1,4 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../themes/colors.dart';
@@ -66,6 +67,7 @@ class SelectionButtonChip extends StatelessWidget {
   Widget _buildChips(
       BuildContext context, void Function(void Function()) setState) {
     return Wrap(
+      runSpacing: 10,
       children: types
           .map((e) => SelectItem(
                 isWrap: true,
@@ -118,7 +120,7 @@ class SelectItem extends StatelessWidget {
     return Padding(
       padding: item == types.first ? 0.paddingEnd : 10.paddingStart,
       child: ChoiceChip(
-        label: isWrap ? text(context) : row(context),
+        label: isWrap ? row(context) : row(context),
         selected: selectedType == item,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
@@ -140,7 +142,10 @@ class SelectItem extends StatelessWidget {
   }
 
   Widget image(BuildContext context) {
-    return Image.network(item.icon ?? '',
+    return item.icon?.split('.').last == 'svg'
+        ? AppIcon(icon: item.icon ?? '')
+        :
+      Image.network(item.icon ?? '',
         height: 25,
         width: 25,
         color: selectedType == item ? context.cardColor : context.primaryColor);
@@ -164,6 +169,7 @@ class SelectItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: (item.icon != null && item.icon!.isNotEmpty) ? MainAxisSize.min : MainAxisSize.max,
       children: [
         if (item.icon != null && item.icon!.isNotEmpty) ...[
           image(context),

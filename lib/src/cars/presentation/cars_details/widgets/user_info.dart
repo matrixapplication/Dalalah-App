@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/buttons/call_button.dart';
-import 'package:delala/core/widgets/buttons/chat_whats_app_button.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/buttons/call_button.dart';
+import 'package:dalalah/core/widgets/buttons/chat_whats_app_button.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/icons/icon_text.dart';

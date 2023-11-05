@@ -1,4 +1,4 @@
-import 'package:delala/core/network/pagination.dart';
+import 'package:dalalah/core/network/pagination.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 

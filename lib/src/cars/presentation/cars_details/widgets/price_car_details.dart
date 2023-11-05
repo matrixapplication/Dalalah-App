@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/chip/price_widget.dart';
-import 'package:delala/core/widgets/texts/row_texts.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import 'border_widget.dart';
 

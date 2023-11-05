@@ -1,7 +1,8 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/routes/routes.dart';
-import 'package:delala/core/widgets/chip/price_widget.dart';
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/routes/routes.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
+import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/navigator.dart';
@@ -47,26 +48,28 @@ class PlateItem extends StatelessWidget {
           ),
           shadows: [
             BoxShadow(
-              color: Color(0xFFF2F2F2).withOpacity(0.5),
+              color: const Color(0xFFF2F2F2).withOpacity(0.5),
               blurRadius: 4,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
               spreadRadius: 0,
             )
           ],
         ),
         child: Column(
           children: [
-            ImageNetwork(
-              padding: 8.paddingVert + 16.paddingHoriz,
-              decoration: ShapeDecoration(
-                color: Color(0xFFEFEFEF),
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Color(0xFFDFDFDF)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              image: plate.image,
+            PlateImage(
             ),
+            // ImageNetwork(
+            //   padding: 8.paddingVert + 16.paddingHoriz,
+            //   decoration: ShapeDecoration(
+            //     color: const Color(0xFFEFEFEF),
+            //     shape: RoundedRectangleBorder(
+            //       side: const BorderSide(color: Color(0xFFDFDFDF)),
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //   ),
+            //   image: plate.image,
+            // ),
             10.ph,
             Padding(
               padding: 8.paddingVert + 10.paddingHoriz,

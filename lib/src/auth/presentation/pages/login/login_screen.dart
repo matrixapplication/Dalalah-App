@@ -1,5 +1,5 @@
-import 'package:delala/src/auth/presentation/pages/login/widgets/login_body.dart';
-import 'package:delala/src/auth/presentation/pages/sign-up/register_screen.dart';
+import 'package:dalalah/src/auth/presentation/pages/login/widgets/login_body.dart';
+import 'package:dalalah/src/auth/presentation/pages/sign-up/register_screen.dart';
 
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../main_index.dart';
@@ -36,16 +36,16 @@ class _LoginScreenState extends State<LoginScreen>
 
     return Container(
       alignment: Alignment.center,
-      padding: 10.paddingHoriz + 8.paddingTop,
+      padding: 10.paddingAll,
       margin: 16.paddingHoriz + (180).paddingTop + 50.paddingBottom,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor, radius: 30),
       child: TabBarWidget(
-        height: 20,
-        marginTabs: 16.paddingHoriz + 20.paddingTop,
+        height: 25,
+        marginTabs: 16.paddingHoriz + 16.paddingTop,
         tabs: [
-          TabItemModel(label: context.strings.login, page: LoginBody(onLogin: widget.onLogin)),
-          TabItemModel(label: context.strings.agency, page: LoginBody(isUser: false, onLogin: widget.onShowRoomLogin)),
+          TabItemModel(label: context.strings.individuals, page: LoginBody(onLogin: widget.onLogin)),
+          TabItemModel(label: context.strings.merchant, page: LoginBody(isUser: false, onLogin: widget.onShowRoomLogin)),
         ],
       ),
     );

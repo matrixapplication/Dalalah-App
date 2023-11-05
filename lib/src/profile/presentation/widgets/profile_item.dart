@@ -1,6 +1,6 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/utils/navigator.dart';
-import 'package:delala/core/widgets/list-tile/custom_list_tile2.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/utils/navigator.dart';
+import 'package:dalalah/core/widgets/list-tile/custom_list_tile2.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/routes/routes.dart';

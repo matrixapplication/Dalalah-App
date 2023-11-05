@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import '../../../../core/resources/validation.dart';
 import '../../../home/presentation/widgets/tap_effect.dart';
@@ -23,41 +23,38 @@ class AuthTextField extends StatelessWidget {
   final Icon? prefixIconData;
 
   final bool? error;
+  final TextInputType? keyboardType;
+  final bool isColor;
 
-  const AuthTextField(
-      {Key? key,
-      this.width,
-      this.hint,
-      this.controller,
-      this.onTep,
-      this.validator,
-      this.onChange,
-      this.onSubmit,
-      this.isPassword = false,
-      this.prefixIcon,
-      this.error,
-      this.prefixIconData,
-      })
-      : super(key: key);
+  const AuthTextField({
+    Key? key,
+    this.width,
+    this.hint,
+    this.controller,
+    this.onTep,
+    this.validator,
+    this.onChange,
+    this.onSubmit,
+    this.isPassword = false,
+    this.prefixIcon,
+    this.error,
+    this.prefixIconData,
+    this.keyboardType,
+    this.isColor = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     bool secure = true;
     return Container(
       margin: 10.paddingBottom,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.15),
-          offset: const Offset(0, 0),
-          blurRadius: 10,
-        ),
-      ], borderRadius: BorderRadius.circular(8)),
-      child: StatefulBuilder(
-        builder: (context, setState) {
-          return TextFormField(
+      decoration: Decorations.kDecorationField(),
+      child: StatefulBuilder(builder: (context, setState) {
+        return TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             textInputAction: TextInputAction.next,
-            style: context.textTheme.headlineMedium,
+            style: context.textTheme.bodyMedium,
+            keyboardType: keyboardType,
             decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
@@ -77,20 +74,21 @@ class AuthTextField extends StatelessWidget {
                 ),
                 errorBorder: InputBorder.none,
                 focusedErrorBorder: InputBorder.none,
-             //   constraints: BoxConstraints(minHeight: 80.h, maxHeight: 80.h),
+                //   constraints: BoxConstraints(minHeight: 80.h, maxHeight: 80.h),
                 fillColor: Colors.white,
                 filled: true,
-              //  contentPadding: EdgeInsets.symmetric(vertical: 30.h , horizontal: 10.w),
+                contentPadding: 10.paddingVert,
                 hintText: hint ?? "Username",
-                prefixIcon: prefixIconData ?? (prefixIcon != null
-                    ? AppIcon(
-                        padding: const EdgeInsets.all(12),
-                        icon: prefixIcon!,
-                        color: context.primaryColor,
-                        size: 20,
-                      )
-                    : null),
-                hintStyle: context.displaySmall!.copyWith(),
+                prefixIcon: prefixIconData ??
+                    (prefixIcon != null
+                        ? AppIcon(
+                            padding: const EdgeInsets.all(12),
+                            icon: prefixIcon!,
+                            color: isColor ? context.primaryColor : null,
+                            size: 20,
+                          )
+                        : null),
+                hintStyle: context.displaySmall,
                 suffixIcon: isPassword
                     ? TapEffect(
                         onClick: () {
@@ -110,13 +108,12 @@ class AuthTextField extends StatelessWidget {
                     : const SizedBox()),
             controller: controller,
             onTap: onTep,
-      //      onChanged: onChange,
+            //      onChanged: onChange,
             onSaved: onSubmit,
-            validator: validator ?? (value) =>  Validation.validateRequired(value ?? ''),
-            obscureText: isPassword ? secure : false
-          );
-        }
-      ),
+            validator: validator ??
+                (value) => Validation.validateRequired(value ?? ''),
+            obscureText: isPassword ? secure : false);
+      }),
     );
   }
 }

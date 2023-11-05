@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';

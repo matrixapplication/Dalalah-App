@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/icons/icon_text.dart';
+import 'package:dalalah/core/widgets/icons/icon_text.dart';
 
 import '../../../../../../core/widgets/buttons/secondary_button.dart';
 import '../../../../../main_index.dart';

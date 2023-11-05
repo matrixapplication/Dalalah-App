@@ -1,5 +1,5 @@
-import 'package:delala/core/widgets/drop_down/drop_down.dart';
-import 'package:delala/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
+import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 
 import '../../../../core/themes/light_theme.dart';
 import '../../../../core/utils/navigator.dart';

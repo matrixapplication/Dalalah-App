@@ -1,7 +1,7 @@
 
-import 'package:delala/core/components/base_widget_bloc.dart';
-import 'package:delala/core/widgets/buttons/share_icon_button.dart';
-import 'package:delala/src/home/presentation/widgets/filter_home.dart';
+import 'package:dalalah/core/components/base_widget_bloc.dart';
+import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
+import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
 import '../../../../main_index.dart';

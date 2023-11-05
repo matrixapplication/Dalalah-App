@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:card_swiper/card_swiper.dart';
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../main_index.dart';

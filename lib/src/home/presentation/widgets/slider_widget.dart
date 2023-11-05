@@ -1,5 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

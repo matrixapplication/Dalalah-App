@@ -1,6 +1,6 @@
-import 'package:delala/core/exceptions/extensions.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:delala/core/widgets/buttons/primary_button.dart';
+import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 
 import 'outlined_button.dart';
 

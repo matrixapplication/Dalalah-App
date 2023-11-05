@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:delala/core/widgets/buttons/primary_button.dart';
+import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 
 class RowButtons extends StatelessWidget {
   final String? title1;

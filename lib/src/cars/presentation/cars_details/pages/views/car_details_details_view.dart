@@ -2,12 +2,13 @@ import '../../../../../main_index.dart';
 import '../../widgets/car_properties.dart';
 
 class CarDetailsDetailsView extends BaseStatelessWidget {
-  CarDetailsDetailsView({super.key});
+  final EdgeInsetsGeometry? padding;
+  CarDetailsDetailsView({super.key, this.padding});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: 20.paddingVert,
+      padding: padding ?? 20.paddingVert,
       child: const Column(
         children: [
           DetailsViewListTile(
@@ -38,7 +39,7 @@ class DetailsViewListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isOpen = this.isOpen;
+
     List<Widget> properties = [
       CarPropertyItem(
         property: CarProperty(
@@ -61,70 +62,21 @@ class DetailsViewListTile extends StatelessWidget {
           icon: AppIcons.timer,
         ),
       ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.fuel,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة",
-          subtitle: '2000',
-          icon: AppIcons.timer,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.chair,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.timer,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.fuel,
-        ),
-      ),
     ];
     return StatefulBuilder(builder: (context, setState) {
-      return Column(
-        children: [
-          ListTile(
-            splashColor: Colors.transparent,
-            onTap: () {
-              isOpen = !isOpen;
-              setState(() {});
-            },
-            contentPadding: 30.paddingHoriz,
-            title: Text(
-              title,
-              style: context.textTheme.displayMedium!.copyWith(
-                color: AppColors.grey_2C
-              ),
-            ),
-            trailing: AppIcon(
-              icon: isOpen ? AppIcons.down_arrow : AppIcons.left_arrow,
-              size: isOpen ? 10 : 27,
-              color: const Color(0xff222222),
-            ),
-          ),
-          isOpen
-              ? Wrap(
-                  children: properties,
-                )
-              : 0.ph,
-        ],
+      return ExpansionTile(
+        tilePadding: 10.paddingHoriz,
+        initiallyExpanded: isOpen,
+
+        title: Text(
+          title,
+          style: context.bodyMedium
+        ),
+        collapsedIconColor: context.primaryColorDark,
+        iconColor: context.primaryColor,
+        children: [ Wrap(
+          children: properties,
+        )],
       );
     });
   }

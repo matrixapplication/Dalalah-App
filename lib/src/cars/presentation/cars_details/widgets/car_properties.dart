@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import 'border_widget.dart';
 import 'header_car_details.dart';
@@ -50,10 +50,8 @@ class CarPropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 120,
-      width: width ?? 90,
-      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 10),
+      margin: 5.paddingAll,
+      padding: 5.paddingHoriz + 10.paddingVert,
       decoration: Decorations.kDecorationBorderWithRadius(
         color: backgroundColor,
         borderColor: AppColors.grey_CA,
@@ -65,23 +63,24 @@ class CarPropertyItem extends StatelessWidget {
           AppIcon(
             icon: property.icon,
             color: property.color ?? context.primaryColor,
-
+            size: 18,
           ),
-          5.ph,
+          10.ph,
           Text(
             property.title,
-            style: textStyle ?? context.labelMedium.copyWith(
+            style: textStyle ?? context.labelSmall.copyWith(
               color: AppColors.grey_5F,
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
+          10.ph,
           property.subtitle == null
               ? 0.ph
               : Text(
             property.subtitle!,
-            style: context.textTheme.labelLarge!.copyWith(
+            style: context.textTheme.labelMedium!.copyWith(
               color: AppColors.grey_5F,
             ),
             overflow: TextOverflow.ellipsis,

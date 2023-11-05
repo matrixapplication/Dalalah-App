@@ -1,4 +1,4 @@
-import 'package:delala/src/sell_car/presentation/pages/sell_car_page.dart';
+import 'package:dalalah/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../navigation_pages.dart';

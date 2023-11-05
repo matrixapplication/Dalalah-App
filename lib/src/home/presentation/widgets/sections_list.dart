@@ -1,5 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/themes/colors.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/decorations/decorations.dart';

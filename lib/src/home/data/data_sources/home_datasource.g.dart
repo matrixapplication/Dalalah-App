@@ -13,7 +13,7 @@ class _HomeDatasource implements HomeDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://delala.matrixclouds.net/api';
+    baseUrl ??= 'https://dalalah.matrixclouds.net/api';
   }
 
   final Dio _dio;

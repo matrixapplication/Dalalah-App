@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import '../../../core/utils/navigator.dart';
 import '../widgets/background_images.dart';

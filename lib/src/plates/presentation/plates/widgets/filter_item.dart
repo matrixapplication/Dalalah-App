@@ -1,5 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/base_stateless_widget.dart';

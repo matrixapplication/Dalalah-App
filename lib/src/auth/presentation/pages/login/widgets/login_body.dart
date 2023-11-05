@@ -1,4 +1,5 @@
 import '../../../../../../core/resources/validation.dart';
+import '../../../../../../core/utils/navigator.dart';
 import '../../../../../../core/widgets/buttons/underline_text_button.dart';
 import '../../../../../main_index.dart';
 import '../../../../data/models/login_params.dart';
@@ -32,7 +33,7 @@ class LoginBody extends BaseStatelessWidget {
                 context.bodySmall.copyWith(fontSize: 12)),
             20.ph,
             AuthTextField(
-              hint: isUser ? context.strings.email : context.strings.code,
+              hint: isUser ? context.strings.email_or_phone : context.strings.code,
               prefixIcon: isUser ? AppIcons.email : AppIcons.id_card,
               controller: emailController,
           //    validator: (phone) => Validation.validatePhone(phone ?? ''),
@@ -46,13 +47,19 @@ class LoginBody extends BaseStatelessWidget {
               validator: (password) => Validation.validatePhone(password ?? ''),
             ),
             if(isUser)
-            Text(strings.forgot_password,
-                style: context.bodySmall.copyWith(fontSize: 10)),
+
+            GestureDetector(
+              onTap: () {
+                Navigators.pushNamed(Routes.enterPhoneNumberPage);
+              },
+              child:  Text(strings.forgot_password,
+                  style: context.bodySmall.copyWith(fontSize: 10)),
+            ),
             PrimaryButton(
               title: strings.login.toUpperCase(),
               radius: 30,
               height: 48,
-              margin: const EdgeInsets.only(top: 50, left: 35, right: 35),
+              margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () {
                 // if (_formKey.currentState!.validate())
                 //   onLogin!(
@@ -67,7 +74,7 @@ class LoginBody extends BaseStatelessWidget {
 
 
             if(isUser)
-           ...[30.ph,
+           ...[20.ph,
             Center(
               child: FittedBox(
                 child: Row(

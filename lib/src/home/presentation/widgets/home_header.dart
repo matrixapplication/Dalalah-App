@@ -1,8 +1,8 @@
-import 'package:delala/core/assets/app_icons.dart';
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/utils/navigator.dart';
-import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
-import 'package:delala/core/widgets/images/logo.dart';
+import 'package:dalalah/core/assets/app_icons.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/utils/navigator.dart';
+import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:dalalah/core/widgets/images/logo.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/routes/routes.dart';
@@ -32,7 +32,7 @@ class HomeHeader extends StatelessWidget {
           },
         ),
         10.pw,
-        // ChangeLanguagePopup(),
+        ChangeLanguagePopup(),
         const Spacer(),
         const Logo(size: 65),
         // 5.pw,

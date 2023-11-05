@@ -1,3 +1,5 @@
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -9,32 +11,28 @@ class CustomPinCode extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(30),
-        child: PinCodeTextField(
-          controller: pinCodeController,
-          appContext: context,
-          length: 4,
-          onChanged: (value) {},
-          showCursor: false,
-          keyboardType: TextInputType.number,
-          autoFocus: true,
-          enableActiveFill: true,
-          pinTheme: PinTheme(
-            activeFillColor: theme.cardColor,
-            inactiveFillColor: theme.cardColor,
-            selectedFillColor: theme.cardColor,
-            fieldHeight: 50,
-            fieldWidth: 50,
-            borderWidth: 1.5,
-            borderRadius: BorderRadius.circular(10),
-            shape: PinCodeFieldShape.box,
-            activeColor: theme.dividerColor,
-            selectedColor: theme.primaryColor,
-            inactiveColor: theme.dividerColor,
-            disabledColor: theme.dividerColor,
-          ),
-        ),
-      );
+    return PinCodeTextField(
+      controller: pinCodeController,
+      appContext: context,
+      length: 5,
+      onChanged: (value) {},
+      showCursor: false,
+      keyboardType: TextInputType.number,
+      autoFocus: true,
+      enableActiveFill: true,
+      pinTheme: PinTheme(
+        activeFillColor: context.cardColor,
+        inactiveFillColor: context.cardColor,
+        selectedFillColor: context.cardColor,
+        fieldHeight: 40,
+        fieldWidth: 40,
+        borderRadius: BorderRadius.circular(5),
+        shape: PinCodeFieldShape.box,
+        activeColor: context.dividerColor,
+        selectedColor: context.primaryColor,
+        inactiveColor: context.gray_A7,
+        disabledColor: context.gray_A7,
+      ),
+    );
   }
 }

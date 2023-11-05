@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 
 

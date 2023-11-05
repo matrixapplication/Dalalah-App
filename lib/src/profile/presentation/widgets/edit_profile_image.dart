@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:delala/core/utils/helper_methods.dart';
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 
 import '../../../main_index.dart';
 

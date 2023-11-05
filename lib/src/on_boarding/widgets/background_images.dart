@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'onboarding_item.dart';
 
 ///  Created by harbey on 9/7/2023.

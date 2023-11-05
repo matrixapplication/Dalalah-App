@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/buttons/app_icon.dart';
-import 'package:delala/core/widgets/buttons/app_icon_button.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/buttons/app_icon.dart';
+import 'package:dalalah/core/widgets/buttons/app_icon_button.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_icons.dart';

@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/buttons/icon_text_button.dart';
-import 'package:delala/src/home/presentation/widgets/tap_effect.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
+import 'package:dalalah/src/home/presentation/widgets/tap_effect.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/navigator.dart';

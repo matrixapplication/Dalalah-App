@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:delala/core/utils/helper_methods.dart';
-import 'package:delala/src/profile/domain/entities/profile.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/profile/domain/entities/profile.dart';
 import 'package:dio/dio.dart';
 import '../../src/profile/data/models/profile_dto.dart';
 import '../di/injector.dart';

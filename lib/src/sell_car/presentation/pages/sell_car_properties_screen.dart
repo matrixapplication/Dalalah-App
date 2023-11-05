@@ -2,6 +2,7 @@ import '../../../../core/themes/light_theme.dart';
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../core/widgets/multi_grid_view_selection.dart';
+import '../../../cars/presentation/cars_details/pages/views/car_details_details_view.dart';
 import '../../../cars/presentation/cars_details/widgets/car_properties.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/shipment.dart';
@@ -180,45 +181,48 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
       ),
     ];
     final strings = context.strings;
-    return SingleChildScrollView(
-      padding: 15.paddingAll,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          40.ph,
-          Text(
-            '2/3',
-            style: context.displayMedium.copyWith(
-              fontFamily: fontRegular,
-              fontWeight: FontWeight.w400,
+    return AppScaffold(
+      bottomNavigationBar: PrimaryOutlinesButtons(
+        title1: strings.next,
+        title2: strings.back,
+        margin: 16.paddingHoriz + 20.paddingBottom,
+        onPressed2: () {
+          Navigator.pop(context);
+        },
+        onPressed1: () {
+          Navigators.pushNamed(Routes.sellCarImagePickerPage);
+        },
+      ),
+      body: SingleChildScrollView(
+        padding: 15.paddingAll,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            40.ph,
+            Text(
+              '2/3',
+              style: context.displayMedium.copyWith(
+                fontFamily: fontRegular,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-          15.ph,
-          Text(
-            strings.add_car,
-            style: context.titleSmall,
-          ),
-          25.ph,
-          Text(
-            strings.add_car_features,
-            style: context.bodyMedium,
-          ),
-          20.ph,
-          MultiGridViewSelection(onSelected: (selected) {
-            print(selected);
-          }),
-          100.ph,
-          PrimaryOutlinesButtons(
-            title1: strings.next,
-            title2: strings.back,
-            onPressed2: () {
-              Navigator.pop(context);
-            },
-            onPressed1: () {
-              Navigators.pushNamed(Routes.sellCarImagePickerPage);
-            },
-          ),
-        ],
+            15.ph,
+            Text(
+              strings.add_car,
+              style: context.titleSmall,
+            ),
+            25.ph,
+            Text(
+              strings.add_car_features,
+              style: context.bodyMedium,
+            ),
+            20.ph,
+            // MultiGridViewSelection(onSelected: (selected) {
+            //   print(selected);
+            // }),
+            CarDetailsDetailsView(padding: 0.paddingAll),
+          ],
+        ),
       ),
     );
   }

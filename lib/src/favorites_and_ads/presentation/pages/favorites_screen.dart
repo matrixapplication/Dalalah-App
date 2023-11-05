@@ -1,5 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/src/cars/presentation/cars/widgets/cars_vertical_item.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/src/cars/presentation/cars/widgets/cars_vertical_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../home/presentation/widgets/cars_home_list.dart';

@@ -1,7 +1,7 @@
-import 'package:delala/core/widgets/buttons/favorite_icon_button.dart';
-import 'package:delala/core/widgets/icons/icon_text.dart';
-import 'package:delala/src/cars/presentation/cars/widgets/cars_list.dart';
-import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
+import 'package:dalalah/core/widgets/buttons/favorite_icon_button.dart';
+import 'package:dalalah/core/widgets/icons/icon_text.dart';
+import 'package:dalalah/src/cars/presentation/cars/widgets/cars_list.dart';
+import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:favorite_button/favorite_button.dart';
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';

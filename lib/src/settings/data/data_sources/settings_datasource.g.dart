@@ -13,7 +13,7 @@ class _SettingsDatasource implements SettingsDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://delala.matrixclouds.net/api';
+    baseUrl ??= 'https://dalalah.matrixclouds.net/api';
   }
 
   final Dio _dio;

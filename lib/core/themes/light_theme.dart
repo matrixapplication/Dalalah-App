@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 
 const String fontBold = 'Bold';
@@ -40,6 +40,7 @@ final lightTheme = ThemeData(
      tertiaryContainer: const Color(0xff0095FF),
     outline: const Color(0xffE9E9E9),
     outlineVariant: const Color(0xff494949),
+    scrim: const Color(0xff6C6C6C),
   ),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(

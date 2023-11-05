@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/text-field/custom_text_field.dart';
-import 'package:delala/src/home/presentation/widgets/search_text_field.dart';
-import 'package:delala/src/home/presentation/widgets/tap_effect.dart';
+import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/src/home/presentation/widgets/search_text_field.dart';
+import 'package:dalalah/src/home/presentation/widgets/tap_effect.dart';
 
 import '../../../main_index.dart';
 import '../pages/search_screen.dart';

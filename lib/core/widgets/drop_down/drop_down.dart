@@ -1,9 +1,10 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/resources/validation.dart';
-import 'package:delala/core/themes/colors.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/resources/validation.dart';
+import 'package:dalalah/core/themes/colors.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import '../../assets/app_icons.dart';
+import '../../decorations/decorations.dart';
 import '../buttons/app_icon.dart';
 
 class DropDownField extends StatelessWidget {
@@ -17,7 +18,7 @@ class DropDownField extends StatelessWidget {
   final Color? dropDownIconColor;
   final dynamic value;
   final TextStyle? texStyle;
-  final IconData? prefixIcon;
+  final String? prefixIcon;
   final Widget? iconWidget;
   final void Function(dynamic)? onChanged;
   final bool isValidator;
@@ -27,6 +28,7 @@ class DropDownField extends StatelessWidget {
   final double? hintFontSize;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? marginDropDown;
+  final bool isDecoration;
 
   const DropDownField(
       {Key? key,
@@ -47,13 +49,18 @@ class DropDownField extends StatelessWidget {
       this.fillColor,
       this.hintColor,
       this.dropDownIconColor,
-      this.hintFontSize, this.radius, this.titleStyle})
+      this.hintFontSize, this.radius, this.titleStyle,
+      this.isDecoration = false,
+      })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    Color? colorBorderSide = isDecoration ? context.cardColor : context.colorScheme.outline;
+    return Container(
       padding: margin ?? 0.paddingVert,
+      decoration: isDecoration
+          ?  Decorations.kDecorationField() : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,23 +88,31 @@ class DropDownField extends StatelessWidget {
                 contentPadding: 2.paddingEnd + 0.paddingVert,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: context.colorScheme.outline,
+                    color: colorBorderSide ?? context.colorScheme.outline,
                   ),
                   borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: context.colorScheme.outline,
+                    color: colorBorderSide ?? context.colorScheme.outline,
                     width: 1.5,
                   ),
                   borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: context.colorScheme.outline,
+                    color: colorBorderSide ?? context.colorScheme.outline,
                   ),
                   borderRadius: BorderRadius.circular(radius ?? 8),
                 ),
+                prefixIcon: iconWidget ??
+                    (prefixIcon != null
+                        ? AppIcon(
+                            padding: 10.paddingAll,
+                            icon: prefixIcon!,
+                            color: dropDownIconColor ?? context.primaryColor,
+                          )
+                        : null),
                 // Add more decoration..
               ),
               hint: Text(
@@ -143,6 +158,13 @@ class DropDownField extends StatelessWidget {
               dropdownStyleData: DropdownStyleData(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(radius ?? 8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.15),
+                      offset: const Offset(0, 0),
+                      blurRadius: 10,
+                    ),
+                  ],
                 ),
               ),
               menuItemStyleData: const MenuItemStyleData(

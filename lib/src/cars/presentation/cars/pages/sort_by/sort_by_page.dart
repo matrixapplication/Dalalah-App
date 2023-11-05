@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import '../../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../../core/widgets/scaffold/tab_bar_widget.dart';

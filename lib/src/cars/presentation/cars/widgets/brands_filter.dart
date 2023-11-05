@@ -1,8 +1,8 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/themes/colors.dart';
-import 'package:delala/core/widgets/buttons/app_icon_button.dart';
-import 'package:delala/core/widgets/clickable_widget.dart';
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/themes/colors.dart';
+import 'package:dalalah/core/widgets/buttons/app_icon_button.dart';
+import 'package:dalalah/core/widgets/clickable_widget.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/assets/app_icons.dart';

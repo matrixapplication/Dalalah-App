@@ -1,5 +1,5 @@
-import 'package:delala/core/widgets/chip/chip_border.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/chip/chip_border.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/buttons/favorite_icon_button.dart';

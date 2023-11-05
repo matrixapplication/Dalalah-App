@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 
 class Decorations {
   static BoxDecoration kDecorationOnlyRadius({
@@ -11,8 +11,6 @@ class Decorations {
     );
   }
 
-
-
   static BoxDecoration kDecorationBorderRadius({
     Color? color,
     Color? colorBorder,
@@ -22,7 +20,8 @@ class Decorations {
       color: color,
       borderRadius: borderRadius ?? BorderRadiusDirectional.circular(10),
       border: Border.all(
-        color: colorBorder ?? injector<ServicesLocator>().appContext.dividerColor,
+        color:
+            colorBorder ?? injector<ServicesLocator>().appContext.dividerColor,
         width: 1.0,
       ),
     );
@@ -252,6 +251,17 @@ class Decorations {
     );
   }
 
+  static BoxDecoration kDecorationField() {
+    return BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.15),
+        offset: const Offset(0, 0),
+        blurRadius: 10,
+      ),
+    ],
+        borderRadius: BorderRadius.circular(8));
+  }
+
   static BoxDecoration kDecorationBoxShadow({
     Color? color,
     Color? colorShadow,
@@ -281,4 +291,7 @@ class Decorations {
       ),
     );
   }
+
+
+
 }

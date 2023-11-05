@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/clickable_widget.dart';
+import 'package:dalalah/core/widgets/clickable_widget.dart';
 import '../../../src/main_index.dart';
 import '../icons/icon_text.dart';
 import 'custom_choose_widget.dart';

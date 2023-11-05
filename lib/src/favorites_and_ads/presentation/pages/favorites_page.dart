@@ -1,4 +1,4 @@
-import 'package:delala/core/components/base_widget_bloc.dart';
+import 'package:dalalah/core/components/base_widget_bloc.dart';
 import '../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../main_index.dart';
 import '../bloc/favorites_bloc.dart';

@@ -1,5 +1,5 @@
-import 'package:delala/core/widgets/texts/row_texts.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/decorations/decorations.dart';
@@ -11,13 +11,13 @@ import 'add_rating_widget.dart';
 ///  Created by harbey on 10/21/2023.
 class CarDetailsRatings extends BaseStatelessWidget {
   final List<String> images;
-  CarDetailsRatings({Key? key, this.images = const []}) : super(key: key);
+  final bool isRating;
+  CarDetailsRatings({Key? key, this.images = const [], this.isRating = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: 10.paddingAll + 10.paddingTop,
+      margin: 10.paddingAll + 8.paddingTop,
       clipBehavior: Clip.antiAlias,
-      padding: 10.paddingAll,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -31,15 +31,21 @@ class CarDetailsRatings extends BaseStatelessWidget {
         ],
       ),
       child: SingleChildScrollView(
+        padding: 10.paddingHoriz,
         child: Column(
           children: [
-            AddRatingWidget(),
+            (isRating ? 5 : 10).ph,
+            AddRatingWidget(
+              isRating: isRating,
+            ),
             ListView.builder(
               itemCount: 10,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: 20.paddingTop,
-              itemBuilder: (context, index) => const RatingItem(),
+              itemBuilder: (context, index) => RatingItem(
+                isRating: isRating,
+              ),
             ),
           ],
         ),
@@ -50,7 +56,8 @@ class CarDetailsRatings extends BaseStatelessWidget {
 
 
 class RatingItem extends StatelessWidget {
-  const RatingItem({Key? key}) : super(key: key);
+  final bool isRating;
+  const RatingItem({Key? key, this.isRating = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +68,7 @@ class RatingItem extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
+         if(isRating)
           CustomRatingBar(
             initialRating: 3,
             itemSize: 20,
@@ -70,9 +78,9 @@ class RatingItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              10.ph,
+              (isRating ? 10 : 0).ph,
               Text('سياره رائعة', style: context.displayMedium.copyWith(color: context.gray_7C)),
-              20.ph,
+              15.ph,
               RowTexts(
                 title: '@yousuf',
                 value: 'منذ 2 يوم',

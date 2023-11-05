@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:delala/core/utils/helper_methods.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
 import '../../../../core/widgets/buttons/primary_icon_button.dart';
 import '../../../main_index.dart';
 

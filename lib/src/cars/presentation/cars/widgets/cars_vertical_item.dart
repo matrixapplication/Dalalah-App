@@ -1,4 +1,4 @@
-import 'package:delala/core/utils/navigator.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
@@ -71,17 +71,16 @@ class CarVerticalItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     4.ph,
-                    Flexible(
-                      child: Text(
-                        isCatItem? "بي ام دبليو  X6 218i X6 218i Sport Line" : "بي ام دبليو  X6 218i X6 218i ADVANTAGE ",
-                        style: context.textTheme.labelLarge!.copyWith(
-                          color: AppColors.grey_2C,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                    Text(
+                      isCatItem? "بي ام دبليو  X6 218i X6 218i Sport Line" : "بي ام دبليو  X6 218i X6 218i ADVANTAGE ",
+                      style: context.textTheme.labelLarge!.copyWith(
+                        color: AppColors.grey_2C,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    5.ph,
+
+                    Spacer(),
                     Row(
                       children: [
                         CustomChip(
@@ -112,23 +111,25 @@ class CarVerticalItem extends StatelessWidget {
                       // padding: 3.paddingVert + 5.paddingHoriz,
                     ),
                     10.ph,
-                    Row(
-                      children: [
-                        CarDetailsContainer(
-                          label: '2000',
-                          icon: AppIcons.fuel,
-                        ),
-                        5.pw,
-                        CarDetailsContainer(
-                          label: '5,7',
-                          icon: AppIcons.timer,
-                        ),
-                        5.pw,
-                        CarDetailsContainer(
-                          label: '4',
-                          icon: AppIcons.chair,
-                        ),
-                      ],
+                    FittedBox(
+                      child: Row(
+                        children: [
+                          CarDetailsContainer(
+                            label: '2000',
+                            icon: AppIcons.fuel,
+                          ),
+                          5.pw,
+                          CarDetailsContainer(
+                            label: '5,7',
+                            icon: AppIcons.timer,
+                          ),
+                          5.pw,
+                          CarDetailsContainer(
+                            label: '4',
+                            icon: AppIcons.chair,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

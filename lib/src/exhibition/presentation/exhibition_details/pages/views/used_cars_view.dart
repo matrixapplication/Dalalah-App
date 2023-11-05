@@ -8,7 +8,7 @@ class UsedCarsView extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: 20.paddingVert + 12.paddingHoriz,
+      padding: 20.paddingVert + 8.paddingHoriz,
       itemCount: 5,
       itemBuilder: (context, index) {
         return CarVerticalItem(

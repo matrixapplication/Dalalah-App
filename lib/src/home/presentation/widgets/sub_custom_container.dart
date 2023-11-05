@@ -1,5 +1,5 @@
-import 'package:delala/core/decorations/decorations.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/decorations/decorations.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {

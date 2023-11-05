@@ -1,5 +1,6 @@
 import '../../../../../core/resources/validation.dart';
 import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/register_params.dart';
 import '../../widgets/auth_text_field.dart';
@@ -15,6 +16,7 @@ class RegisterScreen extends BaseStatelessWidget {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController whatsappController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
 
@@ -58,6 +60,23 @@ class RegisterScreen extends BaseStatelessWidget {
                 controller: phoneNumberController,
                 // validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
+              AuthTextField(
+                hint: context.strings.whatsapp,
+                prefixIcon: AppIcons.whatsapp,
+                controller: whatsappController,
+                  isColor: false,
+                // validator: (phone) => Validation.validatePhone(phone ?? ''),
+              ),
+              DropDownField(
+                items: [DropDownItem(title: 'الرياض'), DropDownItem(title: 'جدة'), DropDownItem(title: 'الدمام')],
+                hint: context.strings.city,
+                prefixIcon: AppIcons.location_2,
+                isDecoration: true,
+                onChanged: (value) {
+
+                },
+              ),
+              10.ph,
               AuthTextField(
                 isPassword: true,
                 hint: context.strings.password,

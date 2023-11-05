@@ -1,11 +1,15 @@
 
+import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
+
+import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../main_index.dart';
 import '../../../settings/presentation/bloc/locale_cubit.dart';
 import '../../../settings/presentation/bloc/locale_state.dart';
 
 class ChangeLanguagePopup extends BaseStatelessWidget {
   final EdgeInsetsGeometry? margin;
-  ChangeLanguagePopup({Key? key, this.margin}) : super(key: key);
+  final bool isOnlyText;
+  ChangeLanguagePopup({Key? key, this.margin, this.isOnlyText = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +19,31 @@ class ChangeLanguagePopup extends BaseStatelessWidget {
     ];
     return Container(
         clipBehavior: Clip.antiAlias,
-        width: 70,
+        width: isOnlyText ? null : 70,
         margin: margin ?? EdgeInsets.zero,
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
         decoration: Decorations.kDecorationOnlyRadius(color: Colors.transparent, radius: 20),
         child: BlocBuilder<LocaleCubit, LocalState>(
           bloc: LocaleCubit()..getLanguageData(),
           builder: (context, state) {
-  return DropdownButtonHideUnderline(
+  return isOnlyText ?
+  IconTextButton(
+    icon: AppIcons.arrow_down,
+    iconSize: 10,
+    iconColor: context.cardColor,
+    text: state.language == context.en ? strings.english : strings.arabic,
+      textStyle: context.labelMedium,
+    onTap: () {
+      if(state.language == context.en){
+        context.read<LocaleCubit>().setLanguageData('ar');
+      }else{
+        context.read<LocaleCubit>().setLanguageData('en');
+      }
+    },
+  ) :
+    DropdownButtonHideUnderline(
           child: DropdownButtonFormField(
-            value: state.language == 'en' ? 0 : 1,
+            value: state.language == context.en ? 0 : 1,
             isDense: true,
             borderRadius: BorderRadius.circular(10),
             alignment: AlignmentDirectional.center,

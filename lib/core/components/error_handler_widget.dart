@@ -1,4 +1,4 @@
-import 'package:delala/core/widgets/buttons/primary_icon_button.dart';
+import 'package:dalalah/core/widgets/buttons/primary_icon_button.dart';
 
 import '/src/main_index.dart';
 // ignore: must_be_immutable

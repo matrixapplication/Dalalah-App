@@ -1,6 +1,6 @@
 
-import 'package:delala/core/components/base_widget_bloc.dart';
-import 'package:delala/src/home/presentation/widgets/filter_home.dart';
+import 'package:dalalah/core/components/base_widget_bloc.dart';
+import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';

@@ -1,5 +1,5 @@
-import '../../../../../core/widgets/text-field/custom_text_field.dart';
 import '../../../../main_index.dart';
+import '../../widgets/auth_text_field.dart';
 
 class EnterPhoneNumberScreen extends BaseStatelessWidget {
   final Function(String) onEnterPhoneNumber;
@@ -7,7 +7,7 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
   EnterPhoneNumberScreen({Key? key, required this.onEnterPhoneNumber})
       : super(key: key);
 
-  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -19,26 +19,29 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
         key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Text(
-            //   strings.forget_password_message,
-            //   textAlign: TextAlign.center,
-            //   style: theme.textTheme.headlineLarge,
-            // ),
-            CustomTextField(
-              controller: phoneNumberController,
-              hintText: strings.phone_number,
-              iconPath: AppIcons.callOutline,
-              keyboardType: TextInputType.phone,
-              padding: const EdgeInsets.symmetric(vertical: 20),
+            Text(
+              strings.forgot_password_title,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.headlineLarge,
             ),
-            const Spacer(),
+            20.ph,
+            AuthTextField(
+              controller: emailController,
+              hint: strings.email,
+              prefixIcon: AppIcons.email,
+              keyboardType: TextInputType.emailAddress,
+            ),
+            30.ph,
             PrimaryButton(
-              title: strings.confirm,
-              radius: 8,
+              title: strings.send,
+              radius: 30,
+              height: 48,
+              margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  onEnterPhoneNumber(phoneNumberController.text);
+                  onEnterPhoneNumber(emailController.text);
                 }
               },
             ),

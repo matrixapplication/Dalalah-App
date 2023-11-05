@@ -1,6 +1,6 @@
-import 'package:delala/core/assets/app_images.dart';
-import 'package:delala/core/decorations/decorations.dart';
-import 'package:delala/core/exceptions/extensions.dart';
+import 'package:dalalah/core/assets/app_images.dart';
+import 'package:dalalah/core/decorations/decorations.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/themes/colors.dart';
 import '../../../../core/themes/light_theme.dart';

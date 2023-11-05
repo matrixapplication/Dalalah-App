@@ -1,4 +1,4 @@
-import 'package:delala/core/resources/data_state.dart';
+import 'package:dalalah/core/resources/data_state.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';

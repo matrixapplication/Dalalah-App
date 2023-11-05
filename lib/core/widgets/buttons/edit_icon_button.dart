@@ -1,5 +1,5 @@
-import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:dalalah/src/main_index.dart';
 
 class EditIconButton extends StatelessWidget {
   final Color? iconColor;

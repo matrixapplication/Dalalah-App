@@ -1,5 +1,5 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/widgets/images/image_network.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

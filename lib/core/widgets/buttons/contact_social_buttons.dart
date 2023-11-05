@@ -1,9 +1,9 @@
-import 'package:delala/core/assets/app_icons.dart';
-import 'package:delala/core/widgets/buttons/app_circular_icon.dart';
-import 'package:delala/core/widgets/buttons/icon_text_button.dart';
-import 'package:delala/core/widgets/buttons/row_texts_icons_buttons.dart';
-import 'package:delala/core/widgets/icons/icon_text.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/assets/app_icons.dart';
+import 'package:dalalah/core/widgets/buttons/app_circular_icon.dart';
+import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
+import 'package:dalalah/core/widgets/buttons/row_texts_icons_buttons.dart';
+import 'package:dalalah/core/widgets/icons/icon_text.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/helper_methods.dart';

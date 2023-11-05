@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:delala/core/commen/common_state.dart';
-import 'package:delala/core/utils/helper_methods.dart';
-import 'package:delala/src/profile/data/models/profile_dto.dart';
+import 'package:dalalah/core/commen/common_state.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';

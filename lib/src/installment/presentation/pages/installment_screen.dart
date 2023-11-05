@@ -1,6 +1,6 @@
-import 'package:delala/core/widgets/buttons/row_buttons.dart';
-import 'package:delala/core/widgets/text-field/custom_text_field.dart';
-import 'package:delala/core/widgets/texts/row_texts.dart';
+import 'package:dalalah/core/widgets/buttons/row_buttons.dart';
+import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';

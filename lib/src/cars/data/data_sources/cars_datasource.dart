@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:delala/core/network/api_response.dart';
+import 'package:dalalah/core/network/api_response.dart';
 
 import '../../domain/entities/material_packaging.dart';
 import '../../domain/entities/returner.dart';

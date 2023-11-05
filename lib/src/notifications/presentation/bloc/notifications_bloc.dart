@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:delala/core/resources/data_state.dart';
+import 'package:dalalah/core/resources/data_state.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../domain/entities/notification.dart';

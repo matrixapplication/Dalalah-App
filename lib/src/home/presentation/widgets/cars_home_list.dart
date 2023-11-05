@@ -1,11 +1,11 @@
-import 'package:delala/core/assets/app_icons.dart';
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/themes/colors.dart';
-import 'package:delala/core/widgets/buttons/app_circular_icon_button.dart';
-import 'package:delala/core/widgets/chip/price_widget.dart';
-import 'package:delala/core/widgets/images/image_network.dart';
-import 'package:delala/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
-import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
+import 'package:dalalah/core/assets/app_icons.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/themes/colors.dart';
+import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
+import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
+import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/decorations/decorations.dart';

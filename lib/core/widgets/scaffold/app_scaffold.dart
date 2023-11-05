@@ -1,5 +1,5 @@
-import 'package:delala/core/widgets/tabview/tabbar_widget.dart';
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/core/widgets/tabview/tabbar_widget.dart';
+import 'package:dalalah/src/main_index.dart';
 
 import '../../../src/home/presentation/widgets/filter_home.dart';
 import '../buttons/app_circular_icon_button.dart';

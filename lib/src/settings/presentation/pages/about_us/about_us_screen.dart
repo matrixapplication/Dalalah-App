@@ -1,4 +1,4 @@
-import 'package:delala/core/exceptions/extensions.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/about_us.dart';

@@ -110,7 +110,7 @@
 //   }
 // }
 
-import 'package:delala/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
+import 'package:dalalah/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../main_index.dart';
 import '../../cars/widgets/custom_company_container.dart';

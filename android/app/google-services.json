@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "801294018776",
-    "project_id": "delala-2023",
-    "storage_bucket": "delala-2023.appspot.com"
+    "project_id": "dalalah-2023",
+    "storage_bucket": "dalalah-2023.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:801294018776:android:6b9ee767718e6537fb4fad",
         "android_client_info": {
-          "package_name": "com.delala.app"
+          "package_name": "com.dalalah.app"
         }
       },
       "oauth_client": [],

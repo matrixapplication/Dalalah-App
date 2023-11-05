@@ -1,7 +1,8 @@
-import 'package:delala/core/exceptions/extensions.dart';
-import 'package:delala/core/widgets/buttons/primary_button.dart';
-import 'package:delala/core/widgets/drop_down/drop_down.dart';
-import 'package:delala/core/widgets/scaffold/app_scaffold.dart';
+import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/buttons/primary_button.dart';
+import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
+import 'package:dalalah/core/widgets/scaffold/app_scaffold.dart';
+import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/base_stateless_widget.dart';
@@ -34,7 +35,7 @@ class PlateFilterPage extends BaseStatelessWidget {
               types: types,
               onSelected: (bool value) {},
             ),
-            35.ph,
+            10.ph,
             Container(
               margin: 10.paddingTop,
               padding: 16.paddingVert + 10.paddingHoriz,
@@ -45,15 +46,6 @@ class PlateFilterPage extends BaseStatelessWidget {
               ),
               child: Column(
                 children: [
-                  DropDownField(
-                    items: items,
-                    marginDropDown: 8.paddingHoriz,
-                    title: strings.numbers_type,
-                    titleStyle: context.labelMedium,
-                    hint: strings.numbers_type,
-                    onChanged: (value) {},
-                  ),
-                  40.ph,
                   FilterItem(
                     title: strings.arabic_letters,
                     controllers: controllersArLetters,
@@ -68,11 +60,18 @@ class PlateFilterPage extends BaseStatelessWidget {
                     title: strings.numbers,
                     controllers: controllersNumbers,
                   ),
-                  30.ph,
+                  10.ph,
+                  CustomTextField(
+                    labelText: strings.price,
+                    labelStyle: context.textTheme.labelLarge,
+                    hintText: strings.enter_price,
+                    controller: TextEditingController(),
+                    keyboardType: TextInputType.number,
+                  ),
                 ],
               ),
             ),
-            40.ph,
+            20.ph,
             isAddPage
                 ? PrimaryButton(
                     title: strings.save,
@@ -86,6 +85,8 @@ class PlateFilterPage extends BaseStatelessWidget {
                     },
                     onPressed1: () {},
                   ),
+
+            20.ph,
           ],
         ),
       ),

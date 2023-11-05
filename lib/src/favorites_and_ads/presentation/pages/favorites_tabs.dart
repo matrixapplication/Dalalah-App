@@ -1,5 +1,5 @@
 
-import 'package:delala/src/cars/presentation/cars/pages/cars_screen.dart';
+import 'package:dalalah/src/cars/presentation/cars/pages/cars_screen.dart';
 import '../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../../main_index.dart';

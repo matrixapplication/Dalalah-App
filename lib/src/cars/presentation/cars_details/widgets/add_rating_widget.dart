@@ -1,4 +1,4 @@
-import 'package:delala/src/main_index.dart';
+import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/rating/custom_rating_bar.dart';
@@ -6,12 +6,15 @@ import '../../../../../core/widgets/text-field/custom_text_field.dart';
 
 ///  Created by harbey on 10/23/2023.
 class AddRatingWidget extends StatelessWidget {
+  final bool isRating;
+  const AddRatingWidget({Key? key, this.isRating = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     TextEditingController commentController = TextEditingController();
     return Column(
       children: [
-        CustomRatingBar(
+        if (isRating)
+       ...[ CustomRatingBar(
           initialRating: 0,
           itemSize: 35,
           icon: AppIcons.rate_star,
@@ -20,7 +23,7 @@ class AddRatingWidget extends StatelessWidget {
           padding: 2.paddingAll,
           onRating: (value) {},
         ),
-        15.ph,
+        15.ph,],
         Row(
           children: [
             Expanded(

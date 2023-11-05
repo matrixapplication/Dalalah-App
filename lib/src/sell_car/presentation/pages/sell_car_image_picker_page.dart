@@ -1,6 +1,6 @@
 
-import 'package:delala/core/components/base_widget_bloc.dart';
-import 'package:delala/src/sell_car/presentation/pages/sell_car_image_picker_screen.dart';
+import 'package:dalalah/core/components/base_widget_bloc.dart';
+import 'package:dalalah/src/sell_car/presentation/pages/sell_car_image_picker_screen.dart';
 
 import '../../../home/presentation/bloc/home_bloc.dart';
 import '../../../main_index.dart';

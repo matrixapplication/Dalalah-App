@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:delala/core/network/api_response.dart';
-import 'package:delala/core/utils/constants.dart';
+import 'package:dalalah/core/network/api_response.dart';
+import 'package:dalalah/core/utils/constants.dart';
 
 import '../../domain/entities/shipment_qr_code.dart';
 
