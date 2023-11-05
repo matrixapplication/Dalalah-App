@@ -139,6 +139,8 @@ flutter:
     - assets/images/
     - assets/images/error.gif
     - assets/images/loading.gif
+    - assets/images/on_boarding1.png
+    - assets/images/on_boarding3.png
     - assets/images/plate_background.png
     - assets/images/success.gif
     - assets/logo/
