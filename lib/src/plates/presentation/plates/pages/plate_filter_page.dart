@@ -61,6 +61,7 @@ class PlateFilterPage extends BaseStatelessWidget {
                     controllers: controllersNumbers,
                   ),
                   10.ph,
+                  if(isAddPage)
                   CustomTextField(
                     labelText: strings.price,
                     labelStyle: context.textTheme.labelLarge,

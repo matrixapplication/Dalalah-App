@@ -23,9 +23,9 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
      notifications: state.data!,
    );
   }
-
-  @override
-  String? title(BuildContext context) {
-    return strings.real_estate;
-  }
+  //
+  // @override
+  // String? title(BuildContext context) {
+  //   return strings.real_estate;
+  // }
 }

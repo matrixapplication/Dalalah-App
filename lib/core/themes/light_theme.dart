@@ -1,8 +1,8 @@
 import 'package:dalalah/src/main_index.dart';
 
 
-const String fontBold = 'Bold';
-const String fontRegular = 'Regular';
+const String fontBold = 'LBC-Bold';
+const String fontRegular = 'LBC-Regular';
 
 
 const Color primaryColor = Color(0xff0396BE);

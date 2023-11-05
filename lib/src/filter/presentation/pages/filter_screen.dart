@@ -116,7 +116,7 @@ class FilterScreen extends BaseStatelessWidget {
           ),
           SelectionButtonChip(
             title: strings.fuel_type,
-              isScrollable: true,
+              isScrollableGrid: true,
             types: ['All', 'Gas', 'Diesel', 'Automatic']
                 .map((e) => ChipItem(title: e))
                 .toList(),

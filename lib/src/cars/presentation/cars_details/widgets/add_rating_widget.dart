@@ -24,26 +24,21 @@ class AddRatingWidget extends StatelessWidget {
           onRating: (value) {},
         ),
         15.ph,],
-        Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: CustomTextField(
-                radius: 5,
-                controller: commentController,
-                hintText: context.strings.add_your_review,
-              ),
-            ),
-            10.pw,
-            Expanded(
-              flex: 1,
-              child: PrimaryButton(
-                onPressed: () {},
-                height: 50,
-                title: context.strings.post_review,
-              ),
-            ),
-          ],
+        CustomTextField(
+          radius: 5,
+          controller: commentController,
+          hintText: context.strings.add_your_review,
+          maxLines: 5,
+        ),
+        Align(
+          alignment: AlignmentDirectional.centerEnd,
+          child: PrimaryButton(
+            onPressed: () {},
+            height: 18,
+            width: 50,
+            padding: 10.paddingHoriz,
+            title: context.strings.post_review,
+          ),
         ),
       ],
     );

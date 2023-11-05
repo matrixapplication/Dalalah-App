@@ -10,7 +10,7 @@ class SelectionButtonChip extends StatelessWidget {
   final List<ChipItem> types;
   final EdgeInsetsGeometry? padding;
   final void Function(bool)? onSelected;
-  final bool isScrollable;
+  final bool isScrollableGrid;
 
   SelectionButtonChip({
     Key? key,
@@ -18,7 +18,7 @@ class SelectionButtonChip extends StatelessWidget {
     required this.types,
     this.onSelected,
     this.padding,
-    this.isScrollable = false,
+    this.isScrollableGrid = true,
   }) : super(key: key);
 
   ChipItem? selectedType;
@@ -35,29 +35,29 @@ class SelectionButtonChip extends StatelessWidget {
         10.ph,
         StatefulBuilder(
           builder: (context, setState) {
-            return isScrollable
-                ? _buildChips(context, setState)
-                : Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: types
-                        .map((item) => Expanded(
-                              child: SelectItem(
-                                item: item,
-                                types: types,
-                                setState: setState,
-                                selectedType: selectedType ?? types.first,
-                                onSelected: (bool value) {
-                                  setState(() {
-                                    selectedType = item;
-                                    onSelected!(value);
-                                  });
-                                },
-                                padding: padding,
-                              ),
-                            ))
-                        .toList(),
-                  );
+            return isScrollableGrid
+                ? _buildChipsGrid(context, setState) : _buildChips(context, setState);
+                // : Row(
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: types
+                //         .map((item) => Expanded(
+                //               child: SelectItem(
+                //                 item: item,
+                //                 types: types,
+                //                 setState: setState,
+                //                 selectedType: selectedType ?? types.first,
+                //                 onSelected: (bool value) {
+                //                   setState(() {
+                //                     selectedType = item;
+                //                     onSelected!(value);
+                //                   });
+                //                 },
+                //                 padding: padding,
+                //               ),
+                //             ))
+                //         .toList(),
+                //   );
           },
         ),
       ],
@@ -84,6 +84,35 @@ class SelectionButtonChip extends StatelessWidget {
                 padding: padding,
               ))
           .toList(),
+    );
+  }
+
+
+  Widget _buildChipsGrid(
+      BuildContext context, void Function(void Function()) setState) {
+    return GridView.builder(
+      shrinkWrap: true,
+      itemCount: types.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+      itemBuilder: (context, index) => SelectItem(
+        item: types[index],
+        types: types,
+        setState: setState,
+        isWrap: false,
+        selectedType: selectedType ?? types.first,
+        onSelected: (bool value) {
+          setState(() {
+            selectedType = types[index];
+            onSelected!(value);
+          });
+        },
+        padding: padding,
+      ),
     );
   }
 }
@@ -117,33 +146,30 @@ class SelectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: item == types.first ? 0.paddingEnd : 10.paddingStart,
-      child: ChoiceChip(
-        label: isWrap ? row(context) : row(context),
-        selected: selectedType == item,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
-        ),
-        selectedColor: context.primaryColor,
-        backgroundColor: context.cardColor,
-        visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-        side: BorderSide(
-          color: selectedType == item
-              ? context.secondaryContainer
-              : context.hintColor,
-          width: 1,
-        ),
-        padding:
-            padding ?? const EdgeInsets.symmetric(vertical: 18, horizontal: 5),
-        onSelected: onSelected,
+    return ChoiceChip(
+      label: row(context, isWrap: isWrap),
+      selected: selectedType == item,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6),
       ),
+      selectedColor: context.primaryColor,
+      backgroundColor: context.cardColor,
+      visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+      side: BorderSide(
+        color: selectedType == item
+            ? context.secondaryContainer
+            : context.hintColor,
+        width: 1,
+      ),
+      padding:
+          padding ?? const EdgeInsets.symmetric(vertical: 18, horizontal: 5),
+      onSelected: onSelected,
     );
   }
 
   Widget image(BuildContext context) {
     return item.icon?.split('.').last == 'svg'
-        ? AppIcon(icon: item.icon ?? '')
+        ? AppIcon(icon: item.icon ?? '', color: selectedType == item ? context.cardColor : context.primaryColor)
         :
       Image.network(item.icon ?? '',
         height: 25,
@@ -165,18 +191,21 @@ class SelectItem extends StatelessWidget {
     );
   }
 
-  Widget row(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: (item.icon != null && item.icon!.isNotEmpty) ? MainAxisSize.min : MainAxisSize.max,
-      children: [
-        if (item.icon != null && item.icon!.isNotEmpty) ...[
-          image(context),
-          10.pw,
+  Widget row(BuildContext context, {bool isWrap = false}) {
+    return SizedBox(
+      width: isWrap ? null : context.width / 2,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: (item.icon != null && item.icon!.isNotEmpty) ? MainAxisSize.min : MainAxisSize.max,
+        children: [
+          if (item.icon != null && item.icon!.isNotEmpty) ...[
+            image(context),
+            10.pw,
+          ],
+          text(context),
         ],
-        text(context),
-      ],
+      ),
     );
   }
 }
