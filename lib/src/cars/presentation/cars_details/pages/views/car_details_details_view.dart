@@ -11,6 +11,7 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
       child: const Column(
         children: [
           DetailsViewListTile(
+            isOpen: true,
             title: 'المواصفات',
           ),
           DetailsViewListTile(
@@ -26,16 +27,18 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
 }
 
 class DetailsViewListTile extends StatelessWidget {
+  final bool isOpen;
   final String title;
 
   const DetailsViewListTile({
     super.key,
+    this.isOpen = false,
     required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isOpen = false;
+    bool isOpen = this.isOpen;
     List<Widget> properties = [
       CarPropertyItem(
         property: CarProperty(

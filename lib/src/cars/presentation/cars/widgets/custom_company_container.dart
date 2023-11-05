@@ -26,6 +26,7 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: 20.paddingBottom,
+      clipBehavior: Clip.antiAlias,
       decoration: decoration ??
           Decorations.kDecorationBorder(
             radius: 8,

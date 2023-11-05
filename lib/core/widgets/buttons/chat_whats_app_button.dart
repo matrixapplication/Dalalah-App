@@ -11,8 +11,9 @@ import 'app_circular_icon_button.dart';
 
 class ChatWhatsAppButton extends BaseStatelessWidget {
   final String phone;
+  final Decoration? decoration;
 
-  ChatWhatsAppButton({Key? key, required this.phone}) : super(key: key);
+  ChatWhatsAppButton({Key? key, required this.phone, this.decoration}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class ChatWhatsAppButton extends BaseStatelessWidget {
       padding: 8,
       size: 30,
       circleSize: 45,
+      decoration: decoration,
       icon: AppIcons.whatsapp_2,
       backgroundColor: context.cardColor,
       shadowColor: context.cardColor.withOpacity(0.2),

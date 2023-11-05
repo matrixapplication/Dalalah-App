@@ -114,6 +114,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     List<TabModel>? tabs,
     bool hasFilter = false,
     List<Widget>? tabViews,
+    Function(int)? onTabSelected,
     // Widget? leading,
   }) {
     return WillPopScope(
@@ -127,6 +128,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         hasAppBar: hasAppBar(context!),
         body: body,
         tabs: tabs,
+        onTabSelected: onTabSelected,
         onAddButtonPressed: onAddButtonPressed,
         isAddButton: isAddButton(),
         tabViews: tabViews,

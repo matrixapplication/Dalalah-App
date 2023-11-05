@@ -11,6 +11,7 @@ class AppCircularIconButton extends StatelessWidget {
   final double? radius;
   final double? padding;
   final EdgeInsetsGeometry? margin;
+  final Decoration? decoration;
 
   const AppCircularIconButton({
     Key? key,
@@ -24,12 +25,13 @@ class AppCircularIconButton extends StatelessWidget {
     this.shadowColor,
     this.margin,
     this.circleSize,
+    this.decoration,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(padding ?? 10),
+      padding: EdgeInsets.all(padding ?? 8),
       margin: margin ?? EdgeInsets.zero,
       width: circleSize ?? 30,
       height: circleSize ?? 30,
@@ -44,8 +46,8 @@ class AppCircularIconButton extends StatelessWidget {
       //     ),
       //   ],
       // ),
-      decoration: Decorations.kDecorationBoxShadow(
-          radius: radius ??  100,
+      decoration: decoration ?? Decorations.kDecorationBoxShadow(
+          radius: radius ??  500,
           offset: const Offset(0, 4),
           colorShadow: const Color(0xff8E8E8E).withOpacity(0.25)),
       child: AppIconButton(

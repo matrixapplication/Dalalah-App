@@ -7,39 +7,40 @@ class CarDetailsCategoryView extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: 20.paddingHoriz + 20.paddingVert,
-      child: Column(
-        children: [
-          const CarVerticalItem(isCatItem: true),
-          Container(
-            padding: 15.paddingAll,
-            decoration: Decorations.kDecorationOnlyRadius(
-              color: AppColors.grey_d9,
-              radius: 0,
-            ),
-            child: Column(
-              children: [
-                CategoryRowText(
-                  title: 'ADVANTAGE',
-                  value: '1000,000',
-                  textColor: AppColors.blue_49.withOpacity(0.3),
-                ),
-                CategoryRowText(
-                  title: 'Sport Line',
-                  value: '1200,000',
-                ),
-                CategoryRowText(
-                  title: 'M Sport',
-                  value: '1500,000',
-                  isLastItem: true,
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+    return CarVerticalItem(isCatItem: true);
+    // return SingleChildScrollView(
+    //   padding: 16.paddingHoriz + 10.paddingVert,
+    //   child: Column(
+    //     children: [
+    //       const ,
+    //       Container(
+    //         padding: 15.paddingAll,
+    //         decoration: Decorations.kDecorationOnlyRadius(
+    //           color: AppColors.grey_d9,
+    //           radius: 0,
+    //         ),
+    //         child: Column(
+    //           children: [
+    //             CategoryRowText(
+    //               title: 'ADVANTAGE',
+    //               value: '1000,000',
+    //               textColor: AppColors.blue_49.withOpacity(0.3),
+    //             ),
+    //             CategoryRowText(
+    //               title: 'Sport Line',
+    //               value: '1200,000',
+    //             ),
+    //             CategoryRowText(
+    //               title: 'M Sport',
+    //               value: '1500,000',
+    //               isLastItem: true,
+    //             ),
+    //           ],
+    //         ),
+    //       )
+    //     ],
+    //   ),
+    // );
   }
 }
 

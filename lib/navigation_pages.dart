@@ -75,7 +75,7 @@ class NavigationPages extends BaseStatelessWidget {
                                   },
                                 ),
                                 BottomNavigatorBarItem(
-                                  icon: AppIcons.showrooms,
+                                  icon: AppIcons.privacy_policy,
                                   label: strings.show_rooms,
                                   color: getColor(context, 2),
                                   onTap: () {

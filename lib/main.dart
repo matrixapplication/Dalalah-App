@@ -1,13 +1,10 @@
 import 'package:delala/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:delala/src/settings/presentation/bloc/locale_state.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
-import 'core/utils/notification_service.dart';
 import 'src/main_index.dart';
 
 Future<void> main() async {
@@ -64,7 +61,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.navigationPages : Routes.navigationPages,
+            initialRoute: !token.isNotEmpty ? Routes.onBoardingPage : Routes.onBoardingPage,
           );
         },
       ),

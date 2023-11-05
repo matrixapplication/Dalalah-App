@@ -16,7 +16,9 @@ class EditProfileScreen extends BaseStatelessWidget {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController whatsAppController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -49,11 +51,19 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.phone_number,
                 controller: phoneController,
               ),
-              // EditTextField(
-              //   title: strings.password,
-              //   controller: passwordController,
-              //   isPasswordVisible: false,
-              // ),
+              EditTextField(
+                title: strings.whatsapp_number,
+                controller: phoneController,
+              ),
+              EditTextField(
+                title: strings.password,
+                controller: passwordController,
+              ),
+              EditTextField(
+                title: strings.confirm_password,
+                controller: confirmPasswordController,
+                isPasswordVisible: false,
+              ),
             ],
           ),
         ),

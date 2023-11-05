@@ -1,5 +1,6 @@
 
 import 'package:delala/core/components/base_widget_bloc.dart';
+import 'package:delala/core/widgets/buttons/share_icon_button.dart';
 import 'package:delala/src/home/presentation/widgets/filter_home.dart';
 
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
@@ -27,18 +28,11 @@ class PlatesDetailsPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesD
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
     return PlatesDetailsScreen(plates: state.data ?? []);
   }
+
   @override
-  Widget? bottomNavigationBar(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: Decorations.shapeTopShadow(
-        color: context.scaffoldBackgroundColor,
-        colorShadow: context.disabledColor,
-        radius: 0,
-      ),
-      child: const ContactSocialButtons(
-        phone: '+201141475581',
-      ),
+  Widget leading(BuildContext context) {
+    return ShareIconButton(
+        padding: 15.paddingAll,
     );
   }
 }

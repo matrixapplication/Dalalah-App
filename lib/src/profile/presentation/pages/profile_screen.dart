@@ -80,9 +80,23 @@ class ProfileScreen extends BaseStatelessWidget {
                   ProfileItem(
                     title: strings.privacy_policy,
                     icon: AppIcons.privacy_policy,
-                    subTitle: strings.privacy_policy_about_us_terms_conditions,
+                    subTitle: strings.privacy_policy,
                     routeName: Routes.aboutUs,
                     arguments: AboutUsTypes.PRIVACY,
+                  ),
+                  ProfileItem(
+                    title: strings.terms_and_conditions,
+                    icon: AppIcons.privacy_policy,
+                    subTitle: strings.terms_and_conditions,
+                    routeName: Routes.aboutUs,
+                    arguments: AboutUsTypes.TERMS_AND_CONDITIONS,
+                  ),
+                  ProfileItem(
+                    title: strings.about_us,
+                    icon: AppIcons.privacy_policy,
+                    subTitle: strings.about_us,
+                    routeName: Routes.aboutUs,
+                    arguments: AboutUsTypes.ABOUT_US,
                   ),
                   ProfileItem(
                     title: strings.logout,

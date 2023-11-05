@@ -193,5 +193,22 @@
   "credit_card": "البطاقة الائتمانية",
   "enter_credit_limit": "أدخل الحد الائتماني",
   "select_employer": "اختر جهة العمل",
-  "privacy_policy_about_us_terms_conditions": "سياسة الخصوصية, من نحن, الشروط والاحكام"
+  "privacy_policy_about_us_terms_conditions": "سياسة الخصوصية, من نحن, الشروط والاحكام",
+  "ratings": "التقييمات",
+  "rate_the_car": "قيم السيارة",
+  "enter_your_comment": "أدخل تعليقك",
+  "add_review": "إضافة تقييم",
+  "agency": "المعرض",
+  "welcome_to": "مرحبا بك",
+  "add_real_estate": "إضافة عقار",
+  "post_review": "نشر التقييم",
+  "add_your_review": "أضف تقييمك",
+  "code": "الكود",
+  "login_as_guest": "الدخول كزائر",
+  "installment_value_monthly": "قيمة القسط الشهري",
+  "enter_installment_value": "أدخل قيمة القسط",
+  "add_your_ad": "أضف إعلانك",
+  "whatsapp_number": "رقم الواتساب",
+  "confirm_password": "تأكيد كلمة السر",
+  "follow": "متابعة"
 }

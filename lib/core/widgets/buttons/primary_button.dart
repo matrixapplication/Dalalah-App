@@ -10,7 +10,8 @@ class PrimaryButton extends StatelessWidget {
   final double? elevation;
   final double? radius;
   final EdgeInsetsGeometry? margin;
-  const PrimaryButton({Key? key, this.title, this.onPressed, this.height = 55, this.backgroundColor, this.borderRadius, this.elevation, this.radius, this.margin}) : super(key: key);
+  final double? width;
+  const PrimaryButton({Key? key, this.title, this.onPressed, this.height = 55, this.backgroundColor, this.borderRadius, this.elevation, this.radius, this.margin, this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,10 @@ class PrimaryButton extends StatelessWidget {
           elevation: elevation ?? 0,
           backgroundColor: backgroundColor ?? context.primaryColor,
           shape: RoundedRectangleBorder(borderRadius: borderRadius ??  BorderRadius.all(Radius.circular(radius ?? 8))),
-          fixedSize: Size(MediaQuery.of(context).size.width, height!),
+          fixedSize: Size(width ?? MediaQuery.of(context).size.width, height!),
           foregroundColor: backgroundColor ?? context.primaryColor,
         ),
-        child: FittedBox(child: Text(title!, style: context.displayLarge!.copyWith(color: Colors.white))),
+        child: FittedBox(child: Text(title!, style: context.displayLarge.copyWith(color: Colors.white))),
       ),
     );
   }

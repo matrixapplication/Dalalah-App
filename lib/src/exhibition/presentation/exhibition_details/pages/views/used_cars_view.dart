@@ -13,6 +13,7 @@ class UsedCarsView extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         return CarVerticalItem(
           carStatus: strings.used,
+          isNew: false,
         );
       },
     );

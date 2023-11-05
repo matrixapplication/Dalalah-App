@@ -8,13 +8,15 @@ import '../widgets/cars_vertical_item.dart';
 
 class CarsScreen extends BaseStatelessWidget {
   final bool isFilter;
+  final bool isNew;
   final List<Task> tasks;
 
-  CarsScreen({Key? key, required this.tasks, required this.isFilter})
+  CarsScreen({Key? key, required this.tasks, required this.isFilter, this.isNew = true})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print('build isNew: $isNew');
     return Material(
       color: context.scaffoldBackgroundColor,
       child: Padding(
@@ -38,8 +40,10 @@ class CarsScreen extends BaseStatelessWidget {
                 shrinkWrap: true,
                 padding: 10.paddingHoriz,
                 itemBuilder: (context, index) {
-                  return const CarVerticalItem(
+                  return  CarVerticalItem(
                     imageHasOnlyTopRadius: false,
+                      index: index,
+                    isNew: isNew,
                     // task: tasks[index],
                   );
                 },

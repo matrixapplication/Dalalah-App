@@ -24,83 +24,89 @@ class RegisterScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            20.ph,
-            Text(context.strings.welcome,
-                style:
-                context.titleMedium.copyWith()),
-            20.ph,
-            AuthTextField(
-              hint: strings.full_name,
-              prefixIcon: AppIcons.user,
-              controller: fullNameController,
-            ),
-            AuthTextField(
-              hint: strings.email,
-              prefixIcon: AppIcons.email,
-              controller: emailController,
-              validator: (phone) => Validation.validateEmail(phone ?? ''),
-            ),
-            AuthTextField(
-              hint: context.strings.phone_number,
-              prefixIcon: AppIcons.smartphone,
-              controller: phoneNumberController,
-              // validator: (phone) => Validation.validatePhone(phone ?? ''),
-            ),
-            AuthTextField(
-              isPassword: true,
-              hint: context.strings.password,
-              prefixIcon: AppIcons.lock,
-              controller: passwordController,
-              validator: (password) =>
-                  Validation.validatePassword(password ?? ''),
-            ),
-            // AuthTextField(
-            //   isPassword: true,
-            //   hint: context.strings.password,
-            //   prefixIcon: AppIcons.lock,
-            //   controller: confirmPasswordController,
-            //   validator: (password) => Validation.validateConfirmPassword(
-            //       password ?? '', passwordController.text),
-            // ),
-            PrimaryButton(
-              title: strings.sign_up.toUpperCase(),
-              radius: 30,
-              height: 48,
-              margin:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
-              onPressed: () {
-              //  onRegisterPressed();
+    return Container(
+      alignment: Alignment.center,
+      padding: 10.paddingHoriz + 8.paddingTop,
+      margin: 16.paddingHoriz + (180).paddingTop + 50.paddingBottom,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor, radius: 30),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(context.strings.welcome_to,
+                  style:
+                  context.titleMedium.copyWith()),
+              20.ph,
+              AuthTextField(
+                hint: strings.full_name,
+                prefixIcon: AppIcons.user,
+                controller: fullNameController,
+              ),
+              AuthTextField(
+                hint: strings.email,
+                prefixIcon: AppIcons.email,
+                controller: emailController,
+                validator: (phone) => Validation.validateEmail(phone ?? ''),
+              ),
+              AuthTextField(
+                hint: context.strings.phone_number,
+                prefixIcon: AppIcons.smartphone,
+                controller: phoneNumberController,
+                // validator: (phone) => Validation.validatePhone(phone ?? ''),
+              ),
+              AuthTextField(
+                isPassword: true,
+                hint: context.strings.password,
+                prefixIcon: AppIcons.lock,
+                controller: passwordController,
+                validator: (password) =>
+                    Validation.validatePassword(password ?? ''),
+              ),
+              // AuthTextField(
+              //   isPassword: true,
+              //   hint: context.strings.password,
+              //   prefixIcon: AppIcons.lock,
+              //   controller: confirmPasswordController,
+              //   validator: (password) => Validation.validateConfirmPassword(
+              //       password ?? '', passwordController.text),
+              // ),
+              PrimaryButton(
+                title: strings.create.toUpperCase(),
+                radius: 30,
+                height: 48,
+                margin:
+                    EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
+                onPressed: () {
+                //  onRegisterPressed();
 
-                Navigator.pushNamed(context, Routes.navigationPages);
-              },
-            ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Text(strings.dont_have_an_account,
-            //         style: context.displaySmall),
-            //     5.pw,
-            //     GestureDetector(
-            //       onTap: () {
-            //         Navigators.pop();
-            //       },
-            //       child: Text(
-            //         strings.login,
-            //         style: context.headlineMedium.copyWith(
-            //           decoration: TextDecoration.underline,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-          ],
+                  Navigator.pushNamed(context, Routes.navigationPages);
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(strings.dont_have_an_account,
+                      style: context.displaySmall),
+                  5.pw,
+                  GestureDetector(
+                    onTap: () {
+                      Navigators.pop();
+                    },
+                    child: Text(
+                      strings.login,
+                      style: context.headlineMedium.copyWith(
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:delala/core/resources/data_state.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
+import '../../domain/entities/about_us.dart';
 import '../../domain/entities/about_us_types_.dart';
 import '../../domain/use_cases/settings_usecase.dart';
 
@@ -19,6 +20,6 @@ class AboutUsCubit extends BaseCubit {
     //         : type == AboutUsTypes.TERMS_AND_CONDITIONS
     //             ? usecase.fetchTermsAndConditions()
     //             : usecase.fetchPrivacy());
-    emit(DataSuccess(''));
+    emit(DataSuccess<AboutUs>(AboutUs(description: 'Description')));
   }
 }

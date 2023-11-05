@@ -17,7 +17,7 @@ class UnderlineTextButton extends StatelessWidget {
       },
       child: Text(
         title,
-        style: context.headlineMedium.copyWith(
+        style: context.headlineSmall.copyWith(
           decoration: TextDecoration.underline,
         ),
       ),

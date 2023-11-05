@@ -15,11 +15,16 @@ class Decorations {
 
   static BoxDecoration kDecorationBorderRadius({
     Color? color,
+    Color? colorBorder,
     BorderRadiusDirectional? borderRadius,
   }) {
     return BoxDecoration(
       color: color,
       borderRadius: borderRadius ?? BorderRadiusDirectional.circular(10),
+      border: Border.all(
+        color: colorBorder ?? injector<ServicesLocator>().appContext.dividerColor,
+        width: 1.0,
+      ),
     );
   }
 

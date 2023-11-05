@@ -120,64 +120,71 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CustomCompanyContainer(
-          firstOnTap: () {},
-          secondOnTap: () {},
-          secondButtonLabel: Text(
-            strings.request_for_quotation,
-            style: context.textTheme.bodyMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-              color: AppColors.grey_68,
-            ),
-          ),
-          firstRow: Padding(
-            padding: 11.paddingHoriz + 8.paddingVert,
-            child: Row(
-              children: [
-                CustomSquareCompanyLogo(logoPath: AppImages.car_name),
-                const Spacer(),
-                CustomColumn(
-                  title: strings.price,
-                  value: '850,000',
-                ),
-                20.pw,
-                CustomColumn(
-                  title: strings.monthly_installment,
-                  value: '5400 ${context.strings.rs}',
-                  textColor: AppColors.grey_41,
-                ),
-              ],
-            ),
-          ),
+    return CustomCompanyContainer(
+      firstOnTap: () {},
+      secondOnTap: () {},
+      secondButtonLabel: Text(
+        strings.request_for_quotation,
+        style: context.textTheme.bodyMedium!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: AppColors.grey_68,
         ),
-        PositionedDirectional(
-          top: 12,
-          start: 74,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "الحمد للسيارات",
-                style: context.textTheme.bodyMedium!.copyWith(
-                  color: AppColors.grey_41,
+      ),
+      firstRow: Padding(
+        padding: 5.paddingHoriz + 8.paddingVert,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 2,
+                child: CustomSquareCompanyLogo(logoPath: AppImages.car_name)),
+            Expanded(
+              flex: 7,
+           //   fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: 5.paddingHoriz,
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "الحمد للسيارات",
+                          style: context.textTheme.bodySmall!.copyWith(
+                            color: AppColors.grey_41,
+                            fontSize: 12,
+                          ),
+                        ),
+                        15.ph,
+                        IconText(
+                          text: "جدة",
+                          sizedBoxWidth: 5,
+                          textStyle: context.textTheme.bodySmall!.copyWith(
+                            color: AppColors.grey_68,
+                          ),
+                          icon: AppIcons.location_2,
+                          iconSize: 20,
+                        )
+                      ],
+                    ),
+                    Spacer(),
+                    CustomColumn(
+                      title: strings.price,
+                      value: '850,000',
+                    ),
+                    Spacer(),
+                    CustomColumn(
+                      title: strings.monthly_installment,
+                      value: '5400 ${context.strings.rs}',
+                      textColor: AppColors.grey_41,
+                    ),
+                  ],
                 ),
               ),
-              15.ph,
-              IconText(
-                text: "جدة",
-                sizedBoxWidth: 5,
-                textStyle: context.textTheme.labelLarge!.copyWith(
-                  color: AppColors.grey_68,
-                ),
-                icon: AppIcons.location_2,
-                iconSize: 22,
-              )
-            ],
-          ),
-        )
-      ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -202,13 +209,15 @@ class CustomColumn extends StatelessWidget {
           title,
           style: context.textTheme.displaySmall!.copyWith(
             color: AppColors.grey_68,
+            fontSize: 12,
           ),
         ),
         15.ph,
         Text(
           value,
-          style: context.headlineMedium.copyWith(
-            color: textColor
+          style: context.headlineSmall.copyWith(
+            color: textColor,
+            fontSize: 12,
           ),
         ),
       ],

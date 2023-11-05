@@ -19,41 +19,29 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>
   String? title(context) => strings.car_details;
 
   @override
-  Widget leading(context) => Padding(
-    padding: 11.paddingAll,
-    child: const ShareIconButton(),
-  );
-
-
-  @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
+    bool? isNew = getArguments(context) as bool?;
     return CarsDetailsScreen(
+      isNew: isNew ?? true,
       tasks: state.data ?? [],
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    this.context = context;
-    return mainFrame(
-      body: buildConsumer(context),
-    );
-  }
-
-
-  @override
-  Widget? bottomNavigationBar(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: Decorations.shapeTopShadow(
-        color: context.scaffoldBackgroundColor,
-        colorShadow: context.disabledColor,
-        radius: 0,
-      ),
-      child: const ContactSocialButtons(
-        phone: '+201141475581',
-      ),
-    );
-  }
+  //
+  //
+  // @override
+  // Widget? bottomNavigationBar(BuildContext context) {
+  //   return Container(
+  //     padding: const EdgeInsets.all(16),
+  //     decoration: Decorations.shapeTopShadow(
+  //       color: context.scaffoldBackgroundColor,
+  //       colorShadow: context.disabledColor,
+  //       radius: 0,
+  //     ),
+  //     child: const ContactSocialButtons(
+  //       phone: '+201141475581',
+  //     ),
+  //   );
+  // }
 
 }

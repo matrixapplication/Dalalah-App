@@ -5,8 +5,9 @@ import 'package:delala/src/main_index.dart';
 class ShareIconButton extends StatelessWidget {
   final Color? iconColor;
   final Color? backgroundColor;
+  final EdgeInsetsGeometry? padding;
 
-  const ShareIconButton({Key? key, this.iconColor, this.backgroundColor})
+  const ShareIconButton({Key? key, this.iconColor, this.backgroundColor, this.padding})
       : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class ShareIconButton extends StatelessWidget {
 
     return AppIconButton(
       icon: AppIcons.share_solid,
-      padding: 4.paddingAll,
+      padding: padding ?? 4.paddingAll,
       color: Colors.white,
       onPressed: () {},
     );

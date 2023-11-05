@@ -129,4 +129,14 @@ extension ColorsExtension on BuildContext {
   Color get gray_F6 => isDarkMode ? Color(0xffF6F6F6) : Color(0xffF6F6F6);
 
   Color get gray_E2 => isDarkMode ? Color(0xffE2E2E2) : Color(0xffE2E2E2);
+
+  Color get gray_ec => isDarkMode ? Color(0xFFECECEC) : Color(0xFFECECEC);
+
+  Color get gray_7C => isDarkMode ? Color(0xFF7C7C7C) : Color(0xFF7C7C7C);
+
+  Color get gray_96 => isDarkMode ? Color(0xFF969696) : Color(0xFF969696);
+
+  Color get yellow_00 => isDarkMode ? Color(0xFFFEA500) : Color(0xFFFEA500);
+
+  Color get yellow_03 => isDarkMode ? Color(0xFFFCD503) : Color(0xFFFCD503);
 }

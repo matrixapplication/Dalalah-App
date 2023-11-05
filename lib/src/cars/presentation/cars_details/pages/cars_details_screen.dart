@@ -1,47 +1,59 @@
+import 'package:delala/core/widgets/buttons/favorite_icon_button.dart';
+import 'package:delala/core/widgets/icons/icon_text.dart';
+import 'package:delala/src/cars/presentation/cars/widgets/cars_list.dart';
 import 'package:delala/src/home/presentation/widgets/sub_custom_container.dart';
+import 'package:favorite_button/favorite_button.dart';
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/tasks.dart';
 import '../widgets/car_details.dart';
+import '../widgets/car_details_ratings.dart';
 import '../widgets/price_car_details.dart';
 import '../widgets/sliders_car_details.dart';
+import '../widgets/user_info.dart';
 import 'views/car_details_category_view.dart';
 import 'views/car_details_details_view.dart';
 import 'views/car_details_price_view.dart';
 
 class CarsDetailsScreen extends BaseStatelessWidget {
+  final bool isNew;
   final List<Task> tasks;
 
-  CarsDetailsScreen({Key? key, required this.tasks}) : super(key: key);
+  CarsDetailsScreen({Key? key, required this.tasks, required this.isNew}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
-      body: Expanded(
-        child: TabBarWidget(
-          tabs: [
-            TabItemModel(
-              label: context.strings.price,
-              page: CarDetailsPriceView(),
-            ),
-            TabItemModel(
-              label: context.strings.details,
-              page: CarDetailsDetailsView(),
-            ),
-            TabItemModel(
-              label: context.strings.categories,
-              page: CarDetailsCategoryView(),
-            ),
-          ],
-        ),
+      body: TabBarWidget(
+        tabs: [
+          TabItemModel(
+            label: strings.details,
+            page: CarDetailsDetailsView(),
+          ),
+          if(isNew)
+          TabItemModel(
+            label: strings.price,
+            page: CarDetailsPriceView(),
+          ),
+          if(isNew)
+          TabItemModel(
+            label: strings.categories,
+            page: CarsList(cars: ['', '', '', ''], isCatItem: true),
+          ),
+          if(isNew)
+          TabItemModel(
+            label: strings.ratings,
+            page: CarDetailsRatings(),
+          ),
+        ],
       ),
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
         SliverAppBar(
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           bottom: PreferredSize(
-            preferredSize: const Size(0,325),
+            preferredSize:  Size(0,isNew ? 316 : 400),
             child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,15 +65,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     PositionedDirectional(
                       bottom: 0,
                       end: 10,
-                      child: AppCircularIconButton(
-                        icon: AppIcons.heart,
-                        circleSize: 45,
-                        backgroundColor: context.cardColor,
-                        color: context.primaryColor,
-                        shadowColor: context.cardColor.withOpacity(0.2),
-                        padding: 12,
-                        size: 22,
-                        margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
+                      child: FavoriteIconButton(
+                          size: 70,
+                        circleSize: 40,
                       ),
                     ),
                   ],
@@ -98,21 +104,34 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         ],
                       ),
                       10.ph,
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: CustomChip(
-                          backgroundColor: context.primaryColor,
-                          label: '800,000 ${context.strings.rs}',
-                          fontSize: 18,
-                          padding: 5.paddingVert,
-                          width: 170,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          if(isNew)
+                          IconText(
+                            icon: AppIcons.star,
+                            text: '4.8',
+                            textStyle: context.bodyMedium.copyWith(
+                              color: context.yellow_00,
+                            ),
+                          ),
+                          Spacer(),
+                          CustomChip(
+                            backgroundColor: context.primaryColor,
+                            label: '800,000 ${context.strings.rs}',
+                            fontSize: 18,
+                            padding: 5.paddingVert,
+                            width: 170,
+                          ),
+                        ],
                       ),
+
+                      if(!isNew)
+                        UserInfo(),
                     ],
                   ),
                 ),
-                20.ph,
-
+                19.ph,
               ],
             ),
           ),

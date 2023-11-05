@@ -35,7 +35,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                   color: context.gray_f8,
                 ),
                 Container(
-                  height: context.height * 0.7,
+                  height: context.height * 0.55,
                   width: double.infinity,
                   color: context.cardColor,
                 ),

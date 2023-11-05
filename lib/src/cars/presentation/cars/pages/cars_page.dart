@@ -22,11 +22,16 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
     return true;
   }
 
+  int tabIndex = 0;
   @override
   Widget build(BuildContext context) {
     this.context = context;
     //onBuild(bloc);
     return mainFrame(
+      onTabSelected: (index) {
+        tabIndex = index;
+        bloc.fetchTasks();
+      },
       body: Column(
         children: [
           FilterHome(
@@ -70,6 +75,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
   Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
     return CarsScreen(
       isFilter: false,
+      isNew: tabIndex == 1 || tabIndex == 0 ? true : false,
       tasks: state.data ?? [],
     );
     // return 0.ph;

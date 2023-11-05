@@ -2,6 +2,7 @@ import 'package:delala/core/widgets/icons/icon_text.dart';
 
 import '../../../../../../core/widgets/buttons/secondary_button.dart';
 import '../../../../../main_index.dart';
+import '../../widgets/add_rating_widget.dart';
 import '../../widgets/company_car_details_item.dart';
 
 class CarDetailsPriceView extends BaseStatelessWidget {
@@ -10,7 +11,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: 20.paddingHoriz + 20.paddingVert,
+      padding: 16.paddingHoriz + 20.paddingVert,
       child: Column(
         children: [
           Container(
@@ -34,23 +35,6 @@ class CarDetailsPriceView extends BaseStatelessWidget {
               ],
             ),
           ),
-          25.ph,
-          Row(
-            children: [
-              Text(
-                strings.monthly_installment,
-                style: context.textTheme.bodySmall!.copyWith(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15
-                ),
-              ),
-              15.pw,
-              Text(
-                '5000 ${context.strings.rs}',
-                style: context.headlineMedium,
-              ),
-            ],
-          ),
           23.ph,
           Align(
             alignment: AlignmentDirectional.centerStart,
@@ -63,15 +47,14 @@ class CarDetailsPriceView extends BaseStatelessWidget {
             ),
           ),
           15.ph,
-          ListView(
+          ListView.builder(
+            itemCount: 3,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            children: [
-              CompanyCarDetailsItem(),
-              CompanyCarDetailsItem(),
-              CompanyCarDetailsItem(),
-            ],
-          )
+            itemBuilder: (context, index) {
+              return CompanyCarDetailsItem();
+            },
+          ),
 
         ],
       ),

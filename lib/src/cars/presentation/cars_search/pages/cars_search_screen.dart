@@ -115,39 +115,36 @@ class CarsSearchScreen extends BaseStatelessWidget {
             style: context.textTheme.bodyLarge,
           ),
           15.ph,
-          SizedBox(
-            width: 240,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: DropDownField(
-                    hint: "2020",
-                    hintFontSize: 16,
-                    items: items,
-                    height: 43,
-                    radius: 4,
-                    iconWidget: AppIcon(
-                      icon: AppIcons.down_arrow,
-                    ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: DropDownField(
+                  hint: "2020",
+                  hintFontSize: 16,
+                  items: items,
+                  height: 43,
+                  radius: 4,
+                  iconWidget: AppIcon(
+                    icon: AppIcons.down_arrow,
                   ),
                 ),
-                20.pw,
-                Expanded(
-                  flex: 1,
-                  child: DropDownField(
-                    radius: 4,
-                    hint: "2022",
-                    height: 43,
-                    hintFontSize: 16,
-                    items: items,
-                    iconWidget: AppIcon(
-                      icon: AppIcons.down_arrow,
-                    ),
+              ),
+              20.pw,
+              Expanded(
+                flex: 1,
+                child: DropDownField(
+                  radius: 4,
+                  hint: "2022",
+                  height: 43,
+                  hintFontSize: 16,
+                  items: items,
+                  iconWidget: AppIcon(
+                    icon: AppIcons.down_arrow,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           25.ph,
           Text(

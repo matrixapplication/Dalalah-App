@@ -22,6 +22,11 @@ class InstallmentScreen extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController totalSalaryController = TextEditingController();
     TextEditingController creditLimitController = TextEditingController();
+    TextEditingController personalFinanceAcceptController = TextEditingController();
+    TextEditingController mortgageAcceptController = TextEditingController();
+    StreamStateInitial<bool> personalFinanceAcceptStream = StreamStateInitial<bool>();
+    StreamStateInitial<bool> mortgageAcceptStream = StreamStateInitial<bool>();
+
     bool isExist = true;
 
     List<DropDownItem> items = [
@@ -57,7 +62,6 @@ class InstallmentScreen extends BaseStatelessWidget {
               child: CustomTextField(
                 controller: totalSalaryController,
                 hintText: strings.enter_the_value_in_saudi_riyals,
-                radius: 8,
               ),
             ),
             InstallmentStepTile(
@@ -74,16 +78,35 @@ class InstallmentScreen extends BaseStatelessWidget {
               stepNumber: 3,
               title: strings.personal_finance,
               spaceBetweenTitleAndChild: 25,
-              child: CustomChooseWidget(
-                onTap: (value) {},
-                items: [
-                  ChooseItemModel(
-                    label: strings.exist,
-                    value: true,
+              child: Column(
+                children: [
+                  CustomChooseWidget(
+                    onTap: (value) {
+                      personalFinanceAcceptStream.setData(value);
+                    },
+                    items: [
+                      ChooseItemModel(
+                        label: strings.exist,
+                        value: true,
+                      ),
+                      ChooseItemModel(
+                        label: strings.not_exist,
+                        value: false,
+                      ),
+                    ],
                   ),
-                  ChooseItemModel(
-                    label: strings.not_exist,
-                    value: false,
+                  12.ph,
+                  StreamBuilder<bool>(
+                    initialData: true,
+                    stream: personalFinanceAcceptStream.stream,
+                    builder: (context, snapshot) {
+                      return snapshot.data! ?
+                        CustomTextField(
+                        controller: personalFinanceAcceptController,
+                        hintText: strings.enter_the_value_in_saudi_riyals,
+                          padding: 15.paddingBottom,
+                      ) : 0.ph;
+                    }
                   ),
                 ],
               ),
@@ -92,16 +115,35 @@ class InstallmentScreen extends BaseStatelessWidget {
               stepNumber: 4,
               title: strings.mortgage,
               spaceBetweenTitleAndChild: 25,
-              child: CustomChooseWidget(
-                onTap: (value) {},
-                items: [
-                  ChooseItemModel(
-                    label: strings.exist,
-                    value: true,
+              child: Column(
+                children: [
+                  CustomChooseWidget(
+                    onTap: (value) {
+                      mortgageAcceptStream.setData(value);
+                    },
+                    items: [
+                      ChooseItemModel(
+                        label: strings.exist,
+                        value: true,
+                      ),
+                      ChooseItemModel(
+                        label: strings.not_exist,
+                        value: false,
+                      ),
+                    ],
                   ),
-                  ChooseItemModel(
-                    label: strings.not_exist,
-                    value: false,
+                  12.ph,
+                  StreamBuilder<bool>(
+                      initialData: true,
+                      stream: mortgageAcceptStream.stream,
+                      builder: (context, snapshot) {
+                        return snapshot.data! ?
+                        CustomTextField(
+                          controller: mortgageAcceptController,
+                          padding: 15.paddingBottom,
+                          hintText: strings.enter_the_value_in_saudi_riyals,
+                        ) : 0.ph;
+                      }
                   ),
                 ],
               ),

@@ -12,12 +12,6 @@ class CarsCubit extends BaseCubit {
   CarsCubit(this.usecase);
 
   fetchTasks() async {
-    try {
-      emit(LoadingStateListener());
-      final tasks = await usecase.fetchTasks();
-      emit(DataSuccess<List<Task>>(tasks));
-    }  catch (e) {
-      emit(FailureStateListener(e));
-    }
+   executeSuccess(() => usecase.fetchTasks());
   }
 }

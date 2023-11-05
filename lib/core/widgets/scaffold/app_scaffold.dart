@@ -27,6 +27,7 @@ class AppScaffold extends StatelessWidget {
   final bool hasAppBar;
   final Function()? onAddButtonPressed;
   final bool isAddButton;
+  final Function(int)? onTabSelected;
 
   const AppScaffold({
     Key? key,
@@ -51,6 +52,7 @@ class AppScaffold extends StatelessWidget {
     this.hasAppBar = true,
     this.onAddButtonPressed,
     this.isAddButton = false,
+    this.onTabSelected,
   }) : super(key: key);
 
   @override
@@ -117,7 +119,7 @@ class AppScaffold extends StatelessWidget {
                             // tabAlignment: TabAlignment.fill,
                             // padding: 15.paddingHoriz,
                             onTap: (index) {
-                              // if (onTabSelected != null) onTabSelected!(index);
+                              if (onTabSelected != null) onTabSelected!(index);
                             },
                             overlayColor:
                                 MaterialStateProperty.all(Colors.transparent),

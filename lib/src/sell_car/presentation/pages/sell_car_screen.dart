@@ -133,14 +133,6 @@ class SellCarScreen extends BaseStatelessWidget {
             radius: 8,
           ),
           10.ph,
-          CustomTextField(
-            labelText: strings.car_description,
-            hintText: strings.car_description,
-            contentPadding: 16.paddingHoriz + 17.paddingVert,
-            maxHeight: 62,
-            radius: 8,
-          ),
-          15.ph,
           DropDownField(
             title: strings.car_color,
             hint: strings.select_color,

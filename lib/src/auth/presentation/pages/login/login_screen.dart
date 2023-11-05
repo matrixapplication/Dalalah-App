@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen>
         marginTabs: 16.paddingHoriz + 20.paddingTop,
         tabs: [
           TabItemModel(label: context.strings.login, page: LoginBody(onLogin: widget.onLogin)),
-          TabItemModel(label: context.strings.sign_up, page: RegisterScreen()),
+          TabItemModel(label: context.strings.agency, page: LoginBody(isUser: false, onLogin: widget.onShowRoomLogin)),
         ],
       ),
     );

@@ -15,7 +15,7 @@ class SectionsScreen extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: strings.sections,
+      title: strings.add_your_ad,
       body: Padding(
         padding: 20.paddingAll,
         child: Column(
@@ -40,7 +40,18 @@ class SectionsScreen extends BaseStatelessWidget {
                   title: strings.add_plate,
                   image: AppImages.add_plate,
                   routeName: Routes.plateFilterPage,
-                  imageSize: 500,
+                  width: double.infinity,
+                ),
+                index: 0,
+              ),
+            ),
+            20.ph,
+            Expanded(
+              child: _SectionsItem(
+                section: Section(
+                  title: strings.add_real_estate,
+                  image: AppImages.add_real_estate,
+                  routeName: '',
                   width: double.infinity,
                 ),
                 index: 0,
@@ -77,29 +88,35 @@ class _SectionsItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundColor: context.gray_E2,
-                  radius: 90,
-                ),
-                Image.asset(
-                  section.image,
-                  height: 200,
-                  width: 200,
-                  scale: 1,
-                ),
-              ],
+            Expanded(
+              flex: 3,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: context.gray_E2,
+                    radius: 90,
+                  ),
+                  Image.asset(
+                    section.image,
+                    height: 150,
+                    width: 150,
+                    scale: 1,
+                  ),
+                ],
+              ),
             ),
             15.ph,
-            Positioned(
-              bottom: 0,
-              child: Text(
-                section.title,
-                style: context.bodySmall.copyWith(),
-                textAlign: TextAlign.center,
-                maxLines: 2,
+            Expanded(
+              flex: 1,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  section.title,
+                  style: context.bodySmall.copyWith(),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                ),
               ),
             ),
           ],

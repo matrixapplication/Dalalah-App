@@ -214,5 +214,22 @@
   "credit_card": "Credit card",
   "enter_credit_limit": "Enter the credit limit",
   "select_employer": "Select employer",
-  "privacy_policy_about_us_terms_conditions": "Privacy Policy, About Us, Terms and Conditions"
+  "privacy_policy_about_us_terms_conditions": "Privacy Policy, About Us, Terms and Conditions",
+  "ratings": "Ratings",
+  "rate_the_car": "Rate the car",
+  "enter_your_comment": "Enter your comment",
+  "add_review": "Add review",
+  "agency": "Agency",
+  "welcome_to": "Welcome to",
+  "add_real_estate": "Add Real Estate",
+  "post_review": "Post Review",
+  "add_your_review": "Add your review",
+  "code": "Code",
+  "login_as_guest": "Login as Guest",
+  "installment_value_monthly": "Installment Value Monthly",
+  "enter_installment_value": "Enter Installment Value",
+  "add_your_ad": "Add your ad",
+  "whatsapp_number": "WhatsApp Number",
+  "confirm_password": "Confirm Password",
+  "follow": "Follow"
 }

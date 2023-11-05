@@ -20,9 +20,8 @@ class FilterHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? textStyle = context.textTheme.displayMedium?.copyWith(
+    TextStyle? textStyle = context.textTheme.bodyMedium?.copyWith(
       fontSize: 16,
-      color: context.outline,
     );
     return Container(
       decoration: Decorations.kDecorationBottomBorder(),

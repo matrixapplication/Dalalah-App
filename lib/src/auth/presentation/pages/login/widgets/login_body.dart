@@ -32,10 +32,10 @@ class LoginBody extends BaseStatelessWidget {
                 context.bodySmall.copyWith(fontSize: 12)),
             20.ph,
             AuthTextField(
-              hint: context.strings.phone_number,
-              prefixIcon: AppIcons.phone,
+              hint: isUser ? context.strings.email : context.strings.code,
+              prefixIcon: isUser ? AppIcons.email : AppIcons.id_card,
               controller: emailController,
-              validator: (phone) => Validation.validatePhone(phone ?? ''),
+          //    validator: (phone) => Validation.validatePhone(phone ?? ''),
             ),
             10.ph,
             AuthTextField(
@@ -45,11 +45,14 @@ class LoginBody extends BaseStatelessWidget {
               controller: passwordController,
               validator: (password) => Validation.validatePhone(password ?? ''),
             ),
+            if(isUser)
+            Text(strings.forgot_password,
+                style: context.bodySmall.copyWith(fontSize: 10)),
             PrimaryButton(
               title: strings.login.toUpperCase(),
               radius: 30,
               height: 48,
-              margin: EdgeInsets.only(top: 50, left: 35, right: 35),
+              margin: const EdgeInsets.only(top: 50, left: 35, right: 35),
               onPressed: () {
                 // if (_formKey.currentState!.validate())
                 //   onLogin!(
@@ -61,11 +64,35 @@ class LoginBody extends BaseStatelessWidget {
                 Navigator.pushNamed(context, Routes.navigationPages);
               },
             ),
-            12.ph,
+
+
+            if(isUser)
+           ...[30.ph,
+            Center(
+              child: FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(strings.dont_have_an_account,
+                        style: context.displaySmall),
+                    5.pw,
+                    UnderlineTextButton(
+                      title: strings.create_new_now,
+                      routeName: Routes.register,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+           ],
+            20.ph,
             Align(
               alignment: Alignment.center,
-              child: Text(strings.forgot_password,
-                  style: context.bodySmall.copyWith(fontSize: 10)),
+              child:  UnderlineTextButton(
+                title: strings.login_as_guest,
+                routeName: Routes.navigationPages,
+              ),
             ),
           ],
         ),

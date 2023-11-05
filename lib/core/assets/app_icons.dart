@@ -91,6 +91,7 @@ class AppIcons {
       "$_iconsPath/shopping_bag_outline.svg";
   static const String operations = "$_iconsPath/operations.svg";
   static const String star = "$_iconsPath/star.svg";
+  static const String rate_star = "$_iconsPath/rate_star.svg";
   static const String multiProfile = "$_iconsPath/multi_profile.svg";
   static const String toggleOn = "$_iconsPath/toggle_on.svg";
   static const String toggleOff = "$_iconsPath/toggle_off.svg";

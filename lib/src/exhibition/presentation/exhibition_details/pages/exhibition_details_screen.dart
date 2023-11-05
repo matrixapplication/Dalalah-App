@@ -32,9 +32,14 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                     SlidersCarDetails(
                       images: const ['', '', '', ''],
                     ),
-                    FavoriteButton(
-                      margin: 15.paddingTop + 15.paddingStart,
-                    ),
+                   PrimaryButton(
+                     height: 40,
+                     width: 20,
+                     radius: 50,
+                     margin: 10.paddingTop + 10.paddingStart,
+                     title: strings.follow,
+                      onPressed: () {},
+                   ),
                     PositionedDirectional(
                       top: 12,
                       end: 12,
@@ -87,23 +92,21 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
           ),
         ),
       ],
-      body: Expanded(
-        child: TabBarWidget(
-          tabs: [
-            TabItemModel(
-              label: context.strings.new_,
-              page: NewCarsView(),
-            ),
-            TabItemModel(
-              label: context.strings.used,
-              page: UsedCarsView(),
-            ),
-            TabItemModel(
-              label: context.strings.branches,
-              page: BranchesView(),
-            ),
-          ],
-        ),
+      body: TabBarWidget(
+        tabs: [
+          TabItemModel(
+            label: context.strings.new_,
+            page: NewCarsView(),
+          ),
+          TabItemModel(
+            label: context.strings.used,
+            page: UsedCarsView(),
+          ),
+          TabItemModel(
+            label: context.strings.branches,
+            page: BranchesView(),
+          ),
+        ],
       ),
     );
   }
