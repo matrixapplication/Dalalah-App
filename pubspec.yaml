@@ -118,13 +118,13 @@ dev_dependencies:
 flutter_native_splash:
   android: true
   ios: true
-  color: "#002731"
+  color: "#0396BE"
   image: assets/logo/logo.png
   android12: true
   fullscreen: true
   android_12:
     image: assets/logo/logo.png
-    color: "#002731"
+    color: "#0396BE"
     fullscreen: true
 
 flutter_icons:

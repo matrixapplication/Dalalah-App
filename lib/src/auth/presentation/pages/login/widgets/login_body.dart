@@ -68,7 +68,7 @@ class LoginBody extends BaseStatelessWidget {
                 //       password: passwordController.text,
                 //     ),
                 //   );
-                Navigator.pushNamed(context, Routes.navigationPages);
+                Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
               },
             ),
 

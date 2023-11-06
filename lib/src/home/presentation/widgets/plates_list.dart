@@ -2,6 +2,7 @@ import 'package:dalalah/core/assets/app_icons.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
 import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
@@ -26,7 +27,7 @@ class PlatesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 184,
+      height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: 10.paddingStart,
@@ -58,22 +59,22 @@ class PlateVert extends StatelessWidget {
           padding: 4.paddingAll,
           decoration: Decorations.kDecorationBorderWithRadius(),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Stack(
                 alignment: AlignmentDirectional.bottomStart,
                 children: [
                   Container(
-                    width: 137,
-                    height: 100,
-                    padding: 10.paddingHoriz + 14.paddingVert,
+                    width: 160,
+                    height: 105,
+                    padding: 10.paddingHoriz + 12.paddingVert,
                     margin: 20.paddingBottom,
-                    decoration: ShapeDecoration(
-                      color: index == 0 ? context.primaryColor : const Color(0xB2004D63),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
+                    // decoration: ShapeDecoration(
+                    //   color: index == 0 ? context.primaryColor : const Color(0xB2004D63),
+                    //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(12),
+                    //   ),
+                    // ),
                     child: const ImageNetwork(
                       image:
                           'https://i0.wp.com/almrj3.com/wp-content/uploads/2022/01/6.jpg?resize=520%2C288&ssl=1',
@@ -98,13 +99,8 @@ class PlateVert extends StatelessWidget {
                   style: context.bodySmall,
                 ),
               ),
-              Padding(
-                padding: 10.paddingStart + 4.paddingVert,
-                child: Text(
-                  '600,000 رس',
-                  style: context.bodySmall,
-                ),
-              ),
+              8.ph,
+              PriceWidget(price: '600,000',),
             ],
           )),
     );

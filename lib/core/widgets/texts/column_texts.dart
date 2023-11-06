@@ -27,7 +27,7 @@ class ColumnTexts extends StatelessWidget {
           FittedBox(
             child: Text(
               title,
-              style: titleStyle ?? theme.textTheme.displayMedium!,
+              style: titleStyle ?? theme.textTheme.bodyMedium!,
               strutStyle: titleStrutStyle
             ),
           ),
@@ -36,7 +36,7 @@ class ColumnTexts extends StatelessWidget {
           FittedBox(
             child: Text(
               value,
-              style: valueStyle ?? theme.textTheme.bodyLarge,
+              style: valueStyle ?? theme.textTheme.bodyMedium,
               strutStyle: valueStrutStyle
             ),
           ),

@@ -12,7 +12,8 @@ class PrimaryButton extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final double? width;
   final EdgeInsetsGeometry? padding;
-  const PrimaryButton({Key? key, this.title, this.onPressed, this.height = 55, this.backgroundColor, this.borderRadius, this.elevation, this.radius, this.margin, this.width, this.padding}) : super(key: key);
+  final TextStyle? style;
+  const PrimaryButton({Key? key, this.title, this.onPressed, this.height = 55, this.backgroundColor, this.borderRadius, this.elevation, this.radius, this.margin, this.width, this.padding, this.style}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class PrimaryButton extends StatelessWidget {
           foregroundColor: backgroundColor ?? context.primaryColor,
           padding: padding,
         ),
-        child: FittedBox(child: Text(title!, style: context.displayLarge.copyWith(color: Colors.white))),
+        child: FittedBox(child: Text(title!, style: style ?? context.labelLarge)),
       ),
     );
   }

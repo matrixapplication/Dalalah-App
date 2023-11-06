@@ -67,7 +67,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
               Navigator.pop(context);
             },
             onPressed1: () {
-              Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+              Navigators.pushNamed(Routes.addPremiumPage);
             },
           ),
         ],

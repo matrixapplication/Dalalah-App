@@ -29,6 +29,7 @@ class RowSeeAllText extends StatelessWidget {
             title,
             style: context.textTheme.displaySmall!.copyWith(
               color: AppColors.grey_5c,
+              fontSize: 16,
             ),
           ),
           GestureDetector(
@@ -41,7 +42,6 @@ class RowSeeAllText extends StatelessWidget {
               context.strings.see_all,
               style: context.headlineSmall.copyWith(
                 fontSize: 12,
-                color: AppColors.blue_31,
               ),
             ),
           ),

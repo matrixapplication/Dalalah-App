@@ -102,7 +102,7 @@ class RegisterScreen extends BaseStatelessWidget {
                 onPressed: () {
                 //  onRegisterPressed();
 
-                  Navigator.pushNamed(context, Routes.navigationPages);
+                  Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
                 },
               ),
               Row(

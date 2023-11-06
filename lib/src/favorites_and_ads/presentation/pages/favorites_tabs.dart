@@ -13,10 +13,10 @@ class FavoritesAndAdsTabs
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: getArguments(context) ? context.strings.my_ads : context.strings.favorites,
+      title: (getArguments(context) ?? true) ? context.strings.my_ads : context.strings.favorites,
       body: TabBarLineWidget(
         tabs: [
-          TabItemModel(label: context.strings.cars, page: CarsScreen(tasks: [], isFilter: false,)),
+          TabItemModel(label: context.strings.cars, page: CarsScreen(tasks: [], isFilter: false,isAds: true,)),
           TabItemModel(label: context.strings.plates, page: PlatesPage(isFilter: false)),
           TabItemModel(label: context.strings.buildings, page: Container(
             color: context.scaffoldBackgroundColor,

@@ -14,7 +14,7 @@ class InstallmentValue extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: 10.paddingAll,
-      decoration: Decorations.kDecorationBorderRadius(colorBorder: context.primaryColor),
+      decoration: padding != null ? Decorations.kDecorationBorderRadius(colorBorder: context.primaryColor) : null,
       child: RowTexts(
         title: strings.monthly_installment,
         value: '$installmentValue ${strings.rs}',

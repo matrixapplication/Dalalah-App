@@ -1,4 +1,5 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
 import 'package:dalalah/core/widgets/scaffold/app_scaffold.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/components/base_stateless_widget.dart';
 import '../../../../../core/decorations/decorations.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../widgets/filter_item.dart';
@@ -76,7 +78,9 @@ class PlateFilterPage extends BaseStatelessWidget {
             isAddPage
                 ? PrimaryButton(
                     title: strings.save,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigators.pushNamed(Routes.addPremiumPage);
+                    },
                   )
                 : PrimaryOutlinesButtons(
                     title1: strings.show_results,

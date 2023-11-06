@@ -51,7 +51,7 @@ class SectionsScreen extends BaseStatelessWidget {
                 section: Section(
                   title: strings.add_real_estate,
                   image: AppImages.add_real_estate,
-                  routeName: '',
+                  routeName: Routes.realEstatePage,
                   width: double.infinity,
                 ),
                 index: 0,

@@ -1,56 +1,45 @@
-import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
+import 'package:dalalah/core/widgets/icons/icon_text.dart';
 
 import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../main_index.dart';
-import '../../../domain/entities/plate.dart';
-import '../bloc/plates_bloc.dart';
-import 'plates_screen.dart';
+import '../widgets/distinguish_ad.dart';
+import '../widgets/packages_list.dart';
 
-
-class AddPremiumPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
+class AddPremiumScreen extends BaseStatelessWidget {
   final bool isFilter;
-  AddPremiumPage({Key? key, this.isFilter = true}) : super(key: key);
 
-
-  @override
-  void loadInitialData(BuildContext context) {
-    bloc.fetchFavorites();
-  }
-
-
-  @override
-  String? title(context)=> isFilter ? strings.plates : null;
+  AddPremiumScreen({Key? key, this.isFilter = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return mainFrame(
-      body: Column(
+    return Padding(
+      padding: 16.paddingAll + (kToolbarHeight).paddingTop,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if(isFilter ?? true)
-          FilterHome(
-            routeName: Routes.plateFilterPage,
-            onFilterOrder: (){},
+          IconText(
+            text: strings.your_ad_has_been_published,
+            icon: AppImages.done,
+            textStyle: context.bodyLarge,
+            isIconLift: true,
+              mainAxisAlignment: MainAxisAlignment.start,
           ),
-          Expanded(child: buildConsumer(context)),
+          16.ph,
+          DistinguishAdWidget(),
+          const Expanded(child: PackagesList()),
+          PrimaryOutlinesButtons(
+            title1: strings.highlight_the_ad,
+            title2: strings.watch_my_ad,
+            onPressed2: () {
+              Navigator.pop(context);
+            },
+            onPressed1: () {
+              Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+            },
+          ),
         ],
       ),
     );
-  }
-
-
-  @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesScreen(plates: state.data ?? []);
-  }
-
-  @override
-  onAddButtonPressed() {
-    Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
-  }
-
-  @override
-  bool isAddButton() {
-    return true;
   }
 }

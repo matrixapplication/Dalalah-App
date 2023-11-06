@@ -1,9 +1,5 @@
-import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/src/main_index.dart';
-import 'package:flutter/material.dart';
 
-import '../../themes/colors.dart';
-import '../../utils/responsive_service.dart';
 
 class SelectionButtonChip extends StatelessWidget {
   final String? title;
@@ -93,7 +89,9 @@ class SelectionButtonChip extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       itemCount: types.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      physics: const NeverScrollableScrollPhysics(),
+      padding: 0.paddingAll,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 3,
         crossAxisSpacing: 10,
@@ -154,7 +152,7 @@ class SelectItem extends StatelessWidget {
       ),
       selectedColor: context.primaryColor,
       backgroundColor: context.cardColor,
-      visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+      visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
       side: BorderSide(
         color: selectedType == item
             ? context.secondaryContainer
