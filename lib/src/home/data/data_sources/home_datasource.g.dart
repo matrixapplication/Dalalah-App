@@ -13,7 +13,7 @@ class _HomeDatasource implements HomeDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://dalalah.matrixclouds.net/api';
+    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
   }
 
   final Dio _dio;
@@ -21,13 +21,13 @@ class _HomeDatasource implements HomeDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<bool>> fetchSliders() async {
+  Future<ApiResponse<List<SlideDto>>> fetchSliders() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<bool>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<List<SlideDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,72 +43,12 @@ class _HomeDatasource implements HomeDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<bool>.fromJson(
-      _result.data!,
-      (json) => json as bool,
-    );
-    return value;
-  }
-
-  @override
-  Future<ApiResponse<String>> reasonForDisconnection(String reason) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = reason;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/api/v1/user/DisconnectClient',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ApiResponse<String>.fromJson(
-      _result.data!,
-      (json) => json as String,
-    );
-    return value;
-  }
-
-  @override
-  Future<ApiResponse<List<ShipmentQRCode>>> scanToReceive(String id) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = id;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<ShipmentQRCode>>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/api/v1/user/ScanToReceive',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ApiResponse<List<ShipmentQRCode>>.fromJson(
+    final value = ApiResponse<List<SlideDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<ShipmentQRCode>(
-                  (i) => ShipmentQRCode.fromJson(i as Map<String, dynamic>))
+              .map<SlideDto>(
+                  (i) => SlideDto.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );
@@ -116,20 +56,20 @@ class _HomeDatasource implements HomeDatasource {
   }
 
   @override
-  Future<ApiResponse<List<ShipmentQRCode>>> scanToPick(String id) async {
+  Future<ApiResponse<List<BrandDto>>> fetchBrands() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = id;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<ShipmentQRCode>>>(Options(
-      method: 'POST',
+        _setStreamType<ApiResponse<List<BrandDto>>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/user/ScanToPick',
+              '/brands',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -138,12 +78,47 @@ class _HomeDatasource implements HomeDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<ShipmentQRCode>>.fromJson(
+    final value = ApiResponse<List<BrandDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<ShipmentQRCode>(
-                  (i) => ShipmentQRCode.fromJson(i as Map<String, dynamic>))
+              .map<BrandDto>(
+                  (i) => BrandDto.fromJson(i as Map<String, dynamic>))
+              .toList()
+          : List.empty(),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<List<CarDto>>> fetchCars(CarFilterParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(params.toJson());
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<List<CarDto>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/get_cars',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<List<CarDto>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json
+              .map<CarDto>((i) => CarDto.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );

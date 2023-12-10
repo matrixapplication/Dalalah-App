@@ -1,6 +1,6 @@
 
-import '../entities/notification.dart';
+import '../../data/models/notification_dto.dart';
 
 abstract class BaseNotificationsRepo {
-  Future<List<Notifications>> fetchNotifications();
+  Future<List<NotificationDto>> fetchNotifications();
 }

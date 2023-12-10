@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dalalah/core/network/api_response.dart';
-import 'package:dalalah/core/utils/constants.dart';
 
-import '../../domain/entities/notification.dart';
+import '../../../../core/network/api_response.dart';
+import '../../../../core/utils/constants.dart';
+import '../models/notification_dto.dart';
 
 part 'notifications_datasource.g.dart';
 @Injectable()
@@ -14,6 +14,6 @@ abstract class  NotificationsDatasource{
   @factoryMethod
   factory NotificationsDatasource(Dio dio) = _NotificationsDatasource;
 
-  @GET('/api/v1/Operations/GetAllOperations')
-  Future<ApiResponse<List<Notifications>>> fetchNotifications();
+  @GET('/all_notification')
+  Future<ApiResponse<List<NotificationDto>>> fetchNotifications();
 }

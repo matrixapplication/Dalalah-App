@@ -1,17 +1,20 @@
 import 'dart:io';
 
+import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../auth/data/models/register_params.dart';
 import '../../../main_index.dart';
+import '../../../sell_car/domain/entities/city.dart';
 import '../../domain/entities/profile.dart';
 import '../widgets/edit_profile_image.dart';
 import '../widgets/edit_text_form_field.dart';
 
 class EditProfileScreen extends BaseStatelessWidget {
   final Profile profile;
+  final List<City> cities;
   final Function(RegisterParams params) onEdit;
   final Function(File file) onEditImage;
 
-  EditProfileScreen({Key? key, required this.profile, required this.onEdit, required this.onEditImage}) : super(key: key);
+  EditProfileScreen({Key? key, required this.profile, required this.cities, required this.onEdit, required this.onEditImage}) : super(key: key);
 
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -19,7 +22,9 @@ class EditProfileScreen extends BaseStatelessWidget {
   TextEditingController whatsAppController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
- static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  int cityId = 0;
+
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +58,24 @@ class EditProfileScreen extends BaseStatelessWidget {
               ),
               EditTextField(
                 title: strings.whatsapp_number,
-                controller: phoneController,
+                controller: whatsAppController,
+              ),
+
+              EditTextField(
+                title: strings.whatsapp_number,
+                controller: whatsAppController,
               ),
               EditTextField(
-                title: strings.password,
-                controller: passwordController,
+                title: strings.city,
+                widget:  DropDownField(
+                  items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),
+                  inputDecoration: const InputDecoration(),
+                  value: cityId,
+                  prefixIcon: AppIcons.location_2,
+                  onChanged: (value) {
+                    cityId = int.parse(value?.id ?? '0');
+                  },
+                ),
               ),
               EditTextField(
                 title: strings.confirm_password,
@@ -89,15 +107,18 @@ class EditProfileScreen extends BaseStatelessWidget {
           phone: phoneController.text,
           password: passwordController.text,
           passwordConfirmation: passwordController.text,
+          whatsapp: whatsAppController.text,
+          cityId: cityId,
         ),
       );
     }
   }
 
   _initData() {
-    print('profile: ${profile.toJson()}');
     fullNameController.text = profile.name ?? '';
     emailController.text = profile.email ?? '';
     phoneController.text = profile.phone  ?? '';
+    whatsAppController.text = profile.whatsApp ?? '';
+    cityId = profile.city?.id ?? 0;
   }
 }

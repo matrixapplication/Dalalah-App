@@ -5,7 +5,6 @@ import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
-import '../../../../core/di/injector.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../auth/data/models/register_params.dart';
 import '../../domain/entities/profile.dart';
@@ -18,19 +17,16 @@ class ProfileBloc extends BaseCubit {
   ProfileBloc(this.usecase);
 
   ProfileDto? profileDto = ProfileDto();
-  fetchProfileData({bool? isRefresh}) async {
+  fetchProfileData({bool isRefresh = true}) async {
     emit(DataLoading());
     profileDto = await HelperMethods.getProfile();
     Profile profile = Profile();
 
     try {
-      if(isRefresh != true){
-        print('shared ${profile}');
-        profile = Profile.fromDto(profileDto!);
+      if(isRefresh == false){
+        profile = Profile.fromDto(profileDto ?? ProfileDto(name: 'Guest'));
       }else{
-        print('fetchProfileData ${profile.token}');
         profile = await usecase.fetchProfileData();
-        HelperMethods.saveProfile(ProfileDto.fromJson(profile.toJson()));
       }
       emit(DataSuccess<Profile>(profile));
     } catch (e) {
@@ -38,7 +34,7 @@ class ProfileBloc extends BaseCubit {
     }
   }
 
-  deleteAccount() async {
+  deleteAccount() {
     executeListener(() => usecase.deleteProfileData(), onSuccess: (value) async {
       await HelperMethods.removeProfile();
       emit(SuccessStateListener<String>(value));
@@ -46,15 +42,6 @@ class ProfileBloc extends BaseCubit {
   }
 
   logout() async {
-
     executeEmitterListener(() => HelperMethods.removeProfile());
-  }
-
-  editProfileData(RegisterParams params) async {
-    executeEmitterListener(() => usecase.editProfileData(params));
-  }
-
-  editProfileImage(File file) async {
-    executeEmitterListener(() => usecase.editProfileImage(file));
   }
 }

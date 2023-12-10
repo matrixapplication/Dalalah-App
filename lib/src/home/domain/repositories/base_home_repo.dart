@@ -1,9 +1,12 @@
 
-import '../entities/shipment_qr_code.dart';
+import '../../../../core/network/api_response.dart';
+import '../../data/models/brand_dto.dart';
+import '../../data/models/car_dto.dart';
+import '../../data/models/car_filter_params.dart';
+import '../../data/models/slide_dto.dart';
 
 abstract class BaseHomeRepo {
-  Future<bool> fetchClientStatus();
-  Future<String> reasonForDisconnection(String reason);
-  Future<List<ShipmentQRCode>> scanToReceive(String id);
-  Future<List<ShipmentQRCode>> scanToPick(String id);
+  Future<ApiResponse<List<SlideDto>>> fetchSliders();
+  Future<ApiResponse<List<BrandDto>>> fetchBrands();
+  Future<ApiResponse<List<CarDto>>> fetchCars(CarFilterParams params);
 }

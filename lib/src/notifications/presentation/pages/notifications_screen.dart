@@ -1,6 +1,6 @@
 
 import '../../../main_index.dart';
-import '../../domain/entities/notification.dart';
+import '../../../real_estate/domain/entities/notification.dart';
 import '../widgets/notification_item.dart';
 
 class NotificationsScreen extends BaseStatelessWidget {
@@ -12,7 +12,7 @@ class NotificationsScreen extends BaseStatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: notifications.length,
-      padding: EdgeInsets.all(16),
+      padding: 16.paddingAll,
       itemBuilder: (context, index) {
         return NotificationItem(
           notification: notifications[index],

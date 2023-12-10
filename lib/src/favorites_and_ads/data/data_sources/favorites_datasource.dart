@@ -5,7 +5,8 @@ import 'package:retrofit/http.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
-import '../../../sell_car/domain/entities/shipment.dart';
+import '../../../home/data/models/car_dto.dart';
+import '../models/add_to_favorite_params.dart';
 
 part 'favorites_datasource.g.dart';
 
@@ -15,9 +16,9 @@ abstract class FavoritesDatasource {
   @factoryMethod
   factory FavoritesDatasource(Dio dio) = _FavoritesDatasource;
 
-  @GET('/api/v1/Shipments/GetAllShipments')
-  Future<ApiResponse<List<String>>> fetchFavorites();
+  @GET('/get-favorite')
+  Future<ApiResponse<List<CarDto>>> fetchFavorites();
 
-  @GET('/api/v1/Shipments/GetShipmentDetails/shipmentId')
-  Future<ApiResponse<String>> toggleFavorite(@Query('id') String id);
+  @POST('/add-favorite')
+  Future<ApiResponse<bool>> toggleFavorite(@Body() AddToFavoriteParams params);
 }

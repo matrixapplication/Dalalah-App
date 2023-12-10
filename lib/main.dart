@@ -1,3 +1,4 @@
+import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
       interceptor: HeaderInterceptor(
     accessToken: token,
   )).create());
+  injector.registerSingleton(AddCarRepo(injector()));
   runApp(
     MyApp(token: token),
     //   DevicePreview(
@@ -61,7 +63,8 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.onBoardingPage : Routes.onBoardingPage,
+            initialRoute: !token.isNotEmpty ? Routes.navigationPages : Routes.navigationPages
+            ,
           );
         },
       ),

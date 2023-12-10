@@ -1,15 +1,11 @@
 import 'dart:io';
 
-import 'package:dalalah/core/network/api_response.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../auth/data/models/register_params.dart';
-import '../../data/models/profile_dto.dart';
 import '../entities/profile.dart';
 import '../repositories/base_profile_repo.dart';
-
-
 
 @Injectable()
 class ProfileUseCase {
@@ -17,13 +13,9 @@ class ProfileUseCase {
   ProfileUseCase(this.repository);
 
   Future<Profile> fetchProfileData() async{
-    // final data = await repository.fetchProfileData();
-    // return Profile.fromDto(data);
-    return Profile(
-      name: 'Jorge David',
-      phone: '0912345678',
-      email: 'jorge@mail.com',
-    );
+    final data = await repository.fetchProfileData();
+    HelperMethods.saveProfile(data);
+    return Profile.fromDto(data);
   }
 
   Future<String> deleteProfileData() async {
@@ -32,15 +24,35 @@ class ProfileUseCase {
 
   Future<String> editProfileData(RegisterParams params) async {
     final data = await repository.editProfileData(params);
+    print('repository ${data?.data?.toJson()}');
     await HelperMethods.saveProfile(data.data!);
-    print('data.message ${data.message}');
-    return data.message ?? 'error';
+    final profile = await HelperMethods.getProfile();
+    print('editProfileData ${profile?.toJson()}');
+    return data.message ?? '';
   }
 
   Future<String> editProfileImage(File image) async {
     final data = await repository.editProfileImage(image);
     await HelperMethods.saveProfile(data.data!);
-    return data.message ?? 'error';
+    return data.message ?? '';
+  }
+
+  Future<Profile> fetchProfileDataShowroom() async{
+    final data = await repository.fetchProfileDataShowroom();
+    await HelperMethods.saveProfile(data);
+    return Profile.fromDto(data);
+  }
+
+  Future<String> editProfileDataShowroom(RegisterParams params) async {
+    final data = await repository.editProfileDataShowroom(params);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
+
+  Future<String> editProfileImageShowroom(File image) async {
+    final data = await repository.editProfileImageShowroom(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
   }
 
 

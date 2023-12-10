@@ -32,7 +32,7 @@ class ExhibitionItem extends BaseStatelessWidget {
           child: Row(
             children: [
               const ImageNetwork(
-                image: 'https://play-lh.googleusercontent.com/joJ9c93sLgHTIgkK3Um6vkXKtv4lA9Am3WECHkZCdLAALlzB8CiyUoEE4urjWZbYIA',
+                url: 'https://play-lh.googleusercontent.com/joJ9c93sLgHTIgkK3Um6vkXKtv4lA9Am3WECHkZCdLAALlzB8CiyUoEE4urjWZbYIA',
                 size: 75,
                 borderWidth: 1.5,
               ),

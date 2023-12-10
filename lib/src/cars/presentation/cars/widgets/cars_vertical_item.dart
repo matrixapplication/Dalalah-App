@@ -146,7 +146,7 @@ class CarVerticalItem extends StatelessWidget {
                     child: Stack(
                       children: [
                         ImageNetwork(
-                          image:
+                          url:
                               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
                           height: double.infinity,
                           borderRadius: imageHasOnlyTopRadius

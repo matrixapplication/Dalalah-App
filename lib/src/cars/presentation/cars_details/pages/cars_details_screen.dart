@@ -2,23 +2,18 @@ import 'package:dalalah/core/widgets/buttons/favorite_icon_button.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
 import 'package:dalalah/src/cars/presentation/cars/widgets/cars_list.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
-import 'package:favorite_button/favorite_button.dart';
-import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../main_index.dart';
-import '../../../domain/entities/tasks.dart';
-import '../widgets/car_details.dart';
+import '../../../domain/entities/car_details.dart';
 import '../widgets/car_details_ratings.dart';
-import '../widgets/price_car_details.dart';
 import '../widgets/sliders_car_details.dart';
 import '../widgets/user_info.dart';
-import 'views/car_details_category_view.dart';
 import 'views/car_details_details_view.dart';
 import 'views/car_details_price_view.dart';
 
 class CarsDetailsScreen extends BaseStatelessWidget {
   final bool isNew;
-  final List<Task> tasks;
+  final CarDetails tasks;
 
   CarsDetailsScreen({Key? key, required this.tasks, required this.isNew}) : super(key: key);
 

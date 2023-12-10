@@ -1,8 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:dalalah/core/resources/data_state.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
-import '../../domain/entities/notification.dart';
 import '../../domain/use_cases/notifications_usecase.dart';
 
 @Injectable()

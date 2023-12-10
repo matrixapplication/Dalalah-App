@@ -10,14 +10,14 @@ class ProfilePage extends BaseBlocWidget<DataSuccess<Profile>, ProfileBloc> {
 
   @override
   void loadInitialData(BuildContext context) {
-     bloc.fetchProfileData(isRefresh: true);
+     bloc.fetchProfileData(isRefresh: false);
   }
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<Profile> state) {
     return ProfileScreen(
       profile: state.data!,
-      onRefresh: () => bloc.fetchProfileData(isRefresh: true),
+      onRefresh: () => bloc.fetchProfileData(isRefresh: false),
       onDeleteAccount: () => deleteAccount(),
       onLogout: () => logout(),
     );

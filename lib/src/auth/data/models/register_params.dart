@@ -1,12 +1,23 @@
 class RegisterParams {
   final String? name;
   final String? phone;
+  final String? whatsapp;
   final String? email;
   final String? password;
   final String? passwordConfirmation;
+  final int? cityId;
+
   final String? fcmToken;
 
-  RegisterParams({required this.email, required this.password, this.name, this.phone, required this.passwordConfirmation, this.fcmToken});
+  RegisterParams(
+      {required this.email,
+      required this.password,
+      this.name,
+      this.phone,
+      this.whatsapp,
+      required this.passwordConfirmation,
+      this.cityId,
+      this.fcmToken});
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = {
@@ -15,6 +26,8 @@ class RegisterParams {
       'email': email ?? '',
       'password': password ?? '',
       'password_confirmation': passwordConfirmation ?? '',
+      'city_id': cityId ?? '',
+      'whatsapp': whatsapp ?? '',
       'fcm_token': fcmToken ?? '',
     };
 
@@ -22,5 +35,4 @@ class RegisterParams {
     data.removeWhere((key, value) => value == null || value == '');
     return data;
   }
-
 }

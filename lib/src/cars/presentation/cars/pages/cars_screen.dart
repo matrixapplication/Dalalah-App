@@ -1,8 +1,6 @@
-import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 
-import '../../../../../core/widgets/text-field/custom_text_field_dark.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
-import '../../../domain/entities/tasks.dart';
 import '../widgets/brands_filter.dart';
 import '../widgets/cars_vertical_item.dart';
 
@@ -10,7 +8,7 @@ class CarsScreen extends BaseStatelessWidget {
   final bool isFilter;
   final bool isNew;
   final bool isAds;
-  final List<Task> tasks;
+  final List<Car> tasks;
 
   CarsScreen({Key? key, required this.tasks, required this.isFilter, this.isNew = true, this.isAds = false})
       : super(key: key);

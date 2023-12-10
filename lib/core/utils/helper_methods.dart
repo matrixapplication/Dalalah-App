@@ -24,7 +24,7 @@ class HelperMethods {
     imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     return await ImageCropper().cropImage(
       sourcePath: imageFile!.path,
-      aspectRatio: const CropAspectRatio(ratioX: 2, ratioY: 1),
+    //  aspectRatio: const CropAspectRatio(ratioX: 2, ratioY: 1),
       uiSettings: [
         AndroidUiSettings(
             toolbarColor: Colors.black,
@@ -130,7 +130,7 @@ class HelperMethods {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       final data = ProfileDto.fromJson(
           jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
-      print('getProfile ${data.toJson()}');
+      // print('getProfile ${data.toJson()}');
       if (data.id == null) return null;
       return data;
     } on Exception catch (e) {
@@ -150,7 +150,7 @@ class HelperMethods {
       if (profile?.token == null || profile!.token!.isEmpty) return '';
       return profile.token!;
     } on Exception catch (e) {
-      print('profile?.token ${e.toString()}');
+      // print('profile?.token ${e.toString()}');
       return '';
     }
   }
@@ -161,7 +161,7 @@ class HelperMethods {
       if (profile?.role == null || profile!.role!.isEmpty) return false;
       return profile.role != Roles.USER;
     } on Exception catch (e) {
-      print('profile?.token ${e.toString()}');
+      // print('profile?.token ${e.toString()}');
       return false;
     }
   }

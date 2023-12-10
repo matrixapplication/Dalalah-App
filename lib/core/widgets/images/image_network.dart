@@ -18,7 +18,7 @@ class ImageNetworkCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ImageNetwork(
-      image: image,
+      url: image,
       width: width,
       height: height,
       fit: fit,
@@ -33,7 +33,7 @@ class ImageNetworkCircle extends StatelessWidget {
 }
 
 class ImageNetwork extends StatelessWidget {
-  final String? image;
+  final String? url;
   final double? width;
   final double? height;
   final double? size;
@@ -46,7 +46,7 @@ class ImageNetwork extends StatelessWidget {
   final Decoration? decoration;
   final double borderWidth;
 
-  const ImageNetwork({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration, this.borderWidth = 0});
+  const ImageNetwork({super.key, this.url, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration, this.borderWidth = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class ImageNetwork extends StatelessWidget {
           placeholderCacheHeight: 5,
           placeholderCacheWidth: 5,
           placeholderFit: BoxFit.contain,
-          image: image ?? '',
+          image: url ?? '',
           width: size ?? height,
           height: size ?? width,
           imageErrorBuilder: (c, o, s) {

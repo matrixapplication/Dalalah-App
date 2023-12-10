@@ -14,7 +14,8 @@ class EditTextField extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isPasswordVisible;
   final TextInputType? keyboardType;
-  EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType}) : super(key: key);
+  final Widget? widget;
+  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType, this.widget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class EditTextField extends StatelessWidget {
             title ?? '',
             style: context.bodySmall.copyWith(color: context.disabledColor, fontSize: 16),
           ),
-          CustomTextField(
+          widget ?? CustomTextField(
             hintText: hintText,
             controller: controller,
           //    isPasswordVisible: isPasswordVisible,

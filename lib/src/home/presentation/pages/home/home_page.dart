@@ -1,11 +1,15 @@
 import 'package:dalalah/src/main_index.dart';
-import '../../widgets/search_home.dart';
+import '../../../../../core/components/base_widget_bloc.dart';
+import '../../bloc/home_bloc.dart';
 import 'home_screen.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
-    Key? key,
-  }) : super(key: key);
+class HomePage extends BaseBlocWidget<UnInitState, HomeCubit> {
+  HomePage({Key? key}) : super(key: key);
+
+  @override
+  void loadInitialData(BuildContext context) {
+    bloc.fetchInitialData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +21,6 @@ class HomePage extends StatelessWidget {
               height: context.height * 0.4,
               width: double.infinity,
               decoration: ShapeDecoration(
-                // gradient: LinearGradient(
-                //   begin: Alignment(0.00, -1.00),
-                //   end: Alignment(0, 1),
-                //   colors: [Color(0xFF023947), Color(0xFF025F77)],
-                // ),
                 color: context.primaryColor,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -38,8 +37,20 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        HomeScreen(),
+        buildConsumer(context),
       ],
+    );
+  }
+
+  @override
+  Widget buildWidget(BuildContext context, UnInitState state) {
+    return HomeScreen(
+      slidesStream: bloc.slidesStream,
+      brandsStream: bloc.brandsStream,
+      yourCarsStream: bloc.yourCarsStream,
+      otherCarsStream: bloc.otherCarsStream,
+      onFavoriteCar: (id) async => await bloc.toggleFavorite(id),
+      onFavoritePlate: (id) async => await bloc.toggleFavorite(id),
     );
   }
 }

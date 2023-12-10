@@ -48,7 +48,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                 children: [
                   ImageNetwork(
                     margin: 16.paddingAll,
-                    image: plates[0].image,
+                    url: plates[0].image,
                     height: context.height * 0.201,
                     width: double.infinity,
                     fit: BoxFit.fill,

@@ -72,7 +72,7 @@ class CarHorizontalItem extends StatelessWidget {
                 alignment: AlignmentDirectional.topEnd,
                 children: [
                   ImageNetwork(
-                    image:
+                    url:
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
                     width: double.infinity,
                     height: 140,

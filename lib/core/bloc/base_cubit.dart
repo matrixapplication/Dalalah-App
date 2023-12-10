@@ -47,6 +47,18 @@ abstract class BaseCubit extends Cubit<DataState>{
       }
     }
   }
+
+  executeSuccessNotLoading<T>(Future<T> Function() invoke) async {
+    try {
+      emit(DataLoading());
+      final response = await invoke();
+      emit(DataSuccess<T>(response));
+    } catch (e) {
+      emit(DataFailed(e));
+      rethrow;
+    }
+  }
+
   executeListener<T>(Future<T> Function() invoke,
       {required ValueChanged<T> onSuccess}) async {
     try {

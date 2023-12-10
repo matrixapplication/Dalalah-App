@@ -1,29 +1,29 @@
 
 import '../../../../../core/components/base_widget_bloc.dart';
-import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
-import '../../../../../core/widgets/buttons/share_icon_button.dart';
+import '../../../../home/data/models/car_filter_params.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
-import '../../../domain/entities/tasks.dart';
+import '../../../domain/entities/car_details.dart';
 import '../../cars/bloc/cars_bloc.dart';
 import 'cars_details_screen.dart';
 
-class CarsDetailsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit>{
+class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsCubit>{
   CarsDetailsPage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchTasks();
+    bloc.fetchCars(CarFilterParams());
   }
 
   @override
   String? title(context) => strings.car_details;
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<CarDetails> state) {
     bool? isNew = getArguments(context) as bool?;
     return CarsDetailsScreen(
       isNew: isNew ?? true,
-      tasks: state.data ?? [],
+      tasks: state.data!,
     );
   }
 

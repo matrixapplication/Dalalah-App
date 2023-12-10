@@ -13,13 +13,12 @@ class AboutUsCubit extends BaseCubit {
   AboutUsCubit(this.usecase);
 
   fetchInitialData(AboutUsTypes type) async {
-    // executeSuccess(() => type == AboutUsTypes.ABOUT_US
-    //     ? usecase.fetchAboutUs()
-    //     : type == AboutUsTypes.BUYING_AND_SELLING_ABOUT
-    //         ? usecase.fetchBuyingAndSellingAbout()
-    //         : type == AboutUsTypes.TERMS_AND_CONDITIONS
-    //             ? usecase.fetchTermsAndConditions()
-    //             : usecase.fetchPrivacy());
-    emit(DataSuccess<AboutUs>(AboutUs(description: 'Description')));
+    executeSuccess(() => type == AboutUsTypes.ABOUT_US
+        ? usecase.fetchAboutUs()
+        : type == AboutUsTypes.BUYING_AND_SELLING_ABOUT
+            ? usecase.fetchBuyingAndSellingAbout()
+            : type == AboutUsTypes.TERMS_AND_CONDITIONS
+                ? usecase.fetchTermsAndConditions()
+                : usecase.fetchPrivacy());
   }
 }

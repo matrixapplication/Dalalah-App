@@ -24,12 +24,12 @@ class ProfileScreen extends BaseStatelessWidget {
     return RefreshIndicator(
       color: context.primaryColor,
       onRefresh: () async {
-        // obRefresh();
+         onRefresh();
       },
       child: Column(
         children: [
-          const ProfileHeader(
-              // profile: profile,
+          ProfileHeader(
+               profile: profile,
               ),
           Expanded(
             child: SingleChildScrollView(
@@ -43,10 +43,10 @@ class ProfileScreen extends BaseStatelessWidget {
                     onTap: () async {
                       final isRefresh = await Navigators.pushNamed(
                           Routes.editProfilePage,
-                          arguments: Profile());
+                          arguments: profile);
                       if (isRefresh is bool) {
                         print('isRefresh $isRefresh');
-                        //  onRefresh();
+                          onRefresh();
                       }
                     },
                   ),
@@ -97,6 +97,14 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.about_us,
                     routeName: Routes.aboutUs,
                     arguments: AboutUsTypes.ABOUT_US,
+                  ),
+                  ProfileItem(
+                    title: strings.delete_account,
+                    icon: AppIcons.delete,
+                    isLogoutTile: true,
+                    onTap: () {
+                      onDeleteAccount();
+                    },
                   ),
                   ProfileItem(
                     title: strings.logout,

@@ -13,4 +13,10 @@ abstract class BaseProfileRepo<T>{
   Future<String> deleteProfileData();
   Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params);
   Future<ApiResponse<ProfileDto>> editProfileImage(File image);
+  // Showrooms APIs
+
+  Future<ProfileDto> fetchProfileDataShowroom();
+  Future<ApiResponse<ProfileDto>> editProfileDataShowroom(RegisterParams params);
+  Future<ApiResponse<ProfileDto>> editProfileImageShowroom(File image);
+
 }

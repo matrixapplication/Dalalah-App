@@ -2,13 +2,15 @@ import '../../../../../core/resources/validation.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../main_index.dart';
+import '../../../../sell_car/domain/entities/city.dart';
 import '../../../data/models/register_params.dart';
 import '../../widgets/auth_text_field.dart';
 
 class RegisterScreen extends BaseStatelessWidget {
+  final List<City> cities;
   final Function(RegisterParams)? onRegister;
 
-  RegisterScreen({Key? key, this.onRegister}) : super(key: key);
+  RegisterScreen({Key? key, this.onRegister, required this.cities}) : super(key: key);
 
   static final TextEditingController fullNameController =
       TextEditingController();
@@ -23,6 +25,8 @@ class RegisterScreen extends BaseStatelessWidget {
   TextEditingController confirmPasswordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  int cityId = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +72,12 @@ class RegisterScreen extends BaseStatelessWidget {
                 // validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
               DropDownField(
-                items: [DropDownItem(title: 'الرياض'), DropDownItem(title: 'جدة'), DropDownItem(title: 'الدمام')],
+                items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),
                 hint: context.strings.city,
                 prefixIcon: AppIcons.location_2,
                 isDecoration: true,
                 onChanged: (value) {
-
+                  cityId = int.parse(value?.id ?? '0');
                 },
               ),
               10.ph,
@@ -100,9 +104,7 @@ class RegisterScreen extends BaseStatelessWidget {
                 margin:
                     EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
                 onPressed: () {
-                //  onRegisterPressed();
-
-                  Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+                 onRegisterPressed();
                 },
               ),
               Row(
@@ -124,6 +126,7 @@ class RegisterScreen extends BaseStatelessWidget {
                   ),
                 ],
               ),
+              20.ph,
             ],
           ),
         ),
@@ -139,7 +142,9 @@ class RegisterScreen extends BaseStatelessWidget {
           email: emailController.text,
           phone: phoneNumberController.text,
           password: passwordController.text,
-          passwordConfirmation: confirmPasswordController.text,
+          passwordConfirmation: passwordController.text,
+          cityId: cityId,
+          whatsapp: whatsappController.text,
           fcmToken: '',
         ),
       );

@@ -9,12 +9,14 @@ class FavoritesCubit extends BaseCubit {
 
   FavoritesCubit(this.usecase);
 
+  // StreamStateInitial<bool>  isFavorite = StreamStateInitial<bool>();
+
   fetchFavorites() async {
     executeSuccess(() => usecase.fetchFavorites());
   }
 
-  toggleFavorite(String id) async {
-    executeEmitterListener(() => usecase.toggleFavorite(id));
+  toggleFavorite(int id) async {
+    executeEmitterSuccess(() => usecase.toggleFavorite(id));
   }
 
 }

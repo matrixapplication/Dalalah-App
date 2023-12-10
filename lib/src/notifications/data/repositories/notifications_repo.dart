@@ -1,9 +1,9 @@
 
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entities/notification.dart';
 import '../../domain/repositories/base_notifications_repo.dart';
 import '../data_sources/notifications_datasource.dart';
+import '../models/notification_dto.dart';
 
 
 @Injectable(as: BaseNotificationsRepo)
@@ -12,7 +12,7 @@ class WalletRepo extends BaseNotificationsRepo{
   WalletRepo(this.datasource);
 
   @override
-  Future<List<Notifications>> fetchNotifications() async{
+  Future<List<NotificationDto>> fetchNotifications() async{
     final data = await datasource.fetchNotifications();
     return data.data!;
   }

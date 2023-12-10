@@ -225,6 +225,16 @@ extension MediaQueryExtension on BuildContext{
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
 }
+
+extension FirstWhereOrNull<E> on Iterable<E> {
+  E? firstWhereOrNull(bool Function(E element) test) {
+    try {
+      return firstWhere(test);
+    } on StateError {
+      return null;
+    }
+  }
+}
 //
 // extension SizeExtension on num {
 //   double get w => ResponsiveService.scaleWidth() * this;

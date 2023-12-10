@@ -38,4 +38,20 @@ class ProfileRepo extends BaseProfileRepo{
   }
 
 
+  @override
+  Future<ProfileDto> fetchProfileDataShowroom() async{
+    final response = await apiProvider.fetchProfileDataShowroom();
+    return response.data!;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileDataShowroom(RegisterParams params) async{
+    return await apiProvider.editProfileDataShowroom(params);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileImageShowroom(File image) async{
+    return await apiProvider.editProfileImageShowroom(image);
+  }
+
 }

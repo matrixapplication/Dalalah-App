@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../../main_index.dart';
 import '../../../domain/use_cases/cars_usecase.dart';
 
@@ -7,36 +8,15 @@ import '../../../domain/use_cases/cars_usecase.dart';
 @Injectable()
 class CarsDetailsCubit extends BaseCubit {
   final CarsUseCase usecase;
+  final FavoritesUseCase favoritesUseCase;
 
-  CarsDetailsCubit(this.usecase);
+  CarsDetailsCubit(this.usecase, this.favoritesUseCase);
 
-  Future<void> deliveryCollection() async {
-    try {
-      emit(LoadingStateListener());
-      await usecase.deliveryCollection();
-      emit(SuccessStateListener(''));
-    }  catch (e) {
-      emit(FailureStateListener(e));
-    }
+  Future<void> fetchCarDetails(int id) async {
+    executeSuccess(() => usecase.fetchCarDetails(id));
   }
 
-  Future<void> rejectCollection() async {
-    try {
-      emit(LoadingStateListener());
-      await usecase.rejectCollection();
-      emit(SuccessStateListener(''));
-    }  catch (e) {
-      emit(FailureStateListener(e));
-    }
-  }
-
-  Future<void> confirmCollectionProcess(String number) async {
-    try {
-      emit(LoadingStateListener());
-      await usecase.confirmCollectionProcess(number);
-      emit(SuccessStateListener(''));
-    }  catch (e) {
-      emit(FailureStateListener(e));
-    }
+  Future<void> toggleFavorite(int id) async {
+    executeEmitterListener(() => favoritesUseCase.toggleFavorite(id));
   }
 }

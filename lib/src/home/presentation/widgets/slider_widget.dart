@@ -1,12 +1,15 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/main_index.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../domain/entities/slide.dart';
 
 class SliderWidget extends StatelessWidget {
+  final StreamStateInitial<List<Slide>?> slidesStream;
   const SliderWidget({
     Key? key,
+    required this.slidesStream,
   }) : super(key: key);
 
   @override
@@ -22,62 +25,68 @@ class SliderWidget extends StatelessWidget {
         colorShadow: context.hintColor,
         radius: 10,
       ),
-      child: Swiper(
-        itemCount: 5,
-        index: 5 - 1,
-        itemBuilder: (BuildContext context, int index) {
-          return  Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                AppImages.slider_car,
-                width: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Padding(
-                padding: 10.paddingStart,
-                child: Text(
-                  'احصل على احدث\nالسيارات الان مع دلالة',
-                  style: context.bodyMedium,),
-              )
-            ],
-          );
-        },
-        curve: Curves.bounceOut,
-        pagination: SwiperCustomPagination(
-          builder: (BuildContext context, SwiperPluginConfig config) {
-            return Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  config.itemCount,
-                      (index) => Container(
-                    height: 10,
-                    width: 10,
-                    margin: 180.paddingTop + 3.paddingHoriz,
-                    decoration: Decorations.kDecorationOnlyRadius(
-                      // color: config.activeIndex == index
-                      //     ? context.primaryColor
-                      //     : context.outline,
-                      color: config.activeIndex == index
-                          ? context.primaryColor
-                          : context.hintColor,
-                      radius: 50,
-                    ),
-                    alignment: Alignment.center,
+      child: StreamStateWidget<List<Slide>?>(
+          stream: slidesStream,
+        builder: (context, snapshot) {
+          return Swiper(
+            itemCount: snapshot?.length ?? 0,
+            index: (snapshot?.length ?? 0) - 1,
+            itemBuilder: (BuildContext context, int index) {
+              return  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ImageNetwork(
+                    url: snapshot?[index].image ?? '',
+                    fit: BoxFit.fill,
+                    height: 200,
+                    width: double.infinity,
                   ),
-                ),
-              ),
-            );
-          },
-        ),
-        viewportFraction: 1,
-        scale: 0.99,
-        autoplay: true,
-        autoplayDelay: 5000,
-        autoplayDisableOnInteraction: true,
-        allowImplicitScrolling: false,
+                  Padding(
+                    padding: 10.paddingStart,
+                    child: Text(
+                      snapshot?[index].title ?? '',
+                      style: context.bodyMedium,),
+                  )
+                ],
+              );
+            },
+            curve: Curves.bounceOut,
+            pagination: SwiperCustomPagination(
+              builder: (BuildContext context, SwiperPluginConfig config) {
+                return Center(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      config.itemCount,
+                          (index) => Container(
+                        height: 10,
+                        width: 10,
+                        margin: 180.paddingTop + 3.paddingHoriz,
+                        decoration: Decorations.kDecorationOnlyRadius(
+                          // color: config.activeIndex == index
+                          //     ? context.primaryColor
+                          //     : context.outline,
+                          color: config.activeIndex == index
+                              ? context.primaryColor
+                              : context.hintColor,
+                          radius: 50,
+                        ),
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            viewportFraction: 1,
+            scale: 0.99,
+            autoplay: true,
+            autoplayDelay: 5000,
+            autoplayDisableOnInteraction: true,
+            allowImplicitScrolling: false,
+          );
+        }
       ),
     );
   }

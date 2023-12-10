@@ -37,7 +37,7 @@ class HeaderInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
     ProfileDto? profile = await HelperMethods.getProfile();
-    print('accessToken $accessToken');
+    print('accessToken ${profile?.token ?? ''}}');
     options.headers[keyAuthorization] = 'Bearer ${profile?.token ?? ''}';
     options.headers[keyLanguage] = injector<ServicesLocator>().navigatorKey.currentContext?.languageCode.toString();
     options.headers[keyApiKey] = apiKeyValue;

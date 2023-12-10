@@ -1,7 +1,7 @@
 
 import '../../../../core/components/base_widget_bloc.dart';
 import '../../../main_index.dart';
-import '../../domain/entities/notification.dart';
+import '../../../real_estate/domain/entities/notification.dart';
 import '../bloc/notifications_bloc.dart';
 import 'notifications_screen.dart';
 

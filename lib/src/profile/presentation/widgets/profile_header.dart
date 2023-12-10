@@ -1,6 +1,7 @@
 import 'package:dalalah/core/assets/app_images.dart';
 import 'package:dalalah/core/decorations/decorations.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/themes/colors.dart';
 import '../../../../core/themes/light_theme.dart';
@@ -39,30 +40,20 @@ class ProfileHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 40.ph,
-                // ImageNetworkText(
-                //   image: profile?.image,
-                //   text: profile?.name,
-                //   size: 50,
-                // ),
-                ClipRRect(
-                  borderRadius: BorderRadiusDirectional.circular(50),
-                  child: Image.asset(
-                    AppImages.img,
-                    fit: BoxFit.fill,
-                    width: 100,
-                    height: 100,
-                  ),
+               ImageNetworkCircle(
+                  image: profile?.image,
+                  size: 80,
                 ),
                 17.ph,
                 Text(
-                  "Jorge David",
+                  profile?.name ?? "",
                   style: context.titleSmall!.copyWith(
                     color: Colors.white,
                   ),
                 ),
                 10.ph,
                 Text(
-                  "jorge@mail.com",
+                  profile?.email ?? "",
                   style: context.displaySmall,
                 )
               ],
@@ -71,30 +62,6 @@ class ProfileHeader extends StatelessWidget {
           PositionedDirectional(
             top: 40,
             end: 0,
-            // child: Container(
-            //   width: 150,
-            //   height: 50,
-            //   decoration: Decorations.kDecorationOnlyRadius(
-            //       color: Colors.white, radius: 50),
-            //   child: TabBarWidget(
-            //     labelSize: 15,
-            //     selectedLabelColor: Colors.white,
-            //     indicatorDecoration: BoxDecoration(
-            //       borderRadius: BorderRadiusDirectional.circular(20),
-            //       color: AppColors.blue_49,
-            //     ),
-            //     tabs: [
-            //       TabItemModel(
-            //         label: "العربية",
-            //         page: 0.ph,
-            //       ),
-            //       TabItemModel(
-            //         label: "En",
-            //         page: 0.ph,
-            //       ),
-            //     ],
-            //   ),
-            // ),
             child: SizedBox(
               width: 145,
               height: 60,
@@ -104,7 +71,7 @@ class ProfileHeader extends StatelessWidget {
                     label: context.strings.arabic,
                   ),
                   TabModel(
-                    label: "EN",
+                    label: context.strings.english,
                   )
                 ],
                 children: [

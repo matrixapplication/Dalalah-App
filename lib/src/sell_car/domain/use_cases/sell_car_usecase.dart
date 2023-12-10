@@ -1,127 +1,128 @@
 import 'package:injectable/injectable.dart';
 
-import '../../data/models/delay_shipment_params.dart';
-import '../../data/models/notes_on_shipment_params.dart';
-import '../../data/models/shipment_delivery_params.dart';
-import '../../data/models/shipment_refused_params.dart';
-import '../../data/repositories/sell_car_repo.dart';
-import '../entities/shipment.dart';
-import '../entities/shipment_details.dart';
+import '../../data/models/color_dto.dart';
+import '../../data/models/port_dto.dart';
+import '../../data/models/sell_car_params.dart';
+import '../../data/models/settings_price_dto.dart';
+import '../../data/repositories/add_car_repo.dart';
+import '../entities/body_type.dart';
+import '../entities/brand_model.dart';
+import '../entities/brand_model_extension.dart';
+import '../entities/car_country.dart';
+import '../entities/car_engine.dart';
+import '../entities/car_status.dart';
+import '../entities/car_type.dart';
+import '../entities/city.dart';
+import '../entities/district.dart';
+import '../entities/drive_type.dart';
+import '../entities/feature.dart';
+import '../entities/fuel_type.dart';
+import '../entities/settings_price.dart';
 
 @Injectable()
 class SellCarUseCase {
-  final SellCarRepo repository ;
+  final AddCarRepo repository ;
   SellCarUseCase(this.repository);
 
-  Future<List<Shipment>> fetchShipments() async {
-   // final data = await repository.fetchShipments();
-   //  return data;
-    return [
-      Shipment(
-        id: 1,
-       phone: '+201141475581',
-       shopPhone: '+201141475581',
-       status: 'تم استعجال الشحنة',
-        shipmentNumber: '5468427334',
-        shipmentType: 'ساعة جلد طبيعى',
-        notes: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        recipientAddress: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        sender: 'شادي السيد محمد محمود',
-        shop: 'سوق.كوم - سعيد جمال',
-      ),
-      Shipment(
-        id: 2,
-        phone: '+201141475581',
-        shopPhone: '+201141475581',
-        status: 'تم استعجال الشحنة',
-        shipmentNumber: '5468427334',
-        shipmentType: 'ساعة جلد طبيعى',
-        notes: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        recipientAddress: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        sender: 'محمد عبد الرحمن محمد',
-        shop: 'سوق.كوم - سعيد جمال',
-      ),
-      Shipment(
-        id: 3,
-        phone: '+201141475581',
-        shopPhone: '+201141475581',
-        status: 'تم استعجال الشحنة',
-        shipmentNumber: '5468427334',
-        shipmentType: 'ساعة جلد طبيعى',
-        notes: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        recipientAddress: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        sender: 'سعيد جمال محمد',
-        shop: 'سوق.كوم - سعيد جمال',
-      ),
-    ];
+  Future<String> sellCar(SellCarParams params) async {
+    final data = await  repository.sellCar(params);
+    return data.message ?? '';
   }
 
-  Future<ShipmentDetails> fetchShipmentDetails(int shipmentId) async {
-    //final data = await repository.fetchShipmentDetails(shipmentId);
-    return ShipmentDetails(
-      id: 1,
-      phone: '+201141475581',
-      shopPhone: '+201141475581',
-      whatsapp: '+201141475581',
-      shopWhatsapp: '+201141475581',
-      status: 'تم استعجال الشحنة',
-      shipmentNumber: '5468427334',
-      referenceNumber: '659845979',
-      shipmentType: 'شنطة جلد طبيـ..',
-      shipmentValue: '1000',
-      notes: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-      receiverAddress: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-      receiver: 'شادي السيد محمد محمود',
-      shop: 'سوق.كوم - سعيد جمال',
-      callsHistory: [
-        CallHistory(
-          callDate: '13 November 2022',
-         callBy: 'تم الاتصال بالراسل',
-          callDuration: '15 ثانية',
-             ),
-
-  ],
-      commentsCaptain: [
-        Comment(
-          commentDate: '13 November 12:54 AM',
-          commentBy: 'محمد اسلام',
-          comment: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        ),
-      ],
-      commentsCustomer: [
-        Comment(
-          commentDate: '13 November 12:54 AM',
-          commentBy: 'محمد اسلام',
-          comment: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        ),
-      ],
-      commentsLogeste: [
-        Comment(
-          commentDate: '13 November 12:54 AM',
-          commentBy: 'محمد اسلام',
-          comment: 'مصر القاهرة الجديدة مدينة نصر الحى السابع امام صيدلية الطرشوبى عمارة 11 شقة 6 ',
-        ),
-      ],
-    );
+  Future<String> editCar(SellCarParams params) async {
+    final data = await  repository.editCar(params);
+    return data.message ?? '';
   }
 
-  Future<String> shipmentDelivery(ShipmentDeliveryParams params) async {
-    final data = await repository.shipmentDelivery(params);
-    return data;
+  Future<List<String>> fetchBrands() async{
+    return [''];
+    // final data = await repository.fetchBrands();
+    // return data.data?.map((e) => Brand.fromDto(e)).toList() ?? [];
   }
 
-  Future<String> shipmentRefused(ShipmentRefusedParams params) async {
-    final data = await repository.shipmentRefused(params);
-    return data;
+  Future<List<BrandModel>> fetchBrandModels(int id) async{
+    final data = await repository.fetchBrandModels(id);
+    return data.data?.map((e) => BrandModel.fromDto(e)).toList() ?? [];
   }
 
-  Future<String> notesOnShipment(NotesOnShipmentParams params) async {
-    final data = await repository.notesOnShipment(params);
-    return data;
+  Future<List<BodyType>> fetchBodyTypes() async{
+    final data = await repository.fetchBodyTypes();
+    return data.data?.map((e) => BodyType.fromDto(e)).toList() ?? [];
   }
 
-  Future<String> delayShipment(DelayShipmentParams params) async {
-    final data = await repository.delayShipment(params);
-    return data;
+  Future<List<DriveType>> fetchDriveTypes() async{
+    final data = await repository.fetchDriveTypes();
+    return data.data?.map((e) => DriveType.fromDto(e)).toList() ?? [];
   }
+
+  Future<List<BrandModelExtension>> fetchBrandModelExtensions(int id) async{
+    final data = await repository.fetchBrandModelExtensions(id);
+    return data.data?.map((e) => BrandModelExtension.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<CarCountry>> fetchCarCountries() async{
+    final data = await repository.fetchCarCountries();
+    return data.data?.map((e) => CarCountry.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<CarEngine>> fetchCarEngines() async{
+    final data = await repository.fetchCarEngines();
+    return data.data?.map((e) => CarEngine.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<CarStatus>> fetchCarStatuses() async{
+    final data = await repository.fetchCarStatuses();
+    return data.data?.map((e) => CarStatus.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<CarType>> fetchCarTypes() async{
+    final data = await repository.fetchCarTypes();
+    return data.data?.map((e) => CarType.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<City>> fetchCities() async{
+    final data = await repository.fetchCities();
+    return data.data?.map((e) => City.fromDto(e)).toList() ?? [];
+  }
+
+
+  Future<List<ColorDto>> fetchColors() async{
+    final data = await repository.fetchColors();
+    return data.data ?? [];
+  }
+
+
+  Future<List<Feature>> fetchFeatures() async{
+    final data = await repository.fetchFeatures();
+    return data.data?.map((e) => Feature.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<FuelType>> fetchFuelTypes() async{
+    final data = await repository.fetchFuelTypes();
+    return data.data?.map((e) => FuelType.fromDto(e)).toList() ?? [];
+  }
+
+  Future<List<PortDto>> fetchPorts() async{
+    final data = await repository.fetchPorts();
+    return data.data ?? [];
+  }
+
+
+  Future<List<int>> fetchYears() async{
+    final data = await repository.fetchYears();
+    return data.data ?? [];
+  }
+
+
+  Future<List<District>> fetchDistricts(int id) async{
+    final data = await repository.fetchDistricts(id);
+    return data.data?.map((e) => District.fromDto(e)).toList() ?? [];
+  }
+
+  Future<SettingsPrice> fetchSettingsPrice() async{
+    final data = await repository.fetchSettingsPrice();
+    return SettingsPrice.fromDto(data.data ?? SettingsPriceDto());
+  }
+
+
 }

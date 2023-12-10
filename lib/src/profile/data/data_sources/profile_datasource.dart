@@ -29,4 +29,15 @@ abstract class  ProfileDataSource{
 
   @POST('/edit-user-image')
   Future<ApiResponse<ProfileDto>> editProfileImage(@Part(name: 'image') File image);
+
+  // Showrooms APIs
+  @GET('/get-showroom')
+  Future<ApiResponse<ProfileDto>> fetchProfileDataShowroom();
+
+  @POST('/edit-showroom')
+  Future<ApiResponse<ProfileDto>> editProfileDataShowroom(@Body() RegisterParams params);
+
+  @POST('/edit-showroom-image')
+  Future<ApiResponse<ProfileDto>> editProfileImageShowroom(@Part(name: 'image') File image);
+
 }

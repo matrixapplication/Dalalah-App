@@ -76,7 +76,7 @@ class PlateVert extends StatelessWidget {
                     //   ),
                     // ),
                     child: const ImageNetwork(
-                      image:
+                      url:
                           'https://i0.wp.com/almrj3.com/wp-content/uploads/2022/01/6.jpg?resize=520%2C288&ssl=1',
                       fit: BoxFit.fill,
                     ),

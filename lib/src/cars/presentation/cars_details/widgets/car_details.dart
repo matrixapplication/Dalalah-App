@@ -91,7 +91,7 @@ class CarDetailsItem extends StatelessWidget {
               alignment: AlignmentDirectional.topStart,
               child: CloseButton(color: context.primaryColorDark,)),
           content: ImageNetwork(
-            image: 'https://media.istockphoto.com/id/157418863/photo/close-up-of-the-eye-on-peacock-feathers.jpg?s=612x612&w=0&k=20&c=GwhA53Dikym8Rw2NWOYavsoIdrRWBNPPSJ1Sua-JSqM=',
+            url: 'https://media.istockphoto.com/id/157418863/photo/close-up-of-the-eye-on-peacock-feathers.jpg?s=612x612&w=0&k=20&c=GwhA53Dikym8Rw2NWOYavsoIdrRWBNPPSJ1Sua-JSqM=',
             fit: BoxFit.fill,
           ),
         );

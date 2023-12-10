@@ -13,7 +13,7 @@ class _FavoritesDatasource implements FavoritesDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://dalalah.matrixclouds.net/api';
+    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
   }
 
   final Dio _dio;
@@ -21,20 +21,20 @@ class _FavoritesDatasource implements FavoritesDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<List<String>>> fetchFavorites() async {
+  Future<ApiResponse<List<CarDto>>> fetchFavorites() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<String>>>(Options(
+        _setStreamType<ApiResponse<List<CarDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Shipments/GetAllShipments',
+              '/get-favorite',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,30 +43,33 @@ class _FavoritesDatasource implements FavoritesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<String>>.fromJson(
+    final value = ApiResponse<List<CarDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
-          ? json.map<String>((i) => i as String).toList()
+          ? json
+              .map<CarDto>((i) => CarDto.fromJson(i as Map<String, dynamic>))
+              .toList()
           : List.empty(),
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<String>> toggleFavorite(String id) async {
+  Future<ApiResponse<bool>> toggleFavorite(AddToFavoriteParams params) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'id': id};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
-      method: 'GET',
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<bool>>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Shipments/GetShipmentDetails/shipmentId',
+              '/add-favorite',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -75,9 +78,9 @@ class _FavoritesDatasource implements FavoritesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<bool>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as bool,
     );
     return value;
   }

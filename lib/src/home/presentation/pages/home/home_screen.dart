@@ -1,15 +1,22 @@
 import '../../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../../main_index.dart';
+import '../../../domain/entities/brand.dart';
+import '../../../domain/entities/car.dart';
+import '../../../domain/entities/slide.dart';
 import '../../widgets/plates_list.dart';
 import '../../widgets/search_home.dart';
 import '../../widgets/sections_list.dart';
 import '../../widgets/slider_widget.dart';
-import '../brands/brands_list.dart';
 import '../../widgets/cars_home_list.dart';
-import '../../widgets/home_sliders.dart';
 
 class HomeScreen extends BaseStatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  final StreamStateInitial<List<Slide>?> slidesStream ;
+  final StreamStateInitial<List<Brand>?> brandsStream;
+  final StreamStateInitial<List<Car>?> yourCarsStream;
+  final StreamStateInitial<List<Car>?> otherCarsStream;
+  final Function(int)? onFavoriteCar;
+  final Function(int)? onFavoritePlate;
+  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.otherCarsStream, this.onFavoriteCar, this.onFavoritePlate}) : super(key: key);
 
   ScrollController scrollController = ScrollController();
   @override
@@ -20,9 +27,11 @@ class HomeScreen extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SearchHome(),
+          const SearchHome(),
           15.ph,
-          const SliderWidget(),
+          SliderWidget(
+            slidesStream: slidesStream,
+          ),
           25.ph,
           SectionsList(),
           Container(

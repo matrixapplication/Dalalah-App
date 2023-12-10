@@ -11,8 +11,8 @@ class LoginBody extends BaseStatelessWidget {
 
   LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController(text: 'test@test.com');
+  TextEditingController passwordController = TextEditingController(text: '123456789');
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -61,14 +61,14 @@ class LoginBody extends BaseStatelessWidget {
               height: 48,
               margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () {
-                // if (_formKey.currentState!.validate())
-                //   onLogin!(
-                //     LoginParams(
-                //       email: emailController.text,
-                //       password: passwordController.text,
-                //     ),
-                //   );
-                Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+                if (_formKey.currentState!.validate()) {
+                  onLogin!(
+                    LoginParams(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    ),
+                  );
+                }
               },
             ),
 

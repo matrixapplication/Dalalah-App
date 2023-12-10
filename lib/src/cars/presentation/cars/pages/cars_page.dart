@@ -1,20 +1,20 @@
-import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
+import '../../../../home/data/models/car_filter_params.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/filter_home.dart';
-import '../../../domain/entities/tasks.dart';
 import '../bloc/cars_bloc.dart';
 import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
-class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
+class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   CarsPage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchTasks();
+    bloc.fetchCars(CarFilterParams());
   }
 
   @override
@@ -30,7 +30,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
     return mainFrame(
       onTabSelected: (index) {
         tabIndex = index;
-        bloc.fetchTasks();
+        bloc.fetchCars(CarFilterParams());
       },
       body: Column(
         children: [
@@ -72,7 +72,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
       isFilter: false,
       isNew: tabIndex == 1 || tabIndex == 0 ? true : false,

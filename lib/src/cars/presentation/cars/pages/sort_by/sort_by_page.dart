@@ -2,16 +2,17 @@ import 'package:dalalah/src/main_index.dart';
 
 import '../../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../../core/widgets/scaffold/tab_bar_widget.dart';
-import '../../../../domain/entities/tasks.dart';
+import '../../../../../home/data/models/car_filter_params.dart';
+import '../../../../../home/domain/entities/car.dart';
 import '../../bloc/cars_bloc.dart';
 import '../cars_screen.dart';
 
-class SortByPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
+class SortByPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   SortByPage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchTasks();
+    bloc.fetchCars(CarFilterParams());
   }
 
   @override
@@ -34,7 +35,7 @@ class SortByPage extends BaseBlocWidget<DataSuccess<List<Task>>, CarsCubit> {
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Task>> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
       isFilter: false,
       tasks: state.data ?? [],

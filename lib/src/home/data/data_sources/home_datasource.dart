@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dalalah/core/network/api_response.dart';
-import 'package:dalalah/core/utils/constants.dart';
 
-import '../../domain/entities/shipment_qr_code.dart';
+import '../../../../core/network/api_response.dart';
+import '../../../../core/utils/constants.dart';
+import '../models/brand_dto.dart';
+import '../models/car_dto.dart';
+import '../models/car_filter_params.dart';
+import '../models/slide_dto.dart';
 
 part 'home_datasource.g.dart';
 @Injectable()
@@ -15,16 +18,12 @@ abstract class  HomeDatasource{
   factory HomeDatasource(Dio dio) = _HomeDatasource;
 
   @GET('/sliders')
-  Future<ApiResponse<bool>> fetchSliders();
+  Future<ApiResponse<List<SlideDto>>> fetchSliders();
 
-  @POST('/api/v1/user/DisconnectClient')
-  Future<ApiResponse<String>> reasonForDisconnection(@Body() String reason);
+  @GET('/brands')
+  Future<ApiResponse<List<BrandDto>>> fetchBrands();
 
-  @POST('/api/v1/user/ScanToReceive')
-  Future<ApiResponse<List<ShipmentQRCode>>> scanToReceive(@Body() String id);
-
-  @POST('/api/v1/user/ScanToPick')
-  Future<ApiResponse<List<ShipmentQRCode>>> scanToPick(@Body() String id);
-
+  @GET('/get_cars')
+  Future<ApiResponse<List<CarDto>>> fetchCars(@Queries() CarFilterParams params);
 
 }

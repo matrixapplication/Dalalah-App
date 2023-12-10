@@ -77,7 +77,7 @@ class CustomTextField extends BaseStatelessWidget {
             textAlign: textAlign ?? TextAlign.start,
             maxLines: maxLines,
             keyboardType: keyboardType,
-            style: theme.textTheme.headlineMedium,
+            style: context.bodyMedium,
             cursorColor: context.primaryColor,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             textInputAction: TextInputAction.next,

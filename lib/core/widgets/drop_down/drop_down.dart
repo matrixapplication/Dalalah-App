@@ -20,7 +20,7 @@ class DropDownField extends StatelessWidget {
   final TextStyle? texStyle;
   final String? prefixIcon;
   final Widget? iconWidget;
-  final void Function(dynamic)? onChanged;
+  final void Function(DropDownItem?)? onChanged;
   final bool isValidator;
   final String? Function(dynamic)? validator;
   final TextStyle? style;
@@ -29,6 +29,7 @@ class DropDownField extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? marginDropDown;
   final bool isDecoration;
+  final InputDecoration? inputDecoration;
 
   const DropDownField(
       {Key? key,
@@ -51,6 +52,7 @@ class DropDownField extends StatelessWidget {
       this.dropDownIconColor,
       this.hintFontSize, this.radius, this.titleStyle,
       this.isDecoration = false,
+      this.inputDecoration,
       })
       : super(key: key);
 
@@ -75,14 +77,14 @@ class DropDownField extends StatelessWidget {
             padding: marginDropDown ?? EdgeInsets.zero,
             child: DropdownButtonFormField2<DropDownItem>(
               isExpanded: true,
-              value: value,
-              decoration: InputDecoration(
+              value: getDropDownItemById(value.toString()),
+              decoration: inputDecoration ?? InputDecoration(
                 // Add Horizontal padding using menuItemStyleData.padding so it matches
                 // the menu padding when button's width is not specified.
-                constraints: BoxConstraints(
-                  minHeight: height ?? 48,
-                  maxHeight: height ?? 48,
-                ),
+                // constraints: BoxConstraints(
+                //   minHeight: height ?? 48,
+                //   maxHeight: height ?? 48,
+                // ),
                 filled: true,
                 fillColor: fillColor,
                 contentPadding: 2.paddingEnd + 0.paddingVert,
@@ -175,6 +177,11 @@ class DropDownField extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  DropDownItem? getDropDownItemById(String id) {
+    if (id.isEmpty) return null;
+    return items.firstWhereOrNull((element) => element.id == id);
   }
 }
 

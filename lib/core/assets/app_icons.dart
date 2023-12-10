@@ -1,5 +1,6 @@
 const String _iconsPath = "assets/icons";
 
+// ignore: non_constant_identifier_names
 class AppIcons {
   /* =================================================== */
   static String fuel = '$_iconsPath/fuel.svg';
@@ -27,6 +28,8 @@ class AppIcons {
   static String share_solid = '$_iconsPath/share_solid.svg';
   static String yellow_location = '$_iconsPath/yellow_location.svg';
   static String privacy_policy = '$_iconsPath/privacy_policy.svg';
+  static String delete = '$_iconsPath/delete.svg';
+  static String login = '$_iconsPath/login.svg';
 
 
 

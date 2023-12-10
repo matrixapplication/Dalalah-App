@@ -1,9 +1,13 @@
 
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entities/shipment_qr_code.dart';
+import '../../../../core/network/api_response.dart';
 import '../../domain/repositories/base_home_repo.dart';
 import '../data_sources/home_datasource.dart';
+import '../models/brand_dto.dart';
+import '../models/car_dto.dart';
+import '../models/car_filter_params.dart';
+import '../models/slide_dto.dart';
 
 
 @Injectable(as: BaseHomeRepo)
@@ -12,28 +16,18 @@ class HomeRepo extends BaseHomeRepo{
   HomeRepo(this.datasource);
 
   @override
-  Future<bool> fetchClientStatus() async {
-    final response =  await datasource.fetchSliders();
-    return response.data!;
+  Future<ApiResponse<List<SlideDto>>> fetchSliders() async {
+    return  await datasource.fetchSliders();
   }
 
   @override
-  Future<String> reasonForDisconnection(String reason) async {
-    final response =  await datasource.reasonForDisconnection(reason);
-    return response.data!;
+  Future<ApiResponse<List<BrandDto>>> fetchBrands() async {
+    return await datasource.fetchBrands();
   }
 
   @override
-  Future<List<ShipmentQRCode>> scanToReceive(String id) async {
-    final response =  await datasource.scanToReceive(id);
-    return response.data!;
+  Future<ApiResponse<List<CarDto>>> fetchCars(CarFilterParams params) async {
+    return await datasource.fetchCars( params);
   }
-
-  @override
-  Future<List<ShipmentQRCode>> scanToPick(String id) async {
-    final response =  await datasource.scanToPick(id);
-    return response.data!;
-  }
-
 
 }
