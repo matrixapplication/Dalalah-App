@@ -24,7 +24,6 @@ class SellCarScreen extends BaseStatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-
           25.ph,
           SelectionButtonChip(
             title: strings.car_status,
