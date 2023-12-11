@@ -1,6 +1,7 @@
 import 'package:dalalah/src/sell_car/data/models/settings_price_dto.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../home/data/models/brand_dto.dart';
 import '../../domain/repositories/base_add_car_repo.dart';
 import '../data_sources/sell_car_datasource.dart';
 import '../../../../core/network/api_response.dart';
@@ -93,7 +94,7 @@ class AddCarRepo implements BaseAddCarRepo {
   }
 
   @override
-  Future<ApiResponse<List<String>>> fetchBrands() {
+  Future<ApiResponse<List<BrandDto>>> fetchBrands() {
     return datasource.fetchBrands();
   }
 

@@ -70,7 +70,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 widget:  DropDownField(
                   items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),
                   inputDecoration: const InputDecoration(),
-                  value: cityId,
+                  valueId: cityId,
                   prefixIcon: AppIcons.location_2,
                   onChanged: (value) {
                     cityId = int.parse(value?.id ?? '0');

@@ -235,6 +235,23 @@ extension FirstWhereOrNull<E> on Iterable<E> {
     }
   }
 }
+
+extension RemoveMarkExtension on String {
+  String get removeMark => replaceAll(RegExp(r'[^\w\s]+'), '');
+}
+
+
+extension DurationExtension on int {
+  Duration get microseconds => Duration(microseconds: this);
+  Duration get milliseconds => Duration(milliseconds: this);
+  Duration get seconds => Duration(seconds: this);
+  Duration get minutes => Duration(minutes: this);
+  Duration get hours => Duration(hours: this);
+  Duration get days => Duration(days: this);
+  Duration get weeks => Duration(days: this * 7);
+  Duration get months => Duration(days: this * 30);
+  Duration get years => Duration(days: this * 365);
+}
 //
 // extension SizeExtension on num {
 //   double get w => ResponsiveService.scaleWidth() * this;

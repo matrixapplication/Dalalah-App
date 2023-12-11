@@ -1,6 +1,7 @@
 
 
 import '../../../../core/network/api_response.dart';
+import '../../../home/data/models/brand_dto.dart';
 import '../../data/models/body_type_dto.dart';
 import '../../data/models/brand_model_dto.dart';
 import '../../data/models/brand_model_extension_dto.dart';
@@ -40,7 +41,7 @@ abstract class BaseAddCarRepo{
 
   Future<ApiResponse<List<CarEngineDto>>> fetchCarEngines();
 
-  Future<ApiResponse<List<String>>> fetchBrands();
+  Future<ApiResponse<List<BrandDto>>> fetchBrands();
 
   Future<ApiResponse<List<ColorDto>>> fetchColors();
 

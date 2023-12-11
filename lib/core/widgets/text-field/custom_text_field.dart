@@ -3,7 +3,7 @@ import 'package:dalalah/src/main_index.dart';
 class CustomTextField extends BaseStatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
-  final String? labelText;
+  final String? title;
   final bool? isPassword;
   final VoidCallback? onTap;
   final Function(String)? onChanged;
@@ -29,7 +29,7 @@ class CustomTextField extends BaseStatelessWidget {
     Key? key,
     this.controller,
     this.hintText,
-    this.labelText,
+    this.title,
     this.isPassword,
     this.onTap,
     this.onChanged,
@@ -60,11 +60,11 @@ class CustomTextField extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (labelText != null) ...[
+          if (title != null) ...[
             10.ph,
             SizedBox(
               child: Text(
-                labelText ?? '',
+                title ?? '',
                 style: labelStyle ?? context.bodySmall,
               ),
             ),

@@ -23,19 +23,8 @@ class SellCarScreen extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          40.ph,
-          Text(
-            '1/3',
-            style: context.displayMedium.copyWith(
-              fontFamily: fontRegular,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          15.ph,
-          Text(
-            strings.add_car,
-            style: context.titleSmall,
-          ),
+
+
           25.ph,
           SelectionButtonChip(
             title: strings.car_status,
@@ -133,7 +122,7 @@ class SellCarScreen extends BaseStatelessWidget {
           ),
           15.ph,
           CustomTextField(
-            labelText: strings.number_kilometers_km,
+            title: strings.number_kilometers_km,
             hintText: strings.number_kilometers_km,
             contentPadding: 16.paddingHoriz + 17.paddingVert,
             maxHeight: 62,
@@ -151,7 +140,7 @@ class SellCarScreen extends BaseStatelessWidget {
           PrimaryOutlinesButtons(
             title1: strings.next,
             title2: strings.cancel,
-            onPressed2: () {
+            onPrevPressed: () {
               Navigator.pop(context);
             },
             onPressed1: () {

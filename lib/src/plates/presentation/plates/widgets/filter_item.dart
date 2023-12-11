@@ -39,7 +39,7 @@ class FilterItem extends BaseStatelessWidget {
             controllers.length,
             (index) => Expanded(
               child: CustomTextField(
-                labelText: controllers.length == 3
+                title: controllers.length == 3
                     ? itemsLetters[index]
                     : itemsNumber[index],
                 controller: controllers[index],

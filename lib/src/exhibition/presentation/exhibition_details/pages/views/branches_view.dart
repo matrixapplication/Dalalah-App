@@ -25,7 +25,7 @@ class BranchesView extends BaseStatelessWidget {
           10.ph,
           DropDownField(
             margin: 230.paddingEnd + 20.paddingStart,
-            value: items.first,
+            valueId: items.first,
             items: items,
             iconWidget: AppIcon(
               icon: AppIcons.down_arrow,

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../assets/app_icons.dart';
 import '../../decorations/decorations.dart';
 import '../buttons/app_icon.dart';
+import '../pagination/loading_widget.dart';
 
 class DropDownField extends StatelessWidget {
   final List<DropDownItem> items;
@@ -16,7 +17,7 @@ class DropDownField extends StatelessWidget {
   final Color? fillColor;
   final Color? hintColor;
   final Color? dropDownIconColor;
-  final dynamic value;
+  final dynamic valueId;
   final TextStyle? texStyle;
   final String? prefixIcon;
   final Widget? iconWidget;
@@ -30,6 +31,8 @@ class DropDownField extends StatelessWidget {
   final EdgeInsetsGeometry? marginDropDown;
   final bool isDecoration;
   final InputDecoration? inputDecoration;
+  final bool isLoading;
+  final bool disabled;
 
   const DropDownField(
       {Key? key,
@@ -39,7 +42,7 @@ class DropDownField extends StatelessWidget {
       this.onChanged,
       this.prefixIcon,
       this.texStyle,
-      this.value,
+      this.valueId,
       this.iconWidget,
       this.isValidator = true,
       this.validator,
@@ -53,6 +56,8 @@ class DropDownField extends StatelessWidget {
       this.hintFontSize, this.radius, this.titleStyle,
       this.isDecoration = false,
       this.inputDecoration,
+      this.isLoading = false,
+      this.disabled = false
       })
       : super(key: key);
 
@@ -60,7 +65,7 @@ class DropDownField extends StatelessWidget {
   Widget build(BuildContext context) {
     Color? colorBorderSide = isDecoration ? context.cardColor : context.colorScheme.outline;
     return Container(
-      padding: margin ?? 0.paddingVert,
+      padding: margin ?? 8.paddingVert,
       decoration: isDecoration
           ?  Decorations.kDecorationField() : null,
       child: Column(
@@ -71,13 +76,13 @@ class DropDownField extends StatelessWidget {
               title ?? '',
               style: titleStyle ?? context.bodySmall,
             ),
-            10.ph,
+            5.ph,
           ],
           Padding(
             padding: marginDropDown ?? EdgeInsets.zero,
             child: DropdownButtonFormField2<DropDownItem>(
               isExpanded: true,
-              value: getDropDownItemById(value.toString()),
+              value: getDropDownItemById(valueId.toString()),
               decoration: inputDecoration ?? InputDecoration(
                 // Add Horizontal padding using menuItemStyleData.padding so it matches
                 // the menu padding when button's width is not specified.
@@ -115,6 +120,8 @@ class DropDownField extends StatelessWidget {
                             color: dropDownIconColor ?? context.primaryColor,
                           )
                         : null),
+
+                errorStyle: context.displaySmall.copyWith(color: context.errorColor),
                 // Add more decoration..
               ),
               hint: Text(
@@ -149,7 +156,7 @@ class DropDownField extends StatelessWidget {
               iconStyleData: IconStyleData(
                 icon: Padding(
                   padding: 10.paddingEnd,
-                  child: AppIcon(
+                  child: isLoading ?  const SmallLoading() : AppIcon(
                     icon: AppIcons.down_arrow,
                     color: dropDownIconColor ?? AppColors.blue_49,
                     size: 8,
@@ -162,7 +169,7 @@ class DropDownField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(radius ?? 8),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.15),
+                      color: context.primaryColor.withOpacity(0.15),
                       offset: const Offset(0, 0),
                       blurRadius: 10,
                     ),

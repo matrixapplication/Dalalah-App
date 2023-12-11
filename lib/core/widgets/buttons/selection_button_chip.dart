@@ -116,10 +116,11 @@ class SelectionButtonChip extends StatelessWidget {
 }
 
 class ChipItem {
+  final String? id;
   final String title;
   final String? icon;
 
-  ChipItem({required this.title, this.icon});
+  ChipItem({this.id, required this.title, this.icon});
 }
 
 class SelectItem extends StatelessWidget {

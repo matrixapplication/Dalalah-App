@@ -324,13 +324,13 @@ class _SellCarDatasource implements SellCarDatasource {
   }
 
   @override
-  Future<ApiResponse<List<String>>> fetchBrands() async {
+  Future<ApiResponse<List<BrandDto>>> fetchBrands() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<String>>>(Options(
+        _setStreamType<ApiResponse<List<BrandDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -346,10 +346,13 @@ class _SellCarDatasource implements SellCarDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<String>>.fromJson(
+    final value = ApiResponse<List<BrandDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
-          ? json.map<String>((i) => i as String).toList()
+          ? json
+              .map<BrandDto>(
+                  (i) => BrandDto.fromJson(i as Map<String, dynamic>))
+              .toList()
           : List.empty(),
     );
     return value;

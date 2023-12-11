@@ -211,7 +211,7 @@ class InstallmentScreen extends BaseStatelessWidget {
                             context, Routes.monthlyInstallmentPage);
                       }
                     },
-                    onPressed2: () {
+                    onPrevPressed: () {
                       totalSalaryController.clear();
                       creditLimitController.clear();
                       installmentValueStream.setData('');

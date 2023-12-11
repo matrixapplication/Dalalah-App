@@ -42,18 +42,18 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           ),
           25.ph,
           CustomTextField(
-            labelText: strings.car_price,
+            title: strings.car_price,
             hintText: strings.enter_car_price,
             keyboardType: TextInputType.number,
           ),
           10.ph,
           CustomTextField(
-            labelText: strings.installment_value_monthly,
+            title: strings.installment_value_monthly,
             hintText: strings.enter_installment_value,
           ),
           10.ph,
           CustomTextField(
-            labelText: strings.car_description,
+            title: strings.car_description,
             hintText: strings.enter_car_description,
             keyboardType: TextInputType.number,
           ),
@@ -63,7 +63,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           PrimaryOutlinesButtons(
             title1: strings.share,
             title2: strings.back,
-            onPressed2: () {
+            onPrevPressed: () {
               Navigator.pop(context);
             },
             onPressed1: () {

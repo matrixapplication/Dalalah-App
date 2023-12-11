@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../home/domain/entities/brand.dart';
 import '../../data/models/color_dto.dart';
 import '../../data/models/port_dto.dart';
 import '../../data/models/sell_car_params.dart';
@@ -34,10 +35,9 @@ class SellCarUseCase {
     return data.message ?? '';
   }
 
-  Future<List<String>> fetchBrands() async{
-    return [''];
-    // final data = await repository.fetchBrands();
-    // return data.data?.map((e) => Brand.fromDto(e)).toList() ?? [];
+  Future<List<Brand>> fetchBrands() async{
+    final data = await repository.fetchBrands();
+    return data.data?.map((e) => Brand.fromDto(e)).toList() ?? [];
   }
 
   Future<List<BrandModel>> fetchBrandModels(int id) async{

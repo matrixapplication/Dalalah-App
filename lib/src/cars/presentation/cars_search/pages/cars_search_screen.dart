@@ -202,7 +202,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
           PrimaryOutlinesButtons(
             title1: strings.show_results,
             title2: strings.cancel,
-            onPressed2: () {
+            onPrevPressed: () {
               Navigator.pop(context);
             },
             onPressed1: () {},

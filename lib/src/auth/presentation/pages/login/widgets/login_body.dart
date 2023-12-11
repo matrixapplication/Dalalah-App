@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../../../../../core/resources/validation.dart';
 import '../../../../../../core/utils/navigator.dart';
 import '../../../../../../core/widgets/buttons/underline_text_button.dart';
@@ -11,8 +13,8 @@ class LoginBody extends BaseStatelessWidget {
 
   LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
 
-  TextEditingController emailController = TextEditingController(text: 'test@test.com');
-  TextEditingController passwordController = TextEditingController(text: '123456789');
+  TextEditingController emailController = TextEditingController(text: kReleaseMode ? '' : 'test@test.com');
+  TextEditingController passwordController = TextEditingController(text: kReleaseMode ? '' : '123456789');
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

@@ -186,7 +186,7 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
         title1: strings.next,
         title2: strings.back,
         margin: 16.paddingHoriz + 20.paddingBottom,
-        onPressed2: () {
+        onPrevPressed: () {
           Navigator.pop(context);
         },
         onPressed1: () {

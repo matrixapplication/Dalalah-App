@@ -31,7 +31,7 @@ class AddPremiumScreen extends BaseStatelessWidget {
           PrimaryOutlinesButtons(
             title1: strings.highlight_the_ad,
             title2: strings.watch_my_ad,
-            onPressed2: () {
+            onPrevPressed: () {
               Navigator.pop(context);
             },
             onPressed1: () {

@@ -5,12 +5,12 @@ const String fontBold = 'LBC-Bold';
 const String fontRegular = 'LBC-Regular';
 
 
-const Color primaryColor = Color(0xff0396BE);
+const Color _primaryColor = Color(0xff0396BE);
 const Color lighterDarkColor = Color(0xff252525);
 const kGreyColor = Color(0xffC7C7C7);
 
 final lightTheme = ThemeData(
-  primaryColor: primaryColor,
+  primaryColor: _primaryColor,
   brightness: Brightness.light,
 
   primaryColorDark: const Color(0xff010C11),
@@ -44,17 +44,17 @@ final lightTheme = ThemeData(
   ),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: primaryColor,
+      statusBarColor: _primaryColor,
       statusBarIconBrightness: Brightness.light,
     ),
-    foregroundColor: primaryColor,
+    foregroundColor: _primaryColor,
     titleTextStyle: TextStyle(
       fontSize: 18,
       fontFamily: fontBold,
       fontWeight: FontWeight.w600,
       color: const Color(0xff000000),
     ),
-    backgroundColor: primaryColor,
+    backgroundColor: _primaryColor,
     centerTitle: true,
     elevation: 0,
   ),
@@ -141,18 +141,18 @@ final lightTheme = ThemeData(
     ),
     headlineSmall: TextStyle(
       fontSize: 14.0,
-      color: primaryColor,
+      color: _primaryColor,
       fontFamily: fontBold,
     ),
     headlineMedium: TextStyle(
       fontSize: 16.0,
-      color: primaryColor,
+      color: _primaryColor,
       fontFamily: fontBold,
       fontWeight: FontWeight.w600,
     ),
     headlineLarge: TextStyle(
       fontSize: 18.0,
-      color: primaryColor,
+      color: _primaryColor,
       fontFamily: fontBold,
       fontWeight: FontWeight.w600,
     ),

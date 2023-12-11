@@ -13,7 +13,7 @@ class _NotificationsDatasource implements NotificationsDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://arabitac.matrixclouds.net/api';
+    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
   }
 
   final Dio _dio;

@@ -70,4 +70,17 @@ class Validation {
     // }
     return null;
   }
+
+  static String? validatePrice(String value, String max, String min) {
+    if (value.isEmpty) {
+      return injector<ServicesLocator>().strings.this_field_is_required;
+    }
+    if (int.parse(value) > int.parse(max)) {
+      return '$max ${injector<ServicesLocator>().strings.maximum}';
+    }
+    if (int.parse(value) < int.parse(min)) {
+      return '$min ${injector<ServicesLocator>().strings.minimum}';
+    }
+    return null;
+  }
 }

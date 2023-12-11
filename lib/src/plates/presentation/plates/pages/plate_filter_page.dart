@@ -65,7 +65,7 @@ class PlateFilterPage extends BaseStatelessWidget {
                   10.ph,
                   if(isAddPage)
                   CustomTextField(
-                    labelText: strings.price,
+                    title: strings.price,
                     labelStyle: context.textTheme.labelLarge,
                     hintText: strings.enter_price,
                     controller: TextEditingController(),
@@ -85,7 +85,7 @@ class PlateFilterPage extends BaseStatelessWidget {
                 : PrimaryOutlinesButtons(
                     title1: strings.show_results,
                     title2: strings.cancel,
-                    onPressed2: () {
+                    onPrevPressed: () {
                       Navigator.pop(context);
                     },
                     onPressed1: () {},

@@ -6,6 +6,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../home/data/models/brand_dto.dart';
 import '../models/body_type_dto.dart';
 import '../models/brand_model_dto.dart';
 import '../models/brand_model_extension_dto.dart';
@@ -89,7 +90,7 @@ abstract class SellCarDatasource {
       );
 
   @GET('/brands')
-  Future<ApiResponse<List<String>>> fetchBrands();
+  Future<ApiResponse<List<BrandDto>>> fetchBrands();
 
   @GET('/brand_models/{id}')
   Future<ApiResponse<List<BrandModelDto>>> fetchBrandModels(@Path('id') int id);

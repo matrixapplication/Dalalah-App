@@ -8,7 +8,7 @@ class PrimaryOutlinesButtons extends StatelessWidget {
   final String? title1;
   final String? title2;
   final Function()? onPressed1;
-  final Function()? onPressed2;
+  final Function()? onPrevPressed;
   final EdgeInsetsGeometry? margin;
 
   const PrimaryOutlinesButtons(
@@ -16,7 +16,7 @@ class PrimaryOutlinesButtons extends StatelessWidget {
       this.title1,
       this.title2,
       this.onPressed1,
-      this.onPressed2,
+      this.onPrevPressed,
       this.margin})
       : super(key: key);
 
@@ -36,16 +36,17 @@ class PrimaryOutlinesButtons extends StatelessWidget {
               onPressed: onPressed1,
             ),
           ),
-          10.pw,
+          if(onPrevPressed != null)
+          ...[10.pw,
           Expanded(
             flex: 2,
             child: SecondaryButton(
               title: title2 ?? context.strings.back,
               borderColor: context.primaryColor,
               radius: 4,
-              onPressed: onPressed2,
+              onPressed: onPrevPressed,
             ),
-          ),
+          ),]
         ],
       ),
     );
