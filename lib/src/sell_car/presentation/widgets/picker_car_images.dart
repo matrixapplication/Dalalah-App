@@ -1,14 +1,16 @@
 import 'dart:io';
-import 'package:dalalah/core/utils/helper_methods.dart';
-import '../../../../core/widgets/buttons/primary_icon_button.dart';
+import 'package:dalalah/src/sell_car/presentation/widgets/picker_main_image.dart';
 import '../../../main_index.dart';
 
 ///  Created by harbey on 9/7/2023.
 class PickerCarImages extends BaseStatelessWidget {
-  PickerCarImages({Key? key}) : super(key: key);
+  final List<String>? initialImages;
+  final Function(File, List<File>) onImagesSelected;
+  PickerCarImages({Key? key, this.initialImages, required this.onImagesSelected,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    File mainImage = File('');
     List<File> images = [File('')];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,138 +25,118 @@ class PickerCarImages extends BaseStatelessWidget {
           style: context.bodySmall,
         ),
         20.ph,
-        const PickerMainImage(),
+        PickerMainImage(
+          onImageSelected: (file) {
+            mainImage = file;
+          },
+        ),
         20.ph,
         Text(
           strings.add_car_image_at_most_10,
           style: context.bodySmall,
         ),
         10.ph,
-        const PickerSubImages(),
+        PickerSubImages(
+          onImagesSelected: (files) {
+           images = files;
+            onImagesSelected(mainImage, images);
+          },
+        ),
       ],
     );
   }
 }
 
-class PickerMainImage extends StatelessWidget {
-  final String? title;
-  final IconData? icon;
-  final Function(File)? onImageSelected;
-
-  const PickerMainImage({Key? key, this.onImageSelected, this.icon, this.title})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    StreamStateInitial<File>? streamStateInitial = StreamStateInitial();
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      width: double.infinity,
-      padding: 15.paddingVert,
-      decoration: Decorations.kDecorationBorder(
-        borderColor: context.colorScheme.outline,
-        radius: 8,
-      ),
-      child: StreamBuilder<File>(
-          stream: streamStateInitial.stream,
-          builder: (ctx, snapshot) {
-            return InkWell(
-              onTap: () async {
-                await HelperMethods.getImagePicker().then((value) {
-                  if (value != null) {
-                    streamStateInitial.setData(File(value.path));
-                    onImageSelected!(File(value.path));
-                  }
-                });
-              },
-              child: (snapshot.data != null && icon == null)
-                  ? Image.file(
-                      snapshot.data!,
-                      fit: BoxFit.cover,
-                    )
-                  : Padding(
-                      padding: 20.paddingAll,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Icon(
-                          //   icon ?? Icons.image,
-                          //   size: 50,
-                          //   color: context.primaryColor.withOpacity(0.5),
-                          // ),
-                          Image.asset(
-                            AppImages.photo,
-                            height: 35,
-                            width: 35,
-                            fit: BoxFit.contain,
-                          ),
-                          25.ph,
-                          // Text(
-                          //   title ?? context.strings.add_main_image,
-                          //   style: context.bodyMedium,
-                          //   textAlign: TextAlign.center,
-                          // ),
-                          Padding(
-                            padding: 70.paddingHoriz,
-                            child: PrimaryIconButton(
-                              height: 45,
-                              icon: '',
-                              iconData: Icons.add_a_photo_rounded,
-                              iconColor: Colors.white,
-                              title: context.strings.select_image,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-            );
-          }),
-    );
-  }
-}
 
 
 class PickerSubImages extends StatelessWidget {
-  const PickerSubImages({super.key});
+  final Function(List<File>)? onImagesSelected;
+  const PickerSubImages({super.key, this.onImagesSelected});
 
   @override
   Widget build(BuildContext context) {
+    List<File> images = [File('')];
     return StatefulBuilder(builder: (context, setSate) {
-      return Container(
-        clipBehavior: Clip.antiAlias,
-        width: double.infinity,
-        padding: 15.paddingVert,
-        decoration: Decorations.kDecorationBorder(
-          borderColor: context.colorScheme.outline,
-          radius: 8,
-        ),
-        child: Padding(
-          padding: 20.paddingAll,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                AppImages.photo,
-                height: 35,
-                width: 35,
-                fit: BoxFit.contain,
-              ),
-              25.ph,
-              Padding(
-                padding: 70.paddingHoriz,
-                child: PrimaryIconButton(
-                  height: 45,
-                  icon: '',
-                  iconData: Icons.add_a_photo_rounded,
-                  iconColor: Colors.white,
-                  title: context.strings.select_images,
-                ),
-              ),
-            ],
+      return GridView.builder(
+          itemCount: images.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
           ),
-        ),
+          padding: 0.paddingAll,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return PickerMainImage(
+                title: index <= 4 ? context.strings.doors_images : context.strings.other_images,
+                icon: Icons.add_photo_alternate_rounded,
+             //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
+                onImageSelected: (image) {
+                  images.add(image);
+                  onImagesSelected?.call(images.sublist(1));
+                  setSate(() {});
+                },
+              );
+            }
+            return Container(
+              margin: 5.paddingVert,
+              decoration: Decorations.kDecorationRadius(
+                radius: 10,
+                color: context.primaryColor.withOpacity(0.1),
+              ),
+              child: Stack(
+                alignment: AlignmentDirectional.topEnd,
+                children: [
+                  Positioned.fill(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.file(
+                        images[index],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      images.removeAt(index);
+                     // onImagesSelected!(images);
+                      setSate(() {});
+                    },
+                    child: Container(
+                      padding: 3.paddingAll,
+                      margin: 5.paddingAll,
+                      decoration: Decorations.kDecorationCircle(
+                        color: context.cardColor,
+                      ),
+                      child: const Icon(
+                        Icons.highlight_remove_outlined,
+                        color: Colors.red,
+                        size: 18,
+                      ),
+                    ),
+                  ),
+                  if(index <= 4)
+                    Align(
+                      alignment: AlignmentDirectional.bottomCenter,
+                      child: Container(
+                          padding: 3.paddingAll,
+                          width: double.infinity,
+                          decoration: Decorations.kDecorationBottomRadius(
+                            color: context.primaryColor.withOpacity(0.8),
+                            radius: 10,
+                          ),
+                          child: Text(
+                            '${context.strings.door} $index',
+                            style: context.labelMedium,
+                            textAlign: TextAlign.center,
+                          )
+                      ),
+                    ),
+                ],
+              ),
+            );
+        }
       );
       // return GridView.builder(
       //   itemCount: images.length,

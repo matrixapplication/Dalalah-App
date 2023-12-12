@@ -1,16 +1,17 @@
 import 'package:dalalah/src/main_index.dart';
 
-
 class SelectionButtonChip extends StatelessWidget {
   final String? title;
+  final ChipItem? initialValue;
   final List<ChipItem> types;
   final EdgeInsetsGeometry? padding;
-  final void Function(bool)? onSelected;
+  final void Function(ChipItem)? onSelected;
   final bool isScrollableGrid;
 
   SelectionButtonChip({
     Key? key,
     this.title,
+    this.initialValue,
     required this.types,
     this.onSelected,
     this.padding,
@@ -21,43 +22,54 @@ class SelectionButtonChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title ?? '',
-          style: context.bodySmall,
-        ),
-        10.ph,
-        StatefulBuilder(
-          builder: (context, setState) {
-            return isScrollableGrid
-                ? _buildChipsGrid(context, setState) : _buildChips(context, setState);
-                // : Row(
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: types
-                //         .map((item) => Expanded(
-                //               child: SelectItem(
-                //                 item: item,
-                //                 types: types,
-                //                 setState: setState,
-                //                 selectedType: selectedType ?? types.first,
-                //                 onSelected: (bool value) {
-                //                   setState(() {
-                //                     selectedType = item;
-                //                     onSelected!(value);
-                //                   });
-                //                 },
-                //                 padding: padding,
-                //               ),
-                //             ))
-                //         .toList(),
-                //   );
-          },
-        ),
-      ],
+    _initialValue();
+    return Padding(
+      padding: 8.paddingVert,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title ?? '',
+            style: context.bodySmall,
+          ),
+          5.ph,
+          StatefulBuilder(
+            builder: (context, setState) {
+              return isScrollableGrid
+                  ? _buildChipsGrid(context, setState)
+                  : _buildChips(context, setState);
+              // : Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: types
+              //         .map((item) => Expanded(
+              //               child: SelectItem(
+              //                 item: item,
+              //                 types: types,
+              //                 setState: setState,
+              //                 selectedType: selectedType ?? types.first,
+              //                 onSelected: (bool value) {
+              //                   setState(() {
+              //                     selectedType = item;
+              //                     onSelected!(value);
+              //                   });
+              //                 },
+              //                 padding: padding,
+              //               ),
+              //             ))
+              //         .toList(),
+              //   );
+            },
+          ),
+        ],
+      ),
     );
+  }
+
+  _initialValue() {
+    print('initialValue: ${initialValue?.title}');
+    selectedType = initialValue ?? (types.isEmpty ? null : types.first);
+    print('selectedType: ${selectedType?.title}');
   }
 
   Widget _buildChips(
@@ -74,7 +86,7 @@ class SelectionButtonChip extends StatelessWidget {
                 onSelected: (bool value) {
                   setState(() {
                     selectedType = e;
-                    onSelected!(value);
+                    onSelected!(selectedType!);
                   });
                 },
                 padding: padding,
@@ -82,7 +94,6 @@ class SelectionButtonChip extends StatelessWidget {
           .toList(),
     );
   }
-
 
   Widget _buildChipsGrid(
       BuildContext context, void Function(void Function()) setState) {
@@ -106,7 +117,7 @@ class SelectionButtonChip extends StatelessWidget {
         onSelected: (bool value) {
           setState(() {
             selectedType = types[index];
-            onSelected!(value);
+            onSelected!(selectedType!);
           });
         },
         padding: padding,
@@ -168,12 +179,16 @@ class SelectItem extends StatelessWidget {
 
   Widget image(BuildContext context) {
     return item.icon?.split('.').last == 'svg'
-        ? AppIcon(icon: item.icon ?? '', color: selectedType == item ? context.cardColor : context.primaryColor)
-        :
-      Image.network(item.icon ?? '',
-        height: 25,
-        width: 25,
-        color: selectedType == item ? context.cardColor : context.primaryColor);
+        ? AppIcon(
+            icon: item.icon ?? '',
+            color:
+                selectedType == item ? context.cardColor : context.primaryColor)
+        : Image.network(item.icon ?? '',
+            height: 25,
+            width: 25,
+            color: selectedType == item
+                ? context.cardColor
+                : context.primaryColor);
   }
 
   Widget text(BuildContext context) {
@@ -181,8 +196,7 @@ class SelectItem extends StatelessWidget {
       child: Text(
         item.title,
         style: context.textTheme.headlineMedium!.copyWith(
-          color:
-              selectedType == item ? context.cardColor : AppColors.grey_41,
+          color: selectedType == item ? context.cardColor : AppColors.grey_41,
           fontSize: 15,
         ),
         textAlign: TextAlign.center,
@@ -196,7 +210,9 @@ class SelectItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: (item.icon != null && item.icon!.isNotEmpty) ? MainAxisSize.min : MainAxisSize.max,
+        mainAxisSize: (item.icon != null && item.icon!.isNotEmpty)
+            ? MainAxisSize.min
+            : MainAxisSize.max,
         children: [
           if (item.icon != null && item.icon!.isNotEmpty) ...[
             image(context),

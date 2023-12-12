@@ -37,7 +37,7 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-    );
+    )..installment = json['monthly_installment'] as int?;
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
     <String, dynamic>{
@@ -66,6 +66,7 @@ Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
           instance.mainImage, const FileJsonConverter().toJson),
       'images': instance.images?.map(const FileJsonConverter().toJson).toList(),
       'features': instance.features,
+      'monthly_installment': instance.installment,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

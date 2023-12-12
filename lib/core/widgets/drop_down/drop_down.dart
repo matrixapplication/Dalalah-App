@@ -165,6 +165,7 @@ class DropDownField extends StatelessWidget {
                 iconSize: 10,
               ),
               dropdownStyleData: DropdownStyleData(
+                maxHeight: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(radius ?? 8),
                   boxShadow: [

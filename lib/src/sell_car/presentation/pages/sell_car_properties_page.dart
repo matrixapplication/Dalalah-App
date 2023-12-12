@@ -2,29 +2,48 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
 import 'package:dalalah/src/sell_car/presentation/pages/sell_car_properties_screen.dart';
 
-import '../../../home/presentation/bloc/home_bloc.dart';
+import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
-import '../../domain/entities/shipment.dart';
-import '../bloc/sell_car_bloc.dart';
-import 'sell_car_screen.dart';
+import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/feature.dart';
+import '../bloc/sell_car_properites_bloc.dart';
+import '../widgets/header_sell_car.dart';
 
 
-class SellCarPropertiesPage extends BaseBlocWidget<UnInitState, HomeCubit> {
-  final int type;
-  SellCarPropertiesPage({Key? key, this.type = 1}) : super(key: key);
+class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, SellCarPropertiesCubit> {
+  final List<Feature>? initialFeatures;
+  final Function(List<int>)? onNext;
+  SellCarPropertiesPage({Key? key, this.initialFeatures, this.onNext}) : super(key: key);
 
-  //
-  // @override
-  // void loadInitialData(BuildContext context) {
-  //   bloc.fetchClientStatus();
-  // }
-
-  // @override
-  // String? title (context)=> strings.select_properties;
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
-    return SellCarPropertiesScreen(shipments: bloc.state.data);
+  void loadInitialData(BuildContext context) {
+    bloc.fetchFeatures();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return mainFrame(
+      body: HeaderSellCar(
+        step: 3,
+        buildConsumer: buildConsumer(context),
+      ),
+    );
+  }
+
+  @override
+  Widget buildWidget(BuildContext context, DataSuccess<List<Feature>> state) {
+    final args = getArguments(context);
+    return SellCarPropertiesScreen(
+      features: state.data ?? [],
+      initialFeatures: initialFeatures,
+      onNextPressed: (selected) {
+        SellCarParams params = args;
+        params.features = selected.map((e) => e.toString()).toList();
+        Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: params);
+      },
+    );
   }
 
 }

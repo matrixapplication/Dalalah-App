@@ -28,32 +28,33 @@ class AddCarRepo implements BaseAddCarRepo {
   AddCarRepo(this.datasource);
 
   @override
-  Future<ApiResponse> sellCar(SellCarParams params) {
+  Future<ApiResponse> sellCar(SellCarParams params) async {
     print('SellCarParams: ${params.toJson()}');
-    return datasource.sellCar(
+    return await datasource.sellCar(
       params.brandId ?? 0,
-      params.carModelId!,
+      params.carModelId ?? 0,
       params.carModelExtensionId!,
-      params.portId!,
-      params.branchId!,
-      params.year!,
-      params.colorId!,
-      params.driveType!,
-      params.carTypeId!,
-      params.fuelType!,
-      params.status!,
-      params.type!,
-      params.originCountry!,
-      params.price!,
+      params.portId ?? 0,
+      params.branchId ?? 0,
+      params.year ?? 0,
+      params.colorId ?? 0,
+      params.driveType ?? '',
+      params.carTypeId ?? 0,
+      params.fuelType ?? '',
+      params.status ?? '',
+      params.type ?? '',
+      params.originCountry ?? '',
+      params.price ?? 0,
       params.doors ?? 4,
-      params.engine!,
-      params.cc!,
-      params.cylinders!,
-      params.mileage!,
-      params.description!,
+      params.engine ?? '',
+      params.cc ?? '',
+      params.cylinders ?? 0,
+      params.mileage ?? 0,
+      params.description ?? '',
+      params.installment ?? 0,
       params.mainImage!,
-      params.images!,
-      params.features!,
+      params.images ?? [],
+      params.features ?? [],
     );
   }
 
@@ -171,12 +172,6 @@ class AddCarRepo implements BaseAddCarRepo {
 
   @override
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice() {
-    // TODO: implement fetchSettingsPrice
-    throw UnimplementedError();
+    return datasource.fetchSettingsPrice();
   }
-
-  // @override
-  // Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice() {
-  //   return datasource.fetchSettingsPrice();
-  // }
 }

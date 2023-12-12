@@ -52,7 +52,9 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
-                onSelected: (value) {},
+                onSelected: (value) {
+                  status = value.id ?? '';
+                },
               ),
               24.ph,
               DropDownField(
@@ -111,7 +113,8 @@ class SellCarFirstScreen extends BaseStatelessWidget {
     if (_formKey.currentState!.validate()) {
       onNext?.call(
         SellCarParams(
-          status: status,
+          modelId: modelId,
+          status: status ,
           brandId: brandId,
           carModelId: modelId,
           carModelExtensionId: extensionId,
@@ -122,6 +125,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   }
 
   _initialValues() {
+    status = state.carStatuses.first.key ?? '';
     if (car != null) {
       status = car?.status?.key ?? '';
       brandId = car?.brand?.id ?? 0;

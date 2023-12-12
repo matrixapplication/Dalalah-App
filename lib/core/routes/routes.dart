@@ -30,8 +30,10 @@ import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
 import '../../src/real_estate/presentation/pages/real_estate_page.dart';
+import '../../src/sell_car/presentation/pages/sell_car_first_page.dart';
 import '../../src/sell_car/presentation/pages/sell_car_image_picker_page.dart';
 import '../../src/sell_car/presentation/pages/sell_car_properties_page.dart';
+import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
@@ -58,6 +60,7 @@ class Routes {
   static const String homePage = 'homePage';
   static const String onBoardingPage = 'onBoardingPage';
   static const String sellCarPage = 'sellCarPage';
+  static const String sellCarSecondPage = 'sellCarSecondPage';
   static const String sellCarImagePickerPage = 'sellCarImagePickerPage';
   static const String sellCarPropertiesPage = 'sellCarPropertiesPage';
   static const String favoritesAndAdsPage = 'favoritesAndAdsPage';
@@ -112,7 +115,8 @@ class Routes {
     homePage: (context) => HomePage(),
     carsPage: (context) => CarsPage(),
     onBoardingPage: (context) => OnBoardingPage(),
-    sellCarPage: (context) => SellCarPage(),
+    sellCarPage: (context) => SellCarFirstPage(),
+    sellCarSecondPage: (context) => SellCarSecondPage(),
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),
     favoritesAndAdsPage: (context) => FavoritesAndAdsPage(),

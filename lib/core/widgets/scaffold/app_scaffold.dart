@@ -87,27 +87,32 @@ class AppScaffold extends StatelessWidget {
                   ),
                   backgroundColor:
                       backgroundAppBar ?? theme.appBarTheme.backgroundColor,
-                  leading: isAddButton ?
-                          AppIconButton(
-                            icon: AppIcons.add_circular,
-                            padding: 14.paddingAll,
-                            onPressed: onAddButtonPressed,
-                          ) : leading,
+                  leading: Navigator.canPop(context)
+                      ? AppCircularIconButton(
+                          margin: 10.paddingAll,
+                          icon: Icons.arrow_back_ios_rounded,
+                          padding: 3,
+                          circleSize: 33,
+                          radius: 12,
+                          backgroundColor: backgroundAppBar ==
+                                  context.scaffoldBackgroundColor
+                              ? context.primaryColor
+                              : null,
+                          color:  backgroundAppBar ==
+                              context.scaffoldBackgroundColor ? context.scaffoldBackgroundColor : context.primaryColor,
+                          onPressed: () => Navigator.pop(context),
+                        )
+                      : null,
                   foregroundColor:
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??
                       [
-                        if(Navigator.canPop(context))
-                        AppCircularIconButton(
-                          margin:
-                              20.paddingEnd + 12.paddingTop + 12.paddingBottom,
-                          icon: AppIcons.rightArrow,
-                          padding: 3,
-                          circleSize: 33,
-                          radius: 12,
-                          color: const Color(0xff1E232C),
-                          onPressed: () => Navigator.pop(context),
-                        ),
+                        if(isAddButton)
+                            AppIconButton(
+                                icon: AppIcons.add_circular,
+                                padding: 14.paddingAll,
+                                onPressed: onAddButtonPressed,
+                              ),
                       ],
                   leadingWidth: 60,
                   bottom: PreferredSize(

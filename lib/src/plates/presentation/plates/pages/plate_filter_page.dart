@@ -35,7 +35,7 @@ class PlateFilterPage extends BaseStatelessWidget {
             SelectionButtonChip(
               title: strings.plate_type,
               types: types,
-              onSelected: (bool value) {},
+              onSelected: (item) {},
             ),
             10.ph,
             Container(

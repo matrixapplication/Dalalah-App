@@ -1,8 +1,11 @@
+import 'package:dalalah/src/sell_car/domain/entities/feature.dart';
+
 import '../../../../../main_index.dart';
 import '../../widgets/car_properties.dart';
 
 class CarDetailsDetailsView extends BaseStatelessWidget {
   final EdgeInsetsGeometry? padding;
+
   CarDetailsDetailsView({super.key, this.padding});
 
   @override
@@ -11,16 +14,12 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
       padding: padding ?? 20.paddingVert,
       child: const Column(
         children: [
-          DetailsViewListTile(
-            isOpen: true,
-            title: 'المواصفات',
-          ),
-          DetailsViewListTile(
-            title: 'المميزات',
-          ),
-          DetailsViewListTile(
-            title: 'الامان',
-          ),
+          // DetailsViewListTile(
+          //   title: 'المميزات',
+          // ),
+          // DetailsViewListTile(
+          //   title: 'الامان',
+          // ),
         ],
       ),
     );
@@ -29,55 +28,48 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
 
 class DetailsViewListTile extends StatelessWidget {
   final bool isOpen;
-  final String title;
+  final Feature feature;
+  final Function(List<int>)? onSelected;
 
   const DetailsViewListTile({
     super.key,
     this.isOpen = false,
-    required this.title,
+    required this.feature,
+    this.onSelected,
   });
 
   @override
   Widget build(BuildContext context) {
-
-    List<Widget> properties = [
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.timer,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.chair,
-        ),
-      ),
-      CarPropertyItem(
-        property: CarProperty(
-          title: "سعة المحرك",
-          subtitle: '2000',
-          icon: AppIcons.timer,
-        ),
-      ),
-    ];
-    return StatefulBuilder(builder: (context, setState) {
-      return ExpansionTile(
-        tilePadding: 10.paddingHoriz,
-        initiallyExpanded: isOpen,
-
-        title: Text(
-          title,
-          style: context.bodyMedium
-        ),
-        collapsedIconColor: context.primaryColorDark,
-        iconColor: context.primaryColor,
-        children: [ Wrap(
-          children: properties,
-        )],
-      );
-    });
+    List<int> selected = [];
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return ExpansionTile(
+          tilePadding: 10.paddingHoriz,
+          initiallyExpanded: isOpen,
+          title: Text(feature.name ?? '', style: context.bodyMedium),
+          collapsedIconColor: context.primaryColorDark,
+          iconColor: context.primaryColor,
+          children: [
+            Wrap(
+              children: feature.options!
+                  .map(
+                    (e) => CarPropertyItem(
+                      property: e,
+                      onTap: (id) {
+                        if (selected.contains(id)) {
+                          selected.remove(id);
+                        } else {
+                          selected.add(id);
+                        }
+                        onSelected!(selected);
+                      },
+                    ),
+                  )
+                  .toList(),
+            )
+          ],
+        );
+      },
+    );
   }
 }

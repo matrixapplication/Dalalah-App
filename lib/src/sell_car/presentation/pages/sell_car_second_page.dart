@@ -1,16 +1,14 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
-import 'package:dalalah/src/sell_car/presentation/pages/sell_car_first_screen.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/src/sell_car/presentation/pages/sell_car_second_screen.dart';
 
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
-import '../../domain/entities/shipment.dart';
-import '../bloc/sell_car_bloc.dart';
-import '../bloc/sell_car_state.dart';
-import 'sell_car_screen.dart';
+import '../bloc/sell_car_second_bloc.dart';
+import '../bloc/sell_car_second_state.dart';
+import '../widgets/header_sell_car.dart';
 
-class SellCarSecondPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubit> {
+class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecondCubit> {
   final Function(SellCarParams)? onNext;
   final Function()? onPrevPressed;
   SellCarSecondPage({Key? key,
@@ -19,22 +17,34 @@ class SellCarSecondPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCub
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFirstInitialData();
+    bloc.fetchInitialData();
   }
 
-  // @override
-  // String? title(context)=> strings.sell_car;
 
   @override
-  bool hasAppBar(BuildContext context) => false;
+  Widget build(BuildContext context) {
+    return mainFrame(
+      body: HeaderSellCar(
+        step: 2,
+        buildConsumer: buildConsumer(context),
+      ),
+    );
+  }
+
 
   @override
-  Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
-    print('state.data ${state.data}');
+  Widget buildWidget(BuildContext context, SellCarSecondState state) {
+    final args = getArguments(context);
     return SellCarSecondScreen(
       state: state,
       onNext: (SellCarParams params) {
-        onNext!(params);
+        params.modelId = args.modelId;
+        params.status = args.status;
+        params.brandId = args.brandId;
+        params.carModelId = args.carModelId;
+        params.carModelExtensionId = args.carModelExtensionId;
+        params.year = args.year;
+        Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: params);
       },
       onPrevPressed: onPrevPressed,
     );

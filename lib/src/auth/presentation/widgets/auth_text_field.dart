@@ -25,6 +25,7 @@ class AuthTextField extends StatelessWidget {
   final bool? error;
   final TextInputType? keyboardType;
   final bool isColor;
+  final int? maxLength;
 
   const AuthTextField({
     Key? key,
@@ -41,6 +42,8 @@ class AuthTextField extends StatelessWidget {
     this.prefixIconData,
     this.keyboardType,
     this.isColor = true,
+    this.maxLength,
+
   }) : super(key: key);
 
   @override
@@ -55,6 +58,7 @@ class AuthTextField extends StatelessWidget {
             textInputAction: TextInputAction.next,
             style: context.textTheme.bodyMedium,
             keyboardType: keyboardType,
+            maxLength: maxLength,
             decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderSide: BorderSide.none,

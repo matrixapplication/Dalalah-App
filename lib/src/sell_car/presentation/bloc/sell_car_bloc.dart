@@ -38,38 +38,14 @@ class SellCarCubit extends BaseCubit {
       final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
-      // final driveTypes = await usecase.fetchDriveTypes();
-      // final bodyTypes = await usecase.fetchBodyTypes();
-      // final fuelTypes = await usecase.fetchFuelTypes();
-   //   final engines = await usecase.fetchCarEngines();
-   //    final ports = await usecase.fetchPorts();
-   //    final carCountries = await usecase.fetchCarCountries();
-   //    final carTypes = await usecase.fetchCarTypes();
-   //    final colors = await usecase.fetchColors();
-      //    final cities = await usecase.fetchCities();
-      //    final features = await usecase.fetchFeatures();
- //     final settingsPrice = await usecase.fetchSettingsPrice();
 
       emit(
         FirstPageSellCarState(
           carStatuses: carStatuses,
           brands: brands,
           years: years,
-          // driveTypes: driveTypes,
-          // bodyTypes: bodyTypes,
-          // fuelTypes: fuelTypes,
-          // engines: engines,
-          // ports: ports,
-          // carStatuses: carStatuses,
-          // carCountries: carCountries,
-          // carTypes: carTypes,
-          // colors: colors,
-          // cities: cities,
-          // features: features,
-     //     settingsPrice: settingsPrice,
           brandsModelsStream: brandsModelsStream,
           brandsModelsExtensionStream: brandsModelsExtensionStream,
-          // districtsStream: districtsStream,
         ),
       );
     } on Exception catch (e) {
@@ -98,20 +74,6 @@ class SellCarCubit extends BaseCubit {
       brandsModelsExtensionStream.setData(dropDownItems);
     } on Exception catch (e) {
       brandsModelsExtensionStream.setError(e);
-    }
-  }
-
-
-
-  fetchDistricts(int id) async {
-    try {
-      final districts = await usecase.fetchDistricts(id);
-      final dropDownItems = districts
-          .map((e) => DropDownItem(id: e.id.toString(), title: e.name))
-          .toList();
-      districtsStream.setData(dropDownItems);
-    } on Exception catch (e) {
-      districtsStream.setError(e);
     }
   }
 

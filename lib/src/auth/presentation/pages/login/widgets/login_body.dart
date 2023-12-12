@@ -14,7 +14,7 @@ class LoginBody extends BaseStatelessWidget {
   LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
 
   TextEditingController emailController = TextEditingController(text: kReleaseMode ? '' : 'test@test.com');
-  TextEditingController passwordController = TextEditingController(text: kReleaseMode ? '' : '123456789');
+  TextEditingController passwordController = TextEditingController(text: kReleaseMode ? '' : '1234567');
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -46,7 +46,7 @@ class LoginBody extends BaseStatelessWidget {
               hint: context.strings.password,
               prefixIcon: AppIcons.lock,
               controller: passwordController,
-              validator: (password) => Validation.validatePhone(password ?? ''),
+              validator: (password) => Validation.validatePassword(password ?? ''),
             ),
             if(isUser)
 

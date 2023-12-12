@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -54,6 +55,7 @@ abstract class SellCarDatasource {
       @Part(name: 'cylinders') int cylinders,
       @Part(name: 'mileage') int mileage,
       @Part(name: 'description') String description,
+      @Part(name: 'monthly_installment') int monthlyInstallment,
       @Part(name: 'main_image') File file,
       @Part(name: 'images[]') List<File> images,
       @Part(name: 'features[]') List<String> features,

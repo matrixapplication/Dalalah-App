@@ -42,6 +42,7 @@ class _SellCarDatasource implements SellCarDatasource {
     int cylinders,
     int mileage,
     String description,
+    int monthlyInstallment,
     File file,
     List<File> images,
     List<String> features,
@@ -129,6 +130,10 @@ class _SellCarDatasource implements SellCarDatasource {
     _data.fields.add(MapEntry(
       'description',
       description,
+    ));
+    _data.fields.add(MapEntry(
+      'monthly_installment',
+      monthlyInstallment.toString(),
     ));
     _data.files.add(MapEntry(
       'main_image',

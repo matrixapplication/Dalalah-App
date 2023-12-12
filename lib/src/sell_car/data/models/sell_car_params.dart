@@ -8,10 +8,12 @@ part 'sell_car_params.g.dart';
 class SellCarParams {
   @JsonKey(name: 'id')
   int? id;
-  @JsonKey(name: 'brand_id')
-  int? brandId;
   @JsonKey(name: 'car_model_id')
   int? carModelId;
+  @JsonKey(name: 'brand_id')
+  int? brandId;
+  @JsonKey(name: 'model_id')
+  int? modelId;
   @JsonKey(name: 'port_id')
   int? portId;
   @JsonKey(name: 'car_model_extension_id')
@@ -56,8 +58,10 @@ class SellCarParams {
   List<File>? images;
   @JsonKey(name: 'features')
   List<String>? features;
+  @JsonKey(name: 'monthly_installment')
+  int? installment;
 
-  SellCarParams({this.id, this.brandId, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.colorId, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features});
+  SellCarParams({this.id, this.brandId, this.modelId, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.colorId, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment});
 
    factory SellCarParams.fromJson(Map<String, dynamic> json) => _$SellCarParamsFromJson(json);
 

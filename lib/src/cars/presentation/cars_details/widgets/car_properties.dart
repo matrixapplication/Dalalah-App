@@ -1,5 +1,7 @@
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/main_index.dart';
 
+import '../../../../sell_car/data/models/feature_dto.dart';
 import 'border_widget.dart';
 import 'header_car_details.dart';
 
@@ -16,9 +18,9 @@ class CarProperties extends StatelessWidget {
         children: [
           // HeaderCarDetails(),
           Divider(color: context.dividerColor, thickness: 1, height: 40),
-          Wrap(
-              children:
-              properties.map((e) => CarPropertyItem(property: e)).toList()),
+          // Wrap(
+          //     children:
+          //     properties.map((e) => CarPropertyItem(property: e)).toList()),
         ],
       ),
     );
@@ -26,7 +28,7 @@ class CarProperties extends StatelessWidget {
 }
 
 class CarPropertyItem extends StatelessWidget {
-  final CarProperty property;
+  final Option property;
   final double? width;
   final double? height;
   final double? radius;
@@ -34,6 +36,7 @@ class CarPropertyItem extends StatelessWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final EdgeInsetsDirectional? padding;
   final Color? backgroundColor;
+  final Function(int)? onTap;
 
   const CarPropertyItem({
     Key? key,
@@ -45,50 +48,67 @@ class CarPropertyItem extends StatelessWidget {
     this.padding,
     this.textStyle,
     this.backgroundColor,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: 5.paddingAll,
-      padding: 5.paddingHoriz + 10.paddingVert,
-      decoration: Decorations.kDecorationBorderWithRadius(
-        color: backgroundColor,
-        borderColor: AppColors.grey_CA,
-        radius: radius ?? 4,
-      ),
-      child: Column(
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceEvenly,
-        children: [
-          AppIcon(
-            icon: property.icon,
-            color: property.color ?? context.primaryColor,
-            size: 18,
-          ),
-          10.ph,
-          Text(
-            property.title,
-            style: textStyle ?? context.labelSmall.copyWith(
-              color: AppColors.grey_5F,
+    Option selected = Option();
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return InkWell(
+          onTap: () {
+            if(selected == property){
+              selected = Option();
+            } else {
+              selected = property;
+            }
+            onTap!(property.id ?? 0);
+            setState(() {});
+          },
+          child: Container(
+            margin: 5.paddingAll,
+            padding: 5.paddingAll,
+            decoration: Decorations.kDecorationBorderWithRadius(
+              color: backgroundColor,
+              borderColor: selected == property ? context.primaryColor : context.dividerColor,
+              radius: radius ?? 4,
             ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-          ),
-          10.ph,
-          property.subtitle == null
-              ? 0.ph
-              : Text(
-            property.subtitle!,
-            style: context.textTheme.labelMedium!.copyWith(
-              color: AppColors.grey_5F,
+            child: Column(
+              mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceEvenly,
+              children: [
+                ImageNetwork(
+                  url: property.icon,
+                  // color: property.color ?? context.primaryColor,
+                  size: 50,
+                ),
+                10.ph,
+                Text(
+                  property.name ?? '',
+                  style: textStyle ?? context.bodySmall.copyWith(
+                    color: selected == property ? context.primaryColor : null,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
+                10.ph,
+                // property.subtitle == null
+                //     ? 0.ph
+                //     : Text(
+                //   property.subtitle!,
+                //   style: context.textTheme.labelMedium!.copyWith(
+                //     color: AppColors.grey_5F,
+                //   ),
+                //   overflow: TextOverflow.ellipsis,
+                //   textAlign: TextAlign.center,
+                //   maxLines: 2,
+                // ),
+              ],
             ),
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            maxLines: 2,
           ),
-        ],
-      ),
+        );
+      }
     );
   }
 }

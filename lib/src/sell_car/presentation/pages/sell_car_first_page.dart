@@ -1,14 +1,12 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
 import 'package:dalalah/src/sell_car/presentation/pages/sell_car_first_screen.dart';
-import 'package:dalalah/src/sell_car/presentation/pages/sell_car_second_screen.dart';
 
+import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
-import '../../domain/entities/shipment.dart';
 import '../bloc/sell_car_bloc.dart';
 import '../bloc/sell_car_state.dart';
-import 'sell_car_screen.dart';
+import '../widgets/header_sell_car.dart';
 
 class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubit> {
   final Function(SellCarParams)? onNext;
@@ -22,19 +20,30 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
     bloc.fetchFirstInitialData();
   }
 
-  // @override
-  // String? title(context)=> strings.sell_car;
-
   @override
-  bool hasAppBar(BuildContext context) => false;
+  Widget build(BuildContext context) {
+    return mainFrame(
+      body: HeaderSellCar(
+        step: 1,
+        buildConsumer: buildConsumer(context),
+      ),
+    );
+  }
 
   @override
   Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
     print('state.data ${state.data}');
-    return SellCarSecondScreen(
+    return SellCarFirstScreen(
       state: state,
       onNext: (SellCarParams params) {
-        onNext!(params);
+       // onNext!(params);
+        Navigators.pushNamed(Routes.sellCarSecondPage, arguments: params);
+      },
+      onFetchBrandModels: (brandId) {
+        bloc.fetchBrandModels(brandId);
+      },
+      onFetchBrandModelsExtension: (carModelId) {
+        bloc.fetchBrandModelExtensions(carModelId);
       },
       onPrevPressed: onPrevPressed,
     );

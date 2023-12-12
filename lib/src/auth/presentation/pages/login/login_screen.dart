@@ -1,5 +1,4 @@
 import 'package:dalalah/src/auth/presentation/pages/login/widgets/login_body.dart';
-import 'package:dalalah/src/auth/presentation/pages/sign-up/register_screen.dart';
 
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../main_index.dart';

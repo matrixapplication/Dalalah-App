@@ -24,4 +24,6 @@ class ServicesLocator{
   BuildContext get appContext => navigatorKey.currentContext!;
 
   AppLocalizations get strings => AppLocalizations.of(appContext)!;
+
+  String get languageCode => appContext.locale.languageCode;
 }

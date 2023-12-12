@@ -63,8 +63,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             routes: Routes.routes,
-            initialRoute: !token.isNotEmpty ? Routes.sellCarPage : Routes.sellCarPage
-            ,
+            initialRoute: token.isEmpty ? Routes.login : Routes.navigationPages,
           );
         },
       ),

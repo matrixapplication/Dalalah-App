@@ -15,7 +15,9 @@ class EditTextField extends StatelessWidget {
   final bool isPasswordVisible;
   final TextInputType? keyboardType;
   final Widget? widget;
-  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType, this.widget}) : super(key: key);
+  final String? Function(String?)? validator;
+  final int? maxLength;
+  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType, this.widget, this.validator, this.maxLength}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,8 @@ class EditTextField extends StatelessWidget {
               // ),
             ),
             isValidator: isPasswordVisible,
+            validator: validator,
+            maxLength: maxLength,
           ),
         ],
       ),

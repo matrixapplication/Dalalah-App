@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import '../../../../core/resources/validation.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../auth/data/models/register_params.dart';
 import '../../../main_index.dart';
@@ -55,6 +56,8 @@ class EditProfileScreen extends BaseStatelessWidget {
               EditTextField(
                 title: strings.phone_number,
                 controller: phoneController,
+                maxLength: 11,
+                validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
               EditTextField(
                 title: strings.whatsapp_number,
@@ -79,7 +82,7 @@ class EditProfileScreen extends BaseStatelessWidget {
               ),
               EditTextField(
                 title: strings.confirm_password,
-                controller: confirmPasswordController,
+                controller: passwordController,
                 isPasswordVisible: false,
               ),
             ],

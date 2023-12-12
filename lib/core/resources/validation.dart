@@ -65,9 +65,9 @@ class Validation {
     if (value.isEmpty) {
       return injector<ServicesLocator>().strings.this_field_is_required;
     }
-    // if (value.length < 6) {
-    //   return injector<ServicesLocator>().strings.;
-    // }
+    if (value.length < 11) {
+      return injector<ServicesLocator>().strings.must_be_at_least_11_characters;
+    }
     return null;
   }
 

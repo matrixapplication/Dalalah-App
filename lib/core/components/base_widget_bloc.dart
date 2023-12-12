@@ -90,6 +90,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   }
 
   @protected
+  Color backgroundAppBar(BuildContext context) {
+    return context.theme.appBarTheme.backgroundColor!;
+  }
+
+  @protected
   bool? resizeToAvoidBottomInset(BuildContext context) {
     return true;
   }
@@ -126,6 +131,8 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         resizeToAvoidBottomInset: resizeToAvoidBottomInset(context!),
         isDrawer: isNotBack(context!),
         hasAppBar: hasAppBar(context!),
+        backgroundColor: theme.scaffoldBackgroundColor,
+        backgroundAppBar: backgroundAppBar(context!),
         body: body,
         tabs: tabs,
         onTabSelected: onTabSelected,

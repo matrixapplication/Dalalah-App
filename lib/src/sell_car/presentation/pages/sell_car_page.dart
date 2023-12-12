@@ -55,33 +55,33 @@ class SellCarPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubit> {
   @override
   Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
     print('state.data ${state.data}');
-    return PageView(
-      controller: controller,
-      //    physics: NeverScrollableScrollPhysics(),
+    return Column(
       children: [
-        SellCarFirstPage(
-          onNext: (SellCarParams params) {
-            //  bloc.addCar(params);
-            controller.nextPage(
-                duration: 300.milliseconds, curve: Curves.easeIn);
-          },
-          onPrevPressed: () {
-            controller.previousPage(
-                duration: 300.milliseconds, curve: Curves.easeIn);
-          },
-        ),
-        SellCarSecondPage(
-          onNext: (SellCarParams params) {
-            //  bloc.addCar(params);
-            controller.nextPage(
-                duration: 300.milliseconds, curve: Curves.easeIn);
-          },
-          onPrevPressed: () {
-            controller.previousPage(
-                duration: 300.milliseconds, curve: Curves.easeIn);
-          },
-        ),
+        PageView(
+          controller: controller,
+          //    physics: NeverScrollableScrollPhysics(),
+          children: [
+            SellCarFirstPage(
+              onNext: (SellCarParams params) {
+                //  bloc.addCar(params);
+                controller.nextPage(
+                    duration: 300.milliseconds, curve: Curves.easeIn);
+              }
+            ),
+            SellCarSecondPage(
+              onNext: (SellCarParams params) {
+                //  bloc.addCar(params);
+                controller.nextPage(
+                    duration: 300.milliseconds, curve: Curves.easeIn);
+              },
+              onPrevPressed: () {
+                controller.previousPage(
+                    duration: 300.milliseconds, curve: Curves.easeIn);
+              },
+            ),
 
+          ],
+        ),
       ],
     );
     return SellCarScreen(shipments: bloc.state.data);

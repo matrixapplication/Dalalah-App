@@ -24,6 +24,7 @@ class CustomTextField extends BaseStatelessWidget {
   final bool? isValidator;
   final double? maxHeight;
   final TextStyle? labelStyle;
+  final int?maxLength;
 
   CustomTextField({
     Key? key,
@@ -50,6 +51,7 @@ class CustomTextField extends BaseStatelessWidget {
     this.isValidator = true,
     this.maxHeight,
     this.labelStyle,
+    this.maxLength,
   }) : super(key: key);
 
   @override
@@ -76,6 +78,7 @@ class CustomTextField extends BaseStatelessWidget {
             readOnly: onTap != null,
             textAlign: textAlign ?? TextAlign.start,
             maxLines: maxLines,
+            maxLength: maxLength,
             keyboardType: keyboardType,
             style: context.bodyMedium,
             cursorColor: context.primaryColor,

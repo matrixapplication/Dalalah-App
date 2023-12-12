@@ -1,7 +1,7 @@
 import '../../../src/main_index.dart';
 
 class AppCircularIconButton extends StatelessWidget {
-  final String icon;
+  final dynamic icon;
   final VoidCallback? onPressed;
   final double? size;
   final double? circleSize;
@@ -47,10 +47,12 @@ class AppCircularIconButton extends StatelessWidget {
       //   ],
       // ),
       decoration: decoration ?? Decorations.kDecorationBoxShadow(
+        color: backgroundColor,
           radius: radius ??  500,
           offset: const Offset(0, 4),
           colorShadow: const Color(0xff8E8E8E).withOpacity(0.25)),
-      child: AppIconButton(
+      child: (icon is IconData) ? Icon(icon, color: color) :
+      AppIconButton(
         icon: icon,
         color: color,
         size: size,

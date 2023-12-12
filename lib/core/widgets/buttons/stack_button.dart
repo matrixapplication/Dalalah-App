@@ -15,22 +15,22 @@ class StackButton extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        child,
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: PrimaryOutlinesButtons(
+    return Padding(
+      padding: 5.paddingAll,
+      child: Column(
+        children: [
+          Expanded(child: child),
+          PrimaryOutlinesButtons(
             title1: strings.next,
             title2: strings.back,
+            margin: 10.paddingTop,
             onPrevPressed: onPrevPressed,
             onPressed1: () {
               onNextPressed();
             },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

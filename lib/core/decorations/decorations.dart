@@ -293,5 +293,12 @@ class Decorations {
   }
 
 
-
+  static BoxDecoration kDecorationCircle({
+    Color? color,
+  }) {
+    return BoxDecoration(
+      color: color,
+      shape: BoxShape.circle,
+    );
+  }
 }
