@@ -160,4 +160,8 @@ class CarDetails {
      properties.removeWhere((element) => element.title == '' || element.title == '0 KM');
      return properties;
   }
+
+  List<String> allImages(){
+    return  [mainImage ?? '', door1Img ?? '', door2Img ?? '', door3Img ?? '', door4Img ?? '', ...images?.map((e) => e.image ?? '') ?? []];
+  }
 }

@@ -44,7 +44,7 @@ class CarVerticalItem extends StatelessWidget {
     return InkWell(
       onTap: () => Navigators.pushNamed(
         isAddView ? Routes.sellCarPage : Routes.carDetailsPage,
-        arguments: isNew,
+        arguments: car.id,
       ),
       child: Container(
         height: isAds ? 250 : 160,

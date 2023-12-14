@@ -5,14 +5,16 @@ import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/car_details.dart';
 import '../../cars/bloc/cars_bloc.dart';
+import '../bloc/cars_details_bloc.dart';
 import 'cars_details_screen.dart';
 
-class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsCubit>{
+class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsDetailsCubit>{
   CarsDetailsPage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchCars(CarFilterParams());
+    int? id = getArguments(context) as int?;
+    bloc.fetchCarDetails(id ?? 0);
   }
 
   @override
@@ -20,10 +22,12 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsCubit>
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<CarDetails> state) {
-    bool? isNew = getArguments(context) as bool?;
     return CarsDetailsScreen(
-      isNew: isNew ?? true,
-      tasks: state.data!,
+      isNew: true,
+      carDetails: state.data!,
+      onToggleFavorite: () {
+        bloc.toggleFavorite(state.data?.id ?? 0);
+      },
     );
   }
 
