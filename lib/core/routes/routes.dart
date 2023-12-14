@@ -11,8 +11,6 @@ import '../../src/cars/presentation/cars/pages/cars_page.dart';
 import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
-import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
-import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import '../../src/favorites_and_ads/presentation/pages/favorites_page.dart';
 import '../../src/favorites_and_ads/presentation/pages/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
@@ -26,7 +24,6 @@ import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
 import '../../src/plates/presentation/plates/pages/ad_premium_page.dart';
-import '../../src/plates/presentation/add_plate/pages/plate_filter_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
@@ -38,6 +35,8 @@ import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
+import '../../src/showrooms/presentation/exhibition_details/pages/showroom_details_page.dart';
+import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 
 class Routes {
   static const String languagePage = 'language_page';
@@ -132,8 +131,8 @@ class Routes {
     settings: (context) => SettingsPage(),
     changeLanguage: (context) => ChangLanguagePage(),
     aboutUs: (context) => AboutUsPage(),
-    exhibitionPage: (context) => ExhibitionPage(),
-    exhibitionDetailsPage: (context) => ExhibitionDetailsPage(),
+    exhibitionPage: (context) => ShowroomsPage(),
+    exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
   };
 }
