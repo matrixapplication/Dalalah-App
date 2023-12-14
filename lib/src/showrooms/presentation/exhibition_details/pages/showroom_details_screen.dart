@@ -1,20 +1,20 @@
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
-import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 
-import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/buttons/call_button.dart';
 import '../../../../../core/widgets/buttons/chat_whats_app_button.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../cars/presentation/cars_details/widgets/car_details_ratings.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../main_index.dart';
-import '../../exhibitions/widgets/custom_exhibition_circle_logo.dart';
+import '../../../domain/entities/showroom.dart';
+import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
 import 'views/branches_view.dart';
 import 'views/new_cars_view.dart';
 import 'views/used_cars_view.dart';
 
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
-  ExhibitionDetailsScreen({super.key});
+  final List<Showroom> showrooms;
+  ExhibitionDetailsScreen({super.key, required this.showrooms});
 
   @override
   Widget build(BuildContext context) {

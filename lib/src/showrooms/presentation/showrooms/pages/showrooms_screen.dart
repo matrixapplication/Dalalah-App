@@ -1,9 +1,9 @@
 import '../../../../main_index.dart';
 
-import '../widgets/exhibition_item.dart';
+import '../widgets/showroom_item.dart';
 
-class ExhibitionScreen extends BaseStatelessWidget {
-  ExhibitionScreen({super.key});
+class ShowroomsScreen extends BaseStatelessWidget {
+  ShowroomsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

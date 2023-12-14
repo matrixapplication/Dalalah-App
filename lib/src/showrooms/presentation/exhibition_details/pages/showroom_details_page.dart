@@ -1,10 +1,11 @@
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
-import '../bloc/exhibition_bloc.dart';
-import 'exhibition_screen.dart';
+import '../bloc/showrooms_details_bloc.dart';
+import 'showroom_details_screen.dart';
 
-class ExhibitionPage extends BaseBlocWidget<UnInitState, ExhibitionCubit> {
-  ExhibitionPage({Key? key}) : super(key: key);
+class ShowroomDetailsPage
+    extends BaseBlocWidget<UnInitState, ShowroomDetailsCubit> {
+  ShowroomDetailsPage({Key? key}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
@@ -13,12 +14,13 @@ class ExhibitionPage extends BaseBlocWidget<UnInitState, ExhibitionCubit> {
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
-    return ExhibitionScreen();
+    return ExhibitionDetailsScreen(
+      showrooms: [],
+    );
   }
 
   @override
   String? title(BuildContext context) {
-    return getArguments(context) ?? strings.exhibitions;
+    return "التجار و المعارض";
   }
-
 }
