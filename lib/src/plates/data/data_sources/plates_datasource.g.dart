@@ -21,20 +21,20 @@ class _PlatesDatasource implements PlatesDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<List<String>>> fetchPlates() async {
+  Future<ApiResponse<List<PlateDto>>> fetchPlates() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<String>>>(Options(
+        _setStreamType<ApiResponse<List<PlateDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Shipments/GetAllShipments',
+              '/get-plates',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,30 +43,64 @@ class _PlatesDatasource implements PlatesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<String>>.fromJson(
+    final value = ApiResponse<List<PlateDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
-          ? json.map<String>((i) => i as String).toList()
+          ? json
+              .map<PlateDto>(
+                  (i) => PlateDto.fromJson(i as Map<String, dynamic>))
+              .toList()
           : List.empty(),
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<String>> toggleFavorite(String id) async {
+  Future<ApiResponse<PlateDto>> addPlate(AddPlateParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<PlateDto>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/add-car-plate',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<PlateDto>.fromJson(
+      _result.data!,
+      (json) => PlateDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<String>> toggleFavoritePlate(int id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'id': id};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<String>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Shipments/GetShipmentDetails/shipmentId',
+              '/toggle-favorite',
               queryParameters: queryParameters,
               data: _data,
             )

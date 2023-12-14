@@ -1,4 +1,5 @@
 import '../../../../../cars/presentation/cars/widgets/cars_vertical_item.dart';
+import '../../../../../home/domain/entities/car.dart';
 import '../../../../../main_index.dart';
 import '../../widgets/new_car_item.dart';
 
@@ -14,6 +15,7 @@ class UsedCarsView extends BaseStatelessWidget {
         return CarVerticalItem(
           carStatus: strings.used,
           isNew: false,
+          car: Car(),
         );
       },
     );

@@ -1,6 +1,7 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../home/domain/entities/car.dart';
 import 'cars_vertical_item.dart';
 
 ///  Created by harbey on 10/21/2023.
@@ -16,9 +17,10 @@ class CarsList extends StatelessWidget {
       shrinkWrap: true,
       padding: 10.paddingAll,
       itemBuilder: (context, index) {
-        return const CarVerticalItem(
+        return CarVerticalItem(
           imageHasOnlyTopRadius: false,
           isCatItem: false,
+          car: Car(),
           // task: tasks[index],
         );
       },

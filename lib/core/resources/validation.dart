@@ -72,6 +72,9 @@ class Validation {
   }
 
   static String? validatePrice(String value, String max, String min) {
+    if(!isValidIDNumber(value)){
+      return injector<ServicesLocator>().strings.price_must_be_a_number;
+    }
     if (value.isEmpty) {
       return injector<ServicesLocator>().strings.this_field_is_required;
     }
@@ -83,4 +86,14 @@ class Validation {
     }
     return null;
   }
+
+  // static String? validatePlate(String value) {
+  //   if (value.isEmpty) {
+  //     return injector<ServicesLocator>().strings.required;
+  //   }
+  //   if (value.length < 3) {
+  //     return injector<ServicesLocator>().strings.;
+  //   }
+  //   return null;
+  // }
 }

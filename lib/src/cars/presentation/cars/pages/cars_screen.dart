@@ -42,6 +42,7 @@ class CarsScreen extends BaseStatelessWidget {
                     index: index,
                   isNew: isNew,
                   isAds: isAds,
+                  car: Car(),
                   // task: tasks[index],
                 );
               },

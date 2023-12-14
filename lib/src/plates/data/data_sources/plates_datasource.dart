@@ -1,11 +1,12 @@
 
+import 'package:dalalah/src/plates/data/models/plate_dto.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
-import '../../../sell_car/domain/entities/shipment.dart';
+import '../models/add_plate_params.dart';
 
 part 'plates_datasource.g.dart';
 
@@ -15,9 +16,12 @@ abstract class PlatesDatasource {
   @factoryMethod
   factory PlatesDatasource(Dio dio) = _PlatesDatasource;
 
-  @GET('/api/v1/Shipments/GetAllShipments')
-  Future<ApiResponse<List<String>>> fetchPlates();
+  @GET('/get-plates')
+  Future<ApiResponse<List<PlateDto>>> fetchPlates();
 
-  @GET('/api/v1/Shipments/GetShipmentDetails/shipmentId')
-  Future<ApiResponse<String>> toggleFavorite(@Query('id') String id);
+  @POST('/add-car-plate')
+  Future<ApiResponse<PlateDto>> addPlate(@Body() AddPlateParams params);
+
+  @POST('/toggle-favorite')
+  Future<ApiResponse<String>> toggleFavoritePlate(@Query('id') int id);
 }

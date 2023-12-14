@@ -7,7 +7,9 @@ import '../../components/base_stateless_widget.dart';
 
 class CustomPinCode extends BaseStatelessWidget {
   final TextEditingController pinCodeController;
-   CustomPinCode({Key? key, required this.pinCodeController}) : super(key: key);
+  final Function(String)? onCompleted;
+  final int length;
+   CustomPinCode({Key? key, required this.pinCodeController, this.onCompleted, this.length = 3}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

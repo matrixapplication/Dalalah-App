@@ -287,5 +287,7 @@
   "you_must_login_first": "يجب عليك تسجيل الدخول أولا",
   "engine": "المحرك",
   "type_engine": "اكتب المحرك",
-  "must_be_at_least_11_characters": "يجب أن يكون على الأقل 11 حرف"
+  "must_be_at_least_11_characters": "يجب أن يكون على الأقل 11 حرف",
+  "price_must_be_a_number": "يجب أن يكون السعر رقم",
+  "select_main_image": "اختر الصورة الرئيسية"
 }

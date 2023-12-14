@@ -7,7 +7,7 @@ part 'api_response.g.dart';
 @JsonSerializable(genericArgumentFactories: true)
 class ApiResponse<T> {
   bool? status;
-  int? code;
+  dynamic code;
   String? message;
   T? data;
   Pagination? pagination;

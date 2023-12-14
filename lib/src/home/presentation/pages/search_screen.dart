@@ -2,11 +2,16 @@ import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../cars/presentation/cars/widgets/cars_vertical_item.dart';
+import '../../domain/entities/car.dart';
+
 
 
 class TheSearch extends SearchDelegate<String> {
   BuildContext contextPage;
-  TheSearch({required this.contextPage});
+  final Future<List<Car>>? Function(String)? onSearch;
+  final Function(int)? onToggleFavorite;
+  TheSearch({required this.contextPage, this.onSearch, this.onToggleFavorite});
 
   TextTheme get _textTheme => Theme.of(contextPage).textTheme;
 
@@ -72,24 +77,29 @@ class TheSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-
-    return  GridView.builder(
-        itemCount: 0,
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.55,
-        ),
-        // controller: _scrollController,
-        itemBuilder: (content, index) =>
-            Container()
-    );
+    return FutureBuilder<List<Car>>(
+        future: onSearch!(query),
+        builder: (context, snapshot) {
+          return snapshot.connectionState == ConnectionState.waiting
+              ? const Center(child: CircularProgressIndicator()):
+          snapshot.hasError ? Center(child: Text(context.strings.something_went_wrong)) :
+          snapshot.data == null || snapshot.data!.isEmpty ? Center(child: Text(context.strings.no_results_found))
+              : ListView.builder(
+            itemCount: snapshot.data?.length ?? 0,
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(10),
+            itemBuilder: (context, index) {
+              return CarVerticalItem(
+                  car: snapshot.data![index],
+                  onToggleFavorite: (id) => onToggleFavorite!(id));
+            },
+          );
+        });
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return  GridView.builder(
+    return GridView.builder(
         itemCount: 0,
         padding: const EdgeInsets.symmetric(horizontal: 15),
         shrinkWrap: true,
@@ -98,8 +108,6 @@ class TheSearch extends SearchDelegate<String> {
           childAspectRatio: 0.55,
         ),
         // controller: _scrollController,
-        itemBuilder: (content, index) =>
-            Container()
-    );
+        itemBuilder: (content, index) => Container());
   }
 }

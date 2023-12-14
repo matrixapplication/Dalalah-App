@@ -32,20 +32,21 @@ class SliderWidget extends StatelessWidget {
             itemCount: snapshot?.length ?? 0,
             index: (snapshot?.length ?? 0) - 1,
             itemBuilder: (BuildContext context, int index) {
-              return  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              return  Stack(
+                alignment: AlignmentDirectional.bottomEnd,
                 children: [
                   ImageNetwork(
                     url: snapshot?[index].image ?? '',
                     fit: BoxFit.fill,
                     height: 200,
                     width: double.infinity,
+                    radius: 0,
                   ),
                   Padding(
-                    padding: 10.paddingStart,
+                    padding: 10.paddingAll,
                     child: Text(
                       snapshot?[index].title ?? '',
-                      style: context.bodyMedium,),
+                      style: context.headlineLarge,),
                   )
                 ],
               );
@@ -80,9 +81,7 @@ class SliderWidget extends StatelessWidget {
               },
             ),
             viewportFraction: 1,
-            scale: 0.99,
             autoplay: true,
-            autoplayDelay: 5000,
             autoplayDisableOnInteraction: true,
             allowImplicitScrolling: false,
           );

@@ -1,55 +1,63 @@
 import 'package:dalalah/core/assets/app_icons.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
-import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/commen/common_state.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
-import '../../../../core/utils/navigator.dart';
-import '../../../../core/widgets/buttons/row_see_all_text.dart';
-import '../../../../core/widgets/chip/chip_border.dart';
-import '../../../../core/widgets/clickable_widget.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
+import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../domain/entities/car.dart';
 
 ///  Created by harbey on 9/5/2023.
 class CarsHomeListHoriz extends StatelessWidget {
-  final String title;
-  final String routeName;
+  final StreamStateInitial<List<Car>?> carsStream;
+  final Function(int)? onToggleFavorite;
 
-  const CarsHomeListHoriz({Key? key, required this.title, required this.routeName})
+  const CarsHomeListHoriz({Key? key, required this.carsStream, required this.onToggleFavorite})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 260,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (_, index) {
-          return CarHorizontalItem(index: index);
-        },
-        itemCount: 8,
+      child: StreamStateWidget<List<Car>?>(
+          stream: carsStream,
+          builder: (context, snapshot) {
+            print('snapshot ${snapshot?.length}');
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (_, index) {
+              return CarHorizontalItem(
+                car: snapshot![index],
+                onToggleFavorite: (id) => onToggleFavorite!(snapshot[index].id ?? 0),
+              );
+            },
+            itemCount: snapshot?.length ?? 0,
+          );
+        }
       ),
     );
   }
 }
 
 class CarHorizontalItem extends StatelessWidget {
-  final int index;
+  final Car car;
+  final Function(int)? onToggleFavorite;
 
   const CarHorizontalItem({
     super.key,
-    required this.index,
+    required this.car,
+    this.onToggleFavorite,
   });
 
   @override
   Widget build(BuildContext context) {
-    int startPadding = index == 0 ? 20 : 0;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, Routes.carDetailsPage);
@@ -58,22 +66,22 @@ class CarHorizontalItem extends StatelessWidget {
         height: 250,
         width: 240,
         padding: const EdgeInsets.all(5),
-        margin: startPadding.paddingStart + 10.paddingEnd,
+        margin: 5.paddingStart + 10.paddingEnd,
+        clipBehavior: Clip.antiAlias,
         decoration: Decorations.kDecorationBorderWithRadius(
           borderColor: context.dividerColor,
-          color: AppColors.grey_fa,
+          color: context.dividerColor,
           radius: 25,
         ),
         child: Column(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: const Stack(
+              child: Stack(
                 alignment: AlignmentDirectional.topEnd,
                 children: [
                   ImageNetwork(
-                    url:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
+                    url: car.mainImage ?? '',
                     width: double.infinity,
                     height: 140,
                   ),
@@ -82,7 +90,10 @@ class CarHorizontalItem extends StatelessWidget {
                     start: 10,
                     child: FavoriteButton(
                       iconSize: 15,
-                      // isFavorite: true,
+                      isFavorite: car.isFavorite ?? false,
+                      onToggleFavorite: () {
+                        onToggleFavorite!(car.id!);
+                      },
                     ),
                   ),
                 ],
@@ -96,7 +107,7 @@ class CarHorizontalItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "بيجو 2008 Allure Turbo 2022",
+                      "${car.brandModel?.name} ${car.brandModel?.brand}",
                       style: context.headlineSmall.copyWith(
                         color: AppColors.grey_40,
                       ),
@@ -106,20 +117,20 @@ class CarHorizontalItem extends StatelessWidget {
                       child: Row(
                         children: [
                           PriceWidget(
-                            price: '1,000,000',
+                            price: car.price?.toString() ?? '',
                             fontSize: 12,
                           ),
                           10.pw,
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: context.strings.new_,
+                            label: car.status?.name ?? "",
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
                           10.pw,
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: '2023',
+                            label: car.year ?? "",
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
@@ -127,22 +138,25 @@ class CarHorizontalItem extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CarDetailsContainer(
-                          label: '2000',
-                          icon: AppIcons.fuel,
-                        ),
-                        CarDetailsContainer(
-                          label: '5,7',
-                          icon: AppIcons.timer,
-                        ),
-                        CarDetailsContainer(
-                          label: '4',
-                          icon: AppIcons.chair,
-                        ),
-                      ],
+                    FittedBox(
+                      child: Row(
+                        children: [
+                          CarDetailsContainer(
+                            label: car.fuelType?.name ?? "",
+                            icon: AppIcons.fuel,
+                          ),
+                          5.pw,
+                          CarDetailsContainer(
+                            label: car.engine ?? "",
+                            icon: AppIcons.timer,
+                          ),
+                          5.pw,
+                          CarDetailsContainer(
+                            label: car.bodyType?.name ?? "",
+                            icon: AppIcons.chair,
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),

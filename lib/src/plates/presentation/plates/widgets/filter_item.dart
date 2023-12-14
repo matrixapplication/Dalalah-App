@@ -1,4 +1,5 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/resources/validation.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,8 @@ class FilterItem extends BaseStatelessWidget {
                 controller: controllers[index],
                 padding: 8.paddingHoriz,
                 labelStyle: context.labelSmall,
+               maxLength: 1,
+               // validator: (value) => Validation.validatePlate(value),
               ),
             ),
           ),

@@ -1,4 +1,5 @@
 import '../../../../cars/presentation/cars/widgets/cars_vertical_item.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
 
 class NewCarItem extends BaseStatelessWidget {
@@ -11,9 +12,10 @@ class NewCarItem extends BaseStatelessWidget {
       decoration: Decorations.kDecorationBoxShadow(),
       child: Column(
         children: [
-          const CarVerticalItem(
+           CarVerticalItem(
             bottomMargin: 0,
             imageHasOnlyTopRadius: true,
+            car: Car(),
           ),
           Container(
             width: double.infinity,

@@ -25,8 +25,9 @@ class _SellCarDatasource implements SellCarDatasource {
     int brandId,
     int carModelId,
     int carModelExtensionId,
+    int modelId,
+    String modelRole,
     int portId,
-    int branchId,
     int year,
     int colorId,
     String driveType,
@@ -64,12 +65,16 @@ class _SellCarDatasource implements SellCarDatasource {
       carModelExtensionId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'port_id',
-      portId.toString(),
+      'model_id',
+      modelId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'branch_id',
-      branchId.toString(),
+      'model_role',
+      modelRole,
+    ));
+    _data.fields.add(MapEntry(
+      'port_id',
+      portId.toString(),
     ));
     _data.fields.add(MapEntry(
       'year',
@@ -182,8 +187,9 @@ class _SellCarDatasource implements SellCarDatasource {
     int brandId,
     int carModelId,
     int carModelExtensionId,
+    int modelId,
+    String modelRole,
     int portId,
-    int branchId,
     int year,
     int colorId,
     String driveType,
@@ -220,12 +226,16 @@ class _SellCarDatasource implements SellCarDatasource {
       carModelExtensionId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'port_id',
-      portId.toString(),
+      'model_id',
+      modelId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'branch_id',
-      branchId.toString(),
+      'model_role',
+      modelRole,
+    ));
+    _data.fields.add(MapEntry(
+      'port_id',
+      portId.toString(),
     ));
     _data.fields.add(MapEntry(
       'year',

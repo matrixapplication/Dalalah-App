@@ -31,7 +31,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   int brandId = 0;
   int modelId = 0;
   int extensionId = 0;
-  int year = DateTime.now().year;
+  int? year;
   final _formKey = GlobalKey<FormState>();
 
   @override

@@ -10,6 +10,7 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
     SellCarParams(
       id: json['id'] as int?,
       brandId: json['brand_id'] as int?,
+      modelId: json['model_id'] as int?,
       carModelId: json['car_model_id'] as int?,
       portId: json['port_id'] as int?,
       carModelExtensionId: json['car_model_extension_id'] as int?,
@@ -37,13 +38,16 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-    )..installment = json['monthly_installment'] as int?;
+      installment: json['monthly_installment'] as int?,
+    )..modelRole = json['model_role'] as String?;
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'brand_id': instance.brandId,
       'car_model_id': instance.carModelId,
+      'brand_id': instance.brandId,
+      'model_id': instance.modelId,
+      'model_role': instance.modelRole,
       'port_id': instance.portId,
       'car_model_extension_id': instance.carModelExtensionId,
       'branch_id': instance.branchId,

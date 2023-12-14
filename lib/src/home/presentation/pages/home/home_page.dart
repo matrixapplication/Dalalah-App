@@ -51,6 +51,8 @@ class HomePage extends BaseBlocWidget<UnInitState, HomeCubit> {
       otherCarsStream: bloc.otherCarsStream,
       onFavoriteCar: (id) async => await bloc.toggleFavorite(id),
       onFavoritePlate: (id) async => await bloc.toggleFavorite(id),
+      onSearch: (value) => bloc.fetchCarsBySearch(value),
+      onToggleFavorite: (id) => bloc.toggleFavorite(id),
     );
   }
 }

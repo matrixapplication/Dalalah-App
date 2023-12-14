@@ -109,7 +109,7 @@ class CustomTextField extends BaseStatelessWidget {
                         )
                       : prefixIcon,
                   suffixIcon: suffixIcon,
-                  contentPadding: contentPadding ?? 16.paddingAll,
+                  contentPadding: contentPadding ?? 10.paddingAll,
                   border: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(radius ?? 12)),

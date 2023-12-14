@@ -13,8 +13,8 @@ class PlatesCubit extends BaseCubit {
     executeSuccess(() => usecase.fetchPlates());
   }
 
-  toggleFavorite(String id) async {
-    executeEmitterListener(() => usecase.toggleFavorite(id));
+  toggleFavorite(int id) async {
+    executeEmitterListener(() => usecase.toggleFavoritePlate(id));
   }
 
 }

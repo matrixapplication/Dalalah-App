@@ -1,4 +1,5 @@
 import 'package:dalalah/core/widgets/texts/row_texts.dart';
+import '../../../../../home/domain/entities/car.dart';
 import '../../../../../main_index.dart';
 import '../../../cars/widgets/cars_vertical_item.dart';
 
@@ -7,7 +8,8 @@ class CarDetailsCategoryView extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarVerticalItem(isCatItem: true);
+    return CarVerticalItem(isCatItem: true,
+      car: Car());
     // return SingleChildScrollView(
     //   padding: 16.paddingHoriz + 10.paddingVert,
     //   child: Column(

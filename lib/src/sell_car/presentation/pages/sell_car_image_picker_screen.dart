@@ -5,6 +5,7 @@ import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 
 import '../../../../core/resources/validation.dart';
 import '../../../../core/utils/navigator.dart';
+import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/entities/settings_price.dart';
@@ -14,12 +15,15 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   final SettingsPrice settingsPrice;
   final Function(SellCarParams) onSave;
 
-  SellCarImagePickerScreen({Key? key, required this.settingsPrice, required this.onSave}) : super(key: key);
+  SellCarImagePickerScreen(
+      {Key? key, required this.settingsPrice, required this.onSave})
+      : super(key: key);
+
   // properties
 
-  TextEditingController priceController = TextEditingController(text: '5000');
-  TextEditingController installmentController = TextEditingController(text: '50');
-  TextEditingController descController = TextEditingController(text: 'LOL');
+  TextEditingController priceController = TextEditingController();
+  TextEditingController installmentController = TextEditingController();
+  TextEditingController descController = TextEditingController();
   File mainImage = File('');
   List<File> imagesSelected = [];
   final _formKey = GlobalKey<FormState>();
@@ -31,7 +35,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
     return StackButton(
       onNextPressed: () {
         if (_formKey.currentState!.validate()) {
-         onSavePressed();
+          onSavePressed();
         }
       },
       onPrevPressed: () {
@@ -43,7 +47,6 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               CustomTextField(
                 title: strings.price_egp,
                 hintText: strings.price_egp,
@@ -65,7 +68,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
               CustomTextField(
                 title: strings.car_description,
                 hintText: strings.enter_car_description,
-                controller:  descController,
+                controller: descController,
               ),
               15.ph,
               PickerCarImages(
@@ -82,13 +85,24 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   }
 
   void onSavePressed() {
-    onSave(SellCarParams(
-      price: int.parse(priceController.text.trim()),
-      installment: int.parse(installmentController.text.trim()),
-      description: descController.text.trim(),
-      mainImage: mainImage,
-      images: imagesSelected,
-    ),
-    );
+    if(mainImage.path.isEmpty){
+      SnackBarManager.showErrorSnackBar(context!.strings.select_main_image);
+      return;
+    }
+    if (imagesSelected.length >= 4 && imagesSelected.length <= 10) {
+      onSave(
+        SellCarParams(
+          price: int.parse(priceController.text.trim()),
+          installment: int.parse(installmentController.text.trim()),
+          description: descController.text.trim(),
+          mainImage: mainImage,
+          images: imagesSelected,
+        ),
+      );
+    } else {
+      SnackBarManager.showErrorSnackBar(imagesSelected.length > 10
+          ? strings.maximum_number_images(10)
+          : strings.minimum_number_images(5));
+    }
   }
 }

@@ -140,6 +140,8 @@ extension ThemesExtension on BuildContext {
 
   Color get secondaryContainer => Theme.of(this).colorScheme.secondaryContainer;
 
+  Color get onSecondaryContainer => Theme.of(this).colorScheme.onSecondaryContainer;
+
   Color get hintColor => Theme.of(this).hintColor;
 
   Color get dividerColor => Theme.of(this).dividerColor;
@@ -251,6 +253,14 @@ extension DurationExtension on int {
   Duration get weeks => Duration(days: this * 7);
   Duration get months => Duration(days: this * 30);
   Duration get years => Duration(days: this * 365);
+}
+
+extension ToInt on String {
+  int get toInt => isNotEmpty ? int.parse(this) : 0;
+}
+
+extension UserIdShared on String {
+  String get userIdShared => 'user_id_$this';
 }
 //
 // extension SizeExtension on num {

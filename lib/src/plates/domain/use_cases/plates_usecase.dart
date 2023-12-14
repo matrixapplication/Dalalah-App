@@ -1,7 +1,7 @@
 
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/network/api_response.dart';
+import '../../data/models/add_plate_params.dart';
 import '../entities/plate.dart';
 import '../repositories/base_plates_repo.dart';
 
@@ -35,7 +35,11 @@ class PlatesUseCase {
     ];
   }
 
-  Future<ApiResponse<String>> toggleFavorite(String id) async {
-    return await repository.toggleFavorite(id);
+  Future<String> toggleFavoritePlate(int id) async {
+    return await repository.toggleFavoritePlate(id);
+  }
+
+  Future<String> addPlate(AddPlateParams params) async {
+    return await repository.addPlate(params);
   }
 }

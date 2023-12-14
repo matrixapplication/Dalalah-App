@@ -16,7 +16,9 @@ class HomeScreen extends BaseStatelessWidget {
   final StreamStateInitial<List<Car>?> otherCarsStream;
   final Function(int)? onFavoriteCar;
   final Function(int)? onFavoritePlate;
-  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.otherCarsStream, this.onFavoriteCar, this.onFavoritePlate}) : super(key: key);
+  final Future<List<Car>>? Function(String)? onSearch;
+  final Function(int)? onToggleFavorite;
+  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.otherCarsStream, this.onFavoriteCar, this.onFavoritePlate, this.onSearch, this.onToggleFavorite}) : super(key: key);
 
   ScrollController scrollController = ScrollController();
   @override
@@ -27,7 +29,10 @@ class HomeScreen extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SearchHome(),
+          SearchHome(
+            onSearch: onSearch,
+            onToggleFavorite: onToggleFavorite,
+          ),
           15.ph,
           SliderWidget(
             slidesStream: slidesStream,
@@ -46,8 +51,8 @@ class HomeScreen extends BaseStatelessWidget {
                     title: context.strings.latest_cars,
                   ),
                   CarsHomeListHoriz(
-                    title: strings.year_models,
-                    routeName: Routes.carsPage,
+                    carsStream: yourCarsStream,
+                    onToggleFavorite: (id) async => await onFavoriteCar!(id),
                   ),
                   RowSeeAllText(
                     title: strings.latest_paintings,

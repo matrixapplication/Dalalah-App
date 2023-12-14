@@ -1,9 +1,9 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/src/sell_car/domain/entities/settings_price.dart';
 import 'package:dalalah/src/sell_car/presentation/pages/sell_car_image_picker_screen.dart';
 
 import '../../../main_index.dart';
-import '../../data/models/sell_car_params.dart';
 import '../bloc/sell_car_image_picker_bloc.dart';
 import '../widgets/header_sell_car.dart';
 
@@ -43,8 +43,8 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
     });
   }
 
-//
-//
-// @override
-// Color backgroundAppBar(BuildContext context) => context.scaffoldBackgroundColor;
+  @override
+  void onSuccessDismissed() {
+    Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+  }
 }

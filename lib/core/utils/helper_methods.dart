@@ -13,10 +13,8 @@ import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
 
 class HelperMethods {
-
-
   static String numberFormat(int number) {
-   return NumberFormat('#,###').format(number);
+    return NumberFormat('#,###').format(number);
   }
 
   static Future<CroppedFile?> getImagePicker() async {
@@ -24,7 +22,7 @@ class HelperMethods {
     imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     return await ImageCropper().cropImage(
       sourcePath: imageFile!.path,
-    //  aspectRatio: const CropAspectRatio(ratioX: 2, ratioY: 1),
+      //  aspectRatio: const CropAspectRatio(ratioX: 2, ratioY: 1),
       uiSettings: [
         AndroidUiSettings(
             toolbarColor: Colors.black,
@@ -116,7 +114,7 @@ class HelperMethods {
   static saveProfile(ProfileDto profile) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (profile.token == null || profile.token!.isEmpty) {
-      String token = await isAuth();
+      String token = await getToken();
       profile.token = token;
       prefs.setString('profile', jsonEncode(profile.toJson()));
     } else {
@@ -144,14 +142,23 @@ class HelperMethods {
     prefs.remove('profile');
   }
 
-  static Future<String> isAuth() async {
+  static Future<String> getToken() async {
     try {
       ProfileDto? profile = await getProfile();
       if (profile?.token == null || profile!.token!.isEmpty) return '';
       return profile.token!;
     } on Exception catch (e) {
-      // print('profile?.token ${e.toString()}');
+      print('profile?.token ${e.toString()}');
       return '';
+    }
+  }
+
+  static Future<bool> isAuth() async {
+    String token = await getToken();
+    if (token.isNotEmpty) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -166,4 +173,7 @@ class HelperMethods {
     }
   }
 
+  static Future<int> getUserId() async {
+    return await getProfile()?.then((value) => value?.id ?? 0) ?? 0;
+  }
 }

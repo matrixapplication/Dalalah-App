@@ -14,6 +14,8 @@ class SellCarParams {
   int? brandId;
   @JsonKey(name: 'model_id')
   int? modelId;
+  @JsonKey(name: 'model_role')
+  String? modelRole;
   @JsonKey(name: 'port_id')
   int? portId;
   @JsonKey(name: 'car_model_extension_id')

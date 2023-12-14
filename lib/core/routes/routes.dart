@@ -23,9 +23,10 @@ import '../../src/installment/presentation/pages/installment_page.dart';
 import '../../src/installment/presentation/pages/monthly_installment/monthly_installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
+import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
 import '../../src/plates/presentation/plates/pages/ad_premium_page.dart';
-import '../../src/plates/presentation/plates/pages/plate_filter_page.dart';
+import '../../src/plates/presentation/add_plate/pages/plate_filter_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
@@ -99,7 +100,7 @@ class Routes {
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
     platesDetailsPage: (context) => PlatesDetailsPage(),
-    plateFilterPage: (context) => PlateFilterPage(),
+    plateFilterPage: (context) => AddPlatesPage(),
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
     sectionsScreen: (context) => SectionsScreen(),

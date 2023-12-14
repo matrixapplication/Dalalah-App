@@ -59,15 +59,15 @@ class HeaderInterceptor extends Interceptor {
       Map<String, dynamic> data = json.decode(err.response.toString());
 
       final message = data.containsKey('message') ? data['message'] : "Error";
-      final status = data.containsKey('status') ? data['status'] : "Error";
-      int code = data.containsKey('code') ? data['code'] : "E";
+    //  final status = data.containsKey('status') ? data['status'] : "Error";
+      final code = data.containsKey('code') ? data['code'] : "E";
       /*throw DioError(
         error: message,
         response: err.response,
         type: DioErrorType.response,
         requestOptions: err.requestOptions,
       );*/
-      throw ApiException(message, code);
+      throw ApiException(message, int.parse(code.toString()));
     } else {
       super.onError(err, handler);
     }
@@ -79,10 +79,10 @@ class HeaderInterceptor extends Interceptor {
     Map<String, dynamic> data = response.data;
     final message = data.containsKey('message') ? data['message'] : "Error";
     final status = data.containsKey('status') ? data['status'] : "Error";
-    int code = data.containsKey('code') ? response.data['code'] : "E";
+    final code = data.containsKey('code') ? response.data['code'] : "E";
     print('onRespons ${response.toString()} => ${code != 'Ok'}');
     if (status == false) {
-      throw ApiException(message, code);
+      throw ApiException(message, int.parse(code.toString()));
     }
   }
 }

@@ -4,22 +4,26 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_icons.dart';
+import '../../../../core/utils/helper_methods.dart';
 
 ///  Created by harbey on 10/11/2023.
 class FavoriteButton extends StatelessWidget {
   final bool isFavorite;
   final EdgeInsetsGeometry? margin;
   final double? iconSize;
+  final Function()? onToggleFavorite;
 
   const FavoriteButton({
     Key? key,
     this.margin,
     this.isFavorite = false,
     this.iconSize,
+    this.onToggleFavorite,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isFavorite = this.isFavorite;
     return Container(
       margin: margin,
       decoration: const ShapeDecoration(
@@ -34,12 +38,28 @@ class FavoriteButton extends StatelessWidget {
           )
         ],
       ),
-      child: AppIconButton(
-        padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
-        size: iconSize ?? 20,
-        icon: isFavorite ? AppIcons.heart_solid : AppIcons.heart,
-        color: context.primaryColor,
-        onPressed: () {},
+      child:  StatefulBuilder(builder: (context, setState) {
+          return AppIconButton(
+            padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
+            size: iconSize ?? 20,
+            icon: isFavorite ? AppIcons.heart_solid : AppIcons.heart,
+            color: context.primaryColor,
+            onPressed: () async {
+              bool isAuth = await HelperMethods.isAuth();
+              if(isAuth){
+                try {
+                  await onToggleFavorite!();
+                  isFavorite = !isFavorite;
+                  setState(() {});
+                } on Exception catch (e) {
+                  print('onToggleFavorite: $e');
+                }
+              } else {
+                DialogsManager.showErrorDialog(context, context.strings.you_must_login_first);
+              }
+            },
+          );
+        }
       ),
     );
   }

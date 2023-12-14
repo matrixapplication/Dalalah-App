@@ -2,12 +2,16 @@ import 'package:dalalah/core/utils/navigator.dart';
 
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
+import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
 import 'car_item_footer.dart';
 
 class CarVerticalItem extends StatelessWidget {
+  final Car car;
+  final Function(int)? onToggleFavorite;
   final int? index;
   final bool isCatItem;
   final double? bottomMargin;
@@ -21,6 +25,8 @@ class CarVerticalItem extends StatelessWidget {
   // final Task task;
   const CarVerticalItem({
     Key? key,
+    required this.car,
+    this.onToggleFavorite,
     this.isCatItem = false,
     this.bottomMargin,
     this.imageHasOnlyTopRadius = true,
@@ -78,7 +84,7 @@ class CarVerticalItem extends StatelessWidget {
                         children: [
                           4.ph,
                           Text(
-                            isCatItem? "بي ام دبليو  X6 218i X6 218i Sport Line" : "بي ام دبليو  X6 218i X6 218i ADVANTAGE ",
+                            "${car.brandModel?.brand} ${car.brandModel?.name}",
                             style: context.textTheme.labelLarge!.copyWith(
                               color: AppColors.grey_2C,
                             ),
@@ -99,7 +105,7 @@ class CarVerticalItem extends StatelessWidget {
                               14.pw,
                               CustomChip(
                                 backgroundColor: AppColors.grey_d9,
-                                label: '2023',
+                                label: car.year ?? "",
                                 fontSize: 14,
                                 labelColor: AppColors.blue_31,
                                 padding: 3.paddingVert + 10.paddingHoriz,
@@ -110,7 +116,7 @@ class CarVerticalItem extends StatelessWidget {
                           CustomChip(
                             radius: 15,
                             backgroundColor: context.primaryColor,
-                            label: '800,000 ${context.strings.rs}',
+                            label: '${car.total?.toString() ?? ""} ${context.strings.rs}',
                             fontSize: 16,
                             padding: 4.paddingVert,
                             width: 145,
@@ -121,17 +127,17 @@ class CarVerticalItem extends StatelessWidget {
                             child: Row(
                               children: [
                                 CarDetailsContainer(
-                                  label: '2000',
+                                  label: car.fuelType?.name ?? "",
                                   icon: AppIcons.fuel,
                                 ),
                                 5.pw,
                                 CarDetailsContainer(
-                                  label: '5,7',
+                                  label: car.engine ?? "",
                                   icon: AppIcons.timer,
                                 ),
                                 5.pw,
                                 CarDetailsContainer(
-                                  label: '4',
+                                  label: car.bodyType?.name ?? "",
                                   icon: AppIcons.chair,
                                 ),
                               ],
@@ -146,8 +152,7 @@ class CarVerticalItem extends StatelessWidget {
                     child: Stack(
                       children: [
                         ImageNetwork(
-                          url:
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrUxWoOcFvZpXT3_3Ur1RSKF6HJJ_S13FCCgB6FDdmA&s",
+                          url: car.mainImage ?? '',
                           height: double.infinity,
                           borderRadius: imageHasOnlyTopRadius
                               ? const BorderRadiusDirectional.only(
@@ -181,18 +186,12 @@ class CarVerticalItem extends StatelessWidget {
                         PositionedDirectional(
                           top: 2,
                           end: 2,
-                          child: AppCircularIconButton(
-                            icon: isAddView
-                                ? AppIcons.edit
-                                : isFavouriteView
-                                ? AppIcons.heart_solid
-                                : AppIcons.heart,
-                            color: AppColors.blue_F7,
-                            backgroundColor: context.cardColor,
-                            shadowColor: context.cardColor.withOpacity(0.2),
-                            padding: 7,
-                            size: 13,
-                            margin: const EdgeInsetsDirectional.only(top: 4, end: 4),
+                          child: FavoriteButton(
+                            iconSize: 15,
+                            isFavorite: car.isFavorite ?? false,
+                            onToggleFavorite: () {
+                              onToggleFavorite!(car.id!);
+                            },
                           ),
                         ),
                       ],
@@ -203,7 +202,7 @@ class CarVerticalItem extends StatelessWidget {
             ),
             if(isAds)
               CarItemFooter(
-                price: '100',
+                price: car.price?.toString() ?? "",
                 onTap: () {},
               ),
           ],

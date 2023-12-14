@@ -11,7 +11,7 @@ import 'src/main_index.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  String token = await HelperMethods.isAuth();
+  String token = await HelperMethods.getToken();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 

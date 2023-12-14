@@ -34,7 +34,7 @@ class HomeCubit extends BaseCubit {
     await fetchSlides();
     await fetchBrands();
     await fetchYourCars();
-    await fetchOtherCars();
+  //  await fetchOtherCars();
   }
 
   fetchSlides() async {
@@ -59,8 +59,8 @@ class HomeCubit extends BaseCubit {
 
   fetchYourCars() async {
     yourCarsStream.setData(null);
-    try {
-      final response = await usecase.fetchCars(CarFilterParams(startYear: DateTime.now().year));
+    try { // CarFilterParams(startYear: DateTime.now().year)
+      final response = await usecase.fetchCars(CarFilterParams());
       yourCarsStream.setData(response);
     } catch (e) {
       yourCarsStream.setError(e);

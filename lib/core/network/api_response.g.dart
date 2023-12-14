@@ -12,7 +12,7 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
 ) =>
     ApiResponse<T>(
       status: json['status'] as bool?,
-      code: json['code'] as int?,
+      code: json['code'],
       message: json['message'] as String?,
       data: _$nullableGenericFromJson(json['data'], fromJsonT),
       pagination: json['pagination'] == null
