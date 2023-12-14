@@ -1,5 +1,6 @@
 import '../../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../../main_index.dart';
+import '../../../../plates/domain/entities/plate.dart';
 import '../../../domain/entities/brand.dart';
 import '../../../domain/entities/car.dart';
 import '../../../domain/entities/slide.dart';
@@ -13,12 +14,12 @@ class HomeScreen extends BaseStatelessWidget {
   final StreamStateInitial<List<Slide>?> slidesStream ;
   final StreamStateInitial<List<Brand>?> brandsStream;
   final StreamStateInitial<List<Car>?> yourCarsStream;
-  final StreamStateInitial<List<Car>?> otherCarsStream;
+  final StreamStateInitial<List<Plate>?> platesStream;
   final Function(int)? onFavoriteCar;
   final Function(int)? onFavoritePlate;
   final Future<List<Car>>? Function(String)? onSearch;
   final Function(int)? onToggleFavorite;
-  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.otherCarsStream, this.onFavoriteCar, this.onFavoritePlate, this.onSearch, this.onToggleFavorite}) : super(key: key);
+  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.platesStream, this.onFavoriteCar, this.onFavoritePlate, this.onSearch, this.onToggleFavorite}) : super(key: key);
 
   ScrollController scrollController = ScrollController();
   @override
@@ -59,8 +60,7 @@ class HomeScreen extends BaseStatelessWidget {
                     routeName: Routes.platesPage,
                   ),
                   PlatesList(
-                    title: strings.plates,
-                    routeName: Routes.platesPage,
+                    platesStream: platesStream,
                   ),
                 ],
               )

@@ -48,7 +48,7 @@ class HomePage extends BaseBlocWidget<UnInitState, HomeCubit> {
       slidesStream: bloc.slidesStream,
       brandsStream: bloc.brandsStream,
       yourCarsStream: bloc.yourCarsStream,
-      otherCarsStream: bloc.otherCarsStream,
+      platesStream: bloc.otherCarsStream,
       onFavoriteCar: (id) async => await bloc.toggleFavorite(id),
       onFavoritePlate: (id) async => await bloc.toggleFavorite(id),
       onSearch: (value) => bloc.fetchCarsBySearch(value),

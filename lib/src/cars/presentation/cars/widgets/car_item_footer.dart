@@ -16,7 +16,7 @@ class CarItemFooter extends StatelessWidget {
       padding: 10.paddingAll,
       child: Row(
         children: [
-         ColumnTexts(
+         ColumnTextsFittedBox(
            title: price,
            value: context.strings.rs,
            valueStyle: context.bodySmall,

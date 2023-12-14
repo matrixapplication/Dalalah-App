@@ -24,7 +24,7 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
               json['brandModelExtension'] as Map<String, dynamic>),
       branch: json['branch'] == null
           ? null
-          : Branch.fromJson(json['branch'] as Map<String, dynamic>),
+          : BranchDto.fromJson(json['branch'] as Map<String, dynamic>),
       year: json['year'] as String?,
       color: json['color'] == null
           ? null
@@ -117,30 +117,6 @@ Map<String, dynamic> _$CarContactDetailsToJson(CarContactDetails instance) =>
       'phone': instance.phone,
       'whatsapp': instance.whatsapp,
       'image': instance.image,
-    };
-
-Branch _$BranchFromJson(Map<String, dynamic> json) => Branch(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-      city: json['city'] as String?,
-      district: json['district'] as String?,
-      phone: json['phone'] as String?,
-      whatsapp: json['whatsapp'] as String?,
-      cityId: json['cityId'] as int?,
-      districtId: json['districtId'] as int?,
-      address: json['address'] as String?,
-    );
-
-Map<String, dynamic> _$BranchToJson(Branch instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'city': instance.city,
-      'district': instance.district,
-      'phone': instance.phone,
-      'whatsapp': instance.whatsapp,
-      'cityId': instance.cityId,
-      'districtId': instance.districtId,
-      'address': instance.address,
     };
 
 Customs _$CustomsFromJson(Map<String, dynamic> json) => Customs(

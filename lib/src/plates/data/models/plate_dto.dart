@@ -14,7 +14,7 @@ class PlateDto {
   @JsonKey(name: 'letter_en')
   String? letterEn;
   @JsonKey(name: 'plate_number')
-  String? plateNumber;
+  dynamic plateNumber;
   @JsonKey(name: 'price')
   String? price;
   @JsonKey(name: 'plate_type')
@@ -26,11 +26,11 @@ class PlateDto {
   @JsonKey(name: 'address')
   String? address;
   @JsonKey(name: 'is_hide')
-  bool? isHide;
+  String? isHide;
   @JsonKey(name: 'is_paused')
-  bool? isPaused;
+  String? isPaused;
   @JsonKey(name: 'is_approved')
-  bool? isApproved;
+  String? isApproved;
   @JsonKey(name: 'city')
   CityDto? city;
   @JsonKey(name: 'user')

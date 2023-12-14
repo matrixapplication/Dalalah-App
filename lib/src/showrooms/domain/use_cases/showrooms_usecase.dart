@@ -21,7 +21,7 @@ class ShowroomsUseCase {
   }
 
   Future<List<Branch>> fetchBranchesById(int id) async {
-    final data = await repository.fetchAllBranches();
+    final data = await repository.fetchBranchesById(id);
     return data.data?.map((e) => Branch.fromDto(e)).toList() ?? [];
   }
 }

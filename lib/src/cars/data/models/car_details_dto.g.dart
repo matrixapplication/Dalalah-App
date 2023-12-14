@@ -67,12 +67,15 @@ CarDetailsDto _$CarDetailsDtoFromJson(Map<String, dynamic> json) =>
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => FeatureDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-    );
+    )..modelObject = json['model_object'] == null
+        ? null
+        : ModelObject.fromJson(json['model_object'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$CarDetailsDtoToJson(CarDetailsDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'car_contact_details': instance.carContactDetails,
+      'model_object': instance.modelObject,
       'brand': instance.brand,
       'brandModel': instance.brandModel,
       'brandModelExtension': instance.brandModelExtension,

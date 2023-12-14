@@ -4,13 +4,12 @@ import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/car.dart';
-import '../../../../home/presentation/widgets/filter_home.dart';
 import '../bloc/cars_bloc.dart';
-import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
 class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
-  CarsPage({Key? key}) : super(key: key);
+  final bool isFavorite;
+  CarsPage({Key? key, this.isFavorite = false}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
@@ -30,21 +29,27 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     return mainFrame(
       onTabSelected: (index) {
         tabIndex = index;
-        bloc.fetchCars(CarFilterParams());
+        bloc.fetchCars(CarFilterParams(
+          status: index == 0
+              ? null
+              : index == 1
+                  ? 'new'
+                  : 'used',
+        ));
       },
       body: Column(
         children: [
-          FilterHome(
-            routeName: Routes.carsSearchPage,
-            onFilterOrder: () {},
-          ),
-          10.ph,
-          BrandsFilter(
-            items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-                .map((e) => e.toString())
-                .toList(),
-            onFilter: (value) {},
-          ),
+          // FilterHome(
+          //   routeName: Routes.carsSearchPage,
+          //   onFilterOrder: () {},
+          // ),
+          // 10.ph,
+          // BrandsFilter(
+          //   items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+          //       .map((e) => e.toString())
+          //       .toList(),
+          //   onFilter: (value) {},
+          // ),
           Expanded(child: buildConsumer(context)),
         ],
       ),
@@ -54,20 +59,6 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
         TabModel(label: context.strings.new_),
         TabModel(label: context.strings.used),
       ],
-      // tabViews: [
-      //   CarsScreen(
-      //     isFilter: false,
-      //     tasks: [],
-      //   ),
-      //   CarsScreen(
-      //     isFilter: false,
-      //     tasks:  [],
-      //   ),
-      //   CarsScreen(
-      //     isFilter: false,
-      //     tasks:  [],
-      //   )
-      // ]
     );
   }
 
@@ -83,7 +74,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   String? title(BuildContext context) {
-    return strings.cars;
+    return isFavorite ? null : strings.cars;
   }
 
   @override

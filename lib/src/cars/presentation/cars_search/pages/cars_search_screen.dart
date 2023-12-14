@@ -41,7 +41,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
             items: [
               ChooseItemModel(
                 label: strings.all,
-                value: 'all',
+                value: '',
               ),
               ChooseItemModel(
                 label: strings.new_,

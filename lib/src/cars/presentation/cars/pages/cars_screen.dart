@@ -33,7 +33,7 @@ class CarsScreen extends BaseStatelessWidget {
           Expanded(
             child: ListView.builder(
               // itemCount: tasks.length,
-              itemCount: 5,
+              itemCount: tasks.length,
               shrinkWrap: true,
               padding: 10.paddingHoriz + 10.paddingTop,
               itemBuilder: (context, index) {
@@ -42,7 +42,7 @@ class CarsScreen extends BaseStatelessWidget {
                     index: index,
                   isNew: isNew,
                   isAds: isAds,
-                  car: Car(),
+                  car: tasks[index],
                   // task: tasks[index],
                 );
               },

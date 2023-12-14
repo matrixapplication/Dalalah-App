@@ -104,6 +104,11 @@ extension AppResource on BuildContext {
       // placeHolderImage = Image.asset(Res.connection_error);
       message = 'check_network_connection';
     }
+
+    if (exception is EmptyListException) {
+      print('handleApiError is EmptyListException   ${exception.toString()}' );
+      message = exception.toString();
+    }
     print('handleApiError message $message');
     return ApiException(message ,code);
   }

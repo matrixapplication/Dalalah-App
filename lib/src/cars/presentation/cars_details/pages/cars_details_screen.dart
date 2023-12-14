@@ -4,6 +4,7 @@ import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart'
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../main_index.dart';
+import '../../../data/models/model_object.dart';
 import '../../../domain/entities/car_details.dart';
 import '../widgets/car_details_ratings.dart';
 import '../widgets/sliders_car_details.dart';
@@ -20,6 +21,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isNew = carDetails.status?.name == 'new';
     return NestedScrollView(
       body: TabBarWidget(
         tabs: [
@@ -41,7 +43,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
             label: strings.categories,
             page: CarsList(cars: ['', '', '', ''], isCatItem: true),
           ),
-          if(isNew)
+       //   if(isNew)
           TabItemModel(
             label: strings.ratings,
             page: CarDetailsRatings(),
@@ -130,7 +132,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       ),
 
                       if(!isNew)
-                        UserInfo(),
+                        UserInfo(
+                          user: carDetails.modelObject ?? ModelObject(),
+                        ),
                     ],
                   ),
                 ),

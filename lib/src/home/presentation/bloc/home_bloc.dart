@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
+import '../../../plates/domain/entities/plate.dart';
+import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/car_filter_params.dart';
 import '../../domain/entities/brand.dart';
 import '../../domain/entities/car.dart';
@@ -13,13 +15,14 @@ import '../../domain/use_cases/home_usecase.dart';
 class HomeCubit extends BaseCubit {
   final HomeUseCase usecase;
   final FavoritesUseCase favoritesUseCase;
+  final PlatesUseCase platesUseCase;
 
-  HomeCubit(this.usecase, this.favoritesUseCase);
+  HomeCubit(this.usecase, this.favoritesUseCase, this.platesUseCase);
 
   StreamStateInitial<List<Slide>?> slidesStream = StreamStateInitial();
   StreamStateInitial<List<Brand>?> brandsStream = StreamStateInitial();
   StreamStateInitial<List<Car>?> yourCarsStream = StreamStateInitial();
-  StreamStateInitial<List<Car>?> otherCarsStream = StreamStateInitial();
+  StreamStateInitial<List<Plate>?> otherCarsStream = StreamStateInitial();
 
   fetchInitialData() async {
     // emit(DataLoading());
@@ -32,9 +35,9 @@ class HomeCubit extends BaseCubit {
     //   emit(DataLoading());
     // }
     await fetchSlides();
-    await fetchBrands();
+  //  await fetchBrands();
     await fetchYourCars();
-  //  await fetchOtherCars();
+   await fetchOtherCars();
   }
 
   fetchSlides() async {
@@ -71,7 +74,7 @@ class HomeCubit extends BaseCubit {
   fetchOtherCars() async {
     try {
       otherCarsStream.setData(null);
-      final response = await usecase.fetchCars(CarFilterParams(startYear: 1900, endYear: DateTime.now().year - 1));
+      final response = await platesUseCase.fetchPlates();
       otherCarsStream.setData(response);
     } catch (e) {
       otherCarsStream.setError(e);

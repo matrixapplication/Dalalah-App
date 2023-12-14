@@ -123,14 +123,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
     return CustomCompanyContainer(
       firstOnTap: () {},
       secondOnTap: () {},
-      secondButtonLabel: Text(
-        strings.request_for_quotation,
-        style: context.textTheme.bodyMedium!.copyWith(
-          fontWeight: FontWeight.bold,
-          color: AppColors.grey_68,
-        ),
-      ),
-      firstRow: Padding(
+      body: Padding(
         padding: 5.paddingHoriz + 8.paddingVert,
         child: Row(
           children: [

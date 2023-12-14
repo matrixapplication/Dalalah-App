@@ -16,7 +16,7 @@ abstract class PlatesDatasource {
   @factoryMethod
   factory PlatesDatasource(Dio dio) = _PlatesDatasource;
 
-  @GET('/get-plates')
+  @GET('/get_plates')
   Future<ApiResponse<List<PlateDto>>> fetchPlates();
 
   @POST('/add-car-plate')

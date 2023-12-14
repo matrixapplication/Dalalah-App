@@ -24,15 +24,15 @@ import '../../src/auth/domain/repositories/base_forgot_password_repo.dart'
 import '../../src/auth/domain/use_cases/auth_usecase.dart' as _i25;
 import '../../src/auth/domain/use_cases/forgot_password_usecase.dart' as _i54;
 import '../../src/auth/presentation/bloc/auth_bloc.dart' as _i70;
-import '../../src/auth/presentation/bloc/forgot_password_bloc.dart' as _i76;
+import '../../src/auth/presentation/bloc/forgot_password_bloc.dart' as _i77;
 import '../../src/cars/data/data_sources/cars_datasource.dart' as _i7;
 import '../../src/cars/data/repositories/cars_repo.dart' as _i28;
 import '../../src/cars/domain/repositories/base_cars_repo.dart' as _i27;
 import '../../src/cars/domain/use_cases/cars_usecase.dart' as _i51;
-import '../../src/cars/presentation/cars/bloc/cars_bloc.dart' as _i71;
+import '../../src/cars/presentation/cars/bloc/cars_bloc.dart' as _i72;
 import '../../src/cars/presentation/cars/bloc/cars_search_bloc.dart' as _i8;
 import '../../src/cars/presentation/cars_details/bloc/cars_details_bloc.dart'
-    as _i72;
+    as _i73;
 import '../../src/favorites_and_ads/data/data_sources/favorites_datasource.dart'
     as _i9;
 import '../../src/favorites_and_ads/data/repositories/favorites_repo.dart'
@@ -42,17 +42,17 @@ import '../../src/favorites_and_ads/domain/repositories/base_favorites_repo.dart
 import '../../src/favorites_and_ads/domain/use_cases/favorites_usecase.dart'
     as _i52;
 import '../../src/favorites_and_ads/presentation/bloc/favorites_bloc.dart'
-    as _i74;
+    as _i75;
 import '../../src/filter/data/data_sources/filter_datasource.dart' as _i10;
 import '../../src/filter/data/repositories/filter_repo.dart' as _i32;
 import '../../src/filter/domain/repositories/base_filter_repo.dart' as _i31;
 import '../../src/filter/domain/use_cases/filter_usecase.dart' as _i53;
-import '../../src/filter/presentation/bloc/filter_bloc.dart' as _i75;
+import '../../src/filter/presentation/bloc/filter_bloc.dart' as _i76;
 import '../../src/home/data/data_sources/home_datasource.dart' as _i12;
 import '../../src/home/data/repositories/home_repo.dart' as _i36;
 import '../../src/home/domain/repositories/base_home_repo.dart' as _i35;
 import '../../src/home/domain/use_cases/home_usecase.dart' as _i55;
-import '../../src/home/presentation/bloc/home_bloc.dart' as _i77;
+import '../../src/home/presentation/bloc/home_bloc.dart' as _i78;
 import '../../src/installment/data/data_sources/installment_datasource.dart'
     as _i13;
 import '../../src/installment/data/repositories/installment_repo.dart' as _i38;
@@ -60,9 +60,9 @@ import '../../src/installment/domain/repositories/base_installment_repo.dart'
     as _i37;
 import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i56;
-import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i78;
+import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i79;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i16;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
     as _i40;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
@@ -70,7 +70,7 @@ import '../../src/notifications/domain/repositories/base_notifications_repo.dart
 import '../../src/notifications/domain/use_cases/notifications_usecase.dart'
     as _i57;
 import '../../src/notifications/presentation/bloc/notifications_bloc.dart'
-    as _i79;
+    as _i80;
 import '../../src/plates/data/data_sources/plates_datasource.dart' as _i17;
 import '../../src/plates/data/repositories/plates_repo.dart' as _i44;
 import '../../src/plates/domain/repositories/base_plates_repo.dart' as _i43;
@@ -78,16 +78,16 @@ import '../../src/plates/domain/use_cases/plates_usecase.dart' as _i59;
 import '../../src/plates/presentation/add_plate/bloc/add_plate_bloc.dart'
     as _i69;
 import '../../src/plates/presentation/plate_details/bloc/plates_details_bloc.dart'
-    as _i81;
-import '../../src/plates/presentation/plates/bloc/plates_bloc.dart' as _i80;
+    as _i82;
+import '../../src/plates/presentation/plates/bloc/plates_bloc.dart' as _i81;
 import '../../src/profile/data/data_sources/profile_datasource.dart' as _i18;
 import '../../src/profile/data/repositories/profile_repo.dart' as _i46;
 import '../../src/profile/domain/repositories/base_profile_repo.dart' as _i45;
 import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i60;
-import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i73;
-import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i82;
+import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i74;
+import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i83;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i16;
+    as _i15;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
     as _i42;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
@@ -117,11 +117,13 @@ import '../../src/showrooms/data/repositories/showrooms_repo.dart' as _i50;
 import '../../src/showrooms/domain/repositories/base_showrooms_repo.dart'
     as _i49;
 import '../../src/showrooms/domain/use_cases/showrooms_usecase.dart' as _i67;
-import '../../src/showrooms/presentation/exhibition_details/bloc/showrooms_details_bloc.dart'
-    as _i83;
-import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
+import '../../src/showrooms/presentation/branches/bloc/branches_bloc.dart'
+    as _i71;
+import '../../src/showrooms/presentation/showroom_details/bloc/showrooms_details_bloc.dart'
     as _i84;
-import 'injection_module.dart' as _i85;
+import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
+    as _i85;
+import 'injection_module.dart' as _i86;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -181,9 +183,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i37.BaseInstallmentRepo<dynamic>>(
       () => _i38.InstallmentRepo(gh<_i13.InstallmentDataSource>()));
   gh.factory<_i39.BaseNotificationsRepo>(
-      () => _i40.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i40.WalletRepo(gh<_i16.NotificationsDatasource>()));
   gh.factory<_i41.BaseNotificationsRepo>(
-      () => _i42.WalletRepo(gh<_i16.NotificationsDatasource>()));
+      () => _i42.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i43.BasePlatesRepo>(
       () => _i44.PlatesRepo(gh<_i17.PlatesDatasource>()));
   gh.factory<_i45.BaseProfileRepo<dynamic>>(
@@ -234,44 +236,47 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i25.AuthUseCase>(),
         gh<_i20.SellCarUseCase>(),
       ));
-  gh.factory<_i71.CarsCubit>(() => _i71.CarsCubit(
+  gh.factory<_i71.BranchesCubit>(
+      () => _i71.BranchesCubit(gh<_i67.ShowroomsUseCase>()));
+  gh.factory<_i72.CarsCubit>(() => _i72.CarsCubit(
         gh<_i55.HomeUseCase>(),
         gh<_i52.FavoritesUseCase>(),
         gh<_i51.CarsUseCase>(),
       ));
-  gh.factory<_i72.CarsDetailsCubit>(() => _i72.CarsDetailsCubit(
+  gh.factory<_i73.CarsDetailsCubit>(() => _i73.CarsDetailsCubit(
         gh<_i51.CarsUseCase>(),
         gh<_i52.FavoritesUseCase>(),
       ));
-  gh.factory<_i73.EditProfileBloc>(() => _i73.EditProfileBloc(
+  gh.factory<_i74.EditProfileBloc>(() => _i74.EditProfileBloc(
         gh<_i60.ProfileUseCase>(),
         gh<_i20.SellCarUseCase>(),
       ));
-  gh.factory<_i74.FavoritesCubit>(
-      () => _i74.FavoritesCubit(gh<_i52.FavoritesUseCase>()));
-  gh.factory<_i75.FilterCubit>(
-      () => _i75.FilterCubit(gh<_i53.FilterUseCase>()));
-  gh.factory<_i76.ForgotPasswordCubit>(
-      () => _i76.ForgotPasswordCubit(gh<_i54.ForgotPasswordUseCase>()));
-  gh.factory<_i77.HomeCubit>(() => _i77.HomeCubit(
+  gh.factory<_i75.FavoritesCubit>(
+      () => _i75.FavoritesCubit(gh<_i52.FavoritesUseCase>()));
+  gh.factory<_i76.FilterCubit>(
+      () => _i76.FilterCubit(gh<_i53.FilterUseCase>()));
+  gh.factory<_i77.ForgotPasswordCubit>(
+      () => _i77.ForgotPasswordCubit(gh<_i54.ForgotPasswordUseCase>()));
+  gh.factory<_i78.HomeCubit>(() => _i78.HomeCubit(
         gh<_i55.HomeUseCase>(),
         gh<_i52.FavoritesUseCase>(),
+        gh<_i59.PlatesUseCase>(),
       ));
-  gh.factory<_i78.InstallmentBloc>(
-      () => _i78.InstallmentBloc(gh<_i56.InstallmentUseCase>()));
-  gh.factory<_i79.NotificationsCubit>(
-      () => _i79.NotificationsCubit(gh<_i57.NotificationsUseCase>()));
-  gh.factory<_i80.PlatesCubit>(
-      () => _i80.PlatesCubit(gh<_i59.PlatesUseCase>()));
-  gh.factory<_i81.PlatesDetailsCubit>(
-      () => _i81.PlatesDetailsCubit(gh<_i59.PlatesUseCase>()));
-  gh.factory<_i82.ProfileBloc>(
-      () => _i82.ProfileBloc(gh<_i60.ProfileUseCase>()));
-  gh.factory<_i83.ShowroomDetailsCubit>(
-      () => _i83.ShowroomDetailsCubit(gh<_i67.ShowroomsUseCase>()));
-  gh.factory<_i84.ShowroomsCubit>(
-      () => _i84.ShowroomsCubit(gh<_i67.ShowroomsUseCase>()));
+  gh.factory<_i79.InstallmentBloc>(
+      () => _i79.InstallmentBloc(gh<_i56.InstallmentUseCase>()));
+  gh.factory<_i80.NotificationsCubit>(
+      () => _i80.NotificationsCubit(gh<_i57.NotificationsUseCase>()));
+  gh.factory<_i81.PlatesCubit>(
+      () => _i81.PlatesCubit(gh<_i59.PlatesUseCase>()));
+  gh.factory<_i82.PlatesDetailsCubit>(
+      () => _i82.PlatesDetailsCubit(gh<_i59.PlatesUseCase>()));
+  gh.factory<_i83.ProfileBloc>(
+      () => _i83.ProfileBloc(gh<_i60.ProfileUseCase>()));
+  gh.factory<_i84.ShowroomDetailsCubit>(
+      () => _i84.ShowroomDetailsCubit(gh<_i67.ShowroomsUseCase>()));
+  gh.factory<_i85.ShowroomsCubit>(
+      () => _i85.ShowroomsCubit(gh<_i67.ShowroomsUseCase>()));
   return getIt;
 }
 
-class _$InjectionModule extends _i85.InjectionModule {}
+class _$InjectionModule extends _i86.InjectionModule {}

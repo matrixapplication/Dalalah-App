@@ -1,6 +1,7 @@
 import '../../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../../main_index.dart';
-import '../../widgets/branch_item.dart';
+import '../../../../domain/entities/branch.dart';
+import '../../../branches/widgets/branch_item.dart';
 
 class BranchesView extends BaseStatelessWidget {
   BranchesView({super.key});
@@ -38,7 +39,7 @@ class BranchesView extends BaseStatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             padding: 15.paddingAll,
             itemBuilder: (context, index) {
-              return BranchItem();
+              return BranchItem(branch: Branch(),);
             },
           ),
         ],

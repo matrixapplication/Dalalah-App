@@ -11,22 +11,24 @@ import '../bloc/plates_details_bloc.dart';
 import 'plates_details_screen.dart';
 
 
-class PlatesDetailsPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesDetailsCubit> {
+class PlatesDetailsPage extends BaseBlocWidget<UnInitState, PlatesDetailsCubit> {
   PlatesDetailsPage({Key? key}) : super(key: key);
 
 
-  @override
-  void loadInitialData(BuildContext context) {
-    bloc.fetchFavorites();
-  }
+  // @override
+  // void loadInitialData(BuildContext context) {
+  //   bloc.fetchFavorites();
+  // }
 
 
   @override
   String? title(context)=> strings.plates;
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesDetailsScreen(plates: state.data ?? []);
+  Widget buildWidget(BuildContext context, UnInitState state) {
+    return PlatesDetailsScreen(
+        plate: getArguments(context),
+    );
   }
 
   @override

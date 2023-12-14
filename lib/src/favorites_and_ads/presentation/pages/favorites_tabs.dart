@@ -17,7 +17,7 @@ class FavoritesAndAdsTabs
       title: (getArguments(context) ?? true) ? context.strings.my_ads : context.strings.favorites,
       body: TabBarLineWidget(
         tabs: [
-          TabItemModel(label: context.strings.cars, page: CarsPage()),
+          TabItemModel(label: context.strings.cars, page: CarsPage(isFavorite: true)),
           TabItemModel(label: context.strings.plates, page: PlatesPage(isFilter: false)),
           TabItemModel(label: context.strings.buildings, page: Container(
             color: context.scaffoldBackgroundColor,

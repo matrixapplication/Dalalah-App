@@ -8,6 +8,7 @@ import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_butt
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/commen/common_state.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/navigator.dart';
@@ -15,44 +16,52 @@ import '../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../../core/widgets/chip/chip_border.dart';
 import '../../../../core/widgets/clickable_widget.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
+import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../../plates/domain/entities/plate.dart';
+import '../../../plates/presentation/plates/widgets/plate_image.dart';
 
 ///  Created by harbey on 9/5/2023.
 class PlatesList extends StatelessWidget {
-  final String title;
-  final String routeName;
+  final StreamStateInitial<List<Plate>?> platesStream;
 
-  const PlatesList({Key? key, required this.title, required this.routeName})
+  const PlatesList({Key? key, required this.platesStream})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: 10.paddingStart,
-        itemBuilder: (_, index) {
-          return PlateVert(index: index);
-        },
-        itemCount: 8,
+      child: StreamStateWidget<List<Plate>?>(
+        stream: platesStream,
+        builder: (context, snapshot) {
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            padding: 10.paddingStart,
+            itemBuilder: (_, index) {
+              return PlateVert(plate: snapshot![index]);
+            },
+            itemCount: snapshot?.length ?? 0,
+          );
+        }
       ),
     );
   }
 }
 
 class PlateVert extends StatelessWidget {
-  final int index;
+  final Plate plate;
 
   const PlateVert({
     super.key,
-    required this.index,
+    required this.plate,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.platesDetailsPage);
+        Navigator.pushNamed(context, Routes.platesDetailsPage,
+          arguments: plate,);
       },
       child: Container(
           margin: 8.paddingHoriz,
@@ -75,10 +84,9 @@ class PlateVert extends StatelessWidget {
                     //     borderRadius: BorderRadius.circular(12),
                     //   ),
                     // ),
-                    child: const ImageNetwork(
-                      url:
-                          'https://i0.wp.com/almrj3.com/wp-content/uploads/2022/01/6.jpg?resize=520%2C288&ssl=1',
-                      fit: BoxFit.fill,
+                    child: PlateImage(
+                      plate: plate,
+                      spaceStart: 0,
                     ),
                   ),
                   Container(
@@ -95,12 +103,12 @@ class PlateVert extends StatelessWidget {
               Padding(
                 padding: 10.paddingStart,
                 child: Text(
-                  'ب  ط  ل     8888',
+                  '${plate.letterAr} ${plate.letterEn}',
                   style: context.bodySmall,
                 ),
               ),
               8.ph,
-              PriceWidget(price: '600,000',),
+              PriceWidget(price: plate.price ?? '0'),
             ],
           )),
     );

@@ -12,6 +12,8 @@ import '../../../sell_car/domain/entities/car_status.dart';
 import '../../../sell_car/domain/entities/drive_type.dart';
 import '../../../sell_car/domain/entities/feature.dart';
 import '../../../sell_car/domain/entities/fuel_type.dart';
+import '../../../showrooms/data/models/branch_dto.dart';
+import '../../../showrooms/domain/entities/branch.dart';
 import '../../data/models/brand_dto.dart';
 import '../../data/models/car_dto.dart';
 
@@ -97,7 +99,7 @@ class Car {
       brandModel: BrandModel.fromDto(json.brandModel ?? BrandModelDto()),
       brandModelExtension: BrandModelExtension.fromDto(
           json.brandModelExtension ?? BrandModelExtensionDto()),
-      branch: json.branch,
+      branch: Branch.fromDto(json.branch ?? BranchDto()),
       year: json.year,
       color: json.color,
       driveType: DriveType.fromDto(json.driveType ?? DriveTypeDto()),

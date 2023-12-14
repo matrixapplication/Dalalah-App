@@ -1,12 +1,15 @@
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../cars/presentation/cars/widgets/custom_company_container.dart';
 import '../../../../main_index.dart';
+import '../../../domain/entities/showroom.dart';
 
-class ExhibitionItem extends BaseStatelessWidget {
-  ExhibitionItem({super.key});
+class ShowroomItem extends BaseStatelessWidget {
+  final Showroom showroom;
+  ShowroomItem({super.key, required this.showroom});
 
   @override
   Widget build(BuildContext context) {
@@ -17,30 +20,29 @@ class ExhibitionItem extends BaseStatelessWidget {
         );
       },
       child: CustomCompanyContainer(
-        firstOnTap: () {},
-        secondOnTap: () {},
-        secondButtonLabel: IconText(
-          text: strings.location,
-          icon: AppIcons.location_2,
-          textColor: AppColors.grey_68,
-          iconColor: context.primaryColor,
-          fontSize: 16,
-          isIconLift: true,
-        ),
-        firstRow: Padding(
+        firstOnTap: () {
+          HelperMethods.launchCallPhone(showroom.phone ?? '');
+        },
+        secondOnTap: () {
+          pushNamed(
+            Routes.branchesPage,
+            arguments: showroom.id,
+          );
+        },
+        body: Padding(
           padding: 10.paddingVert + 15.paddingHoriz,
           child: Row(
             children: [
-              const ImageNetwork(
-                url: 'https://play-lh.googleusercontent.com/joJ9c93sLgHTIgkK3Um6vkXKtv4lA9Am3WECHkZCdLAALlzB8CiyUoEE4urjWZbYIA',
-                size: 75,
+              ImageNetwork(
+                url: showroom.image ?? '',
+                size: 70,
                 borderWidth: 1.5,
               ),
               20.pw,
               ColumnTexts(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                title: "الحمد للسيارات",
-                value: "جدة",
+                title: showroom.showroomName ?? '',
+                value: showroom.address ?? '',
                 titleStyle: context.textTheme.bodyMedium,
                 valueStyle: context.textTheme.displaySmall,
               ),

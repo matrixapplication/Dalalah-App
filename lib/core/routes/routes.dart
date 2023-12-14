@@ -1,4 +1,3 @@
-import 'package:dalalah/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../navigation_pages.dart';
@@ -35,7 +34,8 @@ import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
-import '../../src/showrooms/presentation/exhibition_details/pages/showroom_details_page.dart';
+import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
+import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
 import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 
 class Routes {
@@ -52,6 +52,7 @@ class Routes {
   static const String monthlyInstallmentPage = 'monthlyInstallmentPage';
   static const String realEstatePage = 'realEstatePage';
   static const String addPremiumPage = 'AddPremiumPage';
+  static const String branchesPage = 'branchesPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -106,6 +107,7 @@ class Routes {
     monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
     realEstatePage: (context) => RealEstatePage(),
     addPremiumPage: (context) => AddPremiumPage(),
+    branchesPage: (context) => BranchesPage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

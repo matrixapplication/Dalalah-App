@@ -28,6 +28,7 @@ class PlateItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigators.pushNamed(
         isAddView ? Routes.plateFilterPage : Routes.platesDetailsPage,
+        arguments: plate,
       ),
       child: Container(
         padding: 8.paddingAll,
@@ -58,29 +59,18 @@ class PlateItem extends StatelessWidget {
         child: Column(
           children: [
             PlateImage(
+                plate: plate,
             ),
-            // ImageNetwork(
-            //   padding: 8.paddingVert + 16.paddingHoriz,
-            //   decoration: ShapeDecoration(
-            //     color: const Color(0xFFEFEFEF),
-            //     shape: RoundedRectangleBorder(
-            //       side: const BorderSide(color: Color(0xFFDFDFDF)),
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //   ),
-            //   image: plate.image,
-            // ),
-            10.ph,
             Padding(
-              padding: 8.paddingVert + 10.paddingHoriz,
+              padding: 0.paddingVert + 10.paddingHoriz,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    plate.name,
+                    '${plate.letterAr} ${plate.letterEn}',
                     style: context.bodyMedium,
                   ),
-                  PriceWidget(price: plate.price),
+                  PriceWidget(price: plate.price ?? '0'),
                   isAddView
                       ? const EditIconButton(
                           iconSize: 30,

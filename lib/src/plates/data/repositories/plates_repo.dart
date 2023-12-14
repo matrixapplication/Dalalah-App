@@ -13,7 +13,7 @@ class PlatesRepo extends BasePlatesRepo {
   PlatesRepo(this.remoteDataSource);
 
   @override
-  Future<ApiResponse<List<PlateDto>>> fetchFavorites() async {
+  Future<ApiResponse<List<PlateDto>>> fetchPlates() async {
     return await remoteDataSource.fetchPlates();
   }
 
