@@ -1,5 +1,6 @@
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
+import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../../home/data/models/car_filter_params.dart';
@@ -79,7 +80,14 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   onAddButtonPressed() {
-    Navigators.pushNamed(Routes.sellCarPage);
+    HelperMethods.isAuth().then((value) {
+      if(value == true) {
+        pushNamed(Routes.sellCarPage, arguments: true);
+      } else {
+        DialogsManager.showInfoDialogToLogin();
+      }
+    });
+    return null;
   }
 
 

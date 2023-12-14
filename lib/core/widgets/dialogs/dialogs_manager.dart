@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import '../../utils/navigator.dart';
 import 'progress_dialog.dart';
 import '../../../src/main_index.dart';
 
@@ -126,6 +127,21 @@ class DialogsManager {
       context,
       message: text,
       icon: Icons.error,
+    );
+  }
+
+  // show info dialog to login
+  static showInfoDialogToLogin() {
+    BuildContext context = injector<ServicesLocator>().navigatorKey.currentContext!;
+    baseDialog(
+      context,
+      message: context.strings.you_must_login_first,
+      icon: Icons.login,
+      hideCancelButton: false,
+      confirmButtonName: context.strings.login,
+      onClickOk: () {
+        pushNamed(Routes.login);
+      },
     );
   }
 }
