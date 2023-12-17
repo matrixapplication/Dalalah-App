@@ -11,8 +11,9 @@ import '../../utils/helper_methods.dart';
 ///  Created by harbey on 9/6/2023.
 class ContactSocialButtons extends StatelessWidget {
   final String phone;
+  final String? whatsapp;
 
-  const ContactSocialButtons({Key? key, required this.phone}) : super(key: key);
+  const ContactSocialButtons({Key? key, required this.phone, this.whatsapp}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class ContactSocialButtons extends StatelessWidget {
               icon: AppIcons.phone_solid,
               iconColor: context.primaryColor,
               iconSize: 20,
+              onTap: () => HelperMethods.launchCallPhone(phone),
             ),
           ),
           Expanded(
@@ -40,6 +42,7 @@ class ContactSocialButtons extends StatelessWidget {
               iconBackgroundColor: context.primaryColor,
               labelColor: context.gray_87,
               isRadius: false,
+              onTap: () => HelperMethods.launchWhatsApp(whatsapp ?? ''),
             ),
           ),
         ],
@@ -57,6 +60,7 @@ class ContactButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? iconBackgroundColor;
   final bool? isRadius;
+  final void Function()? onTap;
 
   const ContactButton({
     Key? key,
@@ -68,34 +72,38 @@ class ContactButton extends StatelessWidget {
     this.iconBackgroundColor,
     this.labelColor,
     this.isRadius = true,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: 20.paddingHoriz + 12.paddingVert,
-      decoration: Decorations.kDecorationTopEndRadius(
-        color: backgroundColor ?? context.primaryColor,
-        radius: isRadius! ? 15 : 0,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            label,
-            style: context.bodyLarge
-                .copyWith(color: labelColor ?? context.cardColor),
-          ),
-          20.pw,
-          AppCircularIcon(
-            icon: icon,
-            backgroundColor: iconBackgroundColor ?? context.cardColor,
-            size: iconSize,
-            color: iconColor,
-            radius: 18,
-          ),
-        ],
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: 20.paddingHoriz + 12.paddingVert,
+        decoration: Decorations.kDecorationTopEndRadius(
+          color: backgroundColor ?? context.primaryColor,
+          radius: isRadius! ? 15 : 0,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              label,
+              style: context.bodyLarge
+                  .copyWith(color: labelColor ?? context.cardColor),
+            ),
+            20.pw,
+            AppCircularIcon(
+              icon: icon,
+              backgroundColor: iconBackgroundColor ?? context.cardColor,
+              size: iconSize,
+              color: iconColor,
+              radius: 18,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,9 +1,10 @@
-import 'package:dalalah/core/widgets/buttons/favorite_icon_button.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
 import 'package:dalalah/src/cars/presentation/cars/widgets/cars_list.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
+import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../main_index.dart';
+import '../../../data/models/model_object.dart';
 import '../../../domain/entities/car_details.dart';
 import '../widgets/car_details_ratings.dart';
 import '../widgets/sliders_car_details.dart';
@@ -13,30 +14,36 @@ import 'views/car_details_price_view.dart';
 
 class CarsDetailsScreen extends BaseStatelessWidget {
   final bool isNew;
-  final CarDetails tasks;
+  final CarDetails carDetails;
+  final Function()? onToggleFavorite;
 
-  CarsDetailsScreen({Key? key, required this.tasks, required this.isNew}) : super(key: key);
+  CarsDetailsScreen({Key? key, required this.carDetails, required this.isNew,  required this.onToggleFavorite,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isNew = carDetails.status?.name == 'new';
     return NestedScrollView(
       body: TabBarWidget(
         tabs: [
           TabItemModel(
             label: strings.details,
-            page: CarDetailsDetailsView(),
+            page: CarDetailsDetailsView(
+              features: carDetails.features ?? [],
+            ),
           ),
           if(isNew)
           TabItemModel(
             label: strings.price,
-            page: CarDetailsPriceView(),
+            page: CarDetailsPriceView(
+              carDetails: carDetails,
+            ),
           ),
           if(isNew)
           TabItemModel(
             label: strings.categories,
             page: CarsList(cars: ['', '', '', ''], isCatItem: true),
           ),
-          if(isNew)
+       //   if(isNew)
           TabItemModel(
             label: strings.ratings,
             page: CarDetailsRatings(),
@@ -55,14 +62,17 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                 Stack(
                   children: [
                     SlidersCarDetails(
-                      images: const ['', '', '', ''],
+                      images: carDetails.allImages(),
                     ),
                     PositionedDirectional(
                       bottom: 0,
                       end: 10,
-                      child: FavoriteIconButton(
-                          size: 70,
-                        circleSize: 40,
+                      child: FavoriteButton(
+                        isFavorite: carDetails.isFavorite ?? false,
+                        onToggleFavorite: () {
+                          onToggleFavorite?.call();
+                        },
+
                       ),
                     ),
                   ],
@@ -73,7 +83,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'بي ام دبليو  X6 218i X6 218i',
+                        "${carDetails.brandModel?.brand} ${carDetails.brandModel?.name}",
                         style: context.textTheme.titleSmall!.copyWith(
                           color: AppColors.grey_2C,
                         ),
@@ -83,7 +93,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         children: [
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: context.strings.new_,
+                            label: carDetails.status?.name ?? '',
                             fontSize: 14,
                             labelColor: AppColors.blue_31,
                             width: 55,
@@ -91,7 +101,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                           14.pw,
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: '2023',
+                            label: carDetails.year ?? '',
                             fontSize: 14,
                             labelColor: AppColors.blue_31,
                             width: 58,
@@ -113,7 +123,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                           Spacer(),
                           CustomChip(
                             backgroundColor: context.primaryColor,
-                            label: '800,000 ${context.strings.rs}',
+                            label: '${carDetails.price ?? ''} ${context.strings.rs}',
                             fontSize: 18,
                             padding: 5.paddingVert,
                             width: 170,
@@ -122,7 +132,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       ),
 
                       if(!isNew)
-                        UserInfo(),
+                        UserInfo(
+                          user: carDetails.modelObject ?? ModelObject(),
+                        ),
                     ],
                   ),
                 ),

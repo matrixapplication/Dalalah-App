@@ -1,13 +1,28 @@
-
 import '../../src/main_index.dart';
 
+Future<dynamic> pushNamed(String routeName, {dynamic arguments}) async {
+  print('routeName: $routeName');
+  return injector<ServicesLocator>()
+      .navigatorKey
+      .currentState!
+      .pushNamed(routeName, arguments: arguments);
+}
+
+Future<dynamic> pushNamedAndRemoveUntil(String routeName, {dynamic arguments}) {
+  return injector<ServicesLocator>()
+      .navigatorKey
+      .currentState!
+      .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false,
+          arguments: arguments);
+}
 
 class Navigators {
+  static GlobalKey<NavigatorState> navigationKey =
+      injector<ServicesLocator>().navigatorKey;
 
-  static GlobalKey<NavigatorState> navigationKey = injector<ServicesLocator>().navigatorKey;
-
- static Future<dynamic> pushNamed(String routeName, {dynamic arguments}) async {
-   print('routeName: $routeName');
+  static Future<dynamic> pushNamed(String routeName,
+      {dynamic arguments}) async {
+    print('routeName: $routeName');
     return navigationKey.currentState!
         .pushNamed(routeName, arguments: arguments);
   }
@@ -30,7 +45,6 @@ class Navigators {
   }
 
   static void goBackUntil(String routeName) {
-    return navigationKey.currentState!
-        .popUntil(ModalRoute.withName(routeName));
+    return navigationKey.currentState!.popUntil(ModalRoute.withName(routeName));
   }
 }

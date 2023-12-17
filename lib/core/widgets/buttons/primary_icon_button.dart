@@ -58,18 +58,19 @@ class PrimaryIconButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            iconData != null
-                ? Icon(
-                    iconData,
-                    color: iconColor,
-                  )
-                : AppIcon(icon: icon!, color: iconColor, size: 20),
-            const SizedBox(width: 10),
             Text(
               title!,
               style: titleStyle ?? theme.textTheme.labelMedium,
               textAlign: TextAlign.center,
+            ),
+
+            const SizedBox(width: 10),
+            iconData != null
+                ? Icon(
+              iconData,
+              color: iconColor,
             )
+                : AppIcon(icon: icon!, color: iconColor, size: 20),
           ],
         ),
       ),

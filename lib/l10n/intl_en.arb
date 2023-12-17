@@ -299,5 +299,6 @@
   "must_be_at_least_11_characters": "Must be at least 11 characters",
   "you_must_login_first": "You must login first",
   "price_must_be_a_number": "Price must be a number",
-  "select_main_image": "Select Main Image"
+  "select_main_image": "Select Main Image",
+  "there_are_no_features": "There are no features"
 }

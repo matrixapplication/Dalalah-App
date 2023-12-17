@@ -36,6 +36,7 @@ class ProfileScreen extends BaseStatelessWidget {
               child: Column(
                 children: [
                   20.ph,
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.account_settings,
                     icon: AppIcons.profile,
@@ -50,6 +51,7 @@ class ProfileScreen extends BaseStatelessWidget {
                       }
                     },
                   ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.favorite_agencies,
                     icon: AppIcons.box,
@@ -57,6 +59,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.exhibitionPage,
                     arguments: strings.favorite_agencies,
                   ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.favorites,
                     icon: AppIcons.heart_solid,
@@ -64,6 +67,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.favoritesAndAdsTabs,
                     arguments: false,
                   ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.my_ads,
                     icon: AppIcons.save,
@@ -71,6 +75,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.favoritesAndAdsTabs,
                     arguments: true,
                   ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.notifications,
                     icon: AppIcons.notification,

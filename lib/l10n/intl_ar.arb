@@ -289,5 +289,6 @@
   "type_engine": "اكتب المحرك",
   "must_be_at_least_11_characters": "يجب أن يكون على الأقل 11 حرف",
   "price_must_be_a_number": "يجب أن يكون السعر رقم",
-  "select_main_image": "اختر الصورة الرئيسية"
+  "select_main_image": "اختر الصورة الرئيسية",
+  "there_are_no_features": "لا يوجد مميزات"
 }

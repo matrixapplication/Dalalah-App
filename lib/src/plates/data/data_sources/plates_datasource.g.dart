@@ -34,7 +34,7 @@ class _PlatesDatasource implements PlatesDatasource {
     )
             .compose(
               _dio.options,
-              '/get-plates',
+              '/get_plates',
               queryParameters: queryParameters,
               data: _data,
             )

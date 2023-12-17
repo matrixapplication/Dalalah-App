@@ -89,6 +89,7 @@ class IconText extends StatelessWidget {
       );
 
   Widget buildIconOrImage(BuildContext context) =>
+      icon?.contains('http') ?? false ? ImageNetwork(url: icon,width: iconSize, height: iconSize,) :
       icon?.split('/').last.contains('.png') ?? false
           ? Image.asset(icon ?? '', height: iconSize, width: iconSize)
           : isIconData

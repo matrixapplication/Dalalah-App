@@ -19,8 +19,8 @@ class ChatWhatsAppButton extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return AppCircularIconButton(
       padding: 8,
-      size: 30,
-      circleSize: 45,
+      size: 25,
+      circleSize: 35,
       decoration: decoration,
       icon: AppIcons.whatsapp_2,
       backgroundColor: context.cardColor,

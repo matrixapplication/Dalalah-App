@@ -2,11 +2,14 @@ import 'package:dalalah/core/widgets/icons/icon_text.dart';
 
 import '../../../../../../core/widgets/buttons/secondary_button.dart';
 import '../../../../../main_index.dart';
+import '../../../../domain/entities/car_details.dart';
 import '../../widgets/add_rating_widget.dart';
 import '../../widgets/company_car_details_item.dart';
 
 class CarDetailsPriceView extends BaseStatelessWidget {
-  CarDetailsPriceView({super.key});
+  final CarDetails carDetails;
+
+  CarDetailsPriceView({super.key, required this.carDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
                 ),
                 8.ph,
                 Text(
-                  '800,000 ${context.strings.rs}',
+                  '${carDetails.price ?? ''} ${context.strings.rs}',
                   style: context.textTheme.titleMedium!.copyWith(
                     color: Colors.white,
                   ),
@@ -39,7 +42,8 @@ class CarDetailsPriceView extends BaseStatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerStart,
             child: Text(
-              strings.buy_car_from('بي ام دبليو  X6 218i X6 218i '),
+              strings.buy_car_from(
+                  "${carDetails.brandModel?.brand} ${carDetails.brandModel?.name}"),
               style: context.textTheme.displayLarge!.copyWith(
                 color: AppColors.grey_51,
               ),
@@ -55,7 +59,6 @@ class CarDetailsPriceView extends BaseStatelessWidget {
               return CompanyCarDetailsItem();
             },
           ),
-
         ],
       ),
     );

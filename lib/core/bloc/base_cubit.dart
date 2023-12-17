@@ -15,14 +15,16 @@ abstract class BaseCubit extends Cubit<DataState>{
       emit(DataLoading());
       final response = await invoke();
       if(response == null || response is List && response.isEmpty || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
-        print('invoke $response');
+        print('invoke response $response');
         throw EmptyListException();
       } else {
         print('response  sscc $response');
         emit(DataSuccess<T>(response));
       }
     } catch (e) {
+      print('invoke e $e');
       emit(DataFailed(e));
+      rethrow;
     }
   }
   executeBuilder<T>(Future<T> Function() invoke,

@@ -1,11 +1,9 @@
 import 'package:dalalah/core/utils/helper_methods.dart';
-import 'package:dalalah/src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import 'package:dalalah/src/home/presentation/pages/home/sections_screen.dart';
 import 'package:dalalah/src/profile/presentation/pages/profile_page.dart';
-import 'package:dalalah/src/sell_car/presentation/pages/sell_car_page.dart';
+import 'package:dalalah/src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 import 'core/widgets/base/bottom_navigator_bar_item.dart';
 import 'src/home/presentation/pages/home/home_page.dart';
-import 'src/home/presentation/pages/home/home_screen.dart';
 import 'src/main_index.dart';
 
 class NavigationPages extends BaseStatelessWidget {
@@ -118,7 +116,7 @@ class NavigationPages extends BaseStatelessWidget {
        HomePage(),
     //  isAdmin ? SectionsScreen() : SectionsScreen(),
       SectionsScreen(),
-      ExhibitionPage(),
+      ShowroomsPage(),
       ProfilePage(),
     ];
   }

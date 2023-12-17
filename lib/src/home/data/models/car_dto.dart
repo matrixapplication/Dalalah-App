@@ -8,6 +8,7 @@ import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/feature_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
+import '../../../showrooms/data/models/branch_dto.dart';
 import 'brand_dto.dart';
 
 part 'car_dto.g.dart'; 
@@ -27,7 +28,7 @@ class CarDto {
   @JsonKey(name: 'brandModelExtension')
   BrandModelExtensionDto? brandModelExtension;
   @JsonKey(name: 'branch')
-  Branch? branch;
+  BranchDto? branch;
   @JsonKey(name: 'year')
   String? year;
   @JsonKey(name: 'color')
@@ -104,36 +105,6 @@ class CarContactDetails {
    factory CarContactDetails.fromJson(Map<String, dynamic> json) => _$CarContactDetailsFromJson(json);
 
    Map<String, dynamic> toJson() => _$CarContactDetailsToJson(this);
-}
-
-
-
-@JsonSerializable(ignoreUnannotated: true)
-class Branch {
-  @JsonKey(name: 'id')
-  int? id;
-  @JsonKey(name: 'name')
-  String? name;
-  @JsonKey(name: 'city')
-  String? city;
-  @JsonKey(name: 'district')
-  String? district;
-  @JsonKey(name: 'phone')
-  String? phone;
-  @JsonKey(name: 'whatsapp')
-  String? whatsapp;
-  @JsonKey(name: 'cityId')
-  int? cityId;
-  @JsonKey(name: 'districtId')
-  int? districtId;
-  @JsonKey(name: 'address')
-  String? address;
-
-  Branch({this.id, this.name, this.city, this.district, this.phone, this.whatsapp, this.cityId, this.districtId, this.address});
-
-   factory Branch.fromJson(Map<String, dynamic> json) => _$BranchFromJson(json);
-
-   Map<String, dynamic> toJson() => _$BranchToJson(this);
 }
 
 

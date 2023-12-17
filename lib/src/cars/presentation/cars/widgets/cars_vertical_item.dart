@@ -44,7 +44,7 @@ class CarVerticalItem extends StatelessWidget {
     return InkWell(
       onTap: () => Navigators.pushNamed(
         isAddView ? Routes.sellCarPage : Routes.carDetailsPage,
-        arguments: isNew,
+        arguments: car.id,
       ),
       child: Container(
         height: isAds ? 250 : 160,
@@ -116,7 +116,7 @@ class CarVerticalItem extends StatelessWidget {
                           CustomChip(
                             radius: 15,
                             backgroundColor: context.primaryColor,
-                            label: '${car.total?.toString() ?? ""} ${context.strings.rs}',
+                            label: '${car.price?.toString() ?? ""} ${context.strings.rs}',
                             fontSize: 16,
                             padding: 4.paddingVert,
                             width: 145,

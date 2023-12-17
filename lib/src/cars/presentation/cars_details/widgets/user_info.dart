@@ -4,9 +4,13 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/icons/icon_text.dart';
+import '../../../data/models/model_object.dart';
+import '../../../domain/entities/car_details.dart';
 
 ///  Created by harbey on 10/24/2023.
 class UserInfo extends StatelessWidget {
+  final ModelObject user;
+  UserInfo({Key? key, required this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -22,14 +26,14 @@ class UserInfo extends StatelessWidget {
         children: [
           IconText(
             mainAxisAlignment: MainAxisAlignment.start,
-            text: 'Mohamed Ali',
-            icon: AppImages.car_name,
+            text: user.name ?? '',
+            icon: user.image ?? '',
             iconSize: 50,
           ),
           Spacer(),
-          ChatWhatsAppButton(phone: '', decoration: Decorations.kDecorationBorder(radius: 50)),
+          ChatWhatsAppButton(phone: user.whatsapp ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
           5.ph,
-          CallButton(phone: '', decoration: Decorations.kDecorationBorder(radius: 50)),
+          CallButton(phone: user.phone ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
 
         ],
       ),

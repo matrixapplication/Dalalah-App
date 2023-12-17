@@ -34,6 +34,7 @@ final lightTheme = ThemeData(
     onBackground: kBlueColor,
     onSurface: kBorderColor,
     onSecondary: const Color(0xff707070).withOpacity(0.14),
+    onSecondaryContainer: const Color(0xffEEEEEE),
     secondary: const Color(0xff022332),
     onError: kRedColorEB,
     surface: const Color(0xffFFA010),

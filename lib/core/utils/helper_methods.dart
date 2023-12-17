@@ -81,6 +81,15 @@ class HelperMethods {
     }
   }
 
+  static Future<void> launchUrlLink(String url) async {
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      showErrorToast('حدث خطأ أثناء الاتصال بالرابط');
+    }
+  }
+
   // show date picker
   static Future<String> datePicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(

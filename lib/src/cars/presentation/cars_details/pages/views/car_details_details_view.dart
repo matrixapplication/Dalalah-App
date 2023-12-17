@@ -5,23 +5,32 @@ import '../../widgets/car_properties.dart';
 
 class CarDetailsDetailsView extends BaseStatelessWidget {
   final EdgeInsetsGeometry? padding;
+  final List<Feature> features;
 
-  CarDetailsDetailsView({super.key, this.padding});
+  CarDetailsDetailsView({super.key, this.padding, required this.features});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: padding ?? 20.paddingVert,
-      child: const Column(
-        children: [
-          // DetailsViewListTile(
-          //   title: 'المميزات',
-          // ),
-          // DetailsViewListTile(
-          //   title: 'الامان',
-          // ),
-        ],
-      ),
+    return features.isEmpty
+        ? Container(
+            padding: padding,
+            child: Center(
+              child: Text(
+                context.strings.there_are_no_features,
+                style: context.bodyMedium,
+              ),
+            ),
+          )
+        :
+      ListView.builder(
+      itemCount: features.length,
+      padding: padding,
+      itemBuilder: (context, index) {
+        return DetailsViewListTile(
+          feature: features[index],
+          isOpen: index == 0,
+        );
+      },
     );
   }
 }

@@ -60,7 +60,7 @@ class CarHorizontalItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.carDetailsPage);
+        Navigator.pushNamed(context, Routes.carDetailsPage, arguments: car.id);
       },
       child: Container(
         height: 250,

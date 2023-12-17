@@ -21,7 +21,7 @@ class PlatesDetailsProperty extends StatelessWidget {
         borderColor: context.gray_5c,
         radius: 10
       ),
-      child: ColumnTexts(
+      child: ColumnTextsFittedBox(
         title: label,
         value: value,
         space: 12,

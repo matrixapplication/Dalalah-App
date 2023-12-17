@@ -84,7 +84,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 title: strings.extensions,
                 hint: strings.select_extension,
                 valueId: car?.brandModelExtension?.id.toString() ?? '',
-                stream: state.brandsModelsStream,
+                stream: state.brandsModelsExtensionStream,
                 onChanged: (id) {
                   extensionId = id;
                 },

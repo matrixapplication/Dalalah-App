@@ -1,4 +1,6 @@
 
+import 'package:dalalah/src/cars/data/models/model_object.dart';
+
 import '../../../home/data/models/brand_dto.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../../../home/domain/entities/brand.dart';
@@ -26,6 +28,7 @@ class CarDetails {
   Brand? brand;
   BrandModel? brandModel;
   BrandModelExtension? brandModelExtension;
+  ModelObject? modelObject;
   dynamic branch;
   String? year;
   ColorDto? color;
@@ -61,6 +64,7 @@ class CarDetails {
       this.brand,
       this.brandModel,
       this.brandModelExtension,
+      this.modelObject,
       this.branch,
       this.year,
       this.color,
@@ -98,6 +102,7 @@ class CarDetails {
       brandModel: BrandModel.fromDto(json.brandModel ?? BrandModelDto()),
       brandModelExtension: BrandModelExtension.fromDto(
           json.brandModelExtension ?? BrandModelExtensionDto()),
+      modelObject: json.modelObject,
       branch: json.branch,
       year: json.year,
       color: json.color,
@@ -159,5 +164,9 @@ class CarDetails {
     ];
      properties.removeWhere((element) => element.title == '' || element.title == '0 KM');
      return properties;
+  }
+
+  List<String> allImages(){
+    return  [mainImage ?? '', door1Img ?? '', door2Img ?? '', door3Img ?? '', door4Img ?? '', ...images?.map((e) => e.image ?? '') ?? []];
   }
 }

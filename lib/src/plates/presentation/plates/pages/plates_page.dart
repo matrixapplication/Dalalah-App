@@ -1,5 +1,6 @@
 
 import 'package:dalalah/core/components/base_widget_bloc.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 
 import '../../../../../core/utils/navigator.dart';
@@ -48,7 +49,14 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
   @override
   onAddButtonPressed() {
-    Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+    HelperMethods.isAuth().then((value) {
+      if(value == true) {
+        pushNamed(Routes.plateFilterPage, arguments: true);
+      } else {
+        DialogsManager.showInfoDialogToLogin();
+      }
+    });
+    return null;
   }
 
   @override

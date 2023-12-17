@@ -195,7 +195,9 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   }
 
   @protected
-  onClickReload() {}
+  onClickReload() {
+    loadInitialData(context!);
+  }
 
   void onRequestFail() {}
 

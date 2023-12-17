@@ -10,6 +10,7 @@ import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/feature_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
+import 'model_object.dart';
 
 part 'car_details_dto.g.dart'; 
 
@@ -19,6 +20,8 @@ class CarDetailsDto {
   int? id;
   @JsonKey(name: 'car_contact_details')
   CarContactDetails? carContactDetails;
+  @JsonKey(name: 'model_object')
+  ModelObject? modelObject;
   @JsonKey(name: 'brand')
   BrandDto? brand;
   @JsonKey(name: 'brandModel')
