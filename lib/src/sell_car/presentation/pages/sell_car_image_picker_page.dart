@@ -32,15 +32,17 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
   @override
   Widget buildWidget(BuildContext context, DataSuccess<SettingsPrice> state) {
     final args = getArguments(context);
-    return SellCarImagePickerScreen(settingsPrice: state.data!, onSave: (params) {
-      print('args in SellCarImagePickerPage ${params.toJson()}');
-      args.price = params.price;
-      args.installment = params.installment;
-      args.description = params.description;
-      args.mainImage = params.mainImage;
-      args.images = params.images;
-      bloc.sellCar(args);
-    });
+    return SellCarImagePickerScreen(
+        settingsPrice: state.data!,
+        onSave: (params) {
+          print('args in SellCarImagePickerPage ${params.toJson()}');
+          args.price = params.price;
+          args.installment = params.installment;
+          args.description = params.description;
+          args.mainImage = params.mainImage;
+          args.images = params.images;
+          bloc.sellCar(args);
+        });
   }
 
   @override

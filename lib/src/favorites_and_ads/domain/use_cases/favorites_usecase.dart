@@ -1,8 +1,7 @@
-
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/network/api_response.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../data/models/add_to_favorite_params.dart';
 import '../repositories/base_favorites_repo.dart';
 
 @Injectable()
@@ -11,13 +10,35 @@ class FavoritesUseCase {
 
   FavoritesUseCase(this.repository);
 
-  Future<List<Car>> fetchFavorites() async {
-    final data = (await repository.fetchFavorites());
+  // Cars APIs
+  Future<List<Car>> fetchFavoriteCars(int page) async {
+    final data = (await repository.fetchFavoriteCars(page));
     return data.data!.map((e) => Car.fromDto(e)).toList();
   }
 
-  Future<String> toggleFavorite(int id) async {
-    final data = await repository.toggleFavorite(id);
-    return data.message!;
+  Future<List<Car>> fetchMyCars(int page) async {
+    final data = (await repository.fetchMyCars(page));
+    return data.data!.map((e) => Car.fromDto(e)).toList();
+  }
+
+  Future<bool> toggleFavoriteCar(AddToFavoriteParams params) async {
+    final data = (await repository.toggleFavoriteCar(params));
+    return data.data!;
+  }
+
+  // Plates APIs
+  Future<List<Car>> fetchMyPlates(int page) async {
+    final data = (await repository.fetchMyPlates(page));
+    return data.data!.map((e) => Car.fromDto(e)).toList();
+  }
+
+  Future<bool> toggleFavoritePlate(AddToFavoriteParams params) async {
+    final data = (await repository.toggleFavoritePlate(params));
+    return data.data!;
+  }
+
+  Future<List<Car>> fetchFavoritePlates(int page) async {
+    final data = (await repository.fetchFavoritePlates(page));
+    return data.data!.map((e) => Car.fromDto(e)).toList();
   }
 }

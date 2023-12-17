@@ -102,8 +102,8 @@ class SelectionButtonChip extends StatelessWidget {
       itemCount: types.length,
       physics: const NeverScrollableScrollPhysics(),
       padding: 0.paddingAll,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: types.length == 1 ? 1 : 2,
         childAspectRatio: 3,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,

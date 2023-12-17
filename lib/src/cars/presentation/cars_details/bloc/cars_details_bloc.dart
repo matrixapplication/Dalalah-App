@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../../main_index.dart';
 import '../../../domain/use_cases/cars_usecase.dart';
@@ -17,6 +18,6 @@ class CarsDetailsCubit extends BaseCubit {
   }
 
   Future<void> toggleFavorite(int id) async {
-    executeEmitterListener(() => favoritesUseCase.toggleFavorite(id));
+    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
   }
 }

@@ -1,4 +1,3 @@
-import 'package:dalalah/src/sell_car/presentation/pages/sell_car_page.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../navigation_pages.dart';
@@ -13,8 +12,7 @@ import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
 import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
 import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
-import '../../src/favorites_and_ads/presentation/pages/favorites_page.dart';
-import '../../src/favorites_and_ads/presentation/pages/favorites_tabs.dart';
+import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
 import '../../src/home/presentation/pages/home/home_page.dart';
@@ -120,7 +118,7 @@ class Routes {
     sellCarSecondPage: (context) => SellCarSecondPage(),
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),
-    favoritesAndAdsPage: (context) => FavoritesAndAdsPage(),
+    favoritesAndAdsPage: (context) => FavoritesAndAdsTabs(),
     brandsPage: (context) => BrandsScreen(),
     filterPage: (context) => FilterPage(),
     sortByPage: (context) => SortByPage(),

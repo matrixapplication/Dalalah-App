@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
+import '../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../data/models/car_filter_params.dart';
 import '../../domain/entities/brand.dart';
@@ -34,7 +35,7 @@ class HomeCubit extends BaseCubit {
     await fetchSlides();
     await fetchBrands();
     await fetchYourCars();
-  //  await fetchOtherCars();
+    //  await fetchOtherCars();
   }
 
   fetchSlides() async {
@@ -59,7 +60,8 @@ class HomeCubit extends BaseCubit {
 
   fetchYourCars() async {
     yourCarsStream.setData(null);
-    try { // CarFilterParams(startYear: DateTime.now().year)
+    try {
+      // CarFilterParams(startYear: DateTime.now().year)
       final response = await usecase.fetchCars(CarFilterParams());
       yourCarsStream.setData(response);
     } catch (e) {
@@ -67,22 +69,20 @@ class HomeCubit extends BaseCubit {
     }
   }
 
-
   fetchOtherCars() async {
     try {
       otherCarsStream.setData(null);
-      final response = await usecase.fetchCars(CarFilterParams(startYear: 1900, endYear: DateTime.now().year - 1));
+      final response = await usecase.fetchCars(
+          CarFilterParams(startYear: 1900, endYear: DateTime.now().year - 1));
       otherCarsStream.setData(response);
     } catch (e) {
       otherCarsStream.setError(e);
     }
   }
 
-
-
   Future<void> toggleFavorite(int id) async {
-    executeEmitterListener(() => favoritesUseCase.toggleFavorite(id),
-    );
+    executeEmitterListener(() =>
+        favoritesUseCase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
   }
 
   Future<List<Car>> fetchCarsBySearch(String search) async {

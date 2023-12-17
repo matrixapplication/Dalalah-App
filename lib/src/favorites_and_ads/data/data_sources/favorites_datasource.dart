@@ -16,9 +16,25 @@ abstract class FavoritesDatasource {
   @factoryMethod
   factory FavoritesDatasource(Dio dio) = _FavoritesDatasource;
 
+  // Cars APIs
   @GET('/get-favorite')
-  Future<ApiResponse<List<CarDto>>> fetchFavorites();
+  Future<ApiResponse<List<CarDto>>> fetchFavoriteCars(@Query('page') int page);
 
   @POST('/add-favorite')
-  Future<ApiResponse<bool>> toggleFavorite(@Body() AddToFavoriteParams params);
+  Future<ApiResponse<bool>> toggleFavoriteCar(@Body() AddToFavoriteParams params);
+
+  @GET('/get_admin_cars')
+  Future<ApiResponse<List<CarDto>>> fetchMyCars(@Query('page') int page);
+
+  // Plates APIs
+  @GET('/get-favorite')
+  Future<ApiResponse<List<CarDto>>> fetchFavoritePlates(@Query('page') int page);
+
+  @GET('/get-favorite')
+  Future<ApiResponse<List<CarDto>>> fetchMyPlates(@Query('page') int page);
+
+  @POST('/add-favorite')
+  Future<ApiResponse<bool>> toggleFavoritePlate(@Body() AddToFavoriteParams params);
+
+
 }
