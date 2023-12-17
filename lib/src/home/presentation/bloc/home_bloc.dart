@@ -2,7 +2,10 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
+import '../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
+import '../../../plates/domain/entities/plate.dart';
+import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/car_filter_params.dart';
 import '../../domain/entities/brand.dart';
 import '../../domain/entities/car.dart';
@@ -72,7 +75,7 @@ class HomeCubit extends BaseCubit {
   fetchOtherCars() async {
     try {
       otherCarsStream.setData(null);
-      final response = await usecase.fetchCars(CarFilterParams(startYear: 1900, endYear: DateTime.now().year - 1));
+      final response = await platesUseCase.fetchPlates();
       otherCarsStream.setData(response);
     } catch (e) {
       otherCarsStream.setError(e);
@@ -81,7 +84,7 @@ class HomeCubit extends BaseCubit {
 
   Future<void> toggleFavorite(int id) async {
     executeEmitterListener(() =>
-        favoritesUseCase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
+        favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
   Future<List<Car>> fetchCarsBySearch(String search) async {

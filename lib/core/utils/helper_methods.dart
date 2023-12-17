@@ -64,7 +64,7 @@ class HelperMethods {
   }
 
   static Future<void> launchCallPhone(String phoneNumber) async {
-    Uri telephoneUrl = Uri.parse("tel:$phoneNumber");
+    Uri telephoneUrl = Uri.parse("tel:+201015377750");
     if (await canLaunchUrl(telephoneUrl)) {
       await launchUrl(telephoneUrl);
     } else {

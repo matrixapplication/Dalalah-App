@@ -3,6 +3,7 @@ import 'package:dalalah/src/settings/domain/entities/about_us.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../src/home/domain/entities/car.dart';
 import '../exceptions/empty_list_exception.dart';
 import '../network/api_response.dart';
 import '../resources/data_state.dart';
@@ -28,13 +29,14 @@ abstract class BaseCubit extends Cubit<DataState>{
     }
   }
   executeBuilder<T>(Future<T> Function() invoke,
-      {bool isRefresh = true, required ValueChanged<T> onSuccess , ValueChanged ? onError}) async {
+      {bool isMoreData = false, required ValueChanged<T> onSuccess , ValueChanged ? onError}) async {
     try {
-      if(isRefresh){
+      if(isMoreData){
         emit(DataLoading());
       }
       final response = await invoke();
-      if(response == null || response is List && response.isEmpty || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
+      print('invoke response ${(response is ApiResponse<List<Car>> && response.data  == [])}');
+      if(response == null || ( (response is ApiResponse<List<Car>> && response.data is List && response.data == [])) || (  (response is List && response.isEmpty)) || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
         print('invoke $response');
         throw EmptyListException();
       } else {

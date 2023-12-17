@@ -100,7 +100,9 @@ class LoginBody extends BaseStatelessWidget {
               alignment: Alignment.center,
               child:  UnderlineTextButton(
                 title: strings.login_as_guest,
-                routeName: Routes.navigationPages,
+                onTap: () {
+                  Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+                },
               ),
             ),
           ],

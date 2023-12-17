@@ -96,7 +96,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                       Expanded(
                         child: PlatesDetailsProperty(
                           label: context.strings.plate_type,
-                          value: plate.plateType != 'private'
+                          value: plate.plateType == 'private'
                               ? 'خصوصي'
                               : 'نقل',
                         ),

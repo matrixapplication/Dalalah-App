@@ -30,33 +30,35 @@ class AppCircularIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(padding ?? 8),
-      margin: margin ?? EdgeInsets.zero,
-      width: circleSize ?? 30,
-      height: circleSize ?? 30,
-      // decoration: BoxDecoration(
-      //   color: backgroundColor ?? Colors.transparent,
-      //   shape: BoxShape.circle,
-      //   boxShadow: [
-      //     BoxShadow(
-      //       color: shadowColor ?? Colors.black.withOpacity(0.2),
-      //       blurRadius: 8,
-      //       offset: const Offset(0, 5),
-      //     ),
-      //   ],
-      // ),
-      decoration: decoration ?? Decorations.kDecorationBoxShadow(
-        color: backgroundColor,
-          radius: radius ??  500,
-          offset: const Offset(0, 4),
-          colorShadow: const Color(0xff8E8E8E).withOpacity(0.25)),
-      child: (icon is IconData) ? Icon(icon, color: color) :
-      AppIconButton(
-        icon: icon,
-        color: color,
-        size: size,
-        onPressed: onPressed,
+    return InkWell(
+      onTap: onPressed ?? () {},
+      child: Container(
+        padding: EdgeInsets.all(padding ?? 8),
+        margin: margin ?? EdgeInsets.zero,
+        width: circleSize ?? 30,
+        height: circleSize ?? 30,
+        // decoration: BoxDecoration(
+        //   color: backgroundColor ?? Colors.transparent,
+        //   shape: BoxShape.circle,
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: shadowColor ?? Colors.black.withOpacity(0.2),
+        //       blurRadius: 8,
+        //       offset: const Offset(0, 5),
+        //     ),
+        //   ],
+        // ),
+        decoration: decoration ?? Decorations.kDecorationBoxShadow(
+          color: backgroundColor,
+            radius: radius ??  500,
+            offset: const Offset(0, 4),
+            colorShadow: const Color(0xff8E8E8E).withOpacity(0.25)),
+        child: (icon is IconData) ? Icon(icon, color: color) :
+        AppIconButton(
+          icon: icon,
+          color: color,
+          size: size,
+        ),
       ),
     );
   }

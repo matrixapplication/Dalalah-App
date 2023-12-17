@@ -2,34 +2,43 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/resources/data_state.dart';
-import '../../../../home/domain/entities/car.dart';
+import '../../../../plates/domain/entities/plate.dart';
+import '../../../data/models/add_to_favorite_params.dart';
 import '../../../domain/use_cases/favorites_usecase.dart';
 
 @Injectable()
-class MyCarsCubit extends BaseCubit {
+class MyPlatesCubit extends BaseCubit {
   final FavoritesUseCase usecase;
 
-  MyCarsCubit(this.usecase);
+  MyPlatesCubit(this.usecase);
 
   // StreamStateInitial<bool>  isFavorite = StreamStateInitial<bool>();
 
 
-  List<Car> allCars = [];
-  List<Car> cars = [];
-  int page = 1;
+  List<Plate> allPlates = [];
+  List<Plate> plates = [];
+  int page = 0;
+  bool isLastPage = false;
 
-  fetchFavoriteCars({bool isRefresh = true}) async {
-    isRefresh ? {page = 1, allCars.clear()} : page++;
+  fetchMyPlates({bool isMoreData = false}) async {
+    isMoreData ? {page = 1, allPlates.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isRefresh: isRefresh,
+      isMoreData: isMoreData,
           () => usecase.fetchMyPlates(page),
       onSuccess: (data) {
-        cars = data;
-        allCars.addAll(data);
-        emit(DataSuccess<List<Car>>(allCars));
+        isLastPage = (data.pagination?.totalPages)! <= page;
+        print('isLastPage ${isLastPage}');
+        plates = data.data?.map((e) => Plate.fromDto(e)).toList() ?? [];
+        allPlates.addAll(plates);
+        plates.length > 15 ? null : plates = [];
+        emit(DataSuccess<List<Plate>>(allPlates));
       },
     );
+  }
+
+  void toggleFavoritePlate(int id) async {
+    executeEmitterListener(() => usecase.toggleFavoriteCarOrPlate(AddToFavoriteParams(plateId: id)));
   }
 
 }

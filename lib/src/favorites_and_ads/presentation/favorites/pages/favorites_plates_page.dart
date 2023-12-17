@@ -7,51 +7,31 @@ import '../../../../main_index.dart';
 import '../../../../plates/domain/entities/plate.dart';
 import '../../../../plates/presentation/plates/bloc/plates_bloc.dart';
 import '../../../../plates/presentation/plates/pages/plates_screen.dart';
+import '../bloc/favorite_plates_bloc.dart';
 
 
-class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
-  final bool isFilter;
-  PlatesPage({Key? key, this.isFilter = true}) : super(key: key);
+class FavoritePlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, FavoritePlatesCubit> {
+  FavoritePlatesPage({Key? key}) : super(key: key);
 
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFavorites();
-  }
-
-
-  @override
-  String? title(context)=> isFilter ? strings.plates : null;
-
-  @override
-  Widget build(BuildContext context) {
-    return mainFrame(
-      body: Column(
-        children: [
-          if(isFilter ?? true)
-          FilterHome(
-            routeName: Routes.plateFilterPage,
-            onFilterOrder: (){},
-          ),
-          Expanded(child: buildConsumer(context)),
-        ],
-      ),
-    );
+    bloc.fetchFavoriteCars();
   }
 
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesScreen(plates: state.data ?? []);
+    return PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavoriteCar(id));
   }
-
-  @override
-  onAddButtonPressed() {
-    Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
-  }
-
-  @override
-  bool isAddButton() {
-    return true;
-  }
+  //
+  // @override
+  // onAddButtonPressed() {
+  //   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+  // }
+  //
+  // @override
+  // bool isAddButton() {
+  //   return true;
+  // }
 }

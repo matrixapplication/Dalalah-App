@@ -40,9 +40,14 @@ class ProfileHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 40.ph,
+                profile!.token != null ?
                ImageNetworkCircle(
                   image: profile?.image,
                   size: 80,
+                ) : Image.asset(
+                  AppImages.logo,
+                  width: 80,
+                  height: 80,
                 ),
                 17.ph,
                 Text(

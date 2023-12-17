@@ -6,6 +6,7 @@ import 'package:retrofit/http.dart';
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/car_dto.dart';
+import '../../../plates/data/models/plate_dto.dart';
 import '../models/add_to_favorite_params.dart';
 
 part 'favorites_datasource.g.dart';
@@ -21,20 +22,16 @@ abstract class FavoritesDatasource {
   Future<ApiResponse<List<CarDto>>> fetchFavoriteCars(@Query('page') int page);
 
   @POST('/add-favorite')
-  Future<ApiResponse<bool>> toggleFavoriteCar(@Body() AddToFavoriteParams params);
+  Future<ApiResponse<bool>> toggleFavoriteCarOrPlate(@Body() AddToFavoriteParams params);
 
   @GET('/get_admin_cars')
   Future<ApiResponse<List<CarDto>>> fetchMyCars(@Query('page') int page);
 
   // Plates APIs
   @GET('/get-favorite')
-  Future<ApiResponse<List<CarDto>>> fetchFavoritePlates(@Query('page') int page);
+  Future<ApiResponse<List<PlateDto>>> fetchFavoritePlates(@Query('page') int page);
 
-  @GET('/get-favorite')
-  Future<ApiResponse<List<CarDto>>> fetchMyPlates(@Query('page') int page);
-
-  @POST('/add-favorite')
-  Future<ApiResponse<bool>> toggleFavoritePlate(@Body() AddToFavoriteParams params);
-
+  @GET('/my-plates')
+  Future<ApiResponse<List<PlateDto>>> fetchMyPlates(@Query('page') int page);
 
 }

@@ -6,7 +6,8 @@ import '../widgets/plate_item.dart';
 
 class PlatesScreen extends StatelessWidget {
   final List<Plate> plates;
-  const PlatesScreen({Key? key, required this.plates}) : super(key: key);
+  final Function(int) onFavoritePlate;
+  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,12 @@ class PlatesScreen extends StatelessWidget {
       child: ListView.builder(
         itemCount: plates.length,
         padding: 16.paddingAll,
+        shrinkWrap: true,
+        controller: ScrollController(),
         itemBuilder: (context, index) {
           return PlateItem(
             plate: plates[index],
+            onFavoritePlate: onFavoritePlate,
           );
         },
       ),

@@ -17,7 +17,7 @@ class ShowroomsCubit extends BaseCubit {
   fetchShowrooms({bool isRefresh = true}) async {
     isRefresh ? {page = 1, allShowrooms.clear()} : page++;
     executeBuilder(
-      isRefresh: isRefresh,
+      isMoreData: isRefresh,
           () => useCase.fetchShowrooms(page),
       onSuccess: (data) {
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];

@@ -38,7 +38,7 @@ class HeaderInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
     ProfileDto? profile = accessToken.isNotEmpty ? ProfileDto() : await HelperMethods.getProfile();
   //  profile?.token = ;
-    options.headers[keyAuthorization] = 'Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmI4YTkxZTU4ZTFhYzhkNDNjYmFhMWMxODA1ZWZjZTZhZDYyZWVhNzdiOGUyMjNiYjQwZTllYWU5NTVlYTJkOTRlNjk5NmIyMTgxODg2NGMiLCJpYXQiOjE3MDIyMTAyMjkuNTcyOTc0OTIwMjcyODI3MTQ4NDM3NSwibmJmIjoxNzAyMjEwMjI5LjU3Mjk3ODAxOTcxNDM1NTQ2ODc1LCJleHAiOjE3MzM4MzI2MjkuNTY2NTc0MDk2Njc5Njg3NSwic3ViIjoiMTQiLCJzY29wZXMiOlsidXNlciJdfQ.c5b1ROUCdajGNy-hASwfiU_E8mmWvSEqeCFNToGP565slIEBFPK5Q7pzojnGnVjoc_5OcL78xnkcmvzBRaQpFzkbdFSN6bwpJyAIlX9vEQJB_OypSIuQep_XURgL0YgVy_eOVU_eYUaQdOulyfP-aYL_mF_ndgrkifCRpqPkq_RItPAG7d00XtLbolbWDxbyT_UtI6ZeyUU5EAC6oSJOpUQKdOQeFv6PjmlcywwoOsONaupPo_XEP1P9c6L0U_V7hcPoaJySu8-kiThCRgBREYH9DeRwrk7LbNd8Ulf1knB07_f-Nhj6nXwB4lsoil7pBn2ZCZVCEveRbrq1qj9Mc_D72VVYGFI4g1ApvvLC4rrszwgroR4pqbPezVhD4xY_9Xvo8X7T5IIIQVWYMMRS1tKxSkmVkydroPxAtvWorP26VqIdN6onZGq04OQl5Jri9Twf41QsE2HECqkN_m0-MVNvcwbgQOG1dqYiQ6O9TzXwUcxWexB0hc0lz65xoT35IEsWULkBC4CPUCG6p-zeOlKP7b20dEwghDFwWq7Dfq9wkqsfdqE-KDDM5K-3Yv9UJFsbNiAAvxhuXGFcXVzcV7Wq3ROrX8263nT28M4L1uP_UQv2BQtbFGP7M5HFWYhkapv6mkvApm4PF1rJwe00xgGG96pcrIZrNFuTHhuWprA'}';
+    options.headers[keyAuthorization] = 'Bearer ${profile?.token ?? accessToken}';
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
     options.headers[keyApiKey] = apiKeyValue;
     options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';

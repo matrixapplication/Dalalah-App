@@ -1,7 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/routes/routes.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
-import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
 
@@ -13,21 +12,19 @@ import '../../../domain/entities/plate.dart';
 ///  Created by harbey on 10/11/2023.
 class PlateItem extends StatelessWidget {
   final Plate plate;
-  final bool isFavouriteView;
-  final bool isAddView;
+  final Function(int)? onFavoritePlate;
 
   const PlateItem({
     Key? key,
     required this.plate,
-    this.isFavouriteView = false,
-    this.isAddView = false,
+     this.onFavoritePlate,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigators.pushNamed(
-        isAddView ? Routes.plateFilterPage : Routes.platesDetailsPage,
+        Routes.platesDetailsPage,
         arguments: plate,
       ),
       child: Container(
@@ -71,13 +68,14 @@ class PlateItem extends StatelessWidget {
                     style: context.bodyMedium,
                   ),
                   PriceWidget(price: plate.price ?? '0'),
-                  isAddView
+                  onFavoritePlate == null
                       ? const EditIconButton(
                           iconSize: 30,
                           circleSize: 40,
                         )
                       : FavoriteButton(
-                          isFavorite: isFavouriteView,
+                          isFavorite: plate.isFavorite  ?? false,
+                    onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
                     iconSize: 15,
                         ),
                 ],

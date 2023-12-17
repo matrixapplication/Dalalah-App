@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../home/data/models/car_dto.dart';
+import '../../../plates/data/models/plate_dto.dart';
 import '../../domain/repositories/base_favorites_repo.dart';
 import '../data_sources/favorites_datasource.dart';
 import '../models/add_to_favorite_params.dart';
@@ -18,7 +19,7 @@ class FavoritesRepo extends BaseFavoritesRepo {
   }
 
   @override
-  Future<ApiResponse<List<CarDto>>> fetchFavoritePlates(int page) async {
+  Future<ApiResponse<List<PlateDto>>> fetchFavoritePlates(int page) async {
     return await remoteDataSource.fetchFavoritePlates(page);
   }
 
@@ -28,19 +29,14 @@ class FavoritesRepo extends BaseFavoritesRepo {
   }
 
   @override
-  Future<ApiResponse<List<CarDto>>> fetchMyPlates(int page) async {
+  Future<ApiResponse<List<PlateDto>>> fetchMyPlates(int page) async {
     return await remoteDataSource.fetchMyPlates(page);
   }
 
   @override
-  Future<ApiResponse<bool>> toggleFavoriteCar(
+  Future<ApiResponse<bool>> toggleFavoriteCarOrPlate(
       AddToFavoriteParams params) async {
-    return await remoteDataSource.toggleFavoriteCar(params);
+    return await remoteDataSource.toggleFavoriteCarOrPlate(params);
   }
 
-  @override
-  Future<ApiResponse<bool>> toggleFavoritePlate(
-      AddToFavoriteParams params) async {
-    return await remoteDataSource.toggleFavoritePlate(params);
-  }
 }

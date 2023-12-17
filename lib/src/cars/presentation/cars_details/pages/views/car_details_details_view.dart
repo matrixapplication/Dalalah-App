@@ -5,32 +5,49 @@ import '../../widgets/car_properties.dart';
 
 class CarDetailsDetailsView extends BaseStatelessWidget {
   final EdgeInsetsGeometry? padding;
+  final String desc;
   final List<Feature> features;
 
-  CarDetailsDetailsView({super.key, this.padding, required this.features});
+  CarDetailsDetailsView({super.key, this.padding, required this.features, this.desc = ''});
 
   @override
   Widget build(BuildContext context) {
-    return features.isEmpty
-        ? Container(
-            padding: padding,
-            child: Center(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          if (desc.isNotEmpty)
+            Container(
+              padding: 16.paddingAll,
               child: Text(
-                context.strings.there_are_no_features,
+                desc,
                 style: context.bodyMedium,
               ),
             ),
-          )
-        :
-      ListView.builder(
-      itemCount: features.length,
-      padding: padding,
-      itemBuilder: (context, index) {
-        return DetailsViewListTile(
-          feature: features[index],
-          isOpen: index == 0,
-        );
-      },
+          features.isEmpty
+              ? Container(
+                  padding: padding,
+                  child: Center(
+                    child: Text(
+                      context.strings.there_are_no_features,
+                      style: context.bodyMedium,
+                    ),
+                  ),
+                )
+              :
+            ListView.builder(
+            itemCount: features.length,
+            padding: padding,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return DetailsViewListTile(
+                feature: features[index],
+                isOpen: index == 0,
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -65,11 +82,13 @@ class DetailsViewListTile extends StatelessWidget {
                     (e) => CarPropertyItem(
                       property: e,
                       onTap: (id) {
+                        print('after: $selected');
                         if (selected.contains(id)) {
                           selected.remove(id);
                         } else {
                           selected.add(id);
                         }
+                        print('before: $selected');
                         onSelected!(selected);
                       },
                     ),

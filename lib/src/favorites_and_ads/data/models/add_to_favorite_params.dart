@@ -6,8 +6,10 @@ part 'add_to_favorite_params.g.dart';
 class AddToFavoriteParams {
   @JsonKey(name: 'car_id')
   int? carId;
+  @JsonKey(name: 'plate_id')
+  int? plateId;
 
-  AddToFavoriteParams({this.carId});
+  AddToFavoriteParams({this.carId, this.plateId});
 
    factory AddToFavoriteParams.fromJson(Map<String, dynamic> json) => _$AddToFavoriteParamsFromJson(json);
 

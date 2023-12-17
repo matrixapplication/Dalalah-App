@@ -113,6 +113,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 title: strings.engine,
                 hintText: strings.type_engine,
                 controller: engineController,
+                keyboardType: TextInputType.number,
               ),
               CustomTextField(
                 title: strings.cylinders,

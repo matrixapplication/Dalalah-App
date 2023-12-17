@@ -35,6 +35,7 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
             feature: features[index],
             onSelected: (ids) {
               selected = ids;
+              print(selected);
             },
           );
         },

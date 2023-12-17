@@ -19,8 +19,8 @@ class FavouritePlatesView extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         return PlateItem(
           plate: Plate(),
-          isFavouriteView: true,
-          isAddView: isAddView,
+          // isFavouriteView: true,
+          // isAddView: isAddView,
         );
       },
     );

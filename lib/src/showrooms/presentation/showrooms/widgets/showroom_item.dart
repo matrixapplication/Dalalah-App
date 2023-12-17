@@ -2,7 +2,6 @@ import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 
 import '../../../../../core/utils/navigator.dart';
-import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../cars/presentation/cars/widgets/custom_company_container.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/showroom.dart';

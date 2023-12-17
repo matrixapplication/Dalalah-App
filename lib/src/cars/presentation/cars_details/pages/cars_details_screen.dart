@@ -28,6 +28,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           TabItemModel(
             label: strings.details,
             page: CarDetailsDetailsView(
+              desc: carDetails.description ?? '',
               features: carDetails.features ?? [],
             ),
           ),
@@ -89,24 +90,63 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         ),
                       ),
                       15.ph,
-                      Row(
-                        children: [
-                          CustomChip(
-                            backgroundColor: AppColors.grey_d9,
-                            label: carDetails.status?.name ?? '',
-                            fontSize: 14,
-                            labelColor: AppColors.blue_31,
-                            width: 55,
-                          ),
-                          14.pw,
-                          CustomChip(
-                            backgroundColor: AppColors.grey_d9,
-                            label: carDetails.year ?? '',
-                            fontSize: 14,
-                            labelColor: AppColors.blue_31,
-                            width: 58,
-                          ),
-                        ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.status?.name ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 55,
+                            ),
+                            14.pw,
+                            CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.year ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 70,
+                            ),
+                            14.pw,
+                            CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.color?.name ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 70,
+                            ),
+                            14.pw, CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.driveType?.name ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 100,
+                            ),
+                            14.pw, CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.engine ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 70,
+                            ),
+                            14.pw, CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.cylinders ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 70,
+                            ),
+                            14.pw,CustomChip(
+                              backgroundColor: AppColors.grey_d9,
+                              label: carDetails.mileage ?? '',
+                              fontSize: 14,
+                              labelColor: AppColors.blue_31,
+                              width: 70,
+                            ),
+                          ],
+                        ),
                       ),
                       10.ph,
                       Row(

@@ -25,6 +25,7 @@ PlateDto _$PlateDtoFromJson(Map<String, dynamic> json) => PlateDto(
       user: json['user'] == null
           ? null
           : ProfileDto.fromJson(json['user'] as Map<String, dynamic>),
+      isFavorite: json['is_favorite'] as bool?,
     );
 
 Map<String, dynamic> _$PlateDtoToJson(PlateDto instance) => <String, dynamic>{
@@ -42,4 +43,5 @@ Map<String, dynamic> _$PlateDtoToJson(PlateDto instance) => <String, dynamic>{
       'is_approved': instance.isApproved,
       'city': instance.city,
       'user': instance.user,
+      'is_favorite': instance.isFavorite,
     };

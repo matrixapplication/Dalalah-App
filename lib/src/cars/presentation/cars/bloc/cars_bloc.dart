@@ -21,7 +21,7 @@ class CarsCubit extends BaseCubit {
   StreamStateInitial<List<Brand>> brandsStream = StreamStateInitial();
 
   Future<void> toggleFavorite(int id) async {
-    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
+    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
   List<Car> allCars = [];
@@ -34,7 +34,7 @@ class CarsCubit extends BaseCubit {
     print('page onSuccess$page');
     params.page = page;
     executeBuilder(
-      isRefresh: isRefresh,
+      isMoreData: isRefresh,
           () => isMyCars
           ? carsUseCase.fetchMyCars(page)
           : usecase.fetchCars(params),

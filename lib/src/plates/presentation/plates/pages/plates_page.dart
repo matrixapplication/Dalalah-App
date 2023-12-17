@@ -44,7 +44,7 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesScreen(plates: state.data ?? []);
+    return PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavorite(id));
   }
 
   @override

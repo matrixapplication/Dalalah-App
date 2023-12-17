@@ -56,8 +56,8 @@ class ProfileScreen extends BaseStatelessWidget {
                     title: strings.favorite_agencies,
                     icon: AppIcons.box,
                     subTitle: strings.dealers_showrooms_agents,
-                    routeName: Routes.exhibitionPage,
-                    arguments: strings.favorite_agencies,
+                    // routeName: Routes.exhibitionPage,
+                    // arguments: strings.favorite_agencies,
                   ),
                   if(profile.token != null)
                   ProfileItem(
@@ -103,6 +103,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.aboutUs,
                     arguments: AboutUsTypes.ABOUT_US,
                   ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.delete_account,
                     icon: AppIcons.delete,
@@ -112,12 +113,12 @@ class ProfileScreen extends BaseStatelessWidget {
                     },
                   ),
                   ProfileItem(
-                    title: strings.logout,
+                    title: profile.token == null ? strings.login : strings.logout,
                     icon: AppIcons.off,
                     isLogoutTile: true,
                     isLast: true,
                     onTap: () {
-                      onLogout();
+                      profile.token == null ? pushNamedAndRemoveUntil(Routes.login) : onLogout();
                     },
                   ),
                 ],

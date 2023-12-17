@@ -13,10 +13,11 @@ import '../widgets/picker_car_images.dart';
 
 class SellCarImagePickerScreen extends BaseStatelessWidget {
   final SettingsPrice settingsPrice;
+  final String statusCar;
   final Function(SellCarParams) onSave;
 
   SellCarImagePickerScreen(
-      {Key? key, required this.settingsPrice, required this.onSave})
+      {Key? key, required this.settingsPrice,required this.statusCar, required this.onSave})
       : super(key: key);
 
   // properties
@@ -52,12 +53,13 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 hintText: strings.price_egp,
                 controller: priceController,
                 keyboardType: TextInputType.number,
-                validator: (value) => Validation.validatePrice(
-                    value?.trim() ?? '',
-                    settingsPrice.carMaxPrice.toString(),
-                    settingsPrice.carMinPrice.toString()),
+                // validator: (value) => Validation.validatePrice(
+                //     value?.trim() ?? '',
+                //     settingsPrice.carMaxPrice.toString(),
+                //     settingsPrice.carMinPrice.toString()),
               ),
               10.ph,
+              if(statusCar == 'new')
               CustomTextField(
                 title: strings.installment_value_monthly,
                 hintText: strings.enter_installment_value,
@@ -93,7 +95,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
       onSave(
         SellCarParams(
           price: int.parse(priceController.text.trim()),
-          installment: int.parse(installmentController.text.trim()),
+          installment: installmentController.text.isEmpty ? null : int.parse(installmentController.text.trim()),
           description: descController.text.trim(),
           mainImage: mainImage,
           images: imagesSelected,

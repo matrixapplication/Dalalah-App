@@ -34,6 +34,7 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
     final args = getArguments(context);
     return SellCarImagePickerScreen(
         settingsPrice: state.data!,
+        statusCar: args.status,
         onSave: (params) {
           print('args in SellCarImagePickerPage ${params.toJson()}');
           args.price = params.price;

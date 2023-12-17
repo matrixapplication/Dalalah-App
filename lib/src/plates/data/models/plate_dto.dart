@@ -35,8 +35,12 @@ class PlateDto {
   CityDto? city;
   @JsonKey(name: 'user')
   ProfileDto? user;
+  @JsonKey(name: 'is_favorite')
+  bool? isFavorite;
+  @JsonKey(name: 'created_at')
+  String? createdAt;
 
-  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user});
+  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
 
    factory PlateDto.fromJson(Map<String, dynamic> json) => _$PlateDtoFromJson(json);
 

@@ -55,7 +55,7 @@ class _FavoritesDatasource implements FavoritesDatasource {
   }
 
   @override
-  Future<ApiResponse<bool>> toggleFavoriteCar(
+  Future<ApiResponse<bool>> toggleFavoriteCarOrPlate(
       AddToFavoriteParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -121,13 +121,13 @@ class _FavoritesDatasource implements FavoritesDatasource {
   }
 
   @override
-  Future<ApiResponse<List<CarDto>>> fetchFavoritePlates(int page) async {
+  Future<ApiResponse<List<PlateDto>>> fetchFavoritePlates(int page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<CarDto>>>(Options(
+        _setStreamType<ApiResponse<List<PlateDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -143,11 +143,12 @@ class _FavoritesDatasource implements FavoritesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<CarDto>>.fromJson(
+    final value = ApiResponse<List<PlateDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<CarDto>((i) => CarDto.fromJson(i as Map<String, dynamic>))
+              .map<PlateDto>(
+                  (i) => PlateDto.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );
@@ -155,20 +156,20 @@ class _FavoritesDatasource implements FavoritesDatasource {
   }
 
   @override
-  Future<ApiResponse<List<CarDto>>> fetchMyPlates(int page) async {
+  Future<ApiResponse<List<PlateDto>>> fetchMyPlates(int page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<CarDto>>>(Options(
+        _setStreamType<ApiResponse<List<PlateDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/get-favorite',
+              '/my-plates',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -177,45 +178,14 @@ class _FavoritesDatasource implements FavoritesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<CarDto>>.fromJson(
+    final value = ApiResponse<List<PlateDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<CarDto>((i) => CarDto.fromJson(i as Map<String, dynamic>))
+              .map<PlateDto>(
+                  (i) => PlateDto.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
-    );
-    return value;
-  }
-
-  @override
-  Future<ApiResponse<bool>> toggleFavoritePlate(
-      AddToFavoriteParams params) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(params.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<bool>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/add-favorite',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ApiResponse<bool>.fromJson(
-      _result.data!,
-      (json) => json as bool,
     );
     return value;
   }

@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/bloc/base_cubit.dart';
+import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../domain/use_cases/favorites_usecase.dart';
@@ -17,17 +18,23 @@ class MyCarsCubit extends BaseCubit {
   List<Car> allCars = [];
   List<Car> cars = [];
   int page = 1;
+  bool isLastPage = false;
 
-  fetchFavoriteCars({bool isRefresh = true}) async {
-    isRefresh ? {page = 1, allCars.clear()} : page++;
+  fetchMyCars({bool isMoreData = false}) async {
+    isMoreData ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isRefresh: isRefresh,
+      isMoreData: isMoreData,
           () => usecase.fetchMyCars(page),
       onSuccess: (data) {
-        cars = data;
-        allCars.addAll(data);
-        emit(DataSuccess<List<Car>>(allCars));
+        isLastPage = (data.pagination?.totalPages)! <= page;
+        cars = data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
+        if(cars.isEmpty){
+          throw EmptyListException();
+        } else {
+          allCars.addAll(cars);
+          emit(DataSuccess<List<Car>>(allCars));
+        }
       },
     );
   }

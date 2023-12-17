@@ -19,8 +19,10 @@ class Plate {
   String? isApproved;
   CityDto? city;
   ProfileDto? user;
+  bool? isFavorite;
+  String? createdAt;
 
-  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user});
+  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
 
    factory Plate.fromDto(PlateDto json) {
      return Plate(
@@ -38,6 +40,8 @@ class Plate {
        isApproved: json.isApproved,
        city: json.city,
        user: json.user,
+        isFavorite: json.isFavorite,
+       createdAt: json.createdAt,
      );
    }
 }

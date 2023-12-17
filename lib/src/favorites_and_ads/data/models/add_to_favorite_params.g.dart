@@ -9,10 +9,12 @@ part of 'add_to_favorite_params.dart';
 AddToFavoriteParams _$AddToFavoriteParamsFromJson(Map<String, dynamic> json) =>
     AddToFavoriteParams(
       carId: json['car_id'] as int?,
+      plateId: json['plate_id'] as int?,
     );
 
 Map<String, dynamic> _$AddToFavoriteParamsToJson(
         AddToFavoriteParams instance) =>
     <String, dynamic>{
       'car_id': instance.carId,
+      'plate_id': instance.plateId,
     };

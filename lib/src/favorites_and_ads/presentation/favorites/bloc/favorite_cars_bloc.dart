@@ -23,7 +23,7 @@ class FavoriteCarsCubit extends BaseCubit {
     isRefresh ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isRefresh: isRefresh,
+      isMoreData: isRefresh,
           () => usecase.fetchFavoriteCars(page),
       onSuccess: (data) {
         cars = data;
@@ -34,7 +34,7 @@ class FavoriteCarsCubit extends BaseCubit {
   }
 
   void toggleFavoriteCar(int id) async {
-    executeEmitterListener(() => usecase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
+    executeEmitterListener(() => usecase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
 

@@ -49,21 +49,16 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.full_name,
                 controller: fullNameController,
               ),
-              EditTextField(
-                title: strings.email,
-                controller: emailController,
-              ),
+              // EditTextField(
+              //   title: strings.email,
+              //   controller: emailController,
+              // ),
               EditTextField(
                 title: strings.phone_number,
                 controller: phoneController,
                 maxLength: 11,
                 validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
-              EditTextField(
-                title: strings.whatsapp_number,
-                controller: whatsAppController,
-              ),
-
               EditTextField(
                 title: strings.whatsapp_number,
                 controller: whatsAppController,
@@ -81,7 +76,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 ),
               ),
               EditTextField(
-                title: strings.confirm_password,
+                title: strings.change_language,
                 controller: passwordController,
                 isPasswordVisible: false,
               ),

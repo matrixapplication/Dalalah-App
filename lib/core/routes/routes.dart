@@ -10,8 +10,6 @@ import '../../src/cars/presentation/cars/pages/cars_page.dart';
 import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
-import '../../src/exhibition/presentation/exhibition_details/pages/exhibition_details_page.dart';
-import '../../src/exhibition/presentation/exhibitions/pages/exhibition_page.dart';
 import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
@@ -36,6 +34,9 @@ import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
+import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
+import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
+import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 
 class Routes {
   static const String languagePage = 'language_page';
@@ -51,6 +52,7 @@ class Routes {
   static const String monthlyInstallmentPage = 'monthlyInstallmentPage';
   static const String realEstatePage = 'realEstatePage';
   static const String addPremiumPage = 'AddPremiumPage';
+  static const String branchesPage = 'branchesPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -105,6 +107,7 @@ class Routes {
     monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
     realEstatePage: (context) => RealEstatePage(),
     addPremiumPage: (context) => AddPremiumPage(),
+    branchesPage: (context) => BranchesPage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),
@@ -130,8 +133,8 @@ class Routes {
     settings: (context) => SettingsPage(),
     changeLanguage: (context) => ChangLanguagePage(),
     aboutUs: (context) => AboutUsPage(),
-    exhibitionPage: (context) => ExhibitionPage(),
-    exhibitionDetailsPage: (context) => ExhibitionDetailsPage(),
+    exhibitionPage: (context) => ShowroomsPage(),
+    exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
   };
 }

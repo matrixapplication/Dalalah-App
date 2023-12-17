@@ -18,6 +18,6 @@ class CarsDetailsCubit extends BaseCubit {
   }
 
   Future<void> toggleFavorite(int id) async {
-    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCar(AddToFavoriteParams(carId: id)));
+    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 }

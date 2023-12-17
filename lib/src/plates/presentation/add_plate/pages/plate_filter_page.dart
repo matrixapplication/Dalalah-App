@@ -23,7 +23,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
    PlateFilterScreen({super.key, required this.cities, this.onSelected});
 
 
-  List<ChipItem> types = [ChipItem(title: 'خصوصي', id: 'private'), ChipItem(title: 'نقل', id: 'public')];
+  List<ChipItem> types = [ChipItem(title: 'خصوصي', id: 'private'), ChipItem(title: 'نقل', id: 'transfer')];
   List<TextEditingController> controllersArLetters =
   List.generate(3, (index) => TextEditingController());
   List<TextEditingController> controllersEnLetters =
@@ -46,7 +46,9 @@ class PlateFilterScreen extends BaseStatelessWidget {
             SelectionButtonChip(
               title: strings.plate_type,
               types: types,
-              onSelected: (item) {},
+              onSelected: (item) {
+                plateType = item.id ?? 'private';
+              },
             ),
             10.ph,
             Container(

@@ -1,35 +1,60 @@
-
 import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
+import 'package:dalalah/core/widgets/pagination/pagination_widget.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
-import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
 import '../../../../plates/domain/entities/plate.dart';
-import '../../../../plates/presentation/plates/bloc/plates_bloc.dart';
 import '../../../../plates/presentation/plates/pages/plates_screen.dart';
+import '../bloc/my_plates_bloc.dart';
 
-
-class MyPlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
+class MyPlatesPage
+    extends BaseBlocWidget<DataSuccess<List<Plate>>, MyPlatesCubit> {
   MyPlatesPage({Key? key}) : super(key: key);
-
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFavorites();
+    bloc.fetchMyPlates();
   }
+
+  RefreshController refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesScreen(plates: state.data ?? []);
+    if (bloc.isLastPage) {
+      print('isLastPage ${bloc.isLastPage}');
+      refreshController.loadNoData();
+    }
+    return PaginationWidget(
+      refreshController: refreshController,
+      onRefresh: () {
+        loadInitialData(context);
+        refreshController.refreshCompleted();
+      },
+      onLoading: () async {
+        await bloc.fetchMyPlates(isMoreData: true);
+        // await Future.delayed(const Duration(milliseconds: 1200));
+        if (bloc.isLastPage) {
+          print('isLastPage ${bloc.isLastPage}');
+          refreshController.loadNoData();
+        } else {
+          refreshController.loadComplete();
+        }
+      },
+      child: PlatesScreen(
+        plates: state.data ?? [],
+        onFavoritePlate: (id) => bloc.toggleFavoritePlate(id),
+      ),
+    );
   }
-  //
-  // @override
-  // onAddButtonPressed() {
-  //   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
-  // }
-  //
-  // @override
-  // bool isAddButton() {
-  //   return true;
-  // }
+//
+// @override
+// onAddButtonPressed() {
+//   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+// }
+//
+// @override
+// bool isAddButton() {
+//   return true;
+// }
 }
