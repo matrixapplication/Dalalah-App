@@ -25,9 +25,9 @@ class FavoritesUseCase {
    // return data.data!.map((e) => Car.fromDto(e)).toList();
   }
 
-  Future<bool> toggleFavoriteCarOrPlate(AddToFavoriteParams params) async {
+  Future<String> toggleFavoriteCarOrPlate(AddToFavoriteParams params) async {
     final data = (await repository.toggleFavoriteCarOrPlate(params));
-    return data.data!;
+    return data.message ?? '';
   }
 
   // Plates APIs

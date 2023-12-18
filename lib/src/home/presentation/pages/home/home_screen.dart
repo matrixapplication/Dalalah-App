@@ -61,6 +61,7 @@ class HomeScreen extends BaseStatelessWidget {
                   ),
                   PlatesList(
                     platesStream: platesStream,
+                    onFavoritePlate: (id) async => await onFavoritePlate!(id),
                   ),
                 ],
               )

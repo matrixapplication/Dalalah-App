@@ -87,6 +87,11 @@ class HomeCubit extends BaseCubit {
         favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
+  Future<void> toggleFavoritePlate(int id) async {
+    executeEmitterListener(() =>
+        favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(plateId: id)));
+  }
+
   Future<List<Car>> fetchCarsBySearch(String search) async {
     return await usecase.fetchCars(CarFilterParams(search: search));
   }

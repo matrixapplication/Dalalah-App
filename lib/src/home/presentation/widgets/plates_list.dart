@@ -23,8 +23,9 @@ import '../../../plates/presentation/plates/widgets/plate_image.dart';
 ///  Created by harbey on 9/5/2023.
 class PlatesList extends StatelessWidget {
   final StreamStateInitial<List<Plate>?> platesStream;
+  final Function(int) onFavoritePlate;
 
-  const PlatesList({Key? key, required this.platesStream})
+  const PlatesList({Key? key, required this.platesStream, required this.onFavoritePlate})
       : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class PlatesList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: 10.paddingStart,
             itemBuilder: (_, index) {
-              return PlateVert(plate: snapshot![index]);
+              return PlateVert(plate: snapshot![index], onFavoritePlate: onFavoritePlate);
             },
             itemCount: snapshot?.length ?? 0,
           );
@@ -50,10 +51,12 @@ class PlatesList extends StatelessWidget {
 
 class PlateVert extends StatelessWidget {
   final Plate plate;
+  final Function(int) onFavoritePlate;
 
   const PlateVert({
     super.key,
     required this.plate,
+    required this.onFavoritePlate,
   });
 
   @override
@@ -95,6 +98,8 @@ class PlateVert extends StatelessWidget {
                       width: 50,
                       child: FavoriteButton(
                         margin: 20.paddingTop + 10.paddingHoriz,
+                        isFavorite: plate.isFavorite ?? false,
+                        onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
                         // isFavorite: true,
                       )),
                 ],

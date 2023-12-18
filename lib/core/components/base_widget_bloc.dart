@@ -207,6 +207,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     if (message != null && message.isNotEmpty) {
       DialogsManager.showSuccessDialog(context!, message: message,
           onClickOk: () {
+        Navigator.pop(context!);
         onSuccessDismissed();
       });
     }

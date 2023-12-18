@@ -48,7 +48,7 @@ class FavoriteButton extends StatelessWidget {
               bool isAuth = await HelperMethods.isAuth();
               if(isAuth){
                 try {
-                  await onToggleFavorite!();
+                  await onToggleFavorite?.call();
                   isFavorite = !isFavorite;
                   setState(() {});
                 } on Exception catch (e) {
