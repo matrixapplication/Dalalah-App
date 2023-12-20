@@ -27,21 +27,21 @@ class Plate {
    factory Plate.fromDto(PlateDto json) {
      return Plate(
        id: json.id,
-       letterAr: json.letterAr,
+       letterAr: json.letterAr ?? '',
        letterEn: json.letterEn,
-       plateNumber: json.plateNumber.toString(),
-       price: json.price,
-       plateType: json.plateType,
-       boughtStatus: json.boughtStatus,
-       adType: json.adType,
-       address: json.address,
+       plateNumber: json.plateNumber?.toString() ?? '',
+       price: json.price ?? '',
+       plateType: json.plateType ?? '',
+       boughtStatus: json.boughtStatus ?? '',
+       adType: json.adType ?? '',
+       address: json.address ?? '',
        isHide: json.isHide,
        isPaused: json.isPaused,
        isApproved: json.isApproved,
        city: json.city,
        user: json.user,
         isFavorite: json.isFavorite,
-       createdAt: json.createdAt,
+       createdAt: json.createdAt ?? '',
      );
    }
 }

@@ -20,7 +20,9 @@ class RowTextsIconsButtons extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius2;
   final Decoration? decoration1;
   final Decoration? decoration2;
-  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2, this.decoration1, this.decoration2}) : super(key: key);
+  final Widget? centerWidget;
+  final TextStyle? titleStyle2;
+  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2, this.decoration1, this.decoration2, this.centerWidget, this.titleStyle2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +43,16 @@ class RowTextsIconsButtons extends StatelessWidget {
               onPressed: onPressed1,
             ),
           ),
+          if (centerWidget != null)
+            Expanded(
+              child: centerWidget!,
+            ),
           Expanded(
             child: PrimaryIconButton(
               title: title2,
               icon: icon2,
-              iconColor: iconColor2 ?? context.primaryColor,
-              titleStyle: context.headlineMedium.copyWith(),
+              iconColor: iconColor2 ,
+              titleStyle: titleStyle2 ?? context.headlineMedium.copyWith(),
               backgroundColor: backgroundColor2 ?? context.onSecondaryContainer,
               borderRadius: borderRadius2 ?? const BorderRadiusDirectional.only(bottomEnd: Radius.circular(8)),
               decoration: decoration2,

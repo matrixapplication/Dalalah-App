@@ -60,12 +60,12 @@ class CarsSearchScreen extends BaseStatelessWidget {
             style: context.textTheme.bodyLarge,
           ),
           15.ph,
-          BrandsFilter(
-            items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-                .map((e) => e.toString())
-                .toList(),
-            onFilter: (value) {},
-          ),
+          // BrandsFilter(
+          //   items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+          //       .map((e) => e.toString())
+          //       .toList(),
+          //   onFilter: (value) {},
+          // ),
           25.ph,
           Text(
             strings.price,

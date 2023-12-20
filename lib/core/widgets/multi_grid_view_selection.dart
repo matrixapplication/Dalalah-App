@@ -81,7 +81,7 @@ class MultiGridViewSelection extends StatelessWidget {
                   ? context.primaryColor
                   : null,
               padding: 10.paddingAll,
-              property: Option(
+              property: OptionDto(
                 name: "سعة المحرك",
                 icon: AppIcons.timer,
                 // color: selected.contains(properties[index])

@@ -1,23 +1,34 @@
 import 'package:dalalah/core/assets/app_images.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/core/widgets/scaffold/app_scaffold.dart';
+import 'package:dalalah/src/cars/presentation/comments/pages/comments_page.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/decorations/decorations.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
+import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
+import '../../../../../core/widgets/tabview/tabbar_line_widget.dart';
+import '../../../../../core/widgets/tabview/tabbar_widget.dart';
+import '../../../../cars/data/models/comment_params.dart';
 import '../../../domain/entities/plate.dart';
 import '../widgets/plate_property.dart';
+import '../widgets/plates_details_widget.dart';
 
 class PlatesDetailsScreen extends StatelessWidget {
   final Plate plate;
+  final Function()? onToggleFavorite;
 
-  const PlatesDetailsScreen({Key? key, required this.plate}) : super(key: key);
+  const PlatesDetailsScreen(
+      {Key? key, required this.plate, this.onToggleFavorite})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,100 +37,92 @@ class PlatesDetailsScreen extends StatelessWidget {
         phone: plate.user?.phone ?? '',
         whatsapp: plate.user?.whatsapp ?? '',
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: context.height * 0.3,
-                  width: double.infinity,
-                  color: context.gray_f8,
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                height: 190,
+                width: double.infinity,
+                color: context.gray_f8,
+              ),
+              Container(
+                height: context.height,
+                width: double.infinity,
+                color: context.cardColor,
+              ),
+            ],
+          ),
+          NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  leading: 0.ph,
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(240),
+                    child: SingleChildScrollView(
+                      padding: 10.paddingAll,
+                      child: Column(
+                        children: [
+                          PlateImage(plate: plate, isDetails: true),
+                          Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: FavoriteButton(
+                                margin: 10.paddingTop,
+                                onToggleFavorite: onToggleFavorite,
+                              )),
+                          Text(
+                            '${plate.letterAr?.toArabicChars() ?? ''}   ${plate.letterEn}',
+                            style: context.bodyLarge,
+                          ),
+                          18.ph,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconText(
+                                text: plate.address ?? '',
+                                icon: AppIcons.location,
+                                iconSize: 20,
+                                sizedBoxWidth: 4,
+                                textColor: context.gray_68,
+                              ),
+                              PriceWidget(
+                                padding: 25.paddingHoriz + 10.paddingVert,
+                                price: plate.price ?? '',
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-                Container(
-                  height: context.height * 0.55,
-                  width: double.infinity,
-                  color: context.cardColor,
+              ];
+            },
+            body: TabBarWidget(
+              tabs: [
+                TabItemModel(
+                  label: context.strings.details,
+                  page: PlatesDetailsWidget(
+                    plate: plate,
+                    onToggleFavorite: onToggleFavorite,
+                  ),
+                ),
+                TabItemModel(
+                  label: context.strings.comments,
+                  page: CommentsPage(
+                    params: CommentParams(
+                      plateId: plate.id ?? 0,
+                    ),
+                  ),
                 ),
               ],
             ),
-            Padding(
-              padding: 16.paddingAll,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  PlateImage(plate: plate),
-                  Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: FavoriteButton(
-                        margin: 10.paddingTop,
-                      )),
-                  Text(
-                    '${plate.letterAr}   ${plate.letterEn}',
-                    style: context.bodyLarge,
-                  ),
-                  18.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconText(
-                        text: plate.address ?? '',
-                        icon: AppIcons.location,
-                        iconSize: 20,
-                        sizedBoxWidth: 4,
-                        textColor: context.gray_68,
-                      ),
-                      PriceWidget(
-                          padding: 25.paddingHoriz + 10.paddingVert,
-                          price: plate.price ?? '',),
-                    ],
-                  ),
-                  20.ph,
-                  Container(
-                    alignment: Alignment.center,
-                    padding: 16.paddingStart,
-                    margin: 20.paddingBottom,
-                    decoration: Decorations.kDecorationBorderWithRadius(
-                        color: context.scaffoldBackgroundColor,
-                        borderColor: context.gray_5c,
-                        radius: 50
-                    ),
-                  child: IconText(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    text: plate.user?.name ?? '',
-                    icon: AppImages.car_name,
-                    iconSize: 50,
-                  ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: PlatesDetailsProperty(
-                          label: context.strings.plate_type,
-                          value: plate.plateType == 'private'
-                              ? 'خصوصي'
-                              : 'نقل',
-                        ),
-                      ),
-                      14.pw,
-                      Expanded(
-                        child: PlatesDetailsProperty(
-                          label: context.strings.city,
-                          value: plate.city?.name ?? '',
-                        ),
-                      ),
-                    ],
-                  ),
-                  20.ph,
-                  PlatesDetailsProperty(
-                    label: context.strings.announcement_date,
-                    value: '25-09-2023',
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

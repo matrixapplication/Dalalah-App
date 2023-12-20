@@ -1,9 +1,11 @@
 import 'package:dalalah/core/decorations/decorations.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {
-  final String? label;
+  final String? title;
+  final String? value;
   final Color? backgroundColor;
   final Color? borderColor;
   final EdgeInsetsDirectional? margin;
@@ -17,7 +19,8 @@ class CustomChip extends StatelessWidget {
 
   const CustomChip({
     super.key,
-    this.label,
+    this.title,
+    this.value,
     this.backgroundColor,
     this.borderColor,
     this.margin,
@@ -31,24 +34,36 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: padding ?? 3.paddingVert + 8.paddingHoriz,
-      margin: margin,
-      width: width,
-      alignment: Alignment.center,
-      decoration: Decorations.kDecorationOnlyRadius(
-        color: backgroundColor ?? Colors.white,
-        radius: radius ?? 15,
+    return Chip(
+      backgroundColor: backgroundColor ?? context.dividerColor,
+      labelPadding: 5.paddingHoriz,
+      visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(radius ?? 15),
+        side: BorderSide(
+          color: borderColor ?? context.dividerColor,
+        ),
       ),
-      child: childIsText
-          ? Text(
-              label ?? '',
-              style: context.textTheme.headlineSmall!.copyWith(
-                fontSize: fontSize,
-                color: labelColor ?? Colors.white,
+      label: child ?? RichText(
+        text: TextSpan(
+          children: [
+            if (title != null)
+              TextSpan(
+                text: '$title: \t',
+                style: context.bodySmall.copyWith(
+                  fontSize: fontSize ?? 12,
+                ),
               ),
-            )
-          : child!,
+            if (value != null)
+              TextSpan(
+                text: value,
+                style: context.headlineSmall.copyWith(
+                  fontSize: fontSize ?? 12,
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -3,21 +3,19 @@ import 'dart:io';
 import 'package:dalalah/core/widgets/buttons/stack_button.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 
-import '../../../../core/resources/validation.dart';
 import '../../../../core/utils/navigator.dart';
+import '../../../../core/widgets/checkbox/custom_checkbox.dart';
 import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
-import '../../domain/entities/settings_price.dart';
 import '../widgets/picker_car_images.dart';
 
 class SellCarImagePickerScreen extends BaseStatelessWidget {
-  final SettingsPrice settingsPrice;
   final String statusCar;
   final Function(SellCarParams) onSave;
 
   SellCarImagePickerScreen(
-      {Key? key, required this.settingsPrice,required this.statusCar, required this.onSave})
+      {Key? key, required this.statusCar, required this.onSave})
       : super(key: key);
 
   // properties
@@ -28,12 +26,15 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   File mainImage = File('');
   List<File> imagesSelected = [];
   final _formKey = GlobalKey<FormState>();
-
+  StreamStateInitial<bool> isNextPressedStream = StreamStateInitial<bool>();
   @override
   Widget build(BuildContext context) {
+    isNextPressedStream.setData(false);
     final strings = context.strings;
 
     return StackButton(
+      streamNextPressed: isNextPressedStream,
+      nextTitle: strings.save,
       onNextPressed: () {
         if (_formKey.currentState!.validate()) {
           onSavePressed();
@@ -76,9 +77,40 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
               PickerCarImages(
                 onImagesSelected: (main, images) {
                   mainImage = main;
-                  imagesSelected = images;
                 },
               ),
+              15.ph,
+              Container(
+                padding: 20.paddingAll,
+                decoration: Decorations.kDecorationBorderRadius(
+                  colorBorder: context.primaryColor,
+                    width: 3,
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'معاهدة دلاله',
+                      style: context.headlineLarge.copyWith(
+                        fontSize: 18, ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    20.ph,
+                    Text(
+                      strings.promises_add_car,
+                      style: context.bodySmall.copyWith(
+                        fontSize: 12, ),
+
+                      textAlign: TextAlign.justify,
+                      ),
+                  ],
+                ),
+              ),
+              CustomCheckbox(
+                onChanged: (value) {
+                  isNextPressedStream.setData(value);
+                },
+                title: strings.i_promise,
+              )
             ],
           ),
         ),
@@ -91,7 +123,9 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
       SnackBarManager.showErrorSnackBar(context!.strings.select_main_image);
       return;
     }
-    if (imagesSelected.length >= 4 && imagesSelected.length <= 10) {
+  //  if (imagesSelected.isNotEmpty && imagesSelected.length <= 5) {
+    imagesSelected = imagesSelected.isEmpty ? [mainImage] : imagesSelected;
+    print('imagesSelected: $imagesSelected');
       onSave(
         SellCarParams(
           price: int.parse(priceController.text.trim()),
@@ -101,10 +135,10 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           images: imagesSelected,
         ),
       );
-    } else {
-      SnackBarManager.showErrorSnackBar(imagesSelected.length > 10
-          ? strings.maximum_number_images(10)
-          : strings.minimum_number_images(5));
-    }
+    // } else {
+    //   SnackBarManager.showErrorSnackBar(imagesSelected.length > 10
+    //       ? strings.maximum_number_images(10)
+    //       : strings.minimum_number_images(5));
+    // }
   }
 }

@@ -267,13 +267,74 @@ extension ToInt on String {
 extension UserIdShared on String {
   String get userIdShared => 'user_id_$this';
 }
-//
-// extension SizeExtension on num {
-//   double get w => ResponsiveService.scaleWidth() * this;
-//
-//   double get h => ResponsiveService.scaleHeight() * this;
-//
-//   double get r => ResponsiveService.scaleRadius() * this;
-//
-//   double get sp => ResponsiveService.scaleText() * this;
-// }
+
+extension TimeAgoExtension on DateTime {
+  String toTimeAgo() {
+    final strings = injector<ServicesLocator>().appContext.strings;
+    bool isAr = injector<ServicesLocator>().languageCode == 'ar';
+
+    DateTime currentDate = DateTime.now();
+    Duration difference = currentDate.difference(this);
+
+    if (difference.inDays > 365) {
+      int years = (difference.inDays / 365).floor();
+      return '${strings.ago} $years ${(years == 1) ? strings.year : strings.years}';
+    } else if (difference.inDays >= 30) {
+      int months = (difference.inDays / 30).floor();
+      return '${strings.ago} $months ${(months == 1) ? strings.month : strings.months}';
+    } else if (difference.inDays >= 1) {
+      return '${strings.ago} ${difference.inDays} ${(difference.inDays == 1) ? strings.day : strings.days}';
+    } else if (difference.inHours >= 1) {
+      return '${strings.ago} ${difference.inHours} ${(difference.inHours == 1) ? strings.hour : (isAr ? strings.hour : strings.hours)}';
+    } else if (difference.inMinutes >= 1) {
+      return '${strings.ago} ${difference.inMinutes} ${(difference.inMinutes == 1) ? strings.minute : (isAr ? strings.hour : strings.minutes)}';
+    } else {
+      return strings.just;
+    }
+  }
+}
+
+final Map<String, String> arabicDigitsMap = {
+  '0': '٠',
+  '1': '١',
+  '2': '٢',
+  '3': '٣',
+  '4': '٤',
+  '5': '٥',
+  '6': '٦',
+  '7': '٧',
+  '8': '٨',
+  '9': '٩',
+};
+
+extension ArabicNumbers on String {
+  String toArabicNumbers() {
+    String converted = '';
+    for (int i = 0; i < length; i++) {
+      final String digit = this[i];
+      final String? arabicDigit = arabicDigitsMap[digit];
+      converted += arabicDigit ?? digit;
+    }
+    return converted;
+  }
+  String toArabicNumbersWithSpace() {
+    String converted = '';
+    for (int i = 0; i < length; i++) {
+      final String digit = this[i];
+      final String? arabicDigit = arabicDigitsMap[digit];
+      converted += arabicDigit ?? digit;
+      converted += ' ';
+    }
+    return converted;
+  }
+}
+
+extension SeparateArabicCharacters on String {
+  String toArabicChars() {
+    String separatedString = '';
+    for (int i = 0; i < length; i++) {
+      separatedString += '${this[i]} ';
+    }
+    return separatedString.trim(); // Removes trailing space
+  }
+}

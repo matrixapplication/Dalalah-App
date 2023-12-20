@@ -23,6 +23,7 @@ class FavoriteCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, FavoriteCa
       isFilter: false,
       isNew: true,
       tasks: state.data ?? [],
+      onToggleFavorite: (id) => bloc.toggleFavoriteCar(id),
     );
     // return 0.ph;
   }

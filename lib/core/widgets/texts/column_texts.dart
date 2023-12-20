@@ -13,7 +13,8 @@ class ColumnTexts extends StatelessWidget {
   final bool? isSizedBox;
   final double? space;
   final EdgeInsetsGeometry? padding;
-  const ColumnTexts({Key? key, required this.title,  required this.value, this.titleStyle,  this.valueStyle, this.crossAxisAlignment, this.mainAxisAlignment, this.titleStrutStyle, this.valueStrutStyle, this.isSizedBox = true, this.space, this.padding}) : super(key: key);
+  final TextAlign? textAlign;
+  const ColumnTexts({Key? key, required this.title,  required this.value, this.titleStyle,  this.valueStyle, this.crossAxisAlignment, this.mainAxisAlignment, this.titleStrutStyle, this.valueStrutStyle, this.isSizedBox = true, this.space, this.padding, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class ColumnTexts extends StatelessWidget {
           Text(
             value,
             style: valueStyle ?? theme.textTheme.bodyMedium,
-            strutStyle: valueStrutStyle
+            strutStyle: valueStrutStyle,
+            textAlign: textAlign ?? TextAlign.start,
           ),
         ],
       ),
@@ -75,6 +77,7 @@ class ColumnTextsFittedBox extends StatelessWidget {
           ),
           if(isSizedBox!)
             (space ?? 8).ph,
+          if(value.isNotEmpty)
           FittedBox(
             child: Text(
                 value,

@@ -34,6 +34,10 @@ class SuccessStateListener<T> extends DataStateFListener<T> {
   SuccessStateListener(data):super(data: data);
 }
 
+class SuccessState<T> extends DataStateFListener<T> {
+  SuccessState(data):super(data: data);
+}
+
 
 
 /**

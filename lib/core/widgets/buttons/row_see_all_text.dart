@@ -35,8 +35,7 @@ class RowSeeAllText extends StatelessWidget {
           GestureDetector(
             onTap: onTap ??
                 () {
-                  Navigators.pushNamed(routeName,
-                      arguments: CarsPageArgs(categoryName: title));
+                  Navigators.pushNamed(routeName);
                 },
             child: Text(
               context.strings.see_all,

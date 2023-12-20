@@ -41,11 +41,11 @@ class FilterScreen extends BaseStatelessWidget {
             strings.brand_and_model,
             style: context.bodyMedium,
           ),
-          BrandsFilter(
-            backgroundColor: context.scaffoldBackgroundColor,
-            items: ['BMW', 'Mercedes', 'Audi', 'Toyota', 'Kia', 'Hyundai'],
-            onFilter: (value) {},
-          ),
+          // BrandsFilter(
+          //   backgroundColor: context.scaffoldBackgroundColor,
+          //   items: ['BMW', 'Mercedes', 'Audi', 'Toyota', 'Kia', 'Hyundai'],
+          //   onFilter: (value) {},
+          // ),
           CustomDivider(
             height: 30,
           ),

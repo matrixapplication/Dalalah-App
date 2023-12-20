@@ -30,6 +30,7 @@ class AppIcons {
   static String privacy_policy = '$_iconsPath/privacy_policy.svg';
   static String delete = '$_iconsPath/delete.svg';
   static String login = '$_iconsPath/login.svg';
+  static String cylinder = '$_iconsPath/cylinder.svg';
 
 
 

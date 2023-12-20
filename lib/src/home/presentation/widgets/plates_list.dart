@@ -89,7 +89,6 @@ class PlateVert extends StatelessWidget {
                     // ),
                     child: PlateImage(
                       plate: plate,
-                      spaceStart: 0,
                     ),
                   ),
                   Container(
@@ -108,7 +107,7 @@ class PlateVert extends StatelessWidget {
               Padding(
                 padding: 10.paddingStart,
                 child: Text(
-                  '${plate.letterAr} ${plate.letterEn}',
+                  '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}',
                   style: context.bodySmall,
                 ),
               ),

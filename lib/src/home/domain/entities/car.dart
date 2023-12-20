@@ -1,3 +1,4 @@
+import '../../../cars/data/models/model_object.dart';
 import '../../../sell_car/data/models/body_type_dto.dart';
 import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
@@ -21,12 +22,13 @@ class Car {
   int? id;
   int? portId;
   CarContactDetails? carContactDetails;
+  ModelObject? modelObject;
   BrandDto? brand;
   BrandModel? brandModel;
   BrandModelExtension? brandModelExtension;
   Branch? branch;
   String? year;
-  ColorDto? color;
+  String? color;
   DriveType? driveType;
   BodyType? bodyType;
   FuelType? fuelType;
@@ -59,6 +61,7 @@ class Car {
       this.carContactDetails,
       this.brand,
       this.brandModel,
+      this.modelObject,
       this.brandModelExtension,
       this.branch,
       this.year,
@@ -96,6 +99,7 @@ class Car {
       portId: json.portId,
       carContactDetails: json.carContactDetails,
       brand: json.brand,
+      modelObject: json.modelObject,
       brandModel: BrandModel.fromDto(json.brandModel ?? BrandModelDto()),
       brandModelExtension: BrandModelExtension.fromDto(
           json.brandModelExtension ?? BrandModelExtensionDto()),
@@ -125,11 +129,16 @@ class Car {
       door2Img: json.door2Img,
       door3Img: json.door3Img,
       door4Img: json.door4Img,
+      images: json.images?.map((e) => e?.image ?? '').toList() ?? [],
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
     );
   }
 
    List<String> allImages() {
-    return [mainImage ?? '', door1Img ?? '', door2Img ?? '', door3Img ?? '', door4Img ?? '', ...images ?? []];
+    return [mainImage ?? '', ...images ?? []];
+  }
+
+  String fullName() {
+    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}';
   }
 }

@@ -41,8 +41,6 @@ class SellCarSecondCubit extends BaseCubit {
    //    final ports = await usecase.fetchPorts();
    //    final carCountries = await usecase.fetchCarCountries();
    //    final carTypes = await usecase.fetchCarTypes();
-      final colors = await usecase.fetchColors();
-      final settingsPrice = await usecase.fetchSettingsPrice();
 
       emit(
         SellCarSecondState(
@@ -53,8 +51,6 @@ class SellCarSecondCubit extends BaseCubit {
           ports: [],
           carCountries: [],
           carTypes: [],
-          colors: colors,
-          settingsPrice: settingsPrice,
         ),
       );
     } on Exception catch (e) {

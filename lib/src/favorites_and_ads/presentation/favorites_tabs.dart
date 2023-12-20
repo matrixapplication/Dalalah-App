@@ -1,4 +1,6 @@
 
+import 'package:dalalah/core/widgets/tabview/tabbar_widget.dart';
+
 import '../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../main_index.dart';
@@ -17,7 +19,8 @@ class FavoritesAndAdsTabs
     bool isAds = getArguments(context) ?? true;
     return AppScaffold(
       title: isAds ? context.strings.my_ads : context.strings.favorites,
-      body: TabBarLineWidget(
+      body: TabBarCustomWidget(
+     //   backgroundColor: context.scaffoldBackgroundColor,
         tabs: [
           TabItemModel(label: context.strings.cars, page: isAds ? MyCarsPage() : FavoriteCarsPage()),
           TabItemModel(label: context.strings.plates, page:  isAds ? MyPlatesPage() : FavoritePlatesPage()),

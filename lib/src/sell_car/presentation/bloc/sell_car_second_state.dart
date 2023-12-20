@@ -27,7 +27,6 @@ class SellCarSecondState  extends DataStateFBuilder {
   List<ColorDto> colors = [];
   List<City> cities = [];
   List<Feature> features = [];
-  SettingsPrice settingsPrice = SettingsPrice();
 
   SellCarSecondState({
     this.driveTypes = const [],
@@ -40,6 +39,5 @@ class SellCarSecondState  extends DataStateFBuilder {
     this.colors = const [],
     this.cities = const [],
     this.features = const [],
-    required this.settingsPrice,
   });
 }

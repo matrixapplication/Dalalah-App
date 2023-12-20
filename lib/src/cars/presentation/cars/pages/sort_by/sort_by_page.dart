@@ -18,7 +18,7 @@ class SortByPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   @override
   Widget build(BuildContext context) {
     return mainFrame(
-      body: TabBarWidget(
+      body: TabBarScaffoldWidget(
         marginTabs: 10.paddingTop + 10.paddingHoriz,
         tabs: [
           TabItemModel(

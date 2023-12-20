@@ -5,7 +5,10 @@ import 'package:retrofit/retrofit.dart';
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/car_dto.dart';
+import '../models/add_comment_params.dart';
 import '../models/car_details_dto.dart';
+import '../models/comment_dto.dart';
+import '../models/comment_params.dart';
 
 part 'cars_datasource.g.dart';
 @Injectable()
@@ -20,5 +23,11 @@ abstract class  CarsDatasource{
 
   @GET('/my-cars')
   Future<ApiResponse<List<CarDto>>> fetchMyCars(@Query('page') int page);
+
+  @GET('/show-review')
+  Future<ApiResponse<List<CommentDto>>> fetchComments(@Queries() CommentParams params);
+
+  @POST('/add-review')
+  Future<ApiResponse> addComment(@Body() AddCommentParams params);
 
 }

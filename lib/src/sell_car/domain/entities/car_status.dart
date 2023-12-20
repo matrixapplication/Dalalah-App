@@ -11,5 +11,23 @@ class CarStatus {
       key: json.key,
       name: json.name
    );
+
+
+  static const String newCar = 'new';
+  static const String usedCar = 'used';
+  static const String all = 'all';
+
+  static String? getStatusByIndex(int index) {
+    switch (index) {
+      case 0:
+        return null;
+      case 1:
+        return newCar;
+      case 2:
+        return usedCar;
+      default:
+        return null;
+    }
+  }
 }
 

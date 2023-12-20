@@ -26,8 +26,10 @@ class PlatesDetailsPage extends BaseBlocWidget<UnInitState, PlatesDetailsCubit> 
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
+    Plate plate = getArguments(context);
     return PlatesDetailsScreen(
-        plate: getArguments(context),
+        plate: plate,
+      onToggleFavorite: () => bloc.toggleFavorite(plate.id ?? 0),
     );
   }
 

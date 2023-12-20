@@ -1,9 +1,6 @@
-import 'package:dalalah/core/widgets/icons/icon_text.dart';
 
-import '../../../../../../core/widgets/buttons/secondary_button.dart';
 import '../../../../../main_index.dart';
 import '../../../../domain/entities/car_details.dart';
-import '../../widgets/add_rating_widget.dart';
 import '../../widgets/company_car_details_item.dart';
 
 class CarDetailsPriceView extends BaseStatelessWidget {
@@ -30,7 +27,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
                 ),
                 8.ph,
                 Text(
-                  '${carDetails.price ?? ''} ${context.strings.rs}',
+                  '${carDetails.car?.price ?? ''} ${context.strings.rs}',
                   style: context.textTheme.titleMedium!.copyWith(
                     color: Colors.white,
                   ),
@@ -43,7 +40,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
             alignment: AlignmentDirectional.centerStart,
             child: Text(
               strings.buy_car_from(
-                  "${carDetails.brandModel?.brand} ${carDetails.brandModel?.name}"),
+                  "${carDetails.car?.brandModel?.brand} ${carDetails.car?.brandModel?.name}"),
               style: context.textTheme.displayLarge!.copyWith(
                 color: AppColors.grey_51,
               ),
@@ -52,11 +49,13 @@ class CarDetailsPriceView extends BaseStatelessWidget {
           ),
           15.ph,
           ListView.builder(
-            itemCount: 3,
+            itemCount: carDetails.sameCars?.length ?? 0,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return CompanyCarDetailsItem();
+              return CompanyCarDetailsItem(
+                car: carDetails.sameCars![index],
+              );
             },
           ),
         ],

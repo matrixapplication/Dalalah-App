@@ -76,7 +76,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 ),
               ),
               EditTextField(
-                title: strings.change_language,
+                title: strings.change_password,
                 controller: passwordController,
                 isPasswordVisible: false,
               ),

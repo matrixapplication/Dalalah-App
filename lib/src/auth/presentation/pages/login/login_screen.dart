@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen>
       margin: 16.paddingHoriz + (180).paddingTop + 50.paddingBottom,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: Decorations.shapeDecorationShadow(colorShadow: context.primaryColor, radius: 30),
-      child: TabBarWidget(
+      child: TabBarScaffoldWidget(
         height: 25,
         marginTabs: 16.paddingHoriz + 16.paddingTop,
         tabs: [

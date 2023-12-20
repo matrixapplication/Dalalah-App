@@ -5,7 +5,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     extends BaseStatelessWidget {
   BuildContext? context =
       injector<ServicesLocator>().navigatorKey.currentContext;
-  late B bloc;
+  late B bloc = getBloc();
+  B getBloc() {
+    return injector.get<B>();
+  }
 
   BaseBlocWidget({Key? key}) : super(key: key);
 
@@ -32,7 +35,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
       dismissProgress();
       onRequestSuccess(state.data);
     }
-    if (state is SuccessStateListener) {
+    if (state is SuccessState) {
       dismissProgress();
       onSuccessDismissed();
     }
@@ -107,6 +110,12 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   Function()? onAddButtonPressed() {
     return null;
   }
+
+  @protected
+  Function()? onTabSelected(index) {
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     this.context = context;
@@ -119,7 +128,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     List<TabModel>? tabs,
     bool hasFilter = false,
     List<Widget>? tabViews,
-    Function(int)? onTabSelected,
+ //   Function(int)? onTabSelected,
     // Widget? leading,
   }) {
     return WillPopScope(
@@ -135,7 +144,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         backgroundAppBar: backgroundAppBar(context!),
         body: body,
         tabs: tabs,
-        onTabSelected: onTabSelected,
+        onTabSelected: (index) {
+          print('onTabSelected $index');
+
+          onTabSelected?.call(index);
+        },
         onAddButtonPressed: onAddButtonPressed,
         isAddButton: isAddButton(),
         tabViews: tabViews,
@@ -203,18 +216,67 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
 
   void onSuccessDismissed() {}
 
-  void onRequestSuccess(String? message) {
-    if (message != null && message.isNotEmpty) {
-      DialogsManager.showSuccessDialog(context!, message: message,
-          onClickOk: () {
-        Navigator.pop(context!);
-        onSuccessDismissed();
+   onRequestSuccess(String? message) {
+
+   if (message != null && message.isNotEmpty) {
+      showGeneralDialog(context: context!, pageBuilder: (context, anim1, anim2) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          title: Icon(Icons.check_circle_outline,
+              size: 60, color: Colors.green),
+          content: WillPopScope(
+            onWillPop: () async {
+              return true;
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  message!,
+                  textAlign: TextAlign.center,
+                  style: context.bodySmall.copyWith(fontSize: 14),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          onSuccessDismissed();
+                        },
+                        child: Text(
+                          'حسنا',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: context.primaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
       });
-    }
+   } else {
+     onSuccessDismissed();
+   }
   }
 
   BlocConsumer buildConsumer(BuildContext context) {
-    bloc = injector.get<B>();
+  //  bloc = injector.get<B>();
     this.context = context;
     loadInitialData(context);
 

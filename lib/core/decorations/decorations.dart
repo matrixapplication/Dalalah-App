@@ -15,6 +15,7 @@ class Decorations {
     Color? color,
     Color? colorBorder,
     BorderRadiusDirectional? borderRadius,
+    double? width,
   }) {
     return BoxDecoration(
       color: color,
@@ -22,7 +23,7 @@ class Decorations {
       border: Border.all(
         color:
             colorBorder ?? injector<ServicesLocator>().appContext.dividerColor,
-        width: 1.0,
+        width: width ?? 1.0,
       ),
     );
   }

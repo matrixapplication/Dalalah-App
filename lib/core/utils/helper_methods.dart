@@ -64,7 +64,7 @@ class HelperMethods {
   }
 
   static Future<void> launchCallPhone(String phoneNumber) async {
-    Uri telephoneUrl = Uri.parse("tel:+201015377750");
+    Uri telephoneUrl = Uri.parse("tel:+2${phoneNumber}");
     if (await canLaunchUrl(telephoneUrl)) {
       await launchUrl(telephoneUrl);
     } else {
@@ -73,7 +73,7 @@ class HelperMethods {
   }
 
   static Future<void> launchWhatsApp(String phoneNumber) async {
-    Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=$phoneNumber");
+    Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=+2$phoneNumber");
     if (await canLaunchUrl(whatsUpUrl)) {
       await launchUrl(whatsUpUrl);
     } else {

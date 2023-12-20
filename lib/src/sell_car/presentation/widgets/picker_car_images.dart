@@ -11,14 +11,10 @@ class PickerCarImages extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     File mainImage = File('');
-    List<File> images = [File('')];
+    List<File> images = [];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          strings.car_images,
-          style: context.bodySmall,
-        ),
         10.ph,
         Text(
           strings.add_main_image,
@@ -28,6 +24,7 @@ class PickerCarImages extends BaseStatelessWidget {
         PickerMainImage(
           onImageSelected: (file) {
             mainImage = file;
+            onImagesSelected(mainImage, images);
           },
         ),
         20.ph,
@@ -69,7 +66,7 @@ class PickerSubImages extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 0) {
               return PickerMainImage(
-                title: index <= 4 ? context.strings.doors_images : context.strings.other_images,
+                title: '${index + 1}',
                 icon: Icons.add_photo_alternate_rounded,
              //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
                 onImageSelected: (image) {
@@ -127,7 +124,7 @@ class PickerSubImages extends StatelessWidget {
                             radius: 10,
                           ),
                           child: Text(
-                            '${context.strings.door} $index',
+                            '$index',
                             style: context.labelMedium,
                             textAlign: TextAlign.center,
                           )

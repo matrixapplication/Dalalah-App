@@ -16,6 +16,13 @@ Future<dynamic> pushNamedAndRemoveUntil(String routeName, {dynamic arguments}) {
           arguments: arguments);
 }
 
+Future<dynamic> push(Widget page) {
+  return injector<ServicesLocator>()
+      .navigatorKey
+      .currentState!
+      .push(MaterialPageRoute(builder: (context) => page));
+}
+
 class Navigators {
   static GlobalKey<NavigatorState> navigationKey =
       injector<ServicesLocator>().navigatorKey;

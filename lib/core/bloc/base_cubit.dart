@@ -35,8 +35,8 @@ abstract class BaseCubit extends Cubit<DataState>{
         emit(DataLoading());
       }
       final response = await invoke();
-      print('invoke response ${(response is ApiResponse<List<Car>> && response.data  == [])}');
-      if(response == null || ( (response is ApiResponse<List<Car>> && response.data is List && response.data == [])) || (  (response is List && response.isEmpty)) || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
+      // print('invoke response ${(response is ApiResponse<List<C>> && response.data  == [])}');
+      if(response == null || ( (response is ApiResponse<dynamic> && response.data is List && response.data == [])) || (  (response is List && response.isEmpty)) || response is Map && response.isEmpty || response is String && response.isEmpty || (response is AboutUs &&  response.description!.isEmpty)){
         print('invoke $response');
         throw EmptyListException();
       } else {
@@ -49,6 +49,7 @@ abstract class BaseCubit extends Cubit<DataState>{
       }else {
         emit(DataFailed(e));
       }
+      rethrow;
     }
   }
 
@@ -85,7 +86,7 @@ abstract class BaseCubit extends Cubit<DataState>{
 
   executeEmitterSuccess(Future Function() invoke) {
     executeListener(() => invoke(), onSuccess: (v) {
-      emit((SuccessStateListener(v.toString())));
+      emit((SuccessState(v.toString())));
     });
   }
 

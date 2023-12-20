@@ -7,13 +7,14 @@ class ImageNetworkCircle extends StatelessWidget {
   final double? width;
   final double? height;
   final double? size;
+  final double? iconErrorSize;
   final BoxFit? fit;
   final Color? color;
   final BorderRadiusGeometry? borderRadius;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 
-  const ImageNetworkCircle({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding});
+  const ImageNetworkCircle({super.key, this.image, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.iconErrorSize});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class ImageNetworkCircle extends StatelessWidget {
       margin: margin,
       padding: padding,
       radius: 500,
+      iconErrorSize: iconErrorSize,
     );
   }
 }
@@ -37,6 +39,7 @@ class ImageNetwork extends StatelessWidget {
   final double? width;
   final double? height;
   final double? size;
+  final double? iconErrorSize;
   final BoxFit? fit;
   final Color? color;
   final BorderRadiusGeometry? borderRadius;
@@ -46,7 +49,7 @@ class ImageNetwork extends StatelessWidget {
   final Decoration? decoration;
   final double borderWidth;
 
-  const ImageNetwork({super.key, this.url, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration, this.borderWidth = 0});
+  const ImageNetwork({super.key, this.url, this.width, this.height, this.fit, this.color, this.size, this.borderRadius, this.margin, this.padding, this.radius, this.decoration, this.borderWidth = 0, this.iconErrorSize});
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +77,8 @@ class ImageNetwork extends StatelessWidget {
           height: size ?? width,
           imageErrorBuilder: (c, o, s) {
             // print('imageErrorBuilder error  $s ');
-            return const Center(
-                child: Icon(Icons.image,color: Colors.grey,size: 30,));
+            return Center(
+                child: Icon(Icons.image,color: Colors.grey,size: iconErrorSize ?? 30,));
           },
         ),
       ),

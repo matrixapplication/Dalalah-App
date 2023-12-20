@@ -30,7 +30,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
     return PaginationWidget(
       refreshController: refreshController,
       onRefresh: () {
-        loadInitialData(context);
+        bloc.fetchMyCars();
         refreshController.refreshCompleted();
       },
       onLoading: () async {

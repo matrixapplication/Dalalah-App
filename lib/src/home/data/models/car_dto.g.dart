@@ -12,6 +12,9 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
           ? null
           : CarContactDetails.fromJson(
               json['car_contact_details'] as Map<String, dynamic>),
+      modelObject: json['model_object'] == null
+          ? null
+          : ModelObject.fromJson(json['model_object'] as Map<String, dynamic>),
       brand: json['brand'] == null
           ? null
           : BrandDto.fromJson(json['brand'] as Map<String, dynamic>),
@@ -26,9 +29,7 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
           ? null
           : BranchDto.fromJson(json['branch'] as Map<String, dynamic>),
       year: json['year'] as String?,
-      color: json['color'] == null
-          ? null
-          : ColorDto.fromJson(json['color'] as Map<String, dynamic>),
+      color: json['color'] as String?,
       driveType: json['drive_Type'] == null
           ? null
           : DriveTypeDto.fromJson(json['drive_Type'] as Map<String, dynamic>),
@@ -62,6 +63,9 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
       door2Img: json['door2_img'] as String?,
       door3Img: json['door3_img'] as String?,
       door4Img: json['door4_img'] as String?,
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => FeatureDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -70,6 +74,7 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'id': instance.id,
       'port_id': instance.portId,
+      'model_object': instance.modelObject,
       'car_contact_details': instance.carContactDetails,
       'brand': instance.brand,
       'brandModel': instance.brandModel,
@@ -100,6 +105,7 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'door2_img': instance.door2Img,
       'door3_img': instance.door3Img,
       'door4_img': instance.door4Img,
+      'images': instance.images,
       'features': instance.features,
     };
 
@@ -127,4 +133,14 @@ Customs _$CustomsFromJson(Map<String, dynamic> json) => Customs(
 Map<String, dynamic> _$CustomsToJson(Customs instance) => <String, dynamic>{
       'percentage': instance.percentage,
       'calc_number': instance.calcNumber,
+    };
+
+ImageDto _$ImageDtoFromJson(Map<String, dynamic> json) => ImageDto(
+      id: json['id'] as int?,
+      image: json['image'] as String?,
+    );
+
+Map<String, dynamic> _$ImageDtoToJson(ImageDto instance) => <String, dynamic>{
+      'id': instance.id,
+      'image': instance.image,
     };

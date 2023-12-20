@@ -2,9 +2,9 @@ import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 class RowTexts extends StatelessWidget {
-  final String title;
+  final String? title;
   final Widget? titleWidget;
-  final String value;
+  final String? value;
   final Widget? valueWidget;
   final TextStyle? titleStyle;
   final TextStyle? valueStyle;
@@ -19,8 +19,8 @@ class RowTexts extends StatelessWidget {
 
   const RowTexts(
       {Key? key,
-      required this.title,
-      required this.value,
+       this.title,
+       this.value,
       this.titleStyle,
       this.valueStyle,
       this.crossAxisAlignment,
@@ -56,7 +56,7 @@ class RowTexts extends StatelessWidget {
   }
 
   Widget buildTitle(BuildContext context) => Text(
-        title,
+        title ?? '',
         style: titleStyle ?? context.bodyMedium,
         strutStyle: titleStrutStyle,
       );
@@ -64,7 +64,7 @@ class RowTexts extends StatelessWidget {
   Widget buildValue(BuildContext context) => Padding(
     padding: valuePadding ?? 0.paddingAll,
     child: Text(
-          value,
+          value ?? '',
           style: valueStyle ?? context.bodyMedium,
           strutStyle: valueStrutStyle,
         ),

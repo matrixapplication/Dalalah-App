@@ -1,16 +1,7 @@
 import 'package:dalalah/src/main_index.dart';
 
-class TabItemModel {
-  final String label;
+import '../scaffold/tab_bar_widget.dart';
 
-  final Widget page;
-
-  TabItemModel({required this.label, required this.page});
-
-  Tab builder() {
-    return TabWidgetItemBuilder(this);
-  }
-}
 
 class TabWidgetItemBuilder extends Tab {
   TabWidgetItemBuilder(TabItemModel model, {Key? key})

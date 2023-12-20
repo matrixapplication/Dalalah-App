@@ -11,7 +11,7 @@ ModelObject _$ModelObjectFromJson(Map<String, dynamic> json) => ModelObject(
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       whatsapp: json['whatsapp'] as String?,
-      countCars: json['count_cars'] as int?,
+      countCars: json['count_cars'],
       description: json['description'] as String?,
       image: json['image'] as String?,
       coverImage: json['cover_image'] as String?,

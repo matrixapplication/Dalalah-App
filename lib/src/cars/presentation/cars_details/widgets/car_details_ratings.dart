@@ -35,9 +35,7 @@ class CarDetailsRatings extends BaseStatelessWidget {
         child: Column(
           children: [
             (isRating ? 5 : 10).ph,
-            AddRatingWidget(
-              isRating: isRating,
-            ),
+
             ListView.builder(
               itemCount: 10,
               shrinkWrap: true,

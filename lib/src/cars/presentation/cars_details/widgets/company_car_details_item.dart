@@ -110,21 +110,48 @@
 //   }
 // }
 
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
+import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
+import '../../../domain/entities/same_car.dart';
 import '../../cars/widgets/custom_company_container.dart';
 
 class CompanyCarDetailsItem extends BaseStatelessWidget {
-  CompanyCarDetailsItem({super.key});
+  final SameCar? car;
+  CompanyCarDetailsItem({super.key, this.car});
 
   @override
   Widget build(BuildContext context) {
     return CustomCompanyContainer(
-      firstOnTap: () {},
-      secondOnTap: () {},
-      body: Padding(
-        padding: 5.paddingHoriz + 8.paddingVert,
+      // secondButtonLabel: strings.whatsapp,
+      // secondButtonIcon: AppIcons.whatsapp,
+      backgroundColor2: context.primaryColor,
+      iconColor2: context.cardColor,
+      titleStyle2: context.labelMedium,
+      firstOnTap: () {
+        HelperMethods.launchCallPhone(car?.showroom?.phone ?? '');
+      },
+      secondOnTap: () {
+        pushNamed(
+          Routes.branchesPage,
+          arguments: car?.showroom?.id ?? 0,
+        );
+      },
+      centerWidget: PrimaryButton(
+        title: strings.information,
+        height: 20,
+        borderRadius: const BorderRadiusDirectional.only(),
+        style: context.headlineLarge,
+        backgroundColor: context.onSecondaryContainer,
+        onPressed: () {
+          showDescriptionDetails(context);
+        },
+      ),
+      body: Container(
+        padding: 10.paddingHoriz,
         child: Row(
           children: [
             Expanded(
@@ -138,11 +165,11 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                 child: Row(
                   children: [
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "الحمد للسيارات",
+                          car?.showroom?.ownerName ?? '',
                           style: context.textTheme.bodySmall!.copyWith(
                             color: AppColors.grey_41,
                             fontSize: 12,
@@ -150,7 +177,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                         ),
                         15.ph,
                         IconText(
-                          text: "جدة",
+                          text: car?.city?.name ?? '',
                           sizedBoxWidth: 5,
                           textStyle: context.textTheme.bodySmall!.copyWith(
                             color: AppColors.grey_68,
@@ -163,12 +190,12 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                     Spacer(),
                     CustomColumn(
                       title: strings.price,
-                      value: '850,000',
+                      value: car?.price ?? '',
                     ),
                     Spacer(),
                     CustomColumn(
                       title: strings.monthly_installment,
-                      value: '5400 ${context.strings.rs}',
+                      value: '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
                       textColor: AppColors.grey_41,
                     ),
                   ],
@@ -178,6 +205,32 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  showDescriptionDetails(BuildContext context){
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          scrollable: true,
+          title: Text(strings.description, style: context.bodySmall.copyWith(fontSize: 16)),
+          content: Text(car?.description ?? '', style: context.bodySmall.copyWith(fontSize: 12)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(strings.ok),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -197,6 +250,8 @@ class CustomColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           title,

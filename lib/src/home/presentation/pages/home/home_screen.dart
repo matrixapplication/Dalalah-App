@@ -51,7 +51,7 @@ class HomeScreen extends BaseStatelessWidget {
                     routeName: Routes.carsPage,
                     title: context.strings.latest_cars,
                   ),
-                  CarsHomeListHoriz(
+                  CarsHomeListHorizStream(
                     carsStream: yourCarsStream,
                     onToggleFavorite: (id) async => await onFavoriteCar!(id),
                   ),

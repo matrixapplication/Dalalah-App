@@ -2,15 +2,16 @@ import 'package:dalalah/src/main_index.dart';
 
 import '../scaffold/tab_bar_widget.dart';
 
-class TabBarLineWidget extends StatelessWidget {
+class TabBarCustomWidget extends StatelessWidget {
   final double? labelSize;
   final List<TabItemModel> tabs;
   final Color? selectedLabelColor;
   final Color? unSelectedLabelColor;
   final TextStyle? textStyle;
   final Decoration? indicatorDecoration;
+  final Color? backgroundColor;
 
-  const TabBarLineWidget({
+  const TabBarCustomWidget({
     Key? key,
     required this.tabs,
     this.labelSize,
@@ -18,6 +19,7 @@ class TabBarLineWidget extends StatelessWidget {
     this.selectedLabelColor,
     this.unSelectedLabelColor,
     this.textStyle,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,7 @@ class TabBarLineWidget extends StatelessWidget {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-        backgroundColor: context.primaryColor,
+        backgroundColor: backgroundColor??context.primaryColor,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: TabBar(

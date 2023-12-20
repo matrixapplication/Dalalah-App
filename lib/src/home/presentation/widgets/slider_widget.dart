@@ -33,7 +33,7 @@ class SliderWidget extends StatelessWidget {
             index: (snapshot?.length ?? 0) - 1,
             itemBuilder: (BuildContext context, int index) {
               return  Stack(
-                alignment: AlignmentDirectional.bottomEnd,
+                alignment: AlignmentDirectional.bottomStart,
                 children: [
                   ImageNetwork(
                     url: snapshot?[index].image ?? '',
@@ -46,7 +46,8 @@ class SliderWidget extends StatelessWidget {
                     padding: 10.paddingAll,
                     child: Text(
                       snapshot?[index].title ?? '',
-                      style: context.headlineLarge,),
+                      style: context.headlineLarge,
+                    ),
                   )
                 ],
               );

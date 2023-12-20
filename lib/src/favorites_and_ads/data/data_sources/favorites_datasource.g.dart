@@ -100,7 +100,7 @@ class _FavoritesDatasource implements FavoritesDatasource {
     )
             .compose(
               _dio.options,
-              '/get_admin_cars',
+              '/get_my_cars',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -134,7 +134,7 @@ class _FavoritesDatasource implements FavoritesDatasource {
     )
             .compose(
               _dio.options,
-              '/get-favorite',
+              '/get-favorite-plates',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -24,8 +24,8 @@ class SellCarParams {
   int? branchId;
   @JsonKey(name: 'year')
   int? year;
-  @JsonKey(name: 'color_id')
-  int? colorId;
+  @JsonKey(name: 'color')
+  String? color;
   @JsonKey(name: 'drive_type')
   String? driveType;
   @JsonKey(name: 'car_type_id')
@@ -63,7 +63,7 @@ class SellCarParams {
   @JsonKey(name: 'monthly_installment')
   int? installment;
 
-  SellCarParams({this.id, this.brandId, this.modelId, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.colorId, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment});
+  SellCarParams({this.id, this.brandId, this.modelId, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.color, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment});
 
    factory SellCarParams.fromJson(Map<String, dynamic> json) => _$SellCarParamsFromJson(json);
 

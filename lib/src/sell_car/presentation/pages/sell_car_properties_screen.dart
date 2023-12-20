@@ -32,9 +32,11 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
         itemBuilder: (context, index) {
           return DetailsViewListTile(
             isOpen: true,
+            selected: selected,
             feature: features[index],
             onSelected: (ids) {
               selected = ids;
+              // remove duplicates
               print(selected);
             },
           );

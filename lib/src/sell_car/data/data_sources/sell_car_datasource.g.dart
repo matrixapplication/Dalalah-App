@@ -29,7 +29,7 @@ class _SellCarDatasource implements SellCarDatasource {
     String modelRole,
     int portId,
     int year,
-    int colorId,
+    String color,
     String driveType,
     int carTypeId,
     String fuelType,
@@ -81,8 +81,8 @@ class _SellCarDatasource implements SellCarDatasource {
       year.toString(),
     ));
     _data.fields.add(MapEntry(
-      'color_id',
-      colorId.toString(),
+      'color',
+      color,
     ));
     _data.fields.add(MapEntry(
       'drive_type',
@@ -191,7 +191,7 @@ class _SellCarDatasource implements SellCarDatasource {
     String modelRole,
     int portId,
     int year,
-    int colorId,
+    String color,
     String driveType,
     int carTypeId,
     String fuelType,
@@ -242,8 +242,8 @@ class _SellCarDatasource implements SellCarDatasource {
       year.toString(),
     ));
     _data.fields.add(MapEntry(
-      'color_id',
-      colorId.toString(),
+      'color',
+      color,
     ));
     _data.fields.add(MapEntry(
       'drive_type',

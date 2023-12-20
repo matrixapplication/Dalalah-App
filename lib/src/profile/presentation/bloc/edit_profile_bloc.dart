@@ -26,7 +26,7 @@ class EditProfileBloc extends BaseCubit {
   }
 
   logout() async {
-    executeEmitterListener(() => HelperMethods.removeProfile());
+    executeEmitterSuccess(() => HelperMethods.removeProfile());
   }
 
   editProfileData(RegisterParams params) async {

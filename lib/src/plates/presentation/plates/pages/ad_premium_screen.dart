@@ -32,7 +32,7 @@ class AddPremiumScreen extends BaseStatelessWidget {
             title1: strings.highlight_the_ad,
             title2: strings.watch_my_ad,
             onPrevPressed: () {
-              Navigator.pop(context);
+              Navigators.pushNamedAndRemoveUntil(Routes.favoritesAndAdsTabs);
             },
             onPressed1: () {
               Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);

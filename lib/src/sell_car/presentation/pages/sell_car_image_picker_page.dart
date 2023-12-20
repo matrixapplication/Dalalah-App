@@ -7,14 +7,14 @@ import '../../../main_index.dart';
 import '../bloc/sell_car_image_picker_bloc.dart';
 import '../widgets/header_sell_car.dart';
 
-class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
+class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
     SellCarImagePickerCubit> {
   SellCarImagePickerPage({Key? key}) : super(key: key);
 
-  @override
-  void loadInitialData(BuildContext context) {
-    bloc.fetchInitialData();
-  }
+  // @override
+  // void loadInitialData(BuildContext context) {
+  //   bloc.fetchInitialData();
+  // }
 
   // @override
   // String? title(BuildContext context) => '';
@@ -30,11 +30,10 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<SettingsPrice> state) {
+  Widget buildWidget(BuildContext context, UnInitState state) {
     final args = getArguments(context);
     return SellCarImagePickerScreen(
-        settingsPrice: state.data!,
-        statusCar: args.status,
+        statusCar: 'args.status',
         onSave: (params) {
           print('args in SellCarImagePickerPage ${params.toJson()}');
           args.price = params.price;
@@ -48,6 +47,6 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<SettingsPrice>,
 
   @override
   void onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+    Navigators.pushNamedAndRemoveUntil(Routes.addPremiumPage);
   }
 }

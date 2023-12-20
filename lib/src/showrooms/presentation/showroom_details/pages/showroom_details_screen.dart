@@ -2,6 +2,8 @@ import 'package:dalalah/core/widgets/icons/icon_text.dart';
 
 import '../../../../../core/widgets/buttons/call_button.dart';
 import '../../../../../core/widgets/buttons/chat_whats_app_button.dart';
+import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
+import '../../../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../cars/presentation/cars_details/widgets/car_details_ratings.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';

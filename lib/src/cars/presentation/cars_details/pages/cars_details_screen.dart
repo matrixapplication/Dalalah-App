@@ -1,12 +1,18 @@
-import 'package:dalalah/core/widgets/icons/icon_text.dart';
-import 'package:dalalah/src/cars/presentation/cars/widgets/cars_list.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/src/cars/presentation/cars/pages/cars_page.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
+import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
+import '../../../../home/data/models/car_filter_params.dart';
+import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
+import '../../../../sell_car/domain/entities/car_status.dart';
+import '../../../data/models/comment_params.dart';
 import '../../../data/models/model_object.dart';
 import '../../../domain/entities/car_details.dart';
-import '../widgets/car_details_ratings.dart';
+import '../../comments/pages/comments_page.dart';
+import '../widgets/car_properties.dart';
 import '../widgets/sliders_car_details.dart';
 import '../widgets/user_info.dart';
 import 'views/car_details_details_view.dart';
@@ -17,37 +23,54 @@ class CarsDetailsScreen extends BaseStatelessWidget {
   final CarDetails carDetails;
   final Function()? onToggleFavorite;
 
-  CarsDetailsScreen({Key? key, required this.carDetails, required this.isNew,  required this.onToggleFavorite,}) : super(key: key);
+  CarsDetailsScreen({
+    Key? key,
+    required this.carDetails,
+    required this.isNew,
+    required this.onToggleFavorite,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool isNew = carDetails.status?.name == 'new';
+    bool isNew = carDetails.car?.status?.key == CarStatus.newCar;
+    Car car = carDetails.car ?? Car();
     return NestedScrollView(
       body: TabBarWidget(
+        //backgroundColor: context.cardColor,
         tabs: [
           TabItemModel(
             label: strings.details,
             page: CarDetailsDetailsView(
-              desc: carDetails.description ?? '',
-              features: carDetails.features ?? [],
+                carDetails: carDetails,
+              onToggleFavorite: onToggleFavorite,
             ),
           ),
-          if(isNew)
-          TabItemModel(
-            label: strings.price,
-            page: CarDetailsPriceView(
-              carDetails: carDetails,
+          if (isNew)
+            TabItemModel(
+              label: strings.price,
+              page: CarDetailsPriceView(
+                carDetails: carDetails,
+              ),
             ),
-          ),
-          if(isNew)
+          if (isNew)
+            TabItemModel(
+              label: strings.categories,
+              page: CarsPage(
+                params: CarFilterParams(
+                  startYear: int.parse(car.year ?? '0'),
+                  brand: car.brand?.id ?? 0,
+                  carModel: car.brandModel?.id ?? 0,
+                ),
+              ),
+            ),
+          //   if(isNew)
           TabItemModel(
-            label: strings.categories,
-            page: CarsList(cars: ['', '', '', ''], isCatItem: true),
-          ),
-       //   if(isNew)
-          TabItemModel(
-            label: strings.ratings,
-            page: CarDetailsRatings(),
+            label: strings.comments,
+            page: CommentsPage(
+              params: CommentParams(
+                carId: car.id ?? 0,
+              ),
+            ),
           ),
         ],
       ),
@@ -55,25 +78,25 @@ class CarsDetailsScreen extends BaseStatelessWidget {
         SliverAppBar(
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
+          leading: 0.ph,
           bottom: PreferredSize(
-            preferredSize:  Size(0,isNew ? 316 : 400),
-            child:  Column(
+            preferredSize: Size(0, isNew ? 615 : 700),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
                     SlidersCarDetails(
-                      images: carDetails.allImages(),
+                      images: car.allImages(),
                     ),
                     PositionedDirectional(
                       bottom: 0,
                       end: 10,
                       child: FavoriteButton(
-                        isFavorite: carDetails.isFavorite ?? false,
+                        isFavorite: car.isFavorite ?? false,
                         onToggleFavorite: () {
                           onToggleFavorite?.call();
                         },
-
                       ),
                     ),
                   ],
@@ -84,96 +107,63 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${carDetails.brandModel?.brand} ${carDetails.brandModel?.name}",
+                        "${car.brandModel?.brand} ${car.brandModel?.name}",
                         style: context.textTheme.titleSmall!.copyWith(
                           color: AppColors.grey_2C,
                         ),
                       ),
                       15.ph,
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.status?.name ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 55,
-                            ),
-                            14.pw,
-                            CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.year ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 70,
-                            ),
-                            14.pw,
-                            CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.color?.name ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 70,
-                            ),
-                            14.pw, CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.driveType?.name ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 100,
-                            ),
-                            14.pw, CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.engine ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 70,
-                            ),
-                            14.pw, CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.cylinders ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 70,
-                            ),
-                            14.pw,CustomChip(
-                              backgroundColor: AppColors.grey_d9,
-                              label: carDetails.mileage ?? '',
-                              fontSize: 14,
-                              labelColor: AppColors.blue_31,
-                              width: 70,
-                            ),
-                          ],
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: carDetails.properties(context)?.length ?? 0,
+                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 100,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
                         ),
+                        itemBuilder: (context, index) {
+                          CarProperty property = carDetails.properties(context)[index];
+                          return Container(
+                            padding: 5.paddingHoriz,
+                            decoration: Decorations.kDecorationBorderRadius(
+                              colorBorder: context.dividerColor,
+                            ),
+                            child: ColumnTexts(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              title: property.subtitle ?? '',
+                              value: property.title,
+                              titleStyle: context.bodySmall.copyWith(
+                                fontSize: 12,
+                              ),
+                              valueStyle: context.headlineSmall.copyWith(
+                                fontSize: 12,
+                            ),
+                          ));
+                        },
                       ),
                       10.ph,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          if(isNew)
-                          IconText(
-                            icon: AppIcons.star,
-                            text: '4.8',
-                            textStyle: context.bodyMedium.copyWith(
-                              color: context.yellow_00,
-                            ),
-                          ),
-                          Spacer(),
-                          CustomChip(
-                            backgroundColor: context.primaryColor,
-                            label: '${carDetails.price ?? ''} ${context.strings.rs}',
-                            fontSize: 18,
-                            padding: 5.paddingVert,
-                            width: 170,
+                          // if (isNew)
+                          //   IconText(
+                          //     icon: AppIcons.star,
+                          //     text: '${car.r ?? 0}',
+                          //     textStyle: context.bodyMedium.copyWith(
+                          //       color: context.yellow_00,
+                          //     ),
+                          //   ),
+                          const Spacer(),
+                          PriceWidget(
+                            price: car.price ?? '0.0',
                           ),
                         ],
                       ),
-
-                      if(!isNew)
+                      if (!isNew)
                         UserInfo(
-                          user: carDetails.modelObject ?? ModelObject(),
+                          user: car.modelObject ?? ModelObject(),
                         ),
                     ],
                   ),

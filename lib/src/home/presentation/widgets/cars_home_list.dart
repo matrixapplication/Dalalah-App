@@ -12,14 +12,16 @@ import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../../cars/presentation/cars_details/widgets/car_info.dart';
+import '../../../sell_car/domain/entities/car_status.dart';
 import '../../domain/entities/car.dart';
 
 ///  Created by harbey on 9/5/2023.
-class CarsHomeListHoriz extends StatelessWidget {
+class CarsHomeListHorizStream extends StatelessWidget {
   final StreamStateInitial<List<Car>?> carsStream;
   final Function(int)? onToggleFavorite;
 
-  const CarsHomeListHoriz({Key? key, required this.carsStream, required this.onToggleFavorite})
+  const CarsHomeListHorizStream({Key? key, required this.carsStream, required this.onToggleFavorite})
       : super(key: key);
 
   @override
@@ -30,17 +32,36 @@ class CarsHomeListHoriz extends StatelessWidget {
           stream: carsStream,
           builder: (context, snapshot) {
             print('snapshot ${snapshot?.length}');
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-              return CarHorizontalItem(
-                car: snapshot![index],
-                onToggleFavorite: (id) => onToggleFavorite!(snapshot[index].id ?? 0),
-              );
-            },
-            itemCount: snapshot?.length ?? 0,
+          return CarsHomeListHoriz(
+            cars: snapshot ?? [],
+            onToggleFavorite: onToggleFavorite,
           );
         }
+      ),
+    );
+  }
+}
+
+class CarsHomeListHoriz extends StatelessWidget {
+  final List<Car> cars;
+  final Function(int)? onToggleFavorite;
+
+  const CarsHomeListHoriz({Key? key, required this.cars, required this.onToggleFavorite})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 260,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (_, index) {
+          return CarHorizontalItem(
+            car: cars[index],
+            onToggleFavorite: (id) => onToggleFavorite!(cars[index].id ?? 0),
+          );
+        },
+        itemCount: cars.length ?? 0,
       ),
     );
   }
@@ -107,7 +128,7 @@ class CarHorizontalItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${car.brandModel?.name} ${car.brandModel?.brand}",
+                      car.fullName() ?? '',
                       style: context.headlineSmall.copyWith(
                         color: AppColors.grey_40,
                       ),
@@ -123,41 +144,25 @@ class CarHorizontalItem extends StatelessWidget {
                           10.pw,
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: car.status?.name ?? "",
+                            value: car.status?.name ?? "",
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
                           10.pw,
                           CustomChip(
                             backgroundColor: AppColors.grey_d9,
-                            label: car.year ?? "",
+                            value: car.year ?? "",
                             fontSize: 10,
                             labelColor: AppColors.blue_31,
                           ),
                         ],
                       ),
                     ),
-                    const Spacer(),
-                    FittedBox(
-                      child: Row(
-                        children: [
-                          CarDetailsContainer(
-                            label: car.fuelType?.name ?? "",
-                            icon: AppIcons.fuel,
-                          ),
-                          5.pw,
-                          CarDetailsContainer(
-                            label: car.engine ?? "",
-                            icon: AppIcons.timer,
-                          ),
-                          5.pw,
-                          CarDetailsContainer(
-                            label: car.bodyType?.name ?? "",
-                            icon: AppIcons.chair,
-                          ),
-                        ],
-                      ),
-                    )
+                     const Spacer(),
+                    CarInfo(
+                      isNew: CarStatus.newCar == car.status?.key,
+                      car: car,
+                    ),
                   ],
                 ),
               ),

@@ -13,11 +13,13 @@ import '../../../domain/entities/plate.dart';
 class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;
+  final bool isAll;
 
   const PlateItem({
     Key? key,
     required this.plate,
      this.onFavoritePlate,
+    this.isAll = false,
   }) : super(key: key);
 
   @override
@@ -57,6 +59,7 @@ class PlateItem extends StatelessWidget {
           children: [
             PlateImage(
                 plate: plate,
+                isDetails: true,
             ),
             Padding(
               padding: 0.paddingVert + 10.paddingHoriz,
@@ -64,7 +67,7 @@ class PlateItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${plate.letterAr} ${plate.letterEn}',
+                    '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}',
                     style: context.bodyMedium,
                   ),
                   PriceWidget(price: plate.price ?? '0'),

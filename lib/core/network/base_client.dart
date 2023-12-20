@@ -29,16 +29,16 @@ class HeaderInterceptor extends Interceptor {
   final keyAuthorization = "authorization";
   final keyApiKey = "apiKey";
   final apiKeyValue = "Nas@manpoweragent";
-  final keyLanguage = "Language";
+  final keyLanguage = "Accept-Language";
 
   final String accessToken;
   HeaderInterceptor({required this.accessToken});
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
-    ProfileDto? profile = accessToken.isNotEmpty ? ProfileDto() : await HelperMethods.getProfile();
+    ProfileDto? profile = accessToken.isNotEmpty ? ProfileDto(token: accessToken) : await HelperMethods.getProfile();
   //  profile?.token = ;
-    options.headers[keyAuthorization] = 'Bearer ${profile?.token ?? accessToken}';
+    options.headers[keyAuthorization] = 'Bearer ${profile?.token}';
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
     options.headers[keyApiKey] = apiKeyValue;
     options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';

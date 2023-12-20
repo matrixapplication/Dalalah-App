@@ -46,8 +46,13 @@ class CarsCubit extends BaseCubit {
     );
   }
 
-  fetchBrands() {
-    executeSuccess(() => usecase.fetchBrands());
+  fetchBrands() async{
+    try {
+      final brands = await usecase.fetchBrands();
+      brandsStream.setData(brands);
+    } catch (e) {
+      brandsStream.setError(e);
+    }
   }
 
 

@@ -42,6 +42,6 @@ class ProfileBloc extends BaseCubit {
   }
 
   logout() async {
-    executeEmitterListener(() => HelperMethods.removeProfile());
+    executeEmitterSuccess(() => HelperMethods.removeProfile());
   }
 }

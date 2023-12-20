@@ -26,7 +26,6 @@ class SellCarSecondScreen extends BaseStatelessWidget {
   }) : super(key: key);
 
 
-  int colorId = 0;
   StreamStateInitial<bool> isModelYearStream = StreamStateInitial<bool>();
   StreamStateInitial<bool> isNormalTypeStream = StreamStateInitial<bool>();
   StreamStateInitial<bool> isNotElectricTypeStream = StreamStateInitial<bool>();
@@ -34,6 +33,8 @@ class SellCarSecondScreen extends BaseStatelessWidget {
   String driveTypeId = '';
   int bodyTypeId = 0;
   String fuelType = '';
+
+  final colorsController = TextEditingController();
   final cylindersController = TextEditingController();
   final kilometersController = TextEditingController();
   final engineController = TextEditingController();
@@ -58,20 +59,14 @@ class SellCarSecondScreen extends BaseStatelessWidget {
           key: _formKey,
           child: Column(
             children: [
-              DropDownField(
+              CustomTextField(
                 title: strings.colors,
-                hint: strings.select_color,
-                valueId: car?.color?.id.toString() ?? '',
-                items: state.colors
-                    .map(
-                        (e) => DropDownItem(id: e.id.toString(), title: e.name))
-                    .toList(),
-                onChanged: (value) {
-                  colorId = int.parse(value?.id ?? '0');
-                },
+                hintText: strings.type_color,
+                controller: colorsController,
               ),
+              5.ph,
               SelectionButtonChip(
-                title: strings.drive_types,
+                title: strings.motion_vector,
                 initialValue: selectedDriveType,
                 types: state.driveTypes
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
@@ -114,6 +109,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 hintText: strings.type_engine,
                 controller: engineController,
                 keyboardType: TextInputType.number,
+                isValidator: false,
               ),
               CustomTextField(
                 title: strings.cylinders,
@@ -132,7 +128,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
     if (_formKey.currentState!.validate()) {
       onNext?.call(SellCarParams(
         branchId: 1,
-        colorId: colorId,
+        color: colorsController.text.trim(),
         driveType: driveTypeId.isEmpty
             ? state.driveTypes.first.key ?? ''
             : driveTypeId,
@@ -150,9 +146,11 @@ class SellCarSecondScreen extends BaseStatelessWidget {
 
   _initialValues() {
     if (car != null) {
-      colorId = car?.color?.id ?? 0;
+      colorsController.text = car?.color ?? '';
       selectedDriveType = ChipItem(
-          id: car?.driveType?.key ?? '', title: car?.driveType?.name ?? '');
+          id: car?.driveType?.key ?? '',
+          title: car?.driveType?.name ?? '',
+      );
       driveTypeId = car?.driveType?.key ?? '';
       bodyTypeId = car?.bodyType?.id ?? 0;
       fuelType = car?.fuelType?.key ?? '';

@@ -6,10 +6,12 @@ import '../../src/auth/presentation/pages/forget-password/enter_pin_code_page.da
 import '../../src/auth/presentation/pages/forget-password/new_password_page.dart';
 import '../../src/auth/presentation/pages/login/login_page.dart';
 import '../../src/auth/presentation/pages/sign-up/register_page.dart';
+import '../../src/cars/data/models/comment_params.dart';
 import '../../src/cars/presentation/cars/pages/cars_page.dart';
 import '../../src/cars/presentation/cars/pages/sort_by/sort_by_page.dart';
 import '../../src/cars/presentation/cars_details/pages/cars_details_page.dart';
 import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
+import '../../src/cars/presentation/comments/pages/comments_page.dart';
 import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/brands/brands_screen.dart';
@@ -53,6 +55,7 @@ class Routes {
   static const String realEstatePage = 'realEstatePage';
   static const String addPremiumPage = 'AddPremiumPage';
   static const String branchesPage = 'branchesPage';
+  static const String commentsPage = 'commentsPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -108,6 +111,7 @@ class Routes {
     realEstatePage: (context) => RealEstatePage(),
     addPremiumPage: (context) => AddPremiumPage(),
     branchesPage: (context) => BranchesPage(),
+    commentsPage: (context) => CommentsPage(params: CommentParams()),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

@@ -28,7 +28,7 @@ class CarProperties extends StatelessWidget {
 }
 
 class CarPropertyItem extends StatelessWidget {
-  final Option property;
+  final OptionDto property;
   final double? width;
   final double? height;
   final double? radius;
@@ -53,13 +53,13 @@ class CarPropertyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Option selected = Option();
+    OptionDto selected = OptionDto();
     return StatefulBuilder(
       builder: (context, setState) {
         return InkWell(
           onTap: () {
             if(selected == property){
-              selected = Option();
+              selected = OptionDto();
             } else {
               selected = property;
             }
@@ -80,19 +80,16 @@ class CarPropertyItem extends StatelessWidget {
                 ImageNetwork(
                   url: property.icon,
                   // color: property.color ?? context.primaryColor,
-                  size: 50,
+                  size: 25,
                 ),
-                10.ph,
                 Text(
                   property.name ?? '',
                   style: textStyle ?? context.bodySmall.copyWith(
                     color: selected == property ? context.primaryColor : null,
+                    fontSize: 10,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                 ),
-                10.ph,
                 // property.subtitle == null
                 //     ? 0.ph
                 //     : Text(

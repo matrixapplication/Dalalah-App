@@ -27,6 +27,7 @@ class PrimaryButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: borderRadius ??  BorderRadius.all(Radius.circular(radius ?? 8))),
           fixedSize: Size(width ?? MediaQuery.of(context).size.width, height!),
           foregroundColor: backgroundColor ?? context.primaryColor,
+          disabledBackgroundColor: context.disabledColor,
           padding: padding,
         ),
         child: FittedBox(child: Text(title!, style: style ?? context.labelLarge)),

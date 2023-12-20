@@ -17,11 +17,11 @@ class MyCarsCubit extends BaseCubit {
 
   List<Car> allCars = [];
   List<Car> cars = [];
-  int page = 1;
+  int page = 0;
   bool isLastPage = false;
 
   fetchMyCars({bool isMoreData = false}) async {
-    isMoreData ? {page = 1, allCars.clear()} : page++;
+    !isMoreData ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
       isMoreData: isMoreData,

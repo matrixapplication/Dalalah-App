@@ -4,7 +4,7 @@ import '../../data/models/feature_dto.dart';
 class Feature {
   int? id;
   String? name;
-  List<Option>? options;
+  List<OptionDto>? options;
 
   Feature({this.id, this.name, this.options});
 

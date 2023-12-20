@@ -9,7 +9,7 @@ class FeatureDto {
   @JsonKey(name: 'name')
   String? name;
   @JsonKey(name: 'options')
-  List<Option>? options;
+  List<OptionDto>? options;
 
   FeatureDto({this.id, this.name, this.options});
 
@@ -19,7 +19,7 @@ class FeatureDto {
 }
 
 @JsonSerializable(ignoreUnannotated: true)
-class Option {
+class OptionDto {
   @JsonKey(name: 'id')
   int? id;
   @JsonKey(name: 'name')
@@ -27,10 +27,10 @@ class Option {
   @JsonKey(name: 'icon')
   String? icon;
 
-  Option({this.id, this.name, this.icon});
+  OptionDto({this.id, this.name, this.icon});
 
-   factory Option.fromJson(Map<String, dynamic> json) => _$OptionFromJson(json);
+   factory OptionDto.fromJson(Map<String, dynamic> json) => _$OptionDtoFromJson(json);
 
-   Map<String, dynamic> toJson() => _$OptionToJson(this);
+   Map<String, dynamic> toJson() => _$OptionDtoToJson(this);
 }
 

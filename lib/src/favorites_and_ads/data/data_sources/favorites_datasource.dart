@@ -24,11 +24,11 @@ abstract class FavoritesDatasource {
   @POST('/add-favorite')
   Future<ApiResponse<bool>> toggleFavoriteCarOrPlate(@Body() AddToFavoriteParams params);
 
-  @GET('/get_admin_cars')
+  @GET('/get_my_cars')
   Future<ApiResponse<List<CarDto>>> fetchMyCars(@Query('page') int page);
 
   // Plates APIs
-  @GET('/get-favorite')
+  @GET('/get-favorite-plates')
   Future<ApiResponse<List<PlateDto>>> fetchFavoritePlates(@Query('page') int page);
 
   @GET('/my-plates')

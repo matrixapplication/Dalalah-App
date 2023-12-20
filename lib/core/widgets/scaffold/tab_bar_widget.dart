@@ -17,7 +17,7 @@ class TabWidgetItemBuilder extends Tab {
       : super(key: key, text: model.label);
 }
 
-class TabBarWidget extends StatelessWidget {
+class TabBarScaffoldWidget extends StatelessWidget {
   final List<TabItemModel> tabs;
   final Color? backgroundColor;
   final List<Widget>? tabsText;
@@ -26,7 +26,7 @@ class TabBarWidget extends StatelessWidget {
   final double? height;
   final bool isLineDecoration;
 
-  const TabBarWidget({
+  const TabBarScaffoldWidget({
     Key? key,
     required this.tabs,
     this.backgroundColor,

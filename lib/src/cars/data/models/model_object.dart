@@ -13,7 +13,7 @@ class ModelObject {
   @JsonKey(name: 'whatsapp')
   String? whatsapp;
   @JsonKey(name: 'count_cars')
-  int? countCars;
+  dynamic countCars;
   @JsonKey(name: 'description')
   String? description;
   @JsonKey(name: 'image')

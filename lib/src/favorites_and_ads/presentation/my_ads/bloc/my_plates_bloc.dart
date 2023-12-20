@@ -21,7 +21,7 @@ class MyPlatesCubit extends BaseCubit {
   bool isLastPage = false;
 
   fetchMyPlates({bool isMoreData = false}) async {
-    isMoreData ? {page = 1, allPlates.clear()} : page++;
+    !isMoreData ? {page = 1, allPlates.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
       isMoreData: isMoreData,

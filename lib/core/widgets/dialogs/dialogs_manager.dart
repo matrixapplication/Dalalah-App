@@ -32,16 +32,16 @@ class DialogsManager {
   }
 
   static baseDialog(
-    BuildContext context, {
-    String? confirmButtonName,
-    required String message,
-    Function()? onClickOk,
-    bool? dismissible = true,
-    Function()? negativeTap,
-    required IconData icon,
-    String? negativeButtonName,
-    bool hideCancelButton = true,
-  }) {
+      BuildContext context, {
+        String? confirmButtonName,
+        required String message,
+        Function()? onClickOk,
+        bool? dismissible = true,
+        Function()? negativeTap,
+        required IconData icon,
+        String? negativeButtonName,
+        bool hideCancelButton = true,
+      }) {
     showGeneralDialog(
       barrierDismissible: false,
       barrierColor: Colors.black.withOpacity(0.5),
@@ -64,7 +64,7 @@ class DialogsManager {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(message, style: kTextMedium.copyWith(fontSize: 14)),
+                Text(message, style: context.bodySmall.copyWith(fontSize: 14)),
               ],
             ),
           ),
@@ -79,25 +79,25 @@ class DialogsManager {
               },
               child: Text(
                 confirmButtonName ?? context.strings.ok,
-                style: kTextBold.copyWith(
+                style: context.bodyLarge.copyWith(
                     color: context.primaryColor, fontSize: 14),
               ),
             ),
             hideCancelButton == true
                 ? const SizedBox.shrink()
                 : TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      if (negativeTap != null) {
-                        negativeTap();
-                      }
-                    },
-                    child: Text(
-                      negativeButtonName ?? context.strings.cancel,
-                      style:
-                          kTextBold.copyWith(color: Colors.grey, fontSize: 14),
-                    ),
-                  ),
+              onPressed: () {
+                Navigator.pop(context);
+                if (negativeTap != null) {
+                  negativeTap();
+                }
+              },
+              child: Text(
+                negativeButtonName ?? context.strings.cancel,
+                style:
+                context.bodyLarge.copyWith(color: Colors.grey, fontSize: 14),
+              ),
+            ),
           ],
         );
       },
@@ -110,10 +110,11 @@ class DialogsManager {
     );
   }
 
+
   static showSuccessDialog(BuildContext context,
       {required String message, Function()? onClickOk}) {
     return baseDialog(context,
-        message: message, icon: Icons.check_circle, onClickOk: onClickOk);
+        message: message, icon: Icons.check_circle, onClickOk: ()=> onClickOk!());
   }
 
   static showInfoDialog(BuildContext context,

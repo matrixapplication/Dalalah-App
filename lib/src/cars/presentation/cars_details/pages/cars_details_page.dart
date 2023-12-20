@@ -1,10 +1,7 @@
 
 import '../../../../../core/components/base_widget_bloc.dart';
-import '../../../../home/data/models/car_filter_params.dart';
-import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/car_details.dart';
-import '../../cars/bloc/cars_bloc.dart';
 import '../bloc/cars_details_bloc.dart';
 import 'cars_details_screen.dart';
 
@@ -26,7 +23,7 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsDetail
       isNew: true,
       carDetails: state.data!,
       onToggleFavorite: () {
-        bloc.toggleFavorite(state.data?.id ?? 0);
+        bloc.toggleFavorite(state.data?.car?.id ?? 0);
       },
     );
   }

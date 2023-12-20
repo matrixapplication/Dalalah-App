@@ -1,4 +1,6 @@
 import 'package:dalalah/core/utils/navigator.dart';
+import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
@@ -7,6 +9,7 @@ import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
+import '../../cars_details/widgets/car_info.dart';
 import 'car_item_footer.dart';
 
 class CarVerticalItem extends StatelessWidget {
@@ -93,55 +96,36 @@ class CarVerticalItem extends StatelessWidget {
                           ),
 
                           Spacer(),
-                          Row(
-                            children: [
-                              CustomChip(
-                                backgroundColor: AppColors.grey_d9,
-                                label: carStatus ?? context.strings.new_,
-                                fontSize: 14,
-                                labelColor: AppColors.blue_31,
-                                padding: 3.paddingVert + 10.paddingHoriz,
-                              ),
-                              14.pw,
-                              CustomChip(
-                                backgroundColor: AppColors.grey_d9,
-                                label: car.year ?? "",
-                                fontSize: 14,
-                                labelColor: AppColors.blue_31,
-                                padding: 3.paddingVert + 10.paddingHoriz,
-                              ),
-                            ],
-                          ),
-                          10.ph,
-                          CustomChip(
-                            radius: 15,
-                            backgroundColor: context.primaryColor,
-                            label: '${car.price?.toString() ?? ""} ${context.strings.rs}',
-                            fontSize: 16,
-                            padding: 4.paddingVert,
-                            width: 145,
-                            // padding: 3.paddingVert + 5.paddingHoriz,
-                          ),
-                          10.ph,
                           FittedBox(
                             child: Row(
                               children: [
-                                CarDetailsContainer(
-                                  label: car.fuelType?.name ?? "",
-                                  icon: AppIcons.fuel,
+                                CustomChip(
+                                  backgroundColor: AppColors.grey_d9,
+                                  value: car.status?.name ?? '',
+                                  fontSize: 14,
+                                  labelColor: AppColors.blue_31,
+                                  padding: 3.paddingVert + 10.paddingHoriz,
                                 ),
-                                5.pw,
-                                CarDetailsContainer(
-                                  label: car.engine ?? "",
-                                  icon: AppIcons.timer,
-                                ),
-                                5.pw,
-                                CarDetailsContainer(
-                                  label: car.bodyType?.name ?? "",
-                                  icon: AppIcons.chair,
+                                14.pw,
+                                CustomChip(
+                                  backgroundColor: AppColors.grey_d9,
+                                  value: car.year ?? "",
+                                  fontSize: 14,
+                                  labelColor: AppColors.blue_31,
+                                  padding: 3.paddingVert + 10.paddingHoriz,
                                 ),
                               ],
                             ),
+                          ),
+                          10.ph,
+                          PriceWidget(
+                            price: '${car.price}',
+                            // padding: 3.paddingVert + 5.paddingHoriz,
+                          ),
+                          10.ph,
+                          CarInfo(
+                            isNew: CarStatus.newCar == car.status?.key,
+                            car: car,
                           ),
                         ],
                       ),

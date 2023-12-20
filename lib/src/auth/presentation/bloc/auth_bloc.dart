@@ -16,16 +16,16 @@ class AuthCubit extends BaseCubit {
   AuthCubit(this.usecase, this.sellCarUseCase);
 
   void login(LoginParams params)  {
-    executeEmitterListener(() => usecase.loginAsUser(params));
+    executeEmitterSuccess(() => usecase.loginAsUser(params));
   }
 
 
   void showRoomLogin(ShowroomLoginParams params)  {
-    executeEmitterListener(() => usecase.loginAsShowroom(params));
+    executeEmitterSuccess(() => usecase.loginAsShowroom(params));
   }
 
   void register(RegisterParams params)  {
-    executeEmitterListener(() => usecase.register(params));
+    executeEmitterSuccess(() => usecase.register(params));
   }
 
   void fetchCities() {

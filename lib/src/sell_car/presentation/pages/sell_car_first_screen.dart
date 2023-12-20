@@ -56,7 +56,6 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                   status = value.id ?? '';
                 },
               ),
-              24.ph,
               DropDownField(
                 title: strings.brands,
                 hint: strings.select_brand,

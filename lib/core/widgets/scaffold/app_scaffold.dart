@@ -124,7 +124,7 @@ class AppScaffold extends StatelessWidget {
                             // tabAlignment: TabAlignment.fill,
                             // padding: 15.paddingHoriz,
                             onTap: (index) {
-                              if (onTabSelected != null) onTabSelected!(index);
+                              onTabSelected?.call(index);
                             },
                             overlayColor:
                                 MaterialStateProperty.all(Colors.transparent),
