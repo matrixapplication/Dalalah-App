@@ -12,9 +12,9 @@ class PlatesDetailsCubit extends BaseCubit {
 
   PlatesDetailsCubit(this.usecase, this.favoritesUseCase);
 
-  fetchFavorites() async {
-    executeSuccess(() => usecase.fetchPlates());
-  }
+  // fetchFavorites() async {
+  //   executeSuccess(() => usecase.fetchPlates());
+  // }
 
   toggleFavorite(int id) async {
     executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(plateId: id)));

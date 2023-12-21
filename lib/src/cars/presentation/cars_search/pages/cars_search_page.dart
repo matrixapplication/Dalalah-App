@@ -1,17 +1,22 @@
-import 'package:dalalah/src/cars/presentation/cars/bloc/cars_search_bloc.dart';
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../../core/components/base_widget_bloc.dart';
+import '../bloc/cars_search_bloc.dart';
+import '../bloc/cars_search_state.dart';
 import 'cars_search_screen.dart';
 
-class CarsSearchPage extends BaseBlocWidget<UnInitState, CarsSearchCubit> {
+class CarsSearchPage extends BaseBlocWidget<CarsSearchState, CarsSearchCubit> {
   CarsSearchPage({Key? key}) : super(key: key);
 
-  // @override
-  // void loadInitialData(BuildContext context) {}
+  @override
+  void loadInitialData(BuildContext context) {
+    bloc.fetchInitialData();
+  }
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
-    return CarsSearchScreen();
+  Widget buildWidget(BuildContext context, CarsSearchState state) {
+    return CarsSearchScreen(
+      state: state,
+    );
   }
 
   @override

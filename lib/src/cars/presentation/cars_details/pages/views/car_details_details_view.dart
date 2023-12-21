@@ -98,6 +98,7 @@ class DetailsViewListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<int> selected = this.selected ?? [];
+    print('OptionDto selected: ${selected}');
     return StatefulBuilder(
       builder: (context, setState) {
         return ExpansionTile(
@@ -118,8 +119,12 @@ class DetailsViewListTile extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 OptionDto optionDto = feature.options![index];
+                print('OptionDto: ${optionDto.id}');
                 return CarPropertyItem(
                   property: optionDto,
+                  selected: selected.contains(optionDto.id ?? 0)
+                      ? optionDto
+                      : null,
                   onTap: (id) {
                     print('after: $selected');
                     if (selected.contains(id)) {

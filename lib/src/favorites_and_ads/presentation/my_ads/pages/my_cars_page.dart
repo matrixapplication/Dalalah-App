@@ -45,7 +45,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
       },
       child: CarsScreen(
         isFilter: false,
-        isNew: true,
+        isAds: true,
         tasks: state.data ?? [],
       ),
     );

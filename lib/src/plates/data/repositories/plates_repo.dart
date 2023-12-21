@@ -5,6 +5,7 @@ import '../../domain/repositories/base_plates_repo.dart';
 import '../data_sources/plates_datasource.dart';
 import '../models/add_plate_params.dart';
 import '../models/plate_dto.dart';
+import '../models/plate_filter_params.dart';
 
 @Injectable(as: BasePlatesRepo)
 class PlatesRepo extends BasePlatesRepo {
@@ -13,8 +14,8 @@ class PlatesRepo extends BasePlatesRepo {
   PlatesRepo(this.remoteDataSource);
 
   @override
-  Future<ApiResponse<List<PlateDto>>> fetchPlates() async {
-    return await remoteDataSource.fetchPlates();
+  Future<ApiResponse<List<PlateDto>>> fetchPlates(PlateFilterParams params) async {
+    return await remoteDataSource.fetchPlates(params);
   }
 
   @override

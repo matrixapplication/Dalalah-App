@@ -4,6 +4,7 @@ import 'package:dalalah/src/sell_car/presentation/pages/sell_car_second_screen.d
 
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_second_bloc.dart';
 import '../bloc/sell_car_second_state.dart';
 import '../widgets/header_sell_car.dart';
@@ -34,16 +35,20 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
 
   @override
   Widget buildWidget(BuildContext context, SellCarSecondState state) {
-    final args = getArguments(context);
+    SellCarArgs args = getArguments(context);
     return SellCarSecondScreen(
+      car: args.car,
       state: state,
       onNext: (SellCarParams params) {
-        params.status = args.status;
-        params.brandId = args.brandId;
-        params.carModelId = args.carModelId;
-        params.carModelExtensionId = args.carModelExtensionId;
-        params.year = args.year;
-        Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: params);
+        params.status = args.params?.status ?? '';
+        params.brandId =  args.params?.brandId ?? 0;
+        params.carModelId =  args.params?.carModelId ?? 0;
+        params.carModelExtensionId =  args.params?.carModelExtensionId ?? 0;
+        params.year =  args.params?.year ?? 0;
+        Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
+          car: args.car,
+          params: params
+        ));
       },
       onPrevPressed: onPrevPressed,
     );

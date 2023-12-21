@@ -42,6 +42,7 @@ class Car {
   Customs? customs;
   String? total;
   String? doors;
+  int? monthlyInstallment;
   String? engine;
   String? cc;
   String? cylinders;
@@ -79,6 +80,7 @@ class Car {
       this.customs,
       this.total,
       this.doors,
+        this.monthlyInstallment,
       this.engine,
       this.cc,
       this.cylinders,
@@ -119,6 +121,7 @@ class Car {
       customs: json.customs,
       total: json.total,
       doors: json.doors,
+      monthlyInstallment: json.monthlyInstallment,
       engine: json.engine,
       cc: json.cc,
       cylinders: json.cylinders,

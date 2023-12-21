@@ -6,6 +6,7 @@ import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/entities/feature.dart';
+import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_properites_bloc.dart';
 import '../widgets/header_sell_car.dart';
 
@@ -34,14 +35,17 @@ class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, S
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Feature>> state) {
-    final args = getArguments(context);
+    SellCarArgs args = getArguments(context);
     return SellCarPropertiesScreen(
       features: state.data ?? [],
-      initialFeatures: initialFeatures,
+      initialFeatures: args.car?.features ?? [],
       onNextPressed: (selected) {
-        SellCarParams params = args;
+        SellCarParams params = args.params ?? SellCarParams();
         params.features = selected.map((e) => e.toString()).toList();
-        Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: params);
+        Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: SellCarArgs(
+          car: args.car,
+          params: params
+        ));
       },
     );
   }

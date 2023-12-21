@@ -2,20 +2,22 @@ import 'dart:io';
 
 import 'package:dalalah/core/widgets/buttons/stack_button.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/checkbox/custom_checkbox.dart';
 import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
+import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
 import '../widgets/picker_car_images.dart';
 
 class SellCarImagePickerScreen extends BaseStatelessWidget {
-  final String statusCar;
+  final Car car;
   final Function(SellCarParams) onSave;
 
   SellCarImagePickerScreen(
-      {Key? key, required this.statusCar, required this.onSave})
+      {Key? key, required this.car, required this.onSave})
       : super(key: key);
 
   // properties
@@ -29,6 +31,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   StreamStateInitial<bool> isNextPressedStream = StreamStateInitial<bool>();
   @override
   Widget build(BuildContext context) {
+    _initialValues();
     isNextPressedStream.setData(false);
     final strings = context.strings;
 
@@ -60,7 +63,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 //     settingsPrice.carMinPrice.toString()),
               ),
               10.ph,
-              if(statusCar == 'new')
+              if(car.status?.key == CarStatus.newCar)
               CustomTextField(
                 title: strings.installment_value_monthly,
                 hintText: strings.enter_installment_value,
@@ -128,6 +131,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
     print('imagesSelected: $imagesSelected');
       onSave(
         SellCarParams(
+          id: car.id,
           price: int.parse(priceController.text.trim()),
           installment: installmentController.text.isEmpty ? null : int.parse(installmentController.text.trim()),
           description: descController.text.trim(),
@@ -140,5 +144,16 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
     //       ? strings.maximum_number_images(10)
     //       : strings.minimum_number_images(5));
     // }
+  }
+
+
+  _initialValues() {
+    if (car.id != null) {
+      priceController.text = car.price ?? '';
+      installmentController.text = car.monthlyInstallment.toString() ?? '';
+      descController.text = car.description ?? '';
+      // mainImage = File(car.mainImage ?? '');
+      // imagesSelected = car.images?.map((e) => File(e.image ?? '')).toList() ?? [];
+    }
   }
 }

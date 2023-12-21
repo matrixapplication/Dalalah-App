@@ -22,7 +22,6 @@ class CarVerticalItem extends StatelessWidget {
   final bool imageHasOnlyTopRadius;
   final bool isFavouriteView;
   final bool isAddView;
-  final bool isNew;
   final bool isAds;
 
   // final Task task;
@@ -37,7 +36,6 @@ class CarVerticalItem extends StatelessWidget {
     this.isFavouriteView = false, //used for checking fav icon style
     this.isAddView = false, //used for checking on tap action
     this.index,
-    this.isNew = true,
     this.isAds = false,
     // required this.task,
   }) : super(key: key);
@@ -50,7 +48,8 @@ class CarVerticalItem extends StatelessWidget {
         arguments: car.id,
       ),
       child: Container(
-        height: isAds ? 250 : 160,
+        // isAds ? 250 :
+        height:  160,
         margin: (bottomMargin ?? 14).paddingBottom,
         decoration: bottomMargin == 0
             ? Decorations.kDecorationTopRadius(
@@ -173,7 +172,10 @@ class CarVerticalItem extends StatelessWidget {
                           child: FavoriteButton(
                             iconSize: 15,
                             isFavorite: car.isFavorite ?? false,
+                            icon: AppIcons.edit,
                             onToggleFavorite: () {
+                              isAds ?
+                              Navigators.pushNamed(Routes.sellCarPage, arguments: car) :
                               onToggleFavorite!(car.id!);
                             },
                           ),
@@ -184,11 +186,11 @@ class CarVerticalItem extends StatelessWidget {
                 ],
               ),
             ),
-            if(isAds)
-              CarItemFooter(
-                price: car.price?.toString() ?? "",
-                onTap: () {},
-              ),
+            // if(isAds)
+            //   CarItemFooter(
+            //     price: car.price?.toString() ?? "",
+            //     onTap: () {},
+            //   ),
           ],
         ),
       ),

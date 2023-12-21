@@ -338,3 +338,13 @@ extension SeparateArabicCharacters on String {
     return separatedString.trim(); // Removes trailing space
   }
 }
+
+extension FirstOrNull<E> on List<E> {
+  E? firstOrNull(bool Function(dynamic e) param) {
+    try {
+      return first;
+    } on StateError {
+      return null;
+    }
+  }
+}

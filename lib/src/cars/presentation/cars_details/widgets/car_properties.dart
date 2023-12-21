@@ -29,6 +29,7 @@ class CarProperties extends StatelessWidget {
 
 class CarPropertyItem extends StatelessWidget {
   final OptionDto property;
+  final OptionDto? selected;
   final double? width;
   final double? height;
   final double? radius;
@@ -41,6 +42,7 @@ class CarPropertyItem extends StatelessWidget {
   const CarPropertyItem({
     Key? key,
     required this.property,
+    this.selected,
     this.width,
     this.height,
     this.radius,
@@ -53,7 +55,7 @@ class CarPropertyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OptionDto selected = OptionDto();
+    OptionDto selected = this.selected ?? OptionDto();
     return StatefulBuilder(
       builder: (context, setState) {
         return InkWell(

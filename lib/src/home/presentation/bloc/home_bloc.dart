@@ -4,6 +4,7 @@ import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
+import '../../../plates/data/models/plate_filter_params.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/car_filter_params.dart';
@@ -75,7 +76,7 @@ class HomeCubit extends BaseCubit {
   fetchOtherCars() async {
     try {
       otherCarsStream.setData(null);
-      final response = await platesUseCase.fetchPlates();
+      final response = await platesUseCase.fetchPlates(PlateFilterParams());
       otherCarsStream.setData(response);
     } catch (e) {
       otherCarsStream.setError(e);

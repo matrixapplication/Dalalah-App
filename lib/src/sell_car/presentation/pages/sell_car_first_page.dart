@@ -2,8 +2,10 @@ import 'package:dalalah/core/components/base_widget_bloc.dart';
 import 'package:dalalah/src/sell_car/presentation/pages/sell_car_first_screen.dart';
 
 import '../../../../core/utils/navigator.dart';
+import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_bloc.dart';
 import '../bloc/sell_car_state.dart';
 import '../widgets/header_sell_car.dart';
@@ -32,12 +34,16 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
 
   @override
   Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
-    print('state.data ${state.data}');
+  Car car = getArguments(context);
     return SellCarFirstScreen(
+      car: car,
       state: state,
       onNext: (SellCarParams params) {
        // onNext!(params);
-        Navigators.pushNamed(Routes.sellCarSecondPage, arguments: params);
+        Navigators.pushNamed(Routes.sellCarSecondPage, arguments: SellCarArgs(
+          car: car,
+          params: params
+        ));
       },
       onFetchBrandModels: (brandId) {
         bloc.fetchBrandModels(brandId);

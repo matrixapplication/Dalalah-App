@@ -67,7 +67,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
               5.ph,
               SelectionButtonChip(
                 title: strings.motion_vector,
-                initialValue: selectedDriveType,
+                initialValue: driveTypeId,
                 types: state.driveTypes
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
@@ -78,7 +78,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
               DropDownField(
                 title: strings.body_types,
                 hint: strings.select_badge_type,
-                valueId: car?.bodyType?.id.toString() ?? '',
+                valueId: bodyTypeId.toString(),
                 items: state.bodyTypes
                     .map(
                         (e) => DropDownItem(id: e.id.toString(), title: e.name))
@@ -90,7 +90,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
               DropDownField(
                 title: strings.fuel_types,
                 hint: strings.select_fuel_type,
-                valueId: car?.fuelType?.key.toString() ?? '',
+                valueId: fuelType,
                 items: state.fuelTypes
                     .map((e) => DropDownItem(id: e.key, title: e.name))
                     .toList(),

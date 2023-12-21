@@ -49,6 +49,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
             children: [
               SelectionButtonChip(
                 title: strings.car_status,
+                initialValue: status,
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
@@ -59,7 +60,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               DropDownField(
                 title: strings.brands,
                 hint: strings.select_brand,
-                valueId: car?.brand?.id.toString() ?? '',
+                valueId: brandId.toString(),
                 items: state.brands
                     .map(
                         (e) => DropDownItem(id: e.id.toString(), title: e.name))
@@ -72,7 +73,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               DropDownStream(
                 title: strings.models,
                 hint: strings.select_model,
-                valueId: car?.brandModel?.id.toString() ?? '',
+                valueId: modelId.toString(),
                 stream: state.brandsModelsStream,
                 onChanged: (id) {
                   modelId = id;
@@ -82,7 +83,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               DropDownStream(
                 title: strings.extensions,
                 hint: strings.select_extension,
-                valueId: car?.brandModelExtension?.id.toString() ?? '',
+                valueId: extensionId.toString(),
                 stream: state.brandsModelsExtensionStream,
                 onChanged: (id) {
                   extensionId = id;
@@ -124,11 +125,14 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   }
 
   _initialValues() {
+    print('car: ${car?.status?.key}');
+    print('car: ${car?.brand?.id}');
+    print('car: ${car?.brandModel?.id}');
     status = state.carStatuses.first.key ?? '';
     if (car != null) {
+      modelId = car?.brandModel?.id ?? 0;
       status = car?.status?.key ?? '';
       brandId = car?.brand?.id ?? 0;
-      modelId = car?.brandModel?.id ?? 0;
       extensionId = car?.brandModelExtension?.id ?? 0;
       year = int.parse(car?.year ?? DateTime.now().year.toString());
     }

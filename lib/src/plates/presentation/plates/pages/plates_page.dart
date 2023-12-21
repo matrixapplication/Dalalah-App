@@ -5,7 +5,7 @@ import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
-import '../../../../sell_car/domain/entities/shipment.dart';
+import '../../../data/models/plate_filter_params.dart';
 import '../../../domain/entities/plate.dart';
 import '../bloc/plates_bloc.dart';
 import 'plates_screen.dart';
@@ -18,7 +18,7 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFavorites();
+    bloc.fetchPlates(getArguments(context) ?? PlateFilterParams());
   }
 
 
@@ -27,13 +27,18 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
   @override
   Widget build(BuildContext context) {
+
     return mainFrame(
       body: Column(
         children: [
-          if(isFilter ?? true)
+          if(isFilter && getArguments(context) == null)
           FilterHome(
             routeName: Routes.plateFilterPage,
-            onFilterOrder: (){},
+            onFilterOrder: (){
+              PlateFilterParams params = getArguments(context) ?? PlateFilterParams();
+              params.order = params.order == 'asc' ? 'desc' : 'asc';
+              bloc.fetchPlates(params);
+            },
           ),
           Expanded(child: buildConsumer(context)),
         ],

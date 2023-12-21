@@ -21,7 +21,6 @@ class FavoriteCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, FavoriteCa
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
       isFilter: false,
-      isNew: true,
       tasks: state.data ?? [],
       onToggleFavorite: (id) => bloc.toggleFavoriteCar(id),
     );

@@ -6,13 +6,12 @@ import 'cars_vertical_item.dart';
 
 ///  Created by harbey on 10/21/2023.
 class CarsList extends StatelessWidget {
-  final List<String> cars;
+  final List<Car> cars;
   final bool isCatItem;
   const CarsList({Key? key, required this.cars, this.isCatItem = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      // itemCount: tasks.length,
       itemCount: cars.length,
       shrinkWrap: true,
       padding: 10.paddingAll,
@@ -20,8 +19,7 @@ class CarsList extends StatelessWidget {
         return CarVerticalItem(
           imageHasOnlyTopRadius: false,
           isCatItem: false,
-          car: Car(),
-          // task: tasks[index],
+          car: cars[index],
         );
       },
     );

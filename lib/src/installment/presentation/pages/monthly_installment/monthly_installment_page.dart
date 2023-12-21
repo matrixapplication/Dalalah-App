@@ -19,9 +19,9 @@ class MonthlyInstallmentPage extends BaseBlocWidget<UnInitState, ProfileBloc> {
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
-    return MonthlyInstallmentScreen(
+    return const MonthlyInstallmentScreen(
       installmentValue: '5000',
-      cars: ['car1', 'car2', 'car3'],
+      cars: [],
     );
   }
 }

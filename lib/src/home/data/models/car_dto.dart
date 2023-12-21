@@ -62,6 +62,8 @@ class CarDto {
   String? total;
   @JsonKey(name: 'doors')
   String? doors;
+  @JsonKey(name: 'monthly_installment')
+  int? monthlyInstallment;
   @JsonKey(name: 'engine')
   String? engine;
   @JsonKey(name: 'cc')

@@ -2,7 +2,7 @@ import 'package:dalalah/src/main_index.dart';
 
 class SelectionButtonChip extends StatelessWidget {
   final String? title;
-  final ChipItem? initialValue;
+  final String? initialValue;
   final List<ChipItem> types;
   final EdgeInsetsGeometry? padding;
   final void Function(ChipItem)? onSelected;
@@ -67,8 +67,8 @@ class SelectionButtonChip extends StatelessWidget {
   }
 
   _initialValue() {
-    print('initialValue: ${initialValue?.title}');
-    selectedType = initialValue ?? (types.isEmpty ? null : types.first);
+    selectedType = types.firstOrNull((e) => e.id == initialValue)
+        ?? (types.isEmpty ? null : types.first);
     print('selectedType: ${selectedType?.title}');
   }
 

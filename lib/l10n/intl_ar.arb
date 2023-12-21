@@ -99,6 +99,8 @@
   "start_price": "السعر الأدنى",
   "end_price": "السعر الأعلى",
   "year": "السنة",
+  "start_year": "السنة الأدنى",
+    "end_year": "السنة الأعلى",
   "results_filter": "نتائج الفلتر",
   "show_results": "عرض النتائج",
   "change_language": "تغيير اللغة",

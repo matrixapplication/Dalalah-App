@@ -1,4 +1,6 @@
 
+import '../../../../core/di/injector.dart';
+import '../../../main_index.dart';
 import '../../data/models/car_status_dto.dart';
 
 class CarStatus {
@@ -28,6 +30,16 @@ class CarStatus {
       default:
         return null;
     }
+  }
+
+  // Only used in the Search page
+  static List<CarStatus> getCarStatuses() {
+    AppLocalizations strings = injector<ServicesLocator>().navigatorKey.currentContext!.strings;
+    return [
+      CarStatus(key: '', name: strings.all),
+      CarStatus(key: 'new', name: strings.new_),
+      CarStatus(key: 'used', name: strings.used),
+    ];
   }
 }
 

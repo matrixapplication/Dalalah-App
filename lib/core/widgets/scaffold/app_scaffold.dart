@@ -115,7 +115,8 @@ class AppScaffold extends StatelessWidget {
                               ),
                       ],
                   leadingWidth: 60,
-                  bottom: PreferredSize(
+                  bottom: tabs == null ? null :
+                  PreferredSize(
                     preferredSize: Size.fromHeight(hasTabBarView ? 50 : 20),
                     child: !hasTabBarView
                         ? 0.ph

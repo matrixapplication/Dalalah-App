@@ -7,6 +7,7 @@ import 'package:retrofit/http.dart';
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../models/add_plate_params.dart';
+import '../models/plate_filter_params.dart';
 
 part 'plates_datasource.g.dart';
 
@@ -17,7 +18,7 @@ abstract class PlatesDatasource {
   factory PlatesDatasource(Dio dio) = _PlatesDatasource;
 
   @GET('/get_plates')
-  Future<ApiResponse<List<PlateDto>>> fetchPlates();
+  Future<ApiResponse<List<PlateDto>>> fetchPlates(@Queries() PlateFilterParams params);
 
   @POST('/add-car-plate')
   Future<ApiResponse<PlateDto>> addPlate(@Body() AddPlateParams params);

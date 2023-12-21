@@ -12,6 +12,7 @@ class FavoriteButton extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final double? iconSize;
   final Function()? onToggleFavorite;
+  final String? icon;
 
   const FavoriteButton({
     Key? key,
@@ -19,6 +20,7 @@ class FavoriteButton extends StatelessWidget {
     this.isFavorite = false,
     this.iconSize,
     this.onToggleFavorite,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -42,7 +44,7 @@ class FavoriteButton extends StatelessWidget {
           return AppIconButton(
             padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
             size: iconSize ?? 20,
-            icon: isFavorite ? AppIcons.heart_solid : AppIcons.heart,
+            icon: icon ?? (isFavorite ? AppIcons.heart_solid : AppIcons.heart),
             color: context.primaryColor,
             onPressed: () async {
               bool isAuth = await HelperMethods.isAuth();

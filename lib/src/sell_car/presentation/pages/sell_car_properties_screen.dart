@@ -19,6 +19,8 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    selected = initialFeatures?.map((e) => e.id ?? 0).toList() ?? [];
+    print('selected: $selected');
     return StackButton(
       onNextPressed: () {
         onNextPressed?.call(selected);

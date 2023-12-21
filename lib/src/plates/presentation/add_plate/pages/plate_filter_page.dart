@@ -14,6 +14,7 @@ import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../sell_car/domain/entities/city.dart';
+import '../../../data/models/plate_filter_params.dart';
 import '../../plates/widgets/filter_item.dart';
 
 ///  Created by harbey on 10/12/2023.
@@ -76,7 +77,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
                     controllers: controllersNumbers,
                   ),
                   10.ph,
-                  if(isAddPage)
+                //  if(isAddPage)
                   CustomTextField(
                     title: strings.price,
                     labelStyle: context.textTheme.labelLarge,
@@ -110,7 +111,15 @@ class PlateFilterScreen extends BaseStatelessWidget {
                       Navigator.pop(context);
                     },
                     onPressed1: () {
-                      onSelectedPressed();
+                      pushNamed(Routes.platesPage, arguments: PlateFilterParams(
+                        plateType: plateType,
+                        location: cityId,
+                        letter: controllersArLetters.map((e) => e.text).join().toArabicChars(),
+                        number: controllersNumbers.map((e) => e.text).join(),
+                        startPrice: priceController.text.toInt,
+                        endPrice: priceController.text.toInt,
+                        search: controllersEnLetters.map((e) => e.text).join(),
+                      ));
                     },
                   ),
 
@@ -127,8 +136,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
     if(onSelected != null){
       onSelected!(AddPlateParams(
         cityId: cityId,
-        districtId: 1,
-        letterAr: controllersArLetters.map((e) => e.text).join(),
+        letterAr: controllersArLetters.map((e) => e.text).join().toArabicChars(),
         letterEn: controllersEnLetters.map((e) => e.text).join(),
         plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,

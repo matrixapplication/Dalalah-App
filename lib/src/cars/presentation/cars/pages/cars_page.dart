@@ -19,10 +19,14 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   CarFilterParams paramsFilter = CarFilterParams();
   int tabIndex = 0;
   int brandId = 0;
+  String order = 'desc';
 
+
+  bool isFilter =  true;
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchBrands();
+    isFilter =  (params == null && getArguments(context) == null);
+    isFilter ? bloc.fetchBrands() : null;
     bloc.fetchCars(params ?? getArguments(context) ?? CarFilterParams());
   }
 
@@ -41,33 +45,39 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   }
   @override
   Widget build(BuildContext context) {
-    bool isNotFilter =  (params ==null || getArguments(context) == null);
+     isFilter =  (params == null && getArguments(context) == null);
     return mainFrame(
       body: Column(
         children: [
-          if (isNotFilter)
+          if (isFilter)
         ...[  FilterHome(
             routeName: Routes.carsSearchPage,
-            onFilterOrder: () {},
+            onFilterOrder: () {
+              order = order == 'desc' ? 'asc' : 'desc';
+              bloc.fetchCars(CarFilterParams(
+                status: CarStatus.getStatusByIndex(tabIndex),
+                brand: brandId,
+                order: order,
+              ));
+            },
           ),
           10.ph,
-          BrandsFilter(
+          BrandsFilterStream(
             brandsStream: bloc.brandsStream,
             onFilter: (value) {
               brandId = value;
               if (value == 0) return bloc.fetchCars(CarFilterParams());
-              bloc.fetchCars(CarFilterParams(brand: value, status: CarStatus.getStatusByIndex(tabIndex)));
+              bloc.fetchCars(CarFilterParams(brand: value, order: order, status: CarStatus.getStatusByIndex(tabIndex)));
             },
           ),],
           Expanded(child: buildConsumer(context)),
         ],
       ),
-      // body: buildConsumer(context),
-      tabs: [
+      tabs: isFilter ?  [
         TabModel(label: context.strings.all),
         TabModel(label: context.strings.new_),
         TabModel(label: context.strings.used),
-      ],
+      ] : null,
     );
   }
 
@@ -75,7 +85,6 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
       isFilter: false,
-      isNew: tabIndex == 1 || tabIndex == 0 ? true : false,
       tasks: state.data ?? [],
         onToggleFavorite: (id) {
           bloc.toggleFavorite(id);
@@ -86,8 +95,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   String? title(BuildContext context) {
-    bool isNotFilter =  (params ==null || getArguments(context) == null);
-    return  isNotFilter ? context.strings.cars : null;
+    return  isFilter ? context.strings.cars : context.strings.results_filter;
   }
 
   @override
@@ -113,6 +121,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     bloc.fetchCars(CarFilterParams(
       status: CarStatus.getStatusByIndex(tabIndex),
       brand: brandId,
+      order: order,
     ));
   }
 }
