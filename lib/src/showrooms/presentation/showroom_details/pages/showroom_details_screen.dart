@@ -1,22 +1,22 @@
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
+import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_cars_page.dart';
 
 import '../../../../../core/widgets/buttons/call_button.dart';
 import '../../../../../core/widgets/buttons/chat_whats_app_button.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
-import '../../../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../cars/presentation/cars_details/widgets/car_details_ratings.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../main_index.dart';
+import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../domain/entities/showroom.dart';
+import '../../branches/pages/branches_page.dart';
 import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
 import 'views/branches_view.dart';
-import 'views/new_cars_view.dart';
-import 'views/used_cars_view.dart';
 
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
-  final List<Showroom> showrooms;
-  ExhibitionDetailsScreen({super.key, required this.showrooms});
+  final Showroom showroom;
+  ExhibitionDetailsScreen({super.key, required this.showroom});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                 Stack(
                   children: [
                     SlidersCarDetails(
-                      images: const ['', '', '', ''],
+                      images: [showroom.image ?? ''],
                     ),
                    PrimaryButton(
                      height: 40,
@@ -48,7 +48,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                       end: 12,
                       child: CustomExhibitionCircleLogo(
                         logoPath: AppImages.car_name,
-                        name: 'الجمد للسيارت',
+                        name: showroom.showroomName ?? '',
                       ),
                     ),
                     PositionedDirectional(
@@ -56,9 +56,9 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                       end: 15,
                       child: Row(
                         children: [
-                          ChatWhatsAppButton(phone: '01065950766'),
+                          ChatWhatsAppButton(phone: showroom.whatsapp ?? ''),
                           10.pw,
-                          const CallButton(phone: '01065950766'),
+                          CallButton(phone: showroom.phone ?? ''),
                         ],
                       ),
                     )
@@ -70,14 +70,14 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "الجمد للسيارت",
+                  showroom.showroomName ?? '',
                         style: context.textTheme.labelLarge!.copyWith(
                           color: AppColors.grey_41,
                         ),
                       ),
                       10.ph,
                       IconText(
-                        text: "جدة",
+                        text: showroom.address ?? '',
                         textStyle: context.textTheme.displayLarge!.copyWith(
                           color: AppColors.grey_68,
                         ),
@@ -99,15 +99,15 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
         tabs: [
           TabItemModel(
             label: context.strings.new_,
-            page: NewCarsView(),
+            page: ShowroomCarsPage(id: showroom.id ?? 0),
           ),
           TabItemModel(
             label: context.strings.used,
-            page: UsedCarsView(),
+            page: ShowroomCarsPage(status: CarStatus.usedCar, id: showroom.id ?? 0),
           ),
           TabItemModel(
             label: context.strings.branches,
-            page: BranchesView(),
+            page: BranchesPage(showroomId: showroom.id),
           ),
           TabItemModel(
             label: strings.ratings,

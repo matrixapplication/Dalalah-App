@@ -5,6 +5,7 @@ import '../../../../core/widgets/text-field/custom_text_field.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/car_status.dart';
 import '../bloc/sell_car_second_state.dart';
 
 class SellCarSecondScreen extends BaseStatelessWidget {
@@ -45,6 +46,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isNewCar = car?.status?.key == CarStatus.newCar;
     final strings = context.strings;
     _initialValues();
     return StackButton(
@@ -63,6 +65,8 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 title: strings.colors,
                 hintText: strings.type_color,
                 controller: colorsController,
+                // if onTap is not null, then the text field will be disabled
+                onTap: isNewCar ? (){} : null,
               ),
               5.ph,
               SelectionButtonChip(
@@ -71,7 +75,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 types: state.driveTypes
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
-                onSelected: (value) {
+                onSelected: isNewCar ? null : (value) {
                   driveTypeId = value.id ?? '';
                 },
               ),
@@ -83,7 +87,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                     .map(
                         (e) => DropDownItem(id: e.id.toString(), title: e.name))
                     .toList(),
-                onChanged: (value) {
+                onChanged: isNewCar ? null : (value) {
                   bodyTypeId = int.parse(value?.id ?? '0');
                 },
               ),
@@ -94,7 +98,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 items: state.fuelTypes
                     .map((e) => DropDownItem(id: e.key, title: e.name))
                     .toList(),
-                onChanged: (value) {
+                onChanged: isNewCar ? null :(value) {
                   fuelType = value?.id ?? '';
                 },
               ),
@@ -103,6 +107,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 hintText: strings.number_kilometers_km,
                 controller: kilometersController,
                 keyboardType: TextInputType.number,
+                onTap: isNewCar ? (){} : null,
               ),
               CustomTextField(
                 title: strings.engine,
@@ -110,12 +115,14 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 controller: engineController,
                 keyboardType: TextInputType.number,
                 isValidator: false,
+                onTap: isNewCar ? (){} : null,
               ),
               CustomTextField(
                 title: strings.cylinders,
                 hintText: strings.number_car_cylinders,
                 controller: cylindersController,
                 keyboardType: TextInputType.number,
+                onTap: isNewCar ? (){} : null,
               ),
             ],
           ),

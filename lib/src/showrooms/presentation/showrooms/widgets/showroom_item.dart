@@ -16,9 +16,11 @@ class ShowroomItem extends BaseStatelessWidget {
       onTap: () {
         Navigators.pushNamed(
           Routes.exhibitionDetailsPage,
+          arguments: showroom,
         );
       },
       child: CustomCompanyContainer(
+          iconColor2: context.primaryColor,
         firstOnTap: () {
           HelperMethods.launchCallPhone(showroom.phone ?? '');
         },

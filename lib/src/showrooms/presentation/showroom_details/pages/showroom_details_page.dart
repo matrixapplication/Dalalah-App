@@ -15,7 +15,7 @@ class ShowroomDetailsPage
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
     return ExhibitionDetailsScreen(
-      showrooms: [],
+      showroom: getArguments(context),
     );
   }
 

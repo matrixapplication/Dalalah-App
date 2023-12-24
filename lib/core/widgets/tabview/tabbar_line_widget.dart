@@ -10,6 +10,7 @@ class TabBarCustomWidget extends StatelessWidget {
   final TextStyle? textStyle;
   final Decoration? indicatorDecoration;
   final Color? backgroundColor;
+  final double? height;
 
   const TabBarCustomWidget({
     Key? key,
@@ -20,6 +21,7 @@ class TabBarCustomWidget extends StatelessWidget {
     this.unSelectedLabelColor,
     this.textStyle,
     this.backgroundColor,
+    this.height,
   }) : super(key: key);
 
   @override
@@ -27,9 +29,9 @@ class TabBarCustomWidget extends StatelessWidget {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-        backgroundColor: backgroundColor??context.primaryColor,
+        backgroundColor: backgroundColor ?? context.primaryColor,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(40),
+          preferredSize: Size.fromHeight(height ?? 40),
           child: TabBar(
             onTap: (index) {
               // if (onTabSelected != null) onTabSelected!(index);

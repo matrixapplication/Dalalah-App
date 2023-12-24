@@ -38,7 +38,7 @@ class SortByPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
       isFilter: false,
-      tasks: state.data ?? [],
+      cars: state.data ?? [],
     );
   }
 

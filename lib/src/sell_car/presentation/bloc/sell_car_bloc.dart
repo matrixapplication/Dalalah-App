@@ -5,6 +5,7 @@ import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
+import '../../../home/domain/entities/car.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 import 'sell_car_state.dart';
@@ -31,13 +32,17 @@ class SellCarCubit extends BaseCubit {
   }
 
 
-  fetchFirstInitialData() async {
+  fetchFirstInitialData(Car? car) async {
     emit(DataLoading());
     try {
 
       final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
+      if(car != null){
+        await fetchBrandModels(car.brand?.id ?? 0);
+        await fetchBrandModelExtensions(car.brandModel?.id ?? 0);
+      }
 
       emit(
         FirstPageSellCarState(

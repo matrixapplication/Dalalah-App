@@ -8,6 +8,8 @@ import 'package:retrofit/retrofit.dart';
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/brand_dto.dart';
+import '../../../home/data/models/car_dto.dart';
+import '../models/admin_car_params.dart';
 import '../models/body_type_dto.dart';
 import '../models/brand_model_dto.dart';
 import '../models/brand_model_extension_dto.dart';
@@ -145,4 +147,8 @@ abstract class SellCarDatasource {
 
   @GET('/setting')
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice();
+
+
+  @GET('/get-admin-cars')
+  Future<ApiResponse<CarDto>> fetchAdminCar(@Queries() AdminCarParams params);
 }

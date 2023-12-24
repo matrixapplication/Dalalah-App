@@ -5,12 +5,13 @@ import '../bloc/branches_bloc.dart';
 import 'branches_screen.dart';
 
 class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCubit> {
-  BranchesPage({Key? key}) : super(key: key);
+  final int? showroomId;
+  BranchesPage({Key? key, this.showroomId}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    int id = getArguments(context);
-    bloc.fetchBranchesById(id);
+    int? showroomId = this.showroomId ?? getArguments(context);
+    bloc.fetchBranchesById(showroomId);
   }
 
   @override
@@ -22,7 +23,7 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   String? title(BuildContext context) {
-    return strings.branches;
+    return getArguments(context) == null ? null : strings.branches;
   }
 
 }

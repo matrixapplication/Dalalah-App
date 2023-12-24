@@ -1,22 +1,18 @@
-import '../../../../core/commen/common_state.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/widgets/drop_down/drop_down.dart';
-import '../../../home/domain/entities/brand.dart';
+import '../../../home/domain/entities/car.dart';
 import '../../data/models/color_dto.dart';
 import '../../data/models/port_dto.dart';
 import '../../domain/entities/body_type.dart';
-import '../../domain/entities/brand_model.dart';
 import '../../domain/entities/car_country.dart';
 import '../../domain/entities/car_engine.dart';
-import '../../domain/entities/car_status.dart';
 import '../../domain/entities/car_type.dart';
 import '../../domain/entities/city.dart';
 import '../../domain/entities/drive_type.dart';
 import '../../domain/entities/feature.dart';
 import '../../domain/entities/fuel_type.dart';
-import '../../domain/entities/settings_price.dart';
 
 class SellCarSecondState  extends DataStateFBuilder {
+  Car? car;
   List<DriveType> driveTypes = [];
   List<BodyType> bodyTypes = [];
   List<FuelType> fuelTypes = [];
@@ -29,6 +25,7 @@ class SellCarSecondState  extends DataStateFBuilder {
   List<Feature> features = [];
 
   SellCarSecondState({
+    this.car,
     this.driveTypes = const [],
     this.bodyTypes = const [],
     this.fuelTypes = const [],

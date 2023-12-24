@@ -6,7 +6,10 @@ import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
+import '../../../home/domain/entities/car.dart';
+import '../../data/models/admin_car_params.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/car_status.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 
 @Injectable()
@@ -31,19 +34,30 @@ class SellCarSecondCubit extends BaseCubit {
   }
 
 
-  fetchInitialData() async {
+  fetchInitialData(SellCarParams params) async {
     emit(DataLoading());
+    Car? car;
     try {
+      if(params.status == CarStatus.newCar) {
+        car = await usecase.fetchAdminCar(AdminCarParams(
+          brandId: params.brandId,
+          carModelId: params.carModelId,
+          carModelExtensionId: params.carModelExtensionId,
+          year: params.year,
+        ));
+      }
+        final brands = await usecase.fetchBrands();
+        final dropDownItems = brands
+            .map((e) => DropDownItem(id: e.id.toString(), title: e.name))
+            .toList();
+        brandsModelsStream.setData(dropDownItems);
       final driveTypes = await usecase.fetchDriveTypes();
       final bodyTypes = await usecase.fetchBodyTypes();
       final fuelTypes = await usecase.fetchFuelTypes();
-   //   final engines = await usecase.fetchCarEngines();
-   //    final ports = await usecase.fetchPorts();
-   //    final carCountries = await usecase.fetchCarCountries();
-   //    final carTypes = await usecase.fetchCarTypes();
 
       emit(
         SellCarSecondState(
+          car: car,
           driveTypes: driveTypes,
           bodyTypes: bodyTypes,
           fuelTypes: fuelTypes,

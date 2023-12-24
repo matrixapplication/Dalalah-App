@@ -65,7 +65,7 @@ class CarPropertyItem extends StatelessWidget {
             } else {
               selected = property;
             }
-            onTap!(property.id ?? 0);
+            onTap?.call(property.id ?? 0);
             setState(() {});
           },
           child: Container(

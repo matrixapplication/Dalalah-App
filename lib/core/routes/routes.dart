@@ -39,6 +39,7 @@ import '../../src/settings/presentation/pages/settings_page.dart';
 import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
 import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
 import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
+import '../../src/showrooms/presentation/showrooms_and_branches_tabs.dart';
 
 class Routes {
   static const String languagePage = 'language_page';
@@ -94,9 +95,10 @@ class Routes {
   static const String shipmentsCaptainTabsPage = 'shipmentsCaptainTabsPage';
 
   /* ============================================== */
-  static const String exhibitionPage = 'exhibitionPage';
+  static const String showroomsPage = 'showroomsPage';
   static const String exhibitionDetailsPage = 'exhibitionDetailsPage';
   static const String carsSearchPage = 'carsSearchPage';
+  static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
 
   static final routes = <String, Widget Function(BuildContext)>{
     navigationPages: (context) => NavigationPages(),
@@ -137,8 +139,9 @@ class Routes {
     settings: (context) => SettingsPage(),
     changeLanguage: (context) => ChangLanguagePage(),
     aboutUs: (context) => AboutUsPage(),
-    exhibitionPage: (context) => ShowroomsPage(),
+    showroomsPage: (context) => ShowroomsPage(),
     exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
+    showroomsAndBranchesTabs: (context) => ShowroomsAndBranchesTabs(),
   };
 }

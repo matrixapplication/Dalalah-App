@@ -41,9 +41,9 @@ class ShowroomsPage extends BaseBlocWidget<DataSuccess<List<Showroom>>, Showroom
     );
   }
 
-  @override
-  String? title(BuildContext context) {
-    return getArguments(context) ?? strings.exhibitions;
-  }
+  // @override
+  // String? title(BuildContext context) {
+  //   return getArguments(context) ?? strings.exhibitions;
+  // }
 
 }

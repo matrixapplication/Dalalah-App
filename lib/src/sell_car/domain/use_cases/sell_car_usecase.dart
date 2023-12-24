@@ -1,6 +1,9 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../home/data/models/car_dto.dart';
 import '../../../home/domain/entities/brand.dart';
+import '../../../home/domain/entities/car.dart';
+import '../../data/models/admin_car_params.dart';
 import '../../data/models/color_dto.dart';
 import '../../data/models/port_dto.dart';
 import '../../data/models/sell_car_params.dart';
@@ -122,6 +125,11 @@ class SellCarUseCase {
   Future<SettingsPrice> fetchSettingsPrice() async{
     final data = await repository.fetchSettingsPrice();
     return SettingsPrice.fromDto(data.data ?? SettingsPriceDto());
+  }
+
+  Future<Car> fetchAdminCar(AdminCarParams params) async{
+    final data = await repository.fetchAdminCar(params);
+    return Car.fromDto(data.data ?? CarDto());
   }
 
 

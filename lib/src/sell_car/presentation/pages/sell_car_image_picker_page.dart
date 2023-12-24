@@ -39,11 +39,13 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
         car: args.car ?? Car(),
         onSave: (params) {
           print('args in SellCarImagePickerPage ${params.toJson()}');
+          args.params?.id = args.car?.id;
           args.params?.price = params.price;
           args.params?.installment = params.installment;
           args.params?.description = params.description;
           args.params?.mainImage = params.mainImage;
           args.params?.images = params.images;
+          print('params features ${args.params?.features}');
           bloc.sellCar(args.params ?? SellCarParams());
         });
   }

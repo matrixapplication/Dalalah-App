@@ -69,7 +69,9 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => FeatureDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-    )..portId = json['port_id'] as int?;
+    )
+      ..portId = json['port_id'] as int?
+      ..monthlyInstallment = json['monthly_installment'] as int?;
 
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'id': instance.id,
@@ -95,6 +97,7 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'customs': instance.customs,
       'total': instance.total,
       'doors': instance.doors,
+      'monthly_installment': instance.monthlyInstallment,
       'engine': instance.engine,
       'cc': instance.cc,
       'cylinders': instance.cylinders,

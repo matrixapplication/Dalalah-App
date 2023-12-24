@@ -9,8 +9,7 @@ class BranchesCubit extends BaseCubit {
   BranchesCubit(this.useCase);
 
 
-  void fetchBranchesById(int id) {
-    print('fetchBranchesById');
-    executeSuccess(() => useCase.fetchBranchesById(id));
+  void fetchBranchesById(int? id) {
+    executeSuccess(() => id != null ? useCase.fetchBranchesById(id) : useCase.fetchAllBranches());
   }
 }

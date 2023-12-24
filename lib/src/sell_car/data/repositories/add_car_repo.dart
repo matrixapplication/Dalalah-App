@@ -2,6 +2,7 @@ import 'package:dalalah/src/sell_car/data/models/settings_price_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../home/data/models/brand_dto.dart';
+import '../../../home/data/models/car_dto.dart';
 import '../../domain/repositories/base_add_car_repo.dart';
 import '../data_sources/sell_car_datasource.dart';
 import '../../../../core/network/api_response.dart';
@@ -18,6 +19,7 @@ import '../../data/models/drive_type_dto.dart';
 import '../../data/models/feature_dto.dart';
 import '../../data/models/fuel_type_dto.dart';
 import '../../data/models/port_dto.dart';
+import '../models/admin_car_params.dart';
 import '../models/color_dto.dart';
 import '../models/sell_car_params.dart';
 
@@ -177,5 +179,10 @@ class AddCarRepo implements BaseAddCarRepo {
   @override
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice() {
     return datasource.fetchSettingsPrice();
+  }
+
+  @override
+  Future<ApiResponse<CarDto>> fetchAdminCar(AdminCarParams params) {
+    return datasource.fetchAdminCar(params);
   }
 }

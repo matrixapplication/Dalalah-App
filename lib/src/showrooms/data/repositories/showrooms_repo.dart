@@ -1,9 +1,11 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
+import '../../../home/data/models/car_dto.dart';
 import '../../domain/repositories/base_showrooms_repo.dart';
 import '../data_sources/showrooms_datasource.dart';
 import '../models/branch_dto.dart';
+import '../models/showroom_cars_params.dart';
 import '../models/showroom_dto.dart';
 
 @Injectable(as: BaseShowroomsRepo)
@@ -25,5 +27,10 @@ class ShowroomsRepo extends BaseShowroomsRepo {
   @override
   Future<ApiResponse<List<BranchDto>>> fetchBranchesById(int id) async {
     return await remoteDataSource.fetchBranchesById(id);
+  }
+
+  @override
+  Future<ApiResponse<List<CarDto>>> fetchShowroomCars(ShowroomCarsParams params) async {
+    return await remoteDataSource.fetchShowroomCars(params.id, params);
   }
 }

@@ -70,7 +70,7 @@ import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i57;
 import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i83;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i14;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
     as _i39;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
@@ -95,7 +95,7 @@ import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i63;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i77;
 import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i87;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i14;
+    as _i15;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
     as _i41;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
@@ -127,11 +127,13 @@ import '../../src/showrooms/domain/repositories/base_showrooms_repo.dart'
 import '../../src/showrooms/domain/use_cases/showrooms_usecase.dart' as _i70;
 import '../../src/showrooms/presentation/branches/bloc/branches_bloc.dart'
     as _i74;
-import '../../src/showrooms/presentation/showroom_details/bloc/showrooms_details_bloc.dart'
+import '../../src/showrooms/presentation/showroom_details/bloc/showroom_cars_bloc.dart'
     as _i88;
-import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
+import '../../src/showrooms/presentation/showroom_details/bloc/showrooms_details_bloc.dart'
     as _i89;
-import 'injection_module.dart' as _i90;
+import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
+    as _i90;
+import 'injection_module.dart' as _i91;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -190,9 +192,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i36.BaseInstallmentRepo<dynamic>>(
       () => _i37.InstallmentRepo(gh<_i12.InstallmentDataSource>()));
   gh.factory<_i38.BaseNotificationsRepo>(
-      () => _i39.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i39.WalletRepo(gh<_i14.NotificationsDatasource>()));
   gh.factory<_i40.BaseNotificationsRepo>(
-      () => _i41.WalletRepo(gh<_i14.NotificationsDatasource>()));
+      () => _i41.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i42.BasePlatesRepo>(
       () => _i43.PlatesRepo(gh<_i16.PlatesDatasource>()));
   gh.factory<_i44.BaseProfileRepo<dynamic>>(
@@ -293,11 +295,13 @@ Future<_i1.GetIt> $initGetIt(
       ));
   gh.factory<_i87.ProfileBloc>(
       () => _i87.ProfileBloc(gh<_i63.ProfileUseCase>()));
-  gh.factory<_i88.ShowroomDetailsCubit>(
-      () => _i88.ShowroomDetailsCubit(gh<_i70.ShowroomsUseCase>()));
-  gh.factory<_i89.ShowroomsCubit>(
-      () => _i89.ShowroomsCubit(gh<_i70.ShowroomsUseCase>()));
+  gh.factory<_i88.ShowroomCarsCubit>(
+      () => _i88.ShowroomCarsCubit(gh<_i70.ShowroomsUseCase>()));
+  gh.factory<_i89.ShowroomDetailsCubit>(
+      () => _i89.ShowroomDetailsCubit(gh<_i70.ShowroomsUseCase>()));
+  gh.factory<_i90.ShowroomsCubit>(
+      () => _i90.ShowroomsCubit(gh<_i70.ShowroomsUseCase>()));
   return getIt;
 }
 
-class _$InjectionModule extends _i90.InjectionModule {}
+class _$InjectionModule extends _i91.InjectionModule {}

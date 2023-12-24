@@ -5,6 +5,7 @@ import 'package:dalalah/src/sell_car/presentation/pages/sell_car_properties_scre
 import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/car_status.dart';
 import '../../domain/entities/feature.dart';
 import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_properites_bloc.dart';
@@ -37,11 +38,13 @@ class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, S
   Widget buildWidget(BuildContext context, DataSuccess<List<Feature>> state) {
     SellCarArgs args = getArguments(context);
     return SellCarPropertiesScreen(
+      isNewCar: args.car?.status?.key == CarStatus.newCar,
       features: state.data ?? [],
       initialFeatures: args.car?.features ?? [],
       onNextPressed: (selected) {
         SellCarParams params = args.params ?? SellCarParams();
         params.features = selected.map((e) => e.toString()).toList();
+        print('params features ${params.features}');
         Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: SellCarArgs(
           car: args.car,
           params: params

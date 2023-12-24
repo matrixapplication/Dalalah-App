@@ -57,10 +57,6 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 hintText: strings.price_egp,
                 controller: priceController,
                 keyboardType: TextInputType.number,
-                // validator: (value) => Validation.validatePrice(
-                //     value?.trim() ?? '',
-                //     settingsPrice.carMaxPrice.toString(),
-                //     settingsPrice.carMinPrice.toString()),
               ),
               10.ph,
               if(car.status?.key == CarStatus.newCar)
@@ -126,9 +122,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
       SnackBarManager.showErrorSnackBar(context!.strings.select_main_image);
       return;
     }
-  //  if (imagesSelected.isNotEmpty && imagesSelected.length <= 5) {
     imagesSelected = imagesSelected.isEmpty ? [mainImage] : imagesSelected;
-    print('imagesSelected: $imagesSelected');
       onSave(
         SellCarParams(
           id: car.id,
@@ -139,18 +133,13 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           images: imagesSelected,
         ),
       );
-    // } else {
-    //   SnackBarManager.showErrorSnackBar(imagesSelected.length > 10
-    //       ? strings.maximum_number_images(10)
-    //       : strings.minimum_number_images(5));
-    // }
   }
 
 
   _initialValues() {
     if (car.id != null) {
-      priceController.text = car.price ?? '';
-      installmentController.text = car.monthlyInstallment.toString() ?? '';
+      priceController.text = car.price?.toString().removeMark ?? '';
+      installmentController.text = car.monthlyInstallment?.toString().removeMark ?? '';
       descController.text = car.description ?? '';
       // mainImage = File(car.mainImage ?? '');
       // imagesSelected = car.images?.map((e) => File(e.image ?? '')).toList() ?? [];

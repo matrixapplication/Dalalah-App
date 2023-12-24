@@ -19,7 +19,7 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFirstInitialData();
+    bloc.fetchFirstInitialData(getArguments(context));
   }
 
   @override

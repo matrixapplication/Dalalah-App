@@ -1,15 +1,19 @@
+import 'package:dalalah/src/sell_car/data/models/feature_dto.dart';
+
 import '../../../../core/widgets/buttons/stack_button.dart';
 import '../../../cars/presentation/cars_details/pages/views/car_details_details_view.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/feature.dart';
 
 class SellCarPropertiesScreen extends BaseStatelessWidget {
+  final bool isNewCar;
   final List<Feature> features;
   final List<Feature>? initialFeatures;
   final Function(List<int>)? onNextPressed;
 
   SellCarPropertiesScreen(
       {Key? key,
+      required this.isNewCar,
       this.initialFeatures,
       required this.features,
       this.onNextPressed})
@@ -19,7 +23,7 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    selected = initialFeatures?.map((e) => e.id ?? 0).toList() ?? [];
+    _initialValues();
     print('selected: $selected');
     return StackButton(
       onNextPressed: () {
@@ -36,7 +40,7 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
             isOpen: true,
             selected: selected,
             feature: features[index],
-            onSelected: (ids) {
+            onSelected: isNewCar ? null : (ids) {
               selected = ids;
               // remove duplicates
               print(selected);
@@ -45,5 +49,15 @@ class SellCarPropertiesScreen extends BaseStatelessWidget {
         },
       ),
     );
+  }
+
+  _initialValues() {
+    if (initialFeatures != null) {
+      for (Feature feature in initialFeatures!) {
+        for (OptionDto f in feature.options!) {
+          selected.add(f.id ?? 0);
+        }
+      }
+    }
   }
 }

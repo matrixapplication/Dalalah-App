@@ -1,17 +1,21 @@
 import 'package:dalalah/src/main_index.dart';
+import 'package:dalalah/src/showrooms/domain/entities/showroom.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/widgets/pagination/pagination_widget.dart';
 import '../../../../cars/presentation/cars/pages/cars_screen.dart';
 import '../../../../home/domain/entities/car.dart';
-import '../bloc/my_cars_bloc.dart';
+import '../../../../sell_car/domain/entities/car_status.dart';
+import '../bloc/showroom_cars_bloc.dart';
 
-class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
-  MyCarsPage({Key? key}) : super(key: key);
+class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCarsCubit> {
+  final int id;
+  final String status;
+  ShowroomCarsPage({Key? key, required this.id, this.status = CarStatus.newCar}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyCars();
+    bloc.fetchMyCars(status, id);
   }
 
   @override
@@ -24,20 +28,18 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     if (bloc.isLastPage) {
-      print('isLastPage ${bloc.isLastPage}');
       refreshController.loadNoData();
     }
     return PaginationWidget(
       refreshController: refreshController,
       onRefresh: () {
-        bloc.fetchMyCars();
+        bloc.fetchMyCars(status, id);
         refreshController.refreshCompleted();
       },
       onLoading: () async {
-        await bloc.fetchMyCars(isMoreData: true);
+        await bloc.fetchMyCars(status, id, isMoreData: true);
         await Future.delayed(const Duration(milliseconds: 1200));
         if (bloc.isLastPage) {
-          print('isLastPage ${bloc.isLastPage}');
           refreshController.loadNoData();
         } else {
           refreshController.loadComplete();

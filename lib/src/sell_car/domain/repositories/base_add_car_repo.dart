@@ -2,6 +2,8 @@
 
 import '../../../../core/network/api_response.dart';
 import '../../../home/data/models/brand_dto.dart';
+import '../../../home/data/models/car_dto.dart';
+import '../../data/models/admin_car_params.dart';
 import '../../data/models/body_type_dto.dart';
 import '../../data/models/brand_model_dto.dart';
 import '../../data/models/brand_model_extension_dto.dart';
@@ -58,4 +60,6 @@ abstract class BaseAddCarRepo{
   Future<ApiResponse<List<FeatureDto>>> fetchFeatures();
 
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice();
+
+  Future<ApiResponse<CarDto>> fetchAdminCar(AdminCarParams params);
 }
