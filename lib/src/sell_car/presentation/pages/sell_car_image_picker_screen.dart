@@ -9,15 +9,23 @@ import '../../../../core/widgets/checkbox/custom_checkbox.dart';
 import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
+import '../../data/models/edit_image_params.dart';
 import '../../data/models/sell_car_params.dart';
 import '../widgets/picker_car_images.dart';
 
 class SellCarImagePickerScreen extends BaseStatelessWidget {
   final Car car;
   final Function(SellCarParams) onSave;
+  final Function(EditImageCarParams)? onEditCarImage;
+  final Function(EditImageCarParams)? onAddCarImage;
+  final Function(int)? onDeleteCarImage;
 
   SellCarImagePickerScreen(
-      {Key? key, required this.car, required this.onSave})
+      {Key? key, required this.car, required this.onSave,
+        this.onEditCarImage,
+        this.onAddCarImage,
+        this.onDeleteCarImage,
+      })
       : super(key: key);
 
   // properties
@@ -73,7 +81,13 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 controller: descController,
               ),
               15.ph,
+              if(car.status?.key == CarStatus.usedCar)
               PickerCarImages(
+                  initialMainImage: car.mainImage ?? '',
+                  initialImages: car.images,
+                onEditCarImage: car.id != null ? onEditCarImage : null,
+                onAddCarImage: onAddCarImage,
+                onDeleteCarImage: onDeleteCarImage,
                 onImagesSelected: (main, images) {
                   mainImage = main;
                 },
@@ -118,7 +132,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   }
 
   void onSavePressed() {
-    if(mainImage.path.isEmpty){
+    if(car.id == null && mainImage.path.isEmpty){
       SnackBarManager.showErrorSnackBar(context!.strings.select_main_image);
       return;
     }

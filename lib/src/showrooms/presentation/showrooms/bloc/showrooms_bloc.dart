@@ -2,6 +2,7 @@ import 'package:dalalah/core/bloc/base_cubit.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/resources/data_state.dart';
+import '../../../data/models/agency_params.dart';
 import '../../../domain/entities/showroom.dart';
 import '../../../domain/use_cases/showrooms_usecase.dart';
 
@@ -14,11 +15,12 @@ class ShowroomsCubit extends BaseCubit {
   List<Showroom> showrooms = [];
   int page = 1;
 
-  fetchShowrooms({bool isRefresh = true}) async {
+  fetchShowrooms({bool isRefresh = true, bool isAgency = false}) async {
+    print('fetchShowrooms isAgency: $isAgency');
     isRefresh ? {page = 1, allShowrooms.clear()} : page++;
     executeBuilder(
       isMoreData: isRefresh,
-          () => useCase.fetchShowrooms(page),
+          () => isAgency ? useCase.fetchAgencies(AgencyParams(page: page)) : useCase.fetchShowrooms(page),
       onSuccess: (data) {
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];
         allShowrooms.addAll(showrooms);

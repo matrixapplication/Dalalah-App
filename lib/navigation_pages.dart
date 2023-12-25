@@ -2,6 +2,7 @@ import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/home/presentation/pages/home/sections_screen.dart';
 import 'package:dalalah/src/profile/presentation/pages/profile_page.dart';
 import 'package:dalalah/src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
+import 'package:dalalah/src/showrooms/presentation/showrooms_and_branches_tabs.dart';
 import 'core/widgets/base/bottom_navigator_bar_item.dart';
 import 'src/home/presentation/pages/home/home_page.dart';
 import 'src/main_index.dart';
@@ -116,7 +117,7 @@ class NavigationPages extends BaseStatelessWidget {
        HomePage(),
     //  isAdmin ? SectionsScreen() : SectionsScreen(),
       SectionsScreen(),
-      ShowroomsPage(),
+      ShowroomsAndBranchesTabs(),
       ProfilePage(),
     ];
   }

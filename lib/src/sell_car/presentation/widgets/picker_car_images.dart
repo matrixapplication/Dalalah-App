@@ -1,12 +1,30 @@
 import 'dart:io';
+import 'package:dalalah/src/home/data/models/car_dto.dart';
 import 'package:dalalah/src/sell_car/presentation/widgets/picker_main_image.dart';
+import 'package:dalalah/src/sell_car/presentation/widgets/sub_image_item.dart';
+import '../../../../core/utils/helper_methods.dart';
+import '../../../../core/widgets/images/image_network.dart';
 import '../../../main_index.dart';
+import '../../data/models/edit_image_params.dart';
 
 ///  Created by harbey on 9/7/2023.
 class PickerCarImages extends BaseStatelessWidget {
-  final List<String>? initialImages;
+  final String? initialMainImage;
+  final List<ImageDto>? initialImages;
   final Function(File, List<File>) onImagesSelected;
-  PickerCarImages({Key? key, this.initialImages, required this.onImagesSelected,}) : super(key: key);
+  final Function(EditImageCarParams)? onEditCarImage;
+  final Function(EditImageCarParams)? onAddCarImage;
+  final Function(int)? onDeleteCarImage;
+
+  PickerCarImages({
+    Key? key,
+    this.initialMainImage,
+    this.initialImages,
+    required this.onImagesSelected,
+    this.onEditCarImage,
+    this.onAddCarImage,
+    this.onDeleteCarImage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +40,15 @@ class PickerCarImages extends BaseStatelessWidget {
         ),
         20.ph,
         PickerMainImage(
+          initialMainImage: initialMainImage,
           onImageSelected: (file) {
             mainImage = file;
             onImagesSelected(mainImage, images);
+            if(initialMainImage != null || initialMainImage!.isEmpty) {
+              onEditCarImage?.call(EditImageCarParams(
+                image: file,
+              ));
+            }
           },
         ),
         20.ph,
@@ -32,20 +56,45 @@ class PickerCarImages extends BaseStatelessWidget {
           strings.add_car_image_at_most_10,
           style: context.bodySmall,
         ),
-        10.ph,
         PickerSubImages(
+          // initialImages: initialImages,
+         // onEditCarImage: onEditCarImage,
           onImagesSelected: (files) {
-           images = files;
+            images = files;
             onImagesSelected(mainImage, images);
+          },
+        ),
+        10.ph,
+        GridView.builder(
+          itemCount: initialImages?.length ?? 0,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+          ),
+          padding: 0.paddingAll,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return SubImageItem(
+              urlImage: initialImages?[index].image ?? '',
+              onImagesSelected: (image) {
+                onAddCarImage?.call(EditImageCarParams(
+                  imageId: initialImages?[index].id ?? 0,
+                  image: image,
+                ));
+              },
+              onRemoveImage: () {
+                images.removeAt(index);
+                List<File> files = images.map((e) => e as File).toList();
+                onImagesSelected(mainImage, files);
+              },
+            );
           },
         ),
       ],
     );
   }
 }
-
-
-
 class PickerSubImages extends StatelessWidget {
   final Function(List<File>)? onImagesSelected;
   const PickerSubImages({super.key, this.onImagesSelected});
@@ -66,9 +115,9 @@ class PickerSubImages extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 0) {
               return PickerMainImage(
-                title: '${index + 1}',
+                //title: '${index + 1}',
                 icon: Icons.add_photo_alternate_rounded,
-             //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
+                //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
                 onImageSelected: (image) {
                   images.add(image);
                   onImagesSelected?.call(images.sublist(1));
@@ -97,7 +146,7 @@ class PickerSubImages extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       images.removeAt(index);
-                     // onImagesSelected!(images);
+                      // onImagesSelected!(images);
                       setSate(() {});
                     },
                     child: Container(
@@ -133,7 +182,7 @@ class PickerSubImages extends StatelessWidget {
                 ],
               ),
             );
-        }
+          }
       );
       // return GridView.builder(
       //   itemCount: images.length,
@@ -200,4 +249,3 @@ class PickerSubImages extends StatelessWidget {
     });
   }
 }
-

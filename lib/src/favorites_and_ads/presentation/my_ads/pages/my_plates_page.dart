@@ -13,7 +13,7 @@ class MyPlatesPage
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyPlates();
+    bloc.fetchMyPlates(isMoreData: true);
   }
 
   RefreshController refreshController =

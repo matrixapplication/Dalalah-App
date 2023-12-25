@@ -7,11 +7,12 @@ import '../bloc/showrooms_bloc.dart';
 import 'showrooms_screen.dart';
 
 class ShowroomsPage extends BaseBlocWidget<DataSuccess<List<Showroom>>, ShowroomsCubit> {
-  ShowroomsPage({Key? key}) : super(key: key);
+  final bool? isAgency;
+  ShowroomsPage({Key? key, this.isAgency}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchShowrooms();
+    bloc.fetchShowrooms(isAgency: isAgency ?? false);
   }
 
 
@@ -36,6 +37,7 @@ class ShowroomsPage extends BaseBlocWidget<DataSuccess<List<Showroom>>, Showroom
         }
       },
       child: ShowroomsScreen(
+        isAgency: isAgency,
         showrooms: state.data ?? [],
       ),
     );

@@ -23,6 +23,7 @@ class FavoritesAndAdsTabs
      //   backgroundColor: context.scaffoldBackgroundColor,
         tabs: [
           TabItemModel(label: context.strings.cars, page: isAds ? MyCarsPage() : FavoriteCarsPage()),
+
           TabItemModel(label: context.strings.plates, page:  isAds ? MyPlatesPage() : FavoritePlatesPage()),
           TabItemModel(label: context.strings.buildings, page: Container(
             color: context.scaffoldBackgroundColor,

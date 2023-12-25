@@ -231,6 +231,12 @@ extension EmptyPaadding on num {
 extension MediaQueryExtension on BuildContext{
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
+  double get statusBarHeight => MediaQuery.of(this).padding.top;
+  double get bottomBarHeight => MediaQuery.of(this).padding.bottom;
+  double get textScaleFactor => MediaQuery.of(this).textScaleFactor;
+  double get devicePixelRatio => MediaQuery.of(this).devicePixelRatio;
+  double get devicePixelWidth => MediaQuery.of(this).size.width * devicePixelRatio;
+  double get devicePixelHeight => MediaQuery.of(this).size.height * devicePixelRatio;
 }
 
 extension FirstWhereOrNull<E> on Iterable<E> {

@@ -3,6 +3,9 @@ import 'package:dalalah/src/showrooms/data/models/showroom_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../home/data/models/car_dto.dart';
+import '../../data/models/add_branch_params.dart';
+import '../../data/models/agency_dto.dart';
+import '../../data/models/agency_params.dart';
 import '../../data/models/showroom_cars_params.dart';
 import '../entities/branch.dart';
 import '../repositories/base_showrooms_repo.dart';
@@ -29,5 +32,21 @@ class ShowroomsUseCase {
 
   Future<ApiResponse<List<CarDto>>> fetchShowroomCars(ShowroomCarsParams params) async {
     return (await repository.fetchShowroomCars(params));
+  }
+
+  Future<ApiResponse> addBranch(AddBranchParams params) async {
+    return await repository.addBranch(params);
+  }
+
+  Future<ApiResponse> editBranch(AddBranchParams params) async {
+    return await repository.editBranch(params);
+  }
+
+  Future<ApiResponse> hideBranch(id) async {
+    return await repository.hideBranch(id);
+  }
+
+  Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(AgencyParams params) async {
+    return await repository.fetchAgencies(params);
   }
 }

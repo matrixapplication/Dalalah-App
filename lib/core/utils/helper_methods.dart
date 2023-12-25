@@ -185,4 +185,9 @@ class HelperMethods {
   static Future<int> getUserId() async {
     return await getProfile()?.then((value) => value?.id ?? 0) ?? 0;
   }
+
+
+  static Future<String> getUserRole() async {
+    return await getProfile()?.then((value) => value?.role ?? '') ?? '';
+  }
 }

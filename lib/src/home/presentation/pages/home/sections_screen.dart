@@ -1,5 +1,6 @@
 import 'package:dalalah/core/exceptions/api_exception.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/buttons/row_see_all_text.dart';
@@ -51,16 +52,22 @@ class SectionsScreen extends BaseStatelessWidget {
                               ),
                             ),
                             20.ph,
-                            Expanded(
-                              child: _SectionsItem(
-                                section: Section(
-                                  title: strings.add_plate,
-                                  image: AppImages.add_plate,
-                                  routeName: Routes.plateFilterPage,
-                                  width: double.infinity,
-                                ),
-                                index: 0,
-                              ),
+                            FutureBuilder(
+                              future: HelperMethods.getUserRole(),
+                              builder: (context, snapshot) {
+                                return snapshot.data == Roles.USER ?
+                                  Expanded(
+                                  child: _SectionsItem(
+                                    section: Section(
+                                      title: strings.add_plate,
+                                      image: AppImages.add_plate,
+                                      routeName: Routes.plateFilterPage,
+                                      width: double.infinity,
+                                    ),
+                                    index: 0,
+                                  ),
+                                ) : 0.ph;
+                              }
                             ),
                             20.ph,
                             Expanded(

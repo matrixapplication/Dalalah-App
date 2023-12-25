@@ -15,6 +15,7 @@ import '../../data/models/city_dto.dart';
 import '../../data/models/color_dto.dart';
 import '../../data/models/district_dto.dart';
 import '../../data/models/drive_type_dto.dart';
+import '../../data/models/edit_image_params.dart';
 import '../../data/models/feature_dto.dart';
 import '../../data/models/fuel_type_dto.dart';
 import '../../data/models/port_dto.dart';
@@ -62,4 +63,11 @@ abstract class BaseAddCarRepo{
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice();
 
   Future<ApiResponse<CarDto>> fetchAdminCar(AdminCarParams params);
+
+
+  Future<ApiResponse> editCarImage(EditImageCarParams params);
+
+  Future<ApiResponse> addCarImage(EditImageCarParams params);
+
+  Future<ApiResponse> deleteCarImage(int id);
 }

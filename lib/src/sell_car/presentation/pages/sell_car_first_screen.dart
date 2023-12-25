@@ -49,7 +49,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
             children: [
               SelectionButtonChip(
                 title: strings.car_status,
-                initialValue: status,
+                initialValue: car?.status?.key ?? status,
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
@@ -128,10 +128,10 @@ class SellCarFirstScreen extends BaseStatelessWidget {
     print('car: ${car?.status?.key}');
     print('car: ${car?.brand?.id}');
     print('car: ${car?.brandModel?.id}');
-    status = state.carStatuses.first.key ?? '';
+   // status = state.carStatuses.first.key ?? '';
     if (car != null) {
       modelId = car?.brandModel?.id ?? 0;
-      status = car?.status?.key ?? '';
+      status = car?.status?.key ?? state.carStatuses.first.key ?? '';
       brandId = car?.brand?.id ?? 0;
       extensionId = car?.brandModelExtension?.id ?? 0;
       year = int.parse(car?.year ?? DateTime.now().year.toString());

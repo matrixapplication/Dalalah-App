@@ -205,8 +205,6 @@ class _SellCarDatasource implements SellCarDatasource {
     int cylinders,
     int mileage,
     String description,
-    File file,
-    List<File> images,
     List<String> features,
   ) async {
     const _extra = <String, dynamic>{};
@@ -297,19 +295,6 @@ class _SellCarDatasource implements SellCarDatasource {
       'description',
       description,
     ));
-    _data.files.add(MapEntry(
-      'main_image',
-      MultipartFile.fromFileSync(
-        file.path,
-        filename: file.path.split(Platform.pathSeparator).last,
-      ),
-    ));
-    _data.files.addAll(images.map((i) => MapEntry(
-        'images[]',
-        MultipartFile.fromFileSync(
-          i.path,
-          filename: i.path.split(Platform.pathSeparator).last,
-        ))));
     features.forEach((i) {
       _data.fields.add(MapEntry('features[]', i));
     });
@@ -951,6 +936,144 @@ class _SellCarDatasource implements SellCarDatasource {
     final value = ApiResponse<CarDto>.fromJson(
       _result.data!,
       (json) => CarDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> editCarImage(
+    int? carId,
+    File image,
+    int? imageId,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (carId != null) {
+      _data.fields.add(MapEntry(
+        'car_id',
+        carId.toString(),
+      ));
+    }
+    _data.files.add(MapEntry(
+      'image',
+      MultipartFile.fromFileSync(
+        image.path,
+        filename: image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    if (imageId != null) {
+      _data.fields.add(MapEntry(
+        'image_id',
+        imageId.toString(),
+      ));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/edit_car_images',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> addCarImage(
+    int? carId,
+    File image,
+    int? imageId,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (carId != null) {
+      _data.fields.add(MapEntry(
+        'car_id',
+        carId.toString(),
+      ));
+    }
+    _data.files.add(MapEntry(
+      'image',
+      MultipartFile.fromFileSync(
+        image.path,
+        filename: image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    if (imageId != null) {
+      _data.fields.add(MapEntry(
+        'image_id',
+        imageId.toString(),
+      ));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/edit_car_images',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> deleteCarImage(int id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/edit_car_images/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
     );
     return value;
   }

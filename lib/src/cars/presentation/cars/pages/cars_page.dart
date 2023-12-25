@@ -102,7 +102,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   onAddButtonPressed() {
     HelperMethods.isAuth().then((value) {
       if(value == true) {
-        pushNamed(Routes.sellCarPage, arguments: true);
+        pushNamed(Routes.sellCarPage);
       } else {
         DialogsManager.showInfoDialogToLogin();
       }

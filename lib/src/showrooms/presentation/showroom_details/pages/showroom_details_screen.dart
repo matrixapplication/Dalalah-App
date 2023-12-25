@@ -12,11 +12,11 @@ import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../domain/entities/showroom.dart';
 import '../../branches/pages/branches_page.dart';
 import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
-import 'views/branches_view.dart';
 
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
   final Showroom showroom;
-  ExhibitionDetailsScreen({super.key, required this.showroom});
+  final bool isAgency;
+  ExhibitionDetailsScreen({super.key, required this.showroom, this.isAgency = false});
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +101,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
             label: context.strings.new_,
             page: ShowroomCarsPage(id: showroom.id ?? 0),
           ),
+          if(!(showroom.isAgency ?? false))
           TabItemModel(
             label: context.strings.used,
             page: ShowroomCarsPage(status: CarStatus.usedCar, id: showroom.id ?? 0),
@@ -108,12 +109,6 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
           TabItemModel(
             label: context.strings.branches,
             page: BranchesPage(showroomId: showroom.id),
-          ),
-          TabItemModel(
-            label: strings.ratings,
-            page: CarDetailsRatings(
-              isRating: true,
-            ),
           ),
         ],
       ),

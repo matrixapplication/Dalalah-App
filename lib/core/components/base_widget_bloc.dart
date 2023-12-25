@@ -39,6 +39,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
       dismissProgress();
       onSuccessDismissed();
     }
+    // To show message only
+    if (state is SuccessMessageState) {
+      dismissProgress();
+      onRequestSuccess(state.data, showOnlyMessage: true);
+    }
   }
 
   showProgress() {
@@ -216,7 +221,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
 
   void onSuccessDismissed() {}
 
-   onRequestSuccess(String? message) {
+   onRequestSuccess(String? message, {bool showOnlyMessage = false}) {
 
    if (message != null && message.isNotEmpty) {
       showGeneralDialog(context: context!, pageBuilder: (context, anim1, anim2) {
@@ -246,7 +251,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
-                          onSuccessDismissed();
+                          showOnlyMessage ? null : onSuccessDismissed();
                         },
                         child: Text(
                           'حسنا',

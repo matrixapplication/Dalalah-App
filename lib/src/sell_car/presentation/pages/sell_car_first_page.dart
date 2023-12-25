@@ -19,7 +19,8 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchFirstInitialData(getArguments(context));
+    Car? car = getArguments(context) is Car ? getArguments(context) : null;
+    bloc.fetchFirstInitialData(car);
   }
 
   @override
@@ -34,7 +35,8 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
 
   @override
   Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
-  Car car = getArguments(context);
+    Car? car = getArguments(context) is Car ? getArguments(context) : null;
+    print('car:status ${car?.status?.name}');
     return SellCarFirstScreen(
       car: car,
       state: state,

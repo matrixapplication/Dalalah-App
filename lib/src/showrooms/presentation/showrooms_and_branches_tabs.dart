@@ -13,16 +13,19 @@ class ShowroomsAndBranchesTabs extends BaseStatelessWidget {
     bool isAds = getArguments(context) ?? true;
     return AppScaffold(
       // title: isAds ? context.strings.my_ads : context.strings.favorites,
-      body: TabBarCustomWidget(
-        //   backgroundColor: context.scaffoldBackgroundColor,
+      body: Padding(
+        padding: (context.statusBarHeight).paddingTop,
+        child: TabBarCustomWidget(
+          //   backgroundColor: context.scaffoldBackgroundColor,
 
-        tabs: [
-          TabItemModel(
-            label: context.strings.show_rooms,
-            page: ShowroomsPage(),
-          ),
-          TabItemModel(label: context.strings.branches, page: BranchesPage()),
-        ],
+          tabs: [
+            TabItemModel(
+              label: context.strings.show_rooms,
+              page: ShowroomsPage(),
+            ),
+            TabItemModel(label: context.strings.agencies, page: ShowroomsPage(isAgency: true)),
+          ],
+        ),
       ),
     );
   }

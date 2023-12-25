@@ -21,6 +21,7 @@ import '../../data/models/fuel_type_dto.dart';
 import '../../data/models/port_dto.dart';
 import '../models/admin_car_params.dart';
 import '../models/color_dto.dart';
+import '../models/edit_image_params.dart';
 import '../models/sell_car_params.dart';
 
 @LazySingleton(as: BaseAddCarRepo)
@@ -89,8 +90,8 @@ class AddCarRepo implements BaseAddCarRepo {
       params.cylinders ?? 0,
       params.mileage ?? 0,
       params.description ?? '',
-      params.mainImage!,
-      params.images!,
+      // params.mainImage!,
+      // params.images!,
       params.features ?? [],
     );
   }
@@ -185,4 +186,20 @@ class AddCarRepo implements BaseAddCarRepo {
   Future<ApiResponse<CarDto>> fetchAdminCar(AdminCarParams params) {
     return datasource.fetchAdminCar(params);
   }
+
+  @override
+  Future<ApiResponse> editCarImage(EditImageCarParams params) {
+    return datasource.editCarImage(params.carId, params.image!, params.imageId);
+  }
+
+  @override
+  Future<ApiResponse> addCarImage(EditImageCarParams params) {
+    return datasource.addCarImage(params.carId, params.image!, params.imageId);
+  }
+
+  @override
+  Future<ApiResponse> deleteCarImage(int id) {
+    return datasource.deleteCarImage(id);
+  }
+
 }

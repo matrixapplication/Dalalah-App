@@ -5,6 +5,7 @@ import '../../../home/domain/entities/brand.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../data/models/admin_car_params.dart';
 import '../../data/models/color_dto.dart';
+import '../../data/models/edit_image_params.dart';
 import '../../data/models/port_dto.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../data/models/settings_price_dto.dart';
@@ -130,6 +131,21 @@ class SellCarUseCase {
   Future<Car> fetchAdminCar(AdminCarParams params) async{
     final data = await repository.fetchAdminCar(params);
     return Car.fromDto(data.data ?? CarDto());
+  }
+
+  Future<String> editCarImage(EditImageCarParams params) async{
+    final data = await repository.editCarImage(params);
+    return data.message ?? '';
+  }
+
+  Future<String> addCarImage(EditImageCarParams params) async{
+    final data = await repository.addCarImage(params);
+    return data.message ?? '';
+  }
+
+  Future<String> deleteImage(int id) async{
+    final data = await repository.deleteCarImage(id);
+    return data.message ?? '';
   }
 
 

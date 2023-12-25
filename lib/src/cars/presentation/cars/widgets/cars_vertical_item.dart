@@ -172,7 +172,7 @@ class CarVerticalItem extends StatelessWidget {
                           child: FavoriteButton(
                             iconSize: 15,
                             isFavorite: car.isFavorite ?? false,
-                            icon: AppIcons.edit,
+                            icon: onToggleFavorite == null ? AppIcons.edit : null,
                             onToggleFavorite: () {
                               isAds ?
                               Navigators.pushNamed(Routes.sellCarPage, arguments: car) :

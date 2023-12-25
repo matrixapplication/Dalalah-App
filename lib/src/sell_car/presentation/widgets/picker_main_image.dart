@@ -2,15 +2,19 @@ import 'dart:io';
 
 import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/buttons/primary_icon_button.dart';
+import '../../../../core/widgets/images/image_network.dart';
 import '../../../main_index.dart';
 
-
 class PickerMainImage extends StatelessWidget {
-  final String? title;
+  final String? initialMainImage;
   final IconData? icon;
   final Function(File)? onImageSelected;
 
-  const PickerMainImage({Key? key, this.onImageSelected, this.icon, this.title})
+  const PickerMainImage(
+      {Key? key,
+      this.initialMainImage,
+      this.onImageSelected,
+      this.icon,})
       : super(key: key);
 
   @override
@@ -20,6 +24,7 @@ class PickerMainImage extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       width: double.infinity,
       padding: 10.paddingVert,
+      height: 200,
       decoration: Decorations.kDecorationBorder(
         borderColor: context.colorScheme.outline,
         radius: 8,
@@ -36,40 +41,38 @@ class PickerMainImage extends StatelessWidget {
                   }
                 });
               },
-              child: (snapshot.data != null && icon == null)
-                  ? Image.file(
-                snapshot.data!,
-                fit: BoxFit.cover,
-              )
-                  : Padding(
-                padding: 16.paddingAll,
+              child: Padding(
+                padding: 16.paddingHoriz + 5.paddingVert,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Icon(
-                    //   icon ?? Icons.image,
-                    //   size: 50,
-                    //   color: context.primaryColor.withOpacity(0.5),
-                    // ),
-                    Image.asset(
-                      AppImages.photo,
-                      height: 35,
-                      width: 35,
-                      fit: BoxFit.contain,
-                    ),
-                    25.ph,
-                    // Text(
-                    //   title ?? context.strings.add_main_image,
-                    //   style: context.bodyMedium,
-                    //   textAlign: TextAlign.center,
-                    // ),
+                    (snapshot.data != null && icon == null)
+                        ? Image.file(
+                            snapshot.data!,
+                            fit: BoxFit.cover,
+                            height: 100,
+                            width: 120,
+                          )
+                        : initialMainImage != null
+                            ? ImageNetwork(
+                                url: initialMainImage!,
+                                height: 100,
+                                width: 120,
+                              )
+                            : Image.asset(
+                                AppImages.photo,
+                                height: 35,
+                                width: 35,
+                                fit: BoxFit.contain,
+                              ),
                     PrimaryIconButton(
                       height: 45,
                       icon: '',
                       iconData: Icons.add_a_photo_rounded,
                       iconColor: Colors.white,
-                      title: context.strings.select_image,
+                      title: initialMainImage != null
+                          ? context.strings.edit_image
+                          : context.strings.select_image,
                     ),
                   ],
                 ),

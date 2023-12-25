@@ -38,6 +38,10 @@ class SuccessState<T> extends DataStateFListener<T> {
   SuccessState(data):super(data: data);
 }
 
+class SuccessMessageState<T> extends DataStateFListener<T> {
+  SuccessMessageState(data):super(data: data);
+}
+
 
 
 /**

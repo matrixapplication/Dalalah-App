@@ -22,6 +22,7 @@ class Section {
         title: context.strings.plates,
         image: AppImages.double_plate,
         routeName: Routes.platesPage,
+
       ),
       Section(
         title: context.strings.financing_services,

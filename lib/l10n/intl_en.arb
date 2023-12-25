@@ -322,5 +322,7 @@
   "color": "Color",
   "km": "KM",
   "similar_ads": "Similar ads",
-  "information": "Information"
+  "information": "Information",
+  "edit_image": "Edit Image",
+  "agencies": "Agencies"
 }

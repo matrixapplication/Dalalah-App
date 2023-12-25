@@ -37,65 +37,64 @@ abstract class SellCarDatasource {
   @MultiPart()
   @POST('/add_car')
   Future<ApiResponse> sellCar(
-      @Part(name: 'brand_id') int brandId,
-      @Part(name: 'car_model_id') int carModelId,
-      @Part(name: 'car_model_extension_id') int carModelExtensionId,
-      @Part(name: 'model_id') int modelId,
-      @Part(name: 'model_role') String modelRole,
-      @Part(name: 'port_id') int portId,
-   //   @Part(name: 'branch_id') int branchId,
-      @Part(name: 'year') int year,
-      @Part(name: 'color') String color,
-      @Part(name: 'drive_type') String driveType,
-      @Part(name: 'car_type_id') int carTypeId,
-      @Part(name: 'fuel_type') String fuelType,
-      @Part(name: 'status') String status,
-      @Part(name: 'type') String type,
-      @Part(name: 'origin_country') String originCountry,
-      @Part(name: 'price') int price,
-      @Part(name: 'doors') int doors,
-      @Part(name: 'engine') String engine,
-      @Part(name: 'cc') String cc,
-      @Part(name: 'cylinders') int cylinders,
-      @Part(name: 'mileage') int mileage,
-      @Part(name: 'description') String description,
-      @Part(name: 'monthly_installment') int monthlyInstallment,
-      @Part(name: 'main_image') File file,
-      @Part(name: 'images[]') List<File> images,
-      @Part(name: 'features[]') List<String> features,
-      );
-
+    @Part(name: 'brand_id') int brandId,
+    @Part(name: 'car_model_id') int carModelId,
+    @Part(name: 'car_model_extension_id') int carModelExtensionId,
+    @Part(name: 'model_id') int modelId,
+    @Part(name: 'model_role') String modelRole,
+    @Part(name: 'port_id') int portId,
+    //   @Part(name: 'branch_id') int branchId,
+    @Part(name: 'year') int year,
+    @Part(name: 'color') String color,
+    @Part(name: 'drive_type') String driveType,
+    @Part(name: 'car_type_id') int carTypeId,
+    @Part(name: 'fuel_type') String fuelType,
+    @Part(name: 'status') String status,
+    @Part(name: 'type') String type,
+    @Part(name: 'origin_country') String originCountry,
+    @Part(name: 'price') int price,
+    @Part(name: 'doors') int doors,
+    @Part(name: 'engine') String engine,
+    @Part(name: 'cc') String cc,
+    @Part(name: 'cylinders') int cylinders,
+    @Part(name: 'mileage') int mileage,
+    @Part(name: 'description') String description,
+    @Part(name: 'monthly_installment') int monthlyInstallment,
+    @Part(name: 'main_image') File file,
+    @Part(name: 'images[]') List<File> images,
+    @Part(name: 'features[]') List<String> features,
+  );
 
   @MultiPart()
   @POST('/edit_car/{id}')
   Future<ApiResponse> editCar(
-      @Path('id') int id,
-      @Part(name: 'brand_id') int brandId,
-      @Part(name: 'car_model_id') int carModelId,
-      @Part(name: 'car_model_extension_id') int carModelExtensionId,
-      @Part(name: 'model_id') int modelId,
-      @Part(name: 'model_role') String modelRole,
-      @Part(name: 'port_id') int portId,
-  //    @Part(name: 'branch_id') int branchId,
-      @Part(name: 'year') int year,
-      @Part(name: 'color') String color,
-      @Part(name: 'drive_type') String driveType,
-      @Part(name: 'car_type_id') int carTypeId,
-      @Part(name: 'fuel_type') String fuelType,
-      @Part(name: 'status') String status,
-      @Part(name: 'type') String type,
-      @Part(name: 'origin_country') String originCountry,
-      @Part(name: 'price') int price,
-      @Part(name: 'doors') int doors,
-      @Part(name: 'engine') String engine,
-      @Part(name: 'cc') String cc,
-      @Part(name: 'cylinders') int cylinders,
-      @Part(name: 'mileage') int mileage,
-      @Part(name: 'description') String description,
-      @Part(name: 'main_image') File file,
-      @Part(name: 'images[]') List<File> images,
-      @Part(name: 'features[]') List<String> features,
-      );
+    @Path('id') int id,
+    @Part(name: 'brand_id') int brandId,
+    @Part(name: 'car_model_id') int carModelId,
+    @Part(name: 'car_model_extension_id') int carModelExtensionId,
+    @Part(name: 'model_id') int modelId,
+    @Part(name: 'model_role') String modelRole,
+    @Part(name: 'port_id') int portId,
+    //    @Part(name: 'branch_id') int branchId,
+    @Part(name: 'year') int year,
+    @Part(name: 'color') String color,
+    @Part(name: 'drive_type') String driveType,
+    @Part(name: 'car_type_id') int carTypeId,
+    @Part(name: 'fuel_type') String fuelType,
+    @Part(name: 'status') String status,
+    @Part(name: 'type') String type,
+    @Part(name: 'origin_country') String originCountry,
+    @Part(name: 'price') int price,
+    @Part(name: 'doors') int doors,
+    @Part(name: 'engine') String engine,
+    @Part(name: 'cc') String cc,
+    @Part(name: 'cylinders') int cylinders,
+    @Part(name: 'mileage') int mileage,
+    @Part(name: 'description') String description,
+    // @Part(name: 'main_image') File file,
+    // @Part(name: 'images[]') List<File> images,
+    @Part(name: 'features[]') List<String> features,
+  );
 
   @GET('/brands')
   Future<ApiResponse<List<BrandDto>>> fetchBrands();
@@ -131,7 +130,8 @@ abstract class SellCarDatasource {
   Future<ApiResponse<List<CarEngineDto>>> fetchCarEngines();
 
   @GET('/brand_model_extensions/{id}')
-  Future<ApiResponse<List<BrandModelExtensionDto>>> fetchBrandModelExtensions(@Path('id') int id);
+  Future<ApiResponse<List<BrandModelExtensionDto>>> fetchBrandModelExtensions(
+      @Path('id') int id);
 
   @GET('/years')
   Future<ApiResponse<List<int>>> fetchYears();
@@ -148,7 +148,23 @@ abstract class SellCarDatasource {
   @GET('/setting')
   Future<ApiResponse<SettingsPriceDto>> fetchSettingsPrice();
 
-
   @GET('/get-admin-cars')
   Future<ApiResponse<CarDto>> fetchAdminCar(@Queries() AdminCarParams params);
+
+  @POST('/edit_car_images')
+  Future<ApiResponse> editCarImage(
+    @Part(name: 'car_id') int? carId,
+    @Part(name: 'image') File image,
+    @Part(name: 'image_id') int? imageId,
+  );
+
+  @POST('/edit_car_images')
+  Future<ApiResponse> addCarImage(
+    @Part(name: 'car_id') int? carId,
+    @Part(name: 'image') File image,
+    @Part(name: 'image_id') int? imageId,
+  );
+
+  @POST('/edit_car_images/{id}')
+  Future<ApiResponse> deleteCarImage(@Path('id') int id);
 }

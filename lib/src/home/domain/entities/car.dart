@@ -53,7 +53,7 @@ class Car {
   String? door2Img;
   String? door3Img;
   String? door4Img;
-  List<String>? images;
+  List<ImageDto>? images;
   List<Feature>? features;
 
   Car(
@@ -132,13 +132,13 @@ class Car {
       door2Img: json.door2Img,
       door3Img: json.door3Img,
       door4Img: json.door4Img,
-      images: json.images?.map((e) => e?.image ?? '').toList() ?? [],
+      images: json.images,
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
     );
   }
 
    List<String> allImages() {
-    return [mainImage ?? '', ...images ?? []];
+    return [mainImage ?? '', ...images?.map((e) => e.image ?? '') ?? []];
   }
 
   String fullName() {

@@ -5,7 +5,8 @@ import '../widgets/showroom_item.dart';
 
 class ShowroomsScreen extends BaseStatelessWidget {
   final List<Showroom> showrooms;
-  ShowroomsScreen({super.key, required this.showrooms});
+  final bool? isAgency;
+  ShowroomsScreen({super.key, required this.showrooms, this.isAgency});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class ShowroomsScreen extends BaseStatelessWidget {
       shrinkWrap: true,
       controller: ScrollController(),
       itemBuilder: (context, index) {
+        showrooms[index].isAgency = isAgency ?? false;
         return ShowroomItem(
           showroom: showrooms[index],
         );

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/utils/helper_methods.dart';
 import '../../../profile/data/models/profile_dto.dart';
+import '../../data/models/edit_image_params.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 
@@ -28,5 +29,17 @@ class SellCarImagePickerCubit extends BaseCubit {
 
   Future<void> fetchInitialData() async {
     executeSuccess(() => usecase.fetchSettingsPrice());
+  }
+
+  Future<void> editCarImage(EditImageCarParams params) async {
+    executeEmitterMessage(() => usecase.editCarImage(params));
+  }
+
+  Future<void> addCarImage(EditImageCarParams params) async {
+    executeEmitterMessage(() => usecase.addCarImage(params));
+  }
+
+  Future<void> deleteImage(int id) async {
+    executeEmitterMessage(() => usecase.deleteImage(id));
   }
 }

@@ -59,6 +59,7 @@ class SellCarCubit extends BaseCubit {
   }
 
   fetchBrandModels(int id) async {
+    brandsModelsStream.setData([]);
     try {
       final brands = await usecase.fetchBrandModels(id);
       final dropDownItems = brands
@@ -71,6 +72,7 @@ class SellCarCubit extends BaseCubit {
   }
 
   fetchBrandModelExtensions(int id) async {
+    brandsModelsExtensionStream.setData([]);
     try {
       final brandsModelExtensions = await usecase.fetchBrandModelExtensions(id);
       final dropDownItems = brandsModelExtensions

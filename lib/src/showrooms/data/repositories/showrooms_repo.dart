@@ -4,6 +4,9 @@ import '../../../../core/network/api_response.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../../domain/repositories/base_showrooms_repo.dart';
 import '../data_sources/showrooms_datasource.dart';
+import '../models/add_branch_params.dart';
+import '../models/agency_dto.dart';
+import '../models/agency_params.dart';
 import '../models/branch_dto.dart';
 import '../models/showroom_cars_params.dart';
 import '../models/showroom_dto.dart';
@@ -32,5 +35,25 @@ class ShowroomsRepo extends BaseShowroomsRepo {
   @override
   Future<ApiResponse<List<CarDto>>> fetchShowroomCars(ShowroomCarsParams params) async {
     return await remoteDataSource.fetchShowroomCars(params.id, params);
+  }
+
+  @override
+  Future<ApiResponse> addBranch(AddBranchParams params) async {
+    return await remoteDataSource.addBranch(params);
+  }
+
+  @override
+  Future<ApiResponse> editBranch(AddBranchParams params) async {
+    return await remoteDataSource.editBranch(params.id, params);
+  }
+
+  @override
+  Future<ApiResponse> hideBranch(id) async {
+    return await remoteDataSource.hideBranch(id);
+  }
+
+  @override
+  Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(AgencyParams params) async {
+    return await remoteDataSource.fetchAgencies(params);
   }
 }

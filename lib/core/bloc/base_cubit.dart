@@ -90,6 +90,13 @@ abstract class BaseCubit extends Cubit<DataState>{
     });
   }
 
+
+  executeEmitterMessage(Future Function() invoke) {
+    executeListener(() => invoke(), onSuccess: (v) {
+      emit((SuccessMessageState(v.toString())));
+    });
+  }
+
   executeEmitterData(Future<ApiResponse> Function() invoke) {
     executeListener(() => invoke(), onSuccess: (v) {
       emit(DataSuccess(v));

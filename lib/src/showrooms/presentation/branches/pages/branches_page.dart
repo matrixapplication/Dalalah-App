@@ -23,7 +23,8 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   String? title(BuildContext context) {
-    return getArguments(context) == null ? null : strings.branches;
+    int? showroomId = this.showroomId ?? getArguments(context);
+    return (showroomId != null) ? null : strings.branches;
   }
 
 }

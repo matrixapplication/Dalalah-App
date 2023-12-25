@@ -16,8 +16,9 @@ class Showroom {
   bool? isBlocked;
   String? image;
   String? coverImage;
+  bool? isAgency;
 
-  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage});
+  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency});
 
    factory Showroom.fromDto(ShowroomDto json){
      return Showroom(
