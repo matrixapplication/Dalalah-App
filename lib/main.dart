@@ -1,7 +1,10 @@
+import 'package:dalalah/src/auth/presentation/pages/login/login_page.dart';
+import 'package:dalalah/src/home/presentation/pages/home/home_page.dart';
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:go_router/go_router.dart';
 
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
@@ -50,8 +53,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
-            locale: Locale(state.language),
             navigatorKey: injector<ServicesLocator>().navigatorKey,
+            locale: Locale(state.language),
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -62,6 +65,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // English, no country code
               Locale('ar'), // Arabic, no country code
             ],
+            // routerConfig: router,
             routes: Routes.routes,
             initialRoute: token.isEmpty ? Routes.login : Routes.navigationPages,
           );
@@ -70,3 +74,26 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// final router = GoRouter(
+//     navigatorKey: injector<ServicesLocator>().navigatorKey,
+//     routes: [
+//   GoRoute(
+//     path: '/',
+//     name: 'homePage',
+//     pageBuilder: (context, state) {
+//       return const MaterialPage(child: Scaffold(
+//         body: Center(
+//           child: Text('Home Page'),
+//         ),
+//       ));
+//     },
+//   ),
+//   GoRoute(
+//     path: '/test',
+//     pageBuilder: (context, state) {
+//       return MaterialPage(child: HomePage());
+//     },
+//   ),
+// ]);

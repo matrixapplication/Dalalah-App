@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.dalalah.app",
+    "sha256_cert_fingerprints":
+    ["66:FF:D0:01:5F:3C:0D:EB:18:ED:B1:6E:12:31:2E:F7:DC:84:17:2F:BF:BC:F6:ED:4A:D0:D3:F5:75:8B:33:D2"]
+  }
+}]
