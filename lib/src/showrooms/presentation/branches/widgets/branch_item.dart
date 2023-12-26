@@ -1,53 +1,77 @@
 import '../../../../../core/utils/helper_methods.dart';
+import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/widgets/buttons/row_texts_icons_buttons.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
+import '../../../../../core/widgets/texts/row_texts.dart';
 import '../../../../cars/presentation/cars/widgets/custom_company_container.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/branch.dart';
 
 class BranchItem extends BaseStatelessWidget {
   final Branch branch;
+  final bool isEdit;
 
-  BranchItem({super.key, required this.branch});
+  BranchItem({super.key, required this.branch, this.isEdit = false});
 
   @override
   Widget build(BuildContext context) {
-    return CustomCompanyContainer(
-      firstOnTap: () {
-        HelperMethods.launchCallPhone(branch.phone ?? '');
-        },
-      secondOnTap: () {
-        HelperMethods.launchUrlLink(branch.link ?? '');
-      },
-      secondButtonLabel: strings.location,
-      decoration: Decorations.kDecorationBoxShadow(
-          offset: const Offset(0, 4),
-          colorShadow: const Color(0xffA8A8A8).withOpacity(0.30)),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ColumnTexts(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              title: branch.name ?? '',
-              value: branch.address ?? '',
-              titleStyle: context.textTheme.bodyMedium,
-              valueStyle: context.textTheme.displaySmall,
+    return Container(
+      margin: 20.paddingBottom,
+      clipBehavior: Clip.antiAlias,
+      decoration:
+          Decorations.kDecorationBorder(
+              radius: 8,
+              borderWidth: 1
+          ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: 12.paddingAll,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  branch.name ?? '',
+                  style: context.textTheme.bodyMedium,
+                ),
+                AppIconButton(
+                  icon: AppIcons.edit,
+                  size: 20,
+                  color: context.primaryColor,
+                  onPressed: () {
+                    pushNamed(Routes.addBranchPage, arguments: branch);
+                  },
+                ),
+              ],
             ),
-            Container(
-              padding: 20.paddingHoriz + 6.paddingVert,
-              alignment: Alignment.center,
-              decoration: Decorations.kDecorationBorderWithRadius(
-                  borderColor: const Color(0xffC8C8C8), radius: 50),
-              child: Text(
-                branch.city ?? '',
-                style: context.textTheme.displaySmall!
-                    .copyWith(color: AppColors.grey_41, height: 1),
-              ),
-            )
-          ],
-        ),
+          ),
+          RowTexts(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            title: branch.address ?? '',
+            value: branch.city ?? '',
+            titleStyle: context.textTheme.bodyMedium,
+            valueStyle: context.textTheme.displaySmall,
+            padding: 12.paddingHoriz,
+          ),
+          20.ph,
+          RowTextsIconsButtons(
+            icon1: AppIcons.call,
+            icon2: AppIcons.location_2,
+            iconColor2: context.primaryColor,
+            title1: strings.contact,
+            title2: strings.location,
+            backgroundColor2: context.onSecondaryContainer,
+            // centerWidget: centerWidget,
+            onPressed1: () {
+              HelperMethods.launchCallPhone(branch.phone ?? '');
+            },
+            onPressed2: () {
+              HelperMethods.launchUrlLink(branch.link ?? '');
+            }
+          )
+        ],
       ),
     );
   }

@@ -1,4 +1,6 @@
-import 'package:json_annotation/json_annotation.dart'; 
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../../sell_car/data/models/city_dto.dart';
 
 part 'comment_dto.g.dart'; 
 
@@ -41,7 +43,7 @@ class User {
   @JsonKey(name: 'image')
   String? image;
   @JsonKey(name: 'city')
-  City? city;
+  CityDto? city;
 
   User({this.id, this.name, this.email, this.phone, this.whatsapp, this.role, this.image, this.city});
 
@@ -49,18 +51,3 @@ class User {
 
    Map<String, dynamic> toJson() => _$UserToJson(this);
 }
-
-@JsonSerializable(ignoreUnannotated: false)
-class City {
-  @JsonKey(name: 'id')
-  int? id;
-  @JsonKey(name: 'name')
-  String? name;
-
-  City({this.id, this.name});
-
-   factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
-
-   Map<String, dynamic> toJson() => _$CityToJson(this);
-}
-

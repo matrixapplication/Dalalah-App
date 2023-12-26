@@ -8,6 +8,7 @@ import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/filter_home.dart';
 import '../bloc/cars_bloc.dart';
+import '../widgets/brand_models_filter.dart';
 import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
@@ -19,6 +20,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   CarFilterParams paramsFilter = CarFilterParams();
   int tabIndex = 0;
   int brandId = 0;
+  int brandModelId = 0;
   String order = 'desc';
 
 
@@ -68,8 +70,18 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
               brandId = value;
               if (value == 0) return bloc.fetchCars(CarFilterParams());
               bloc.fetchCars(CarFilterParams(brand: value, order: order, status: CarStatus.getStatusByIndex(tabIndex)));
+              bloc.fetchBrandModels(value);
+              },
+          ),
+          BrandModelsFilterStream(
+            brandModelsStream: bloc.brandModelsStream,
+            onFilter: (value) {
+              brandModelId = value;
+              bloc.fetchCars(CarFilterParams(carModel: brandModelId,brand: brandId, order: order, status: CarStatus.getStatusByIndex(tabIndex)));
             },
-          ),],
+          ),
+
+        ],
           Expanded(child: buildConsumer(context)),
         ],
       ),
@@ -122,6 +134,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
       status: CarStatus.getStatusByIndex(tabIndex),
       brand: brandId,
       order: order,
+      carModel: brandModelId,
     ));
   }
 }

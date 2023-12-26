@@ -1,4 +1,7 @@
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
+
 import '../../../../core/utils/navigator.dart';
+import '../../../favorites_and_ads/domain/entites/favorites_and_ads_params.dart';
 import '../../../main_index.dart';
 import '../../../settings/domain/entities/about_us_types_.dart';
 import '../../domain/entities/profile.dart';
@@ -60,12 +63,20 @@ class ProfileScreen extends BaseStatelessWidget {
                     // arguments: strings.favorite_agencies,
                   ),
                   if(profile.token != null)
+                    ProfileItem(
+                      title: strings.my_branches,
+                      icon: AppIcons.box,
+                      subTitle: strings.my_branches,
+                      routeName: Routes.branchesPage,
+                      // arguments: strings.favorite_agencies,
+                    ),
+                  if(profile.token != null)
                   ProfileItem(
                     title: strings.favorites,
                     icon: AppIcons.heart_solid,
                     subTitle: strings.favorites,
                     routeName: Routes.favoritesAndAdsTabs,
-                    arguments: false,
+                    arguments: FavoritesAndAdsParams(isAds: false, isUser:profile.role == Roles.USER),
                   ),
                   if(profile.token != null)
                   ProfileItem(
@@ -73,7 +84,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     icon: AppIcons.save,
                     subTitle: strings.my_ads,
                     routeName: Routes.favoritesAndAdsTabs,
-                    arguments: true,
+                    arguments: FavoritesAndAdsParams(isAds: true, isUser:profile.role == Roles.USER),
                   ),
                   if(profile.token != null)
                   ProfileItem(

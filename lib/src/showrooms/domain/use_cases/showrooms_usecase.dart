@@ -35,11 +35,13 @@ class ShowroomsUseCase {
   }
 
   Future<ApiResponse> addBranch(AddBranchParams params) async {
-    return await repository.addBranch(params);
+    final data =  await repository.addBranch(params);
+    return data;
   }
 
   Future<ApiResponse> editBranch(AddBranchParams params) async {
-    return await repository.editBranch(params);
+    final data = await repository.editBranch(params);
+    return data;
   }
 
   Future<ApiResponse> hideBranch(id) async {

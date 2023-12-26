@@ -324,5 +324,14 @@
   "similar_ads": "Similar ads",
   "information": "Information",
   "edit_image": "Edit Image",
-  "agencies": "Agencies"
+  "agencies": "Agencies",
+  "my_branches": "My Branches",
+  "name_ar": "Name (Arabic)",
+    "name_en": "Name (English)",
+    "address_ar": "Address (Arabic)",
+    "address_en": "Address (English)",
+  "link": "Link",
+  "add_branch": "Add Branch",
+    "edit_branch": "Edit Branch",
+  "district": "District"
 }

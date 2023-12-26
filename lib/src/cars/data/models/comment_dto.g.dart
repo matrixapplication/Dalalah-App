@@ -37,7 +37,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       image: json['image'] as String?,
       city: json['city'] == null
           ? null
-          : City.fromJson(json['city'] as Map<String, dynamic>),
+          : CityDto.fromJson(json['city'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -49,14 +49,4 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'role': instance.role,
       'image': instance.image,
       'city': instance.city,
-    };
-
-City _$CityFromJson(Map<String, dynamic> json) => City(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-    );
-
-Map<String, dynamic> _$CityToJson(City instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
     };

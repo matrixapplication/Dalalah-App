@@ -6,7 +6,8 @@ import '../../../domain/entities/branch.dart';
 
 class BranchesScreen extends BaseStatelessWidget {
   final List<Branch> branches;
-  BranchesScreen({super.key, required this.branches});
+  final bool isEdit;
+  BranchesScreen({super.key, required this.branches, this.isEdit = false});
 
   @override
   Widget build(BuildContext context) {

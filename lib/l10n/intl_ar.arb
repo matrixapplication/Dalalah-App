@@ -316,5 +316,14 @@
   "similar_ads": "إعلانات مشابهة",
   "information": "معلومات",
   "edit_image": "تعديل الصورة",
-  "agencies": "الوكلات"
+  "agencies": "الوكلات",
+  "my_branches": "فروعي",
+  "name_ar": "الاسم (عربي)",
+  "name_en": "الاسم (إنجليزي)",
+  "address_ar": "العنوان (عربي)",
+  "address_en": "العنوان (إنجليزي)",
+  "link": "الرابط",
+  "add_branch": "إضافة فرع",
+  "edit_branch": "تعديل فرع",
+  "district": "الحي"
 }

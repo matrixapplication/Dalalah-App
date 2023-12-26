@@ -7,6 +7,8 @@ import '../../../../home/domain/entities/brand.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../home/domain/use_cases/home_usecase.dart';
 import '../../../../main_index.dart';
+import '../../../../sell_car/domain/entities/brand_model.dart';
+import '../../../../sell_car/domain/use_cases/sell_car_usecase.dart';
 import '../../../domain/use_cases/cars_usecase.dart';
 
 @Injectable()
@@ -14,11 +16,13 @@ class CarsCubit extends BaseCubit {
   final HomeUseCase usecase;
   final FavoritesUseCase favoritesUseCase;
   final CarsUseCase carsUseCase;
+  final SellCarUseCase sellCarUseCase;
 
-  CarsCubit(this.usecase, this.favoritesUseCase, this.carsUseCase);
+  CarsCubit(this.usecase, this.favoritesUseCase, this.carsUseCase, this.sellCarUseCase);
 
   StreamStateInitial<List<Car>?> carsStream = StreamStateInitial();
   StreamStateInitial<List<Brand>> brandsStream = StreamStateInitial();
+  StreamStateInitial<List<BrandModel>?> brandModelsStream = StreamStateInitial();
 
   Future<void> toggleFavorite(int id) async {
     executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
@@ -46,7 +50,7 @@ class CarsCubit extends BaseCubit {
     );
   }
 
-  fetchBrands() async{
+  void fetchBrands() async{
     try {
       final brands = await usecase.fetchBrands();
       brandsStream.setData(brands);
@@ -55,7 +59,14 @@ class CarsCubit extends BaseCubit {
     }
   }
 
-
-
+  void fetchBrandModels(int id) async{
+    brandModelsStream.setData(null);
+    try {
+      final models = await sellCarUseCase.fetchBrandModels(id);
+      brandModelsStream.setData(models);
+    } catch (e) {
+      brandModelsStream.setError(e);
+    }
+  }
 
 }

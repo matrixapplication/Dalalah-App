@@ -36,6 +36,7 @@ import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
+import '../../src/showrooms/presentation/branches/add_branch/pages/add_branch_page.dart';
 import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
 import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
 import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
@@ -56,6 +57,7 @@ class Routes {
   static const String realEstatePage = 'realEstatePage';
   static const String addPremiumPage = 'AddPremiumPage';
   static const String branchesPage = 'branchesPage';
+  static const String addBranchPage = 'addBranchPage';
   static const String commentsPage = 'commentsPage';
 
   ////////////////////////////////////////////////////////
@@ -113,6 +115,7 @@ class Routes {
     realEstatePage: (context) => RealEstatePage(),
     addPremiumPage: (context) => AddPremiumPage(),
     branchesPage: (context) => BranchesPage(),
+    addBranchPage: (context) => AddBranchPage(),
     commentsPage: (context) => CommentsPage(params: CommentParams()),
 
     ////////////////////////////////

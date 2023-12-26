@@ -67,8 +67,9 @@ class SelectionButtonChip extends StatelessWidget {
   }
 
   _initialValue() {
-    selectedType = types.firstOrNull((e) => e.id == initialValue)
-        ?? (types.isEmpty ? null : types.first);
+    print('selectedType initialValue: ${initialValue}');
+    selectedType = types.firstWhere( (element) => element.id == initialValue, orElse: () => types.first);
+//        ?? (types.isEmpty ? null : types.first);
     print('selectedType: ${selectedType?.id}');
   }
 
