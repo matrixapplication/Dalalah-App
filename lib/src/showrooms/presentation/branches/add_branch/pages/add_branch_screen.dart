@@ -93,7 +93,7 @@ class AddBranchesScreen extends BaseStatelessWidget {
                 stream: districtsStream.stream,
                 builder: (context, snapshot) {
                   return DropDownField(
-                    title: strings.city,
+                    title: strings.district,
                     hint: strings.district,
                     items: snapshot.data
                             ?.map((e) => DropDownItem(

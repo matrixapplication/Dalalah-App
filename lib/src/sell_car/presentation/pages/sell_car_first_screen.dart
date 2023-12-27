@@ -128,7 +128,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
     print('car: ${car?.status?.key}');
     print('car: ${car?.brand?.id}');
     print('car: ${car?.brandModel?.id}');
-   // status = state.carStatuses.first.key ?? '';
+    status = state.carStatuses.first.key ?? '';
     if (car != null) {
       modelId = car?.brandModel?.id ?? 0;
       status = car?.status?.key ?? state.carStatuses.first.key ?? '';

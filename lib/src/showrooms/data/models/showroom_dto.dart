@@ -8,7 +8,7 @@ class ShowroomDto {
   int? id;
   @JsonKey(name: 'owner_name')
   String? ownerName;
-  @JsonKey(name: 'showroom_name')
+  @JsonKey(name: 'name')
   String? showroomName;
   @JsonKey(name: 'description')
   String? description;

@@ -108,6 +108,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 controller: kilometersController,
                 keyboardType: TextInputType.number,
                 onTap: isNewCar ? (){} : null,
+                isValidator: false,
               ),
               CustomTextField(
                 title: strings.engine,

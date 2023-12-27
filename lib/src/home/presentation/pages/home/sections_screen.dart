@@ -52,23 +52,34 @@ class SectionsScreen extends BaseStatelessWidget {
                               ),
                             ),
                             20.ph,
-                            FutureBuilder(
-                              future: HelperMethods.getUserRole(),
-                              builder: (context, snapshot) {
-                                return snapshot.data == Roles.USER ?
-                                  Expanded(
-                                  child: _SectionsItem(
-                                    section: Section(
-                                      title: strings.add_plate,
-                                      image: AppImages.add_plate,
-                                      routeName: Routes.plateFilterPage,
-                                      width: double.infinity,
-                                    ),
-                                    index: 0,
-                                  ),
-                                ) : 0.ph;
-                              }
+                            Expanded(
+                              child: _SectionsItem(
+                                section: Section(
+                                  title: strings.add_plate,
+                                  image: AppImages.add_plate,
+                                  routeName: Routes.plateFilterPage,
+                                  width: double.infinity,
+                                ),
+                                index: 0,
+                              ),
                             ),
+                            // FutureBuilder(
+                            //   future: HelperMethods.getUserRole(),
+                            //   builder: (context, snapshot) {
+                            //     return snapshot.data == Roles.USER ?
+                            //       Expanded(
+                            //       child: _SectionsItem(
+                            //         section: Section(
+                            //           title: strings.add_plate,
+                            //           image: AppImages.add_plate,
+                            //           routeName: Routes.plateFilterPage,
+                            //           width: double.infinity,
+                            //         ),
+                            //         index: 0,
+                            //       ),
+                            //     ) : 0.ph;
+                            //   }
+                            // ),
                             20.ph,
                             Expanded(
                               child: _SectionsItem(

@@ -9,7 +9,7 @@ part of 'showroom_dto.dart';
 ShowroomDto _$ShowroomDtoFromJson(Map<String, dynamic> json) => ShowroomDto(
       id: json['id'] as int?,
       ownerName: json['owner_name'] as String?,
-      showroomName: json['showroom_name'] as String?,
+      showroomName: json['name'] as String?,
       description: json['description'] as String?,
       code: json['code'] as String?,
       phone: json['phone'] as String?,
@@ -27,7 +27,7 @@ Map<String, dynamic> _$ShowroomDtoToJson(ShowroomDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'owner_name': instance.ownerName,
-      'showroom_name': instance.showroomName,
+      'name': instance.showroomName,
       'description': instance.description,
       'code': instance.code,
       'phone': instance.phone,
