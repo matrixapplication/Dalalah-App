@@ -146,7 +146,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
         engine: engineController.text.trim(),
         cc: engineController.text.trim(),
         cylinders: int.parse(cylindersController.text.trim()),
-        mileage: int.parse(kilometersController.text.trim()),
+        mileage: kilometersController.text.trim().toInt,
         description: descController.text.trim(),
       ));
     }

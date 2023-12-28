@@ -36,9 +36,9 @@ class HeaderInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
-    ProfileDto? profile = accessToken.isNotEmpty ? ProfileDto(token: accessToken) : await HelperMethods.getProfile();
+ //   String? token = accessToken.isNotEmpty ? accessToken : await HelperMethods.getToken();
   //  profile?.token = ;
-    options.headers[keyAuthorization] = 'Bearer ${profile?.token}';
+    options.headers[keyAuthorization] = 'Bearer ${ await HelperMethods.getToken()}';
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
     options.headers[keyApiKey] = apiKeyValue;
     options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';

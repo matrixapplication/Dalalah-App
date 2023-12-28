@@ -13,8 +13,9 @@ import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
 class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
+  final bool isDetailsPage;
   final CarFilterParams? params;
-  CarsPage({Key? key, this.params}) : super(key: key);
+  CarsPage({Key? key, this.params, this.isDetailsPage = false}) : super(key: key);
 
 
   CarFilterParams paramsFilter = CarFilterParams();
@@ -107,7 +108,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   String? title(BuildContext context) {
-    return  isFilter ? context.strings.cars : context.strings.results_filter;
+    return  isDetailsPage ? null  : isFilter ? context.strings.cars : context.strings.results_filter;
   }
 
   @override

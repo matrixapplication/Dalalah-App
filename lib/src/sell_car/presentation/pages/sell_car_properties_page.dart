@@ -47,7 +47,8 @@ class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, S
         print('params features ${params.features}');
         Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: SellCarArgs(
           car: args.car,
-          params: params
+          params: params,
+          isEdit: args.isEdit,
         ));
       },
     );

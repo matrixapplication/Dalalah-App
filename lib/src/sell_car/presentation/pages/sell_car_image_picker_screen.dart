@@ -151,6 +151,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
 
 
   _initialValues() {
+    print('car status ${car.status?.key}');
     if (car.id != null) {
       priceController.text = car.price?.toString().removeMark ?? '';
       installmentController.text = car.monthlyInstallment?.toString().removeMark ?? '';

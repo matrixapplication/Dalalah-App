@@ -62,7 +62,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     // routeName: Routes.exhibitionPage,
                     // arguments: strings.favorite_agencies,
                   ),
-                  if(profile.token != null)
+                  if(profile.token != null && profile.role != Roles.USER)
                     ProfileItem(
                       title: strings.my_branches,
                       icon: AppIcons.box,

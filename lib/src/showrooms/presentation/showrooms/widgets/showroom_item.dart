@@ -4,6 +4,7 @@ import 'package:dalalah/core/widgets/images/image_network.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../cars/presentation/cars/widgets/custom_company_container.dart';
 import '../../../../main_index.dart';
+import '../../../domain/entities/branch_args.dart';
 import '../../../domain/entities/showroom.dart';
 
 class ShowroomItem extends BaseStatelessWidget {
@@ -24,10 +25,10 @@ class ShowroomItem extends BaseStatelessWidget {
         firstOnTap: () {
           HelperMethods.launchCallPhone(showroom.phone ?? '');
         },
-        secondOnTap: () {
+        secondOnTap: () async {
           pushNamed(
             Routes.branchesPage,
-            arguments: showroom.id,
+            arguments: BranchArgs(id: showroom.id, role: await HelperMethods.getUserRole()),
           );
         },
         body: Padding(

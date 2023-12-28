@@ -44,7 +44,8 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
        // onNext!(params);
         Navigators.pushNamed(Routes.sellCarSecondPage, arguments: SellCarArgs(
           car: car,
-          params: params
+          params: params,
+          isEdit: car?.id != null,
         ));
       },
       onFetchBrandModels: (brandId) {

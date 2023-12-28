@@ -21,7 +21,7 @@ class MyCarsCubit extends BaseCubit {
   bool isLastPage = false;
 
   fetchMyCars({bool isMoreData = false}) async {
-    !isMoreData ? {page = 1, allCars.clear()} : page++;
+    isMoreData ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
       isMoreData: isMoreData,

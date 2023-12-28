@@ -23,6 +23,13 @@ Future<dynamic> push(Widget page) {
       .push(MaterialPageRoute(builder: (context) => page));
 }
 
+pop({dynamic arguments}) {
+   injector<ServicesLocator>()
+      .navigatorKey
+      .currentState!
+      .pop(arguments);
+}
+
 class Navigators {
   static GlobalKey<NavigatorState> navigationKey =
       injector<ServicesLocator>().navigatorKey;

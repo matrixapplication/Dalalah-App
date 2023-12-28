@@ -1,3 +1,4 @@
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/src/cars/data/models/comment_dto.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:dalalah/src/showrooms/domain/entities/branch.dart';
@@ -33,5 +34,10 @@ class AddBranchPage extends BaseBlocWidget<DataSuccess<List<City>>, AddBranchCub
   String? title(BuildContext context) {
     Branch? branch = getArguments(context);
     return (branch != null) ? strings.edit_branch : strings.add_branch;
+  }
+
+  @override
+  void onSuccessDismissed() {
+    Navigator.pop(context!, true);
   }
 }

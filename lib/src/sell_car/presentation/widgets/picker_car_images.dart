@@ -56,6 +56,7 @@ class PickerCarImages extends BaseStatelessWidget {
           strings.add_car_image_at_most_10,
           style: context.bodySmall,
         ),
+        10.ph,
         PickerSubImages(
           // initialImages: initialImages,
          // onEditCarImage: onEditCarImage,

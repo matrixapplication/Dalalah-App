@@ -8,10 +8,12 @@ part of 'add_branch_params.dart';
 
 AddBranchParams _$AddBranchParamsFromJson(Map<String, dynamic> json) =>
     AddBranchParams(
-      nameEn: json['name_en'] as String?,
-      nameAr: json['name_ar'] as String?,
-      addressEn: json['address_en'] as String?,
-      addressAr: json['address_ar'] as String?,
+      name: json['name'] == null
+          ? null
+          : AddBranchName.fromJson(json['name'] as Map<String, dynamic>),
+      address: json['address'] == null
+          ? null
+          : AddBranchAddress.fromJson(json['address'] as Map<String, dynamic>),
       cityId: json['city_id'] as int?,
       districtId: json['district_id'] as int?,
       phone: json['phone'] as String?,
@@ -22,14 +24,36 @@ AddBranchParams _$AddBranchParamsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AddBranchParamsToJson(AddBranchParams instance) =>
     <String, dynamic>{
-      'name_en': instance.nameEn,
-      'name_ar': instance.nameAr,
-      'address_en': instance.addressEn,
-      'address_ar': instance.addressAr,
+      'name': instance.name,
+      'address': instance.address,
       'city_id': instance.cityId,
       'district_id': instance.districtId,
       'phone': instance.phone,
       'whatsapp': instance.whatsapp,
       'link': instance.link,
       'id': instance.id,
+    };
+
+AddBranchName _$AddBranchNameFromJson(Map<String, dynamic> json) =>
+    AddBranchName(
+      en: json['en'] as String?,
+      ar: json['ar'] as String?,
+    );
+
+Map<String, dynamic> _$AddBranchNameToJson(AddBranchName instance) =>
+    <String, dynamic>{
+      'en': instance.en,
+      'ar': instance.ar,
+    };
+
+AddBranchAddress _$AddBranchAddressFromJson(Map<String, dynamic> json) =>
+    AddBranchAddress(
+      en: json['en'] as String?,
+      ar: json['ar'] as String?,
+    );
+
+Map<String, dynamic> _$AddBranchAddressToJson(AddBranchAddress instance) =>
+    <String, dynamic>{
+      'en': instance.en,
+      'ar': instance.ar,
     };

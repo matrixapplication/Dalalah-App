@@ -6,6 +6,7 @@ import 'package:dalalah/src/sell_car/presentation/pages/sell_car_image_picker_sc
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/car_status.dart';
 import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_image_picker_bloc.dart';
 import '../widgets/header_sell_car.dart';
@@ -36,9 +37,10 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
   Widget buildWidget(BuildContext context, UnInitState state) {
     SellCarArgs args = getArguments(context);
     return SellCarImagePickerScreen(
-        car: args.car ?? Car(),
+        car: args.car ?? Car(status: CarStatus(key: args.params?.status ?? '')),
         onSave: (params) {
-          args.params?.id = args.car?.id;
+          // if id is null or 0 then it's new car
+          args.params?.id = args.isEdit ? args.car?.id : 0;
           args.params?.price = params.price;
           args.params?.installment = params.installment;
           args.params?.description = params.description;

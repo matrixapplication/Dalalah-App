@@ -80,6 +80,7 @@ class AddBranchesScreen extends BaseStatelessWidget {
             DropDownField(
               title: strings.city,
               hint: strings.city,
+              valueId: cityId.toString(),
               items: cities
                   .map((e) =>
                       DropDownItem(id: e.id.toString(), title: e.name ?? ''))
@@ -95,6 +96,7 @@ class AddBranchesScreen extends BaseStatelessWidget {
                   return DropDownField(
                     title: strings.district,
                     hint: strings.district,
+                    valueId: districtId.toString(),
                     items: snapshot.data
                             ?.map((e) => DropDownItem(
                                 id: e.id.toString(), title: e.name ?? ''))
@@ -111,10 +113,8 @@ class AddBranchesScreen extends BaseStatelessWidget {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   onAddBranch?.call(AddBranchParams(
-                    nameAr: nameArController.text,
-                    nameEn: nameEnController.text,
-                    addressAr: addressArController.text,
-                    addressEn: addressEnController.text,
+                    name: AddBranchName(ar: nameArController.text, en: nameEnController.text),
+                    address: AddBranchAddress(ar: addressArController.text, en: addressEnController.text),
                     phone: phoneController.text,
                     whatsapp: whatsappController.text,
                     link: linkController.text,
@@ -141,6 +141,9 @@ class AddBranchesScreen extends BaseStatelessWidget {
       linkController.text = initialBranch?.link ?? '';
       cityId = initialBranch?.cityId ?? 0;
       districtId = initialBranch?.districtId ?? 0;
+      if(cityId != 0 ){
+      onFetchDistricts?.call(cityId);
+      }
     }
   }
 }

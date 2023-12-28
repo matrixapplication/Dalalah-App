@@ -34,14 +34,14 @@ class ShowroomsUseCase {
     return (await repository.fetchShowroomCars(params));
   }
 
-  Future<ApiResponse> addBranch(AddBranchParams params) async {
+  Future<String> addBranch(AddBranchParams params) async {
     final data =  await repository.addBranch(params);
-    return data;
+    return data.message ?? '';
   }
 
-  Future<ApiResponse> editBranch(AddBranchParams params) async {
+  Future<String> editBranch(AddBranchParams params) async {
     final data = await repository.editBranch(params);
-    return data;
+    return data.message ?? '';
   }
 
   Future<ApiResponse> hideBranch(id) async {

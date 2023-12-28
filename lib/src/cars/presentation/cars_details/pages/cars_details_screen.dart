@@ -56,6 +56,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
             TabItemModel(
               label: strings.categories,
               page: CarsPage(
+    isDetailsPage: true,
                 params: CarFilterParams(
                   startYear: int.parse(car.year ?? '0'),
                   brand: car.brand?.id ?? 0,

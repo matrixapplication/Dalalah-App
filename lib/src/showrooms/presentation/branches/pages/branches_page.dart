@@ -1,8 +1,10 @@
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../domain/entities/branch.dart';
+import '../../../domain/entities/branch_args.dart';
 import '../bloc/branches_bloc.dart';
 import 'branches_screen.dart';
 
@@ -12,7 +14,8 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   void loadInitialData(BuildContext context) {
-    int? showroomId = this.showroomId ?? getArguments(context);
+    BranchArgs? args = getArguments(context);
+    int? showroomId = this.showroomId ?? args?.id;
     bloc.fetchBranchesById(showroomId);
   }
 
@@ -25,8 +28,8 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   String? title(BuildContext context) {
-    int? showroomId = this.showroomId ?? getArguments(context);
-    return (showroomId != null) ? null : strings.branches;
+   // int? showroomId = this.showroomId ?? getArguments(context);
+    return showroomId != null ? null : strings.branches;
   }
 
   @override
@@ -37,8 +40,10 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
 
   @override
-  bool isAddButton() {
-    return true;
+   isAddButton() {
+    BranchArgs? args = getArguments(context!);
+    print('args?.role: ${args?.role}');
+    return args?.role != Roles.USER;
   }
 
 }

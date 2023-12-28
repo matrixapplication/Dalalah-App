@@ -71,7 +71,8 @@ class RegisterScreen extends BaseStatelessWidget {
                 prefixIcon: AppIcons.whatsapp,
                 controller: whatsappController,
                   isColor: false,
-                // validator: (phone) => Validation.validatePhone(phone ?? ''),
+                maxLength: 11,
+                validator: (phone) => Validation.validatePhone(phone ?? ''),
               ),
               DropDownField(
                 items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),
