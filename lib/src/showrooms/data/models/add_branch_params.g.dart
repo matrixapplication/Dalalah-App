@@ -19,7 +19,7 @@ AddBranchParams _$AddBranchParamsFromJson(Map<String, dynamic> json) =>
       phone: json['phone'] as String?,
       whatsapp: json['whatsapp'] as String?,
       link: json['link'] as String?,
-      id: json['id'] as String?,
+      id: json['id'] as int?,
     );
 
 Map<String, dynamic> _$AddBranchParamsToJson(AddBranchParams instance) =>

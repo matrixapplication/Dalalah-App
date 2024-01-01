@@ -5,7 +5,6 @@ import '../../../../../core/widgets/buttons/call_button.dart';
 import '../../../../../core/widgets/buttons/chat_whats_app_button.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
-import '../../../../cars/presentation/cars_details/widgets/car_details_ratings.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../main_index.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
@@ -16,7 +15,9 @@ import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
   final Showroom showroom;
   final bool isAgency;
-  ExhibitionDetailsScreen({super.key, required this.showroom, this.isAgency = false});
+  final Function(int)? onAddRate;
+  final Function()? onFollow;
+  ExhibitionDetailsScreen({super.key, required this.showroom, this.isAgency = false, this.onAddRate, this.onFollow});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,9 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                      radius: 50,
                      margin: 10.paddingTop + 10.paddingStart,
                      title: strings.follow,
-                      onPressed: () {},
+                      onPressed: () {
+                        onFollow?.call();
+                      },
                    ),
                     PositionedDirectional(
                       top: 12,

@@ -26,6 +26,7 @@ class AuthTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool isColor;
   final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
 
   const AuthTextField({
     Key? key,
@@ -43,6 +44,7 @@ class AuthTextField extends StatelessWidget {
     this.keyboardType,
     this.isColor = true,
     this.maxLength,
+    this.inputFormatters,
 
   }) : super(key: key);
 
@@ -59,6 +61,7 @@ class AuthTextField extends StatelessWidget {
             style: context.textTheme.bodyMedium,
             keyboardType: keyboardType,
             maxLength: maxLength,
+            inputFormatters: inputFormatters,
             decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderSide: BorderSide.none,

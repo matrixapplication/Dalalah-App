@@ -2,7 +2,7 @@
 import '../../../../core/network/api_response.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../../data/models/add_branch_params.dart';
-import '../../data/models/agency_dto.dart';
+import '../../data/models/add_rate_params.dart';
 import '../../data/models/agency_params.dart';
 import '../../data/models/branch_dto.dart';
 import '../../data/models/showroom_cars_params.dart';
@@ -17,5 +17,8 @@ abstract class BaseShowroomsRepo {
   Future<ApiResponse> editBranch(AddBranchParams params);
   Future<ApiResponse> hideBranch(id);
   Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(AgencyParams params);
+  Future<ApiResponse> addFollowShowrooms(int id);
+  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(int page);
+  Future<ApiResponse> addRateShowroom(AddRateParams params);
 
 }

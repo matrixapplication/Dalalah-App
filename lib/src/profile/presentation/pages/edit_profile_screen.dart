@@ -19,7 +19,7 @@ class EditProfileScreen extends BaseStatelessWidget {
 
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController ownerNameController = TextEditingController();
   TextEditingController whatsAppController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -53,15 +53,19 @@ class EditProfileScreen extends BaseStatelessWidget {
               //   title: strings.email,
               //   controller: emailController,
               // ),
-              EditTextField(
-                title: strings.phone_number,
-                controller: phoneController,
-                maxLength: 11,
-                validator: (phone) => Validation.validatePhone(phone ?? ''),
-              ),
+            //   EditTextField(
+            //     title: strings.owner_name,
+            //     controller: ownerNameController,
+            // //    validator: (phone) => Validation.validatePhone(phone ?? ''),
+            //   ),
               EditTextField(
                 title: strings.whatsapp_number,
                 controller: whatsAppController,
+                keyboardType: TextInputType.phone,
+                validator: (phone) => Validation.validatePhone(phone ?? ''),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
               ),
               EditTextField(
                 title: strings.city,
@@ -100,9 +104,10 @@ class EditProfileScreen extends BaseStatelessWidget {
     if (formKey.currentState!.validate()) {
       onEdit(
         RegisterParams(
+          ownerName: ownerNameController.text,
           name: fullNameController.text,
           email: emailController.text,
-          phone: phoneController.text,
+          phone: ownerNameController.text,
           password: passwordController.text,
           passwordConfirmation: passwordController.text,
           whatsapp: whatsAppController.text,
@@ -115,7 +120,7 @@ class EditProfileScreen extends BaseStatelessWidget {
   _initData() {
     fullNameController.text = profile.name ?? '';
     emailController.text = profile.email ?? '';
-    phoneController.text = profile.phone  ?? '';
+    ownerNameController.text = profile.phone  ?? '';
     whatsAppController.text = profile.whatsApp ?? '';
     cityId = profile.city?.id ?? 0;
   }

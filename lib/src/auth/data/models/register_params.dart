@@ -1,4 +1,5 @@
 class RegisterParams {
+  final String? ownerName;
   final String? name;
   final String? phone;
   final String? whatsapp;
@@ -10,8 +11,9 @@ class RegisterParams {
   final String? fcmToken;
 
   RegisterParams(
-      {required this.email,
-      required this.password,
+      { this.email,
+       this.password,
+      this.ownerName,
       this.name,
       this.phone,
       this.whatsapp,
@@ -21,6 +23,7 @@ class RegisterParams {
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = {
+      'owner_name': ownerName ?? '',
       'name': name ?? '',
       'phone': phone ?? '',
       'email': email ?? '',

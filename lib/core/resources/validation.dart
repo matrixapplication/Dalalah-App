@@ -87,13 +87,34 @@ class Validation {
     return null;
   }
 
-  // static String? validatePlate(String value) {
-  //   if (value.isEmpty) {
-  //     return injector<ServicesLocator>().strings.required;
-  //   }
-  //   if (value.length < 3) {
-  //     return injector<ServicesLocator>().strings.;
-  //   }
-  //   return null;
-  // }
+  static bool isArabicLettersWithNumbers(String name) =>
+      RegExp("^[\u0621-\u064A\\s0-9\\W]+\$").hasMatch(name);
+
+  static bool isEnglishLetters(String name) =>
+      RegExp("^[a-zA-Z\\s]+\$").hasMatch(name);
+
+  // English Letters With Numbers with any character
+  static bool isEnglishLettersWithNumbers(String name) =>
+      RegExp("^[a-zA-Z\\s0-9\\W]+\$").hasMatch(name);
+
+  static String? validateArabicText(String value) {
+    final strings = injector<ServicesLocator>().strings;
+    if (value.isNullOrEmpty()) {
+      return strings.this_field_is_required;
+    } else if (!Validation.isArabicLettersWithNumbers(value)) {
+      return strings.must_be_arabic_letters;
+    }
+    return null;
+  }
+
+  static String? validateEnglishText(String value) {
+    final strings = injector<ServicesLocator>().strings;
+    if (value.isNullOrEmpty()) {
+      return strings.this_field_is_required;
+    } else if (!Validation.isEnglishLettersWithNumbers(value)) {
+      return strings.must_be_english_letters;
+    }
+    return null;
+  }
+
 }

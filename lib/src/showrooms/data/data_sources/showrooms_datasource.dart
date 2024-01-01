@@ -7,7 +7,7 @@ import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../models/add_branch_params.dart';
-import '../models/agency_dto.dart';
+import '../models/add_rate_params.dart';
 import '../models/agency_params.dart';
 import '../models/branch_dto.dart';
 import '../models/showroom_cars_params.dart';
@@ -47,4 +47,13 @@ abstract class ShowroomsDatasource {
 
   @GET('/get_agencies')
   Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(@Queries() AgencyParams params);
+
+  @POST('/follow_showroom/{id}')
+  Future<ApiResponse> addFollowShowrooms(@Path('id') id);
+
+  @GET('/followed_showroom')
+  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(@Query('page') int page);
+
+  @POST('/add_rate')
+  Future<ApiResponse> addRateShowroom(@Body() AddRateParams params);
 }

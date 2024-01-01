@@ -44,10 +44,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
                 <data
-                    android:scheme="http"/>
+                    android:scheme="http"
+                    android:host="dalalah.co" />
                 <data
                     android:scheme="https"/>
-                <data android:host="dalala.matrix-clouds.com" />
+                <data android:host="dalalah.co" />
             </intent-filter>
 
             <!-- App Links -->
@@ -58,10 +59,10 @@
                 <!-- Accepts URIs that begin with https://YOUR_HOST -->
                 <data
                     android:scheme="http"
-                    android:host="dalala.matrix-clouds.com" />
+                    android:host="dalalah.co" />
                 <data
                     android:scheme="https"
-                    android:host="dalala.matrix-clouds.com" />
+                    android:host="dalalah.co" />
             </intent-filter>
         </activity>
        <activity

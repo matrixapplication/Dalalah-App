@@ -20,7 +20,6 @@ class ShowroomCarsCubit extends BaseCubit {
 
   fetchMyCars(String status, int id, {bool isMoreData = false}) async {
     !isMoreData ? {page = 1, allCars.clear()} : page++;
-    print('page onSuccess$page');
     executeBuilder(
       isMoreData: isMoreData,
           () => usecase.fetchShowroomCars(ShowroomCarsParams(page: page, status: status, id: id)),

@@ -1,3 +1,4 @@
+import 'package:dalalah/core/resources/validation.dart';
 import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 
@@ -46,21 +47,26 @@ class AddBranchesScreen extends BaseStatelessWidget {
               title: strings.name_ar,
               hintText: strings.name_ar,
               controller: nameArController,
+              validator: (value) => Validation.validateArabicText(value ?? ''),
             ),
             CustomTextField(
               title: strings.name_en,
               hintText: strings.name_en,
               controller: nameEnController,
+              validator: (value) => Validation.validateEnglishText(value ?? ''),
             ),
             CustomTextField(
               title: strings.address_ar,
               hintText: strings.address_ar,
               controller: addressArController,
+              validator: (value) => Validation.validateArabicText(value ?? ''),
+
             ),
             CustomTextField(
               title: strings.address_en,
               hintText: strings.address_en,
               controller: addressEnController,
+              validator: (value) => Validation.validateEnglishText(value ?? ''),
             ),
             CustomTextField(
               title: strings.phone_number,
@@ -113,6 +119,7 @@ class AddBranchesScreen extends BaseStatelessWidget {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   onAddBranch?.call(AddBranchParams(
+                    id: initialBranch?.id,
                     name: AddBranchName(ar: nameArController.text, en: nameEnController.text),
                     address: AddBranchAddress(ar: addressArController.text, en: addressEnController.text),
                     phone: phoneController.text,

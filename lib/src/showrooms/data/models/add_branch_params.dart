@@ -19,15 +19,17 @@ class AddBranchParams {
   @JsonKey(name: 'link')
   String? link;
 
-  // Note: This is not used in the Query Parameters, but it is used in the Path Parameters
+  // Note: This is not used in the Query Parameters, but it is used in the Path Parameters for edit branch
   @JsonKey(name: 'id')
-  String? id;
+  int? id;
 
   AddBranchParams({this.name, this.address, this.cityId, this.districtId, this.phone, this.whatsapp, this.link, this.id});
 
    factory AddBranchParams.fromJson(Map<String, dynamic> json) => _$AddBranchParamsFromJson(json);
 
-   Map<String, dynamic> toJson() => _$AddBranchParamsToJson(this);
+   // remove id from toJson
+    Map<String, dynamic> toJson() => _$AddBranchParamsToJson(this)
+      ..remove('id');
 }
 
 @JsonSerializable(ignoreUnannotated: false)

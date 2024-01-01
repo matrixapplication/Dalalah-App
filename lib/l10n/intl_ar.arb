@@ -325,5 +325,7 @@
   "link": "الرابط",
   "add_branch": "إضافة فرع",
   "edit_branch": "تعديل فرع",
-  "district": "المنطقه"
+  "district": "المنطقه",
+  "owner_name": "اسم المالك",
+  "followed_showrooms": "المعارض المتابعة"
 }

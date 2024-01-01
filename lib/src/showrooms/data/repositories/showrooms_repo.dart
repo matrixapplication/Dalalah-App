@@ -5,6 +5,7 @@ import '../../../home/data/models/car_dto.dart';
 import '../../domain/repositories/base_showrooms_repo.dart';
 import '../data_sources/showrooms_datasource.dart';
 import '../models/add_branch_params.dart';
+import '../models/add_rate_params.dart';
 import '../models/agency_dto.dart';
 import '../models/agency_params.dart';
 import '../models/branch_dto.dart';
@@ -55,5 +56,20 @@ class ShowroomsRepo extends BaseShowroomsRepo {
   @override
   Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(AgencyParams params) async {
     return await remoteDataSource.fetchAgencies(params);
+  }
+
+  @override
+  Future<ApiResponse> addFollowShowrooms(int id) async {
+    return await remoteDataSource.addFollowShowrooms(id);
+  }
+
+  @override
+  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(int page) async {
+    return await remoteDataSource.fetchFollowShowrooms(page);
+  }
+
+  @override
+  Future<ApiResponse> addRateShowroom(AddRateParams params) async {
+    return await remoteDataSource.addRateShowroom(params);
   }
 }

@@ -25,6 +25,7 @@ class CustomTextField extends BaseStatelessWidget {
   final double? maxHeight;
   final TextStyle? labelStyle;
   final int?maxLength;
+  final List<TextInputFormatter>? inputFormatters;
 
   CustomTextField({
     Key? key,
@@ -52,6 +53,7 @@ class CustomTextField extends BaseStatelessWidget {
     this.maxHeight,
     this.labelStyle,
     this.maxLength,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -84,6 +86,7 @@ class CustomTextField extends BaseStatelessWidget {
             cursorColor: context.primaryColor,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             textInputAction: TextInputAction.next,
+            inputFormatters: inputFormatters,
             decoration: inputDecoration ??
                 InputDecoration(
                   // label: Text(

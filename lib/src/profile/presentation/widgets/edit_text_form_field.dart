@@ -1,5 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/widgets/text-field/custom_text_field.dart';
@@ -17,7 +18,9 @@ class EditTextField extends StatelessWidget {
   final Widget? widget;
   final String? Function(String?)? validator;
   final int? maxLength;
-  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType, this.widget, this.validator, this.maxLength}) : super(key: key);
+  final List<TextInputFormatter>? inputFormatters;
+  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isPasswordVisible = false, this.keyboardType, this.widget, this.validator, this.maxLength,
+  this.inputFormatters,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class EditTextField extends StatelessWidget {
             fillColor: context.cardColor,
            //     readOnly: readOnly ?? false,
             keyboardType: keyboardType,
+            inputFormatters: inputFormatters,
             inputDecoration: InputDecoration(
               fillColor:  context.cardColor,
               filled: true,

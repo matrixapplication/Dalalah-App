@@ -30,6 +30,6 @@ class AddBranchCubit extends BaseCubit {
   }
 
   void addBranch(AddBranchParams params) {
-    executeEmitterListener(() => useCase.addBranch(params));
+    executeEmitterListener(() => params.id == null ? useCase.addBranch(params) : useCase.editBranch(params));
   }
 }

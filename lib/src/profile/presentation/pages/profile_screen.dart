@@ -59,7 +59,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     title: strings.favorite_agencies,
                     icon: AppIcons.box,
                     subTitle: strings.dealers_showrooms_agents,
-                    // routeName: Routes.exhibitionPage,
+                    routeName: Routes.followedShowroomsPage,
                     // arguments: strings.favorite_agencies,
                   ),
                   if(profile.token != null && profile.role != Roles.USER)

@@ -32,8 +32,10 @@ class ShowroomDto {
   String? image;
   @JsonKey(name: 'cover_image')
   String? coverImage;
+  @JsonKey(name: 'is_followed')
+  bool? isFollowed;
 
-  ShowroomDto({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage});
+  ShowroomDto({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isFollowed});
 
    factory ShowroomDto.fromJson(Map<String, dynamic> json) => _$ShowroomDtoFromJson(json);
 

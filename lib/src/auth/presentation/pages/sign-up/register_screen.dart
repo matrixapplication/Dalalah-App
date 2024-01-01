@@ -63,16 +63,20 @@ class RegisterScreen extends BaseStatelessWidget {
                 prefixIcon: AppIcons.smartphone,
                 controller: phoneNumberController,
                 keyboardType: TextInputType.phone,
-                  maxLength: 11,
                 validator: (phone) => Validation.validatePhone(phone ?? ''),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
               ),
               AuthTextField(
                 hint: context.strings.whatsapp,
                 prefixIcon: AppIcons.whatsapp,
                 controller: whatsappController,
                   isColor: false,
-                maxLength: 11,
                 validator: (phone) => Validation.validatePhone(phone ?? ''),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
               ),
               DropDownField(
                 items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),

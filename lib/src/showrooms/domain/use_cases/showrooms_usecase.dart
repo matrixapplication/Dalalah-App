@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../home/data/models/car_dto.dart';
 import '../../data/models/add_branch_params.dart';
-import '../../data/models/agency_dto.dart';
+import '../../data/models/add_rate_params.dart';
 import '../../data/models/agency_params.dart';
 import '../../data/models/showroom_cars_params.dart';
 import '../entities/branch.dart';
@@ -50,5 +50,19 @@ class ShowroomsUseCase {
 
   Future<ApiResponse<List<ShowroomDto>>> fetchAgencies(AgencyParams params) async {
     return await repository.fetchAgencies(params);
+  }
+
+  Future<String> addFollowShowrooms(int id) async {
+    final data = await repository.addFollowShowrooms(id);
+    return data.message ?? '';
+  }
+
+  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(int page) async {
+    return await repository.fetchFollowShowrooms(page);
+  }
+
+  Future<String> addRateShowroom(AddRateParams params) async {
+    final data = await repository.addRateShowroom(params);
+    return data.message ?? '';
   }
 }

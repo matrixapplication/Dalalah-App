@@ -24,7 +24,6 @@ import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
 import '../../src/plates/presentation/plates/pages/ad_premium_page.dart';
-import '../../src/plates/presentation/add_plate/pages/plate_filter_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
@@ -39,6 +38,7 @@ import '../../src/settings/presentation/pages/settings_page.dart';
 import '../../src/showrooms/presentation/branches/add_branch/pages/add_branch_page.dart';
 import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
 import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
+import '../../src/showrooms/presentation/showrooms/pages/followed_showrooms_page.dart';
 import '../../src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 import '../../src/showrooms/presentation/showrooms_and_branches_tabs.dart';
 
@@ -59,6 +59,7 @@ class Routes {
   static const String branchesPage = 'branchesPage';
   static const String addBranchPage = 'addBranchPage';
   static const String commentsPage = 'commentsPage';
+  static const String followedShowroomsPage = 'FollowedShowroomsPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -117,6 +118,7 @@ class Routes {
     branchesPage: (context) => BranchesPage(),
     addBranchPage: (context) => AddBranchPage(),
     commentsPage: (context) => CommentsPage(params: CommentParams()),
+    followedShowroomsPage: (context) => FollowedShowroomsPage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),

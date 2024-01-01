@@ -21,6 +21,7 @@ ShowroomDto _$ShowroomDtoFromJson(Map<String, dynamic> json) => ShowroomDto(
       isBlocked: json['is_blocked'] as bool?,
       image: json['image'] as String?,
       coverImage: json['cover_image'] as String?,
+      isFollowed: json['is_followed'] as bool?,
     );
 
 Map<String, dynamic> _$ShowroomDtoToJson(ShowroomDto instance) =>
@@ -39,4 +40,5 @@ Map<String, dynamic> _$ShowroomDtoToJson(ShowroomDto instance) =>
       'is_blocked': instance.isBlocked,
       'image': instance.image,
       'cover_image': instance.coverImage,
+      'is_followed': instance.isFollowed,
     };
