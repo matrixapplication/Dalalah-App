@@ -22,7 +22,7 @@ class FollowedShowroomsCubit extends BaseCubit {
       isMoreData: isMoreData,
           () => usecase.fetchFollowShowrooms(page),
       onSuccess: (data) {
-        isLastPage = (data.pagination?.totalPages)! <= page;
+        isLastPage = (data.pagination?.totalPages ?? 0) <= page;
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];
         if(showrooms.isEmpty){
           throw EmptyListException();

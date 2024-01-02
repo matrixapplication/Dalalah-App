@@ -22,6 +22,7 @@ ShowroomDto _$ShowroomDtoFromJson(Map<String, dynamic> json) => ShowroomDto(
       image: json['image'] as String?,
       coverImage: json['cover_image'] as String?,
       isFollowed: json['is_followed'] as bool?,
+      avgRate: json['avg_rate'] as String?,
     );
 
 Map<String, dynamic> _$ShowroomDtoToJson(ShowroomDto instance) =>
@@ -41,4 +42,5 @@ Map<String, dynamic> _$ShowroomDtoToJson(ShowroomDto instance) =>
       'image': instance.image,
       'cover_image': instance.coverImage,
       'is_followed': instance.isFollowed,
+      'avg_rate': instance.avgRate,
     };

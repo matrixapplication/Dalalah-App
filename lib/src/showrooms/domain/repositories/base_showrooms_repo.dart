@@ -10,6 +10,7 @@ import '../../data/models/showroom_dto.dart';
 
 abstract class BaseShowroomsRepo {
   Future<ApiResponse<List<ShowroomDto>>> fetchShowrooms(int page);
+  Future<ApiResponse<ShowroomDto>> fetchShowroomDetails(int id);
   Future<ApiResponse<List<BranchDto>>> fetchAllBranches();
   Future<ApiResponse<List<BranchDto>>> fetchBranchesById(int id);
   Future<ApiResponse<List<CarDto>>> fetchShowroomCars(ShowroomCarsParams params);

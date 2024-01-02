@@ -17,8 +17,10 @@ class Showroom {
   String? image;
   String? coverImage;
   bool? isAgency;
+  bool? isFollowed;
+  String? avgRate;
 
-  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency});
+  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency, this.isFollowed, this.avgRate});
 
    factory Showroom.fromDto(ShowroomDto json){
      return Showroom(
@@ -36,6 +38,10 @@ class Showroom {
        isBlocked: json.isBlocked,
        image: json.image,
        coverImage: json.coverImage,
+       isFollowed: json.isFollowed,
+        avgRate: json.avgRate,
+
+       // isAgency: json.role == 'agency',
      );
    }
 }

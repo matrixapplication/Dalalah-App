@@ -337,5 +337,6 @@
   "owner_name": "Owner Name",
   "must_be_english_letters": "Must be English letters",
   "must_be_arabic_letters": "Must be Arabic letters",
-  "followed_showrooms": "Followed Showrooms"
+  "followed_showrooms": "Followed Showrooms",
+  "follower": "Follower"
 }

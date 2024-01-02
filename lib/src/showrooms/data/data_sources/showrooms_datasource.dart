@@ -24,7 +24,7 @@ abstract class ShowroomsDatasource {
   @GET('/get_showrooms')
   Future<ApiResponse<List<ShowroomDto>>> fetchShowrooms(@Query('page') int page);
 
-  @GET('/get_showrooms')
+  @GET('/get_showroom/{id}')
   Future<ApiResponse<ShowroomDto>> fetchShowroomDetails(@Path('id') int id);
 
   @GET('/showroom/branches')

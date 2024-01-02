@@ -14,16 +14,16 @@ class ShowroomDetailsCubit extends BaseCubit {
 
 
 
-  void fetchShowrooms() {
-    executeSuccess(() => useCase.fetchShowrooms(1));
+  void fetchShowroomDetails(int id) {
+    executeSuccess(() => useCase.fetchShowroomDetails(id));
   }
 
   void addFollowShowrooms(int id) {
-    executeSuccess(() => useCase.addFollowShowrooms(id));
+    executeEmitterListener(() => useCase.addFollowShowrooms(id));
   }
 
   void addRateShowroom(AddRateParams params) {
-    executeSuccess(() => useCase.addRateShowroom(params));
+    executeEmitterListener(() => useCase.addRateShowroom(params));
   }
 
 }

@@ -8,6 +8,7 @@ import '../../data/models/add_rate_params.dart';
 import '../../data/models/agency_params.dart';
 import '../../data/models/showroom_cars_params.dart';
 import '../entities/branch.dart';
+import '../entities/showroom.dart';
 import '../repositories/base_showrooms_repo.dart';
 
 @Injectable()
@@ -18,6 +19,11 @@ class ShowroomsUseCase {
 
   Future<ApiResponse<List<ShowroomDto>>> fetchShowrooms(int page) async {
     return await repository.fetchShowrooms(page);
+  }
+
+  Future<Showroom> fetchShowroomDetails(int id) async {
+    final data = await repository.fetchShowroomDetails(id);
+    return Showroom.fromDto(data.data!);
   }
 
   Future<List<Branch>> fetchAllBranches() async {

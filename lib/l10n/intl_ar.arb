@@ -327,5 +327,6 @@
   "edit_branch": "تعديل فرع",
   "district": "المنطقه",
   "owner_name": "اسم المالك",
-  "followed_showrooms": "المعارض المتابعة"
+  "followed_showrooms": "المعارض المتابعة",
+  "follower": "متابع"
 }

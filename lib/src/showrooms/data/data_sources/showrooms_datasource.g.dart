@@ -69,7 +69,7 @@ class _ShowroomsDatasource implements ShowroomsDatasource {
     )
             .compose(
               _dio.options,
-              '/get_showrooms',
+              '/get_showroom/${id}',
               queryParameters: queryParameters,
               data: _data,
             )

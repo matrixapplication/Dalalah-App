@@ -54,7 +54,7 @@ class ProfileScreen extends BaseStatelessWidget {
                       }
                     },
                   ),
-                  if(profile.token != null)
+                  if(profile.role == Roles.USER)
                   ProfileItem(
                     title: strings.favorite_agencies,
                     icon: AppIcons.box,

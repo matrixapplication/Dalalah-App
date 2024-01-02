@@ -46,6 +46,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     ), );
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
      isFilter =  (params == null && getArguments(context) == null);

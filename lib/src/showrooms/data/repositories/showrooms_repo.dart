@@ -24,6 +24,11 @@ class ShowroomsRepo extends BaseShowroomsRepo {
   }
 
   @override
+  Future<ApiResponse<ShowroomDto>> fetchShowroomDetails(int id) async {
+    return await remoteDataSource.fetchShowroomDetails( id);
+  }
+
+  @override
   Future<ApiResponse<List<BranchDto>>> fetchAllBranches()async {
     return await remoteDataSource.fetchAllBranches();
   }

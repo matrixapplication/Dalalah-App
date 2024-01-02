@@ -41,7 +41,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                      width: 20,
                      radius: 50,
                      margin: 10.paddingTop + 10.paddingStart,
-                     title: strings.follow,
+                     title: showroom.isFollowed ?? false ? context.strings.follower : context.strings.follow,
                       onPressed: () {
                         onFollow?.call();
                       },
@@ -72,11 +72,15 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      Row(
+                        children: [
+                          Text(
                   showroom.showroomName ?? '',
-                        style: context.textTheme.labelLarge!.copyWith(
-                          color: AppColors.grey_41,
-                        ),
+                            style: context.textTheme.labelLarge!.copyWith(
+                              color: AppColors.grey_41,
+                            ),
+                          ),
+                        ],
                       ),
                       10.ph,
                       IconText(
