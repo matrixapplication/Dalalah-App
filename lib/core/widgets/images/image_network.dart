@@ -1,7 +1,7 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
-///  Created by harbey on 9/3/2023.
+///  Created by harby on 9/3/2023.
 class ImageNetworkCircle extends StatelessWidget {
   final String? image;
   final double? width;

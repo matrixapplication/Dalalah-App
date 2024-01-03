@@ -5,7 +5,7 @@ import '../../../src/cars/presentation/cars/pages/cars_page.dart';
 import '../../themes/colors.dart';
 import '../../utils/navigator.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class RowSeeAllText extends StatelessWidget {
   final String title;
   final void Function()? onTap;

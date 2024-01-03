@@ -1,3 +1,4 @@
+import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 
@@ -19,7 +20,7 @@ class RowButtons extends StatelessWidget {
           Expanded(
             child: PrimaryButton(
               title: title1,
-              backgroundColor: theme.colorScheme.secondaryContainer,
+              backgroundColor: context.primaryColor,
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(25),
                 bottomRight: Radius.circular(25),
@@ -32,7 +33,7 @@ class RowButtons extends StatelessWidget {
           Expanded(
             child: PrimaryButton(
               title: title2,
-              backgroundColor: theme.colorScheme.errorContainer,
+              backgroundColor: context.colorScheme.errorContainer,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(25),
                 bottomLeft: Radius.circular(25),

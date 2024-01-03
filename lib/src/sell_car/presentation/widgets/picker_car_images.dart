@@ -7,7 +7,7 @@ import '../../../../core/widgets/images/image_network.dart';
 import '../../../main_index.dart';
 import '../../data/models/edit_image_params.dart';
 
-///  Created by harbey on 9/7/2023.
+///  Created by harby on 9/7/2023.
 class PickerCarImages extends BaseStatelessWidget {
   final String? initialMainImage;
   final List<ImageDto>? initialImages;

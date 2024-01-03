@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/decorations/decorations.dart';
 
-///  Created by harbey on 10/11/2023.
+///  Created by harby on 10/11/2023.
 class PlatesDetailsProperty extends StatelessWidget {
   final String label;
   final String value;

@@ -1,6 +1,6 @@
 
 import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/plates/presentation/add_plate/pages/plate_filter_page.dart';
+import 'package:dalalah/src/plates/presentation/add_plate/pages/plate_filter_screen.dart';
 import 'package:dalalah/src/sell_car/domain/entities/city.dart';
 
 import '../../../../../core/utils/navigator.dart';
@@ -22,14 +22,21 @@ class AddPlatesPage extends BaseBlocWidget<DataSuccess<List<City>>, AddPlateCubi
     return PlateFilterScreen(
       cities: state.data ?? [],
       onSelected: (params) {
-        bloc.addPlate(params);
+        // bloc.addPlate(params);
+        pushNamed(Routes.addPlatePremiumPage, arguments: params);
       },
     );
   }
 
+  // @override
+  // void onSuccessDismissed() {
+  //   Navigators.pushNamed(Routes.addCarPremiumPage);
+  // }
+
   @override
-  void onSuccessDismissed() {
-    Navigators.pushNamed(Routes.addPremiumPage);
+  String? title(BuildContext context) {
+    bool? isAddPage = getArguments(context) ?? false;
+    return isAddPage ? strings.add_plate : strings.detailed_research;
   }
 
 }

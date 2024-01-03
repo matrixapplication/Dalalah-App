@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/network/api_response.dart';
 import '../../domain/repositories/base_plates_repo.dart';
 import '../data_sources/plates_datasource.dart';
+import '../models/ad_feature_dto.dart';
 import '../models/add_plate_params.dart';
 import '../models/plate_dto.dart';
 import '../models/plate_filter_params.dart';
@@ -28,5 +29,10 @@ class PlatesRepo extends BasePlatesRepo {
   Future<String> addPlate(AddPlateParams params) async {
     final result = await remoteDataSource.addPlate(params);
     return result.message ?? '';
+  }
+
+  @override
+  Future<ApiResponse<AdFeatureDto>> fetchAdFeature() async {
+    return await remoteDataSource.fetchAdFeature();
   }
 }

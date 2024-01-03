@@ -3,7 +3,7 @@ import 'package:card_swiper/card_swiper.dart';
 import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../main_index.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class SlidersCarDetails extends StatelessWidget {
   final List<String> images;
 

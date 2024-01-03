@@ -9,7 +9,7 @@ import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/texts/row_texts.dart';
 import '../../../domain/entities/comment.dart';
 
-///  Created by harbey on 10/11/2023.
+///  Created by harby on 10/11/2023.
 class CommentItem extends StatelessWidget {
   final Comment comment;
 

@@ -31,7 +31,7 @@ class CustomRatingBar extends StatelessWidget {
       itemSize: itemSize ?? 16,
       initialRating: initialRating,
       itemPadding: padding ?? const EdgeInsetsDirectional.all(3),
-      glowColor: context.primaryColor,
+      glowColor: context.primaryColor.withOpacity(0.1),
       ratingWidget: RatingWidget(
         full:  AppIcon(
           icon: icon ?? AppIcons.star,

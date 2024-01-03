@@ -5,7 +5,7 @@ import '../../domain/entities/car.dart';
 import '../pages/search_screen.dart';
 import 'home_header.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class SearchHome extends StatelessWidget {
   final Future<List<Car>>? Function(String)? onSearch;
   final Function(int)? onToggleFavorite;

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/rating/custom_rating_bar.dart';
 import '../../../../../core/widgets/text-field/custom_text_field.dart';
 
-///  Created by harbey on 10/23/2023.
+///  Created by harby on 10/23/2023.
 class AddCommentWidget extends StatelessWidget {
   final bool isRating;
   final Function(String)? onAddComment;

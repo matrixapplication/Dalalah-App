@@ -1,4 +1,4 @@
-
+import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
@@ -6,6 +6,7 @@ import '../../../../core/commen/common_state.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 import 'sell_car_state.dart';
@@ -13,33 +14,32 @@ import 'sell_car_state.dart';
 @Injectable()
 class SellCarCubit extends BaseCubit {
   final SellCarUseCase usecase;
+  final PlatesUseCase platesUseCase;
 
-  SellCarCubit(this.usecase);
+  SellCarCubit(this.usecase, this.platesUseCase);
 
   StreamStateInitial<List<DropDownItem>> brandsModelsStream =
-  StreamStateInitial<List<DropDownItem>>();
+      StreamStateInitial<List<DropDownItem>>();
   StreamStateInitial<List<DropDownItem>> brandsModelsExtensionStream =
-  StreamStateInitial<List<DropDownItem>>();
+      StreamStateInitial<List<DropDownItem>>();
   StreamStateInitial<List<DropDownItem>> districtsStream =
-  StreamStateInitial<List<DropDownItem>>();
+      StreamStateInitial<List<DropDownItem>>();
 
   Future<void> sellCar(SellCarParams params) async {
-    executeEmitterListener(() =>
-    (params.id == null || params.id == 0)
-        ? usecase.sellCar(params)
-        : usecase.editCar(params)
-    );
+    executeEmitterListener(() => (params.id == null || params.id == 0)
+        ? params.status == CarStatus.newCar
+            ? usecase.addNewCar(params)
+            : usecase.sellCar(params)
+        : usecase.editCar(params));
   }
-
 
   fetchFirstInitialData(Car? car) async {
     emit(DataLoading());
     try {
-
       final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
-      if(car != null){
+      if (car != null) {
         await fetchBrandModels(car.brand?.id ?? 0);
         await fetchBrandModelExtensions(car.brandModel?.id ?? 0);
       }
@@ -84,7 +84,11 @@ class SellCarCubit extends BaseCubit {
     }
   }
 
-  fetchFeatures(){
+  fetchFeatures() {
     executeSuccess(() => usecase.fetchFeatures());
+  }
+
+  fetchAdFeature() {
+    executeSuccess(() => platesUseCase.fetchAdFeature());
   }
 }

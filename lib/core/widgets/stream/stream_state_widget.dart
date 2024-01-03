@@ -6,7 +6,7 @@ import '../../components/error_handler_widget.dart';
 import '../../components/loading_widget.dart';
 import '../../exceptions/empty_list_exception.dart';
 
-///  Created by harbey on 9/19/2023.
+///  Created by harby on 9/19/2023.
 class StreamStateWidget<T> extends BaseStatelessWidget {
   final Widget Function(BuildContext context, T data) builder;
   final StreamState<T> stream;

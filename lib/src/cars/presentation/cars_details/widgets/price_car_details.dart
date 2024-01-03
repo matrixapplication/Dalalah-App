@@ -4,7 +4,7 @@ import 'package:dalalah/src/main_index.dart';
 
 import 'border_widget.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class PriceCarDetails extends StatelessWidget {
   final String price;
 

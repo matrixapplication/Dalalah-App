@@ -1,7 +1,7 @@
 import 'package:dalalah/core/assets/app_images.dart';
 import 'package:flutter/material.dart';
 
-///  Created by harbey on 9/3/2023.
+///  Created by harby on 9/3/2023.
 class Logo extends StatelessWidget {
   final double? width;
   final double? height;

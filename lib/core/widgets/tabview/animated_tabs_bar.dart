@@ -3,6 +3,7 @@ import '../../../src/main_index.dart';
 class AnimatedTabsBar extends StatelessWidget {
   final List<TabModel> tabs;
   final List<Widget> children;
+  final int initialIndex;
   final bool isMainTabBar;
   final double? topMargin;
   final double? bottomMargin;
@@ -18,6 +19,7 @@ class AnimatedTabsBar extends StatelessWidget {
     required this.children,
     required this.tabs,
     this.onTabSelected,
+    this.initialIndex = 0,
     this.topMargin,
     this.bottomMargin,
     this.rightMargin,
@@ -32,6 +34,7 @@ class AnimatedTabsBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
+      initialIndex: initialIndex,
       child: Column(
         children: [
           Container(

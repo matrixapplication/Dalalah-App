@@ -1,9 +1,11 @@
+import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../core/widgets/buttons/stack_button.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/drop_down/drop_down_stream.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
+import '../../../profile/data/models/profile_dto.dart';
 import '../../data/models/sell_car_params.dart';
 import '../bloc/sell_car_state.dart';
 
@@ -29,7 +31,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
 
   String status = '';
   int brandId = 0;
-  int modelId = 0;
+  int carModelId = 0;
   int extensionId = 0;
   int? year;
   final _formKey = GlobalKey<FormState>();
@@ -73,11 +75,11 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               DropDownStream(
                 title: strings.models,
                 hint: strings.select_model,
-                valueId: modelId.toString(),
+                valueId: carModelId.toString(),
                 stream: state.brandsModelsStream,
                 onChanged: (id) {
-                  modelId = id;
-                  onFetchBrandModelsExtension?.call(modelId);
+                  carModelId = id;
+                  onFetchBrandModelsExtension?.call(carModelId);
                 },
               ),
               DropDownStream(
@@ -109,14 +111,16 @@ class SellCarFirstScreen extends BaseStatelessWidget {
     );
   }
 
-  onNextPressed() {
+  onNextPressed() async {
     if (_formKey.currentState!.validate()) {
+      ProfileDto? user = await HelperMethods.getProfile();
       onNext?.call(
         SellCarParams(
-          modelId: modelId,
+          modelId: user?.id ?? 0,
+          modelRole: user?.role ?? '',
           status: status ,
           brandId: brandId,
-          carModelId: modelId,
+          carModelId: carModelId,
           carModelExtensionId: extensionId,
           year: year,
         ),
@@ -130,7 +134,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
     print('car: ${car?.brandModel?.id}');
     status = state.carStatuses.first.key ?? '';
     if (car != null) {
-      modelId = car?.brandModel?.id ?? 0;
+      carModelId = car?.brandModel?.id ?? 0;
       status = car?.status?.key ?? state.carStatuses.first.key ?? '';
       brandId = car?.brand?.id ?? 0;
       extensionId = car?.brandModelExtension?.id ?? 0;

@@ -1,7 +1,6 @@
 import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/main_index.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
-import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../domain/entities/branch.dart';
 import '../../../domain/entities/branch_args.dart';
@@ -21,8 +20,10 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Branch>> state) {
+    BranchArgs? args = getArguments(context) is BranchArgs ? getArguments(context) : null;
     return BranchesScreen(
       branches: state.data ?? [],
+      isEdit: args?.isEdit ?? false,
     );
   }
 

@@ -338,5 +338,19 @@
   "must_be_english_letters": "Must be English letters",
   "must_be_arabic_letters": "Must be Arabic letters",
   "followed_showrooms": "Followed Showrooms",
-  "follower": "Follower"
+  "follower": "Follower",
+  "traders_showrooms": "Traders & Showrooms",
+  "showroom_evaluation": "Showroom Evaluation",
+  "plate_private": "Private",
+    "plate_transfer": "Transfer",
+  "premium": "Premium",
+  "premium_description": "Feature your ad for {duration} days",
+  "@premium_description": {
+    "description": "Feature your ad for {duration} days",
+    "placeholders": {
+      "duration": {
+        "type": "dynamic"
+      }
+    }
+  }
 }

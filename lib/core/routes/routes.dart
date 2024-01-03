@@ -14,16 +14,16 @@ import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
 import '../../src/cars/presentation/comments/pages/comments_page.dart';
 import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
-import '../../src/home/presentation/pages/brands/brands_screen.dart';
-import '../../src/home/presentation/pages/home/home_page.dart';
-import '../../src/home/presentation/pages/home/sections_screen.dart';
+import '../../src/home/presentation/pages/home_page.dart';
+import '../../src/home/presentation/pages/sections_screen.dart';
 import '../../src/installment/presentation/pages/installment_page.dart';
 import '../../src/installment/presentation/pages/monthly_installment/monthly_installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
+import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
-import '../../src/plates/presentation/plates/pages/ad_premium_page.dart';
+import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
 import '../../src/profile/presentation/pages/profile_page.dart';
@@ -55,7 +55,8 @@ class Routes {
   static const String sectionsScreen = 'sectionsScreen';
   static const String monthlyInstallmentPage = 'monthlyInstallmentPage';
   static const String realEstatePage = 'realEstatePage';
-  static const String addPremiumPage = 'AddPremiumPage';
+  static const String addCarPremiumPage = 'addCarPremiumPage';
+  static const String addPlatePremiumPage = 'addPlatePremiumPage';
   static const String branchesPage = 'branchesPage';
   static const String addBranchPage = 'addBranchPage';
   static const String commentsPage = 'commentsPage';
@@ -114,7 +115,8 @@ class Routes {
     sectionsScreen: (context) => SectionsScreen(),
     monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
     realEstatePage: (context) => RealEstatePage(),
-    addPremiumPage: (context) => AddPremiumPage(),
+    addCarPremiumPage: (context) => CarPremiumPage(),
+    addPlatePremiumPage: (context) => PlatePremiumPage(),
     branchesPage: (context) => BranchesPage(),
     addBranchPage: (context) => AddBranchPage(),
     commentsPage: (context) => CommentsPage(params: CommentParams()),
@@ -133,7 +135,6 @@ class Routes {
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),
     favoritesAndAdsPage: (context) => FavoritesAndAdsTabs(),
-    brandsPage: (context) => BrandsScreen(),
     filterPage: (context) => FilterPage(),
     sortByPage: (context) => SortByPage(),
 

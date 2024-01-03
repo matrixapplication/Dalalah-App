@@ -1,5 +1,5 @@
 import 'package:dalalah/src/auth/presentation/pages/login/login_page.dart';
-import 'package:dalalah/src/home/presentation/pages/home/home_page.dart';
+import 'package:dalalah/src/home/presentation/pages/home_page.dart';
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: const [
-              Locale('ar'), // English, no country code
+              Locale('en'), // English, no country code
               Locale('ar'), // Arabic, no country code
             ],
             // routerConfig: router,

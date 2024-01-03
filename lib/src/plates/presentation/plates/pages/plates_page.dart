@@ -34,9 +34,9 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
           if(isFilter && getArguments(context) == null)
           FilterHome(
             routeName: Routes.plateFilterPage,
-            onFilterOrder: (){
+            onFilterOrder: (filterOrder){
               PlateFilterParams params = getArguments(context) ?? PlateFilterParams();
-              params.order = params.order == 'asc' ? 'desc' : 'asc';
+              params.order = filterOrder;
               bloc.fetchPlates(params);
             },
           ),

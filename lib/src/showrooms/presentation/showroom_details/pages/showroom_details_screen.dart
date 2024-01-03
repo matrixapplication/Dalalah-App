@@ -1,3 +1,4 @@
+import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
 import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_cars_page.dart';
 
@@ -15,9 +16,15 @@ import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
   final Showroom showroom;
   final bool isAgency;
-  final Function(int)? onAddRate;
+  final Function()? onAddRate;
   final Function()? onFollow;
-  ExhibitionDetailsScreen({super.key, required this.showroom, this.isAgency = false, this.onAddRate, this.onFollow});
+
+  ExhibitionDetailsScreen(
+      {super.key,
+      required this.showroom,
+      this.isAgency = false,
+      this.onAddRate,
+      this.onFollow});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
           backgroundColor: Colors.white,
           forceElevated: innerBoxIsScrolled,
           bottom: PreferredSize(
-            preferredSize: const Size(0, 245),
+            preferredSize: const Size(0, 265),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -36,16 +43,18 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                     SlidersCarDetails(
                       images: [showroom.image ?? ''],
                     ),
-                   PrimaryButton(
-                     height: 40,
-                     width: 20,
-                     radius: 50,
-                     margin: 10.paddingTop + 10.paddingStart,
-                     title: showroom.isFollowed ?? false ? context.strings.follower : context.strings.follow,
+                    PrimaryButton(
+                      height: 40,
+                      width: 20,
+                      radius: 50,
+                      margin: 10.paddingTop + 10.paddingStart,
+                      title: showroom.isFollowed ?? false
+                          ? context.strings.follower
+                          : context.strings.follow,
                       onPressed: () {
                         onFollow?.call();
                       },
-                   ),
+                    ),
                     PositionedDirectional(
                       top: 12,
                       end: 12,
@@ -73,12 +82,26 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                  showroom.showroomName ?? '',
-                            style: context.textTheme.labelLarge!.copyWith(
-                              color: AppColors.grey_41,
+                          FittedBox(
+                            child: Text(
+                              showroom.showroomName ?? '',
+                              style: context.textTheme.labelLarge!.copyWith(
+                                color: AppColors.grey_41,
+                              ),
                             ),
+                          ),
+                          IconTextButton(
+                            padding: 10.paddingTop,
+                            icon: AppIcons.star,
+                            text: showroom.avgRate?.toString() ?? '',
+                            textStyle: context.bodyMedium.copyWith(
+                              color: context.yellow_00,
+                            ),
+                            onTap: () {
+                              onAddRate?.call();
+                            },
                           ),
                         ],
                       ),
@@ -108,11 +131,12 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
             label: context.strings.new_,
             page: ShowroomCarsPage(id: showroom.id ?? 0),
           ),
-          if(!(showroom.isAgency ?? false))
-          TabItemModel(
-            label: context.strings.used,
-            page: ShowroomCarsPage(status: CarStatus.usedCar, id: showroom.id ?? 0),
-          ),
+          if (!(showroom.isAgency ?? false))
+            TabItemModel(
+              label: context.strings.used,
+              page: ShowroomCarsPage(
+                  status: CarStatus.usedCar, id: showroom.id ?? 0),
+            ),
           TabItemModel(
             label: context.strings.branches,
             page: BranchesPage(showroomId: showroom.id),

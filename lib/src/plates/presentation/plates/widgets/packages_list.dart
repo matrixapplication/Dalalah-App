@@ -1,60 +1,59 @@
 import 'package:dalalah/core/widgets/texts/row_texts.dart';
 
 import '../../../../main_index.dart';
+import '../../../domain/entities/ad_feature.dart';
 
 class PackagesList extends StatelessWidget {
-  const PackagesList({super.key});
+  final AdFeature adFeature;
+  final Function(bool)? onChange;
+
+  const PackagesList({super.key, required this.adFeature, this.onChange});
 
   @override
   Widget build(BuildContext context) {
-    int _value = 0;
-    return StatefulBuilder(builder: (context, setState) {
-      return ListView.builder(
-        itemCount: 1,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return Container(
-              padding: 12.paddingAll,
-              margin: 12.paddingBottom,
-              decoration: Decorations.kDecorationBorder(
-                radius: 12,
-              ),
-              child: Row(
-                children: [
-                  Radio(
-                    value: index,
-                    groupValue: _value,
-                    onChanged: (z) {
-                      _value = int.parse(z.toString());
-                      print(_value);
-                      setState(() {});
-                    },
-                    activeColor: context.primaryColor,
-                    visualDensity: const VisualDensity(horizontal: -4),
-                  ),
-                  10.pw,
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RowTexts(
-                          title: 'بريميوم',
-                          value: '100 ريال',
-                          titleStyle: context.bodyMedium,
-                          valueStyle: context.headlineMedium,
-                        ),
-                        20.ph,
-                        Text('ميز اعلانك لمده 10 ايام',
-                            style: context.bodyMedium.copyWith(fontSize: 14)),
-                      ],
-                    ),
-                  ),
-                ],
-              ));
-        },
-      );
-    });
+    bool isPremium = false;
+    return Container(
+      padding: 12.paddingAll,
+      margin: 12.paddingBottom,
+      decoration: Decorations.kDecorationBorder(
+        radius: 12,
+      ),
+      child: Row(
+        children: [
+          StatefulBuilder(
+              builder: (context, setState) {
+                return Checkbox(
+                  value: isPremium,
+                  onChanged: (value) {
+                    isPremium = !isPremium;
+                    onChange?.call(isPremium);
+                    setState(() {});
+                  },
+                  activeColor: context.primaryColor,
+                  visualDensity: const VisualDensity(horizontal: -4),
+                );
+              }
+          ),
+          10.pw,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RowTexts(
+                  title: context.strings.premium,
+                  value: '${adFeature.featureDurationPrice} ${context.strings.rs}',
+                  titleStyle: context.bodyMedium,
+                  valueStyle: context.headlineMedium,
+                ),
+                20.ph,
+                Text(context.strings.premium_description(adFeature.featureDuration),
+                    style: context.bodyMedium.copyWith(fontSize: 14)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

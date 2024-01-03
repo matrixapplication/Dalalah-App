@@ -11,6 +11,7 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       brandId: json['brand_id'] as int?,
       modelId: json['model_id'] as int?,
+      modelRole: json['model_role'] as String?,
       carModelId: json['car_model_id'] as int?,
       portId: json['port_id'] as int?,
       carModelExtensionId: json['car_model_extension_id'] as int?,
@@ -39,7 +40,8 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       installment: json['monthly_installment'] as int?,
-    )..modelRole = json['model_role'] as String?;
+      adType: json['ad_type'] as String?,
+    );
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
     <String, dynamic>{
@@ -71,6 +73,7 @@ Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
       'images': instance.images?.map(const FileJsonConverter().toJson).toList(),
       'features': instance.features,
       'monthly_installment': instance.installment,
+      'ad_type': instance.adType,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

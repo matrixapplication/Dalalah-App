@@ -5,7 +5,7 @@ import '../../src/cars/presentation/cars_details/widgets/car_properties.dart';
 import '../../src/sell_car/data/models/feature_dto.dart';
 import '../assets/app_icons.dart';
 
-///  Created by harbey on 10/18/2023.
+///  Created by harby on 10/18/2023.
 class MultiGridViewSelection extends StatelessWidget {
   final Function(List<CarProperty>) onSelected;
 

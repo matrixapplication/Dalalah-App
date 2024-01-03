@@ -47,7 +47,8 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
           args.params?.mainImage = params.mainImage;
           args.params?.images = params.images;
           print('params features ${args.params?.features}');
-          bloc.sellCar(args.params ?? SellCarParams());
+          pushNamed(Routes.addCarPremiumPage, arguments: args.params);
+          // bloc.sellCar(args.params ?? SellCarParams());
         },
       onAddCarImage: (params) {
         params.carId = args.car?.id;
@@ -65,6 +66,6 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
 
   @override
   void onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.addPremiumPage);
+    Navigators.pushNamedAndRemoveUntil(Routes.addCarPremiumPage);
   }
 }

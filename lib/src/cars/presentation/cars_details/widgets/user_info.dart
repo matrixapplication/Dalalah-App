@@ -7,7 +7,7 @@ import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../data/models/model_object.dart';
 import '../../../domain/entities/car_details.dart';
 
-///  Created by harbey on 10/24/2023.
+///  Created by harby on 10/24/2023.
 class UserInfo extends StatelessWidget {
   final ModelObject user;
   UserInfo({Key? key, required this.user}) : super(key: key);

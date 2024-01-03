@@ -1,6 +1,6 @@
-import 'dart:ffi';
 import 'dart:io';
 
+import 'package:dalalah/src/sell_car/data/models/sell_car_params.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -36,7 +36,7 @@ abstract class SellCarDatasource {
 
   @MultiPart()
   @POST('/add_car')
-  Future<ApiResponse> sellCar(
+  Future<ApiResponse> addCar(
     @Part(name: 'brand_id') int brandId,
     @Part(name: 'car_model_id') int carModelId,
     @Part(name: 'car_model_extension_id') int carModelExtensionId,
@@ -63,7 +63,11 @@ abstract class SellCarDatasource {
     @Part(name: 'main_image') File file,
     @Part(name: 'images[]') List<File> images,
     @Part(name: 'features[]') List<String> features,
+      @Part(name: 'ad_type') String adType,
   );
+
+  @GET('/add_car')
+  Future<ApiResponse> addNewCar(@Body() SellCarParams params);
 
   @MultiPart()
   @POST('/edit_car/{id}')

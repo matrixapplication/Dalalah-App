@@ -8,7 +8,7 @@ class LocaleCubit extends Cubit<LocalState> {
     getLanguageData();
   }
 
-  String lang = 'en';
+  String lang = 'ar';
 
 
   Future setLanguageData(String value) async {

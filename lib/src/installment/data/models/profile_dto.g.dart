@@ -6,7 +6,8 @@ part of 'profile_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
+ProfileDtoTest _$ProfileDtoTestFromJson(Map<String, dynamic> json) =>
+    ProfileDtoTest(
       id: json['id'] as int?,
       name: json['name'] as String?,
       email: json['email'] as String?,
@@ -16,7 +17,7 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
+Map<String, dynamic> _$ProfileDtoTestToJson(ProfileDtoTest instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

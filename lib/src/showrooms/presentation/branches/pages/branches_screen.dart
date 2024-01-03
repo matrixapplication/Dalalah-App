@@ -17,6 +17,7 @@ class BranchesScreen extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         return BranchItem(
           branch: branches[index],
+          isEdit: isEdit,
         );
       },
     );

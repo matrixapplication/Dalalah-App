@@ -12,7 +12,7 @@ class Profile {
 
   Profile({this.id, this.name, this.email, this.phone, this.role, this.image, this.token});
 
-  factory Profile.fromDto(ProfileDto json) {
+  factory Profile.fromDto(ProfileDtoTest json) {
     return Profile(
       id: json.id,
       name: json.name,

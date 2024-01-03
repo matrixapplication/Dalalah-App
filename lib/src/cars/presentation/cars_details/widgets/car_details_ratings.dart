@@ -8,7 +8,7 @@ import '../../../../../core/widgets/rating/custom_rating_bar.dart';
 import '../../../../../core/widgets/rating/custom_rating_dialog_content.dart';
 import 'add_rating_widget.dart';
 
-///  Created by harbey on 10/21/2023.
+///  Created by harby on 10/21/2023.
 class CarDetailsRatings extends BaseStatelessWidget {
   final List<String> images;
   final bool isRating;

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../home/domain/entities/car.dart';
 import 'cars_vertical_item.dart';
 
-///  Created by harbey on 10/21/2023.
+///  Created by harby on 10/21/2023.
 class CarsList extends StatelessWidget {
   final List<Car> cars;
   final bool isCatItem;

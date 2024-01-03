@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'app_icon.dart';
 
-///  Created by harbey on 7/16/2023.
+///  Created by harby on 7/16/2023.
 class IconTextButton extends StatelessWidget {
   final String? text;
 

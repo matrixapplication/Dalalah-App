@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class Sliders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

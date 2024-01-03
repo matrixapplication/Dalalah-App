@@ -41,6 +41,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
       car: state.car ?? args.car,
       state: state,
       onNext: (SellCarParams params) {
+        params.modelId = args.params?.modelId ?? 0;
         params.status = args.params?.status ?? '';
         params.brandId =  args.params?.brandId ?? 0;
         params.carModelId =  args.params?.carModelId ?? 0;

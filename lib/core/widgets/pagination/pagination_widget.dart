@@ -3,7 +3,7 @@ import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../pagination/custom_footer_builder.dart';
 
-///  Created by harbey on 5/27/2023.
+///  Created by harby on 5/27/2023.
 class PaginationWidget extends StatelessWidget {
   final bool isLoading;
   final bool isEmpty;

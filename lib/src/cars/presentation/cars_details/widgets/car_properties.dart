@@ -5,7 +5,7 @@ import '../../../../sell_car/data/models/feature_dto.dart';
 import 'border_widget.dart';
 import 'header_car_details.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class CarProperties extends StatelessWidget {
   final List<CarProperty> properties;
 

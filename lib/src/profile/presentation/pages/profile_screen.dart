@@ -4,6 +4,7 @@ import '../../../../core/utils/navigator.dart';
 import '../../../favorites_and_ads/domain/entites/favorites_and_ads_params.dart';
 import '../../../main_index.dart';
 import '../../../settings/domain/entities/about_us_types_.dart';
+import '../../../showrooms/domain/entities/branch_args.dart';
 import '../../domain/entities/profile.dart';
 import '../widgets/profile_header.dart';
 import '../widgets/profile_item.dart';
@@ -68,9 +69,9 @@ class ProfileScreen extends BaseStatelessWidget {
                       icon: AppIcons.box,
                       subTitle: strings.my_branches,
                       routeName: Routes.branchesPage,
-                      // arguments: strings.favorite_agencies,
+                      arguments: BranchArgs(role: profile.role, id: profile.id, isEdit: true),
                     ),
-                  if(profile.token != null)
+                  if(profile.token != null && profile.role == Roles.USER)
                   ProfileItem(
                     title: strings.favorites,
                     icon: AppIcons.heart_solid,

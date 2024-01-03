@@ -19,14 +19,14 @@ abstract class  InstallmentDataSource{
   factory InstallmentDataSource(Dio dio) = _InstallmentDataSource;
 
   @GET('/get-user')
-  Future<ApiResponse<ProfileDto>> fetchInstallment();
+  Future<ApiResponse<ProfileDtoTest>> fetchInstallment();
 
   @POST('/deleteAccount')
   Future<ApiResponse<String>> deleteProfileData();
 
   @POST('/edit-user')
-  Future<ApiResponse<ProfileDto>> editProfileData(@Body() RegisterParams params);
+  Future<ApiResponse<ProfileDtoTest>> editProfileData(@Body() RegisterParams params);
 
   @POST('/edit-user-image')
-  Future<ApiResponse<ProfileDto>> editProfileImage(@Part(name: 'image') File image);
+  Future<ApiResponse<ProfileDtoTest>> editProfileImage(@Part(name: 'image') File image);
 }

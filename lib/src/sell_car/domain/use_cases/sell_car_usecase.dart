@@ -30,7 +30,12 @@ class SellCarUseCase {
   SellCarUseCase(this.repository);
 
   Future<String> sellCar(SellCarParams params) async {
-    final data = await  repository.sellCar(params);
+    final data = await  repository.addCar(params);
+    return data.message ?? '';
+  }
+
+  Future<String> addNewCar(SellCarParams params) async {
+    final data = await repository.addNewCar(params);
     return data.message ?? '';
   }
 

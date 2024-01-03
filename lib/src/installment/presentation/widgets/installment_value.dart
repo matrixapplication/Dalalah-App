@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/components/base_stateless_widget.dart';
 import '../../../../core/decorations/decorations.dart';
 
-///  Created by harbey on 10/21/2023.
+///  Created by harby on 10/21/2023.
 class InstallmentValue extends BaseStatelessWidget {
   final String installmentValue;
   final EdgeInsetsGeometry? padding;

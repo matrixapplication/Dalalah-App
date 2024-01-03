@@ -2,15 +2,15 @@ import 'package:dalalah/core/exceptions/api_exception.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/installment/domain/entities/roles.dart';
 
-import '../../../../../core/utils/navigator.dart';
-import '../../../../../core/widgets/buttons/row_see_all_text.dart';
-import '../../../../main_index.dart';
-import '../../../domain/entities/section.dart';
-import '../../widgets/plates_list.dart';
-import '../../widgets/search_home.dart';
-import '../../widgets/sections_list.dart';
-import '../../widgets/slider_widget.dart';
-import '../../widgets/cars_home_list.dart';
+import '../../../../core/utils/navigator.dart';
+import '../../../../core/widgets/buttons/row_see_all_text.dart';
+import '../../../main_index.dart';
+import '../../domain/entities/section.dart';
+import '../widgets/plates_list.dart';
+import '../widgets/search_home.dart';
+import '../widgets/sections_list.dart';
+import '../widgets/slider_widget.dart';
+import '../widgets/cars_home_list.dart';
 
 class SectionsScreen extends BaseStatelessWidget {
   SectionsScreen({Key? key}) : super(key: key);

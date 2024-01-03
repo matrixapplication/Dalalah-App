@@ -237,8 +237,10 @@ Future<_i1.GetIt> $initGetIt(
       () => _i63.ProfileUseCase(gh<_i44.BaseProfileRepo<dynamic>>()));
   gh.factory<_i64.RealEstatePageCubit>(
       () => _i64.RealEstatePageCubit(gh<_i61.NotificationsUseCase>()));
-  gh.factory<_i65.SellCarCubit>(
-      () => _i65.SellCarCubit(gh<_i19.SellCarUseCase>()));
+  gh.factory<_i65.SellCarCubit>(() => _i65.SellCarCubit(
+        gh<_i19.SellCarUseCase>(),
+        gh<_i62.PlatesUseCase>(),
+      ));
   gh.factory<_i66.SellCarImagePickerCubit>(
       () => _i66.SellCarImagePickerCubit(gh<_i19.SellCarUseCase>()));
   gh.factory<_i67.SellCarPropertiesCubit>(

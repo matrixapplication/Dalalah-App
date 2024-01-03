@@ -31,8 +31,8 @@ class AppIcons {
   static String delete = '$_iconsPath/delete.svg';
   static String login = '$_iconsPath/login.svg';
   static String cylinder = '$_iconsPath/cylinder.svg';
-
-
+  static String sort_desc = '$_iconsPath/sort_desc.svg';
+  static String sort_asc = '$_iconsPath/sort_asc.svg';
 
   /* =================================================== */
 

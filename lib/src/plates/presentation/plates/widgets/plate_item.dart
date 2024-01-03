@@ -9,7 +9,7 @@ import '../../../../../core/widgets/buttons/edit_icon_button.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../domain/entities/plate.dart';
 
-///  Created by harbey on 10/11/2023.
+///  Created by harby on 10/11/2023.
 class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;

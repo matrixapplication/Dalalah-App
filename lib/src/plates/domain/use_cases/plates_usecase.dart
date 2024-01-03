@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../data/models/add_plate_params.dart';
 import '../../data/models/plate_filter_params.dart';
+import '../entities/ad_feature.dart';
 import '../entities/plate.dart';
 import '../repositories/base_plates_repo.dart';
 
@@ -14,7 +15,6 @@ class PlatesUseCase {
 
   Future<List<Plate>> fetchPlates(PlateFilterParams params) async {
    final data = await repository.fetchPlates(params);
-   print('data.data!.length${data.data!.length}');
     return data.data!.map((e) => Plate.fromDto(e)).toList();
   }
 
@@ -24,5 +24,10 @@ class PlatesUseCase {
 
   Future<String> addPlate(AddPlateParams params) async {
     return await repository.addPlate(params);
+  }
+
+  Future<AdFeature> fetchAdFeature() async {
+    final data = await repository.fetchAdFeature();
+    return AdFeature.fromDto(data.data!);
   }
 }

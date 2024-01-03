@@ -21,4 +21,8 @@ class AddPlateCubit extends BaseCubit {
     executeSuccess(() => sellCar.fetchCities());
   }
 
+  fetchAdFeature() async {
+    executeSuccess(() => usecase.fetchAdFeature());
+  }
+
 }

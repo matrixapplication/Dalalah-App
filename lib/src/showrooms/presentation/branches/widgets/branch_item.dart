@@ -36,6 +36,7 @@ class BranchItem extends BaseStatelessWidget {
                   branch.name ?? '',
                   style: context.textTheme.bodyMedium,
                 ),
+                if (isEdit)
                 AppIconButton(
                   icon: AppIcons.edit,
                   size: 20,

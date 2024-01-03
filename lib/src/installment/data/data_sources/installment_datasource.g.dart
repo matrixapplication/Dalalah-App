@@ -21,13 +21,13 @@ class _InstallmentDataSource implements InstallmentDataSource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<ProfileDto>> fetchInstallment() async {
+  Future<ApiResponse<ProfileDtoTest>> fetchInstallment() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<ProfileDto>>(Options(
+        _setStreamType<ApiResponse<ProfileDtoTest>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,9 +43,9 @@ class _InstallmentDataSource implements InstallmentDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<ProfileDto>.fromJson(
+    final value = ApiResponse<ProfileDtoTest>.fromJson(
       _result.data!,
-      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+      (json) => ProfileDtoTest.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
@@ -81,14 +81,15 @@ class _InstallmentDataSource implements InstallmentDataSource {
   }
 
   @override
-  Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params) async {
+  Future<ApiResponse<ProfileDtoTest>> editProfileData(
+      RegisterParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<ProfileDto>>(Options(
+        _setStreamType<ApiResponse<ProfileDtoTest>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -104,15 +105,15 @@ class _InstallmentDataSource implements InstallmentDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<ProfileDto>.fromJson(
+    final value = ApiResponse<ProfileDtoTest>.fromJson(
       _result.data!,
-      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+      (json) => ProfileDtoTest.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<ProfileDto>> editProfileImage(File image) async {
+  Future<ApiResponse<ProfileDtoTest>> editProfileImage(File image) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -125,7 +126,7 @@ class _InstallmentDataSource implements InstallmentDataSource {
       ),
     ));
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<ProfileDto>>(Options(
+        _setStreamType<ApiResponse<ProfileDtoTest>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -141,9 +142,9 @@ class _InstallmentDataSource implements InstallmentDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<ProfileDto>.fromJson(
+    final value = ApiResponse<ProfileDtoTest>.fromJson(
       _result.data!,
-      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+      (json) => ProfileDtoTest.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

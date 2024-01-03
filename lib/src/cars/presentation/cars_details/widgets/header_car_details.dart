@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/buttons/favorite_icon_button.dart';
 import '../../../../../core/widgets/buttons/share_icon_button.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class HeaderCarDetails extends StatelessWidget {
 
   const HeaderCarDetails({Key? key}) : super(key: key);

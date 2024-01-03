@@ -171,6 +171,7 @@ class HelperMethods {
     }
   }
 
+  // Note: Admin is not a role, it's a user with role != USER
   static Future<bool> isAdmin() async {
     try {
       ProfileDto? profile = await getProfile();

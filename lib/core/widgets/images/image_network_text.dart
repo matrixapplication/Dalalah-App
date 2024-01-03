@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'image_network.dart';
 
-///  Created by harbey on 9/3/2023.
+///  Created by harby on 9/3/2023.
 class ImageNetworkText extends StatelessWidget {
   final String? text;
   final TextStyle? textStyle;

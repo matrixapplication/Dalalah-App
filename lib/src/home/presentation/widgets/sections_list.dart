@@ -6,7 +6,7 @@ import '../../../../core/decorations/decorations.dart';
 import '../../../../core/utils/navigator.dart';
 import '../../domain/entities/section.dart';
 
-///  Created by harbey on 10/10/2023.
+///  Created by harby on 10/10/2023.
 class SectionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

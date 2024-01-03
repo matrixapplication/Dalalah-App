@@ -3,7 +3,7 @@ import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 import 'package:dalalah/core/widgets/texts/column_texts.dart';
 import 'package:flutter/material.dart';
 
-///  Created by harbey on 11/6/2023.
+///  Created by harby on 11/6/2023.
 class CarItemFooter extends StatelessWidget {
   final String price;
   final Function() onTap;

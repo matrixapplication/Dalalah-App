@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'profile_dto.g.dart'; 
 
 @JsonSerializable(ignoreUnannotated: true)
-class ProfileDto {
+class ProfileDtoTest {
   @JsonKey(name: 'id')
   int? id;
   @JsonKey(name: 'name')
@@ -19,10 +19,10 @@ class ProfileDto {
   @JsonKey(name: 'token')
   String? token;
 
-  ProfileDto({this.id, this.name, this.email, this.phone, this.role, this.image, this.token});
+  ProfileDtoTest({this.id, this.name, this.email, this.phone, this.role, this.image, this.token});
 
-   factory ProfileDto.fromJson(Map<String, dynamic> json) => _$ProfileDtoFromJson(json);
+   factory ProfileDtoTest.fromJson(Map<String, dynamic> json) => _$ProfileDtoTestFromJson(json);
 
-   Map<String, dynamic> toJson() => _$ProfileDtoToJson(this);
+   Map<String, dynamic> toJson() => _$ProfileDtoTestToJson(this);
 }
 

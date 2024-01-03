@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../../../../core/resources/validation.dart';
@@ -13,12 +14,16 @@ class LoginBody extends BaseStatelessWidget {
 
   LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
 
-  TextEditingController emailController = TextEditingController(text: kReleaseMode ? '' : 'test@test.com');
-  TextEditingController passwordController = TextEditingController(text: kReleaseMode ? '' : '1234567');
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    if(kDebugMode){
+     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1408');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '1234567' : '123456789');
+    }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,
       child: Form(
@@ -62,12 +67,14 @@ class LoginBody extends BaseStatelessWidget {
               radius: 30,
               height: 48,
               margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                 // String fcmToken = await FirebaseMessaging.instance.getToken() ?? '';
                   onLogin!(
                     LoginParams(
                       email: emailController.text,
                       password: passwordController.text,
+              //        fcmToken: fcmToken,
                     ),
                   );
                 }

@@ -22,7 +22,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   int tabIndex = 0;
   int brandId = 0;
   int brandModelId = 0;
-  String order = 'desc';
+  String order = FilterOrderTypes.asc;
 
 
   bool isFilter =  true;
@@ -56,8 +56,9 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
           if (isFilter)
         ...[  FilterHome(
             routeName: Routes.carsSearchPage,
-            onFilterOrder: () {
-              order = order == 'desc' ? 'asc' : 'desc';
+            onFilterOrder: (filterOrder) {
+              order = filterOrder;
+
               bloc.fetchCars(CarFilterParams(
                 status: CarStatus.getStatusByIndex(tabIndex),
                 brand: brandId,

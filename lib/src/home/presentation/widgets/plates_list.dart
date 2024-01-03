@@ -20,7 +20,7 @@ import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/presentation/plates/widgets/plate_image.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class PlatesList extends StatelessWidget {
   final StreamStateInitial<List<Plate>?> platesStream;
   final Function(int) onFavoritePlate;

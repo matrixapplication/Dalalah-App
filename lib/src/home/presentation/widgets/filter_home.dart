@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/navigator.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class FilterHome extends StatelessWidget {
   final bool isDecoration;
   final String routeName;
-  final Function() onFilterOrder;
+  final Function(String) onFilterOrder;
 
   const FilterHome({
     Key? key,
@@ -20,6 +20,7 @@ class FilterHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String filterOrder = FilterOrderTypes.asc;
     TextStyle? textStyle = context.textTheme.bodyMedium?.copyWith(
       fontSize: 16,
     );
@@ -51,17 +52,35 @@ class FilterHome extends StatelessWidget {
               color: context.dividerColor,
             ),
           ),
-          IconTextButton(
-            icon: AppIcons.filter_order,
-            text: context.strings.sort_by,
-            textStyle: textStyle,
-            iconColor: context.primaryColor,
-            iconSize: 30,
-            isFirstIcon: false,
-            onTap: onFilterOrder,
+          StatefulBuilder(
+            builder: (context, setState) {
+              return IconTextButton(
+                icon: filterOrder == FilterOrderTypes.asc
+                    ? AppIcons.sort_asc
+                    : AppIcons.sort_desc,
+                text: context.strings.sort_by,
+                textStyle: textStyle,
+                iconColor: context.primaryColor,
+                iconSize: 20,
+                isFirstIcon: false,
+                onTap: () {
+                  filterOrder = filterOrder == FilterOrderTypes.asc
+                      ? FilterOrderTypes.desc
+                      : FilterOrderTypes.asc;
+                  setState(() {
+                    onFilterOrder(filterOrder);
+                  });
+                },
+              );
+            }
           ),
         ],
       ),
     );
   }
+}
+
+class FilterOrderTypes {
+  static const String asc = 'asc';
+  static const String desc = 'desc';
 }

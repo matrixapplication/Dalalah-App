@@ -7,7 +7,7 @@ import '../../../../../core/decorations/decorations.dart';
 import '../../../../../core/widgets/expansionTile/custom_expansion_tile.dart';
 import 'border_widget.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class CarDetails extends StatelessWidget {
   CarDetails({Key? key}) : super(key: key);
   @override

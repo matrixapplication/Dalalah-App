@@ -16,7 +16,7 @@ import '../../../cars/presentation/cars_details/widgets/car_info.dart';
 import '../../../sell_car/domain/entities/car_status.dart';
 import '../../domain/entities/car.dart';
 
-///  Created by harbey on 9/5/2023.
+///  Created by harby on 9/5/2023.
 class CarsHomeListHorizStream extends StatelessWidget {
   final StreamStateInitial<List<Car>?> carsStream;
   final Function(int)? onToggleFavorite;

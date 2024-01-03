@@ -2,7 +2,7 @@ import 'package:easy_stepper/easy_stepper.dart';
 
 import '../../../src/main_index.dart';
 
-///  Created by harbey on 9/27/2023.
+///  Created by harby on 9/27/2023.
 class CustomSteps extends StatelessWidget {
   final List<String> steps;
   final int activeStep;

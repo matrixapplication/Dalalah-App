@@ -5,7 +5,7 @@ import '../../../../cars/presentation/cars/widgets/cars_list.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../widgets/installment_value.dart';
 
-///  Created by harbey on 10/21/2023.
+///  Created by harby on 10/21/2023.
 class MonthlyInstallmentScreen extends StatelessWidget {
   final String installmentValue;
   final List<Car> cars;

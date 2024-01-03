@@ -7,7 +7,7 @@ import '../../../../core/routes/routes.dart';
 import '../../../../core/themes/colors.dart';
 import '../../../../core/widgets/buttons/app_circular_icon.dart';
 
-///  Created by harbey on 9/3/2023.
+///  Created by harby on 9/3/2023.
 class ProfileItem extends StatelessWidget {
   final String title;
   final String? subTitle;

@@ -1,7 +1,7 @@
 import 'package:dalalah/src/main_index.dart';
 import 'onboarding_item.dart';
 
-///  Created by harbey on 9/7/2023.
+///  Created by harby on 9/7/2023.
 class BackgroundImages {
 
  static List<Widget> backgroundImages = [

@@ -11,7 +11,7 @@ import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/decorations/decorations.dart';
 import '../../../../home/domain/entities/brand.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class BrandsFilterStream extends StatelessWidget {
   final List<Brand>? initialData;
   final StreamStateInitial<List<Brand>> brandsStream;

@@ -3,13 +3,16 @@ import 'package:dalalah/core/decorations/decorations.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/themes/colors.dart';
 import '../../../../core/themes/light_theme.dart';
 import '../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../../core/widgets/tabview/tabbar_widget.dart';
+import '../../../settings/presentation/bloc/locale_cubit.dart';
+import '../../../settings/presentation/bloc/locale_state.dart';
 import '../../domain/entities/profile.dart';
 
-///  Created by harbey on 9/3/2023.
+///  Created by harby on 9/3/2023.
 class ProfileHeader extends StatelessWidget {
   final Profile? profile;
 
@@ -41,7 +44,7 @@ class ProfileHeader extends StatelessWidget {
               children: [
                 40.ph,
                 profile!.token != null ?
-               ImageNetworkCircle(
+                ImageNetworkCircle(
                   image: profile?.image,
                   size: 80,
                 ) : Image.asset(
@@ -70,19 +73,32 @@ class ProfileHeader extends StatelessWidget {
             child: SizedBox(
               width: 145,
               height: 60,
-              child: AnimatedTabsBar(
-                tabs: [
-                  TabModel(
-                    label: context.strings.arabic,
-                  ),
-                  TabModel(
-                    label: context.strings.english,
-                  )
-                ],
-                children: [
-                  0.ph,
-                  0.ph,
-                ],
+              child: BlocBuilder<LocaleCubit, LocalState>(
+                bloc: LocaleCubit()..getLanguageData(),
+                builder: (context, state) {
+                  return AnimatedTabsBar(
+                    initialIndex: state.language == context.en ? 1 : 0,
+                    onTabSelected: (index) {
+                      if (state.language == context.en) {
+                        context.read<LocaleCubit>().setLanguageData(context.ar);
+                      } else {
+                        context.read<LocaleCubit>().setLanguageData(context.en);
+                      }
+                    },
+                    tabs: [
+                      TabModel(
+                        label: context.strings.arabic,
+                      ),
+                      TabModel(
+                        label: context.strings.english,
+                      )
+                    ],
+                    children: [
+                      0.ph,
+                      0.ph,
+                    ],
+                  );
+                },
               ),
             ),
           ),

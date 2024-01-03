@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/helper_methods.dart';
 
-///  Created by harbey on 9/6/2023.
+///  Created by harby on 9/6/2023.
 class ContactSocialButtons extends StatelessWidget {
   final String phone;
   final String? whatsapp;

@@ -328,5 +328,19 @@
   "district": "المنطقه",
   "owner_name": "اسم المالك",
   "followed_showrooms": "المعارض المتابعة",
-  "follower": "متابع"
+  "follower": "متابع",
+  "traders_showrooms": "معارض والتجار",
+  "showroom_evaluation": "تقييم المعرض",
+  "plate_private": "خصوصي",
+  "plate_transfer": "نقل",
+  "premium": "بريميوم",
+  "premium_description": "ميز اعلانك لمدة {duration} يوم",
+  "@premium_description": {
+    "description": "Feature your ad for {duration} days",
+    "placeholders": {
+      "duration": {
+        "type": "dynamic"
+      }
+    }
+  }
 }

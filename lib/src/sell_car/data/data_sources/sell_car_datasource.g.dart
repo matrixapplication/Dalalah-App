@@ -21,7 +21,7 @@ class _SellCarDatasource implements SellCarDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<dynamic>> sellCar(
+  Future<ApiResponse<dynamic>> addCar(
     int brandId,
     int carModelId,
     int carModelExtensionId,
@@ -47,6 +47,7 @@ class _SellCarDatasource implements SellCarDatasource {
     File file,
     List<File> images,
     List<String> features,
+    String adType,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -156,12 +157,47 @@ class _SellCarDatasource implements SellCarDatasource {
     features.forEach((i) {
       _data.fields.add(MapEntry('features[]', i));
     });
+    _data.fields.add(MapEntry(
+      'ad_type',
+      adType,
+    ));
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/add_car',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> addNewCar(SellCarParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
     )
             .compose(
               _dio.options,
