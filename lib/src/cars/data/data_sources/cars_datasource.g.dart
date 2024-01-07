@@ -100,7 +100,7 @@ class _CarsDatasource implements CarsDatasource {
     )
             .compose(
               _dio.options,
-              '/show-review',
+              '/get-review',
               queryParameters: queryParameters,
               data: _data,
             )

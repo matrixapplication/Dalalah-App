@@ -24,7 +24,7 @@ abstract class  CarsDatasource{
   @GET('/my-cars')
   Future<ApiResponse<List<CarDto>>> fetchMyCars(@Query('page') int page);
 
-  @GET('/show-review')
+  @GET('/get-review')
   Future<ApiResponse<List<CommentDto>>> fetchComments(@Queries() CommentParams params);
 
   @POST('/add-review')

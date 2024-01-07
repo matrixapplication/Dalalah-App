@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
+import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
+import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../data/models/showroom_cars_params.dart';
 import '../../../domain/use_cases/showrooms_usecase.dart';
@@ -10,7 +12,8 @@ import '../../../domain/use_cases/showrooms_usecase.dart';
 @Injectable()
 class ShowroomCarsCubit extends BaseCubit {
   final ShowroomsUseCase usecase;
-  ShowroomCarsCubit(this.usecase);
+  final FavoritesUseCase favoritesUseCase;
+  ShowroomCarsCubit(this.usecase, this.favoritesUseCase);
 
   List<Car> allCars = [];
   List<Car> cars = [];
@@ -34,6 +37,10 @@ class ShowroomCarsCubit extends BaseCubit {
         }
       },
     );
+  }
+
+  toggleCarFavorite(int id) async {
+    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
 }

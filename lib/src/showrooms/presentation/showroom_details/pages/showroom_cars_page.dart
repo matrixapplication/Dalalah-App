@@ -47,8 +47,11 @@ class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCa
       },
       child: CarsScreen(
         isFilter: false,
-        isAds: true,
+        isAds: false,
         cars: state.data ?? [],
+        onToggleFavorite: (id) {
+          bloc.toggleCarFavorite(id);
+        },
       ),
     );
     // return 0.ph;
