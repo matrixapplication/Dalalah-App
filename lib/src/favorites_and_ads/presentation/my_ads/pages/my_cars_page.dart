@@ -44,9 +44,19 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         }
       },
       child: CarsScreen(
-        isFilter: false,
-        isAds: true,
+        isMyCar: true,
         cars: state.data ?? [],
+        onHide: (id) {
+          bloc.hideCar(id);
+        },
+        onSold: (id) {
+          bloc.soldCar(id);
+        },
+        onSpecial: (id) {
+          bloc.addSpecialCar(id);
+        },
+
+
       ),
     );
     // return 0.ph;

@@ -6,6 +6,7 @@ import 'package:retrofit/http.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../cars/data/models/add_special_params.dart';
 import '../models/ad_feature_dto.dart';
 import '../models/add_plate_params.dart';
 import '../models/plate_filter_params.dart';
@@ -24,9 +25,21 @@ abstract class PlatesDatasource {
   @POST('/add-car-plate')
   Future<ApiResponse<PlateDto>> addPlate(@Body() AddPlateParams params);
 
+  @POST('/edit-car-plate')
+  Future<ApiResponse<PlateDto>> editPlate(@Body() AddPlateParams params);
+
   @POST('/toggle-favorite')
   Future<ApiResponse<String>> toggleFavoritePlate(@Query('id') int id);
 
   @GET('/ad-feature')
   Future<ApiResponse<AdFeatureDto>> fetchAdFeature();
+
+  @POST('/hide_plate/{id}')
+  Future<ApiResponse> hidePlate(@Path('id') int id);
+
+  @POST('/sold_plate/{id}')
+  Future<ApiResponse> soldPlate(@Path('id') int id);
+
+  @POST('/add-feature')
+  Future<ApiResponse> addSpecialPlate(@Queries() AdSpecialParams params);
 }

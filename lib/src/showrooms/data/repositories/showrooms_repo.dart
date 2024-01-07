@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../home/data/models/car_dto.dart';
+import '../../../plates/data/models/plate_dto.dart';
 import '../../domain/repositories/base_showrooms_repo.dart';
 import '../data_sources/showrooms_datasource.dart';
 import '../models/add_branch_params.dart';
@@ -11,6 +12,7 @@ import '../models/agency_params.dart';
 import '../models/branch_dto.dart';
 import '../models/showroom_cars_params.dart';
 import '../models/showroom_dto.dart';
+import '../models/showroom_plates_params.dart';
 
 @Injectable(as: BaseShowroomsRepo)
 class ShowroomsRepo extends BaseShowroomsRepo {
@@ -76,5 +78,10 @@ class ShowroomsRepo extends BaseShowroomsRepo {
   @override
   Future<ApiResponse> addRateShowroom(AddRateParams params) async {
     return await remoteDataSource.addRateShowroom(params);
+  }
+
+  @override
+  Future<ApiResponse<List<PlateDto>>> fetchShowroomPlates(ShowroomPlatesParams params) async {
+    return await remoteDataSource.fetchShowroomPlates(params);
   }
 }

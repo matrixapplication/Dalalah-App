@@ -26,6 +26,8 @@ class SlidersCarDetails extends StatelessWidget {
             url: images[index],
             width: double.infinity,
             fit: BoxFit.fill,
+            height: 245,
+
           );
         },
         // duration: 3,

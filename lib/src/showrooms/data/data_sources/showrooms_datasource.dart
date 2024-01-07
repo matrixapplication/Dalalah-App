@@ -1,4 +1,5 @@
 
+import 'package:dalalah/src/plates/data/models/plate_dto.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
@@ -12,6 +13,7 @@ import '../models/agency_params.dart';
 import '../models/branch_dto.dart';
 import '../models/showroom_cars_params.dart';
 import '../models/showroom_dto.dart';
+import '../models/showroom_plates_params.dart';
 
 part 'showrooms_datasource.g.dart';
 
@@ -56,4 +58,7 @@ abstract class ShowroomsDatasource {
 
   @POST('/add_rate')
   Future<ApiResponse> addRateShowroom(@Body() AddRateParams params);
+
+  @GET('/showroom_plates')
+  Future<ApiResponse<List<PlateDto>>> fetchShowroomPlates(@Queries() ShowroomPlatesParams params);
 }

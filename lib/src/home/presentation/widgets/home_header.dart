@@ -19,7 +19,9 @@ class HomeHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        15.pw,
+        const Logo(size: 65),
+        ChangeLanguagePopup(),
+        const Spacer(),
         AppCircularIconButton(
           icon: AppIcons.notification,
           backgroundColor: context.cardColor,
@@ -31,11 +33,7 @@ class HomeHeader extends StatelessWidget {
             Navigators.pushNamed(Routes.notificationsPage);
           },
         ),
-        10.pw,
-        ChangeLanguagePopup(),
-        const Spacer(),
-        const Logo(size: 65),
-        // 5.pw,
+        15.pw,
       ],
     );
   }

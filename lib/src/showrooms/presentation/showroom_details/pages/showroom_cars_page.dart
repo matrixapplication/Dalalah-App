@@ -1,6 +1,4 @@
 import 'package:dalalah/src/main_index.dart';
-import 'package:dalalah/src/showrooms/domain/entities/showroom.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/widgets/pagination/pagination_widget.dart';
 import '../../../../cars/presentation/cars/pages/cars_screen.dart';
@@ -15,7 +13,7 @@ class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCa
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyCars(status, id);
+    bloc.fetchShowroomCars(status, id);
   }
 
   @override
@@ -23,49 +21,23 @@ class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCa
     return true;
   }
 
-  RefreshController refreshController =
-  RefreshController(initialRefresh: false);
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
-    if (bloc.isLastPage) {
-      refreshController.loadNoData();
-    }
     return PaginationWidget(
-      refreshController: refreshController,
+      refreshController: bloc.refreshController,
       onRefresh: () {
-        bloc.fetchMyCars(status, id);
-        refreshController.refreshCompleted();
+        bloc.fetchShowroomCars(status, id);
       },
       onLoading: () async {
-        await bloc.fetchMyCars(status, id, isMoreData: true);
-        await Future.delayed(const Duration(milliseconds: 1200));
-        if (bloc.isLastPage) {
-          refreshController.loadNoData();
-        } else {
-          refreshController.loadComplete();
-        }
+        await bloc.fetchShowroomCars(status, id);
       },
       child: CarsScreen(
-        isFilter: false,
-        isAds: false,
+        isMyCar: false,
         cars: state.data ?? [],
         onToggleFavorite: (id) {
           bloc.toggleCarFavorite(id);
         },
       ),
     );
-    // return 0.ph;
   }
-
-  //
-  // @override
-  // onAddButtonPressed() {
-  //   Navigators.pushNamed(Routes.sellCarPage);
-  // }
-  //
-  //
-  // @override
-  // bool isAddButton() {
-  //   return true;
-  // }
 }

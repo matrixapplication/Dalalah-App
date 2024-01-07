@@ -22,7 +22,7 @@ class CommentsCubit extends BaseCubit {
   fetchComments(CommentParams params, {bool isMoreData = true}) async {
     isMoreData ? {page = 1, allComments.clear()} : page++;
     params.page = page;
-    executeBuilder(() => usecase.fetchComments(params), isMoreData: isMoreData,
+    executeBuilder(() => usecase.fetchComments(params), isRefresh: isMoreData,
         onSuccess: (data) {
       isLastPage = (data.pagination?.totalPages)! <= page;
       comments = data.data?.map((e) => Comment.fromDto(e)).toList() ?? [];

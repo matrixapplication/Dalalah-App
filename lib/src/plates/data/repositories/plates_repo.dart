@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
+import '../../../cars/data/models/add_special_params.dart';
 import '../../domain/repositories/base_plates_repo.dart';
 import '../data_sources/plates_datasource.dart';
 import '../models/ad_feature_dto.dart';
@@ -32,7 +33,29 @@ class PlatesRepo extends BasePlatesRepo {
   }
 
   @override
+  Future<String> editPlate(AddPlateParams params) async {
+    final result = await remoteDataSource.editPlate(params);
+    return result.message ?? '';
+  }
+
+  @override
   Future<ApiResponse<AdFeatureDto>> fetchAdFeature() async {
     return await remoteDataSource.fetchAdFeature();
   }
+
+  @override
+  Future<ApiResponse> hidePlate(int id) async {
+    return await remoteDataSource.hidePlate(id);
+  }
+
+  @override
+  Future<ApiResponse> soldPlate(int id) async {
+    return await remoteDataSource.soldPlate(id);
+  }
+
+  @override
+  Future<ApiResponse> addSpecialPlate(AdSpecialParams params) async {
+    return await remoteDataSource.addSpecialPlate(params);
+  }
+
 }

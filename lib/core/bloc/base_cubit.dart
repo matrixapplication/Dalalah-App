@@ -29,9 +29,9 @@ abstract class BaseCubit extends Cubit<DataState>{
     }
   }
   executeBuilder<T>(Future<T> Function() invoke,
-      {bool isMoreData = false, required ValueChanged<T> onSuccess , ValueChanged ? onError}) async {
+      {bool isRefresh = false, required ValueChanged<T> onSuccess , ValueChanged ? onError}) async {
     try {
-      if(isMoreData){
+      if(isRefresh){
         emit(DataLoading());
       }
       final response = await invoke();

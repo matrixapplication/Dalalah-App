@@ -24,7 +24,7 @@ class FavoritePlatesCubit extends BaseCubit {
     isRefresh ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isMoreData: isRefresh,
+      isRefresh: isRefresh,
           () => usecase.fetchFavoritePlates(page),
       onSuccess: (data) {
         cars = data;

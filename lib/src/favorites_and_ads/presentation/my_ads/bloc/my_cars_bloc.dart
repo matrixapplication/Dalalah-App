@@ -3,14 +3,18 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
+import '../../../../cars/data/models/add_special_params.dart';
+import '../../../../cars/domain/use_cases/cars_usecase.dart';
 import '../../../../home/domain/entities/car.dart';
+import '../../../../plates/domain/entities/ad_types.dart';
 import '../../../domain/use_cases/favorites_usecase.dart';
 
 @Injectable()
 class MyCarsCubit extends BaseCubit {
   final FavoritesUseCase usecase;
+  final CarsUseCase carsUseCase;
 
-  MyCarsCubit(this.usecase);
+  MyCarsCubit(this.usecase, this.carsUseCase);
 
   // StreamStateInitial<bool>  isFavorite = StreamStateInitial<bool>();
 
@@ -24,7 +28,7 @@ class MyCarsCubit extends BaseCubit {
     isMoreData ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isMoreData: isMoreData,
+      isRefresh: isMoreData,
           () => usecase.fetchMyCars(page),
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages)! <= page;
@@ -37,6 +41,18 @@ class MyCarsCubit extends BaseCubit {
         }
       },
     );
+  }
+
+  void hideCar(int id) async {
+    executeEmitterListener(() => carsUseCase.hideCar(id));
+  }
+
+  void soldCar(int id) async {
+    executeEmitterListener(() => carsUseCase.soldCar(id));
+  }
+
+  void addSpecialCar(int id) async {
+    executeEmitterListener(() => carsUseCase.addSpecialCar(AdSpecialParams(id: id, type: AdTypes.featured)));
   }
 
 }

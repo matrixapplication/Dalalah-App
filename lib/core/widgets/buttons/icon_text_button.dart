@@ -47,7 +47,7 @@ class IconTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: padding ?? const EdgeInsets.all(8.0),

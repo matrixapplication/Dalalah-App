@@ -2,27 +2,26 @@ import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
-import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../home/domain/entities/car.dart';
-import '../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
 import '../../cars_details/widgets/car_info.dart';
-import 'car_item_footer.dart';
+import 'car_operations_popup.dart';
 
 class CarVerticalItem extends StatelessWidget {
   final Car car;
   final Function(int)? onToggleFavorite;
-  final int? index;
   final bool isCatItem;
   final double? bottomMargin;
   final String? carStatus;
   final bool imageHasOnlyTopRadius;
-  final bool isFavouriteView;
   final bool isAddView;
-  final bool isAds;
+  final bool isMyCar;
+  final Function(int)? onHide;
+  final Function(int)? onSold;
+  final Function(int)? onSpecial;
 
   // final Task task;
   const CarVerticalItem({
@@ -33,10 +32,11 @@ class CarVerticalItem extends StatelessWidget {
     this.bottomMargin,
     this.imageHasOnlyTopRadius = true,
     this.carStatus,
-    this.isFavouriteView = false, //used for checking fav icon style
     this.isAddView = false, //used for checking on tap action
-    this.index,
-    this.isAds = false,
+    this.isMyCar = false,
+    this.onHide,
+    this.onSold,
+    this.onSpecial,
     // required this.task,
   }) : super(key: key);
 
@@ -49,19 +49,19 @@ class CarVerticalItem extends StatelessWidget {
       ),
       child: Container(
         // isAds ? 250 :
-        height:  160,
+        height: 160,
         margin: (bottomMargin ?? 14).paddingBottom,
         decoration: bottomMargin == 0
             ? Decorations.kDecorationTopRadius(
-          color: AppColors.grey_fa,
-        )
+                color: AppColors.grey_fa,
+              )
             : Decorations.kDecorationBoxShadow(
-          borderRadius: const BorderRadiusDirectional.only(
-            bottomStart: Radius.circular(5),
-            topStart: Radius.circular(5),
-          ),
-          color: AppColors.grey_fa,
-        ),
+                borderRadius: const BorderRadiusDirectional.only(
+                  bottomStart: Radius.circular(5),
+                  topStart: Radius.circular(5),
+                ),
+                color: AppColors.grey_fa,
+              ),
         // decoration:
         // bottomMargin == 0
         //     ? Decorations.kDecorationTopRadius(
@@ -93,8 +93,7 @@ class CarVerticalItem extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
-
-                          Spacer(),
+                          const Spacer(),
                           FittedBox(
                             child: Row(
                               children: [
@@ -144,41 +143,50 @@ class CarVerticalItem extends StatelessWidget {
                                 )
                               : BorderRadiusDirectional.circular(5),
                         ),
-                        if(index == 0)
-                        PositionedDirectional(
-                          top: 7,
-                          start: 6,
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: const ShapeDecoration(
-                              color: Colors.white,
-                              shape: OvalBorder(),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x3F8D8D8D),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                  spreadRadius: 0,
-                                )
-                              ],
+                        if (car.isFeatured ?? false)
+                          PositionedDirectional(
+                            top: 7,
+                            start: 6,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: const ShapeDecoration(
+                                color: Colors.white,
+                                shape: OvalBorder(),
+                                shadows: [
+                                  BoxShadow(
+                                    color: Color(0x3F8D8D8D),
+                                    blurRadius: 4,
+                                    offset: Offset(0, 4),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                              child: Image.asset(AppImages.primary_car),
                             ),
-                            child: Image.asset(AppImages.primary_car),
                           ),
-                        ),
                         PositionedDirectional(
                           top: 2,
                           end: 2,
-                          child: FavoriteButton(
-                            iconSize: 15,
-                            isFavorite: car.isFavorite ?? false,
-                            icon: onToggleFavorite == null ? AppIcons.edit : null,
-                            onToggleFavorite: () {
-                              onToggleFavorite == null ?
-                              Navigators.pushNamed(Routes.sellCarPage, arguments: car) :
-                              onToggleFavorite!(car.id!);
-                            },
-                          ),
+                          child: isMyCar
+                              ? CarOperationsPopup(
+                                  car: car,
+                                  onHide: onHide,
+                                  onSold: onSold,
+                                  onSpecial: onSpecial,
+                                )
+                              : FavoriteButton(
+                                  iconSize: 15,
+                                  isFavorite: car.isFavorite ?? false,
+                                  onToggleFavorite: () {
+                                    // onToggleFavorite == null
+                                    //     ? Navigators.pushNamed(
+                                    //         Routes.sellCarPage,
+                                    //         arguments: car)
+                                    //     :
+                                    onToggleFavorite!(car.id!);
+                                  },
+                                ),
                         ),
                       ],
                     ),
@@ -197,4 +205,3 @@ class CarVerticalItem extends StatelessWidget {
     );
   }
 }
-

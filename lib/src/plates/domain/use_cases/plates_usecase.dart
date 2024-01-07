@@ -1,6 +1,7 @@
 
 import 'package:injectable/injectable.dart';
 
+import '../../../cars/data/models/add_special_params.dart';
 import '../../data/models/add_plate_params.dart';
 import '../../data/models/plate_filter_params.dart';
 import '../entities/ad_feature.dart';
@@ -29,5 +30,17 @@ class PlatesUseCase {
   Future<AdFeature> fetchAdFeature() async {
     final data = await repository.fetchAdFeature();
     return AdFeature.fromDto(data.data!);
+  }
+
+  Future<void> hidePlate(int id) async {
+    await repository.hidePlate(id);
+  }
+
+  Future<void> soldPlate(int id) async {
+    await repository.soldPlate(id);
+  }
+
+  Future<void> addSpecialPlate(AdSpecialParams params) async {
+    await repository.addSpecialPlate(params);
   }
 }

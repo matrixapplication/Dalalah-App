@@ -1,6 +1,8 @@
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
 import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_cars_page.dart';
+import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_plates_page.dart';
 
 import '../../../../../core/widgets/buttons/call_button.dart';
 import '../../../../../core/widgets/buttons/chat_whats_app_button.dart';
@@ -99,8 +101,8 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                             textStyle: context.bodyMedium.copyWith(
                               color: context.yellow_00,
                             ),
-                            onTap: () {
-                              onAddRate?.call();
+                            onTap: () async {
+                               onAddRate?.call();
                             },
                           ),
                         ],
@@ -137,6 +139,10 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
               page: ShowroomCarsPage(
                   status: CarStatus.usedCar, id: showroom.id ?? 0),
             ),
+          TabItemModel(
+            label: context.strings.plates,
+            page: ShowroomPlatesPage(id: showroom.id ?? 0),
+          ),
           TabItemModel(
             label: context.strings.branches,
             page: BranchesPage(showroomId: showroom.id),

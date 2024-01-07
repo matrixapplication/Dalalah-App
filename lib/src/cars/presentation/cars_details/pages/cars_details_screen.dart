@@ -84,6 +84,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
             preferredSize: Size(0, isNew ? 615 : 700),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -106,6 +107,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                   padding: 15.paddingHoriz,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         "${car.brandModel?.brand} ${car.brandModel?.name}",

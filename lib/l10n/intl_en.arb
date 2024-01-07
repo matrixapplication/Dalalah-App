@@ -352,5 +352,10 @@
         "type": "dynamic"
       }
     }
-  }
+  },
+  "hide": "Hide",
+    "show": "Show",
+  "sold": "Sold",
+  "special": "special",
+  "edit": "Edit"
 }

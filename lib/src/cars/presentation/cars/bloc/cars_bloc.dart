@@ -38,7 +38,7 @@ class CarsCubit extends BaseCubit {
     print('page onSuccess$page');
     params.page = page;
     executeBuilder(
-      isMoreData: isRefresh,
+      isRefresh: isRefresh,
           () => isMyCars
           ? carsUseCase.fetchMyCars(page)
           : usecase.fetchCars(params),

@@ -183,6 +183,18 @@ class HelperMethods {
     }
   }
 
+
+  static Future<bool> isUser() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      if (profile?.role == null || profile!.role!.isEmpty) return false;
+      return profile.role == Roles.USER;
+    } on Exception catch (e) {
+      // print('profile?.token ${e.toString()}');
+      return false;
+    }
+  }
+
   static Future<int> getUserId() async {
     return await getProfile()?.then((value) => value?.id ?? 0) ?? 0;
   }

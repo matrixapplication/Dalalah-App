@@ -35,7 +35,10 @@ class Car {
   CarStatus? status;
   String? country;
   String? type;
+  bool? isFeatured;
   bool? isSold;
+  bool? isHide;
+  bool? isApproved;
   bool? isFavorite;
   String? price;
   String? shipping;
@@ -73,7 +76,10 @@ class Car {
       this.status,
       this.country,
       this.type,
+      this.isFeatured,
+      this.isHide,
       this.isSold,
+      this.isApproved,
       this.isFavorite,
       this.price,
       this.shipping,
@@ -114,7 +120,10 @@ class Car {
       status: CarStatus.fromDto(json.status ?? CarStatusDto()),
       country: json.country,
       type: json.type,
+      isFeatured: json.isFeatured,
+      isHide: json.isHide,
       isSold: json.isSold,
+      isApproved: json.isApproved,
       isFavorite: json.isFavorite,
       price: json.price,
       shipping: json.shipping,

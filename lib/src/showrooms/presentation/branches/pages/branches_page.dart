@@ -29,7 +29,6 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
 
   @override
   String? title(BuildContext context) {
-   // int? showroomId = this.showroomId ?? getArguments(context);
     return showroomId != null ? null : strings.branches;
   }
 
@@ -44,7 +43,7 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
    isAddButton() {
     BranchArgs? args = getArguments(context!) is BranchArgs ? getArguments(context!) : null;
     print('args?.role: ${args?.role}');
-    return args?.role != Roles.USER;
+    return ((args?.role ?? '').isNotEmpty && args?.role != Roles.USER);
   }
 
 }

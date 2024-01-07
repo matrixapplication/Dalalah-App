@@ -5,12 +5,14 @@ import '../../../../main_index.dart';
 import '../widgets/cars_vertical_item.dart';
 
 class CarsScreen extends BaseStatelessWidget {
-  final bool isFilter;
-  final bool isAds;
+  final bool isMyCar;
   final List<Car> cars;
   final Function(int)? onToggleFavorite;
+  final Function(int)? onHide;
+  final Function(int)? onSold;
+  final Function(int)? onSpecial;
 
-  CarsScreen({Key? key, required this.cars, required this.isFilter, this.isAds = false, this.onToggleFavorite})
+  CarsScreen({Key? key, required this.cars,  this.isMyCar = false, this.onToggleFavorite, this.onHide, this.onSold, this.onSpecial})
       : super(key: key);
 
   @override
@@ -24,11 +26,12 @@ class CarsScreen extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         return CarVerticalItem(
           imageHasOnlyTopRadius: false,
-            index: index,
-          isAds: isAds,
+          isMyCar: isMyCar,
           car: cars[index],
           onToggleFavorite: onToggleFavorite,
-          // task: tasks[index],
+          onHide: onHide,
+          onSold: onSold,
+          onSpecial: onSpecial,
         );
       },
     );

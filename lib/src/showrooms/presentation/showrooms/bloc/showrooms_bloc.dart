@@ -19,7 +19,7 @@ class ShowroomsCubit extends BaseCubit {
     print('fetchShowrooms isAgency: $isAgency');
     isRefresh ? {page = 1, allShowrooms.clear()} : page++;
     executeBuilder(
-      isMoreData: isRefresh,
+      isRefresh: isRefresh,
           () => isAgency ? useCase.fetchAgencies(AgencyParams(page: page)) : useCase.fetchShowrooms(page),
       onSuccess: (data) {
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];

@@ -19,7 +19,7 @@ class FollowedShowroomsCubit extends BaseCubit {
   fetchFollowShowrooms({bool isMoreData = false}) async {
     !isMoreData ? {page = 1, allShowrooms.clear()} : page++;
     executeBuilder(
-      isMoreData: isMoreData,
+      isRefresh: isMoreData,
           () => usecase.fetchFollowShowrooms(page),
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages ?? 0) <= page;

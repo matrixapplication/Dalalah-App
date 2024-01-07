@@ -23,7 +23,7 @@ class FavoriteCarsCubit extends BaseCubit {
     isRefresh ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isMoreData: isRefresh,
+      isRefresh: isRefresh,
           () => usecase.fetchFavoriteCars(page),
       onSuccess: (data) {
         cars = data;

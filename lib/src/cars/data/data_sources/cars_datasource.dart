@@ -6,6 +6,7 @@ import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../models/add_comment_params.dart';
+import '../models/add_special_params.dart';
 import '../models/car_details_dto.dart';
 import '../models/comment_dto.dart';
 import '../models/comment_params.dart';
@@ -29,5 +30,20 @@ abstract class  CarsDatasource{
 
   @POST('/add-review')
   Future<ApiResponse> addComment(@Body() AddCommentParams params);
+
+  @POST('/report-review')
+  Future<ApiResponse> reportComment(@Path('id') int id);
+
+  @POST('/delete_review/{id}')
+  Future<ApiResponse> deleteComment(@Path('id') int id);
+
+  @POST('/hide_car/{id}')
+  Future<ApiResponse> hideCar(@Path('id') int id);
+
+  @POST('/is_sold/{id}')
+  Future<ApiResponse> soldCar(@Path('id') int id);
+
+  @POST('/add-feature')
+  Future<ApiResponse> addSpecialCar(@Queries() AdSpecialParams params);
 
 }

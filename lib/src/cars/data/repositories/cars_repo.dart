@@ -6,6 +6,7 @@ import '../../../home/data/models/car_dto.dart';
 import '../../domain/repositories/base_cars_repo.dart';
 import '../data_sources/cars_datasource.dart';
 import '../models/add_comment_params.dart';
+import '../models/add_special_params.dart';
 import '../models/car_details_dto.dart';
 import '../models/comment_dto.dart';
 import '../models/comment_params.dart';
@@ -35,5 +36,30 @@ class CarsRepo extends BaseCarsRepo{
   @override
   Future<ApiResponse> addComment(AddCommentParams params) async {
     return await datasource.addComment(params);
+  }
+
+  @override
+  Future<ApiResponse> reportComment(int id) async {
+    return await datasource.reportComment(id);
+  }
+
+  @override
+  Future<ApiResponse> deleteComment(int id) async {
+    return await datasource.deleteComment(id);
+  }
+
+  @override
+  Future<ApiResponse> hideCar(int id) async {
+    return await datasource.hideCar(id);
+  }
+
+  @override
+  Future<ApiResponse> soldCar(int id) async {
+    return await datasource.soldCar(id);
+  }
+
+  @override
+  Future<ApiResponse> addSpecialCar(AdSpecialParams params) async {
+    return await datasource.addSpecialCar(params);
   }
 }

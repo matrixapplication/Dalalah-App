@@ -1,4 +1,5 @@
 import 'package:dalalah/core/network/api_response.dart';
+import 'package:dalalah/src/plates/data/models/plate_dto.dart';
 import 'package:dalalah/src/showrooms/data/models/showroom_dto.dart';
 import 'package:injectable/injectable.dart';
 
@@ -7,6 +8,7 @@ import '../../data/models/add_branch_params.dart';
 import '../../data/models/add_rate_params.dart';
 import '../../data/models/agency_params.dart';
 import '../../data/models/showroom_cars_params.dart';
+import '../../data/models/showroom_plates_params.dart';
 import '../entities/branch.dart';
 import '../entities/showroom.dart';
 import '../repositories/base_showrooms_repo.dart';
@@ -70,5 +72,9 @@ class ShowroomsUseCase {
   Future<String> addRateShowroom(AddRateParams params) async {
     final data = await repository.addRateShowroom(params);
     return data.message ?? '';
+  }
+
+  Future<ApiResponse<List<PlateDto>>> fetchShowroomPlates(ShowroomPlatesParams params) async {
+    return await repository.fetchShowroomPlates(params);
   }
 }
