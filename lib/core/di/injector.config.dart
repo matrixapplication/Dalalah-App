@@ -72,11 +72,11 @@ import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i85;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
     as _i15;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
-    as _i39;
+    as _i41;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
-    as _i38;
+    as _i40;
 import '../../src/notifications/domain/use_cases/notifications_usecase.dart'
-    as _i59;
+    as _i60;
 import '../../src/notifications/presentation/bloc/notifications_bloc.dart'
     as _i87;
 import '../../src/plates/data/data_sources/plates_datasource.dart' as _i16;
@@ -97,11 +97,11 @@ import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i90;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
     as _i14;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
-    as _i41;
+    as _i39;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
-    as _i40;
+    as _i38;
 import '../../src/real_estate/domain/use_cases/notifications_usecase.dart'
-    as _i60;
+    as _i59;
 import '../../src/real_estate/presentation/bloc/real_estate_bloc.dart' as _i63;
 import '../../src/sell_car/data/data_sources/sell_car_datasource.dart' as _i18;
 import '../../src/sell_car/data/repositories/add_car_repo.dart' as _i20;
@@ -200,9 +200,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i36.BaseInstallmentRepo<dynamic>>(
       () => _i37.InstallmentRepo(gh<_i12.InstallmentDataSource>()));
   gh.factory<_i38.BaseNotificationsRepo>(
-      () => _i39.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i39.WalletRepo(gh<_i14.NotificationsDatasource>()));
   gh.factory<_i40.BaseNotificationsRepo>(
-      () => _i41.WalletRepo(gh<_i14.NotificationsDatasource>()));
+      () => _i41.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i42.BasePlatesRepo>(
       () => _i43.PlatesRepo(gh<_i16.PlatesDatasource>()));
   gh.factory<_i44.BaseProfileRepo<dynamic>>(
@@ -238,7 +238,7 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i62.ProfileUseCase>(
       () => _i62.ProfileUseCase(gh<_i44.BaseProfileRepo<dynamic>>()));
   gh.factory<_i63.RealEstatePageCubit>(
-      () => _i63.RealEstatePageCubit(gh<_i60.NotificationsUseCase>()));
+      () => _i63.RealEstatePageCubit(gh<_i59.NotificationsUseCase>()));
   gh.factory<_i64.SellCarCubit>(() => _i64.SellCarCubit(
         gh<_i19.SellCarUseCase>(),
         gh<_i61.PlatesUseCase>(),
@@ -307,7 +307,7 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i61.PlatesUseCase>(),
       ));
   gh.factory<_i87.NotificationsCubit>(
-      () => _i87.NotificationsCubit(gh<_i59.NotificationsUseCase>()));
+      () => _i87.NotificationsCubit(gh<_i60.NotificationsUseCase>()));
   gh.factory<_i88.PlatesCubit>(() => _i88.PlatesCubit(
         gh<_i61.PlatesUseCase>(),
         gh<_i53.FavoritesUseCase>(),

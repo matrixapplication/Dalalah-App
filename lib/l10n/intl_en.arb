@@ -357,5 +357,7 @@
     "show": "Show",
   "sold": "Sold",
   "special": "special",
-  "edit": "Edit"
+  "edit": "Edit",
+  "report": "Report",
+    "delete": "Delete"
 }

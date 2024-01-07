@@ -19,7 +19,7 @@ class CommentsCubit extends BaseCubit {
   int page = 0;
   bool isLastPage = false;
 
-  fetchComments(CommentParams params, {bool isMoreData = true}) async {
+   fetchComments(CommentParams params, {bool isMoreData = true}) async {
     isMoreData ? {page = 1, allComments.clear()} : page++;
     params.page = page;
     executeBuilder(() => usecase.fetchComments(params), isRefresh: isMoreData,
@@ -35,7 +35,15 @@ class CommentsCubit extends BaseCubit {
     });
   }
 
-  addComment(AddCommentParams params) async {
+  void addComment(AddCommentParams params) async {
     executeEmitterListener(() => usecase.addComment(params));
+  }
+
+  void reportComment(int commentId) async {
+    executeEmitterListener(() => usecase.reportComment(commentId));
+  }
+
+  void deleteComment(int commentId) async {
+    executeEmitterListener(() => usecase.deleteComment(commentId));
   }
 }

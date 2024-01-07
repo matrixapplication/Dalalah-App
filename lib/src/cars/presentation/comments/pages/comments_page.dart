@@ -25,9 +25,9 @@ class CommentsPage
   Widget build(BuildContext context) {
     return mainFrame(
         body: Padding(
-          padding: 16.paddingAll,
-          child: Column(
-      children: [
+      padding: 16.paddingAll,
+      child: Column(
+        children: [
           AddCommentWidget(
             onAddComment: (comment) {
               bloc.addComment(AddCommentParams(
@@ -38,12 +38,13 @@ class CommentsPage
             },
           ),
           Expanded(child: buildConsumer(context)),
-      ],
-    ),
-        ));
+        ],
+      ),
+    ));
   }
 
-  RefreshController refreshController = RefreshController(initialRefresh: false);
+  RefreshController refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Comment>> state) {
@@ -52,23 +53,31 @@ class CommentsPage
       refreshController.loadNoData();
     }
     return PaginationWidget(
-        refreshController: refreshController,
-        onRefresh: () {
-          loadInitialData(context);
-          refreshController.refreshCompleted();
+      refreshController: refreshController,
+      onRefresh: () {
+        loadInitialData(context);
+        refreshController.refreshCompleted();
+      },
+      onLoading: () async {
+        await bloc.fetchComments(params, isMoreData: true);
+        await Future.delayed(const Duration(milliseconds: 1200));
+        if (bloc.isLastPage) {
+          print('isLastPage ${bloc.isLastPage}');
+          refreshController.loadNoData();
+        } else {
+          refreshController.loadComplete();
+        }
+      },
+      child: CommentsScreen(
+        comments: state.data ?? [],
+        onReport: (commentId) {
+          bloc.reportComment(commentId);
         },
-        onLoading: () async {
-          await bloc.fetchComments(params, isMoreData: true);
-          await Future.delayed(const Duration(milliseconds: 1200));
-          if (bloc.isLastPage) {
-            print('isLastPage ${bloc.isLastPage}');
-            refreshController.loadNoData();
-          } else {
-            refreshController.loadComplete();
-          }
+        onDelete: (commentId) {
+          bloc.deleteComment(commentId);
         },
-        child:
-        CommentsScreen(comments: state.data ?? []));
+      ),
+    );
   }
 
   @override

@@ -6,7 +6,9 @@ import '../widgets/comment_item.dart';
 
 class CommentsScreen extends StatelessWidget {
   final List<Comment> comments;
-  const CommentsScreen({Key? key, required this.comments}) : super(key: key);
+  final Function(int)? onReport;
+  final Function(int)? onDelete;
+  const CommentsScreen({Key? key, required this.comments, this.onReport, this.onDelete}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,8 @@ class CommentsScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         return CommentItem(
           comment: comments[index],
+          onReport: onReport,
+          onDelete: onDelete,
         );
       },
     );

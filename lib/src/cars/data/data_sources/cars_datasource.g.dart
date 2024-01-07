@@ -166,7 +166,7 @@ class _CarsDatasource implements CarsDatasource {
     )
             .compose(
               _dio.options,
-              '/report-review',
+              '/report-review/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -190,7 +190,7 @@ class _CarsDatasource implements CarsDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
+      method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )

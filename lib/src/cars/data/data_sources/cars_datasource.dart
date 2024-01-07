@@ -31,10 +31,10 @@ abstract class  CarsDatasource{
   @POST('/add-review')
   Future<ApiResponse> addComment(@Body() AddCommentParams params);
 
-  @POST('/report-review')
+  @POST('/report-review/{id}')
   Future<ApiResponse> reportComment(@Path('id') int id);
 
-  @POST('/delete_review/{id}')
+  @DELETE('/delete_review/{id}')
   Future<ApiResponse> deleteComment(@Path('id') int id);
 
   @POST('/hide_car/{id}')
