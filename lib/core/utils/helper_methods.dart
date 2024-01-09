@@ -203,4 +203,8 @@ class HelperMethods {
   static Future<String> getUserRole() async {
     return await getProfile()?.then((value) => value?.role ?? '') ?? '';
   }
+
+  static copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
+  }
 }

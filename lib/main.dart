@@ -1,4 +1,6 @@
+import 'package:app_links/app_links.dart';
 import 'package:dalalah/src/auth/presentation/pages/login/login_page.dart';
+import 'package:dalalah/src/cars/presentation/cars_details/pages/cars_details_screen.dart';
 import 'package:dalalah/src/home/presentation/pages/home_page.dart';
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
@@ -6,9 +8,12 @@ import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
 
+import 'core/routes/app_links_service.dart';
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
+import 'core/utils/navigator.dart';
+import 'navigation_pages.dart';
 import 'src/main_index.dart';
 
 Future<void> main() async {
@@ -44,6 +49,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // FirebaseNotification firebase = FirebaseNotification();
     // firebase.initialize(context);
+    AppLinkingService.init();
+    AppLinkingService.goToRoute();
     return BlocProvider(
       create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(
@@ -53,7 +60,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
-            navigatorKey: injector<ServicesLocator>().navigatorKey,
+           navigatorKey: injector<ServicesLocator>().navigatorKey,
             locale: Locale(state.language),
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -65,7 +72,7 @@ class MyApp extends StatelessWidget {
               Locale('en'), // English, no country code
               Locale('ar'), // Arabic, no country code
             ],
-            // routerConfig: router,
+            // routerConfig: router(token.isNotEmpty),
             routes: Routes.routes,
             initialRoute: token.isEmpty ? Routes.login : Routes.navigationPages,
           );
@@ -76,24 +83,27 @@ class MyApp extends StatelessWidget {
 }
 
 
-// final router = GoRouter(
-//     navigatorKey: injector<ServicesLocator>().navigatorKey,
-//     routes: [
-//   GoRoute(
-//     path: '/',
-//     name: 'homePage',
-//     pageBuilder: (context, state) {
-//       return const MaterialPage(child: Scaffold(
-//         body: Center(
-//           child: Text('Home Page'),
+//  router(bool iaAuth){
+//   return GoRouter(
+//       navigatorKey: injector<ServicesLocator>().navigatorKey,
+//       initialLocation: iaAuth ? Routes.navigationPages : Routes.login,
+//       routes: [
+//         GoRoute(
+//           path: '/',
+//           name: 'homePage',
+//           pageBuilder: (context, state) {
+//             return const MaterialPage(child: NavigationPages());
+//           },
 //         ),
-//       ));
-//     },
-//   ),
-//   GoRoute(
-//     path: '/test',
-//     pageBuilder: (context, state) {
-//       return MaterialPage(child: HomePage());
-//     },
-//   ),
-// ]);
+//         GoRoute(
+//           path: '/ar',
+//           pageBuilder: (context, state) {
+//             return MaterialPage(child: CarsDetailsScreen(
+//               carDetails: state.params,
+//               isNew: true,
+//               onToggleFavorite: () {},
+//             ));
+//           },
+//         ),
+//       ]);
+// }

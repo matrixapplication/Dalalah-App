@@ -2,6 +2,7 @@ import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
+import '../../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../home/domain/entities/car.dart';
@@ -179,14 +180,17 @@ class CarVerticalItem extends StatelessWidget {
                                   iconSize: 15,
                                   isFavorite: car.isFavorite ?? false,
                                   onToggleFavorite: () {
-                                    // onToggleFavorite == null
-                                    //     ? Navigators.pushNamed(
-                                    //         Routes.sellCarPage,
-                                    //         arguments: car)
-                                    //     :
                                     onToggleFavorite!(car.id!);
                                   },
                                 ),
+                        ),
+                        PositionedDirectional(
+                          bottom: 0,
+                          end: 0,
+                          child: ShareIconButton(
+                            route: Routes.carAppLink,
+                            id: car.id.toString() ?? '',
+                          ),
                         ),
                       ],
                     ),

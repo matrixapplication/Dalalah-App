@@ -1,3 +1,4 @@
+import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/cars/presentation/cars/pages/cars_page.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
@@ -101,6 +102,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         },
                       ),
                     ),
+
                   ],
                 ),
                 Padding(

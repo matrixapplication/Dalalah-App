@@ -41,28 +41,64 @@
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
                 <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
+                <data
+                    android:scheme="http"
+                    android:host="www.dalalah.co" />
+                <data
+                    android:scheme="https"/>
+                <data android:host="www.dalalah.co" />
                 <data
                     android:scheme="http"
                     android:host="dalalah.co" />
                 <data
                     android:scheme="https"/>
                 <data android:host="dalalah.co" />
+                <data
+                    android:scheme="http"
+                    android:host="www.dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="https"/>
+                <data android:host="www.dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="http"
+                    android:host="dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="https"/>
+                <data android:host="dalala.matrix-clouds.com" />
             </intent-filter>
 
             <!-- App Links -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
                 <!-- Accepts URIs that begin with https://YOUR_HOST -->
+                <data
+                    android:scheme="http"
+                    android:host="www.dalalah.co" />
+                <data
+                    android:scheme="https"
+                    android:host="www.dalalah.co" />
                 <data
                     android:scheme="http"
                     android:host="dalalah.co" />
                 <data
                     android:scheme="https"
                     android:host="dalalah.co" />
+                <data
+                    android:scheme="http"
+                    android:host="www.dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="https"/>
+                <data android:host="www.dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="http"
+                    android:host="dalala.matrix-clouds.com" />
+                <data
+                    android:scheme="https"/>
+                <data android:host="dalala.matrix-clouds.com" />
             </intent-filter>
         </activity>
        <activity

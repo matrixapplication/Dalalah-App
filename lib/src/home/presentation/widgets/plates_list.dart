@@ -1,9 +1,6 @@
-import 'package:dalalah/core/assets/app_icons.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
-import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
-import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +8,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
-import '../../../../core/utils/navigator.dart';
-import '../../../../core/widgets/buttons/row_see_all_text.dart';
-import '../../../../core/widgets/chip/chip_border.dart';
-import '../../../../core/widgets/clickable_widget.dart';
+import '../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../plates/domain/entities/plate.dart';
@@ -31,10 +25,11 @@ class PlatesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 220,
       child: StreamStateWidget<List<Plate>?>(
         stream: platesStream,
         builder: (context, snapshot) {
+          print('snapshot: $snapshot');
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: 10.paddingStart,
@@ -77,16 +72,10 @@ class PlateVert extends StatelessWidget {
                 alignment: AlignmentDirectional.bottomStart,
                 children: [
                   Container(
-                    width: 160,
-                    height: 105,
+                    width: 200,
+                    height: 120,
                     padding: 10.paddingHoriz + 12.paddingVert,
                     margin: 20.paddingBottom,
-                    // decoration: ShapeDecoration(
-                    //   color: index == 0 ? context.primaryColor : const Color(0xB2004D63),
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(12),
-                    //   ),
-                    // ),
                     child: PlateImage(
                       plate: plate,
                     ),
@@ -101,6 +90,15 @@ class PlateVert extends StatelessWidget {
                         onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
                         // isFavorite: true,
                       )),
+
+                  PositionedDirectional(
+                    bottom: 0,
+                    end: 10,
+                    child: ShareIconButton(
+                      route: Routes.plateAppLink,
+                      id: plate.id.toString() ?? '',
+                    ),
+                  ),
                 ],
               ),
               8.ph,

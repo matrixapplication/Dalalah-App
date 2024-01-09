@@ -14,9 +14,9 @@ class Plate {
   String? boughtStatus;
   String? adType;
   String? address;
-  String? isHide;
-  String? isPaused;
-  String? isApproved;
+  bool? isHide;
+  bool? isPaused;
+  bool? isApproved;
   CityDto? city;
   ProfileDto? user;
   bool? isFavorite;

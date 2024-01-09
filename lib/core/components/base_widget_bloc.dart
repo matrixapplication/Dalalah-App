@@ -77,10 +77,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     return null;
   }
 
-  // @protected
-  // List<TabModel> tabs(BuildContext context) {
-  //   return [];
-  // }
+  @protected
+  List<Widget>? actions() {
+    return null;
+  }
 
   // @protected
   // List<Widget> tabViews(BuildContext context) {
@@ -158,6 +158,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         isAddButton: isAddButton(),
         tabViews: tabViews,
         hasTabBarView: hasTabBarView(context!),
+          actions: actions()
       ),
     );
   }

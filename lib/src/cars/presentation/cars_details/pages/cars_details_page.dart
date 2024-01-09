@@ -1,5 +1,6 @@
 
 import '../../../../../core/components/base_widget_bloc.dart';
+import '../../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/car_details.dart';
 import '../bloc/cars_details_bloc.dart';
@@ -28,6 +29,17 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsDetail
     );
   }
 
+  @override
+  List<Widget> actions() {
+    int? id = getArguments(context!) as int?;
+    return [ShareIconButton(
+      padding: 15.paddingAll,
+      route: Routes.carAppLink,
+      id: id?.toString() ?? '',
+      iconColor: context?.cardColor,
+      isDecoration: false,
+    )];
+  }
   //
   //
   // @override

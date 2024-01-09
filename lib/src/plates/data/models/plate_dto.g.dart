@@ -16,9 +16,9 @@ PlateDto _$PlateDtoFromJson(Map<String, dynamic> json) => PlateDto(
       boughtStatus: json['bought_status'] as String?,
       adType: json['ad_type'] as String?,
       address: json['address'] as String?,
-      isHide: json['is_hide'] as String?,
-      isPaused: json['is_paused'] as String?,
-      isApproved: json['is_approved'] as String?,
+      isHide: json['is_hide'] as bool?,
+      isPaused: json['is_paused'] as bool?,
+      isApproved: json['is_approved'] as bool?,
       city: json['city'] == null
           ? null
           : CityDto.fromJson(json['city'] as Map<String, dynamic>),

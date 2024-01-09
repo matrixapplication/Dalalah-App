@@ -34,9 +34,14 @@ class PlatesDetailsPage extends BaseBlocWidget<UnInitState, PlatesDetailsCubit> 
   }
 
   @override
-  Widget leading(BuildContext context) {
-    return ShareIconButton(
-        padding: 15.paddingAll,
-    );
+  List<Widget> actions() {
+    Plate plate = getArguments(context!);
+    return [ShareIconButton(
+      padding: 15.paddingAll,
+      route: Routes.plateAppLink,
+      id: plate.id?.toString() ?? '',
+      iconColor: context?.cardColor,
+      isDecoration: false,
+    )];
   }
 }

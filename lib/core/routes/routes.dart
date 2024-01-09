@@ -103,8 +103,16 @@ class Routes {
   static const String exhibitionDetailsPage = 'exhibitionDetailsPage';
   static const String carsSearchPage = 'carsSearchPage';
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
+  static const String carAppLink = 'car';
+  static const String plateAppLink = 'plate';
+
 
   static final routes = <String, Widget Function(BuildContext)>{
+    '/' : (context) => NavigationPages(),
+    'ar' : (context) => NavigationPages(),
+    'en' : (context) => NavigationPages(),
+    carAppLink : (context) => CarsDetailsPage(),
+    plateAppLink : (context) => PlatesDetailsPage(),
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),

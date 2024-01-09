@@ -26,11 +26,11 @@ class PlateDto {
   @JsonKey(name: 'address')
   String? address;
   @JsonKey(name: 'is_hide')
-  String? isHide;
+  bool? isHide;
   @JsonKey(name: 'is_paused')
-  String? isPaused;
+  bool? isPaused;
   @JsonKey(name: 'is_approved')
-  String? isApproved;
+  bool? isApproved;
   @JsonKey(name: 'city')
   CityDto? city;
   @JsonKey(name: 'user')
