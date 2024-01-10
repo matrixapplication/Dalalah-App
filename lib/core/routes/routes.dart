@@ -108,7 +108,7 @@ class Routes {
 
 
   static final routes = <String, Widget Function(BuildContext)>{
-    '/' : (context) => NavigationPages(),
+    '/{id}' : (context) => NavigationPages(),
     'ar' : (context) => NavigationPages(),
     'en' : (context) => NavigationPages(),
     carAppLink : (context) => CarsDetailsPage(),
