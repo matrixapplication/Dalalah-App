@@ -35,6 +35,7 @@ import '../../src/sell_car/presentation/pages/sell_car_second_page.dart';
 import '../../src/settings/presentation/pages/about_us/about_us_page.dart';
 import '../../src/settings/presentation/pages/change-language/chang_language_page.dart';
 import '../../src/settings/presentation/pages/settings_page.dart';
+import '../../src/settings/support/pages/support_page.dart';
 import '../../src/showrooms/presentation/branches/add_branch/pages/add_branch_page.dart';
 import '../../src/showrooms/presentation/branches/pages/branches_page.dart';
 import '../../src/showrooms/presentation/showroom_details/pages/showroom_details_page.dart';
@@ -61,6 +62,7 @@ class Routes {
   static const String addBranchPage = 'addBranchPage';
   static const String commentsPage = 'commentsPage';
   static const String followedShowroomsPage = 'FollowedShowroomsPage';
+  static const String supportPage = 'supportPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -157,5 +159,6 @@ class Routes {
     exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
     showroomsAndBranchesTabs: (context) => ShowroomsAndBranchesTabs(),
+    supportPage: (context) => SupportPage(),
   };
 }

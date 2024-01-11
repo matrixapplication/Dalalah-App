@@ -103,6 +103,9 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
         onToggleFavorite: (id) {
           bloc.toggleFavorite(id);
         },
+        onRequestPrice: (id) {
+          bloc.requestPrice(id);
+        },
     );
     // return 0.ph;
   }

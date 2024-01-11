@@ -349,5 +349,10 @@
   "special": "مميزه",
   "edit": "تعديل",
   "report": "إبلاغ",
-  "delete": "حذف"
+  "delete": "حذف",
+  "address": "العنوان",
+  "subject": "الموضوع",
+  "content": "المحتوى",
+  "submit": "إرسال",
+  "help_support": "المساعدة والدعم"
 }

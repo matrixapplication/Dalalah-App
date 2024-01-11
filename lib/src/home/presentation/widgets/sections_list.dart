@@ -27,7 +27,7 @@ class SectionsList extends StatelessWidget {
           ),
           17.ph,
           SizedBox(
-            height: 100,
+            height: 110,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: sections.length,
@@ -84,7 +84,7 @@ class SectionsItem extends StatelessWidget {
               bottom: 0,
               child: Text(
                 section.title,
-                style: context.bodySmall.copyWith(),
+                style: context.bodySmall.copyWith(fontSize: 13),
                 textAlign: TextAlign.center,
                 maxLines: 2,
               ),

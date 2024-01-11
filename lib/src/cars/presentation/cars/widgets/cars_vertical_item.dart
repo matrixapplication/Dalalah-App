@@ -9,6 +9,7 @@ import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
 import '../../cars_details/widgets/car_info.dart';
+import 'car_item_footer.dart';
 import 'car_operations_popup.dart';
 
 class CarVerticalItem extends StatelessWidget {
@@ -18,11 +19,12 @@ class CarVerticalItem extends StatelessWidget {
   final double? bottomMargin;
   final String? carStatus;
   final bool imageHasOnlyTopRadius;
-  final bool isAddView;
+  final bool isEditCar;
   final bool isMyCar;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
+  final Function(int)? onRequestPrice;
 
   // final Task task;
   const CarVerticalItem({
@@ -33,19 +35,19 @@ class CarVerticalItem extends StatelessWidget {
     this.bottomMargin,
     this.imageHasOnlyTopRadius = true,
     this.carStatus,
-    this.isAddView = false, //used for checking on tap action
+    this.isEditCar = false, //used for checking on tap action
     this.isMyCar = false,
     this.onHide,
     this.onSold,
     this.onSpecial,
-    // required this.task,
+    this.onRequestPrice,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Navigators.pushNamed(
-        isAddView ? Routes.sellCarPage : Routes.carDetailsPage,
+        isEditCar ? Routes.sellCarPage : Routes.carDetailsPage,
         arguments: car.id,
       ),
       child: Container(
@@ -190,6 +192,7 @@ class CarVerticalItem extends StatelessWidget {
                           child: ShareIconButton(
                             route: Routes.carAppLink,
                             id: car.id.toString() ?? '',
+
                           ),
                         ),
                       ],
@@ -198,11 +201,13 @@ class CarVerticalItem extends StatelessWidget {
                 ],
               ),
             ),
-            // if(isAds)
-            //   CarItemFooter(
-            //     price: car.price?.toString() ?? "",
-            //     onTap: () {},
-            //   ),
+            if(car.status?.key == CarStatus.newCar)
+              CarItemFooter(
+                price: car.price?.toString() ?? "",
+                onTap: () {
+                  onRequestPrice?.call(car.id ?? 0);
+                },
+              ),
           ],
         ),
       ),

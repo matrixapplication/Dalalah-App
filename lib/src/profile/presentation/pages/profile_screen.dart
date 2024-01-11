@@ -115,6 +115,12 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.aboutUs,
                     arguments: AboutUsTypes.ABOUT_US,
                   ),
+                  ProfileItem(
+                    title: strings.help_support,
+                    icon: AppIcons.help,
+                    subTitle: strings.help_support,
+                    routeName: Routes.supportPage,
+                  ),
                   if(profile.token != null)
                   ProfileItem(
                     title: strings.delete_account,

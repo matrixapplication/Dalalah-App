@@ -1,13 +1,11 @@
 
-import 'dart:io';
-
 import '../../../../core/network/api_response.dart';
-import '../../../auth/data/models/register_params.dart';
-import '../../data/models/profile_dto.dart';
-import '../entities/profile.dart';
-
+import '../../../home/data/models/car_dto.dart';
+import '../../data/models/installment_calculation_params.dart';
+import '../../data/models/installment_cars_params.dart';
 
 
 abstract class BaseInstallmentRepo<T>{
-  Future<String> fetchInstallment();
+  Future<int> fetchInstallmentValue(InstallmentCalculationParams params);
+  Future<ApiResponse<List<CarDto>>> filterCarsByInstallment(InstallmentCarsParams params);
 }

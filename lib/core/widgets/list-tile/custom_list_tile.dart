@@ -24,12 +24,14 @@ class CustomListTile extends StatelessWidget {
       height: 50,
       child: ListTile(
         tileColor: tileColor ?? theme.colorScheme.background,
+
         leading: leading ?? AppIcon(icon: iconLeading ?? AppIcons.clock, color: iconLeadingColor ?? theme.primaryColor, size: iconLeadingSize ?? 20),
         minVerticalPadding: 11,
         title: Text(title, style: titleStyle ?? theme.textTheme.bodyMedium!.copyWith(fontSize: 18)),
         subtitle: Text(subtitle ?? '', style: theme.textTheme.displayMedium),
         trailing:
         (trailing == null && isArrowForward == false) ?    null :
+
         SizedBox(
           width: 40,
           child:

@@ -49,14 +49,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // FirebaseNotification firebase = FirebaseNotification();
     // firebase.initialize(context);
-    AppLinkingService.init();
-    AppLinkingService.goToRoute();
+    // AppLinkingService.goToRoute();
+    //
+     AppLinkingService.init();
     return BlocProvider(
       create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(
         // bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
-          print('state.language ${state.language}');
+
           return MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,

@@ -15,15 +15,15 @@ class FilterScreen extends BaseStatelessWidget {
   FilterScreen({Key? key, required this.invoices, this.onSearch})
       : super(key: key);
   final List<DropDownItem> items = [
-    DropDownItem(
+    const DropDownItem(
         id: '1',
         title: '2001'
     ),
-    DropDownItem(
+    const DropDownItem(
         id: '2',
         title: '2002'
     ),
-    DropDownItem(
+    const DropDownItem(
         id: '3',
         title: '2003'
     ),
@@ -46,7 +46,7 @@ class FilterScreen extends BaseStatelessWidget {
           //   items: ['BMW', 'Mercedes', 'Audi', 'Toyota', 'Kia', 'Hyundai'],
           //   onFilter: (value) {},
           // ),
-          CustomDivider(
+          const CustomDivider(
             height: 30,
           ),
           Text(
@@ -57,14 +57,14 @@ class FilterScreen extends BaseStatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
+              const Expanded(
                 child: AuthTextField(
                   hint: "Start Price",
                   isPassword: false,
                 ),
               ),
               16.pw,
-              Expanded(
+              const Expanded(
                 child: AuthTextField(
                   hint: "End Price",
                   isPassword: false,
@@ -101,7 +101,7 @@ class FilterScreen extends BaseStatelessWidget {
               ),
             ],
           ),
-          CustomDivider(
+          const CustomDivider(
             height: 30,
           ),
           SelectionButtonChip(
@@ -111,7 +111,7 @@ class FilterScreen extends BaseStatelessWidget {
                 .toList(),
             onSelected: (value) {},
           ),
-          CustomDivider(
+          const CustomDivider(
             height: 30,
           ),
           SelectionButtonChip(

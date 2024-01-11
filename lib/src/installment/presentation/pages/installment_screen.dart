@@ -1,17 +1,16 @@
-import 'package:dalalah/core/widgets/buttons/row_buttons.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
-import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import '../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/radio/custom_radio_list_tile2.dart';
 import '../../../main_index.dart';
+import '../../data/models/installment_calculation_params.dart';
 import '../widgets/installment_step_tile.dart';
 import '../widgets/installment_value.dart';
 
 class InstallmentScreen extends BaseStatelessWidget {
-  final StreamStateInitial<String?> installmentValueStream;
-  final Function(String) onFetchInstallmentValue;
+  final StreamStateInitial<int?> installmentValueStream;
+  final Function(InstallmentCalculationParams) onFetchInstallmentValue;
 
   InstallmentScreen(
       {super.key,
@@ -183,29 +182,34 @@ class InstallmentScreen extends BaseStatelessWidget {
                   ));
             }),
             40.ph,
-            StreamBuilder<String?>(
+            StreamBuilder<int?>(
                 stream: installmentValueStream.stream,
-                initialData: '',
                 builder: (context, snapshot) {
-                  return snapshot.data!.isNullOrEmpty()
+                  return snapshot.data == null
                       ? 0.ph
                       : InstallmentValue(
-                          installmentValue: snapshot.data ?? '',
+                          installmentValue: snapshot.data?.toString() ?? '',
                         );
                 }),
             30.ph,
-            StreamBuilder<String?>(
+            StreamBuilder<int?>(
                 stream: installmentValueStream.stream,
-                initialData: '',
                 builder: (context, snapshot) {
                   return PrimaryOutlinesButtons(
-                    title1: snapshot.data!.isNullOrEmpty()
+                    title1: snapshot.data == null
                         ? strings.calculate_your_installment
                         : strings.see_available_cars,
                     title2: strings.remove_filters,
                     onPressed1: () {
-                      if (snapshot.data!.isNullOrEmpty()) {
-                        onFetchInstallmentValue(totalSalaryController.text);
+                      if (snapshot.data == null) {
+                        onFetchInstallmentValue(
+                            onFetchInstallmentValue(InstallmentCalculationParams(
+                          creditCard: isExist ? int.parse(creditLimitController.text) : 0,
+                          grossSalary: int.parse(totalSalaryController.text),
+                          mortgage: mortgageAcceptStream.data! ? int.parse(mortgageAcceptController.text) : 0,
+                          personalFinance: personalFinanceAcceptStream.data! ? int.parse(personalFinanceAcceptController.text) : 0,
+                        ))
+                        );
                       } else {
                         Navigator.pushNamed(
                             context, Routes.monthlyInstallmentPage);
@@ -214,7 +218,7 @@ class InstallmentScreen extends BaseStatelessWidget {
                     onPrevPressed: () {
                       totalSalaryController.clear();
                       creditLimitController.clear();
-                      installmentValueStream.setData('');
+                      installmentValueStream.setData(null);
                     },
                   );
                 }),

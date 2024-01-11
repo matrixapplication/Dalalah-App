@@ -90,6 +90,18 @@ class HelperMethods {
     }
   }
 
+  static Future<void> launchEmail(String email) async {
+    Uri emailUrl = Uri(
+        scheme: 'mailto',
+        path: email,
+    );
+    if (await canLaunchUrl(emailUrl)) {
+      await launchUrl(emailUrl);
+    } else {
+      showErrorToast('حدث خطأ أثناء الاتصال بالبريد الالكتروني');
+    }
+  }
+
   // show date picker
   static Future<String> datePicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(

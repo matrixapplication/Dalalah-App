@@ -2,9 +2,11 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
+import '../../domain/entities/add_support_params.dart';
 import '../../domain/repositories/base_settings_repo.dart';
 import '../data_sources/settings_datasource.dart';
 import '../models/about_us_dto.dart';
+import '../models/contact_us_dto.dart';
 
 @Injectable(as: BaseSettingsRepo)
 class SettingsRepo extends BaseSettingsRepo{
@@ -34,6 +36,18 @@ class SettingsRepo extends BaseSettingsRepo{
   Future<ApiResponse<AboutUsDto>> fetchPrivacy() async{
     final data = await apiProvider.fetchPrivacy();
     return data;
+  }
+
+  @override
+  Future<String> addSupport(AddSupportParams params) async{
+    final data = await apiProvider.addSupport(params);
+    return data.message ?? '';
+  }
+
+  @override
+  Future<ContactUsDto> fetchContactUs() async{
+    final data = await apiProvider.fetchContactUs();
+    return data.data!;
   }
 
 }

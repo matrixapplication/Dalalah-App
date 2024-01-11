@@ -1,5 +1,6 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
 
+import '../../../../../core/routes/app_links_service.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/login_params.dart';
@@ -14,6 +15,10 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
+
+    // AppLinkingService.goToRoute();
+    //
+    // AppLinkingService.init();
     return AuthWidget(
       //  child: Text('Login', style: context.titleLarge),
       child: LoginScreen(

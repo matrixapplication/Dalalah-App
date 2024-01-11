@@ -10,7 +10,7 @@
   "announcement_date": "Announcement Date",
   "call": "Call",
   "whatsapp": "WhatsApp",
-  "financing_services": "Financing Services",
+  "financing_services": "Financing\nServices",
   "more": "More",
   "show_rooms": "Showrooms",
   "add": "Add",
@@ -359,5 +359,10 @@
   "special": "special",
   "edit": "Edit",
   "report": "Report",
-    "delete": "Delete"
+    "delete": "Delete",
+  "address": "Address",
+  "subject": "Subject",
+    "content": "Content",
+  "submit": "Submit",
+  "help_support": "Help & Support"
 }

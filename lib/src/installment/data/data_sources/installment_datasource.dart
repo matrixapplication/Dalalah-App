@@ -7,6 +7,9 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dalalah/core/network/api_response.dart';
 
 import '../../../../core/utils/constants.dart';
+import '../../../home/data/models/car_dto.dart';
+import '../models/installment_calculation_params.dart';
+import '../models/installment_cars_params.dart';
 import '../models/profile_dto.dart';
 
 
@@ -18,15 +21,9 @@ abstract class  InstallmentDataSource{
   @factoryMethod
   factory InstallmentDataSource(Dio dio) = _InstallmentDataSource;
 
-  @GET('/get-user')
-  Future<ApiResponse<ProfileDtoTest>> fetchInstallment();
+  @POST('/installment_calculation')
+  Future<ApiResponse<int>> fetchInstallmentValue(@Body() InstallmentCalculationParams params);
 
-  @POST('/deleteAccount')
-  Future<ApiResponse<String>> deleteProfileData();
-
-  @POST('/edit-user')
-  Future<ApiResponse<ProfileDtoTest>> editProfileData(@Body() RegisterParams params);
-
-  @POST('/edit-user-image')
-  Future<ApiResponse<ProfileDtoTest>> editProfileImage(@Part(name: 'image') File image);
+  @POST('/installment_filter')
+  Future<ApiResponse<List<CarDto>>> filterCarsByInstallment(@Queries() InstallmentCarsParams params);
 }
