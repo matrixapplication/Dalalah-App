@@ -132,8 +132,7 @@ flutter_native_splash:
 flutter_icons:
   android: true
   ios: true
-  adaptive_icon_background: "assets/logo/logo.png"
-  adaptive_icon_foreground: "assets/logo/logo.png"
+  image_path: "assets/logo/logo.png"
   remove_alpha_ios: true
 
 # The following section is specific to Flutter packages.

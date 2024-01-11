@@ -1,0 +1,11 @@
+{
+  "applinks": {
+      "apps": [],
+      "details": [
+      {
+        "appID": "5L2F4NS698.com.dalalah.app",
+        "paths": ["*"]
+      }
+    ]
+  }
+}
