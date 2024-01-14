@@ -1,5 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/decorations/decorations.dart';
@@ -49,13 +50,19 @@ class CommentItem extends StatelessWidget {
           ),
         ),
 
-        CommentOperationsPopup(
-          onReport: () {
-             onReport?.call(comment.id ?? 0);
-          },
-          onDelete: () {
-             onDelete?.call(comment.id ?? 0);
-          },
+        FutureBuilder(
+          future: HelperMethods.isMe(comment.user?.id ?? 0),
+          builder: (context, snapshot) {
+            return CommentOperationsPopup(
+              isMyComment: snapshot.data ?? false,
+              onReport: () {
+                 onReport?.call(comment.id ?? 0);
+              },
+              onDelete: () {
+                 onDelete?.call(comment.id ?? 0);
+              },
+            );
+          }
         ),
       ],
     );

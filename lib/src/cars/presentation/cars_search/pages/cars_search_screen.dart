@@ -16,8 +16,8 @@ class CarsSearchScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double startPriceRange = 20000;
-    double endPriceRange = 80000;
+    double startPriceRange = 10000;
+    double endPriceRange = 9000000;
     int startYear = 0;
     int endYear = 0;
     String driveTypeId = '';

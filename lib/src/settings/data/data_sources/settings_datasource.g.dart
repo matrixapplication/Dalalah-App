@@ -179,7 +179,7 @@ class _SettingsDatasource implements SettingsDatasource {
     _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )

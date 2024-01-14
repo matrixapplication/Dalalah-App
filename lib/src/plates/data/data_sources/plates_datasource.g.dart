@@ -254,7 +254,7 @@ class _PlatesDatasource implements PlatesDatasource {
     )
             .compose(
               _dio.options,
-              '/add-feature',
+              '/add_plate_feature',
               queryParameters: queryParameters,
               data: _data,
             )

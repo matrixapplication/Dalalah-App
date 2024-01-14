@@ -25,10 +25,12 @@ class PlateDto {
   String? adType;
   @JsonKey(name: 'address')
   String? address;
+  @JsonKey(name: 'is_featured')
+  bool? isFeatured;
+  @JsonKey(name: 'is_sold')
+  bool? isSold;
   @JsonKey(name: 'is_hide')
   bool? isHide;
-  @JsonKey(name: 'is_paused')
-  bool? isPaused;
   @JsonKey(name: 'is_approved')
   bool? isApproved;
   @JsonKey(name: 'city')
@@ -40,7 +42,7 @@ class PlateDto {
   @JsonKey(name: 'created_at')
   String? createdAt;
 
-  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
+  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
 
    factory PlateDto.fromJson(Map<String, dynamic> json) => _$PlateDtoFromJson(json);
 

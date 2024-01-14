@@ -70,7 +70,7 @@ import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i60;
 import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i90;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i14;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
     as _i40;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
@@ -105,7 +105,7 @@ import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i66;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i83;
 import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i96;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i14;
+    as _i15;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
     as _i42;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
@@ -213,9 +213,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i37.BaseInstallmentRepo<dynamic>>(
       () => _i38.InstallmentRepo(gh<_i12.InstallmentDataSource>()));
   gh.factory<_i39.BaseNotificationsRepo>(
-      () => _i40.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i40.WalletRepo(gh<_i14.NotificationsDatasource>()));
   gh.factory<_i41.BaseNotificationsRepo>(
-      () => _i42.WalletRepo(gh<_i14.NotificationsDatasource>()));
+      () => _i42.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i43.BasePlatesRepo>(
       () => _i44.PlatesRepo(gh<_i16.PlatesDatasource>()));
   gh.factory<_i45.BasePriceRequestsRepo>(

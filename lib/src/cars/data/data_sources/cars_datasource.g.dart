@@ -287,7 +287,7 @@ class _CarsDatasource implements CarsDatasource {
     )
             .compose(
               _dio.options,
-              '/add-feature',
+              '/add_car_feature',
               queryParameters: queryParameters,
               data: _data,
             )

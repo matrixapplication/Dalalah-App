@@ -4,6 +4,7 @@ import 'package:dalalah/src/plates/presentation/add_plate/pages/plate_filter_scr
 import 'package:dalalah/src/sell_car/domain/entities/city.dart';
 import 'package:dalalah/src/settings/support/pages/support_screen.dart';
 
+import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/contact_us.dart';
 import '../bloc/support_bloc.dart';
@@ -28,10 +29,10 @@ class SupportPage extends BaseBlocWidget<DataSuccess<ContactUs>, SupportCubit> {
     );
   }
 
-  // @override
-  // void onSuccessDismissed() {
-  //   Navigators.pushNamed(Routes.addCarPremiumPage);
-  // }
+  @override
+  void onSuccessDismissed() {
+    pushNamed(Routes.navigationPages);
+  }
 
   @override
   String? title(BuildContext context) {

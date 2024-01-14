@@ -356,6 +356,8 @@
   "hide": "Hide",
     "show": "Show",
   "sold": "Sold",
+  "un_sold": "Un Sold",
+  "cancel_sale": "Cancel Sale",
   "special": "special",
   "edit": "Edit",
   "report": "Report",
@@ -364,5 +366,9 @@
   "subject": "Subject",
     "content": "Content",
   "submit": "Submit",
-  "help_support": "Help & Support"
+  "help_support": "Help & Support",
+  "hidden": "Hidden",
+  "pending": "Pending",
+  "visible": "Visible",
+  "edit_plate": "Edit Plate"
 }

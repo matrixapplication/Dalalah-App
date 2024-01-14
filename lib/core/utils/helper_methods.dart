@@ -211,6 +211,10 @@ class HelperMethods {
     return await getProfile()?.then((value) => value?.id ?? 0) ?? 0;
   }
 
+  static Future<bool> isMe(int id) async {
+    return await getUserId().then((value) => value == id);
+  }
+
 
   static Future<String> getUserRole() async {
     return await getProfile()?.then((value) => value?.role ?? '') ?? '';

@@ -1,23 +1,28 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/decorations/decorations.dart';
-import '../../../../../core/routes/routes.dart';
-import '../../../../../core/utils/navigator.dart';
-import '../../../../home/domain/entities/car.dart';
-import '../../../../plates/domain/entities/plate.dart';
+import '../../../../core/components/base_stateless_widget.dart';
+import '../../../../core/decorations/decorations.dart';
+import '../../../../core/routes/routes.dart';
+import '../../../../core/utils/navigator.dart';
+import '../../../home/domain/entities/car.dart';
+import '../../../plates/domain/entities/plate.dart';
+import '../../../plates/domain/entities/plate_args.dart';
 
-class CarOperationsPopup extends StatelessWidget {
+class CarOperationsPopup extends BaseStatelessWidget {
   final Car? car;
   final Plate? plate;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
-  const CarOperationsPopup({super.key, this.car, this.plate, this.onHide, this.onSold, this.onSpecial});
+  CarOperationsPopup({super.key, this.car, this.plate, this.onHide, this.onSold, this.onSpecial});
 
   @override
   Widget build(BuildContext context) {
     int id  = car?.id ?? plate?.id ?? 0;
+    bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
+    bool isSold = car?.isSold ?? plate?.isSold ?? false;
+    bool isHidden = car?.isHide ?? plate?.isHide ?? false;
     return Container(
       height: 32,
       width: 32,
@@ -32,24 +37,29 @@ class CarOperationsPopup extends StatelessWidget {
         itemBuilder: (context) => [
           PopupMenuItem(
             value: 1,
+            padding: EdgeInsets.zero,
             child: PopupItem(
-              title: context.strings.edit,
+              title: strings.edit,
             ),
           ),
           PopupMenuItem(
             value: 2,
+            padding: EdgeInsets.zero,
             child: PopupItem(
-              title: context.strings.hide,
+              title: isHidden ? strings.visible : strings.hide,
             ),
           ),
           PopupMenuItem(
             value: 3,
+            padding: EdgeInsets.zero,
             child: PopupItem(
-              title: context.strings.sold,
+              title: isSold ? strings.cancel_sale : strings.sold,
             ),
           ),
+          if(!isFeatured)
           PopupMenuItem(
             value: 4,
+            padding: EdgeInsets.zero,
             child: PopupItem(
               title: context.strings.special,
             ),
@@ -58,7 +68,7 @@ class CarOperationsPopup extends StatelessWidget {
         child: Icon(Icons.more_vert, color: context.outlineVariant, size: 18),
         onSelected: (value) {
           if (value == 1) {
-            pushNamed(car != null ?Routes.sellCarPage : Routes.plateFilterPage , arguments: car ?? plate);
+            pushNamed(car != null ?Routes.sellCarPage : Routes.plateFilterPage , arguments: car ?? PlateArgs(plate: plate, isEdit: true));
           } else if (value == 2) {
             if (onHide != null) {
               onHide!(id);
@@ -86,9 +96,15 @@ class PopupItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(title, style: context.bodyMedium.copyWith(fontSize: 12)),
-        const SizedBox(height: 5),
+        Padding(
+          padding: 5.paddingHoriz + 10.paddingBottom,
+          child: Text(title, style: context.bodyMedium.copyWith(fontSize: 12), textAlign: TextAlign.center,),
+        ),
+        5.pw,
+
         Divider(color: context.outlineVariant, height: 1),
       ],
     );

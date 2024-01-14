@@ -10,8 +10,8 @@ class PriceRangeSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double startPriceRange = 20000;
-    double endPriceRange = 80000;
+    double startPriceRange = 10000;
+    double endPriceRange = 9000000;
 
     return
       StatefulBuilder(
@@ -29,7 +29,7 @@ class PriceRangeSlider extends StatelessWidget {
                   endPriceRange,
                 ),
                 min: 10000,
-                max: 500000,
+                max: 9000000,
                 divisions: 1000,
                 activeColor: context.primaryColor,
                 inactiveColor: context.colorScheme.outline,

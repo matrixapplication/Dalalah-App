@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/buttons/edit_icon_button.dart';
-import '../../../../cars/presentation/cars/widgets/car_operations_popup.dart';
+import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
+import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
 import '../../../domain/entities/plate.dart';
 
 ///  Created by harby on 10/11/2023.
@@ -15,6 +16,7 @@ class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;
   final bool isAll;
+  final bool isMyPlate;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
@@ -24,6 +26,7 @@ class PlateItem extends StatelessWidget {
     required this.plate,
      this.onFavoritePlate,
     this.isAll = false,
+    this.isMyPlate = false,
     this.onHide,
     this.onSold,
     this.onSpecial,
@@ -94,8 +97,16 @@ class PlateItem extends StatelessWidget {
                     ],
                   ),
                 ),
+
+                if(isMyPlate)
+                  MyAdStatus(
+                    isSold: plate.isSold ?? false,
+                    isHidden: plate.isHide ?? false,
+                    isApproved: plate.isFeatured ?? false,
+                  ),
               ],
             ),
+            if(isMyPlate)
             CarOperationsPopup(
               plate: plate,
               onHide: onHide,

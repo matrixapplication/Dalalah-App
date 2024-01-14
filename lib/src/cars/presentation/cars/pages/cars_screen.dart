@@ -1,7 +1,8 @@
 
-
 import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
+import '../../../../sell_car/domain/entities/car_status.dart';
+import '../../../../showrooms/presentation/showroom_details/widgets/new_car_item.dart';
 import '../widgets/cars_vertical_item.dart';
 
 class CarsScreen extends BaseStatelessWidget {
@@ -25,7 +26,13 @@ class CarsScreen extends BaseStatelessWidget {
       padding: 10.paddingHoriz + 10.paddingTop,
       controller: ScrollController(),
       itemBuilder: (context, index) {
-        return CarVerticalItem(
+        bool isNew = cars[index].status?.key == CarStatus.newCar;
+        return (isNew && !isMyCar) ? NewCarItem(
+          car: cars[index],
+          onToggleFavorite: onToggleFavorite,
+          onRequestPrice: onRequestPrice,
+        ) :
+          CarVerticalItem(
           imageHasOnlyTopRadius: false,
           isMyCar: isMyCar,
           car: cars[index],

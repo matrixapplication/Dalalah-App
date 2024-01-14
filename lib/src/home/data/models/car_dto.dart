@@ -95,7 +95,7 @@ class CarDto {
   @JsonKey(name: 'features')
   List<FeatureDto>? features;
 
-  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved,this.isFavorite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features});
+  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavorite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features});
 
    factory CarDto.fromJson(Map<String, dynamic> json) => _$CarDtoFromJson(json);
 

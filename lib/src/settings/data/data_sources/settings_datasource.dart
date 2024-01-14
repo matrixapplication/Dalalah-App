@@ -31,6 +31,6 @@ abstract class  SettingsDatasource{
   @GET('/ContactUs')
   Future<ApiResponse<ContactUsDto>> fetchContactUs();
 
-  @GET('/support')
+  @POST('/support')
   Future<ApiResponse> addSupport(@Body() AddSupportParams params);
 }

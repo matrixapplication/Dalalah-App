@@ -32,7 +32,6 @@ class SupportScreen extends BaseStatelessWidget {
             CustomTextField(
               controller: subjectController,
               hintText: strings.subject,
-              keyboardType: TextInputType.number,
             ),
             20.ph,
             CustomTextField(

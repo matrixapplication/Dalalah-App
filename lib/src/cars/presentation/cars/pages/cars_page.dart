@@ -130,7 +130,8 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   bool isAddButton() {
-    return true;
+    isFilter =  (params == null && getArguments(context!) == null);
+    return isFilter;
   }
 
   @override

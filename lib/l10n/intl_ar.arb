@@ -346,6 +346,7 @@
   "hide": "اخفاء",
   "show": "عرض",
   "sold": "تم البيع",
+  "cancel_sale": "إلغاء البيع",
   "special": "مميزه",
   "edit": "تعديل",
   "report": "إبلاغ",
@@ -354,5 +355,9 @@
   "subject": "الموضوع",
   "content": "المحتوى",
   "submit": "إرسال",
-  "help_support": "المساعدة والدعم"
+  "help_support": "المساعدة والدعم",
+  "hidden": "مخفي",
+  "pending": "معلقه",
+  "visible": "مرئي",
+  "edit_plate": "تعديل اللوحة"
 }

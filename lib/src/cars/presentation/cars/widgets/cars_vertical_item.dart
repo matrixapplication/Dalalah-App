@@ -5,14 +5,17 @@ import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 import '../../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
+import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/sub_custom_container.dart';
 import '../../../../main_index.dart';
 import '../../cars_details/widgets/car_info.dart';
 import 'car_item_footer.dart';
-import 'car_operations_popup.dart';
+import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
+import '../../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
+import 'featured_icon.dart';
 
-class CarVerticalItem extends StatelessWidget {
+class CarVerticalItem extends BaseStatelessWidget {
   final Car car;
   final Function(int)? onToggleFavorite;
   final bool isCatItem;
@@ -27,7 +30,7 @@ class CarVerticalItem extends StatelessWidget {
   final Function(int)? onRequestPrice;
 
   // final Task task;
-  const CarVerticalItem({
+   CarVerticalItem({
     Key? key,
     required this.car,
     this.onToggleFavorite,
@@ -45,6 +48,7 @@ class CarVerticalItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("isSold ${car.isSold}}");
     return InkWell(
       onTap: () => Navigators.pushNamed(
         isEditCar ? Routes.sellCarPage : Routes.carDetailsPage,
@@ -97,33 +101,34 @@ class CarVerticalItem extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           const Spacer(),
+                          if(isMyCar && car.isSold == false && car.isHide == false && car.isApproved == false)
+                            FittedBox(
+                              child: MyAdStatus(
+                                isSold: car.isSold ?? false,
+                                isHidden: car.isHide ?? false,
+                                isApproved: car.isApproved ?? false,
+                              ),
+                            ),
                           FittedBox(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                CustomChip(
-                                  backgroundColor: AppColors.grey_d9,
-                                  value: car.status?.name ?? '',
-                                  fontSize: 14,
-                                  labelColor: AppColors.blue_31,
-                                  padding: 3.paddingVert + 10.paddingHoriz,
+                                ChipAd(
+                                  text: car.status?.name ?? '',
                                 ),
-                                14.pw,
-                                CustomChip(
-                                  backgroundColor: AppColors.grey_d9,
-                                  value: car.year ?? "",
-                                  fontSize: 14,
-                                  labelColor: AppColors.blue_31,
-                                  padding: 3.paddingVert + 10.paddingHoriz,
+                                10.pw,
+                                ChipAd(
+                                  text: car.year ?? "",
                                 ),
                               ],
                             ),
                           ),
-                          10.ph,
+                          5.ph,
                           PriceWidget(
                             price: '${car.price}',
                             // padding: 3.paddingVert + 5.paddingHoriz,
                           ),
-                          10.ph,
+                          5.ph,
                           CarInfo(
                             isNew: CarStatus.newCar == car.status?.key,
                             car: car,
@@ -147,30 +152,14 @@ class CarVerticalItem extends StatelessWidget {
                               : BorderRadiusDirectional.circular(5),
                         ),
                         if (car.isFeatured ?? false)
-                          PositionedDirectional(
-                            top: 7,
-                            start: 6,
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              decoration: const ShapeDecoration(
-                                color: Colors.white,
-                                shape: OvalBorder(),
-                                shadows: [
-                                  BoxShadow(
-                                    color: Color(0x3F8D8D8D),
-                                    blurRadius: 4,
-                                    offset: Offset(0, 4),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                              ),
-                              child: Image.asset(AppImages.primary_car),
-                            ),
+                          const PositionedDirectional(
+                            top: 5,
+                            start: 5,
+                            child: FeaturedIcon(),
                           ),
                         PositionedDirectional(
-                          top: 2,
-                          end: 2,
+                          top: 5,
+                          end: 5,
                           child: isMyCar
                               ? CarOperationsPopup(
                                   car: car,
@@ -187,12 +176,11 @@ class CarVerticalItem extends StatelessWidget {
                                 ),
                         ),
                         PositionedDirectional(
-                          bottom: 0,
-                          end: 0,
+                          bottom: 5,
+                          end: 5,
                           child: ShareIconButton(
                             route: Routes.carAppLink,
                             id: car.id.toString() ?? '',
-
                           ),
                         ),
                       ],
@@ -201,13 +189,13 @@ class CarVerticalItem extends StatelessWidget {
                 ],
               ),
             ),
-            if(car.status?.key == CarStatus.newCar)
-              CarItemFooter(
-                price: car.price?.toString() ?? "",
-                onTap: () {
-                  onRequestPrice?.call(car.id ?? 0);
-                },
-              ),
+
+              //   CarItemFooter(
+            //     price: car.price?.toString() ?? "",
+            //     onTap: () {
+            //       onRequestPrice?.call(car.id ?? 0);
+            //     },
+            //   ),
           ],
         ),
       ),
