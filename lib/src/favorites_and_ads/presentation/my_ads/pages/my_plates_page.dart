@@ -13,7 +13,7 @@ class MyPlatesPage
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyPlates(isMoreData: true);
+    bloc.fetchMyPlates();
   }
 
   RefreshController refreshController =
@@ -32,7 +32,7 @@ class MyPlatesPage
         refreshController.refreshCompleted();
       },
       onLoading: () async {
-        await bloc.fetchMyPlates(isMoreData: true);
+        await bloc.fetchMyPlates(isRefresh: false);
         // await Future.delayed(const Duration(milliseconds: 1200));
         if (bloc.isLastPage) {
           print('isLastPage ${bloc.isLastPage}');

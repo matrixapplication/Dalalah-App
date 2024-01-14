@@ -5,16 +5,19 @@ import '../../../../../core/decorations/decorations.dart';
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../home/domain/entities/car.dart';
+import '../../../../plates/domain/entities/plate.dart';
 
 class CarOperationsPopup extends StatelessWidget {
-  final Car car;
+  final Car? car;
+  final Plate? plate;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
-  const CarOperationsPopup({super.key, required this.car, this.onHide, this.onSold, this.onSpecial});
+  const CarOperationsPopup({super.key, this.car, this.plate, this.onHide, this.onSold, this.onSpecial});
 
   @override
   Widget build(BuildContext context) {
+    int id  = car?.id ?? plate?.id ?? 0;
     return Container(
       height: 32,
       width: 32,
@@ -55,18 +58,18 @@ class CarOperationsPopup extends StatelessWidget {
         child: Icon(Icons.more_vert, color: context.outlineVariant, size: 18),
         onSelected: (value) {
           if (value == 1) {
-            pushNamed(Routes.sellCarPage, arguments: car);
+            pushNamed(car != null ?Routes.sellCarPage : Routes.plateFilterPage , arguments: car ?? plate);
           } else if (value == 2) {
             if (onHide != null) {
-              onHide!(car.id ?? 0);
+              onHide!(id);
             }
           } else if (value == 3) {
             if (onSold != null) {
-              onSold!(car.id ?? 0);
+              onSold!(id);
             }
           } else if (value == 4) {
             if (onSpecial != null) {
-              onSpecial!(car.id ?? 0);
+              onSpecial!(id);
             }
           }
         },

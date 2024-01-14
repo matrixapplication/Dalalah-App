@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/buttons/edit_icon_button.dart';
+import '../../../../cars/presentation/cars/widgets/car_operations_popup.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../domain/entities/plate.dart';
 
@@ -14,12 +15,18 @@ class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;
   final bool isAll;
+  final Function(int)? onHide;
+  final Function(int)? onSold;
+  final Function(int)? onSpecial;
 
   const PlateItem({
     Key? key,
     required this.plate,
      this.onFavoritePlate,
     this.isAll = false,
+    this.onHide,
+    this.onSold,
+    this.onSpecial,
   }) : super(key: key);
 
   @override
@@ -55,35 +62,46 @@ class PlateItem extends StatelessWidget {
             )
           ],
         ),
-        child: Column(
+        child: Stack(
+          alignment: Alignment.topLeft,
           children: [
-            PlateImage(
-                plate: plate,
-                isDetails: true,
-            ),
-            Padding(
-              padding: 0.paddingVert + 10.paddingHoriz,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}',
-                    style: context.bodyMedium,
+            Column(
+              children: [
+                PlateImage(
+                    plate: plate,
+                    isDetails: true,
+                ),
+                Padding(
+                  padding: 0.paddingVert + 10.paddingHoriz,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}',
+                        style: context.bodyMedium,
+                      ),
+                      PriceWidget(price: plate.price ?? '0'),
+                      onFavoritePlate == null
+                          ? const EditIconButton(
+                              iconSize: 30,
+                              circleSize: 40,
+                            )
+                          : FavoriteButton(
+                              isFavorite: plate.isFavorite  ?? false,
+                        onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
+                        iconSize: 15,
+                            ),
+                    ],
                   ),
-                  PriceWidget(price: plate.price ?? '0'),
-                  onFavoritePlate == null
-                      ? const EditIconButton(
-                          iconSize: 30,
-                          circleSize: 40,
-                        )
-                      : FavoriteButton(
-                          isFavorite: plate.isFavorite  ?? false,
-                    onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
-                    iconSize: 15,
-                        ),
-                ],
-              ),
+                ),
+              ],
             ),
+            CarOperationsPopup(
+              plate: plate,
+              onHide: onHide,
+              onSold: onSold,
+              onSpecial: onSpecial,
+            )
           ],
         ),
       ),

@@ -31,7 +31,7 @@ class InstallmentBloc extends BaseCubit {
   RefreshController refreshController =
   RefreshController(initialRefresh: false);
 
-  fetchShowroomCars(int installment, {bool isRefresh = true}) async {
+  filterCarsByInstallment(int installment, {bool isRefresh = true}) async {
     isRefresh ? {page = 1, allCars.clear()} : page++;
     params.installment = installment;
     params.page = page;

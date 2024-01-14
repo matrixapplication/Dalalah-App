@@ -2,6 +2,7 @@ import 'package:dalalah/src/plates/domain/entities/ad_types.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/bloc/base_cubit.dart';
+import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../cars/data/models/add_special_params.dart';
 import '../../../../plates/domain/entities/plate.dart';
@@ -24,19 +25,23 @@ class MyPlatesCubit extends BaseCubit {
   int page = 0;
   bool isLastPage = false;
 
-  fetchMyPlates({bool isMoreData = false}) async {
-    !isMoreData ? {page = 1, allPlates.clear()} : page++;
+  fetchMyPlates({bool isRefresh = true}) async {
+    isRefresh ? {page = 1, allPlates.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isRefresh: isMoreData,
+      isRefresh: isRefresh,
           () => usecase.fetchMyPlates(page),
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages)! <= page;
         print('isLastPage ${isLastPage}');
         plates = data.data?.map((e) => Plate.fromDto(e)).toList() ?? [];
         allPlates.addAll(plates);
-        plates.length > 15 ? null : plates = [];
-        emit(DataSuccess<List<Plate>>(allPlates));
+        if(plates.isEmpty){
+          throw EmptyListException();
+        } else {
+          allPlates.addAll(plates);
+          emit(DataSuccess<List<Plate>>(allPlates));
+        }
       },
     );
   }

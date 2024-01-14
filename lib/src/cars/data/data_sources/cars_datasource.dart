@@ -43,7 +43,7 @@ abstract class  CarsDatasource{
   @POST('/is_sold/{id}')
   Future<ApiResponse> soldCar(@Path('id') int id);
 
-  @POST('/add-feature')
+  @POST('/add_car_feature')
   Future<ApiResponse> addSpecialCar(@Queries() AdSpecialParams params);
 
 }

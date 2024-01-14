@@ -15,10 +15,7 @@ class MonthlyInstallmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InstallmentValue(installmentValue: installmentValue,
-            padding: 20.paddingAll,
-        ),
-        10.ph,
+
         Expanded(
           child: CarsList(
             cars: cars,

@@ -83,40 +83,39 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        showroom.showroomName ?? '',
+                        style: context.textTheme.labelLarge!.copyWith(
+                          color: AppColors.grey_41,
+                        ),
+                      ),
+                      10.ph,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          FittedBox(
-                            child: Text(
-                              showroom.showroomName ?? '',
-                              style: context.textTheme.labelLarge!.copyWith(
-                                color: AppColors.grey_41,
-                              ),
+                          IconText(
+                            text: showroom.address ?? '',
+                            textStyle: context.textTheme.displayLarge!.copyWith(
+                              color: AppColors.grey_68,
                             ),
+                            icon: AppIcons.yellow_location,
+                            // iconColor: Colors.yellow,
+                            iconSize: 22,
+                            mainAxisAlignment: MainAxisAlignment.start,
                           ),
                           IconTextButton(
-                            padding: 10.paddingTop,
                             icon: AppIcons.star,
+                            iconSize: 20,
                             text: showroom.avgRate?.toString() ?? '',
                             textStyle: context.bodyMedium.copyWith(
                               color: context.yellow_00,
                             ),
                             onTap: () async {
-                               onAddRate?.call();
+                              onAddRate?.call();
                             },
                           ),
                         ],
-                      ),
-                      10.ph,
-                      IconText(
-                        text: showroom.address ?? '',
-                        textStyle: context.textTheme.displayLarge!.copyWith(
-                          color: AppColors.grey_68,
-                        ),
-                        icon: AppIcons.yellow_location,
-                        // iconColor: Colors.yellow,
-                        iconSize: 22,
-                        mainAxisAlignment: MainAxisAlignment.start,
                       ),
                       3.ph,
                     ],

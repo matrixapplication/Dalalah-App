@@ -40,6 +40,6 @@ abstract class PlatesDatasource {
   @POST('/sold_plate/{id}')
   Future<ApiResponse> soldPlate(@Path('id') int id);
 
-  @POST('/add-feature')
+  @POST('/add_plate_feature')
   Future<ApiResponse> addSpecialPlate(@Queries() AdSpecialParams params);
 }

@@ -24,6 +24,6 @@ abstract class  InstallmentDataSource{
   @POST('/installment_calculation')
   Future<ApiResponse<int>> fetchInstallmentValue(@Body() InstallmentCalculationParams params);
 
-  @POST('/installment_filter')
+  @GET('/installment_filter')
   Future<ApiResponse<List<CarDto>>> filterCarsByInstallment(@Queries() InstallmentCarsParams params);
 }

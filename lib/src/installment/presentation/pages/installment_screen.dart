@@ -16,15 +16,16 @@ class InstallmentScreen extends BaseStatelessWidget {
       {super.key,
       required this.installmentValueStream,
       required this.onFetchInstallmentValue});
+  TextEditingController totalSalaryController = TextEditingController();
+  TextEditingController creditLimitController = TextEditingController();
+  TextEditingController personalFinanceAcceptController = TextEditingController();
+  TextEditingController mortgageAcceptController = TextEditingController();
+  StreamStateInitial<bool> personalFinanceAcceptStream = StreamStateInitial<bool>();
+  StreamStateInitial<bool> mortgageAcceptStream = StreamStateInitial<bool>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController totalSalaryController = TextEditingController();
-    TextEditingController creditLimitController = TextEditingController();
-    TextEditingController personalFinanceAcceptController = TextEditingController();
-    TextEditingController mortgageAcceptController = TextEditingController();
-    StreamStateInitial<bool> personalFinanceAcceptStream = StreamStateInitial<bool>();
-    StreamStateInitial<bool> mortgageAcceptStream = StreamStateInitial<bool>();
 
     bool isExist = true;
 
@@ -39,191 +40,200 @@ class InstallmentScreen extends BaseStatelessWidget {
       ),
     ];
 
-    return SingleChildScrollView(
-      padding: 16.paddingHoriz + 25.paddingVert,
-      child: Container(
-        padding: 15.paddingAll,
-        decoration: Decorations.kDecorationBorder(
-          borderColor: context.colorScheme.outline,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              strings
-                  .calculate_the_monthly_installment_and_installment_period_or_determine_your_budget,
-              style: context.bodyMedium,
-            ),
-            30.ph,
-            InstallmentStepTile(
-              stepNumber: 1,
-              title: strings.total_salary,
-              child: CustomTextField(
-                controller: totalSalaryController,
-                hintText: strings.enter_the_value_in_saudi_riyals,
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        padding: 16.paddingHoriz + 25.paddingVert,
+        child: Container(
+          padding: 15.paddingAll,
+          decoration: Decorations.kDecorationBorder(
+            borderColor: context.colorScheme.outline,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                strings
+                    .calculate_the_monthly_installment_and_installment_period_or_determine_your_budget,
+                style: context.bodyMedium,
               ),
-            ),
-            InstallmentStepTile(
-              stepNumber: 2,
-              title: strings.select_employer,
-              child: DropDownField(
-                hint: strings.employer,
-                items: items,
-                height: 55,
-                onChanged: (value) {},
+              30.ph,
+              InstallmentStepTile(
+                stepNumber: 1,
+                title: strings.total_salary,
+                child: CustomTextField(
+                  controller: totalSalaryController,
+                  hintText: strings.enter_the_value_in_saudi_riyals,
+                  keyboardType: TextInputType.number,
+                ),
               ),
-            ),
-            InstallmentStepTile(
-              stepNumber: 3,
-              title: strings.personal_finance,
-              spaceBetweenTitleAndChild: 25,
-              child: Column(
-                children: [
-                  CustomChooseWidget(
-                    onTap: (value) {
-                      personalFinanceAcceptStream.setData(value);
-                    },
-                    items: [
-                      ChooseItemModel(
-                        label: strings.exist,
-                        value: true,
-                      ),
-                      ChooseItemModel(
-                        label: strings.not_exist,
-                        value: false,
-                      ),
-                    ],
-                  ),
-                  12.ph,
-                  StreamBuilder<bool>(
-                    initialData: true,
-                    stream: personalFinanceAcceptStream.stream,
-                    builder: (context, snapshot) {
-                      return snapshot.data! ?
-                        CustomTextField(
-                        controller: personalFinanceAcceptController,
-                        hintText: strings.enter_the_value_in_saudi_riyals,
-                          padding: 15.paddingBottom,
-                      ) : 0.ph;
-                    }
-                  ),
-                ],
+              InstallmentStepTile(
+                stepNumber: 2,
+                title: strings.select_employer,
+                child: DropDownField(
+                  hint: strings.employer,
+                  items: items,
+                  height: 55,
+                  onChanged: (value) {},
+                ),
               ),
-            ),
-            InstallmentStepTile(
-              stepNumber: 4,
-              title: strings.mortgage,
-              spaceBetweenTitleAndChild: 25,
-              child: Column(
-                children: [
-                  CustomChooseWidget(
-                    onTap: (value) {
-                      mortgageAcceptStream.setData(value);
-                    },
-                    items: [
-                      ChooseItemModel(
-                        label: strings.exist,
-                        value: true,
-                      ),
-                      ChooseItemModel(
-                        label: strings.not_exist,
-                        value: false,
-                      ),
-                    ],
-                  ),
-                  12.ph,
-                  StreamBuilder<bool>(
+              InstallmentStepTile(
+                stepNumber: 3,
+                title: strings.personal_finance,
+                spaceBetweenTitleAndChild: 25,
+                child: Column(
+                  children: [
+                    CustomChooseWidget(
+                      onTap: (value) {
+                        personalFinanceAcceptStream.setData(value);
+                      },
+                      items: [
+                        ChooseItemModel(
+                          label: strings.exist,
+                          value: true,
+                        ),
+                        ChooseItemModel(
+                          label: strings.not_exist,
+                          value: false,
+                        ),
+                      ],
+                    ),
+                    12.ph,
+                    StreamBuilder<bool>(
                       initialData: true,
-                      stream: mortgageAcceptStream.stream,
+                      stream: personalFinanceAcceptStream.stream,
                       builder: (context, snapshot) {
                         return snapshot.data! ?
-                        CustomTextField(
-                          controller: mortgageAcceptController,
-                          padding: 15.paddingBottom,
+                          CustomTextField(
+                          controller: personalFinanceAcceptController,
                           hintText: strings.enter_the_value_in_saudi_riyals,
+                            keyboardType: TextInputType.number,
+                            padding: 15.paddingBottom,
                         ) : 0.ph;
                       }
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            StatefulBuilder(builder: (context, setState) {
-              return InstallmentStepTile(
-                  stepNumber: 5,
-                  dottedLineHeight: isExist ? 16 : 10,
-                  title: strings.credit_card,
-                  child: Column(
-                    children: [
-                      CustomRadioListTile2(
-                        title: strings.exist,
-                        groupValue: isExist,
-                        value: true,
-                        onChanged: (value) {
-                          isExist = value;
-                          setState(() {});
-                        },
-                      ),
-                      isExist
-                          ? CustomTextField(
-                              hintText: strings.enter_credit_limit,
-                              controller: creditLimitController,
-                            )
-                          : 0.ph,
-                      CustomRadioListTile2(
-                        title: strings.not_exist,
-                        groupValue: isExist,
-                        value: false,
-                        onChanged: (value) {
-                          isExist = value;
-                          setState(() {});
-                        },
-                      ),
-                    ],
-                  ));
-            }),
-            40.ph,
-            StreamBuilder<int?>(
-                stream: installmentValueStream.stream,
-                builder: (context, snapshot) {
-                  return snapshot.data == null
-                      ? 0.ph
-                      : InstallmentValue(
-                          installmentValue: snapshot.data?.toString() ?? '',
-                        );
-                }),
-            30.ph,
-            StreamBuilder<int?>(
-                stream: installmentValueStream.stream,
-                builder: (context, snapshot) {
-                  return PrimaryOutlinesButtons(
-                    title1: snapshot.data == null
-                        ? strings.calculate_your_installment
-                        : strings.see_available_cars,
-                    title2: strings.remove_filters,
-                    onPressed1: () {
-                      if (snapshot.data == null) {
-                        onFetchInstallmentValue(
-                            onFetchInstallmentValue(InstallmentCalculationParams(
-                          creditCard: isExist ? int.parse(creditLimitController.text) : 0,
-                          grossSalary: int.parse(totalSalaryController.text),
-                          mortgage: mortgageAcceptStream.data! ? int.parse(mortgageAcceptController.text) : 0,
-                          personalFinance: personalFinanceAcceptStream.data! ? int.parse(personalFinanceAcceptController.text) : 0,
-                        ))
-                        );
-                      } else {
-                        Navigator.pushNamed(
-                            context, Routes.monthlyInstallmentPage);
-                      }
-                    },
-                    onPrevPressed: () {
-                      totalSalaryController.clear();
-                      creditLimitController.clear();
-                      installmentValueStream.setData(null);
-                    },
-                  );
-                }),
-            20.ph,
-          ],
+              InstallmentStepTile(
+                stepNumber: 4,
+                title: strings.mortgage,
+                spaceBetweenTitleAndChild: 25,
+                child: Column(
+                  children: [
+                    CustomChooseWidget(
+                      onTap: (value) {
+                        mortgageAcceptStream.setData(value);
+                      },
+                      items: [
+                        ChooseItemModel(
+                          label: strings.exist,
+                          value: true,
+                        ),
+                        ChooseItemModel(
+                          label: strings.not_exist,
+                          value: false,
+                        ),
+                      ],
+                    ),
+                    12.ph,
+                    StreamBuilder<bool>(
+                        initialData: true,
+                        stream: mortgageAcceptStream.stream,
+                        builder: (context, snapshot) {
+                          return snapshot.data! ?
+                          CustomTextField(
+                            controller: mortgageAcceptController,
+                            padding: 15.paddingBottom,
+                            keyboardType: TextInputType.number,
+                            hintText: strings.enter_the_value_in_saudi_riyals,
+                          ) : 0.ph;
+                        }
+                    ),
+                  ],
+                ),
+              ),
+              StatefulBuilder(builder: (context, setState) {
+                return InstallmentStepTile(
+                    stepNumber: 5,
+                    dottedLineHeight: isExist ? 16 : 10,
+                    title: strings.credit_card,
+                    child: Column(
+                      children: [
+                        CustomRadioListTile2(
+                          title: strings.exist,
+                          groupValue: isExist,
+                          value: true,
+                          onChanged: (value) {
+                            isExist = value;
+                            setState(() {});
+                          },
+                        ),
+                        isExist
+                            ? CustomTextField(
+                                hintText: strings.enter_credit_limit,
+                                controller: creditLimitController,
+                          keyboardType: TextInputType.number,
+                              )
+                            : 0.ph,
+                        CustomRadioListTile2(
+                          title: strings.not_exist,
+                          groupValue: isExist,
+                          value: false,
+                          onChanged: (value) {
+                            isExist = value;
+                            setState(() {});
+                          },
+                        ),
+                      ],
+                    ));
+              }),
+              40.ph,
+              StreamBuilder<int?>(
+                  stream: installmentValueStream.stream,
+                  builder: (context, snapshot) {
+                    return snapshot.data == null
+                        ? 0.ph
+                        : InstallmentValue(
+                            installmentValue: snapshot.data?.toString() ?? '',
+                          );
+                  }),
+              30.ph,
+              StreamBuilder<int?>(
+                  stream: installmentValueStream.stream,
+                  builder: (context, snapshot) {
+                    return PrimaryOutlinesButtons(
+                      title1: snapshot.data == null
+                          ? strings.calculate_your_installment
+                          : strings.see_available_cars,
+                      title2: strings.remove_filters,
+                      onPressed1: () {
+                        if (snapshot.data == null) {
+                          if (_formKey.currentState!.validate()) {
+                            onFetchInstallmentValue(
+                                onFetchInstallmentValue(InstallmentCalculationParams(
+                                  creditCard: creditLimitController.text.isNotEmpty ?  int.parse(creditLimitController.text) : 0,
+                                  grossSalary: int.parse(totalSalaryController.text),
+                                  mortgage: personalFinanceAcceptController.text.isNotEmpty ? int.parse(mortgageAcceptController.text) : 0,
+                                  personalFinance: personalFinanceAcceptController.text.isNotEmpty ? int.parse(personalFinanceAcceptController.text) : 0,
+                                ))
+                            );
+                          }
+                        } else {
+                          Navigator.pushNamed(
+                              context, Routes.monthlyInstallmentPage, arguments: snapshot.data);
+                        }
+                      },
+                      onPrevPressed: () {
+                        totalSalaryController.clear();
+                        creditLimitController.clear();
+                        installmentValueStream.setData(null);
+                      },
+                    );
+                  }),
+              20.ph,
+            ],
+          ),
         ),
       ),
     );
