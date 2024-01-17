@@ -36,7 +36,7 @@ abstract class SellCarDatasource {
 
   @MultiPart()
   @POST('/add_car')
-  Future<ApiResponse> addCar(
+  Future<ApiResponse<int>> addCar(
     @Part(name: 'brand_id') int brandId,
     @Part(name: 'car_model_id') int carModelId,
     @Part(name: 'car_model_extension_id') int carModelExtensionId,
@@ -67,11 +67,11 @@ abstract class SellCarDatasource {
   );
 
   @GET('/add_car')
-  Future<ApiResponse> addNewCar(@Body() SellCarParams params);
+  Future<ApiResponse<int>> addNewCar(@Body() SellCarParams params);
 
   @MultiPart()
   @POST('/edit_car/{id}')
-  Future<ApiResponse> editCar(
+  Future<ApiResponse<int>> editCar(
     @Path('id') int id,
     @Part(name: 'brand_id') int brandId,
     @Part(name: 'car_model_id') int carModelId,

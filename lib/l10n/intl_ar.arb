@@ -3,7 +3,7 @@
   "cars": "السيارات",
   "plates": "اللوحات",
   "real_estate": "العقارات",
-  "rs": "رس",
+  "rs": "ريال",
   "detailed_research": "بحث مفصل",
   "plate_type": "نوع اللوحة",
   "city": "المدينة",
@@ -359,5 +359,7 @@
   "hidden": "مخفي",
   "pending": "معلقه",
   "visible": "مرئي",
-  "edit_plate": "تعديل اللوحة"
+  "edit_plate": "تعديل اللوحة",
+  "payment_ways": "طرق الدفع",
+  "not_found_location": "لا يوجد موقع"
 }

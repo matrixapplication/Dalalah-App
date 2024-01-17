@@ -23,10 +23,10 @@ abstract class PlatesDatasource {
   Future<ApiResponse<List<PlateDto>>> fetchPlates(@Queries() PlateFilterParams params);
 
   @POST('/add-car-plate')
-  Future<ApiResponse<PlateDto>> addPlate(@Body() AddPlateParams params);
+  Future<ApiResponse<int>> addPlate(@Body() AddPlateParams params);
 
   @POST('/edit-car-plate')
-  Future<ApiResponse<PlateDto>> editPlate(@Body() AddPlateParams params);
+  Future<ApiResponse<int>> editPlate(@Body() AddPlateParams params);
 
   @POST('/toggle-favorite')
   Future<ApiResponse<String>> toggleFavoritePlate(@Query('id') int id);

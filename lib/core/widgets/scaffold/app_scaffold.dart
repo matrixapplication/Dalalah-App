@@ -4,6 +4,7 @@ import 'package:dalalah/src/main_index.dart';
 import '../../../src/home/presentation/widgets/filter_home.dart';
 import '../buttons/app_circular_icon_button.dart';
 import '../tabview/animated_tabs_bar.dart';
+import 'back_button_icon.dart';
 
 class AppScaffold extends StatelessWidget {
   final String? title;
@@ -88,72 +89,65 @@ class AppScaffold extends StatelessWidget {
                   backgroundColor:
                       backgroundAppBar ?? theme.appBarTheme.backgroundColor,
                   leading: Navigator.canPop(context)
-                      ? AppCircularIconButton(
-                          margin: 10.paddingAll,
-                          icon: Icons.arrow_back_ios_rounded,
-                          padding: 3,
-                          circleSize: 33,
-                          radius: 12,
-                          backgroundColor: backgroundAppBar ==
-                                  context.scaffoldBackgroundColor
-                              ? context.primaryColor
-                              : null,
-                          color:  backgroundAppBar ==
-                              context.scaffoldBackgroundColor ? context.scaffoldBackgroundColor : context.primaryColor,
-                          onPressed: () => Navigator.pop(context),
+                      ? CustomBackButton(
+                          isPrimaryColor: backgroundAppBar ==
+                              context.scaffoldBackgroundColor,
                         )
                       : null,
                   foregroundColor:
                       foregroundColor ?? theme.appBarTheme.foregroundColor,
                   actions: actions ??
                       [
-                        if(isAddButton)
-                            AppIconButton(
-                                icon: AppIcons.add_circular,
-                                padding: 14.paddingAll,
-                                onPressed: onAddButtonPressed,
-                              ),
+                        if (isAddButton)
+                          AppIconButton(
+                            icon: AppIcons.add_circular,
+                            padding: 14.paddingAll,
+                            onPressed: onAddButtonPressed,
+                          ),
                       ],
                   leadingWidth: 60,
-                  bottom: tabs == null ? null :
-                  PreferredSize(
-                    preferredSize: Size.fromHeight(hasTabBarView ? 50 : 20),
-                    child: !hasTabBarView
-                        ? 0.ph
-                        : TabBar(
-                            // splashBorderRadius: BorderRadius.circular(8),
-                            // tabAlignment: TabAlignment.fill,
-                            // padding: 15.paddingHoriz,
-                            onTap: (index) {
-                              onTabSelected?.call(index);
-                            },
-                            overlayColor:
-                                MaterialStateProperty.all(Colors.transparent),
-                            // isScrollable: true,
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            labelStyle: context.textTheme.labelMedium!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                            labelColor: Colors.white,
-                            unselectedLabelStyle:
-                                context.textTheme.labelMedium!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                            unselectedLabelColor: Colors.white,
-                            indicatorPadding: 15.paddingHoriz,
-                            indicatorColor: Colors.white,
-                            indicatorWeight: 3,
-                            tabs: tabs!
-                                .map(
-                                  (tab) => Tab(
-                                    child: Text(tab.label),
+                  bottom: tabs == null
+                      ? null
+                      : PreferredSize(
+                          preferredSize:
+                              Size.fromHeight(hasTabBarView ? 50 : 20),
+                          child: !hasTabBarView
+                              ? 0.ph
+                              : TabBar(
+                                  // splashBorderRadius: BorderRadius.circular(8),
+                                  // tabAlignment: TabAlignment.fill,
+                                  // padding: 15.paddingHoriz,
+                                  onTap: (index) {
+                                    onTabSelected?.call(index);
+                                  },
+                                  overlayColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                  // isScrollable: true,
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  labelStyle:
+                                      context.textTheme.labelMedium!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
                                   ),
-                                )
-                                .toList(),
-                          ),
-                  ),
+                                  labelColor: Colors.white,
+                                  unselectedLabelStyle:
+                                      context.textTheme.labelMedium!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                  unselectedLabelColor: Colors.white,
+                                  indicatorPadding: 15.paddingHoriz,
+                                  indicatorColor: Colors.white,
+                                  indicatorWeight: 3,
+                                  tabs: tabs!
+                                      .map(
+                                        (tab) => Tab(
+                                          child: Text(tab.label),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                        ),
                 ),
       ),
     );

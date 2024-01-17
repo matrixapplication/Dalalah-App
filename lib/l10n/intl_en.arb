@@ -3,7 +3,7 @@
   "cars": "Cars",
   "plates": "Plates",
   "real_estate": "Real Estate",
-  "rs": "RS",
+  "rs": "Riyal",
   "detailed_research": "Detailed Research",
   "plate_type": "Plate Type",
   "city": "City",
@@ -370,5 +370,7 @@
   "hidden": "Hidden",
   "pending": "Pending",
   "visible": "Visible",
-  "edit_plate": "Edit Plate"
+  "edit_plate": "Edit Plate",
+  "payment_ways": "Payment Ways",
+  "not_found_location": "Not Found Location"
 }

@@ -84,9 +84,12 @@ abstract class BaseCubit extends Cubit<DataState>{
     });
   }
 
-  executeEmitterSuccess(Future Function() invoke) {
+  executeEmitterSuccess(Future Function() invoke, {ValueChanged? onSuccess}) {
     executeListener(() => invoke(), onSuccess: (v) {
-      emit((SuccessState(v.toString())));
+      if(onSuccess!=null){
+        onSuccess(v);
+      }
+      emit((SuccessMessageState(v.toString())));
     });
   }
 

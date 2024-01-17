@@ -24,11 +24,11 @@ import '../../data/models/settings_price_dto.dart';
 
 abstract class BaseAddCarRepo{
 
-  Future<ApiResponse> addCar(SellCarParams params);
+  Future<ApiResponse<int>> addCar(SellCarParams params);
 
-  Future<ApiResponse> addNewCar(SellCarParams params);
+  Future<ApiResponse<int>> addNewCar(SellCarParams params);
 
-  Future<ApiResponse> editCar(SellCarParams params);
+  Future<ApiResponse<int>> editCar(SellCarParams params);
 
   Future<ApiResponse<List<DriveTypeDto>>> fetchDriveTypes();
 

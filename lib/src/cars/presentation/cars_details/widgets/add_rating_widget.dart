@@ -31,6 +31,7 @@ class AddCommentWidget extends StatelessWidget {
          //  15.ph,],
           CustomTextField(
             radius: 5,
+            autovalidateMode: AutovalidateMode.disabled,
             controller: commentController,
             hintText: context.strings.add_your_comment,
             maxLines: 5,
@@ -41,7 +42,7 @@ class AddCommentWidget extends StatelessWidget {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   onAddComment?.call(commentController.text);
-                  commentController.clear();
+                  commentController.text = '';
                 }
               },
               height: 18,

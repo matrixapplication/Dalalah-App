@@ -19,7 +19,8 @@ class PlatesList extends StatelessWidget {
   final StreamStateInitial<List<Plate>?> platesStream;
   final Function(int) onFavoritePlate;
 
-  const PlatesList({Key? key, required this.platesStream, required this.onFavoritePlate})
+  const PlatesList(
+      {Key? key, required this.platesStream, required this.onFavoritePlate})
       : super(key: key);
 
   @override
@@ -27,19 +28,19 @@ class PlatesList extends StatelessWidget {
     return SizedBox(
       height: 220,
       child: StreamStateWidget<List<Plate>?>(
-        stream: platesStream,
-        builder: (context, snapshot) {
-          print('snapshot: $snapshot');
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            padding: 10.paddingStart,
-            itemBuilder: (_, index) {
-              return PlateVert(plate: snapshot![index], onFavoritePlate: onFavoritePlate);
-            },
-            itemCount: snapshot?.length ?? 0,
-          );
-        }
-      ),
+          stream: platesStream,
+          builder: (context, snapshot) {
+            print('snapshot: $snapshot');
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: 10.paddingStart,
+              itemBuilder: (_, index) {
+                return PlateVert(
+                    plate: snapshot![index], onFavoritePlate: onFavoritePlate);
+              },
+              itemCount: snapshot?.length ?? 0,
+            );
+          }),
     );
   }
 }
@@ -58,61 +59,66 @@ class PlateVert extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.platesDetailsPage,
-          arguments: plate,);
+        Navigator.pushNamed(
+          context,
+          Routes.platesDetailsPage,
+          arguments: plate,
+        );
       },
       child: Container(
-          margin: 8.paddingHoriz,
-          padding: 4.paddingAll,
-          decoration: Decorations.kDecorationBorderWithRadius(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.bottomStart,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 120,
-                    padding: 10.paddingHoriz + 12.paddingVert,
-                    margin: 20.paddingBottom,
-                    child: PlateImage(
-                      plate: plate,
-                    ),
+        margin: 8.paddingHoriz,
+        padding: 4.paddingAll,
+        decoration: Decorations.kDecorationBorderWithRadius(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomStart,
+              children: [
+                Container(
+                  width: 200,
+                  height: 120,
+                  padding: 10.paddingHoriz + 12.paddingVert,
+                  margin: 20.paddingBottom,
+                  child: PlateImage(
+                    plate: plate,
                   ),
-                  Container(
-                      alignment: AlignmentDirectional.bottomStart,
-                      height: 50,
-                      width: 50,
-                      child: FavoriteButton(
-                        margin: 20.paddingTop + 10.paddingHoriz,
-                        isFavorite: plate.isFavorite ?? false,
-                        onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
-                        // isFavorite: true,
-                      )),
-
-                  PositionedDirectional(
-                    bottom: 0,
-                    end: 10,
-                    child: ShareIconButton(
-                      route: Routes.plateAppLink,
-                      id: plate.id.toString() ?? '',
-                    ),
-                  ),
-                ],
-              ),
-              8.ph,
-              Padding(
-                padding: 10.paddingStart,
-                child: Text(
-                  '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}',
-                  style: context.bodySmall,
                 ),
+                Container(
+                  alignment: AlignmentDirectional.bottomStart,
+                  height: 50,
+                  width: 50,
+                  child: FavoriteButton(
+                      margin: 20.paddingTop + 10.paddingHoriz,
+                      isFavorite: plate.isFavorite ?? false,
+                      onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
+                      // isFavorite: true,
+                      ),
+                ),
+                PositionedDirectional(
+                  bottom: 0,
+                  end: 10,
+                  child: ShareIconButton(
+                    route: Routes.plateAppLink,
+                    id: plate.id.toString() ?? '',
+                  ),
+                ),
+              ],
+            ),
+            8.ph,
+            Padding(
+              padding: 10.paddingStart,
+              child: Text(
+                '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}\t\t${plate.plateNumber}',
+                style: context.bodySmall,
+                textDirection: TextDirection.rtl,
               ),
-              8.ph,
-              PriceWidget(price: plate.price ?? '0'),
-            ],
-          )),
+            ),
+            8.ph,
+            PriceWidget(price: plate.price ?? '0'),
+          ],
+        ),
+      ),
     );
   }
 }

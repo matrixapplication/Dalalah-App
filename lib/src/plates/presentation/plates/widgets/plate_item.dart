@@ -80,8 +80,9 @@ class PlateItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}',
+                        '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
                         style: context.bodyMedium,
+                        textDirection: TextDirection.rtl,
                       ),
                       PriceWidget(price: plate.price ?? '0'),
                       onFavoritePlate == null

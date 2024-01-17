@@ -101,6 +101,9 @@ dependencies:
   app_links: ^3.5.0
   share_plus: ^7.2.1
 
+  # payment packages
+  urwaypayment: ^2.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -152,6 +155,7 @@ flutter:
     - assets/images/success.gif
     - assets/logo/
     - assets/logo/logo.png
+    - assets/appconfig.json
 
   fonts:
     - family: LBC-Bold

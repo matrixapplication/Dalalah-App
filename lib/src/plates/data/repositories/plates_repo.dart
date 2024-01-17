@@ -27,15 +27,15 @@ class PlatesRepo extends BasePlatesRepo {
   }
 
   @override
-  Future<String> addPlate(AddPlateParams params) async {
+  Future<int> addPlate(AddPlateParams params) async {
     final result = await remoteDataSource.addPlate(params);
-    return result.message ?? '';
+    return result.data!;
   }
 
   @override
-  Future<String> editPlate(AddPlateParams params) async {
+  Future<int> editPlate(AddPlateParams params) async {
     final result = await remoteDataSource.editPlate(params);
-    return result.message ?? '';
+    return result.data!;
   }
 
   @override

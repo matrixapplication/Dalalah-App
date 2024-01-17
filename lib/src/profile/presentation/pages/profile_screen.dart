@@ -94,6 +94,14 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.notifications,
                     routeName: Routes.notificationsPage,
                   ),
+                  if(profile.role != Roles.USER)
+                    ProfileItem(
+                      title: strings.payment_ways,
+                      icon: AppIcons.box,
+                      subTitle: strings.payment_ways,
+                      routeName: Routes.paymentPage,
+                      // arguments: strings.favorite_agencies,
+                    ),
                   ProfileItem(
                     title: strings.privacy_policy,
                     icon: AppIcons.privacy_policy,

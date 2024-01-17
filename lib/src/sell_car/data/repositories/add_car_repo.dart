@@ -31,7 +31,7 @@ class AddCarRepo implements BaseAddCarRepo {
   AddCarRepo(this.datasource);
 
   @override
-  Future<ApiResponse> addCar(SellCarParams params) async {
+  Future<ApiResponse<int>> addCar(SellCarParams params) async {
     print('SellCarParams: ${params.toJson()}');
     return await datasource.addCar(
       params.brandId ?? 0,
@@ -65,12 +65,12 @@ class AddCarRepo implements BaseAddCarRepo {
   }
 
   @override
-  Future<ApiResponse> addNewCar(SellCarParams params){
+  Future<ApiResponse<int>> addNewCar(SellCarParams params){
     return datasource.addNewCar(params);
   }
 
   @override
-  Future<ApiResponse> editCar(SellCarParams params) {
+  Future<ApiResponse<int>> editCar(SellCarParams params) {
     print('SellCarParams: ${params.toJson()}');
     return datasource.editCar(
       params.id ?? 0,

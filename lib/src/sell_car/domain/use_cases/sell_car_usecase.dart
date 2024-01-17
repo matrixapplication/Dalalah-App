@@ -29,19 +29,19 @@ class SellCarUseCase {
   final AddCarRepo repository ;
   SellCarUseCase(this.repository);
 
-  Future<String> sellCar(SellCarParams params) async {
+  Future<int> sellCar(SellCarParams params) async {
     final data = await  repository.addCar(params);
-    return data.message ?? '';
+    return data.data!;
   }
 
-  Future<String> addNewCar(SellCarParams params) async {
+  Future<int> addNewCar(SellCarParams params) async {
     final data = await repository.addNewCar(params);
-    return data.message ?? '';
+    return data.data!;
   }
 
-  Future<String> editCar(SellCarParams params) async {
+  Future<int> editCar(SellCarParams params) async {
     final data = await  repository.editCar(params);
-    return data.message ?? '';
+    return data.data!;
   }
 
   Future<List<Brand>> fetchBrands() async{

@@ -20,6 +20,7 @@ import '../../src/installment/presentation/pages/installment_page.dart';
 import '../../src/installment/presentation/pages/monthly_installment/monthly_installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
 import '../../src/on_boarding/pages/onboarding_page.dart';
+import '../../src/payment/presentation/pages/payment_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
@@ -78,6 +79,7 @@ class Routes {
   static const String brandsPage = 'brandsPage';
   static const String filterPage = 'filterPage';
   static const String sortByPage = 'sortByPage';
+  static const String paymentPage = 'paymentPage';
 
   static const String enterPhoneNumberPage = 'enterPhoneNumberPage';
   static const String enterPinCodePage = 'enterPinCodePage';
@@ -147,6 +149,7 @@ class Routes {
     favoritesAndAdsPage: (context) => FavoritesAndAdsTabs(),
     filterPage: (context) => FilterPage(),
     sortByPage: (context) => SortByPage(),
+    paymentPage: (context) => PaymentPage(),
 
     enterPhoneNumberPage: (context) => EnterPhoneNumberPage(),
     enterPinCodePage: (context) => EnterPinCodePage(),

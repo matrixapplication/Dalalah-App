@@ -23,7 +23,7 @@ class PlatesUseCase {
     return await repository.toggleFavoritePlate(id);
   }
 
-  Future<String> addPlate(AddPlateParams params) async {
+  Future<int> addPlate(AddPlateParams params) async {
     return await repository.addPlate(params);
   }
 

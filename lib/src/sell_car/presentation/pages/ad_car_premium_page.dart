@@ -1,10 +1,8 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
 import 'package:dalalah/src/sell_car/data/models/sell_car_params.dart';
-import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../../plates/domain/entities/ad_feature.dart';
-import '../../../profile/data/models/profile_dto.dart';
 import '../bloc/sell_car_bloc.dart';
 import 'ad_premium_screen.dart';
 

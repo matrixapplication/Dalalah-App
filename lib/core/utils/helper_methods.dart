@@ -81,11 +81,14 @@ class HelperMethods {
     }
   }
 
-  static Future<void> launchUrlLink(String url) async {
-    Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
+  static Future launchUrlLink(String url) async {
+
+    print('launchUrlLink $url');
+    Uri uri = Uri.parse((url.contains('https') || url.contains('http')) ? url : 'https://$url');
+    try {
+      return await launchUrl(uri);
+    } on Exception catch (e) {
+      print('launchUrlLink Error ${e.toString()}');
       showErrorToast('حدث خطأ أثناء الاتصال بالرابط');
     }
   }
