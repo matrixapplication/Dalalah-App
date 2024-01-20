@@ -15,10 +15,6 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
-
-    // AppLinkingService.goToRoute();
-    //
-    // AppLinkingService.init();
     return AuthWidget(
       //  child: Text('Login', style: context.titleLarge),
       child: LoginScreen(

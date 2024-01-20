@@ -7,7 +7,7 @@ import 'core/widgets/base/bottom_navigator_bar_item.dart';
 import 'src/home/presentation/pages/home_page.dart';
 import 'src/main_index.dart';
 
-class NavigationPages extends BaseStatelessWidget {
+class NavigationPages extends StatelessWidget {
   bool isCaptain;
 
   NavigationPages({Key? key, this.isCaptain = false}) : super(key: key);
@@ -16,6 +16,7 @@ class NavigationPages extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = AppLocalizations.of(context)!;
     return FutureBuilder(
         future: HelperMethods.isAdmin(),
         initialData: false,

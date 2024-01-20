@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import '../../../main.dart';
 import '../../utils/navigator.dart';
 import 'progress_dialog.dart';
 import '../../../src/main_index.dart';
@@ -6,7 +7,7 @@ import '../../../src/main_index.dart';
 class DialogsManager {
   static CustomProgressDialog createProgress() {
     return ProgressDialog.createProgress(
-        injector<ServicesLocator>().navigatorKey.currentContext!);
+        navigatorMainKey.currentContext!);
   }
 
   static showAlertDialog(BuildContext context, Widget content) {

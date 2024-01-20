@@ -1,3 +1,4 @@
+import '../../../../core/routes/app_links_service.dart';
 import '../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../main_index.dart';
 import '../../../plates/domain/entities/plate.dart';

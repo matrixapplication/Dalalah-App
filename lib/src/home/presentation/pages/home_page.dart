@@ -14,10 +14,6 @@ class HomePage extends BaseBlocWidget<UnInitState, HomeCubit> {
 
   @override
   Widget build(BuildContext context) {
-
-    // AppLinkingService.goToRoute();
-    //
-    // AppLinkingService.init();
     return Center(
       child: Stack(
         children: [

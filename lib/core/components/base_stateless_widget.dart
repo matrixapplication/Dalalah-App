@@ -1,10 +1,12 @@
 
+import '../../main.dart';
 import '../widgets/dialogs/progress_dialog.dart';
 import '/src/main_index.dart';
 abstract class BaseStatelessWidget extends StatelessWidget {
 
   BuildContext? context = injector<ServicesLocator>().navigatorKey.currentContext;
-  final strings = injector<ServicesLocator>().navigatorKey.currentContext!.strings ;
+
+  final strings = injector<ServicesLocator>().navigatorKey.currentContext!.strings;
   ThemeData get theme => Theme.of(context!);
   TextStyle get labelSmall => context!.labelSmall;
   TextStyle get labelMedium => context!.labelMedium;

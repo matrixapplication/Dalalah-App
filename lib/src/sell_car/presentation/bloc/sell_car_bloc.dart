@@ -11,6 +11,7 @@ import '../../../home/domain/entities/car.dart';
 import '../../../payment/data/models/featured_payment_params.dart';
 import '../../../payment/domain/entities/payment_requests.dart';
 import '../../../payment/domain/use_cases/payment_usecase.dart';
+import '../../../plates/domain/entities/ad_types.dart';
 import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
@@ -56,30 +57,39 @@ class SellCarCubit extends BaseCubit {
     }
   }
 
-  Future<void> sellCar(SellCarParams params) async {
-    executeEmitterListener(() => (params.id == null || params.id == 0)
-        ? params.status == CarStatus.newCar
-            ? usecase.addNewCar(params)
-            : usecase.sellCar(params)
-        : usecase.editCar(params));
-  }
+  // Future<void> sellCar(SellCarParams params) async {
+  //   executeEmitterListener(() => (params.id == null || params.id == 0)
+  //       ? addCarAsFeatured(params)
+  //       : usecase.editCar(params));
+  // }
 
-  Future<void> addCarAsFeatured(SellCarParams params) async {
+  Future<void> sellCar(SellCarParams params) async {
     emit(LoadingStateListener());
+    FeaturedPaymentParams logParams = FeaturedPaymentParams();
+    dynamic idOrMsg = 0;
     try {
-      final idCar = params.status == CarStatus.newCar
-          ? await usecase.addNewCar(params)
-          : await usecase.sellCar(params);
-      final data = await PaymentRequests.urWayPayment(
-          id: idCar.toString(), amount: params.price.toString());
-      print('Result in Main is $data');
-      FeaturedPaymentParams logParams =
-          FeaturedPaymentParams.fromJson(jsonDecode(data));
-      logParams.adId = idCar;
-      final msg = await paymentUseCase.addFeaturedPaymentAd(logParams);
-      emit(SuccessStateListener<String>(msg));
+
+      if(params.id == null || params.id == 0){
+        idOrMsg = params.status == CarStatus.newCar
+            ? await usecase.addNewCar(params)
+            : await usecase.sellCar(params);
+      } else {
+        idOrMsg = await usecase.editCar(params);
+      }
+      if(params.adType == AdTypes.featured){
+        params.id = idOrMsg;
+         final data = await PaymentRequests.urWayPayment(
+            id: idOrMsg.toString(), amount: params.price.toString());
+        print('Result in Main is $data');
+         logParams =
+        FeaturedPaymentParams.fromJson(jsonDecode(data));
+        logParams.adId = idOrMsg;
+        logParams.adType = AdTypes.car;
+        idOrMsg = await paymentUseCase.addFeaturedPaymentAd(logParams);
+      }
+      emit(SuccessStateListener<String>(idOrMsg));
     } catch (e) {
-      emit(FailureStateListener('Payment Failed'));
+      emit(FailureStateListener(e));
       rethrow;
     }
   }

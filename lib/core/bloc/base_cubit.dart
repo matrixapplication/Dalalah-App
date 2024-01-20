@@ -89,7 +89,7 @@ abstract class BaseCubit extends Cubit<DataState>{
       if(onSuccess!=null){
         onSuccess(v);
       }
-      emit((SuccessMessageState(v.toString())));
+      emit((SuccessState(v.toString())));
     });
   }
 

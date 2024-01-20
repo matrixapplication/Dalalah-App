@@ -10,6 +10,8 @@ import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
 import 'src/main_index.dart';
 
+final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -43,9 +45,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // FirebaseNotification firebase = FirebaseNotification();
     // firebase.initialize(context);
-    // AppLinkingService.goToRoute();
-    //
-     AppLinkingService.init();
+    AppLinkingService.init();
+    // //
     return BlocProvider(
       create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
-           navigatorKey: injector<ServicesLocator>().navigatorKey,
+           navigatorKey: navigatorMainKey,
             locale: Locale(state.language),
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -68,8 +69,9 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // Arabic, no country code
             ],
             // routerConfig: router(token.isNotEmpty),
-            routes: Routes.routes,
+            routes: Routes.routes(context),
             initialRoute: token.isEmpty ? Routes.login : Routes.navigationPages,
+            onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
           );
         },
       ),
