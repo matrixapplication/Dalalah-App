@@ -372,5 +372,16 @@
   "visible": "Visible",
   "edit_plate": "Edit Plate",
   "payment_ways": "Payment Ways",
-  "not_found_location": "Not Found Location"
+  "not_found_location": "Not Found Location",
+  "showroom": "Showroom",
+  "followers": "Followers",
+  "owner_name_ar": "Owner Name (Arabic)",
+    "owner_name_en": "Owner Name (English)",
+  "logo": "Logo",
+  "end_tax_card": "End Tax Card",
+  "tax_card": "Tax Card",
+  "cover_image": "Cover Image",
+  "commercial": "Commercial",
+  "upload_logo": "Upload Logo",
+  "feature_duration_price_zero_msg": "Feature duration and price must be greater than zero"
 }

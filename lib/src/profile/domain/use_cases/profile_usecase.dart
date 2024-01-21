@@ -55,5 +55,28 @@ class ProfileUseCase {
     return data.message ?? '';
   }
 
+  Future<String> editLogoShowroom(File image) async {
+    final data = await repository.editLogoShowroom(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
+
+  Future<String> editCoverImageShowroom(File image) async {
+    final data = await repository.editCoverImageShowroom(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
+
+  Future<String> editTaxCardShowroom(File image) async {
+    final data = await repository.editTaxCardShowroom(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
+
+  Future<String> editCommercialImageShowroom(File image) async {
+    final data = await repository.editCommercialImageShowroom(image);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
 
 }

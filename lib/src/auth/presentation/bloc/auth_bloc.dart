@@ -28,6 +28,10 @@ class AuthCubit extends BaseCubit {
     executeEmitterSuccess(() => usecase.register(params));
   }
 
+  void registerAsShowroom(RegisterParams params)  {
+    executeEmitterSuccess(() => usecase.registerAsShowroom(params));
+  }
+
   void fetchCities() {
     executeSuccessNotLoading(() => sellCarUseCase.fetchCities());
   }

@@ -1,3 +1,4 @@
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
@@ -57,7 +58,7 @@ class LoginBody extends BaseStatelessWidget {
 
             GestureDetector(
               onTap: () {
-                Navigators.pushNamed(Routes.enterPhoneNumberPage);
+                Navigators.pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
               },
               child:  Text(strings.forgot_password,
                   style: context.bodySmall.copyWith(fontSize: 10)),

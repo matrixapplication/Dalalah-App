@@ -6,8 +6,10 @@ import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/navigator.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../../plates/domain/entities/ad_types.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/domain/entities/plate_args.dart';
+import '../../domain/entites/ad_args.dart';
 
 class CarOperationsPopup extends BaseStatelessWidget {
   final Car? car;
@@ -20,6 +22,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     int id  = car?.id ?? plate?.id ?? 0;
+    String type = car != null ? AdTypes.car : AdTypes.plate;
     bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
     bool isSold = car?.isSold ?? plate?.isSold ?? false;
     bool isHidden = car?.isHide ?? plate?.isHide ?? false;
@@ -79,7 +82,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
             }
           } else if (value == 4) {
             if (onSpecial != null) {
-              onSpecial!(id);
+              pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
             }
           }
         },

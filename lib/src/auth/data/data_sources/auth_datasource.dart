@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -26,4 +28,22 @@ abstract class  AuthDataSource{
   @POST('/end-user/register')
   Future<ApiResponse<ProfileDto>> register(@Body() RegisterParams params);
 
+
+  @MultiPart()
+  @POST('/showroom/register')
+  Future<ApiResponse<ProfileDto>> registerAsShowroom(
+      @Part(name: 'type') String type,
+      @Part(name: 'name_ar') String nameAr,
+      @Part(name: 'name_en') String nameEn,
+      @Part(name: 'owner_name_ar') String ownerNameAr,
+      @Part(name: 'owner_name_en') String ownerNameEn,
+      @Part(name: 'address_ar') String addressAr,
+      @Part(name: 'address_en') String addressEn,
+      @Part(name: 'email') String email,
+      @Part(name: 'password') String password,
+      @Part(name: 'phone') String phone,
+      @Part(name: 'whatsapp') String whatsapp,
+      @Part(name: 'city_id') int cityId,
+      @Part(name: 'logo') File logo,
+      );
 }

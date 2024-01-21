@@ -1,4 +1,6 @@
 
+import 'package:dalalah/core/widgets/snack_bar/snack_bar_manager.dart';
+
 import '../../../main_index.dart';
 import '../../../plates/domain/entities/ad_feature.dart';
 import '../../../plates/domain/entities/ad_types.dart';
@@ -7,9 +9,10 @@ import '../../../plates/presentation/plates/widgets/packages_list.dart';
 
 class AddPremiumScreen extends BaseStatelessWidget {
   final AdFeature adFeature;
+  final bool isDisableSaveButton;
   final Function(String)? onSave;
 
-  AddPremiumScreen({Key? key, required this.adFeature, this.onSave})
+  AddPremiumScreen({Key? key, required this.adFeature, this.onSave, this.isDisableSaveButton = false})
       : super(key: key);
 
   @override
@@ -47,8 +50,12 @@ class AddPremiumScreen extends BaseStatelessWidget {
                   title: snapshot.data == true
                       ? strings.highlight_the_ad
                       : strings.save,
-                  onPressed: () {
-                    onSave?.call(isPremium ? AdTypes.featured : AdTypes.basic);
+                  onPressed: (snapshot.data == false && isDisableSaveButton) ? null : () {
+                    if (adFeature.featureDurationPrice == '0') {
+                      SnackBarManager.showErrorSnackBar(strings.feature_duration_price_zero_msg);
+                    } else {
+                      onSave?.call(isPremium ? AdTypes.featured : AdTypes.basic);
+                    }
                   },
                 );
               }),

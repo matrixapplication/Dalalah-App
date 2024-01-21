@@ -254,7 +254,9 @@ class Decorations {
   }
 
   static BoxDecoration kDecorationField() {
-    return BoxDecoration(boxShadow: [
+    return BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
       BoxShadow(
         color: Colors.grey.withOpacity(0.15),
         offset: const Offset(0, 0),

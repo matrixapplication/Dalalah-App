@@ -7,9 +7,9 @@ part of 'ad_feature_dto.dart';
 // **************************************************************************
 
 AdFeatureDto _$AdFeatureDtoFromJson(Map<String, dynamic> json) => AdFeatureDto(
-      featureBasicDuration: json['feature_basic_duration'] as String?,
-      featureDuration: json['feature_duration'] as String?,
-      featureDurationPrice: json['feature_duration_price'] as String?,
+      featureBasicDuration: json['feature_basic_duration'] ,
+      featureDuration: json['feature_duration'],
+      featureDurationPrice: json['feature_duration_price'] ,
     );
 
 Map<String, dynamic> _$AdFeatureDtoToJson(AdFeatureDto instance) =>

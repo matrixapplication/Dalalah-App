@@ -1,6 +1,7 @@
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
 import 'package:dalalah/core/widgets/icons/icon_text.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_cars_page.dart';
 import 'package:dalalah/src/showrooms/presentation/showroom_details/pages/showroom_plates_page.dart';
 
@@ -83,13 +84,13 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        showroom.showroomName ?? '',
-                        style: context.textTheme.labelLarge!.copyWith(
-                          color: AppColors.grey_41,
-                        ),
-                      ),
                       10.ph,
+                      RowTexts(
+                        title: showroom.showroomName ?? '',
+                        value: '${showroom.followers ?? 0} ${context.strings.followers}',
+                        titleStyle:  context.bodyLarge,
+                        valueStyle: context.headlineMedium,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,7 +118,6 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                           ),
                         ],
                       ),
-                      3.ph,
                     ],
                   ),
                 ),

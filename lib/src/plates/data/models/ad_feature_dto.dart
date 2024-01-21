@@ -5,11 +5,11 @@ part 'ad_feature_dto.g.dart';
 @JsonSerializable(ignoreUnannotated: false)
 class AdFeatureDto {
   @JsonKey(name: 'feature_basic_duration')
-  String? featureBasicDuration;
+  dynamic featureBasicDuration;
   @JsonKey(name: 'feature_duration')
-  String? featureDuration;
+  dynamic featureDuration;
   @JsonKey(name: 'feature_duration_price')
-  String? featureDurationPrice;
+  dynamic featureDurationPrice;
 
   AdFeatureDto({this.featureBasicDuration, this.featureDuration, this.featureDurationPrice});
 

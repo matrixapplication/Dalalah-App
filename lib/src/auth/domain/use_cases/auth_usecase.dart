@@ -31,4 +31,10 @@ class AuthUseCase {
     return Profile.fromDto(data);
   }
 
+  Future<Profile> registerAsShowroom(RegisterParams params) async{
+    final data = await  repository.registerAsShowroom(params);
+    await HelperMethods.saveProfile(data);
+    return Profile.fromDto(data);
+  }
+
 }

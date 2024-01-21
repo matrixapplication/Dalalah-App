@@ -19,8 +19,8 @@ class EditProfileImage extends BaseStatelessWidget {
         Container(
           clipBehavior: Clip.antiAlias,
           margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-          decoration: const BoxDecoration(
-            color: Color(0xffffffff),
+          decoration: BoxDecoration(
+            color: context.secondaryContainer,
             shape: BoxShape.circle,
           ),
           child: StreamBuilder<File?>(

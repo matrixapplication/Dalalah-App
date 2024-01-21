@@ -9,4 +9,5 @@ abstract class BaseAuthRepo {
   Future<ProfileDto> loginAsUser(LoginParams params);
   Future<ProfileDto> loginAsShowroom(ShowroomLoginParams params);
   Future<ProfileDto> register(RegisterParams params);
+  Future<ProfileDto> registerAsShowroom(RegisterParams params);
 }

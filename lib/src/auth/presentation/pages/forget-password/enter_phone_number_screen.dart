@@ -1,3 +1,5 @@
+import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
+
 import '../../../../main_index.dart';
 import '../../widgets/auth_text_field.dart';
 
@@ -15,38 +17,43 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
     ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      child: Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              strings.forgot_password_title,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.headlineLarge,
+      child: Stack(
+        children: [
+          CustomBackButton(),
+          Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  strings.forgot_password_title,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.headlineLarge,
+                ),
+                20.ph,
+                AuthTextField(
+                  controller: emailController,
+                  hint: strings.email,
+                  prefixIcon: AppIcons.email,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                30.ph,
+                PrimaryButton(
+                  title: strings.send,
+                  radius: 30,
+                  height: 48,
+                  margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      onEnterPhoneNumber(emailController.text);
+                    }
+                  },
+                ),
+              ],
             ),
-            20.ph,
-            AuthTextField(
-              controller: emailController,
-              hint: strings.email,
-              prefixIcon: AppIcons.email,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            30.ph,
-            PrimaryButton(
-              title: strings.send,
-              radius: 30,
-              height: 48,
-              margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  onEnterPhoneNumber(emailController.text);
-                }
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
