@@ -222,9 +222,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i38.BaseInstallmentRepo<dynamic>>(
       () => _i39.InstallmentRepo(gh<_i12.InstallmentDataSource>()));
   gh.factory<_i40.BaseNotificationsRepo>(
-      () => _i41.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i41.WalletRepo(gh<_i14.NotificationsDatasource>()));
   gh.factory<_i42.BaseNotificationsRepo>(
-      () => _i43.WalletRepo(gh<_i14.NotificationsDatasource>()));
+      () => _i43.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i44.BasePaymentRepo<dynamic>>(
       () => _i45.PaymentRepo(gh<_i16.PaymentDataSource>()));
   gh.factory<_i46.BasePlatesRepo>(
