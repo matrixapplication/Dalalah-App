@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
-import '../../data/models/notification_dto.dart';
+import '../../data/models/request_price_dto.dart';
 import '../repositories/base_price_requests_repo.dart';
 
 @Injectable()
@@ -15,7 +15,7 @@ class PriceRequestsUseCase {
     return await repository.priceRequest(id);
   }
 
-  Future<ApiResponse<List<NotificationDto>>> fetchNotifications(int page) async {
+  Future<ApiResponse<List<RequestPriceDto>>> fetchNotifications(int page) async {
     return await repository.fetchPriceRequests(page);
   }
 }

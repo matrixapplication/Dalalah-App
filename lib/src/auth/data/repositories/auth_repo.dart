@@ -32,7 +32,8 @@ class AuthRepo extends BaseAuthRepo{
   }
 
   @override
-  Future<ProfileDto> registerAsShowroom(RegisterParams params) async{
+  Future<String> registerAsShowroom(RegisterParams params) async{
+    print('params.logo: ${params.toJson()}');
     final response = await apiProvider.registerAsShowroom(
       params.type ?? '',
       params.nameAr ?? '',
@@ -48,7 +49,7 @@ class AuthRepo extends BaseAuthRepo{
       params.cityId ?? 0,
       params.logo!,
     );
-    return response.data!;
+    return response.message ?? '';
   }
 
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/core/widgets/snack_bar/snack_bar_manager.dart';
 
 import '../../../../../core/resources/validation.dart';
 import '../../../../../core/utils/navigator.dart';
@@ -216,6 +217,10 @@ class UserRegisterScreen extends BaseStatelessWidget {
 
   onRegisterPressed() {
     if (formKey.currentState!.validate()) {
+      if(isShowroom && file.path.isEmpty){
+        SnackBarManager.showErrorSnackBar(strings.please_upload_logo);
+        return;
+      }
       onRegister!(
         RegisterParams(
           type: isShowroom ? type : '',

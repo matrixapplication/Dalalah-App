@@ -136,7 +136,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
             TabItemModel(
               label: context.strings.used,
               page: ShowroomCarsPage(
-                  status: CarStatus.usedCar, id: showroom.id ?? 0),
+                  status: CarStatus.usedCar, id: showroom.id ?? 0, ),
             ),
           TabItemModel(
             label: context.strings.plates,

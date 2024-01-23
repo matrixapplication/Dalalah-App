@@ -99,6 +99,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
+      isCarDetails: isDetailsPage,
       cars: state.data ?? [],
         onToggleFavorite: (id) {
           bloc.toggleFavorite(id);

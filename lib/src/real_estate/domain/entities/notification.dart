@@ -7,6 +7,7 @@ class Notifications{
   final String time;
   final String description;
 
+
   Notifications({required this.id, required this.date, required this.title, required this.time, required this.description, required this.image});
 
   factory Notifications.fromJson(Map<String, dynamic> json) {
@@ -15,8 +16,9 @@ class Notifications{
       date: json['date'] ?? '',
       title: json['title']  ?? '',
       time: json['time'] ?? '',
-      description: json['description'] ?? '',
+      description: json['message'] ?? '',
       image: json['image'] ?? '',
+
     );
   }
 }

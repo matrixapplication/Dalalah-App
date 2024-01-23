@@ -87,6 +87,14 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.favoritesAndAdsTabs,
                     arguments: FavoritesAndAdsParams(isAds: true, isUser:profile.role == Roles.USER),
                   ),
+                  if(profile.token != null && profile.role == Roles.USER)
+                    ProfileItem(
+                      title: strings.request_for_quotation,
+                      icon: AppIcons.box,
+                      subTitle: strings.request_for_quotation,
+                      routeName: Routes.priceRequestsPage,
+                      // arguments: FavoritesAndAdsParams(isAds: false, isUser:profile.role == Roles.USER),
+                    ),
                   if(profile.token != null)
                   ProfileItem(
                     title: strings.notifications,

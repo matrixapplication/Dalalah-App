@@ -3,14 +3,15 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../home/domain/entities/car.dart';
+import '../../../../price_requests/domain/use_cases/price_requests_usecase.dart';
 import '../../../data/models/add_to_favorite_params.dart';
 import '../../../domain/use_cases/favorites_usecase.dart';
 
 @Injectable()
 class FavoriteCarsCubit extends BaseCubit {
   final FavoritesUseCase usecase;
-
-  FavoriteCarsCubit(this.usecase);
+  final PriceRequestsUseCase priceRequestsUseCase;
+  FavoriteCarsCubit(this.usecase, this.priceRequestsUseCase);
 
   // StreamStateInitial<bool>  isFavorite = StreamStateInitial<bool>();
 
@@ -37,5 +38,7 @@ class FavoriteCarsCubit extends BaseCubit {
     executeEmitterListener(() => usecase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
   }
 
-
+  void requestPrice(int id) async {
+    executeEmitterListener(() => priceRequestsUseCase.priceRequest(id));
+  }
 }

@@ -7,6 +7,7 @@ import '../../../../../core/resources/data_state.dart';
 import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../../home/domain/entities/car.dart';
+import '../../../../price_requests/domain/use_cases/price_requests_usecase.dart';
 import '../../../data/models/showroom_cars_params.dart';
 import '../../../domain/use_cases/showrooms_usecase.dart';
 
@@ -14,7 +15,8 @@ import '../../../domain/use_cases/showrooms_usecase.dart';
 class ShowroomCarsCubit extends BaseCubit {
   final ShowroomsUseCase usecase;
   final FavoritesUseCase favoritesUseCase;
-  ShowroomCarsCubit(this.usecase, this.favoritesUseCase);
+  final PriceRequestsUseCase priceRequestsUseCase;
+  ShowroomCarsCubit(this.usecase, this.favoritesUseCase, this.priceRequestsUseCase);
 
   List<Car> allCars = [];
   List<Car> cars = [];
@@ -46,6 +48,10 @@ class ShowroomCarsCubit extends BaseCubit {
 
   toggleCarFavorite(int id) async {
     executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
+  }
+
+  void requestCarPrice(int id) async {
+    executeEmitterListener(() => priceRequestsUseCase.priceRequest(id));
   }
 
 }

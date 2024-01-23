@@ -24,7 +24,7 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
       child: buildConsumer(context),
     ));
   }
-
+  int pageIndex = 0;
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<City>> state) {
     return Container(
@@ -37,6 +37,9 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
       child: TabBarScaffoldWidget(
         height: 25,
         marginTabs: 16.paddingHoriz + 16.paddingTop,
+        onTap: (index) {
+          pageIndex = index;
+        },
         tabs: [
           TabItemModel(
             label: context.strings.user,
@@ -69,6 +72,6 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
 
   @override
   onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+    Navigators.pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
   }
 }

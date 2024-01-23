@@ -383,5 +383,6 @@
   "cover_image": "Cover Image",
   "commercial": "Commercial",
   "upload_logo": "Upload Logo",
-  "feature_duration_price_zero_msg": "Feature duration and price must be greater than zero"
+  "feature_duration_price_zero_msg": "Feature duration and price must be greater than zero",
+  "please_upload_logo": "Please upload logo"
 }

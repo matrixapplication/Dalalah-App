@@ -29,7 +29,7 @@ class AuthCubit extends BaseCubit {
   }
 
   void registerAsShowroom(RegisterParams params)  {
-    executeEmitterSuccess(() => usecase.registerAsShowroom(params));
+    executeEmitterListener(() => usecase.registerAsShowroom(params));
   }
 
   void fetchCities() {

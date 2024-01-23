@@ -1,11 +1,13 @@
 
+import 'package:dalalah/src/cars/presentation/cars/widgets/cars_vertical_item.dart';
+
+import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
-import '../../../notifications/data/models/notification_dto.dart';
-import '../../../real_estate/domain/entities/notification.dart';
+import '../../domain/entities/request_price.dart';
 import '../widgets/price_requests_item.dart';
 
 class PriceRequestsScreen extends BaseStatelessWidget {
-  final List<NotificationDto> notifications;
+  final List<RequestPrice> notifications;
    PriceRequestsScreen({Key? key, required this.notifications}) : super(key: key);
 
   @override
@@ -15,10 +17,8 @@ class PriceRequestsScreen extends BaseStatelessWidget {
       itemCount: notifications.length,
       padding: 16.paddingAll,
       itemBuilder: (context, index) {
-        return PriceRequestsItem(
-          notification: notifications[index],
-          isFirst: index == 0 ? true : false,
-          isLast: index == notifications.length - 1 ? true : false,
+        return CarVerticalItem(
+          car: notifications[index].car ?? Car(),
         );
       },
     );

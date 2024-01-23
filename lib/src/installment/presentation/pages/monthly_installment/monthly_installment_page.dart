@@ -52,6 +52,9 @@ class MonthlyInstallmentPage extends BaseBlocWidget<DataSuccess<List<Car>>, Inst
       },
       child: CarsScreen(
         cars: state.data ?? [],
+        onRequestPrice: (id) {
+          bloc.requestPrice(id);
+        },
       ),
     );
     // return 0.ph;

@@ -51,14 +51,14 @@ class _PriceRequestsDatasource implements PriceRequestsDatasource {
   }
 
   @override
-  Future<ApiResponse<List<NotificationDto>>> fetchPriceRequests(
+  Future<ApiResponse<List<RequestPriceDto>>> fetchPriceRequests(
       int page) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<List<NotificationDto>>>(Options(
+        _setStreamType<ApiResponse<List<RequestPriceDto>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -74,12 +74,12 @@ class _PriceRequestsDatasource implements PriceRequestsDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<List<NotificationDto>>.fromJson(
+    final value = ApiResponse<List<RequestPriceDto>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<NotificationDto>(
-                  (i) => NotificationDto.fromJson(i as Map<String, dynamic>))
+              .map<RequestPriceDto>(
+                  (i) => RequestPriceDto.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );

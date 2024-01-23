@@ -23,12 +23,14 @@ class CarsDetailsScreen extends BaseStatelessWidget {
   final bool isNew;
   final CarDetails carDetails;
   final Function()? onToggleFavorite;
+  final Function(int)? onRequestPrice;
 
   CarsDetailsScreen({
     Key? key,
     required this.carDetails,
     required this.isNew,
     required this.onToggleFavorite,
+    this.onRequestPrice,
   }) : super(key: key);
 
   @override
@@ -51,6 +53,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               label: strings.price,
               page: CarDetailsPriceView(
                 carDetails: carDetails,
+                onRequestPrice: onRequestPrice,
               ),
             ),
           if (isNew)

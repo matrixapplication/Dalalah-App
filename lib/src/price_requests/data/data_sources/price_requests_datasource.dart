@@ -4,7 +4,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
-import '../models/notification_dto.dart';
+import '../models/request_price_dto.dart';
 
 part 'price_requests_datasource.g.dart';
 @Injectable()
@@ -18,5 +18,5 @@ abstract class  PriceRequestsDatasource{
   Future<ApiResponse> priceRequest(@Path('id') int id);
 
   @GET('/get_price_requests')
-  Future<ApiResponse<List<NotificationDto>>> fetchPriceRequests(@Query('page') int page);
+  Future<ApiResponse<List<RequestPriceDto>>> fetchPriceRequests(@Query('page') int page);
 }

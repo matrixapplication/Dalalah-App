@@ -37,7 +37,7 @@ class PlateImage extends BaseStatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           RowTexts(
-            padding: isDetails ? (16.paddingAll + 20.paddingStart + 10.paddingTop) : (10.paddingAll - 10.paddingStart + 5.paddingTop),
+            padding: isDetails ? (16.paddingAll + 20.paddingStart + 10.paddingTop) : (10.paddingAll + 5.paddingStart + 5.paddingTop),
             title: plate.letterAr?.toArabicChars() ?? '',
             value:plate.plateNumber?.toArabicNumbers() ?? '',
             titleStyle: titleStyle,
@@ -47,7 +47,7 @@ class PlateImage extends BaseStatelessWidget {
               textDirection: TextDirection.rtl,
           ),
           RowTexts(
-            padding: isDetails ? (16.paddingAll + 20.paddingStart + 22.paddingBottom) : (10.paddingEnd + 0.paddingStart + 20.paddingBottom),
+            padding: isDetails ? (16.paddingAll + 20.paddingStart + 22.paddingBottom) : (10.paddingEnd + 15.paddingStart + 20.paddingBottom),
             title: plate.letterEn?.toArabicChars() ?? '',
             value: plate.plateNumber ?? '',
             titleStyle: titleStyle,

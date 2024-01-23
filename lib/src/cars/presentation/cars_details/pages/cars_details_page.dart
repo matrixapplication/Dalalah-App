@@ -26,6 +26,9 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsDetail
       onToggleFavorite: () {
         bloc.toggleFavorite(state.data?.car?.id ?? 0);
       },
+      onRequestPrice: (id) {
+        bloc.requestPrice(id);
+      },
     );
   }
 

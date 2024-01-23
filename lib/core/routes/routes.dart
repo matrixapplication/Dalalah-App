@@ -26,6 +26,7 @@ import '../../src/payment/presentation/pages/payment_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
+import '../../src/price_requests/presentation/pages/price_requests_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
@@ -68,6 +69,7 @@ class Routes {
   static const String followedShowroomsPage = 'FollowedShowroomsPage';
   static const String supportPage = 'supportPage';
   static const String addPremiumADPage = 'addPremiumADPage';
+  static const String priceRequestsPage = 'priceRequestsPage';
 
   ////////////////////////////////////////////////////////
   static const String profilePage = 'profilePage';
@@ -138,6 +140,7 @@ class Routes {
     commentsPage: (context) => CommentsPage(params: CommentParams()),
     followedShowroomsPage: (context) => FollowedShowroomsPage(),
     addPremiumADPage: (context) => AddPremiumADPage(),
+    priceRequestsPage: (context) => PriceRequestsPage(),
 
     ////////////////////////////////
     register: (context) => RegisterPage(),
