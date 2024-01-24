@@ -84,11 +84,13 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          bottom: PreferredSize(
-            preferredSize: Size(0, isNew ? 615 : 700),
-            child: Column(
+          stretchTriggerOffset: 500.0,
+          expandedHeight: 800.0,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Stack(
                   children: [
@@ -176,7 +178,6 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     ],
                   ),
                 ),
-                19.ph,
               ],
             ),
           ),

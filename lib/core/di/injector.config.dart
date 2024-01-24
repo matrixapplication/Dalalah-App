@@ -72,7 +72,7 @@ import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i63;
 import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i95;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i14;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
     as _i41;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
@@ -112,7 +112,7 @@ import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i70;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i88;
 import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i102;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i14;
+    as _i15;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
     as _i43;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
