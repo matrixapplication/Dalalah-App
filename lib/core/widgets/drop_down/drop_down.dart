@@ -64,7 +64,7 @@ class DropDownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color? colorBorderSide = isDecoration ? context.cardColor : context.colorScheme.outline;
-    Color? fillColor = isDecoration ? context.cardColor : context.colorScheme.surface;
+    Color? fillColor = context.cardColor;
     return Container(
       margin: margin ?? 10.paddingAll - 8.paddingBottom,
       decoration: isDecoration

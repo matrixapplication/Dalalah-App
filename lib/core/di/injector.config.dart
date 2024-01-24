@@ -72,11 +72,11 @@ import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i63;
 import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i95;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i14;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
-    as _i41;
+    as _i43;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
-    as _i40;
+    as _i42;
 import '../../src/notifications/domain/use_cases/notifications_usecase.dart'
     as _i66;
 import '../../src/notifications/presentation/bloc/notifications_bloc.dart'
@@ -112,11 +112,11 @@ import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i70;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i88;
 import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i102;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i14;
+    as _i15;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
-    as _i43;
+    as _i41;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
-    as _i42;
+    as _i40;
 import '../../src/real_estate/domain/use_cases/notifications_usecase.dart'
     as _i65;
 import '../../src/real_estate/presentation/bloc/real_estate_bloc.dart' as _i71;
@@ -222,9 +222,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i38.BaseInstallmentRepo<dynamic>>(
       () => _i39.InstallmentRepo(gh<_i12.InstallmentDataSource>()));
   gh.factory<_i40.BaseNotificationsRepo>(
-      () => _i41.WalletRepo(gh<_i14.NotificationsDatasource>()));
+      () => _i41.WalletRepo(gh<_i15.NotificationsDatasource>()));
   gh.factory<_i42.BaseNotificationsRepo>(
-      () => _i43.WalletRepo(gh<_i15.NotificationsDatasource>()));
+      () => _i43.WalletRepo(gh<_i14.NotificationsDatasource>()));
   gh.factory<_i44.BasePaymentRepo<dynamic>>(
       () => _i45.PaymentRepo(gh<_i16.PaymentDataSource>()));
   gh.factory<_i46.BasePlatesRepo>(
@@ -256,9 +256,9 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i57.CarsUseCase>(),
       ));
   gh.factory<_i65.NotificationsUseCase>(
-      () => _i65.NotificationsUseCase(gh<_i42.BaseNotificationsRepo>()));
+      () => _i65.NotificationsUseCase(gh<_i40.BaseNotificationsRepo>()));
   gh.factory<_i66.NotificationsUseCase>(
-      () => _i66.NotificationsUseCase(gh<_i40.BaseNotificationsRepo>()));
+      () => _i66.NotificationsUseCase(gh<_i42.BaseNotificationsRepo>()));
   gh.factory<_i67.PaymentUseCase>(
       () => _i67.PaymentUseCase(gh<_i44.BasePaymentRepo<dynamic>>()));
   gh.factory<_i68.PlatesUseCase>(
