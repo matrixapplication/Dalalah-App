@@ -84,9 +84,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          stretchTriggerOffset: 500.0,
-          expandedHeight: 800.0,
+          expandedHeight: isNew ? 660 : 750.0,
           flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.pin,
             background: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
