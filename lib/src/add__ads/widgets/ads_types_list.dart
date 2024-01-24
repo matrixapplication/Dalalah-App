@@ -2,12 +2,13 @@ import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/decorations/decorations.dart';
-import '../../../../core/utils/navigator.dart';
-import '../../domain/entities/section.dart';
+import '../../../core/decorations/decorations.dart';
+import '../../../core/utils/navigator.dart';
+import '../../home/domain/entities/section.dart';
 
 ///  Created by harby on 10/10/2023.
-class SectionsList extends StatelessWidget {
+class AdTypesList extends StatelessWidget {
+  const AdTypesList({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<Section> sections = Section.getSections(context);

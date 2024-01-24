@@ -1,13 +1,16 @@
 import 'package:dalalah/src/main_index.dart';
 
+import '../../../plates/domain/entities/plate_args.dart';
+
 class Section {
   final String title;
   final String image;
   final String routeName;
   final double width;
   final double imageSize;
+  final dynamic arguments;
 
-  Section({required this.title, required this.image, required this.routeName, this.imageSize = 80, this.width = 100});
+  Section({required this.title, required this.image, required this.routeName, this.imageSize = 80, this.width = 100, this.arguments});
 
   static getSections(BuildContext context) {
     return [
@@ -22,6 +25,7 @@ class Section {
         title: context.strings.plates,
         image: AppImages.double_plate,
         routeName: Routes.platesPage,
+        arguments: PlateArgs(),
 
       ),
       Section(

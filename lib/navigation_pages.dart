@@ -1,5 +1,5 @@
 import 'package:dalalah/core/utils/helper_methods.dart';
-import 'package:dalalah/src/home/presentation/pages/sections_screen.dart';
+import 'package:dalalah/src/add__ads/pages/sections_screen.dart';
 import 'package:dalalah/src/profile/presentation/pages/profile_page.dart';
 import 'package:dalalah/src/showrooms/presentation/showrooms/pages/showrooms_page.dart';
 import 'package:dalalah/src/showrooms/presentation/showrooms_and_branches_tabs.dart';
@@ -117,7 +117,7 @@ class NavigationPages extends StatelessWidget {
     return [
        HomePage(),
     //  isAdmin ? SectionsScreen() : SectionsScreen(),
-      SectionsScreen(),
+      AddYourAdPage(),
       ShowroomsAndBranchesTabs(),
       ProfilePage(),
     ];

@@ -1,19 +1,13 @@
 import 'package:dalalah/core/exceptions/api_exception.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
-import 'package:dalalah/src/installment/domain/entities/roles.dart';
 
-import '../../../../core/utils/navigator.dart';
-import '../../../../core/widgets/buttons/row_see_all_text.dart';
-import '../../../main_index.dart';
-import '../../domain/entities/section.dart';
-import '../widgets/plates_list.dart';
-import '../widgets/search_home.dart';
-import '../widgets/sections_list.dart';
-import '../widgets/slider_widget.dart';
-import '../widgets/cars_home_list.dart';
+import '../../../core/utils/navigator.dart';
+import '../../main_index.dart';
+import '../../home/domain/entities/section.dart';
+import '../../plates/domain/entities/plate_args.dart';
 
-class SectionsScreen extends BaseStatelessWidget {
-  SectionsScreen({Key? key}) : super(key: key);
+class AddYourAdPage extends BaseStatelessWidget {
+  AddYourAdPage({Key? key}) : super(key: key);
 
   ScrollController scrollController = ScrollController();
 
@@ -59,6 +53,7 @@ class SectionsScreen extends BaseStatelessWidget {
                                   image: AppImages.add_plate,
                                   routeName: Routes.plateFilterPage,
                                   width: double.infinity,
+                                  arguments: PlateArgs(),
                                 ),
                                 index: 0,
                               ),
@@ -114,7 +109,7 @@ class _SectionsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     int startPadding = index == 0 ? 20 : 0;
     return GestureDetector(
-      onTap: () => Navigators.pushNamed(section.routeName, arguments: true),
+      onTap: () => Navigators.pushNamed(section.routeName, ),
       child: Container(
         margin: startPadding.paddingStart + 10.paddingEnd,
         padding: 10.paddingVert,

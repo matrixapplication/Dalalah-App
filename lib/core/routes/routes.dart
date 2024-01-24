@@ -17,7 +17,7 @@ import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/favorites_and_ads/presentation/my_ads/pages/add_premium_ad_page.dart';
 import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/home_page.dart';
-import '../../src/home/presentation/pages/sections_screen.dart';
+import '../../src/add__ads/pages/sections_screen.dart';
 import '../../src/installment/presentation/pages/installment_page.dart';
 import '../../src/installment/presentation/pages/monthly_installment/monthly_installment_page.dart';
 import '../../src/notifications/presentation/pages/notifications_page.dart';
@@ -130,7 +130,7 @@ class Routes {
     plateFilterPage: (context) => AddPlatesPage(),
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
-    sectionsScreen: (context) => SectionsScreen(),
+    sectionsScreen: (context) => AddYourAdPage(),
     monthlyInstallmentPage: (context) => MonthlyInstallmentPage(),
     realEstatePage: (context) => RealEstatePage(),
     addCarPremiumPage: (context) => CarPremiumPage(),
@@ -204,7 +204,7 @@ class Routes {
       case favoritesAndAdsTabs:
         return CupertinoPageRoute(builder: (_) => FavoritesAndAdsTabs());
       case sectionsScreen:
-        return CupertinoPageRoute(builder: (_) => SectionsScreen());
+        return CupertinoPageRoute(builder: (_) => AddYourAdPage());
       case monthlyInstallmentPage:
         return CupertinoPageRoute(builder: (_) => MonthlyInstallmentPage());
       case realEstatePage:
