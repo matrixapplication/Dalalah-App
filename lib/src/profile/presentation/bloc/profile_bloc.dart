@@ -1,20 +1,23 @@
 import 'dart:io';
 
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/payment/data/models/payment_status_dto.dart';
 import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../auth/data/models/register_params.dart';
+import '../../../payment/domain/use_cases/payment_usecase.dart';
 import '../../domain/entities/profile.dart';
 import '../../domain/use_cases/profile_usecase.dart';
 
 @Injectable()
 class ProfileBloc extends BaseCubit {
   final ProfileUseCase usecase;
+  final PaymentUseCase paymentUseCase;
 
-  ProfileBloc(this.usecase);
+  ProfileBloc(this.usecase, this.paymentUseCase);
 
   ProfileDto? profileDto = ProfileDto();
   fetchProfileData({bool isRefresh = true}) async {
@@ -23,14 +26,16 @@ class ProfileBloc extends BaseCubit {
     Profile profile = Profile();
 
     try {
+      PaymentStatusDto paymentStatusDto = await paymentUseCase.fetchPaymentStatus();
       if(isRefresh == false){
         profile = Profile.fromDto(profileDto ?? ProfileDto(name: 'Guest'));
       }else{
         profile = await usecase.fetchProfileData();
       }
+      profile.isDisablePayment = paymentStatusDto.isHide;
       emit(DataSuccess<Profile>(profile));
     } catch (e) {
-      emit(FailureStateListener(e));
+      emit(DataFailed(e));
     }
   }
 

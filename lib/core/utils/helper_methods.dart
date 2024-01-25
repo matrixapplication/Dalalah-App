@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
+import 'notification_service.dart';
 
 class HelperMethods {
   static String numberFormat(int number) {
@@ -163,6 +164,7 @@ class HelperMethods {
 
   static removeProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    await FirebaseNotification().deleteToken();
     prefs.remove('profile');
   }
 

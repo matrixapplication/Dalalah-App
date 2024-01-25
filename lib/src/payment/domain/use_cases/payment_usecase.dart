@@ -1,3 +1,4 @@
+import 'package:dalalah/src/payment/data/models/payment_status_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../data/models/featured_payment_params.dart';
@@ -24,5 +25,11 @@ class PaymentUseCase {
   Future<String> selectPackagePayment(PaymentLogParams params) async{
     return await repository.selectPackagePayment(params);
   }
+
+  Future<PaymentStatusDto> fetchPaymentStatus() async{
+    return await repository.fetchPaymentStatus();
+  }
+
+
 
 }

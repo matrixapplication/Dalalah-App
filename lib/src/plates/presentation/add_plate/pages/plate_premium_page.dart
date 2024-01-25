@@ -10,7 +10,7 @@ import '../../../domain/entities/ad_feature.dart';
 import '../bloc/add_plate_bloc.dart';
 
 class PlatePremiumPage
-    extends BaseBlocWidget<DataSuccess<AdFeature>, AddPlateCubit> {
+    extends BaseBlocWidget<DataSuccess<AdFeature?>, AddPlateCubit> {
   final bool isFilter;
 
   PlatePremiumPage({Key? key, this.isFilter = true}) : super(key: key);
@@ -21,9 +21,9 @@ class PlatePremiumPage
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<AdFeature> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<AdFeature?> state) {
     return AddPremiumScreen(
-      adFeature: state.data!,
+      adFeature: state.data,
       onSave: ( adType) {
         AddPlateParams params = getArguments(context);
         params.adType = adType;

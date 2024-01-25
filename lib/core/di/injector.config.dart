@@ -364,8 +364,10 @@ Future<_i1.GetIt> $initGetIt(
       ));
   gh.factory<_i101.PriceRequestsCubit>(
       () => _i101.PriceRequestsCubit(gh<_i69.PriceRequestsUseCase>()));
-  gh.factory<_i102.ProfileBloc>(
-      () => _i102.ProfileBloc(gh<_i70.ProfileUseCase>()));
+  gh.factory<_i102.ProfileBloc>(() => _i102.ProfileBloc(
+        gh<_i70.ProfileUseCase>(),
+        gh<_i67.PaymentUseCase>(),
+      ));
   gh.factory<_i103.ShowroomCarsCubit>(() => _i103.ShowroomCarsCubit(
         gh<_i77.ShowroomsUseCase>(),
         gh<_i59.FavoritesUseCase>(),

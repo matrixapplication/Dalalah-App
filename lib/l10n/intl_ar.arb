@@ -226,7 +226,7 @@
   "electricity": "كهرباء",
   "enter_price": "أدخل السعر",
   "email_or_phone": "الايميل أو رقم الجوال",
-  "your_ad_has_been_published": "تم نشر اعلانك",
+  "your_ad_has_been_published": "قم بضغط على حفظ ليتم نشر اعلانك",
   "distinguish_your_ad_get_higher_reach": "ميز اعلانك واحصل على وصول اعلى",
   "highlight_the_ad": "تمييز الاعلان",
   "watch_my_ad": "شاعد اعلانك",
@@ -373,5 +373,6 @@
   "commercial": "تجاري",
   "upload_logo": "رفع الشعار",
   "feature_duration_price_zero_msg": "يجب أن يكون السعر أكبر من 0",
-  "please_upload_logo": "من فضلك قم برفع الشعار"
+  "please_upload_logo": "من فضلك قم برفع الشعار",
+  "payment_disabled_msg":"تمييز الاعلان غير متاح الان"
 }

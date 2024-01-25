@@ -242,7 +242,7 @@
   "electricity": "Electricity",
   "enter_price": "Enter Price",
   "email_or_phone": "Email or Phone",
-  "your_ad_has_been_published": "Your ad has been published",
+  "your_ad_has_been_published": "Click Save to publish your ad",
   "distinguish_your_ad_get_higher_reach": "Distinguish your ad and get higher reach",
   "highlight_the_ad": "Highlight the ad",
   "watch_my_ad": "Watch my ad",
@@ -384,5 +384,6 @@
   "commercial": "Commercial",
   "upload_logo": "Upload Logo",
   "feature_duration_price_zero_msg": "Feature duration and price must be greater than zero",
-  "please_upload_logo": "Please upload logo"
+  "please_upload_logo": "Please upload logo",
+  "payment_disabled_msg":"Ad highlighting is not available now"
 }

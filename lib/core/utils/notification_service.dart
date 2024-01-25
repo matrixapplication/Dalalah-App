@@ -128,6 +128,10 @@ class FirebaseNotification {
     return firebaseToken;
   }
 
+  Future<void> deleteToken() async {
+    await FirebaseMessaging.instance.deleteToken();
+  }
+
   static NotificationDetails _notificationDetails() {
     print('_notificationDetails');
     return NotificationDetails(

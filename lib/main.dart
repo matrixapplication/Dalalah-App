@@ -8,6 +8,7 @@ import 'core/routes/app_links_service.dart';
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
+import 'core/utils/notification_service.dart';
 import 'src/main_index.dart';
 
 final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FirebaseNotification firebase = FirebaseNotification();
-    // firebase.initialize(context);
+    FirebaseNotification firebase = FirebaseNotification();
+    firebase.initialize(context);
     AppLinkingService.init();
     // //
     return BlocProvider(
