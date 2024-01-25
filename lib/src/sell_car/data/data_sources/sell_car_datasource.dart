@@ -66,7 +66,7 @@ abstract class SellCarDatasource {
       @Part(name: 'ad_type') String adType,
   );
 
-  @GET('/add_car')
+  @GET('/add-new-car')
   Future<ApiResponse<int>> addNewCar(@Body() SellCarParams params);
 
   @MultiPart()

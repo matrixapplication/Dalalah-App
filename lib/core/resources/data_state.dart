@@ -61,3 +61,13 @@ class DataSuccess<T> extends DataStateFBuilder<T> {
 }
 
 class DataLoading extends DataStateFBuilder {}
+
+class DoubleDataSuccess<T> extends DataStateFBuilder<T> {
+  T data1;
+  T data2;
+
+  DoubleDataSuccess({
+    required this.data1,
+    required this.data2,
+  });
+}

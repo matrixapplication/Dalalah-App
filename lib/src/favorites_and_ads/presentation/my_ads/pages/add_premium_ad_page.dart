@@ -8,7 +8,7 @@ import '../../../domain/entites/ad_args.dart';
 import '../bloc/add_premium_ad_bloc.dart';
 
 class AddPremiumADPage
-    extends BaseBlocWidget<DataSuccess<AdFeature>, AddPremiumADCubit> {
+    extends BaseBlocWidget<DataSuccess<AdFeature?>, AddPremiumADCubit> {
   AddPremiumADPage({Key? key}) : super(key: key);
 
   @override
@@ -17,9 +17,9 @@ class AddPremiumADPage
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<AdFeature> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<AdFeature?> state) {
     return AddPremiumScreen(
-      adFeature: state.data!,
+      adFeature: state.data,
       isDisableSaveButton: true,
       onSave: (adType) {
         ADArgs args = getArguments(context);

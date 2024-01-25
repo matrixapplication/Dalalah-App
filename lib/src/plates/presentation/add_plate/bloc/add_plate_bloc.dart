@@ -9,6 +9,7 @@ import '../../../../payment/data/models/featured_payment_params.dart';
 import '../../../../payment/domain/entities/payment_requests.dart';
 import '../../../../payment/domain/use_cases/payment_usecase.dart';
 import '../../../data/models/add_plate_params.dart';
+import '../../../domain/entities/ad_feature.dart';
 import '../../../domain/entities/ad_types.dart';
 import '../../../domain/use_cases/plates_usecase.dart';
 
@@ -49,8 +50,16 @@ class AddPlateCubit extends BaseCubit {
     executeSuccess(() => sellCar.fetchCities());
   }
 
-  fetchAdFeature() async {
-    executeSuccess(() => usecase.fetchAdFeature());
+
+  fetchAdFeature() {
+    executeBuilder(() => paymentUseCase.fetchPaymentStatus(), isRefresh: true, onSuccess: (data)  async {
+      if(data.isHide = true){
+        emit(const DataSuccess<AdFeature?>(null));
+      } else{
+        final data2 = await usecase.fetchAdFeature();
+        emit(DataSuccess<AdFeature?>(data2));
+      }
+    });
   }
 
 }

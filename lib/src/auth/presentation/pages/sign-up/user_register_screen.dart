@@ -5,6 +5,7 @@ import 'package:dalalah/core/widgets/snack_bar/snack_bar_manager.dart';
 
 import '../../../../../core/resources/validation.dart';
 import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/utils/notification_service.dart';
 import '../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../installment/domain/entities/roles.dart';
 import '../../../../main_index.dart';
@@ -215,7 +216,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
     );
   }
 
-  onRegisterPressed() {
+  onRegisterPressed() async {
     if (formKey.currentState!.validate()) {
       if(isShowroom && file.path.isEmpty){
         SnackBarManager.showErrorSnackBar(strings.please_upload_logo);
@@ -237,7 +238,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
           cityId: cityId,
           whatsapp: whatsappController.text,
           logo: file,
-          fcmToken: '',
+          fcmToken: await FirebaseNotification().getToken(),
         ),
       );
     }

@@ -8,7 +8,7 @@ import 'ad_premium_screen.dart';
 
 
 class CarPremiumPage
-    extends BaseBlocWidget<DataSuccess<AdFeature>, SellCarCubit> {
+    extends BaseBlocWidget<DataSuccess<AdFeature?>, SellCarCubit> {
 
   CarPremiumPage({Key? key}) : super(key: key);
 
@@ -18,9 +18,9 @@ class CarPremiumPage
   }
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<AdFeature> state) {
+  Widget buildWidget(BuildContext context, DataSuccess<AdFeature?> state) {
     return AddPremiumScreen(
-      adFeature: state.data!,
+      adFeature: state.data,
       onSave: ( adType) {
         SellCarParams params = getArguments(context);
         params.adType = adType;

@@ -11,6 +11,7 @@ import '../../../home/domain/entities/car.dart';
 import '../../../payment/data/models/featured_payment_params.dart';
 import '../../../payment/domain/entities/payment_requests.dart';
 import '../../../payment/domain/use_cases/payment_usecase.dart';
+import '../../../plates/domain/entities/ad_feature.dart';
 import '../../../plates/domain/entities/ad_types.dart';
 import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/sell_car_params.dart';
@@ -125,6 +126,13 @@ class SellCarCubit extends BaseCubit {
   }
 
   fetchAdFeature() {
-    executeSuccess(() => platesUseCase.fetchAdFeature());
+    executeBuilder(() => paymentUseCase.fetchPaymentStatus(), isRefresh: true, onSuccess: (data)  async {
+      if(data.isHide = true){
+        emit(const DataSuccess<AdFeature?>(null));
+      } else{
+        final data2 = await platesUseCase.fetchAdFeature();
+        emit(DataSuccess<AdFeature?>(data2));
+      }
+    });
   }
 }

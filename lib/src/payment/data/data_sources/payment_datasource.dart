@@ -9,6 +9,7 @@ import '../../../home/data/models/car_dto.dart';
 import '../models/featured_payment_params.dart';
 import '../models/package_dto.dart';
 import '../models/payment_log_params.dart';
+import '../models/payment_status_dto.dart';
 
 
 part 'payment_datasource.g.dart';
@@ -27,4 +28,7 @@ abstract class  PaymentDataSource{
 
   @POST('/package_payment')
   Future<ApiResponse> selectPackagePayment(@Queries() PaymentLogParams params);
+
+  @GET('/payment-status')
+  Future<ApiResponse<PaymentStatusDto>> fetchPaymentStatus();
 }

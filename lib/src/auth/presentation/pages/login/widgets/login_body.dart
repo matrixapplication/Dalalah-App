@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../../../../core/resources/validation.dart';
 import '../../../../../../core/utils/navigator.dart';
+import '../../../../../../core/utils/notification_service.dart';
 import '../../../../../../core/widgets/buttons/underline_text_button.dart';
 import '../../../../../main_index.dart';
 import '../../../../data/models/login_params.dart';
@@ -22,8 +23,8 @@ class LoginBody extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(kDebugMode){
-     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1408');
-     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '1234567' : '123456789');
+     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'h@h.com' : '1435');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123123' : '123456789');
     }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,
@@ -70,12 +71,12 @@ class LoginBody extends BaseStatelessWidget {
               margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                 // String fcmToken = await FirebaseMessaging.instance.getToken() ?? '';
+                  String token = await FirebaseNotification().getToken() ?? '';
                   onLogin!(
                     LoginParams(
                       email: emailController.text,
                       password: passwordController.text,
-              //        fcmToken: fcmToken,
+                      fcmToken: token,
                     ),
                   );
                 }

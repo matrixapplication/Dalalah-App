@@ -14,8 +14,9 @@ class Profile {
   String? image;
   City? city;
   String? token;
+  bool? isDisablePayment;
 
-  Profile({this.id, this.name, this.email, this.phone, this.whatsApp, this.role, this.image, this.city, this.token});
+  Profile({this.id, this.name, this.email, this.phone, this.whatsApp, this.role, this.image, this.city, this.token, this.isDisablePayment});
 
   factory Profile.fromDto(ProfileDto json) {
     return Profile(
@@ -28,6 +29,7 @@ class Profile {
       image: json.image,
       city:  City.fromDto(json.city ?? CityDto()),
       token: json.token,
+      isDisablePayment: false,
     );
   }
   //

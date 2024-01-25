@@ -201,7 +201,7 @@ class _SellCarDatasource implements SellCarDatasource {
     )
             .compose(
               _dio.options,
-              '/add_car',
+              '/add-new-car',
               queryParameters: queryParameters,
               data: _data,
             )

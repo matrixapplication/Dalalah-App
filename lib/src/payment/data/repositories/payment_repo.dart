@@ -6,6 +6,7 @@ import '../data_sources/payment_datasource.dart';
 import '../models/featured_payment_params.dart';
 import '../models/package_dto.dart';
 import '../models/payment_log_params.dart';
+import '../models/payment_status_dto.dart';
 
 
 @Injectable(as: BasePaymentRepo)
@@ -31,5 +32,10 @@ class PaymentRepo extends BasePaymentRepo{
     return data.message ?? '';
   }
 
+  @override
+  Future<PaymentStatusDto> fetchPaymentStatus() async{
+    final data = await apiProvider.fetchPaymentStatus();
+    return data.data!;
+  }
 
 }
