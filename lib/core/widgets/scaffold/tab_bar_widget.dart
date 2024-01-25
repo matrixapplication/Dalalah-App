@@ -69,7 +69,12 @@ class TabBarScaffoldWidget extends StatelessWidget {
                 splashBorderRadius: BorderRadius.circular(50),
                 unselectedLabelColor: context.displayLarge.color,
                 labelPadding: 2.paddingTop,
-                tabs: tabs.map((e) => e.builder()).toList(),
+                tabs: tabs.map((e) => SizedBox(
+                  width: double.infinity,
+                  child: Tab(
+                    text: e.label,
+                  ),
+                )).toList(),
               ),
             ),
           ),
