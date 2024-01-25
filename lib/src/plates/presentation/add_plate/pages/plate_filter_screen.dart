@@ -113,7 +113,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
               : PrimaryButton(
                   title: args.isFilter ? strings.edit : strings.edit_plate,
                   onPressed: () {
-                    onSelectedPressed();
+                    onSelectedPressed(args.plate?.id ?? 0);
                   },
                 ),
           20.ph,
@@ -122,10 +122,11 @@ class PlateFilterScreen extends BaseStatelessWidget {
     );
   }
 
-  onSelectedPressed() async {
+  onSelectedPressed(int id) async {
     int getUserId = await HelperMethods.getUserId();
     if (onSelected != null) {
       onSelected!(AddPlateParams(
+        id: id,
         cityId: cityId,
         letterAr:
             controllersArLetters.map((e) => e.text).join().toArabicChars(),
@@ -133,6 +134,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
         plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,
         price: priceController.text.toInt,
+        districtId: 1,
         userId: getUserId,
       ));
     }
@@ -152,16 +154,17 @@ class PlateFilterScreen extends BaseStatelessWidget {
         ));
   }
 
-  _initData(PlateArgs args) async {
+  _initData(PlateArgs args) async{
+  print('args.plate ${args.plate?.id}');
     if (args.plate != null) {
       for (var element in controllersArLetters) {
-        element.text = args.plate!.letterAr ?? '';
+        element.text = args.plate!.letterAr!.split('')[controllersArLetters.indexOf(element)].toArabicChars();
       }
       for (var element in controllersEnLetters) {
-        element.text = args.plate!.letterEn ?? '';
+        element.text = args.plate!.letterEn!.split('')[controllersEnLetters.indexOf(element)];
       }
       for (var element in controllersNumbers) {
-        element.text = args.plate!.plateNumber ?? '';
+        element.text = args.plate!.plateNumber!.split('')[controllersNumbers.indexOf(element)];
       }
       priceController.text = args.plate!.price.toString();
       cityId = args.plate!.city?.id ?? 0;

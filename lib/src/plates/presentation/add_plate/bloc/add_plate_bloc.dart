@@ -27,7 +27,7 @@ class AddPlateCubit extends BaseCubit {
   dynamic idOrMsg = 0;
   try {
 
-    idOrMsg = await usecase.addPlate(params);
+    idOrMsg = (params.id != null || params.id != 0) ? await usecase.editPlate(params) : await usecase.addPlate(params);
     if(params.adType == AdTypes.featured){
       final data = await PaymentRequests.urWayPayment(
           id: idOrMsg.toString(), amount: params.price.toString());

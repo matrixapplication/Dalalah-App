@@ -59,14 +59,14 @@ class CarOperationsPopup extends BaseStatelessWidget {
               title: isSold ? strings.cancel_sale : strings.sold,
             ),
           ),
-          if(!isFeatured)
-          PopupMenuItem(
-            value: 4,
-            padding: EdgeInsets.zero,
-            child: PopupItem(
-              title: context.strings.special,
-            ),
-          ),
+          // if(!isFeatured)
+          // PopupMenuItem(
+          //   value: 4,
+          //   padding: EdgeInsets.zero,
+          //   child: PopupItem(
+          //     title: context.strings.special,
+          //   ),
+          // ),
         ],
         child: Icon(Icons.more_vert, color: context.outlineVariant, size: 18),
         onSelected: (value) {
@@ -80,11 +80,12 @@ class CarOperationsPopup extends BaseStatelessWidget {
             if (onSold != null) {
               onSold!(id);
             }
-          } else if (value == 4) {
-            if (onSpecial != null) {
-              pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
-            }
           }
+          // else if (value == 4) {
+          //   if (onSpecial != null) {
+          //     pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
+          //   }
+          // }
         },
       ),
     );

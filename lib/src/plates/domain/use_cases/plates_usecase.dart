@@ -28,6 +28,10 @@ class PlatesUseCase {
     final data=  await repository.addPlate(params);
     return params.adType == AdTypes.featured ? data.data! : data.message;
   }
+  Future<dynamic> editPlate(AddPlateParams params) async {
+    final data=  await repository.editPlate(params);
+    return params.adType == AdTypes.featured ? data.data! : data.message;
+  }
 
   Future<AdFeature> fetchAdFeature() async {
     final data = await repository.fetchAdFeature();
