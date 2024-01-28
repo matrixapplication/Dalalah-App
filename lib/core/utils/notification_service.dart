@@ -80,7 +80,6 @@ class FirebaseNotification {
         .setForegroundNotificationPresentationOptions(
             alert: true, badge: true, sound: true);
 
-    await getToken();
     FirebaseMessaging.instance.getInitialMessage().then((message) async {
       print('getInitialMessage: $message');
       print('getInitialMessage data: ${message?.data}');
@@ -108,6 +107,8 @@ class FirebaseNotification {
       //   routeFromNotificationMessage(context, message);
       // }
     });
+
+    await getToken();
   }
 
   // Future<void> routeFromNotificationMessage(

@@ -71,12 +71,12 @@ class LoginBody extends BaseStatelessWidget {
               margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  String token = await FirebaseNotification().getToken() ?? '';
+                  // I send token in bloc not here
+                 // String token = await FirebaseNotification().getToken() ?? '';
                   onLogin!(
                     LoginParams(
                       email: emailController.text,
                       password: passwordController.text,
-                      fcmToken: token,
                     ),
                   );
                 }

@@ -11,7 +11,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyCars(isMoreData: true);
+    bloc.fetchMyCars();
   }
 
   @override
@@ -35,7 +35,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         refreshController.refreshCompleted();
       },
       onLoading: () async {
-        await bloc.fetchMyCars(isMoreData: true);
+        await bloc.fetchMyCars(isRefresh: false);
         await Future.delayed(const Duration(milliseconds: 1200));
         if (bloc.isLastPage) {
           print('isLastPage ${bloc.isLastPage}');

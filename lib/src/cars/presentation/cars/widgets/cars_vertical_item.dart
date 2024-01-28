@@ -57,6 +57,7 @@ class CarVerticalItem extends BaseStatelessWidget {
       child: Container(
         // isAds ? 250 :
         height: 160,
+        width: 200,
         margin: (bottomMargin ?? 14).paddingBottom,
         decoration: bottomMargin == 0
             ? Decorations.kDecorationTopRadius(
@@ -78,124 +79,109 @@ class CarVerticalItem extends BaseStatelessWidget {
         // Decorations.kDecorationBorderRadius(
         //   borderRadius: BorderRadiusDirectional.circular(5),
         // ),
-        child: Column(
+        child: Row(
           children: [
             Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: 8.paddingHoriz + 5.paddingBottom,
-                      // width: 220,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              flex: 3,
+              child: Padding(
+                padding: 8.paddingHoriz + 5.paddingBottom,
+                // width: 220,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    4.ph,
+                    Text(
+                      "${car.brandModel?.brand} ${car.brandModel?.name}",
+                      style: context.textTheme.labelLarge!.copyWith(
+                        color: AppColors.grey_2C,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Spacer(),
+                    if(isMyCar && car.isSold == false && car.isHide == false && car.isApproved == false)
+                      MyAdStatus(
+                        isSold: car.isSold ?? false,
+                        isHidden: car.isHide ?? false,
+                        isApproved: car.isApproved ?? false,
+                      ),
+                    FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          4.ph,
-                          Text(
-                            "${car.brandModel?.brand} ${car.brandModel?.name}",
-                            style: context.textTheme.labelLarge!.copyWith(
-                              color: AppColors.grey_2C,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                          ChipAd(
+                            text: car.status?.name ?? '',
                           ),
-                          const Spacer(),
-                          if(isMyCar && car.isSold == false && car.isHide == false && car.isApproved == false)
-                            FittedBox(
-                              child: MyAdStatus(
-                                isSold: car.isSold ?? false,
-                                isHidden: car.isHide ?? false,
-                                isApproved: car.isApproved ?? false,
-                              ),
-                            ),
-                          FittedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ChipAd(
-                                  text: car.status?.name ?? '',
-                                ),
-                                10.pw,
-                                ChipAd(
-                                  text: car.year ?? "",
-                                ),
-                              ],
-                            ),
-                          ),
-                          5.ph,
-                          PriceWidget(
-                            price: '${car.price}',
-                            // padding: 3.paddingVert + 5.paddingHoriz,
-                          ),
-                          5.ph,
-                          CarInfo(
-                            isNew: CarStatus.newCar == car.status?.key,
-                            car: car,
+                          10.pw,
+                          ChipAd(
+                            text: car.year ?? "",
                           ),
                         ],
                       ),
                     ),
+                    5.ph,
+                    PriceWidget(
+                      price: '${car.price}',
+                      // padding: 3.paddingVert + 5.paddingHoriz,
+                    ),
+                    5.ph,
+                    CarInfo(
+                      isNew: CarStatus.newCar == car.status?.key,
+                      car: car,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Stack(
+                children: [
+                  ImageNetwork(
+                    url: car.mainImage ?? '',
+                    height: double.infinity,
+                    borderRadius: imageHasOnlyTopRadius
+                        ? const BorderRadiusDirectional.only(
+                            topStart: Radius.circular(5),
+                            topEnd: Radius.circular(5),
+                          )
+                        : BorderRadiusDirectional.circular(5),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Stack(
-                      children: [
-                        ImageNetwork(
-                          url: car.mainImage ?? '',
-                          height: double.infinity,
-                          borderRadius: imageHasOnlyTopRadius
-                              ? const BorderRadiusDirectional.only(
-                                  topStart: Radius.circular(5),
-                                  topEnd: Radius.circular(5),
-                                )
-                              : BorderRadiusDirectional.circular(5),
-                        ),
-                        if (car.isFeatured ?? false)
-                          const PositionedDirectional(
-                            top: 5,
-                            start: 5,
-                            child: FeaturedIcon(),
+                  if (car.isFeatured ?? false)
+                    const PositionedDirectional(
+                      top: 5,
+                      start: 5,
+                      child: FeaturedIcon(),
+                    ),
+                  PositionedDirectional(
+                    top: 5,
+                    end: 5,
+                    child: isMyCar
+                        ? CarOperationsPopup(
+                            car: car,
+                            onHide: onHide,
+                            onSold: onSold,
+                            onSpecial: onSpecial,
+                          )
+                        : FavoriteButton(
+                            iconSize: 15,
+                            isFavorite: car.isFavorite ?? false,
+                            onToggleFavorite: () {
+                              onToggleFavorite!(car.id!);
+                            },
                           ),
-                        PositionedDirectional(
-                          top: 5,
-                          end: 5,
-                          child: isMyCar
-                              ? CarOperationsPopup(
-                                  car: car,
-                                  onHide: onHide,
-                                  onSold: onSold,
-                                  onSpecial: onSpecial,
-                                )
-                              : FavoriteButton(
-                                  iconSize: 15,
-                                  isFavorite: car.isFavorite ?? false,
-                                  onToggleFavorite: () {
-                                    onToggleFavorite!(car.id!);
-                                  },
-                                ),
-                        ),
-                        PositionedDirectional(
-                          bottom: 5,
-                          end: 5,
-                          child: ShareIconButton(
-                            route: Routes.carAppLink,
-                            id: car.id.toString() ?? '',
-                          ),
-                        ),
-                      ],
+                  ),
+                  PositionedDirectional(
+                    bottom: 5,
+                    end: 5,
+                    child: ShareIconButton(
+                      route: Routes.carAppLink,
+                      id: car.id.toString() ?? '',
                     ),
                   ),
                 ],
               ),
             ),
-
-              //   CarItemFooter(
-            //     price: car.price?.toString() ?? "",
-            //     onTap: () {
-            //       onRequestPrice?.call(car.id ?? 0);
-            //     },
-            //   ),
           ],
         ),
       ),

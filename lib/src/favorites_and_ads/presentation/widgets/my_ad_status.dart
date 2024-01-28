@@ -11,7 +11,7 @@ class MyAdStatus extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("isSold $isSold");
-    return    Row(
+    return    Wrap(
       children: [
         if(isHidden)
           ChipAd(

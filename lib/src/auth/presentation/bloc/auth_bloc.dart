@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/resources/data_state.dart';
+import '../../../../core/utils/notification_service.dart';
 import '../../../sell_car/domain/use_cases/sell_car_usecase.dart';
 import '../../data/models/login_params.dart';
 import '../../data/models/register_params.dart';
@@ -15,12 +16,16 @@ class AuthCubit extends BaseCubit {
 
   AuthCubit(this.usecase, this.sellCarUseCase);
 
-  void login(LoginParams params)  {
+  Future<void> login(LoginParams params)  async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterSuccess(() => usecase.loginAsUser(params));
   }
 
 
-  void showRoomLogin(ShowroomLoginParams params)  {
+  Future<void> showRoomLogin(ShowroomLoginParams params)  async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterSuccess(() => usecase.loginAsShowroom(params));
   }
 
