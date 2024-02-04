@@ -57,7 +57,6 @@ class UserRegisterScreen extends BaseStatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (isShowroom)
               Row(
                 children: [
                   Expanded(
@@ -116,7 +115,9 @@ class UserRegisterScreen extends BaseStatelessWidget {
               prefixIcon: AppIcons.smartphone,
               controller: phoneNumberController,
               keyboardType: TextInputType.phone,
-              validator: (phone) => Validation.validatePhone(phone ?? ''),
+              validator: (phone){},
+              isValidator: false,
+              // validator: (phone) => Validation.validatePhone(phone ?? ''),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             AuthTextField(
@@ -125,7 +126,8 @@ class UserRegisterScreen extends BaseStatelessWidget {
               keyboardType: TextInputType.phone,
               controller: whatsappController,
               isColor: false,
-              validator: (phone) => Validation.validatePhone(phone ?? ''),
+              isValidator: false,
+              // validator: (phone) => Validation.validatePhone(phone ?? ''),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             DropDownField(

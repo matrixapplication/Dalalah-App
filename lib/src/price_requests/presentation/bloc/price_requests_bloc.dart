@@ -2,6 +2,7 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
+import '../../../../core/exceptions/empty_list_exception.dart';
 import '../../domain/entities/request_price.dart';
 import '../../domain/use_cases/price_requests_usecase.dart';
 
@@ -34,10 +35,10 @@ class PriceRequestsCubit extends BaseCubit {
         cars = data.data?.map((e) => RequestPrice.fromJson(e)).toList() ?? [];
         allCars.addAll(cars);
         emit(DataSuccess<List<RequestPrice>>(allCars));
-        // if(cars.isEmpty){
-        //   throw EmptyListException();
-        // } else {
-        // }
+        if(allCars.isEmpty){
+          throw EmptyListException();
+        } else {
+        }
       },
     );
   }
