@@ -90,8 +90,8 @@
 		</array>
 		<key>FacebookAppID</key>
 		<string>786761106601352</string>
-        <key>FacebookClientToken</key>
-        <string>9eee105a25c132c43bce6a83d1502428</string>
+		<key>FacebookClientToken</key>
+		<string>9eee105a25c132c43bce6a83d1502428</string>
 		<key>FacebookDisplayName</key>
 		<string>دلالة</string>
 	</dict>
