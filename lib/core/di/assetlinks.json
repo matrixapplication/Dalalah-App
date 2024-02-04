@@ -5,9 +5,9 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.dalalah.app",
+      "package_name": "com.dalalah",
       "sha256_cert_fingerprints": [
-        "E7:FA:C7:01:8B:72:80:AE:05:4C:3A:99:4D:03:D8:E7:5E:BE:81:5A:E2:7A:73:A3:7C:E7:59:2D:D2:9C:8C:67"
+        "08:53:E3:66:2D:10:AA:5A:9F:40:50:F6:FB:C9:2B:2B:81:5C:A4:59:C9:E9:A5:FB:BB:7E:BE:96:79:34:5A:F9"
       ]
     }
   },
@@ -18,7 +18,7 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.dalalah.app",
+      "package_name": "com.dalalah",
       "sha256_cert_fingerprints": [
         "66:FF:D0:01:5F:3C:0D:EB:18:ED:B1:6E:12:31:2E:F7:DC:84:17:2F:BF:BC:F6:ED:4A:D0:D3:F5:75:8B:33:D2"
       ]
@@ -31,7 +31,7 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.dalalah.app",
+      "package_name": "com.dalalah",
       "sha256_cert_fingerprints": [
         "F8:59:29:3E:F0:DD:6F:DB:E3:CE:A8:DA:E5:05:BA:81:78:E2:1C:ED:A2:1E:39:CE:78:1E:E0:26:F0:23:BE:DF"
       ]

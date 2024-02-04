@@ -2,7 +2,7 @@
 const String _imagesPath = "assets/images";
 class AppImages{
   static String logo_white = 'assets/logo/logo_light.png';
-  static String logo = 'assets/logo/logo.png';
+  static String logo = 'assets/logo/splash.png';
   static String appLogo = '$_imagesPath/222.png';
   static String splashBg  = '$_imagesPath/Rectangle 13.png';
   static String noImage  = '$_imagesPath/Rectangle 1305.png';
