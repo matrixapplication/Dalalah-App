@@ -21,6 +21,7 @@ class IconText extends StatelessWidget {
   final bool isImage;
   final IconData? iconData;
   final bool isIconData;
+  final MainAxisSize? mainAxisSize;
 
   const IconText({
     Key? key,
@@ -40,6 +41,7 @@ class IconText extends StatelessWidget {
     this.isImage = false,
     this.iconData,
     this.isIconData = false,
+    this.mainAxisSize,
   }) : super(key: key);
 
   @override
@@ -49,6 +51,7 @@ class IconText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+        mainAxisSize: mainAxisSize ?? MainAxisSize.max,
         children: [
           isIconLift ?? false
               ? isExpanded ?? false

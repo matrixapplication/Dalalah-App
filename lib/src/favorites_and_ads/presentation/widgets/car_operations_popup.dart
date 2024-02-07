@@ -26,6 +26,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
     bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
     bool isSold = car?.isSold ?? plate?.isSold ?? false;
     bool isHidden = car?.isHide ?? plate?.isHide ?? false;
+    print('isHidden: $isHidden');
     return Container(
       height: 32,
       width: 32,

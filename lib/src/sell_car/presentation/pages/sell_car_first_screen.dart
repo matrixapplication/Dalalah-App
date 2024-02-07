@@ -52,11 +52,25 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               SelectionButtonChip(
                 title: strings.car_status,
                 initialValue: car?.status?.key ?? status,
+                margin: 0.paddingAll,
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
                 onSelected: (value) {
                   status = value.id ?? '';
+                },
+              ),
+              DropDownField(
+                title: strings.years,
+                hint: strings.select_year,
+                valueId: year.toString(),
+                items: state.years
+                    .map((e) =>
+                    DropDownItem(id: e.toString(), title: e.toString()))
+                    .toList(),
+                onChanged: (value) {
+                  year = int.parse(value?.id ?? '0');
+                  // isModelYearStream.setData(year == DateTime.now().year);
                 },
               ),
               DropDownField(
@@ -89,19 +103,6 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 stream: state.brandsModelsExtensionStream,
                 onChanged: (id) {
                   extensionId = id;
-                },
-              ),
-              DropDownField(
-                title: strings.years,
-                hint: strings.select_year,
-                valueId: year.toString(),
-                items: state.years
-                    .map((e) =>
-                        DropDownItem(id: e.toString(), title: e.toString()))
-                    .toList(),
-                onChanged: (value) {
-                  year = int.parse(value?.id ?? '0');
-                 // isModelYearStream.setData(year == DateTime.now().year);
                 },
               ),
             ],

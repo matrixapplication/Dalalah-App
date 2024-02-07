@@ -57,7 +57,7 @@
   "external_car_shape_status": "حالة الشكل الخارجي للسيارة",
   "number_car_cylinders": "عدد سلندرات السيارة",
   "number_kilometers_km": "عدد الكيلومترات (كم)",
-  "price_egp": "السعر (جنيه)",
+  "price_egp": "السعر (ريال)",
   "car_description": "وصف السيارة",
   "select_properties": "اختر الخصائص",
   "add_main_images": "إضافة الصور الرئيسية",

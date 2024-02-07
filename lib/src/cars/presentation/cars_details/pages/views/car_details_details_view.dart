@@ -113,7 +113,7 @@ class DetailsViewListTile extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: feature.options!.length ?? 0,
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 100,
+                maxCrossAxisExtent: 110,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
               ),

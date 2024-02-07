@@ -13,6 +13,7 @@ import '../../../data/models/comment_params.dart';
 import '../../../data/models/model_object.dart';
 import '../../../domain/entities/car_details.dart';
 import '../../comments/pages/comments_page.dart';
+import '../widgets/car_details_property_item.dart';
 import '../widgets/car_properties.dart';
 import '../widgets/sliders_car_details.dart';
 import '../widgets/user_info.dart';
@@ -44,7 +45,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           TabItemModel(
             label: strings.details,
             page: CarDetailsDetailsView(
-                carDetails: carDetails,
+              carDetails: carDetails,
               onToggleFavorite: onToggleFavorite,
             ),
           ),
@@ -60,7 +61,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
             TabItemModel(
               label: strings.categories,
               page: CarsPage(
-    isDetailsPage: true,
+                isDetailsPage: true,
                 params: CarFilterParams(
                   startYear: int.parse(car.year ?? '0'),
                   brand: car.brand?.id ?? 0,
@@ -84,7 +85,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 660 : 750.0,
+          expandedHeight: isNew ? 660 : 700.0,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -107,70 +108,97 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         },
                       ),
                     ),
-
                   ],
                 ),
                 Padding(
-                  padding: 15.paddingHoriz,
+                  padding: 15.paddingHoriz + 10.paddingTop,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "${car.brandModel?.brand} ${car.brandModel?.name}",
-                        style: context.textTheme.titleSmall!.copyWith(
-                          color: AppColors.grey_2C,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "${car.brandModel?.brand} ${car.brandModel?.name}",
+                            style: context.textTheme.titleSmall!.copyWith(
+                              color: AppColors.grey_2C,
+                            ),
+                          ),
+                          PriceWidget(
+                            price: car.price ?? '0.0',
+                            fontSize: 20,
+                          ),
+                        ],
                       ),
                       15.ph,
+                     // Wrap(
+                     //   crossAxisAlignment: WrapCrossAlignment.center,
+                     //    alignment: WrapAlignment.center,
+                     //    runSpacing: 8,
+                     //    spacing: 8,
+                     //    children: carDetails.properties(context)?.map((property) {
+                     //      return CarDetailsPropertyItem(
+                     //        property: property,
+                     //      );
+                     //    }).toList() ?? [],
+                     // ),
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: carDetails.properties(context)?.length ?? 0,
-                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
                           maxCrossAxisExtent: 100,
+                          mainAxisExtent: 90,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
                         ),
                         itemBuilder: (context, index) {
-                          CarProperty property = carDetails.properties(context)[index];
-                          return Container(
-                            padding: 5.paddingHoriz,
-                            decoration: Decorations.kDecorationBorderRadius(
-                              colorBorder: context.dividerColor,
-                            ),
-                            child: ColumnTexts(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              title: property.subtitle ?? '',
-                              value: property.title,
-                              titleStyle: context.bodySmall.copyWith(
-                                fontSize: 12,
-                              ),
-                              valueStyle: context.headlineSmall.copyWith(
-                                fontSize: 12,
-                            ),
-                          ));
-                        },
-                      ),
-                      10.ph,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // if (isNew)
-                          //   IconText(
-                          //     icon: AppIcons.star,
-                          //     text: '${car.r ?? 0}',
-                          //     textStyle: context.bodyMedium.copyWith(
-                          //       color: context.yellow_00,
+                          CarProperty property =
+                              carDetails.properties(context)[index];
+                          return CarDetailsPropertyItem(
+                            property: property,
+                          );
+                          // return Container(
+                          //   padding: 5.paddingHoriz,
+                          //   decoration: Decorations.kDecorationBorderRadius(
+                          //     colorBorder: context.dividerColor,
+                          //   ),
+                          //   child: ColumnTexts(
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     mainAxisAlignment: MainAxisAlignment.center,
+                          //     title: property.subtitle ?? '',
+                          //     value: property.title,
+                          //     titleStyle: context.bodySmall.copyWith(
+                          //       fontSize: 12,
+                          //     ),
+                          //     valueStyle: context.headlineSmall.copyWith(
+                          //       fontSize: 12,
                           //     ),
                           //   ),
-                          const Spacer(),
-                          PriceWidget(
-                            price: car.price ?? '0.0',
-                          ),
-                        ],
+                          // );
+                        },
                       ),
+                      16.ph,
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: [
+                      //     if (isNew)
+                      //       IconText(
+                      //         icon: AppIcons.star,
+                      //         text: '${car.r ?? 0}',
+                      //         textStyle: context.bodyMedium.copyWith(
+                      //           color: context.yellow_00,
+                      //         ),
+                      //       ),
+                      //     const Spacer(),
+                      //     PriceWidget(
+                      //       price: car.price ?? '0.0',
+                      //       fontSize: 20,
+                      //     ),
+                      //   ],
+                      // ),
                       if (!isNew)
                         UserInfo(
                           user: car.modelObject ?? ModelObject(),
