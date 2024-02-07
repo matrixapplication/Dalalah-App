@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import '../../../home/data/models/car_dto.dart';
 import '../../../home/domain/entities/brand.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../../plates/domain/entities/ad_types.dart';
 import '../../data/models/admin_car_params.dart';
 import '../../data/models/color_dto.dart';
 import '../../data/models/edit_image_params.dart';
@@ -29,19 +30,19 @@ class SellCarUseCase {
   final AddCarRepo repository ;
   SellCarUseCase(this.repository);
 
-  Future<String> sellCar(SellCarParams params) async {
+  Future<dynamic> sellCar(SellCarParams params) async {
     final data = await  repository.addCar(params);
-    return data.message ?? '';
+    return params.adType == AdTypes.featured ? data.data : data.message;
   }
 
-  Future<String> addNewCar(SellCarParams params) async {
+  Future<dynamic> addNewCar(SellCarParams params) async {
     final data = await repository.addNewCar(params);
-    return data.message ?? '';
+    return params.adType == AdTypes.featured ? data.data : data.message;
   }
 
-  Future<String> editCar(SellCarParams params) async {
+  Future<dynamic> editCar(SellCarParams params) async {
     final data = await  repository.editCar(params);
-    return data.message ?? '';
+    return params.adType == AdTypes.featured ? data.data : data.message;
   }
 
   Future<List<Brand>> fetchBrands() async{

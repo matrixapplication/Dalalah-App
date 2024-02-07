@@ -8,6 +8,7 @@ part of 'add_plate_params.dart';
 
 AddPlateParams _$AddPlateParamsFromJson(Map<String, dynamic> json) =>
     AddPlateParams(
+      id: json['id'] as int?,
       userId: json['user_id'] as int?,
       cityId: json['city_id'] as int?,
       districtId: json['district_id'] as int?,
@@ -21,6 +22,7 @@ AddPlateParams _$AddPlateParamsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AddPlateParamsToJson(AddPlateParams instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'user_id': instance.userId,
       'city_id': instance.cityId,
       'district_id': instance.districtId,

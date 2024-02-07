@@ -10,7 +10,7 @@ class CustomListTile2 extends StatelessWidget {
   final double? iconLeadingSize;
   final Widget? trailing;
   final Function()? onTap;
-  final bool? isArrowForward;
+  final bool isArrowForward;
   final EdgeInsetsGeometry? contentPadding;
   final Widget? leading;
   final Color? backgroundColor;
@@ -27,7 +27,7 @@ class CustomListTile2 extends StatelessWidget {
     this.iconLeadingSize,
     this.trailing,
     this.onTap,
-    this.isArrowForward,
+    this.isArrowForward = false,
     this.contentPadding,
     this.leading,
     this.backgroundColor,
@@ -63,8 +63,8 @@ class CustomListTile2 extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style:
-                        titleStyle ?? context.titleSmall!.copyWith(fontSize: 16),
+                    style: titleStyle ??
+                        context.titleSmall!.copyWith(fontSize: 16),
                   ),
                   6.ph,
                   subtitle != null
@@ -74,7 +74,6 @@ class CustomListTile2 extends StatelessWidget {
                               context.textTheme.headlineSmall!.copyWith(
                                 color: Color(0xffCCCCCC),
                                 fontSize: 12,
-
                               ),
                           overflow: TextOverflow.ellipsis,
                         )
@@ -83,7 +82,14 @@ class CustomListTile2 extends StatelessWidget {
               ),
             ),
             10.pw,
-            if (trailing != null) trailing!,
+            trailing ??
+                (!isArrowForward
+                    ? 0.ph
+                    : Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: context.primaryColorDark,
+                        size: 18,
+                      )),
           ],
         ),
       ),

@@ -16,30 +16,33 @@ class RowTexts extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsDirectional? valuePadding;
   final bool isExpanded;
+  final TextDirection? textDirection;
 
-  const RowTexts(
-      {Key? key,
-       this.title,
-       this.value,
-      this.titleStyle,
-      this.valueStyle,
-      this.crossAxisAlignment,
-      this.mainAxisAlignment,
-      this.titleStrutStyle,
-      this.valueStrutStyle,
-      this.isSizedBox = true,
-      this.padding,
-      this.isExpanded = false,
-      this.titleWidget,
-      this.valueWidget,
-      this.valuePadding})
-      : super(key: key);
+  const RowTexts({
+    Key? key,
+    this.title,
+    this.value,
+    this.titleStyle,
+    this.valueStyle,
+    this.crossAxisAlignment,
+    this.mainAxisAlignment,
+    this.titleStrutStyle,
+    this.valueStrutStyle,
+    this.isSizedBox = true,
+    this.padding,
+    this.isExpanded = false,
+    this.titleWidget,
+    this.valueWidget,
+    this.valuePadding,
+    this.textDirection,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: Row(
+        textDirection: textDirection,
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
         children: [
@@ -59,14 +62,16 @@ class RowTexts extends StatelessWidget {
         title ?? '',
         style: titleStyle ?? context.bodyMedium,
         strutStyle: titleStrutStyle,
+        textDirection: textDirection,
       );
 
   Widget buildValue(BuildContext context) => Padding(
-    padding: valuePadding ?? 0.paddingAll,
-    child: Text(
+        padding: valuePadding ?? 0.paddingAll,
+        child: Text(
           value ?? '',
           style: valueStyle ?? context.bodyMedium,
           strutStyle: valueStrutStyle,
+          textDirection: textDirection,
         ),
-  );
+      );
 }

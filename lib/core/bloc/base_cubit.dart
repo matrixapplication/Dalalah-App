@@ -53,6 +53,19 @@ abstract class BaseCubit extends Cubit<DataState>{
     }
   }
 
+
+  executeDoubleSuccess<T>(
+      Future<T> Function() invoke1, Future<T> Function() invoke2) async {
+    try {
+      emit(DataLoading());
+      final response1 = await invoke1();
+      final response2 = await invoke2();
+      emit(DoubleDataSuccess(data1: response1, data2: response2));
+    } catch (e) {
+      emit(DataFailed(e));
+    }
+  }
+
   executeSuccessNotLoading<T>(Future<T> Function() invoke) async {
     try {
       emit(DataLoading());
@@ -84,8 +97,11 @@ abstract class BaseCubit extends Cubit<DataState>{
     });
   }
 
-  executeEmitterSuccess(Future Function() invoke) {
+  executeEmitterSuccess(Future Function() invoke, {ValueChanged? onSuccess}) {
     executeListener(() => invoke(), onSuccess: (v) {
+      if(onSuccess!=null){
+        onSuccess(v);
+      }
       emit((SuccessState(v.toString())));
     });
   }

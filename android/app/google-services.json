@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "801294018776",
-    "project_id": "dalalah-2023",
-    "storage_bucket": "dalalah-2023.appspot.com"
+    "project_number": "250345996124",
+    "project_id": "dalalah-11acc",
+    "storage_bucket": "dalalah-11acc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:801294018776:android:6b9ee767718e6537fb4fad",
+        "mobilesdk_app_id": "1:250345996124:android:3f7460b52a399b47348b99",
+        "android_client_info": {
+          "package_name": "com.dalalah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN0gQUnEJ7L1064EQVx63Jd7Ea498exUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250345996124:android:b5a1304a58938738348b99",
         "android_client_info": {
           "package_name": "com.dalalah.app"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCQ8NhmIAnSPB8ChfEqEtY7KgkRGso8ocE"
+          "current_key": "AIzaSyBN0gQUnEJ7L1064EQVx63Jd7Ea498exUU"
         }
       ],
       "services": {

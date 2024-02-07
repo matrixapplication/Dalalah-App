@@ -64,8 +64,9 @@ class DropDownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color? colorBorderSide = isDecoration ? context.cardColor : context.colorScheme.outline;
+    Color? fillColor = context.cardColor;
     return Container(
-      padding: margin ?? 8.paddingVert,
+      margin: margin ?? 10.paddingVert - 8.paddingBottom,
       decoration: isDecoration
           ?  Decorations.kDecorationField() : null,
       child: Column(
@@ -97,20 +98,20 @@ class DropDownField extends StatelessWidget {
                   borderSide: BorderSide(
                     color: colorBorderSide ?? context.colorScheme.outline,
                   ),
-                  borderRadius: BorderRadius.circular(radius ?? 8),
+                  borderRadius: BorderRadius.circular(radius ?? 12),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: colorBorderSide ?? context.colorScheme.outline,
                     width: 1.5,
                   ),
-                  borderRadius: BorderRadius.circular(radius ?? 8),
+                  borderRadius: BorderRadius.circular(radius ?? 12),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: colorBorderSide ?? context.colorScheme.outline,
                   ),
-                  borderRadius: BorderRadius.circular(radius ?? 8),
+                  borderRadius: BorderRadius.circular(radius ?? 12),
                 ),
                 prefixIcon: iconWidget ??
                     (prefixIcon != null

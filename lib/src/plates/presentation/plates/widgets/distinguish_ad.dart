@@ -14,9 +14,11 @@ class DistinguishAdWidget extends BaseStatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            strings.distinguish_your_ad_get_higher_reach,
-            style: context.labelMedium,
+          Expanded(
+            child: Text(
+              strings.distinguish_your_ad_get_higher_reach,
+              style: context.labelMedium,
+            ),
           ),
           Image.asset(
             AppImages.rocket,

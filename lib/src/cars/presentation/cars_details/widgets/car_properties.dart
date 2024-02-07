@@ -91,6 +91,7 @@ class CarPropertyItem extends StatelessWidget {
                     fontSize: 10,
                   ),
                   textAlign: TextAlign.center,
+                  // overflow: TextOverflow.ellipsis,
                 ),
                 // property.subtitle == null
                 //     ? 0.ph
@@ -117,6 +118,7 @@ class CarProperty {
   final String? subtitle;
   final String icon;
   final Color? color;
+  final double? sizeIcon;
 
   const CarProperty({
     Key? key,
@@ -124,5 +126,6 @@ class CarProperty {
     this.subtitle,
     required this.icon,
     this.color,
+    this.sizeIcon,
   });
 }

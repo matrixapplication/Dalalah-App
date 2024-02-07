@@ -31,4 +31,8 @@ class AuthUseCase {
     return Profile.fromDto(data);
   }
 
+  Future<String> registerAsShowroom(RegisterParams params) async{
+    return await  repository.registerAsShowroom(params);
+  }
+
 }

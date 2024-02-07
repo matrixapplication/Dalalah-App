@@ -4,7 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../../core/network/api_response.dart';
+import '../../domain/entities/add_support_params.dart';
 import '../models/about_us_dto.dart';
+import '../models/contact_us_dto.dart';
 
 part 'settings_datasource.g.dart';
 @Injectable()
@@ -25,4 +27,10 @@ abstract class  SettingsDatasource{
 
   @GET('/privacy')
   Future<ApiResponse<AboutUsDto>> fetchPrivacy();
+
+  @GET('/ContactUs')
+  Future<ApiResponse<ContactUsDto>> fetchContactUs();
+
+  @POST('/support')
+  Future<ApiResponse> addSupport(@Body() AddSupportParams params);
 }

@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
+import 'notification_service.dart';
 
 class HelperMethods {
   static String numberFormat(int number) {
@@ -81,12 +82,27 @@ class HelperMethods {
     }
   }
 
-  static Future<void> launchUrlLink(String url) async {
-    Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
+  static Future launchUrlLink(String url) async {
+
+    print('launchUrlLink $url');
+    Uri uri = Uri.parse((url.contains('https') || url.contains('http')) ? url : 'https://$url');
+    try {
+      return await launchUrl(uri);
+    } on Exception catch (e) {
+      print('launchUrlLink Error ${e.toString()}');
       showErrorToast('حدث خطأ أثناء الاتصال بالرابط');
+    }
+  }
+
+  static Future<void> launchEmail(String email) async {
+    Uri emailUrl = Uri(
+        scheme: 'mailto',
+        path: email,
+    );
+    if (await canLaunchUrl(emailUrl)) {
+      await launchUrl(emailUrl);
+    } else {
+      showErrorToast('حدث خطأ أثناء الاتصال بالبريد الالكتروني');
     }
   }
 
@@ -148,6 +164,7 @@ class HelperMethods {
 
   static removeProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    await FirebaseNotification().deleteToken();
     prefs.remove('profile');
   }
 
@@ -199,8 +216,16 @@ class HelperMethods {
     return await getProfile()?.then((value) => value?.id ?? 0) ?? 0;
   }
 
+  static Future<bool> isMe(int id) async {
+    return await getUserId().then((value) => value == id);
+  }
+
 
   static Future<String> getUserRole() async {
     return await getProfile()?.then((value) => value?.role ?? '') ?? '';
+  }
+
+  static copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
   }
 }

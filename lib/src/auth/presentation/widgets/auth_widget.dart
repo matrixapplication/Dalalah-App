@@ -17,7 +17,7 @@ class AuthWidget extends StatelessWidget {
           alignment: Alignment.topCenter,
           decoration: BoxDecoration(
               color: context.primaryColor,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(70),
                   bottomRight: Radius.circular(70))),
           child: Image.asset(AppImages.logo_white, ),

@@ -30,6 +30,13 @@ pop({dynamic arguments}) {
       .pop(arguments);
 }
 
+pushNameByUri(Uri uri) {
+  return injector<ServicesLocator>()
+      .navigatorKey
+      .currentState!
+      .pushNamed(uri.path, arguments: uri.queryParameters);
+}
+
 class Navigators {
   static GlobalKey<NavigatorState> navigationKey =
       injector<ServicesLocator>().navigatorKey;

@@ -1,3 +1,4 @@
+import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
 import 'package:dalalah/src/main_index.dart';
 
 class HeaderSellCar extends StatelessWidget {
@@ -13,9 +14,15 @@ class HeaderSellCar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           (kTextTabBarHeight + 10).ph,
-          Text(
-            '$step/4',
-            style: context.displayMedium,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomBackButton(),
+              Text(
+                '$step/4',
+                style: context.displayMedium,
+              ),
+            ],
           ),
           15.ph,
           Text(

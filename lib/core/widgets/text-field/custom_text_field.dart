@@ -21,11 +21,12 @@ class CustomTextField extends BaseStatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? contentPadding;
   final double? radius;
-  final bool? isValidator;
+  final bool isValidator;
   final double? maxHeight;
   final TextStyle? labelStyle;
   final int?maxLength;
   final List<TextInputFormatter>? inputFormatters;
+  final AutovalidateMode? autovalidateMode;
 
   CustomTextField({
     Key? key,
@@ -54,6 +55,7 @@ class CustomTextField extends BaseStatelessWidget {
     this.labelStyle,
     this.maxLength,
     this.inputFormatters,
+    this.autovalidateMode,
   }) : super(key: key);
 
   @override
@@ -84,7 +86,7 @@ class CustomTextField extends BaseStatelessWidget {
             keyboardType: keyboardType,
             style: context.bodyMedium,
             cursorColor: context.primaryColor,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
             textInputAction: TextInputAction.next,
             inputFormatters: inputFormatters,
             decoration: inputDecoration ??
@@ -133,9 +135,13 @@ class CustomTextField extends BaseStatelessWidget {
                         BorderSide(color: colorBorderSide ?? context.outline),
                   ),
                 ),
-            validator: (isValidator! && validator == null)
+            validator: (isValidator && validator == null)
                 ? (value) {
                     if (value == null || value.isEmpty) {
+                      return strings.this_field_is_required;
+                    }
+                    // check if all characters are empty
+                    else if (value.replaceAll(' ', '').isEmpty) {
                       return strings.this_field_is_required;
                     }
                     return null;

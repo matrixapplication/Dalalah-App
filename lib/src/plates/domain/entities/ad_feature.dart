@@ -9,9 +9,9 @@ class AdFeature {
   AdFeature({this.featureBasicDuration, this.featureDuration, this.featureDurationPrice});
 
    factory AdFeature.fromDto(AdFeatureDto json) => AdFeature(
-        featureBasicDuration: json.featureBasicDuration,
-        featureDuration: json.featureDuration,
-        featureDurationPrice: json.featureDurationPrice,
+        featureBasicDuration: json.featureBasicDuration.toString(),
+        featureDuration: json.featureDuration.toString(),
+        featureDurationPrice: json.featureDurationPrice.toString(),
     );
 }
 

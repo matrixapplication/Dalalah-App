@@ -4,7 +4,8 @@ class SelectionButtonChip extends StatelessWidget {
   final String? title;
   final String? initialValue;
   final List<ChipItem> types;
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? paddingChip;
+  final EdgeInsetsGeometry? margin;
   final void Function(ChipItem)? onSelected;
   final bool isScrollableGrid;
 
@@ -13,8 +14,9 @@ class SelectionButtonChip extends StatelessWidget {
     this.title,
     this.initialValue,
     required this.types,
+    this.margin,
     this.onSelected,
-    this.padding,
+    this.paddingChip,
     this.isScrollableGrid = true,
   }) : super(key: key);
 
@@ -24,7 +26,7 @@ class SelectionButtonChip extends StatelessWidget {
   Widget build(BuildContext context) {
     _initialValue();
     return Padding(
-      padding: 8.paddingVert,
+      padding: margin ?? 8.paddingVert,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,7 +34,6 @@ class SelectionButtonChip extends StatelessWidget {
             title ?? '',
             style: context.bodySmall,
           ),
-          5.ph,
           StatefulBuilder(
             builder: (context, setState) {
               return isScrollableGrid
@@ -90,7 +91,7 @@ class SelectionButtonChip extends StatelessWidget {
                     onSelected!(selectedType!);
                   });
                 },
-                padding: padding,
+                padding: paddingChip,
               ))
           .toList(),
     );
@@ -121,7 +122,7 @@ class SelectionButtonChip extends StatelessWidget {
             onSelected!(selectedType!);
           });
         },
-        padding: padding,
+        padding: paddingChip,
       ),
     );
   }

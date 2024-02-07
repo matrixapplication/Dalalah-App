@@ -7,7 +7,11 @@ import '../widgets/plate_item.dart';
 class PlatesScreen extends StatelessWidget {
   final List<Plate> plates;
   final Function(int) onFavoritePlate;
-  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate}) : super(key: key);
+  final bool isMyPlate;
+  final Function(int)? onHide;
+  final Function(int)? onSold;
+  final Function(int)? onSpecial;
+  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate, this.isMyPlate = false, this.onHide, this.onSold, this.onSpecial}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +27,10 @@ class PlatesScreen extends StatelessWidget {
             plate: plates[index],
             onFavoritePlate: (id) => onFavoritePlate(id),
             isAll: true,
+            isMyPlate: isMyPlate,
+            onHide: onHide,
+            onSold: onSold,
+            onSpecial: onSpecial,
           );
         },
       ),

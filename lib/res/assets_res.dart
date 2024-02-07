@@ -12,5 +12,5 @@ class AssetsRes {
   static const String ON_BOARDING3 = 'assets/images/on_boarding3.png';
   static const String PLATE_BACKGROUND = 'assets/images/plate_background.png';
   static const String SUCCESS = 'assets/images/success.gif';
-  static const String LOGO = 'assets/logo/logo.png';
+  static const String LOGO = 'assets/logo/splash.png';
 }

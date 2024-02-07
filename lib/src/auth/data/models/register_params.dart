@@ -1,34 +1,62 @@
+import 'dart:io';
+
 class RegisterParams {
-  final String? ownerName;
+  final String? type;
+  final String? ownerNameEn;
+  final String? ownerNameAr;
   final String? name;
-  final String? phone;
-  final String? whatsapp;
+  final String? nameAr;
+  final String? nameEn;
+  final String? addressAr;
+  final String? addressEn;
+  final String descriptionAr;
+  final String descriptionEn;
   final String? email;
   final String? password;
-  final String? passwordConfirmation;
+  final String? phone;
+  final String? whatsapp;
   final int? cityId;
-
+  final int? districtId;
+  final String? endTaxCard;
+  final File? taxCard;
+  final File? logo;
+  final File? coverImage;
+  final File? commercial;
   final String? fcmToken;
 
-  RegisterParams(
-      { this.email,
-       this.password,
-      this.ownerName,
-      this.name,
-      this.phone,
-      this.whatsapp,
-      required this.passwordConfirmation,
-      this.cityId,
-      this.fcmToken});
+  RegisterParams({
+    this.type,
+    this.ownerNameEn,
+    this.ownerNameAr,
+    this.name,
+    this.nameAr,
+    this.nameEn,
+    this.addressAr,
+    this.addressEn,
+    this.descriptionAr = '',
+    this.descriptionEn = '',
+    this.email,
+    this.password,
+    this.phone,
+    this.whatsapp,
+    this.cityId,
+    this.districtId,
+    this.endTaxCard,
+    this.taxCard,
+    this.logo,
+    this.coverImage,
+    this.commercial,
+    this.fcmToken,
+  });
 
+  // For User Registration
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = {
-      'owner_name': ownerName ?? '',
+      'type': type ?? '',
       'name': name ?? '',
       'phone': phone ?? '',
       'email': email ?? '',
       'password': password ?? '',
-      'password_confirmation': passwordConfirmation ?? '',
       'city_id': cityId ?? '',
       'whatsapp': whatsapp ?? '',
       'fcm_token': fcmToken ?? '',

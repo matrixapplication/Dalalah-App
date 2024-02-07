@@ -9,11 +9,13 @@ import '../../../../core/utils/navigator.dart';
 class FilterHome extends StatelessWidget {
   final bool isDecoration;
   final String routeName;
+  final dynamic arguments;
   final Function(String) onFilterOrder;
 
   const FilterHome({
     Key? key,
     this.isDecoration = true,
+    this.arguments,
     required this.routeName,
     required this.onFilterOrder,
   }) : super(key: key);
@@ -39,7 +41,7 @@ class FilterHome extends StatelessWidget {
             space: 12,
             textStyle: textStyle,
             onTap: () {
-              Navigators.pushNamed(routeName);
+              Navigators.pushNamed(routeName, arguments: arguments);
             },
           ),
           SizedBox(

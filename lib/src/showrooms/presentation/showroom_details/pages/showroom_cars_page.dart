@@ -37,6 +37,9 @@ class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCa
         onToggleFavorite: (id) {
           bloc.toggleCarFavorite(id);
         },
+        onRequestPrice: (id) {
+          bloc.requestCarPrice(id);
+        },
       ),
     );
   }

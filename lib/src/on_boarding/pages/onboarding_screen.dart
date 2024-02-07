@@ -116,7 +116,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   startButton(BuildContext context){
     return GestureDetector(
-      onTap: () => Navigators.pushNamedAndRemoveUntil(Routes.login),
+      onTap: () => Navigators.pushNamedAndRemoveUntil(Routes.navigationPages),
       child: Center(
         child: Container(
           width: 244.19,

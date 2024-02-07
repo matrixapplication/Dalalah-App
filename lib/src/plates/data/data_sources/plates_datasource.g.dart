@@ -13,7 +13,7 @@ class _PlatesDatasource implements PlatesDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
+    baseUrl ??= 'http://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -58,14 +58,14 @@ class _PlatesDatasource implements PlatesDatasource {
   }
 
   @override
-  Future<ApiResponse<PlateDto>> addPlate(AddPlateParams params) async {
+  Future<ApiResponse<int>> addPlate(AddPlateParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<PlateDto>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -81,22 +81,22 @@ class _PlatesDatasource implements PlatesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<PlateDto>.fromJson(
+    final value = ApiResponse<int>.fromJson(
       _result.data!,
-      (json) => PlateDto.fromJson(json as Map<String, dynamic>),
+      (json) => json as int,
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<PlateDto>> editPlate(AddPlateParams params) async {
+  Future<ApiResponse<int>> editPlate(AddPlateParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<PlateDto>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -112,9 +112,9 @@ class _PlatesDatasource implements PlatesDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<PlateDto>.fromJson(
+    final value = ApiResponse<int>.fromJson(
       _result.data!,
-      (json) => PlateDto.fromJson(json as Map<String, dynamic>),
+      (json) => json as int,
     );
     return value;
   }
@@ -254,7 +254,7 @@ class _PlatesDatasource implements PlatesDatasource {
     )
             .compose(
               _dio.options,
-              '/add-feature',
+              '/add_plate_feature',
               queryParameters: queryParameters,
               data: _data,
             )

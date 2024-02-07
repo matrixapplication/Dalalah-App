@@ -2,12 +2,13 @@ import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/decorations/decorations.dart';
-import '../../cars/widgets/car_operations_popup.dart';
+import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
 
 class CommentOperationsPopup extends StatelessWidget {
+  final bool isMyComment;
   final Function()? onReport;
   final Function()? onDelete;
-  const CommentOperationsPopup({super.key, this.onReport, this.onDelete});
+  const CommentOperationsPopup({super.key, this.onReport, this.onDelete, required this.isMyComment});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class CommentOperationsPopup extends StatelessWidget {
               title: context.strings.report,
             ),
           ),
+          if (isMyComment)
           PopupMenuItem(
             value: 1,
             child: PopupItem(

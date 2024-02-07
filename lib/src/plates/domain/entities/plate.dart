@@ -14,15 +14,16 @@ class Plate {
   String? boughtStatus;
   String? adType;
   String? address;
-  String? isHide;
-  String? isPaused;
-  String? isApproved;
+  bool? isHide;
+  bool? isFeatured;
+  bool? isSold;
+  bool? isApproved;
   CityDto? city;
   ProfileDto? user;
   bool? isFavorite;
   String? createdAt;
 
-  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address, this.isHide, this.isPaused, this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
+  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
 
    factory Plate.fromDto(PlateDto json) {
      return Plate(
@@ -36,7 +37,8 @@ class Plate {
        adType: json.adType ?? '',
        address: json.address ?? '',
        isHide: json.isHide,
-       isPaused: json.isPaused,
+        isFeatured: json.isFeatured,
+        isSold: json.isSold,
        isApproved: json.isApproved,
        city: json.city,
        user: json.user,

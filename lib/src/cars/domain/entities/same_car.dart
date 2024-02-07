@@ -2,6 +2,7 @@
 import '../../../home/data/models/car_dto.dart';
 import '../../../sell_car/data/models/city_dto.dart';
 import '../../../sell_car/domain/entities/city.dart';
+import '../../../showrooms/data/models/showroom_dto.dart';
 import '../../data/models/same_car_dto.dart';
 
 class SameCar {

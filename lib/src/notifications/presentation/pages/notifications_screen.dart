@@ -1,10 +1,10 @@
 
 import '../../../main_index.dart';
-import '../../../real_estate/domain/entities/notification.dart';
+import '../../data/models/notification_dto.dart';
 import '../widgets/notification_item.dart';
 
 class NotificationsScreen extends BaseStatelessWidget {
-  final List<Notifications> notifications;
+  final List<NotificationDto> notifications;
    NotificationsScreen({Key? key, required this.notifications}) : super(key: key);
 
   @override
@@ -16,8 +16,8 @@ class NotificationsScreen extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         return NotificationItem(
           notification: notifications[index],
-          isFirst: index == 0 ? true : false,
-          isLast: index == notifications.length - 1 ? true : false,
+          // isFirst: index == 0 ? true : false,
+          // isLast: index == notifications.length - 1 ? true : false,
         );
       },
     );

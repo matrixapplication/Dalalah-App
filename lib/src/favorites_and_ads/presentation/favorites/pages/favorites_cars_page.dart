@@ -22,6 +22,9 @@ class FavoriteCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, FavoriteCa
     return CarsScreen(
       cars: state.data ?? [],
       onToggleFavorite: (id) => bloc.toggleFavoriteCar(id),
+      onRequestPrice: (id) {
+        bloc.requestPrice(id);
+      },
     );
     // return 0.ph;
   }

@@ -4,6 +4,8 @@ part 'add_plate_params.g.dart';
 
 @JsonSerializable(ignoreUnannotated: false)
 class AddPlateParams {
+  @JsonKey(name: 'id')
+  int? id;
   @JsonKey(name: 'user_id')
   int? userId;
   @JsonKey(name: 'city_id')
@@ -23,7 +25,7 @@ class AddPlateParams {
   @JsonKey(name: 'ad_type')
   String? adType;
 
-  AddPlateParams({this.userId, this.cityId, this.districtId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType});
+  AddPlateParams({this.id, this.userId, this.cityId, this.districtId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType});
 
    factory AddPlateParams.fromJson(Map<String, dynamic> json) => _$AddPlateParamsFromJson(json);
 

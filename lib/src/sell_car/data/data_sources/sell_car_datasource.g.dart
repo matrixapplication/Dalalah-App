@@ -13,7 +13,7 @@ class _SellCarDatasource implements SellCarDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
+    baseUrl ??= 'http://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -21,7 +21,7 @@ class _SellCarDatasource implements SellCarDatasource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<dynamic>> addCar(
+  Future<ApiResponse<int>> addCar(
     int brandId,
     int carModelId,
     int carModelExtensionId,
@@ -161,8 +161,8 @@ class _SellCarDatasource implements SellCarDatasource {
       'ad_type',
       adType,
     ));
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<dynamic>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -179,29 +179,29 @@ class _SellCarDatasource implements SellCarDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<dynamic>.fromJson(
+    final value = ApiResponse<int>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+      (json) => json as int,
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<dynamic>> addNewCar(SellCarParams params) async {
+  Future<ApiResponse<int>> addNewCar(SellCarParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<dynamic>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/add_car',
+              '/add-new-car',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -210,15 +210,15 @@ class _SellCarDatasource implements SellCarDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<dynamic>.fromJson(
+    final value = ApiResponse<int>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+      (json) => json as int,
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<dynamic>> editCar(
+  Future<ApiResponse<int>> editCar(
     int id,
     int brandId,
     int carModelId,
@@ -334,8 +334,8 @@ class _SellCarDatasource implements SellCarDatasource {
     features.forEach((i) {
       _data.fields.add(MapEntry('features[]', i));
     });
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<dynamic>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -352,9 +352,9 @@ class _SellCarDatasource implements SellCarDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<dynamic>.fromJson(
+    final value = ApiResponse<int>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+      (json) => json as int,
     );
     return value;
   }

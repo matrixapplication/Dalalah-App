@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/commen/common_state.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
+import '../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../cars/presentation/cars_details/widgets/car_info.dart';
@@ -115,6 +116,14 @@ class CarHorizontalItem extends StatelessWidget {
                       onToggleFavorite: () {
                         onToggleFavorite!(car.id!);
                       },
+                    ),
+                  ),
+                  PositionedDirectional(
+                    top: 10,
+                    end: 10,
+                    child: ShareIconButton(
+                      route: Routes.carAppLink,
+                      id: car.id.toString() ?? '',
                     ),
                   ),
                 ],

@@ -1,8 +1,10 @@
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../../../../core/resources/validation.dart';
 import '../../../../../../core/utils/navigator.dart';
+import '../../../../../../core/utils/notification_service.dart';
 import '../../../../../../core/widgets/buttons/underline_text_button.dart';
 import '../../../../../main_index.dart';
 import '../../../../data/models/login_params.dart';
@@ -21,8 +23,8 @@ class LoginBody extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(kDebugMode){
-     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1408');
-     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '1234567' : '123456789');
+     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'h@h.com' : '1435');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '6QfEdd' : '6QfEdd');
     }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,
@@ -53,15 +55,15 @@ class LoginBody extends BaseStatelessWidget {
               controller: passwordController,
               validator: (password) => Validation.validatePassword(password ?? ''),
             ),
-            if(isUser)
-
-            GestureDetector(
-              onTap: () {
-                Navigators.pushNamed(Routes.enterPhoneNumberPage);
-              },
-              child:  Text(strings.forgot_password,
-                  style: context.bodySmall.copyWith(fontSize: 10)),
-            ),
+            // if(isUser)
+            //
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigators.pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
+            //   },
+            //   child:  Text(strings.forgot_password,
+            //       style: context.bodySmall.copyWith(fontSize: 10)),
+            // ),
             PrimaryButton(
               title: strings.login.toUpperCase(),
               radius: 30,
@@ -69,12 +71,12 @@ class LoginBody extends BaseStatelessWidget {
               margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                 // String fcmToken = await FirebaseMessaging.instance.getToken() ?? '';
+                  // I send token in bloc not here
+                 // String token = await FirebaseNotification().getToken() ?? '';
                   onLogin!(
                     LoginParams(
                       email: emailController.text,
                       password: passwordController.text,
-              //        fcmToken: fcmToken,
                     ),
                   );
                 }

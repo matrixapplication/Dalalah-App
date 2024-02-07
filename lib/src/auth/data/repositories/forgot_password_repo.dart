@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../domain/repositories/base_forgot_password_repo.dart';
 import '../data_sources/forgot_password_datasource.dart';
 import '../models/forgot_password_params.dart';
+import '../models/register_params.dart';
 
 @Injectable(as: BaseForgotPasswordRepo)
 class ForgotPasswordRepo extends BaseForgotPasswordRepo{
@@ -11,8 +12,8 @@ class ForgotPasswordRepo extends BaseForgotPasswordRepo{
   ForgotPasswordRepo(this.apiProvider);
 
   @override
-  Future<String> enterPhoneNumber(String phoneNumber) async{
-    final response = await apiProvider.enterPhoneNumber(phoneNumber);
+  Future<String> resetPassword(RegisterParams params) async{
+    final response = await apiProvider.resetPassword(params);
     return response.data!;
   }
 

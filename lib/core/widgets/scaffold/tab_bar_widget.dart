@@ -49,7 +49,7 @@ class TabBarScaffoldWidget extends StatelessWidget {
           preferredSize: Size.fromHeight(height ?? 50),
           child: AppBar(
              backgroundColor: Colors.white,
-            // leading: const SizedBox(),
+            leading: const SizedBox.shrink(),
             flexibleSpace: Container(
               margin: marginTabs ?? EdgeInsets.zero,
               decoration: Decorations.kDecorationBorderWithRadius(radius: 50),
@@ -69,7 +69,12 @@ class TabBarScaffoldWidget extends StatelessWidget {
                 splashBorderRadius: BorderRadius.circular(50),
                 unselectedLabelColor: context.displayLarge.color,
                 labelPadding: 2.paddingTop,
-                tabs: tabs.map((e) => e.builder()).toList(),
+                tabs: tabs.map((e) => SizedBox(
+                  width: double.infinity,
+                  child: Tab(
+                    text: e.label,
+                  ),
+                )).toList(),
               ),
             ),
           ),

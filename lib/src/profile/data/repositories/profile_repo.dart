@@ -54,4 +54,26 @@ class ProfileRepo extends BaseProfileRepo{
     return await apiProvider.editProfileImageShowroom(image);
   }
 
+  @override
+  Future<ApiResponse<ProfileDto>> editLogoShowroom(File image) async{
+    return await apiProvider.editLogoShowroom(image);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editCoverImageShowroom(File image) async{
+    return await apiProvider.editCoverImageShowroom(image);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editTaxCardShowroom(File image) async{
+    return await apiProvider.editTaxCardShowroom(image);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editCommercialImageShowroom(File image) async{
+    return await apiProvider.editCommercialImageShowroom(image);
+  }
+
+
+
 }

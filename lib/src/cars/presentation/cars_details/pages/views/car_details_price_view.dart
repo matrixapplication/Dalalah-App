@@ -1,12 +1,14 @@
 
+import '../../../../../../core/utils/helper_methods.dart';
 import '../../../../../main_index.dart';
 import '../../../../domain/entities/car_details.dart';
 import '../../widgets/company_car_details_item.dart';
 
 class CarDetailsPriceView extends BaseStatelessWidget {
   final CarDetails carDetails;
+  final Function(int)? onRequestPrice;
 
-  CarDetailsPriceView({super.key, required this.carDetails});
+  CarDetailsPriceView({super.key, required this.carDetails, this.onRequestPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,34 @@ class CarDetailsPriceView extends BaseStatelessWidget {
                 ),
               ],
             ),
+          ),
+          15.ph,
+          FutureBuilder(
+              initialData: false,
+              future: HelperMethods.isUser(),
+              builder: (context, snapshot) {
+                bool isUser = snapshot.data as bool;
+              return isUser ?
+                GestureDetector(
+                onTap: () => onRequestPrice?.call(carDetails.car?.id ?? 0),
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: 6.paddingVert,
+                  decoration: Decorations.kDecorationBorderRadius(
+                      color: AppColors.yellow_15,
+                      borderRadius: const BorderRadiusDirectional.only(
+                        bottomStart: Radius.circular(5),
+                        bottomEnd: Radius.circular(5),
+                      )),
+                  child: Text(
+                    strings.request_for_quotation,
+                    style: context.textTheme.labelLarge!
+                        .copyWith(color: Colors.white, fontSize: 17),
+                  ),
+                ),
+              ) : 0.ph;
+            }
           ),
           23.ph,
           Align(

@@ -2,11 +2,14 @@
 import 'package:dalalah/core/components/base_widget_bloc.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
+import 'package:dalalah/src/plates/domain/entities/plate_args.dart';
 
 import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/plate_filter_params.dart';
 import '../../../domain/entities/plate.dart';
+import '../../../domain/entities/plate_types.dart';
 import '../bloc/plates_bloc.dart';
 import 'plates_screen.dart';
 
@@ -18,12 +21,28 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchPlates(getArguments(context) ?? PlateFilterParams());
+    bloc.fetchPlates(getArguments(context) ?? PlateFilterParams(plateType: type));
   }
 
 
   @override
   String? title(context)=> isFilter ? strings.plates : null;
+
+  String type = PlateTypes.private;
+
+
+  @override
+  bool hasTabBarView(BuildContext context) {
+    return true;
+  }
+
+
+  @override
+  Function()? onTabSelected(index) {
+    type = index == 0 ? PlateTypes.private : PlateTypes.transfer;
+    bloc.fetchPlates(getArguments(context!) ?? PlateFilterParams(plateType: type));
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +53,9 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
           if(isFilter && getArguments(context) == null)
           FilterHome(
             routeName: Routes.plateFilterPage,
+            arguments: PlateArgs(isFilter: true),
             onFilterOrder: (filterOrder){
-              PlateFilterParams params = getArguments(context) ?? PlateFilterParams();
+              PlateFilterParams params = getArguments(context) ?? PlateFilterParams(plateType: type);
               params.order = filterOrder;
               bloc.fetchPlates(params);
             },
@@ -43,6 +63,10 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
           Expanded(child: buildConsumer(context)),
         ],
       ),
+      tabs: [
+        TabModel(label: context.strings.plate_private),
+        TabModel(label: context.strings.plate_transfer),
+      ],
     );
   }
 
@@ -56,7 +80,7 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
   onAddButtonPressed() {
     HelperMethods.isAuth().then((value) {
       if(value == true) {
-        pushNamed(Routes.plateFilterPage, arguments: true);
+        pushNamed(Routes.plateFilterPage);
       } else {
         DialogsManager.showInfoDialogToLogin();
       }

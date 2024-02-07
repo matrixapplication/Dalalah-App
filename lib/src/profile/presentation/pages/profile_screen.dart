@@ -87,6 +87,14 @@ class ProfileScreen extends BaseStatelessWidget {
                     routeName: Routes.favoritesAndAdsTabs,
                     arguments: FavoritesAndAdsParams(isAds: true, isUser:profile.role == Roles.USER),
                   ),
+                  if(profile.token != null && profile.role == Roles.USER)
+                    ProfileItem(
+                      title: strings.request_for_quotation,
+                      icon: AppIcons.box,
+                      subTitle: strings.request_for_quotation,
+                      routeName: Routes.priceRequestsPage,
+                      // arguments: FavoritesAndAdsParams(isAds: false, isUser:profile.role == Roles.USER),
+                    ),
                   if(profile.token != null)
                   ProfileItem(
                     title: strings.notifications,
@@ -94,6 +102,14 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.notifications,
                     routeName: Routes.notificationsPage,
                   ),
+                  if(profile.role != Roles.USER && profile.isDisablePayment != true)
+                    ProfileItem(
+                      title: strings.payment_ways,
+                      icon: AppIcons.box,
+                      subTitle: strings.payment_ways,
+                      routeName: Routes.paymentPage,
+                      // arguments: strings.favorite_agencies,
+                    ),
                   ProfileItem(
                     title: strings.privacy_policy,
                     icon: AppIcons.privacy_policy,
@@ -114,6 +130,12 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.about_us,
                     routeName: Routes.aboutUs,
                     arguments: AboutUsTypes.ABOUT_US,
+                  ),
+                  ProfileItem(
+                    title: strings.help_support,
+                    icon: AppIcons.help,
+                    subTitle: strings.help_support,
+                    routeName: Routes.supportPage,
                   ),
                   if(profile.token != null)
                   ProfileItem(

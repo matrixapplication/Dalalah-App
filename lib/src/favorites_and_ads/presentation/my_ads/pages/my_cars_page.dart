@@ -11,7 +11,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyCars(isMoreData: true);
+    bloc.fetchMyCars();
   }
 
   @override
@@ -20,7 +20,8 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
   }
 
   RefreshController refreshController =
-  RefreshController(initialRefresh: false);
+      RefreshController(initialRefresh: false);
+
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     if (bloc.isLastPage) {
@@ -34,7 +35,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         refreshController.refreshCompleted();
       },
       onLoading: () async {
-        await bloc.fetchMyCars(isMoreData: true);
+        await bloc.fetchMyCars(isRefresh: false);
         await Future.delayed(const Duration(milliseconds: 1200));
         if (bloc.isLastPage) {
           print('isLastPage ${bloc.isLastPage}');
@@ -55,24 +56,25 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         onSpecial: (id) {
           bloc.addSpecialCar(id);
         },
-
-
       ),
     );
     // return 0.ph;
   }
 
+  @override
+  void onSuccessDismissed() {
+    loadInitialData(context!);
+  }
 
-
-  //
-  // @override
-  // onAddButtonPressed() {
-  //   Navigators.pushNamed(Routes.sellCarPage);
-  // }
-  //
-  //
-  // @override
-  // bool isAddButton() {
-  //   return true;
-  // }
+//
+// @override
+// onAddButtonPressed() {
+//   Navigators.pushNamed(Routes.sellCarPage);
+// }
+//
+//
+// @override
+// bool isAddButton() {
+//   return true;
+// }
 }

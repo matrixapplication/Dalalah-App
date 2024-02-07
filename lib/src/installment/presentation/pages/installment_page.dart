@@ -21,7 +21,7 @@ class InstallmentPage extends BaseBlocWidget<UnInitState, InstallmentBloc> {
   Widget buildWidget(BuildContext context, UnInitState state) {
     return InstallmentScreen(
       installmentValueStream: bloc.installmentValueStream,
-      onFetchInstallmentValue: (value) => bloc.fetchInstallmentValue(value),
+      onFetchInstallmentValue: (params) => bloc.fetchInstallmentValue(params),
     );
   }
 }

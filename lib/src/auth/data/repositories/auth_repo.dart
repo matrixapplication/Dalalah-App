@@ -31,4 +31,25 @@ class AuthRepo extends BaseAuthRepo{
     return response.data!;
   }
 
+  @override
+  Future<String> registerAsShowroom(RegisterParams params) async{
+    print('params.logo: ${params.toJson()}');
+    final response = await apiProvider.registerAsShowroom(
+      params.type ?? '',
+      params.nameAr ?? '',
+      params.nameEn ?? '',
+      params.ownerNameAr ?? '',
+      params.ownerNameEn ?? '',
+      params.addressAr ?? '',
+      params.addressEn ?? '',
+      params.email ?? '',
+      params.password ?? '',
+      params.phone ?? '',
+      params.whatsapp ?? '',
+      params.cityId ?? 0,
+      params.logo!,
+    );
+    return response.message ?? '';
+  }
+
 }

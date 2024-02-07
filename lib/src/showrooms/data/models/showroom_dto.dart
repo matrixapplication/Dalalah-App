@@ -24,6 +24,8 @@ class ShowroomDto {
   String? role;
   @JsonKey(name: 'count_cars')
   int? countCars;
+  @JsonKey(name: 'followers')
+  int? followers;
   @JsonKey(name: 'address')
   String? address;
   @JsonKey(name: 'is_blocked')
@@ -37,7 +39,7 @@ class ShowroomDto {
   @JsonKey(name: 'avg_rate')
   String? avgRate;
 
-  ShowroomDto({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isFollowed, this.avgRate});
+  ShowroomDto({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.followers, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isFollowed, this.avgRate});
 
    factory ShowroomDto.fromJson(Map<String, dynamic> json) => _$ShowroomDtoFromJson(json);
 

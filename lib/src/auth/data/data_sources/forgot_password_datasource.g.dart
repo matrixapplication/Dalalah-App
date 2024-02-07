@@ -13,7 +13,7 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
+    baseUrl ??= 'http://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -21,20 +21,21 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<String>> enterPhoneNumber(String phoneNumber) async {
+  Future<ApiResponse<dynamic>> resetPassword(RegisterParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = phoneNumber;
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+        _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/reset-password',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,9 +44,9 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as dynamic,
     );
     return value;
   }

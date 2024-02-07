@@ -5,6 +5,7 @@ import 'package:dalalah/core/network/api_response.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../models/forgot_password_params.dart';
+import '../models/register_params.dart';
 
 part 'forgot_password_datasource.g.dart';
 @Injectable()
@@ -14,8 +15,8 @@ abstract class  ForgotPasswordDataSource{
   @factoryMethod
   factory ForgotPasswordDataSource(Dio dio) = _ForgotPasswordDataSource;
 
-  @POST('/api/v1/Operations/GetAllOperations')
-  Future<ApiResponse<String>> enterPhoneNumber(@Body() String phoneNumber);
+  @POST('/reset-password')
+  Future<ApiResponse> resetPassword(@Body() RegisterParams params);
 
   @GET('/api/v1/Operations/GetAllOperations')
   Future<ApiResponse<String>> enterCode(@Body() String code);

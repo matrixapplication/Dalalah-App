@@ -20,7 +20,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
 
   void buildListener(BuildContext context, dynamic state) {
     if (state is LoadingStateListener) {
-      showProgress();
+     showProgress();
     } else {
       dismissProgress();
     }
@@ -77,10 +77,10 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     return null;
   }
 
-  // @protected
-  // List<TabModel> tabs(BuildContext context) {
-  //   return [];
-  // }
+  @protected
+  List<Widget>? actions() {
+    return null;
+  }
 
   // @protected
   // List<Widget> tabViews(BuildContext context) {
@@ -158,6 +158,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         isAddButton: isAddButton(),
         tabViews: tabViews,
         hasTabBarView: hasTabBarView(context!),
+          actions: actions()
       ),
     );
   }
@@ -258,6 +259,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                         style: ElevatedButton.styleFrom(

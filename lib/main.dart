@@ -1,15 +1,17 @@
-import 'package:dalalah/src/auth/presentation/pages/login/login_page.dart';
-import 'package:dalalah/src/home/presentation/pages/home_page.dart';
+
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:go_router/go_router.dart';
 
+import 'core/routes/app_links_service.dart';
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
+import 'core/utils/notification_service.dart';
 import 'src/main_index.dart';
+
+final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,18 +44,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FirebaseNotification firebase = FirebaseNotification();
-    // firebase.initialize(context);
+    FirebaseNotification firebase = FirebaseNotification();
+    firebase.initialize(context);
+    AppLinkingService.init();
+    // //
     return BlocProvider(
       create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(
         // bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
-          print('state.language ${state.language}');
+
           return MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
-            navigatorKey: injector<ServicesLocator>().navigatorKey,
+           navigatorKey: navigatorMainKey,
             locale: Locale(state.language),
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -65,9 +69,10 @@ class MyApp extends StatelessWidget {
               Locale('en'), // English, no country code
               Locale('ar'), // Arabic, no country code
             ],
-            // routerConfig: router,
-            routes: Routes.routes,
-            initialRoute: token.isEmpty ? Routes.login : Routes.navigationPages,
+            // routerConfig: router(token.isNotEmpty),
+            routes: Routes.routes(context),
+            initialRoute: token.isEmpty ? Routes.onBoardingPage : Routes.navigationPages,
+            onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
           );
         },
       ),
@@ -76,24 +81,27 @@ class MyApp extends StatelessWidget {
 }
 
 
-// final router = GoRouter(
-//     navigatorKey: injector<ServicesLocator>().navigatorKey,
-//     routes: [
-//   GoRoute(
-//     path: '/',
-//     name: 'homePage',
-//     pageBuilder: (context, state) {
-//       return const MaterialPage(child: Scaffold(
-//         body: Center(
-//           child: Text('Home Page'),
+//  router(bool iaAuth){
+//   return GoRouter(
+//       navigatorKey: injector<ServicesLocator>().navigatorKey,
+//       initialLocation: iaAuth ? Routes.navigationPages : Routes.login,
+//       routes: [
+//         GoRoute(
+//           path: '/',
+//           name: 'homePage',
+//           pageBuilder: (context, state) {
+//             return const MaterialPage(child: NavigationPages());
+//           },
 //         ),
-//       ));
-//     },
-//   ),
-//   GoRoute(
-//     path: '/test',
-//     pageBuilder: (context, state) {
-//       return MaterialPage(child: HomePage());
-//     },
-//   ),
-// ]);
+//         GoRoute(
+//           path: '/ar',
+//           pageBuilder: (context, state) {
+//             return MaterialPage(child: CarsDetailsScreen(
+//               carDetails: state.params,
+//               isNew: true,
+//               onToggleFavorite: () {},
+//             ));
+//           },
+//         ),
+//       ]);
+// }

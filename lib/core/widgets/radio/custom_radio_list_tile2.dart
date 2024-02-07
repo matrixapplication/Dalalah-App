@@ -28,8 +28,9 @@ class CustomRadioListTile2 extends StatelessWidget {
         ),
         Text(
           title,
-          style: context.displayLarge!.copyWith(
-            height: 1
+          style: context.displayLarge.copyWith(
+            height: 1,
+            color: groupValue == value ? context.primaryColor : null,
           ),
         ),
       ],

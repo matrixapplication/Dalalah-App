@@ -99,9 +99,13 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
     return CarsScreen(
+      isCarDetails: isDetailsPage,
       cars: state.data ?? [],
         onToggleFavorite: (id) {
           bloc.toggleFavorite(id);
+        },
+        onRequestPrice: (id) {
+          bloc.requestPrice(id);
         },
     );
     // return 0.ph;
@@ -127,7 +131,8 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   bool isAddButton() {
-    return true;
+    isFilter =  (params == null && getArguments(context!) == null);
+    return isFilter;
   }
 
   @override

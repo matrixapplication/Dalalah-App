@@ -71,7 +71,7 @@ class ProfileHeader extends StatelessWidget {
             top: 40,
             end: 0,
             child: SizedBox(
-              width: 145,
+              width: 160,
               height: 60,
               child: BlocBuilder<LocaleCubit, LocalState>(
                 bloc: LocaleCubit()..getLanguageData(),

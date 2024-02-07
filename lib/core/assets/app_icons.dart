@@ -33,6 +33,8 @@ class AppIcons {
   static String cylinder = '$_iconsPath/cylinder.svg';
   static String sort_desc = '$_iconsPath/sort_desc.svg';
   static String sort_asc = '$_iconsPath/sort_asc.svg';
+  static String help = '$_iconsPath/help.svg';
+  static String calendar = '$_iconsPath/calendar.svg';
 
   /* =================================================== */
 

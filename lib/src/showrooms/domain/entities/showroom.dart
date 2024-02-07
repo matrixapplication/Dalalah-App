@@ -12,6 +12,7 @@ class Showroom {
   String? endTaxCard;
   String? role;
   int? countCars;
+  int? followers;
   String? address;
   bool? isBlocked;
   String? image;
@@ -20,7 +21,7 @@ class Showroom {
   bool? isFollowed;
   String? avgRate;
 
-  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency, this.isFollowed, this.avgRate});
+  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.followers, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency, this.isFollowed, this.avgRate});
 
    factory Showroom.fromDto(ShowroomDto json){
      return Showroom(
@@ -30,6 +31,7 @@ class Showroom {
        description: json.description,
        code: json.code,
        phone: json.phone,
+        followers: json.followers,
        whatsapp: json.whatsapp,
        endTaxCard: json.endTaxCard,
        role: json.role,

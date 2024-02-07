@@ -40,4 +40,16 @@ abstract class  ProfileDataSource{
   @POST('/edit-showroom-image')
   Future<ApiResponse<ProfileDto>> editProfileImageShowroom(@Part(name: 'image') File image);
 
+  @POST('/edit-showroom')
+  Future<ApiResponse<ProfileDto>> editLogoShowroom(@Part(name: 'logo') File image);
+
+  @POST('/edit-showroom')
+  Future<ApiResponse<ProfileDto>> editCoverImageShowroom(@Part(name: 'cover_image') File image);
+
+  @POST('/edit-showroom')
+  Future<ApiResponse<ProfileDto>> editTaxCardShowroom(@Part(name: 'cover_image') File image);
+
+  @POST('/edit-showroom')
+  Future<ApiResponse<ProfileDto>> editCommercialImageShowroom(@Part(name: 'commercial') File image);
+
 }

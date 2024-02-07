@@ -24,11 +24,11 @@ class MyCarsCubit extends BaseCubit {
   int page = 0;
   bool isLastPage = false;
 
-  fetchMyCars({bool isMoreData = false}) async {
-    isMoreData ? {page = 1, allCars.clear()} : page++;
+  fetchMyCars({bool isRefresh = true}) async {
+    isRefresh ? {page = 1, allCars.clear()} : page++;
     print('page onSuccess$page');
     executeBuilder(
-      isRefresh: isMoreData,
+      isRefresh: isRefresh,
           () => usecase.fetchMyCars(page),
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages)! <= page;

@@ -1,3 +1,4 @@
+import '../../../../core/routes/app_links_service.dart';
 import '../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../main_index.dart';
 import '../../../plates/domain/entities/plate.dart';
@@ -6,7 +7,7 @@ import '../../domain/entities/car.dart';
 import '../../domain/entities/slide.dart';
 import '../widgets/plates_list.dart';
 import '../widgets/search_home.dart';
-import '../widgets/sections_list.dart';
+import '../../../add__ads/widgets/ads_types_list.dart';
 import '../widgets/slider_widget.dart';
 import '../widgets/cars_home_list.dart';
 
@@ -39,7 +40,7 @@ class HomeScreen extends BaseStatelessWidget {
             slidesStream: slidesStream,
           ),
           25.ph,
-          SectionsList(),
+          AdTypesList(),
           Container(
             color: context.cardColor,
             child: SingleChildScrollView(

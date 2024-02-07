@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>aps-environment</key>
+	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinkes:www.dalalah.co</string>
+		<string>applinkes:dalalah.co</string>
+		<string>applinkes:www.dalala.matrix-clouds.com</string>
+		<string>applinkes:dalala.matrix-clouds.com</string>
+		<string>webcredentials:www.dalalah.co</string>
+		<string>webcredentials: dalalah.co</string>
+		<string>webcredentials:www.dalala.matrix-clouds.com</string>
+		<string>webcredentials:dalala.matrix-clouds.com</string>
+	</array>
+</dict>
+</plist>

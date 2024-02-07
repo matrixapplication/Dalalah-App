@@ -7,6 +7,7 @@ import '../../../../home/domain/entities/brand.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../home/domain/use_cases/home_usecase.dart';
 import '../../../../main_index.dart';
+import '../../../../price_requests/domain/use_cases/price_requests_usecase.dart';
 import '../../../../sell_car/domain/entities/brand_model.dart';
 import '../../../../sell_car/domain/use_cases/sell_car_usecase.dart';
 import '../../../domain/use_cases/cars_usecase.dart';
@@ -17,8 +18,9 @@ class CarsCubit extends BaseCubit {
   final FavoritesUseCase favoritesUseCase;
   final CarsUseCase carsUseCase;
   final SellCarUseCase sellCarUseCase;
+  final PriceRequestsUseCase priceRequestsUseCase;
 
-  CarsCubit(this.usecase, this.favoritesUseCase, this.carsUseCase, this.sellCarUseCase);
+  CarsCubit(this.usecase, this.favoritesUseCase, this.carsUseCase, this.sellCarUseCase, this.priceRequestsUseCase);
 
   StreamStateInitial<List<Car>?> carsStream = StreamStateInitial();
   StreamStateInitial<List<Brand>> brandsStream = StreamStateInitial();
@@ -67,6 +69,10 @@ class CarsCubit extends BaseCubit {
     } catch (e) {
       brandModelsStream.setError(e);
     }
+  }
+
+  void requestPrice(int id) async{
+    executeEmitterListener(() => priceRequestsUseCase.priceRequest(id));
   }
 
 }

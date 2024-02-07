@@ -62,13 +62,13 @@ class BranchItem extends BaseStatelessWidget {
             icon2: AppIcons.location_2,
             iconColor2: context.primaryColor,
             title1: strings.contact,
-            title2: strings.location,
+            title2: branch.link?.isEmpty ?? true ? strings.not_found_location : strings.location,
             backgroundColor2: context.onSecondaryContainer,
             // centerWidget: centerWidget,
             onPressed1: () {
               HelperMethods.launchCallPhone(branch.phone ?? '');
             },
-            onPressed2: () {
+            onPressed2: branch.link?.isEmpty ?? true ? null : () {
               HelperMethods.launchUrlLink(branch.link ?? '');
             }
           )

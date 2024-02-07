@@ -13,7 +13,7 @@ class _CarsDatasource implements CarsDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalala.matrix-clouds.com/api';
+    baseUrl ??= 'http://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -287,7 +287,7 @@ class _CarsDatasource implements CarsDatasource {
     )
             .compose(
               _dio.options,
-              '/add-feature',
+              '/add_car_feature',
               queryParameters: queryParameters,
               data: _data,
             )

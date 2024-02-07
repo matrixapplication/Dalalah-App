@@ -5,6 +5,7 @@ import 'package:dalalah/src/sell_car/domain/entities/city.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
+import '../../../domain/entities/plate_args.dart';
 import '../bloc/add_plate_bloc.dart';
 
 
@@ -35,8 +36,8 @@ class AddPlatesPage extends BaseBlocWidget<DataSuccess<List<City>>, AddPlateCubi
 
   @override
   String? title(BuildContext context) {
-    bool? isAddPage = getArguments(context) ?? false;
-    return isAddPage ? strings.add_plate : strings.detailed_research;
+    PlateArgs? args = getArguments(context) ?? PlateArgs();
+    return args!.isFilter ? strings.detailed_research : args.isEdit ? strings.edit_plate : strings.add_plate;
   }
 
 }

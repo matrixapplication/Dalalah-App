@@ -18,6 +18,7 @@ class AuthTextField extends StatelessWidget {
   final Function(String?)? onSubmit;
 
   final bool isPassword;
+  final bool isValidator;
 
   final String? prefixIcon;
   final Icon? prefixIconData;
@@ -27,6 +28,7 @@ class AuthTextField extends StatelessWidget {
   final bool isColor;
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
+  final EdgeInsetsGeometry? margin;
 
   const AuthTextField({
     Key? key,
@@ -38,6 +40,7 @@ class AuthTextField extends StatelessWidget {
     this.onChange,
     this.onSubmit,
     this.isPassword = false,
+    this.isValidator = true,
     this.prefixIcon,
     this.error,
     this.prefixIconData,
@@ -45,6 +48,7 @@ class AuthTextField extends StatelessWidget {
     this.isColor = true,
     this.maxLength,
     this.inputFormatters,
+    this.margin,
 
   }) : super(key: key);
 
@@ -52,7 +56,7 @@ class AuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     bool secure = true;
     return Container(
-      margin: 10.paddingBottom,
+      margin: margin ?? 10.paddingAll,
       decoration: Decorations.kDecorationField(),
       child: StatefulBuilder(builder: (context, setState) {
         return TextFormField(
@@ -112,13 +116,13 @@ class AuthTextField extends StatelessWidget {
                                 Icons.visibility_outlined,
                                 color: context.primaryColor,
                               ))
-                    : const SizedBox()),
+                    : null),
             controller: controller,
             onTap: onTep,
             //      onChanged: onChange,
             onSaved: onSubmit,
-            validator: validator ??
-                (value) => Validation.validateRequired(value ?? ''),
+            validator: isValidator ? validator ??
+                (value) => Validation.validateRequired(value ?? '') : null,
             obscureText: isPassword ? secure : false);
       }),
     );
