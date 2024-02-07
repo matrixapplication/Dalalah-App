@@ -99,7 +99,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
             ),
           ),
           20.ph,
-          args!.isFilter
+          args.isFilter
               ? PrimaryOutlinesButtons(
                   title1: strings.show_results,
                   title2: strings.cancel,
@@ -111,7 +111,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
                   },
                 )
               : PrimaryButton(
-                  title: args.isFilter ? strings.edit : strings.edit_plate,
+                  title: args.isEdit ? strings.edit_plate : strings.save,
                   onPressed: () {
                     onSelectedPressed(args.plate?.id ?? 0);
                   },
