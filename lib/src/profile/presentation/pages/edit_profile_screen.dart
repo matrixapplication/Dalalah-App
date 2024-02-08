@@ -87,7 +87,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.phone_number,
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
-                // validator: (phone) => Validation.validatePhone(phone ?? ''),
+                validator: (phone) => Validation.validatePhone(phone ?? ''),
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly
                 ],
@@ -96,7 +96,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.whatsapp_number,
                 controller: whatsAppController,
                 keyboardType: TextInputType.phone,
-                // validator: (phone) => Validation.validatePhone(phone ?? ''),
+                validator: (phone) => Validation.validatePhone(phone ?? ''),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly
                   ],
