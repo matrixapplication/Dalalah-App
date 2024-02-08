@@ -132,27 +132,26 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         ],
                       ),
                       15.ph,
-                     // Wrap(
-                     //   crossAxisAlignment: WrapCrossAlignment.center,
-                     //    alignment: WrapAlignment.center,
-                     //    runSpacing: 8,
-                     //    spacing: 8,
-                     //    children: carDetails.properties(context)?.map((property) {
-                     //      return CarDetailsPropertyItem(
-                     //        property: property,
-                     //      );
-                     //    }).toList() ?? [],
-                     // ),
+                      // Wrap(
+                      //   crossAxisAlignment: WrapCrossAlignment.center,
+                      //    alignment: WrapAlignment.center,
+                      //    runSpacing: 8,
+                      //    spacing: 8,
+                      //    children: carDetails.properties(context)?.map((property) {
+                      //      return CarDetailsPropertyItem(
+                      //        property: property,
+                      //      );
+                      //    }).toList() ?? [],
+                      // ),
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: carDetails.properties(context)?.length ?? 0,
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 100,
-                          mainAxisExtent: 90,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          childAspectRatio: 1.2,
                         ),
                         itemBuilder: (context, index) {
                           CarProperty property =

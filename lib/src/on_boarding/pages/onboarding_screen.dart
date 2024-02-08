@@ -1,3 +1,4 @@
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -62,7 +63,10 @@ class OnBoardingScreen extends StatelessWidget {
 
   Widget skipTextButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigators.pushNamedAndRemoveUntil(Routes.login),
+      onTap: () async{
+        Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+        await HelperMethods.setFirstTime();
+      },
       child: Text(
         context.strings.skip,
         style: context.labelMedium,
@@ -116,7 +120,10 @@ class OnBoardingScreen extends StatelessWidget {
 
   startButton(BuildContext context){
     return GestureDetector(
-      onTap: () => Navigators.pushNamedAndRemoveUntil(Routes.navigationPages),
+      onTap: () async{
+         Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+         await HelperMethods.setFirstTime();
+      },
       child: Center(
         child: Container(
           width: 244.19,

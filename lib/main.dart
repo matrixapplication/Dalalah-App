@@ -53,8 +53,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<LocaleCubit, LocalState>(
         // bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
-
-          return MaterialApp(
+          return state.isLoading ? const LoadingView() :  MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
            navigatorKey: navigatorMainKey,
@@ -71,7 +70,7 @@ class MyApp extends StatelessWidget {
             ],
             // routerConfig: router(token.isNotEmpty),
             routes: Routes.routes(context),
-            initialRoute: token.isEmpty ? Routes.onBoardingPage : Routes.navigationPages,
+            initialRoute: state.isFirstTime ? Routes.onBoardingPage : Routes.navigationPages,
             onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
           );
         },

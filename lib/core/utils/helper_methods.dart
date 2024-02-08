@@ -135,6 +135,16 @@ class HelperMethods {
     return prefs.getString('language') ?? 'en';
   }
 
+  static Future<bool> isFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('firstTime') ?? true;
+  }
+
+  static setFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('firstTime', false);
+  }
+
   // save ProfileDto to shared preferences
   static saveProfile(ProfileDto profile) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -19,7 +19,9 @@ class LocaleCubit extends Cubit<LocalState> {
 
   Future getLanguageData() async {
     final String language = await HelperMethods.getLanguage();
+    final bool isFirstTime = await HelperMethods.isFirstTime();
+    print('isFirstTime $isFirstTime');
     lang = language;
-    emit(LocalState(language: language));
+    emit(LocalState(language: language, isFirstTime: isFirstTime, isLoading: false));
   }
 }
