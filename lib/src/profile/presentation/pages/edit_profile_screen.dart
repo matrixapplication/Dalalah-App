@@ -21,11 +21,12 @@ class EditProfileScreen extends BaseStatelessWidget {
 
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController ownerNameController = TextEditingController();
+  TextEditingController ownerNameEnController = TextEditingController();
+  TextEditingController ownerNameArController = TextEditingController();
   TextEditingController nameArController = TextEditingController();
   TextEditingController nameEnController = TextEditingController();
-  TextEditingController addressArController = TextEditingController();
-  TextEditingController addressEnController = TextEditingController();
+  TextEditingController descArController = TextEditingController();
+  TextEditingController descEnController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController whatsAppController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -61,8 +62,12 @@ class EditProfileScreen extends BaseStatelessWidget {
               Column(
                 children: [
                   EditTextField(
-                    title: strings.owner_name,
-                    controller: ownerNameController,
+                    title: strings.owner_name_ar,
+                    controller: ownerNameArController,
+                  ),
+                  EditTextField(
+                    title: strings.owner_name_en,
+                    controller: ownerNameEnController,
                   ),
                   EditTextField(
                     title: strings.name_ar,
@@ -74,12 +79,12 @@ class EditProfileScreen extends BaseStatelessWidget {
                   ),
 
                   EditTextField(
-                    title: strings.address_ar,
-                    controller: addressArController,
+                    title: strings.description_ar,
+                    controller: descArController,
                   ),
                   EditTextField(
-                    title: strings.address_en,
-                    controller: addressEnController,
+                    title: strings.description_ar,
+                    controller: descEnController,
                   ),
                 ],
               ),
@@ -139,12 +144,12 @@ class EditProfileScreen extends BaseStatelessWidget {
       onEdit(
         RegisterParams(
           name: fullNameController.text,
-          ownerNameAr: ownerNameController.text,
-          ownerNameEn: ownerNameController.text,
+          ownerNameAr: ownerNameEnController.text,
+          ownerNameEn: ownerNameEnController.text,
           nameAr: nameArController.text,
           nameEn: nameEnController.text,
-          addressAr: addressArController.text,
-          addressEn: addressEnController.text,
+          addressAr: descArController.text,
+          addressEn: descEnController.text,
           email: emailController.text,
           phone: phoneController.text,
           password: passwordController.text,
@@ -157,6 +162,12 @@ class EditProfileScreen extends BaseStatelessWidget {
 
   _initData() {
     fullNameController.text = profile.name ?? '';
+    ownerNameArController.text = profile.ownerNameAr ?? '';
+    ownerNameEnController.text = profile.ownerNameEn ?? '';
+    nameArController.text = profile.nameAr ?? '';
+    nameEnController.text = profile.nameEn ?? '';
+    descArController.text = profile.descriptionAr ?? '';
+    descEnController.text = profile.descriptionEn ?? '';
     emailController.text = profile.email ?? '';
     phoneController.text = profile.phone  ?? '';
     whatsAppController.text = profile.whatsApp ?? '';

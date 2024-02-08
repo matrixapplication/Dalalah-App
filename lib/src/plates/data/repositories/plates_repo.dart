@@ -21,6 +21,11 @@ class PlatesRepo extends BasePlatesRepo {
   }
 
   @override
+  Future<ApiResponse<PlateDto>> fetchPlateDetails(int id) async {
+    return await remoteDataSource.fetchPlateDetails(id);
+  }
+
+  @override
   Future<String> toggleFavoritePlate(int id) async {
     final result = await remoteDataSource.toggleFavoritePlate(id);
     return result.message ?? '';

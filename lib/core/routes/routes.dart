@@ -26,6 +26,7 @@ import '../../src/payment/presentation/pages/payment_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
+import '../../src/plates/presentation/plate_details/pages/share_plates_details_page.dart';
 import '../../src/price_requests/presentation/pages/price_requests_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
@@ -122,7 +123,7 @@ class Routes {
     'ar' : (context) => NavigationPages(),
     'en' : (context) => NavigationPages(),
     carAppLink : (context) => CarsDetailsPage(),
-    plateAppLink : (context) => PlatesDetailsPage(),
+    plateAppLink : (context) => SharePlateDetailsPage(),
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
@@ -188,7 +189,7 @@ class Routes {
       // case carAppLink:
       //   return pushNamed(carAppLink, arguments: 36);
       case plateAppLink:
-        return CupertinoPageRoute(builder: (_) => PlatesDetailsPage());
+        return CupertinoPageRoute(builder: (_) => SharePlateDetailsPage());
       case navigationPages:
         return CupertinoPageRoute(builder: (_) => NavigationPages());
       case login:

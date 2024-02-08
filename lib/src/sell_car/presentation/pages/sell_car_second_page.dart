@@ -41,6 +41,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
       car: state.car ?? args.car,
       state: state,
       onNext: (SellCarParams params) {
+        params.carId = state.car?.id ?? 0;
         params.modelId = args.params?.modelId ?? 0;
         params.modelRole = args.params?.modelRole ?? '';
         params.status = args.params?.status ?? '';
@@ -48,6 +49,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
         params.carModelId =  args.params?.carModelId ?? 0;
         params.carModelExtensionId =  args.params?.carModelExtensionId ?? 0;
         params.year =  args.params?.year ?? 0;
+        params.newCarMiles =  state.car?.newCarMiles ?? args.params?.newCarMiles ?? 0;
         Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
           car: state.car ?? args.car,
           params: params,

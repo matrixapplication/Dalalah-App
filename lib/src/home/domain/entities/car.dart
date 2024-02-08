@@ -58,6 +58,7 @@ class Car {
   String? door4Img;
   List<ImageDto>? images;
   List<Feature>? features;
+  int? newCarMiles;
 
   Car(
       {this.id,
@@ -99,6 +100,7 @@ class Car {
       this.door4Img,
       this.images,
       this.features,
+      this.newCarMiles,
       });
 
   factory Car.fromDto(CarDto json) {
@@ -143,6 +145,7 @@ class Car {
       door4Img: json.door4Img,
       images: json.images,
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
+      newCarMiles: json.newCarMiles,
     );
   }
 

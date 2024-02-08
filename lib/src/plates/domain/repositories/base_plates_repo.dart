@@ -8,6 +8,7 @@ import '../../data/models/plate_filter_params.dart';
 
 abstract class BasePlatesRepo {
   Future<ApiResponse<List<PlateDto>>> fetchPlates(PlateFilterParams params);
+  Future<ApiResponse<PlateDto>> fetchPlateDetails(int id);
   Future<ApiResponse<int>> addPlate(AddPlateParams params);
   Future<ApiResponse<int>> editPlate(AddPlateParams params);
   Future<String> toggleFavoritePlate(int id);

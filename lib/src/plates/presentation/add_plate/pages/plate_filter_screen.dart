@@ -134,7 +134,6 @@ class PlateFilterScreen extends BaseStatelessWidget {
         plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,
         price: priceController.text.toInt,
-        districtId: 1,
         userId: getUserId,
       ));
     }

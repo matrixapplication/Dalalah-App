@@ -32,7 +32,7 @@ class NotificationItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomSquareCompanyLogo(
-            logoPath: AppImages.car_name,
+            logoPath: AppImages.splash_logo,
             width: 60,
             height: 60,
           ),

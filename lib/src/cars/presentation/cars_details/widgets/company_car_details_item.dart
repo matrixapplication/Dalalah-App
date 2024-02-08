@@ -156,7 +156,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
           children: [
             Expanded(
               flex: 2,
-                child: CustomSquareCompanyLogo(logoPath: AppImages.car_name)),
+                child: CustomSquareCompanyLogo(logoPath: AppImages.splash_logo)),
             Expanded(
               flex: 7,
            //   fit: BoxFit.scaleDown,

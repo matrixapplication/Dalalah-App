@@ -9,6 +9,7 @@ part of 'sell_car_params.dart';
 SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
     SellCarParams(
       id: json['id'] as int?,
+      carId: json['car_id'] as int?,
       brandId: json['brand_id'] as int?,
       modelId: json['model_id'] as int?,
       modelRole: json['model_role'] as String?,
@@ -41,11 +42,13 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
           .toList(),
       installment: json['monthly_installment'] as int?,
       adType: json['ad_type'] as String?,
+      newCarMiles: json['new_car_miles'] as int?,
     );
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'car_id': instance.carId,
       'car_model_id': instance.carModelId,
       'brand_id': instance.brandId,
       'model_id': instance.modelId,
@@ -74,6 +77,7 @@ Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
       'features': instance.features,
       'monthly_installment': instance.installment,
       'ad_type': instance.adType,
+      'new_car_miles': instance.newCarMiles,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

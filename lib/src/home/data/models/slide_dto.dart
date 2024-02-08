@@ -12,8 +12,12 @@ class SlideDto {
   String? image;
   @JsonKey(name: 'url')
   String? url;
+  @JsonKey(name: 'type')
+  String? type;
+  @JsonKey(name: 'type_id')
+  int? typeId;
 
-  SlideDto({this.id, this.title, this.image, this.url});
+  SlideDto({this.id, this.title, this.image, this.url, this.type, this.typeId});
 
    factory SlideDto.fromJson(Map<String, dynamic> json) => _$SlideDtoFromJson(json);
 

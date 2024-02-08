@@ -2,6 +2,7 @@
 const String _imagesPath = "assets/images";
 class AppImages{
   static String logo_white = 'assets/logo/logo_light.png';
+  static String splash = 'assets/logo/splash.png';
   static String logo = 'assets/logo/splash.png';
   static String appLogo = '$_imagesPath/222.png';
   static String splashBg  = '$_imagesPath/Rectangle 13.png';
@@ -11,7 +12,7 @@ class AppImages{
   static String on_boarding3  = '$_imagesPath/on_boarding3.png';
   static String slider_car  = '$_imagesPath/slider_car.png';
   static String car_with_background  = '$_imagesPath/car_with_background.png';
-  static String car_name = '$_imagesPath/car_name.png';
+  static String splash_logo = 'assets/logo/logo_light.png';
   static String img = '$_imagesPath/img.png';
   static String car_section = '$_imagesPath/car_section.png';
   static String double_plate = '$_imagesPath/double_plate.png';

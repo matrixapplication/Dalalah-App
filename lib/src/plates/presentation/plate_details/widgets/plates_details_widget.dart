@@ -43,7 +43,7 @@ class PlatesDetailsWidget extends StatelessWidget {
             child: IconText(
               mainAxisAlignment: MainAxisAlignment.start,
               text: plate.user?.name ?? '',
-              icon: AppImages.car_name,
+              icon: AppImages.splash_logo,
               iconSize: 50,
             ),
           ),

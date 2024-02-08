@@ -22,6 +22,9 @@ abstract class PlatesDatasource {
   @GET('/get_plates')
   Future<ApiResponse<List<PlateDto>>> fetchPlates(@Queries() PlateFilterParams params);
 
+  @GET('/show_plate/{id}')
+  Future<ApiResponse<PlateDto>> fetchPlateDetails(@Path('id') int id);
+
   @POST('/add-car-plate')
   Future<ApiResponse<int>> addPlate(@Body() AddPlateParams params);
 

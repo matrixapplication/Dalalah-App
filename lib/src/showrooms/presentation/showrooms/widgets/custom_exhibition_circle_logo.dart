@@ -15,18 +15,25 @@ class CustomExhibitionCircleLogo extends BaseStatelessWidget {
     return CircleAvatar(
       radius: 35,
       backgroundColor: Colors.white,
-      child: Column(
+      child: Stack(
+        alignment: AlignmentDirectional.topCenter,
         children: [
-          8.ph,
-          Image.asset(
-            AppImages.car_name,
-            height: 35,
+          Positioned(
+            top: 0,
+            child: Image.asset(
+              AppImages.splash_logo,
+              height: 60,
+              color: context.primaryColor,
+            ),
           ),
-          Text(
-            name,
-            style: context.textTheme.headlineSmall!.copyWith(
-              color: AppColors.grey_41,
-              fontSize: 8,
+          Positioned(
+            bottom: 12,
+            child: Text(
+              name.split(' ').first,
+              style: context.textTheme.headlineSmall!.copyWith(
+                color: AppColors.grey_41,
+                fontSize: 8,
+              ),
             ),
           )
         ],

@@ -163,7 +163,7 @@ class HelperMethods {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       final data = ProfileDto.fromJson(
           jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
-      // print('getProfile ${data.toJson()}');
+      print('getProfile ${data.toJson()}');
       if (data.id == null) return null;
       return data;
     } on Exception catch (e) {

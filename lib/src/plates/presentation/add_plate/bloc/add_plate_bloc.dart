@@ -53,7 +53,7 @@ class AddPlateCubit extends BaseCubit {
 
   fetchAdFeature() {
     executeBuilder(() => paymentUseCase.fetchPaymentStatus(), isRefresh: true, onSuccess: (data)  async {
-      if(data.isHide = true){
+      if(data.isHide == true){
         emit(const DataSuccess<AdFeature?>(null));
       } else{
         final data2 = await usecase.fetchAdFeature();

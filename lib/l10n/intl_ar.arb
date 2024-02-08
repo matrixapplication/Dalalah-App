@@ -374,5 +374,7 @@
   "upload_logo": "رفع الشعار",
   "feature_duration_price_zero_msg": "يجب أن يكون السعر أكبر من 0",
   "please_upload_logo": "من فضلك قم برفع الشعار",
-  "payment_disabled_msg":"تمييز الاعلان غير متاح الان"
+  "payment_disabled_msg":"تمييز الاعلان غير متاح الان",
+  "description_ar": "Description (Arabic)",
+  "description_en": "Description (English)"
 }

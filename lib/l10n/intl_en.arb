@@ -385,5 +385,7 @@
   "upload_logo": "Upload Logo",
   "feature_duration_price_zero_msg": "Feature duration and price must be greater than zero",
   "please_upload_logo": "Please upload logo",
-  "payment_disabled_msg":"Ad highlighting is not available now"
+  "payment_disabled_msg":"Ad highlighting is not available now",
+  "description_ar": "Description (Arabic)",
+    "description_en": "Description (English)"
 }

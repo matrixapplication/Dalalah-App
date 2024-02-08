@@ -22,14 +22,15 @@ class CarDetailsPropertyItem extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              Flexible(
+              FittedBox(
                 child: Text(
                   property.title ?? '',
-                  style: context.headlineSmall.copyWith(fontSize: 13),
+                  style: context.headlineSmall.copyWith(fontSize: 12),
                 ),
               ),
-              AppIcon(icon: property.icon, size: property.sizeIcon ?? 18, color: context.primaryColor,),
+              FittedBox(child: AppIcon(icon: property.icon, size: property.sizeIcon ?? 18, color: context.primaryColor,)),
             ],
           ),
           8.ph,

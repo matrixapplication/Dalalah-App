@@ -9,6 +9,7 @@ import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
 import 'core/utils/helper_methods.dart';
 import 'core/utils/notification_service.dart';
+import 'core/widgets/base/splash_screen.dart';
 import 'src/main_index.dart';
 
 final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<LocaleCubit, LocalState>(
         // bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
-          return state.isLoading ? const LoadingView() :  MaterialApp(
+          return state.isLoading ? const SplashScreen() :  MaterialApp(
             theme: lightTheme,
             debugShowCheckedModeBanner: false,
            navigatorKey: navigatorMainKey,

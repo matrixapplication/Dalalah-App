@@ -62,7 +62,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                       top: 12,
                       end: 12,
                       child: CustomExhibitionCircleLogo(
-                        logoPath: AppImages.car_name,
+                        logoPath: AppImages.splash_logo,
                         name: showroom.showroomName ?? '',
                       ),
                     ),

@@ -91,7 +91,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                   children: [
                     4.ph,
                     Text(
-                      "${car.brandModel?.brand} ${car.brandModel?.name}",
+                      "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
                       style: context.textTheme.labelLarge!.copyWith(
                         color: AppColors.grey_2C,
                       ),

@@ -6,8 +6,10 @@ class Slide {
   String? title;
   String? image;
   String? url;
+  String? type;
+  int? typeId;
 
-  Slide({this.id, this.title, this.image, this.url});
+  Slide({this.id, this.title, this.image, this.url, this.type, this.typeId});
 
    factory Slide.fromDto(SlideDto json) {
     return Slide(
@@ -15,6 +17,8 @@ class Slide {
       title: json.title,
       image: json.image,
       url: json.url,
+      type: json.type,
+      typeId: json.typeId,
     );
    }
 }

@@ -20,6 +20,11 @@ class PlatesUseCase {
     return data.data!.map((e) => Plate.fromDto(e)).toList();
   }
 
+  Future<Plate> fetchPlateDetails(int id) async {
+    final data = await repository.fetchPlateDetails(id);
+    return Plate.fromDto(data.data!);
+  }
+
   Future<String> toggleFavoritePlate(int id) async {
     return await repository.toggleFavoritePlate(id);
   }
