@@ -72,30 +72,34 @@ class PlateItem extends StatelessWidget {
               children: [
                 PlateImage(
                     plate: plate,
-                    isDetails: true,
+                  isAll: isAll,
                 ),
-                Padding(
-                  padding: 0.paddingVert + 10.paddingHoriz,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
-                        style: context.bodyMedium,
-                        textDirection: TextDirection.rtl,
-                      ),
-                      PriceWidget(price: plate.price ?? '0'),
-                      onFavoritePlate == null
-                          ? const EditIconButton(
-                              iconSize: 30,
-                              circleSize: 40,
-                            )
-                          : FavoriteButton(
-                              isFavorite: plate.isFavorite  ?? false,
-                        onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
-                        iconSize: 15,
-                            ),
-                    ],
+                FittedBox(
+                  child: Padding(
+                    padding:10.paddingHoriz,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
+                          style: context.bodyMedium,
+                          textDirection: TextDirection.rtl,
+                        ),
+                        5.pw,
+                        PriceWidget(price: plate.price ?? '0'),
+                        5.pw,
+                        onFavoritePlate == null
+                            ? const EditIconButton(
+                                iconSize: 30,
+                                circleSize: 40,
+                              )
+                            : FavoriteButton(
+                                isFavorite: plate.isFavorite  ?? false,
+                          onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
+                          iconSize: 15,
+                              ),
+                      ],
+                    ),
                   ),
                 ),
 

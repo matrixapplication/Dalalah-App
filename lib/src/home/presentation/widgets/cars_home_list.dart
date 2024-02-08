@@ -56,6 +56,7 @@ class CarsHomeListHoriz extends StatelessWidget {
       height: 260,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
+        padding: 10.paddingStart,
         itemBuilder: (_, index) {
           return CarHorizontalItem(
             car: cars[index],

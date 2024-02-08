@@ -20,8 +20,8 @@ class PlateImage extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle titleStyle = context.bodyMedium.copyWith(
-      fontSize: isDetails ? 12 : 10,
+    TextStyle titleStyle = context.bodyLarge.copyWith(
+      fontSize: isAll ? 16 : 13,
     );
     return Container(
       height: 150,
@@ -37,8 +37,8 @@ class PlateImage extends BaseStatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           RowTexts(
-            padding: isDetails ? (16.paddingAll + 20.paddingStart + 10.paddingTop) : (10.paddingAll + 5.paddingStart + 5.paddingTop),
-            title: plate.letterAr?.toArabicChars() ?? '',
+            padding: (10.paddingAll + 5.paddingStart + 5.paddingTop),
+            title: "\t\t\t\t${plate.letterAr ?? ''}",
             value:plate.plateNumber?.toArabicNumbers() ?? '',
             titleStyle: titleStyle,
             valueStyle: titleStyle,
@@ -47,8 +47,8 @@ class PlateImage extends BaseStatelessWidget {
               textDirection: TextDirection.rtl,
           ),
           RowTexts(
-            padding: isDetails ? (16.paddingAll + 20.paddingStart + 22.paddingBottom) : (10.paddingEnd + 15.paddingStart + 20.paddingBottom),
-            title: plate.letterEn?.toArabicChars() ?? '',
+            padding: (10.paddingEnd + 10.paddingStart + 20.paddingBottom),
+            title: "\t\t\t\t${plate.letterEn?.toArabicChars() ?? ''}",
             value: plate.plateNumber ?? '',
             titleStyle: titleStyle,
             valueStyle: titleStyle,

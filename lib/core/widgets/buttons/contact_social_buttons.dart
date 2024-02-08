@@ -94,7 +94,6 @@ class ContactButton extends StatelessWidget {
               style: context.bodyLarge
                   .copyWith(color: labelColor ?? context.cardColor),
             ),
-            20.pw,
             AppCircularIcon(
               icon: icon,
               backgroundColor: iconBackgroundColor ?? context.cardColor,

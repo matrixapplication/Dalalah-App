@@ -76,7 +76,7 @@ class PlateVert extends StatelessWidget {
               alignment: AlignmentDirectional.bottomStart,
               children: [
                 Container(
-                  width: 200,
+                  width: 220,
                   height: 120,
                   padding: 10.paddingHoriz + 12.paddingVert,
                   margin: 20.paddingBottom,

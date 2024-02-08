@@ -115,9 +115,8 @@ class UserRegisterScreen extends BaseStatelessWidget {
               prefixIcon: AppIcons.smartphone,
               controller: phoneNumberController,
               keyboardType: TextInputType.phone,
-              validator: (phone){},
               isValidator: false,
-              // validator: (phone) => Validation.validatePhone(phone ?? ''),
+              validator: (phone) => Validation.validatePhone(phone ?? ''),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             AuthTextField(
@@ -127,7 +126,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
               controller: whatsappController,
               isColor: false,
               isValidator: false,
-              // validator: (phone) => Validation.validatePhone(phone ?? ''),
+              validator: (phone) => Validation.validatePhone(phone ?? ''),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             DropDownField(
@@ -137,6 +136,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
                   .toList(),
               hint: context.strings.city,
               prefixIcon: AppIcons.location_2,
+              margin: 10.paddingHoriz,
               isDecoration: true,
               onChanged: (value) {
                 cityId = int.parse(value?.id ?? '0');

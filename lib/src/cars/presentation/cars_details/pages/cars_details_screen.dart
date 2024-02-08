@@ -147,11 +147,11 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: carDetails.properties(context)?.length ?? 0,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 8,
                           mainAxisSpacing: 8,
-                          childAspectRatio: 1.2,
+                          childAspectRatio: context.width / 250,
                         ),
                         itemBuilder: (context, index) {
                           CarProperty property =

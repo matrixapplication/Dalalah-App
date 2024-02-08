@@ -19,6 +19,7 @@ import '../../../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../cars/data/models/comment_params.dart';
 import '../../../domain/entities/plate.dart';
+import '../widgets/plate_image_details.dart';
 import '../widgets/plate_property.dart';
 import '../widgets/plates_details_widget.dart';
 
@@ -42,7 +43,7 @@ class PlatesDetailsScreen extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 190,
+                height: 240,
                 width: double.infinity,
                 color: context.gray_f8,
               ),
@@ -61,12 +62,12 @@ class PlatesDetailsScreen extends StatelessWidget {
                   elevation: 0,
                   leading: 0.ph,
                   bottom: PreferredSize(
-                    preferredSize: const Size.fromHeight(240),
+                    preferredSize: const Size.fromHeight(290),
                     child: SingleChildScrollView(
                       padding: 10.paddingAll,
                       child: Column(
                         children: [
-                          PlateImage(plate: plate, isDetails: true),
+                          PlateImageDetails(plate: plate, isDetails: true),
                           Align(
                               alignment: AlignmentDirectional.centerEnd,
                               child: FavoriteButton(

@@ -33,9 +33,11 @@ class CarDetailsPropertyItem extends StatelessWidget {
             ],
           ),
           8.ph,
-          Text(
-            property.subtitle ?? '',
-            style: context.displayMedium.copyWith(fontSize: 12),
+          FittedBox(
+            child: Text(
+              property.subtitle ?? '',
+              style: context.displayMedium.copyWith(fontSize: 12),
+            ),
           ),
         ],
       ),
