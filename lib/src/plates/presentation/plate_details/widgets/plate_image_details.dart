@@ -33,86 +33,32 @@ class PlateImageDetails extends BaseStatelessWidget {
                 : AppImages.plate_backgound),
             scale: 10),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: 25,
-              end: 25,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildTitle(plate.plateNumber?.toArabicNumbers() ?? '',),
-                buildTitle(plate.letterAr?.toArabicChars() ?? ''),
-              ],
-            ),
-          ),
+      child: Stack(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // crossAxisAlignment: CrossAxisAlignment.center,
 
-          Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: 15,
-              end: 25,
-              bottom: 10,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildTitle(plate.plateNumber ?? ''),
-                buildTitle(plate.letterEn?.toArabicChars() ?? '',),
-              ],
-            ),
+        textDirection: TextDirection.rtl,
+        children: [
+          Positioned(
+            top: 42,
+            right: 27.width,
+            child: buildTitle(plate.letterAr?.toArabicChars() ?? ''),
           ),
-          // RowTexts(
-          //   padding: const EdgeInsetsDirectional.only(
-          //     start: 20,
-          //     top: 20,
-          //     bottom: 22,
-          //     end: 22,
-          //   ),
-          //   title: plate.letterAr?.toArabicChars() ?? '',
-          //   value: plate.plateNumber?.toArabicNumbers() ?? '',
-          //   titleStyle: titleStyle,
-          //   valueStyle: titleStyle,
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   textDirection: TextDirection.rtl,
-          // ),
-          // RowTexts(
-          //   padding: const EdgeInsetsDirectional.only(
-          //     start: 16,
-          //     bottom: 20,
-          //   ),
-          //   title: plate.letterEn?.toArabicChars() ?? '',
-          //   value: plate.plateNumber ?? '',
-          //   titleStyle: titleStyle,
-          //   valueStyle: titleStyle,
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   textDirection: TextDirection.rtl,
-          // ),
-          // PositionedDirectional(
-          //     start: plate.letterAr?.toArabicChars().contains('ا') ?? false
-          //         ? isAll ? 75 : isDetails ? 50 : 38
-          //         : isAll ? 75 : isDetails ? 80 : 30,
-          //     top: isAll ? 35 : isDetails ? 35 : 15,
-          //     child: buildTitle(plate.letterAr?.toArabicChars() ?? '')),
-          //
-          // PositionedDirectional(
-          //     top: isAll ? 35 : isDetails ? 35 : 16,
-          //     end: isAll ? 55 : isDetails ? 60 : 22,
-          //     child: buildTitle(plate.plateNumber?.toArabicNumbers() ?? '')),
-          // PositionedDirectional(
-          //     start: isAll ? 74 : isDetails ? 80 : 30,
-          //     bottom: isAll ? 45 : isDetails ? 45 : 20,
-          //     child: buildTitle(plate.letterEn?.toArabicChars() ?? '')),
-          //
-          // PositionedDirectional(
-          //     bottom: isAll ? 45 : isDetails ? 45 : 20,
-          //     end: isAll ? 55 : isDetails ? 60 : 22,
-          //     child: buildTitle(plate.plateNumber ?? '')),
+          Positioned(
+            top: 43,
+            left: 24.width,
+            child: buildTitle(plate.plateNumber?.toArabicNumbers() ?? ''),
+          ),
+          Positioned(
+            top: 116,
+            right: 27.width,
+            child: buildTitle(plate.letterEn?.toArabicChars() ?? ''),
+          ),
+          Positioned(
+            top: 116,
+            left: 24.width,
+            child: buildTitle(plate.plateNumber ?? ''),
+          ),
         ],
       ),
     );
@@ -123,5 +69,6 @@ class PlateImageDetails extends BaseStatelessWidget {
         style: context?.bodyLarge.copyWith(
           fontSize: 16,
         ),
+        textDirection: TextDirection.rtl,
       );
 }

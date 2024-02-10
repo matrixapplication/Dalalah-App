@@ -239,6 +239,20 @@ extension MediaQueryExtension on BuildContext{
   double get devicePixelHeight => MediaQuery.of(this).size.height * devicePixelRatio;
 }
 
+
+extension MediaQueryNumExtension on num{
+  BuildContext get context => injector<ServicesLocator>().appContext;
+  bool  get isTablet => MediaQuery.of(context).size.shortestSide >= 600;
+  double get width => MediaQuery.of(context).size.width * ((isTablet ? (this + 4) : this) / 100);
+  double get height => MediaQuery.of(context).size.height;
+  double get statusBarHeight => MediaQuery.of(context).padding.top;
+  double get bottomBarHeight => MediaQuery.of(context).padding.bottom;
+  double get textScaleFactor => MediaQuery.of(context).textScaleFactor;
+  double get devicePixelRatio => MediaQuery.of(context).devicePixelRatio;
+  double get devicePixelWidth => MediaQuery.of(context).size.width * devicePixelRatio;
+  double get devicePixelHeight => MediaQuery.of(context).size.height * devicePixelRatio;
+}
+
 extension FirstWhereOrNull<E> on Iterable<E> {
   E? firstWhereOrNull(bool Function(E element) test) {
     try {

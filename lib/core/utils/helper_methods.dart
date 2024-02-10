@@ -65,20 +65,34 @@ class HelperMethods {
   }
 
   static Future<void> launchCallPhone(String phoneNumber) async {
-    Uri telephoneUrl = Uri.parse("tel:+2${phoneNumber}");
-    if (await canLaunchUrl(telephoneUrl)) {
-      await launchUrl(telephoneUrl);
+    if (phoneNumber.isNotEmpty) {
+      Uri telephoneUrl = Uri.parse("tel:${getPhoneNumber(phoneNumber)}");
+      if (await canLaunchUrl(telephoneUrl)) {
+        await launchUrl(telephoneUrl);
+      } else {
+        showErrorToast('حدث خطأ أثناء الاتصال بالرقم');
+      }
     } else {
-      showErrorToast('حدث خطأ أثناء الاتصال بالرقم');
+      showErrorToast('رقم الهاتف غير متاح');
     }
   }
 
+  static String getPhoneNumber(String phoneNumber) {
+    if (phoneNumber.isEmpty) throw 'Phone number is empty';
+    String newPhoneNumber = phoneNumber.isEmpty ? '' : phoneNumber.contains('+') ? phoneNumber : '+966$phoneNumber';
+    return newPhoneNumber;
+  }
+
   static Future<void> launchWhatsApp(String phoneNumber) async {
-    Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=+2$phoneNumber");
-    if (await canLaunchUrl(whatsUpUrl)) {
-      await launchUrl(whatsUpUrl);
+    if (phoneNumber.isNotEmpty) {
+      Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=${getPhoneNumber(phoneNumber)}");
+      if (await canLaunchUrl(whatsUpUrl)) {
+        await launchUrl(whatsUpUrl);
+      } else {
+        showErrorToast('حدث خطأ اثناء الاتصال بالواتساب');
+      }
     } else {
-      showErrorToast('حدث خطأ اثناء الاتصال بالواتساب');
+      showErrorToast('رقم الواتساب غير متاح');
     }
   }
 
