@@ -1,26 +1,21 @@
 import '../../src/main_index.dart';
 
 Future<dynamic> pushNamed(String routeName, {dynamic arguments}) async {
+  BuildContext context = injector<ServicesLocator>().appContext;
   print('routeName: $routeName');
-  return injector<ServicesLocator>()
-      .navigatorKey
-      .currentState!
-      .pushNamed(routeName, arguments: arguments);
+  return Navigator.of(context).pushNamed(routeName, arguments: arguments);
 }
 
 Future<dynamic> pushNamedAndRemoveUntil(String routeName, {dynamic arguments}) {
-  return injector<ServicesLocator>()
-      .navigatorKey
-      .currentState!
-      .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false,
+  BuildContext context = injector<ServicesLocator>().appContext;
+  print('routeName: $routeName');
+  return Navigator.of(context).pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false,
           arguments: arguments);
 }
 
 Future<dynamic> push(Widget page) {
-  return injector<ServicesLocator>()
-      .navigatorKey
-      .currentState!
-      .push(MaterialPageRoute(builder: (context) => page));
+  BuildContext context = injector<ServicesLocator>().appContext;
+  return Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
 }
 
 pop({dynamic arguments}) {

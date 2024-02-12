@@ -37,7 +37,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
           backgroundColor: Colors.white,
           forceElevated: innerBoxIsScrolled,
           bottom: PreferredSize(
-            preferredSize: const Size(0, 265),
+            preferredSize: const Size(0, 280),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

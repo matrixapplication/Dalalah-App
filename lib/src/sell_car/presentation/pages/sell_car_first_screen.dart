@@ -57,7 +57,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
                 onSelected: (value) {
-                  status = value.id ?? '';
+                  status = value?.id ?? '';
                 },
               ),
               DropDownField(

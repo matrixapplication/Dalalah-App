@@ -15,7 +15,7 @@ class ShowroomDetailsPage
 
   @override
   void loadInitialData(BuildContext context) {
-    int id = getArguments(context).id;
+    int id = getArguments(context);
     bloc.fetchShowroomDetails(id);
   }
 

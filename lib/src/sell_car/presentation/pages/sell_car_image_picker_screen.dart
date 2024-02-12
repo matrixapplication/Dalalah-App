@@ -90,6 +90,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 onDeleteCarImage: onDeleteCarImage,
                 onImagesSelected: (main, images) {
                   mainImage = main;
+                  imagesSelected = images;
                 },
               ),
               15.ph,

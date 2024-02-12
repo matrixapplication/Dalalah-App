@@ -49,7 +49,7 @@ class CarFilterParams {
       data['end_price'] = endPrice;
       data['start_year'] = startYear;
       data['end_year'] = endYear;
-      data.removeWhere((key, value) => value == null || value == '' || value == 0);
+      data.removeWhere((key, value) => value == null || value == '' || value == 0 || value == '0');
       return data;
    }
 }

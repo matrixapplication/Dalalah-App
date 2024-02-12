@@ -45,7 +45,7 @@ class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, S
         SellCarParams params = args.params ?? SellCarParams();
         params.features = selected.map((e) => e.toString()).toList();
         print('params features ${params.features}');
-        Navigators.pushNamed(Routes.sellCarImagePickerPage, arguments: SellCarArgs(
+        Navigator.pushNamed(context, Routes.sellCarImagePickerPage, arguments: SellCarArgs(
           car: args.car,
           params: params,
           isEdit: args.isEdit,

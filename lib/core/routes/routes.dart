@@ -111,7 +111,7 @@ class Routes {
 
   /* ============================================== */
   static const String showroomsPage = 'showroomsPage';
-  static const String exhibitionDetailsPage = 'exhibitionDetailsPage';
+  static const String showroomDetailsPage = 'exhibitionDetailsPage';
   static const String carsSearchPage = 'carsSearchPage';
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
   static const String carAppLink = 'car';
@@ -168,7 +168,7 @@ class Routes {
     changeLanguage: (context) => ChangLanguagePage(),
     aboutUs: (context) => AboutUsPage(),
     showroomsPage: (context) => ShowroomsPage(),
-    exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
+    showroomDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
     showroomsAndBranchesTabs: (context) => ShowroomsAndBranchesTabs(),
     supportPage: (context) => SupportPage(),
@@ -274,7 +274,7 @@ class Routes {
         return CupertinoPageRoute(builder: (_) => AboutUsPage());
       case showroomsPage:
         return CupertinoPageRoute(builder: (_) => ShowroomsPage());
-      case exhibitionDetailsPage:
+      case showroomDetailsPage:
         return CupertinoPageRoute(builder: (_) => ShowroomDetailsPage());
       case carsSearchPage:
         return CupertinoPageRoute(builder: (_) => CarsSearchPage());

@@ -26,7 +26,7 @@ class PlatesScreen extends StatelessWidget {
           return PlateItem(
             plate: plates[index],
             onFavoritePlate: (id) => onFavoritePlate(id),
-            isAll: true,
+            isSeeAll: true,
             isMyPlate: isMyPlate,
             onHide: onHide,
             onSold: onSold,

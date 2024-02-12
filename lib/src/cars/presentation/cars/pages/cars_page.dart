@@ -58,7 +58,6 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
             routeName: Routes.carsSearchPage,
             onFilterOrder: (filterOrder) {
               order = filterOrder;
-
               bloc.fetchCars(CarFilterParams(
                 status: CarStatus.getStatusByIndex(tabIndex),
                 brand: brandId,

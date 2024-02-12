@@ -82,7 +82,7 @@ class CarVerticalItem extends BaseStatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 3,
+              flex: 6,
               child: Padding(
                 padding: 8.paddingHoriz + 5.paddingBottom,
                 // width: 220,
@@ -134,12 +134,13 @@ class CarVerticalItem extends BaseStatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 5,
               child: Stack(
                 children: [
                   ImageNetwork(
                     url: car.mainImage ?? '',
                     height: double.infinity,
+                    fit: BoxFit.fill,
                     borderRadius: imageHasOnlyTopRadius
                         ? const BorderRadiusDirectional.only(
                             topStart: Radius.circular(5),

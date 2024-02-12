@@ -41,8 +41,8 @@ class PlateImageDetails extends BaseStatelessWidget {
         children: [
           Positioned(
             top: 42,
-            right: 27.width,
-            child: buildTitle(plate.letterAr?.toArabicChars() ?? ''),
+            right: 26.width,
+            child: buildTitle(plate.letterAr ?? ''),
           ),
           Positioned(
             top: 43,
@@ -51,7 +51,7 @@ class PlateImageDetails extends BaseStatelessWidget {
           ),
           Positioned(
             top: 116,
-            right: 27.width,
+            right: 26.width,
             child: buildTitle(plate.letterEn?.toArabicChars() ?? ''),
           ),
           Positioned(

@@ -154,6 +154,6 @@ class Car {
   }
 
   String fullName() {
-    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}';
+    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
   }
 }

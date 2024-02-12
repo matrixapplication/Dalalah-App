@@ -16,6 +16,9 @@ class CarsSearchPage extends BaseBlocWidget<CarsSearchState, CarsSearchCubit> {
   Widget buildWidget(BuildContext context, CarsSearchState state) {
     return CarsSearchScreen(
       state: state,
+      onFetchBrandModels: (id) {
+        bloc.fetchBrandModels(id);
+      },
     );
   }
 

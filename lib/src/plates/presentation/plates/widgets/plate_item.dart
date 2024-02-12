@@ -15,7 +15,7 @@ import '../../../domain/entities/plate.dart';
 class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;
-  final bool isAll;
+  final bool isSeeAll;
   final bool isMyPlate;
   final Function(int)? onHide;
   final Function(int)? onSold;
@@ -25,7 +25,7 @@ class PlateItem extends StatelessWidget {
     Key? key,
     required this.plate,
      this.onFavoritePlate,
-    this.isAll = false,
+    this.isSeeAll = false,
     this.isMyPlate = false,
     this.onHide,
     this.onSold,
@@ -72,7 +72,7 @@ class PlateItem extends StatelessWidget {
               children: [
                 PlateImage(
                     plate: plate,
-                  isAll: isAll,
+                  isSeeAll: isSeeAll,
                 ),
                 FittedBox(
                   child: Padding(

@@ -63,7 +63,11 @@ class AppLinkingService {
     }
   }
 
-  static createDynamicLink(String route, {String? id}) {
-    return '$kBaseUrl/$route/$id';
+  static String createDynamicLink(String route, {String? id}) {
+    return '${getLink()}/$route/$id';
+  }
+
+  static String getLink() {
+    return kBaseUrl.replaceAll('/api', '');
   }
 }

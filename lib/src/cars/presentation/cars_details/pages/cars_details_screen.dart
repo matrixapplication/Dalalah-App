@@ -120,7 +120,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "${car.brandModel?.brand} ${car.brandModel?.name}",
+                            "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
                             style: context.textTheme.titleSmall!.copyWith(
                               color: AppColors.grey_2C,
                             ),

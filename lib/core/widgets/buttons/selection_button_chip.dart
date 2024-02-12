@@ -6,7 +6,7 @@ class SelectionButtonChip extends StatelessWidget {
   final List<ChipItem> types;
   final EdgeInsetsGeometry? paddingChip;
   final EdgeInsetsGeometry? margin;
-  final void Function(ChipItem)? onSelected;
+  final void Function(ChipItem?)? onSelected;
   final bool isScrollableGrid;
 
   SelectionButtonChip({
@@ -34,6 +34,7 @@ class SelectionButtonChip extends StatelessWidget {
             title ?? '',
             style: context.bodySmall,
           ),
+          5.ph,
           StatefulBuilder(
             builder: (context, setState) {
               return isScrollableGrid
@@ -69,7 +70,7 @@ class SelectionButtonChip extends StatelessWidget {
 
   _initialValue() {
     print('selectedType initialValue: ${initialValue}');
-    selectedType = types.firstWhere( (element) => element.id == initialValue, orElse: () => types.first);
+    selectedType = types.firstWhere( (element) => element.id == initialValue, orElse: () => ChipItem(title: '', id: ''));
 //        ?? (types.isEmpty ? null : types.first);
     print('selectedType: ${selectedType?.id}');
   }
@@ -84,10 +85,14 @@ class SelectionButtonChip extends StatelessWidget {
                 item: e,
                 types: types,
                 setState: setState,
-                selectedType: selectedType ?? types.first,
+                selectedType: selectedType,
                 onSelected: (bool value) {
                   setState(() {
-                    selectedType = e;
+                    if(selectedType == e){
+                      selectedType = null;
+                    } else {
+                      selectedType =  e;
+                    }
                     onSelected!(selectedType!);
                   });
                 },
@@ -115,11 +120,15 @@ class SelectionButtonChip extends StatelessWidget {
         types: types,
         setState: setState,
         isWrap: false,
-        selectedType: selectedType ?? types.first,
+        selectedType: selectedType,
         onSelected: (bool value) {
           setState(() {
-            selectedType = types[index];
-            onSelected!(selectedType!);
+            if(selectedType == types[index]){
+              selectedType = null;
+            } else {
+              selectedType = types[index];
+            }
+            onSelected!(selectedType);
           });
         },
         padding: paddingChip,
@@ -141,7 +150,7 @@ class SelectItem extends StatelessWidget {
   final List<ChipItem> types;
   final void Function(void Function()) setState;
   final void Function(bool)? onSelected;
-  final ChipItem selectedType;
+  final ChipItem? selectedType;
   final EdgeInsetsGeometry? padding;
   final bool isWrap;
 
@@ -152,7 +161,7 @@ class SelectItem extends StatelessWidget {
       required this.setState,
       this.onSelected,
       this.padding,
-      required this.selectedType,
+       this.selectedType,
       this.isWrap = false})
       : super(key: key);
 

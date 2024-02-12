@@ -4,6 +4,7 @@ import 'package:dalalah/src/home/data/models/car_filter_params.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../main_index.dart';
+import '../../cars/widgets/brand_models_filter.dart';
 import '../../cars/widgets/brands_filter.dart';
 import '../bloc/cars_search_state.dart';
 import '../widges/price_range_slider.dart';
@@ -11,8 +12,10 @@ import '../widges/years_drop_downs.dart';
 
 class CarsSearchScreen extends BaseStatelessWidget {
   final CarsSearchState state;
+  final Function(int) onFetchBrandModels;
 
-  CarsSearchScreen({super.key, required this.state});
+  CarsSearchScreen(
+      {super.key, required this.state, required this.onFetchBrandModels});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
     int brandId = 0;
     String status = '';
     String fulTypeId = '';
+    int brandModelId = 0;
 
     return SingleChildScrollView(
       padding: 16.paddingAll,
@@ -36,7 +40,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
                 .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                 .toList(),
             onSelected: (value) {
-              status = value.id ?? '';
+              status = value?.id ?? '';
             },
           ),
           10.ph,
@@ -49,6 +53,15 @@ class CarsSearchScreen extends BaseStatelessWidget {
             items: state.brands,
             onFilter: (value) {
               brandId = value;
+              onFetchBrandModels(value);
+            },
+          ),
+          10.ph,
+          BrandModelsFilterStream(
+            title: strings.models,
+            brandModelsStream: state.brandModelsStream!,
+            onFilter: (value) {
+              brandModelId = value;
             },
           ),
           10.ph,
@@ -72,19 +85,18 @@ class CarsSearchScreen extends BaseStatelessWidget {
                 .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                 .toList(),
             onSelected: (value) {
-              driveTypeId = value.id ?? '0';
+              driveTypeId = value?.id ?? '0';
             },
           ),
           25.ph,
           SelectionButtonChip(
             title: strings.fuel_type,
-            isScrollableGrid: true,
             types: state.fuelTypes
                 .map((e) => ChipItem(
                     id: e.key ?? '', title: e.name ?? '', icon: AppIcons.fuel))
                 .toList(),
             onSelected: (value) {
-              fulTypeId = value.id ?? '0';
+              fulTypeId = value?.id ?? '0';
             },
           ),
           50.ph,
@@ -95,16 +107,18 @@ class CarsSearchScreen extends BaseStatelessWidget {
               Navigator.pop(context);
             },
             onPressed1: () {
-              pushNamed(Routes.carsPage, arguments: CarFilterParams(
-                brand: brandId,
-                status: status,
-                startPrice: startPriceRange.toInt(),
-                endPrice: endPriceRange.toInt(),
-                startYear: startYear,
-                endYear: endYear,
-                driveType: driveTypeId,
-                fuelType: fulTypeId,
-              ));
+              pushNamed(Routes.carsPage,
+                  arguments: CarFilterParams(
+                    brand: brandId,
+                    status: status,
+                    startPrice: startPriceRange.toInt(),
+                    endPrice: endPriceRange.toInt(),
+                    startYear: startYear,
+                    endYear: endYear,
+                    driveType: driveTypeId,
+                    fuelType: fulTypeId,
+                    carModel: brandModelId,
+                  ));
             },
           ),
         ],
