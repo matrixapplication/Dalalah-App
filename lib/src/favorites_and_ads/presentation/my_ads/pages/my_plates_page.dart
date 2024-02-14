@@ -54,7 +54,7 @@ class MyPlatesPage
 //
 // @override
 // onAddButtonPressed() {
-//   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+//   pushNamed(Routes.plateFilterPage, arguments: true);
 // }
 //
 // @override

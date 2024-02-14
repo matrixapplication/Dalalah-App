@@ -52,7 +52,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
         }
       },
       onPrevPressed: () {
-        Navigators.pop();
+        pop();
       },
       child: SingleChildScrollView(
         child: Form(

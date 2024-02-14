@@ -42,7 +42,7 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
       state: state,
       onNext: (SellCarParams params) {
        // onNext!(params);
-        Navigators.pushNamed(Routes.sellCarSecondPage, arguments: SellCarArgs(
+       pushNamed(Routes.sellCarSecondPage, arguments: SellCarArgs(
           car: car,
           params: params,
           isEdit: car?.id != null,

@@ -198,7 +198,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
                 5.pw,
                 GestureDetector(
                   onTap: () {
-                    Navigators.pop();
+                    pop();
                   },
                   child: Text(
                     strings.login,

@@ -35,7 +35,7 @@ class PlateItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigators.pushNamed(
+      onTap: () => pushNamed(
         Routes.platesDetailsPage,
         arguments: plate,
       ),

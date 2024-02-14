@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dalalah/core/di/injector.dart';
+import 'package:dalalah/main.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -241,7 +242,7 @@ extension MediaQueryExtension on BuildContext{
 
 
 extension MediaQueryNumExtension on num{
-  BuildContext get context => injector<ServicesLocator>().appContext;
+  BuildContext get context => navigatorMainKey.currentContext!;
   bool  get isTablet => MediaQuery.of(context).size.shortestSide >= 600;
   double get width => MediaQuery.of(context).size.width * ((isTablet ? (this + 4) : this) / 100);
   double get height => MediaQuery.of(context).size.height;

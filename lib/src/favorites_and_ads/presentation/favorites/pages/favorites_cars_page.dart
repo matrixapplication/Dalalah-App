@@ -36,7 +36,7 @@ class FavoriteCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, FavoriteCa
   //
   // @override
   // onAddButtonPressed() {
-  //   Navigators.pushNamed(Routes.sellCarPage);
+  //   pushNamed(Routes.sellCarPage);
   // }
   //
   //

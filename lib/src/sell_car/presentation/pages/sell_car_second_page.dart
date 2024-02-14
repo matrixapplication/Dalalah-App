@@ -50,7 +50,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
         params.carModelExtensionId =  args.params?.carModelExtensionId ?? 0;
         params.year =  args.params?.year ?? 0;
         params.newCarMiles =  state.car?.newCarMiles ?? args.params?.newCarMiles ?? 0;
-        Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
+        pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
           car: state.car ?? args.car,
           params: params,
           isEdit: args.isEdit,

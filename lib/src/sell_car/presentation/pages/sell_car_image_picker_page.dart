@@ -66,6 +66,6 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
 
   @override
   void onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.addCarPremiumPage);
+    pushNamedAndRemoveUntil(Routes.addCarPremiumPage);
   }
 }

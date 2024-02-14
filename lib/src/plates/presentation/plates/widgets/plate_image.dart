@@ -40,23 +40,23 @@ class PlateImage extends BaseStatelessWidget {
         textDirection: TextDirection.rtl,
         children: [
           Positioned(
-            top: 20,
-            right: 14.width,
+            top: isSeeAll ? 30 : 20,
+            right: context.width * (isSeeAll ? 0.24 : 0.13),
             child: buildTitle(plate.letterAr ?? ''),
           ),
           Positioned(
-            top: 20,
-            left: 13.width,
+            top: isSeeAll ? 30 : 20,
+            left: context.width * (isSeeAll ? 0.20 : 0.10),
             child: buildTitle(plate.plateNumber?.toArabicNumbers() ?? ''),
           ),
           Positioned(
-            top: 55,
-            right: 14.width,
+            top: isSeeAll ? 85 : 55,
+            right: context.width * (isSeeAll ? 0.24 : 0.13),
             child: buildTitle(plate.letterEn?.toArabicChars() ?? ''),
           ),
           Positioned(
-            top: 55,
-            left: 13.width,
+            top: isSeeAll ? 85 : 55,
+            left: context.width * (isSeeAll ? 0.20: 0.10),
             child: buildTitle(plate.plateNumber ?? ''),
           ),
         ],

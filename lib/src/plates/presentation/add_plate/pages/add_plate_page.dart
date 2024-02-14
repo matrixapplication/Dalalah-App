@@ -20,13 +20,15 @@ class AddPlatesPage extends BaseBlocWidget<DataSuccess<List<City>>, AddPlateCubi
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<City>> state) {
-    return TextFormField();
+    return PlateFilterScreen(
+      cities: state.data ?? [],
+    );
   }
 
-  // @override
-  // void onSuccessDismissed() {
-  //   Navigators.pushNamed(Routes.addCarPremiumPage);
-  // }
+  @override
+  void onSuccessDismissed() {
+    pushNamed(Routes.addCarPremiumPage);
+  }
 
   @override
   String? title(BuildContext context) {
