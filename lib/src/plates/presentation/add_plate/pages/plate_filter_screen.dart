@@ -21,9 +21,9 @@ import '../../plates/widgets/filter_item.dart';
 ///  Created by harby on 10/12/2023.
 class PlateFilterScreen extends BaseStatelessWidget {
   final List<City> cities;
-  final Function(AddPlateParams)? onSelected;
+  final Function(AddPlateParams)? onAddEditPlate;
 
-  PlateFilterScreen({super.key, required this.cities, this.onSelected});
+  PlateFilterScreen({super.key, required this.cities, this.onAddEditPlate});
 
   List<TextEditingController> controllersArLetters =
       List.generate(3, (index) => TextEditingController());
@@ -33,99 +33,105 @@ class PlateFilterScreen extends BaseStatelessWidget {
       List.generate(4, (index) => TextEditingController());
   TextEditingController priceController = TextEditingController();
   int cityId = 0;
-  String plateType = PlateTypes.private;
+  String plateType = '';
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     PlateArgs? args = getArguments(context) ?? PlateArgs();
+    plateType = args.isFilter ? '' : PlateTypes.private;
     _initData(args);
-    return SingleChildScrollView(
-      padding: 16.paddingAll,
-      child: Column(
-        children: [
-          SelectionButtonChip(
-            title: strings.plate_type,
-            types: PlateTypes.getTypes(),
-            onSelected: (item) {
-              plateType = item?.id ?? PlateTypes.private;
-            },
-          ),
-          10.ph,
-          Container(
-            margin: 10.paddingTop,
-            padding: 16.paddingVert + 10.paddingHoriz,
-            // decoration: Decorations.mainShapeDecoration(),
-            decoration: Decorations.kDecorationOnlyRadius(
-              color: context.primaryColor,
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        padding: 16.paddingAll,
+        child: Column(
+          children: [
+            SelectionButtonChip(
+              title: strings.plate_type,
+              initialValue: plateType,
+              types: PlateTypes.getTypes(),
+              onSelected: (item) {
+                plateType = item?.id ?? PlateTypes.private;
+              },
             ),
-            child: Column(
-              children: [
-                FilterItem(
-                  title: strings.arabic_letters,
-                  controllers: controllersArLetters,
-                ),
-                40.ph,
-                FilterItem(
-                  title: strings.english_letters,
-                  controllers: controllersEnLetters,
-                ),
-                40.ph,
-                FilterItem(
-                  title: strings.numbers,
-                  controllers: controllersNumbers,
-                ),
-                10.ph,
-                // if(isAddPage)
-                CustomTextField(
-                  title: strings.price,
-                  labelStyle: context.textTheme.labelLarge,
-                  hintText: strings.enter_price,
-                  controller: priceController,
-                  keyboardType: TextInputType.number,
-                ),
-                DropDownField(
-                  items: cities
-                      .map((e) => DropDownItem(
-                          id: e.id?.toString() ?? '', title: e.name))
-                      .toList(),
-                  hint: context.strings.city,
-                  isDecoration: true,
-                  valueId: cityId.toString(),
-                  onChanged: (value) {
-                    cityId = int.parse(value?.id ?? '0');
-                  },
-                ),
-              ],
+            10.ph,
+            Container(
+              margin: 10.paddingTop,
+              padding: 16.paddingVert + 10.paddingHoriz,
+              // decoration: Decorations.mainShapeDecoration(),
+              decoration: Decorations.kDecorationOnlyRadius(
+                color: context.primaryColor,
+              ),
+              child: Column(
+                children: [
+                  FilterItem(
+                    title: strings.arabic_letters,
+                    controllers: controllersArLetters,
+                  ),
+                  40.ph,
+                  FilterItem(
+                    title: strings.english_letters,
+                    controllers: controllersEnLetters,
+                  ),
+                  40.ph,
+                  FilterItem(
+                    title: strings.numbers,
+                    controllers: controllersNumbers,
+                  ),
+                  10.ph,
+                  // if(isAddPage)
+                  CustomTextField(
+                    title: strings.price,
+                    labelStyle: context.textTheme.labelLarge,
+                    hintText: strings.enter_price,
+                    controller: priceController,
+                    keyboardType: TextInputType.number,
+                  ),
+                  DropDownField(
+                    items: cities
+                        .map((e) => DropDownItem(
+                            id: e.id?.toString() ?? '', title: e.name))
+                        .toList(),
+                    hint: context.strings.city,
+                    // isDecoration: true,
+                    valueId: cityId.toString(),
+                    onChanged: (value) {
+                      cityId = int.parse(value?.id ?? '0');
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          20.ph,
-          args.isFilter
-              ? PrimaryOutlinesButtons(
-                  title1: strings.show_results,
-                  title2: strings.cancel,
-                  onPrevPressed: () {
-                    Navigator.pop(context);
-                  },
-                  onPressed1: () {
-                    onFilterPressed();
-                  },
-                )
-              : PrimaryButton(
-                  title: args.isEdit ? strings.edit_plate : strings.save,
-                  onPressed: () {
-                    onSelectedPressed(args.plate?.id ?? 0);
-                  },
-                ),
-          20.ph,
-        ],
+            20.ph,
+            args.isFilter
+                ? PrimaryOutlinesButtons(
+                    title1: strings.show_results,
+                    title2: strings.cancel,
+                    onPrevPressed: () {
+                      Navigator.pop(context);
+                    },
+                    onPressed1: () {
+                      onFilterPressed();
+                    },
+                  )
+                : PrimaryButton(
+                    title: args.isEdit ? strings.edit_plate : strings.save,
+                    onPressed: () {
+                      onSelectedPressed(args.plate?.id ?? 0);
+                    },
+                  ),
+            20.ph,
+          ],
+        ),
       ),
     );
   }
 
   onSelectedPressed(int id) async {
     int getUserId = await HelperMethods.getUserId();
-    if (onSelected != null) {
-      onSelected!(AddPlateParams(
+    if (_formKey.currentState!.validate()) {
+      onAddEditPlate!(AddPlateParams(
         id: id,
         cityId: cityId,
         letterAr:

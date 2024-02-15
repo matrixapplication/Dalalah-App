@@ -40,7 +40,7 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
         car: args.car ?? Car(status: CarStatus(key: args.params?.status ?? '')),
         onSave: (params) {
           // if id is null or 0 then it's new car
-          args.params?.id = args.isEdit ? args.car?.id : 0;
+          // args.params?.id = args.isEdit ? args.car?.id : 0;
           args.params?.price = params.price;
           args.params?.installment = params.installment;
           args.params?.description = params.description;
