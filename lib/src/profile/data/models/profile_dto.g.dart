@@ -16,7 +16,7 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       descriptionEn: json['description_en'] as String?,
       descriptionAr: json['description_ar'] as String?,
       email: json['email'] as String?,
-      code: json['code'] as int?,
+      code: json['code'],
       phone: json['phone'] as String?,
       whatsapp: json['whatsapp'] as String?,
       endTaxCard: json['end_tax_card'] as String?,

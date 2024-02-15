@@ -223,23 +223,17 @@ class _SellCarDatasource implements SellCarDatasource {
     int brandId,
     int carModelId,
     int carModelExtensionId,
-    int modelId,
-    String modelRole,
-    int portId,
     int year,
     String color,
     String driveType,
     int carTypeId,
     String fuelType,
-    String status,
-    String type,
-    String originCountry,
     int price,
     int doors,
     String engine,
-    String cc,
     int cylinders,
     int mileage,
+    int monthlyInstallment,
     String description,
     List<String> features,
   ) async {
@@ -258,18 +252,6 @@ class _SellCarDatasource implements SellCarDatasource {
     _data.fields.add(MapEntry(
       'car_model_extension_id',
       carModelExtensionId.toString(),
-    ));
-    _data.fields.add(MapEntry(
-      'model_id',
-      modelId.toString(),
-    ));
-    _data.fields.add(MapEntry(
-      'model_role',
-      modelRole,
-    ));
-    _data.fields.add(MapEntry(
-      'port_id',
-      portId.toString(),
     ));
     _data.fields.add(MapEntry(
       'year',
@@ -292,18 +274,6 @@ class _SellCarDatasource implements SellCarDatasource {
       fuelType,
     ));
     _data.fields.add(MapEntry(
-      'status',
-      status,
-    ));
-    _data.fields.add(MapEntry(
-      'type',
-      type,
-    ));
-    _data.fields.add(MapEntry(
-      'origin_country',
-      originCountry,
-    ));
-    _data.fields.add(MapEntry(
       'price',
       price.toString(),
     ));
@@ -316,16 +286,16 @@ class _SellCarDatasource implements SellCarDatasource {
       engine,
     ));
     _data.fields.add(MapEntry(
-      'cc',
-      cc,
-    ));
-    _data.fields.add(MapEntry(
       'cylinders',
       cylinders.toString(),
     ));
     _data.fields.add(MapEntry(
       'mileage',
       mileage.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'monthly_installment',
+      monthlyInstallment.toString(),
     ));
     _data.fields.add(MapEntry(
       'description',
