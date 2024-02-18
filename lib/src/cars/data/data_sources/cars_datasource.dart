@@ -46,4 +46,7 @@ abstract class  CarsDatasource{
   @POST('/add_car_feature')
   Future<ApiResponse> addSpecialCar(@Queries() AdSpecialParams params);
 
+  @DELETE('/delete_car/{id}')
+  Future<ApiResponse> deleteCar(@Path('id') int id);
+
 }

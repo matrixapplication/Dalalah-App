@@ -59,6 +59,7 @@ class CustomChip extends StatelessWidget {
                 text: value,
                 style: context.headlineSmall.copyWith(
                   fontSize: fontSize ?? 12,
+                  color: labelColor,
                 ),
               ),
           ],

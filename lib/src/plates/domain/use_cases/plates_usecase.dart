@@ -43,15 +43,23 @@ class PlatesUseCase {
     return AdFeature.fromDto(data.data!);
   }
 
-  Future<void> hidePlate(int id) async {
-    await repository.hidePlate(id);
+  Future<String> hidePlate(int id) async {
+    final data = await repository.hidePlate(id);
+    return data.message ?? '';
   }
 
-  Future<void> soldPlate(int id) async {
-    await repository.soldPlate(id);
+  Future<String> soldPlate(int id) async {
+    final data = await repository.soldPlate(id);
+    return data.message ?? '';
   }
 
-  Future<void> addSpecialPlate(AdSpecialParams params) async {
-    await repository.addSpecialPlate(params);
+  Future<String> addSpecialPlate(AdSpecialParams params) async {
+    final data = await repository.addSpecialPlate(params);
+    return data.message ?? '';
+  }
+
+  Future<String> deletePlate(int id) async {
+    final data = await repository.deletePlate(id);
+    return data.message ?? '';
   }
 }

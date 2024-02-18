@@ -56,6 +56,9 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         onSpecial: (id) {
           bloc.addSpecialCar(id);
         },
+        onDelete: (id) {
+          bloc.deleteCar(id);
+        },
       ),
     );
     // return 0.ph;

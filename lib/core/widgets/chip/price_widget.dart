@@ -13,15 +13,14 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? 4.paddingVert + 16.paddingHoriz,
+      padding: padding ?? 4.paddingVert + 10.paddingHoriz,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: backgroundColor ?? context.primaryColor,
       ),
       child:  Row(
-        crossAxisAlignment: CrossAxisAlignment.baseline,
         mainAxisAlignment: MainAxisAlignment.center,
-        textBaseline: TextBaseline.alphabetic,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             price,

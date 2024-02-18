@@ -45,4 +45,7 @@ abstract class PlatesDatasource {
 
   @POST('/add_plate_feature')
   Future<ApiResponse> addSpecialPlate(@Queries() AdSpecialParams params);
+
+  @DELETE('/delete_car_plate/{id}')
+  Future<ApiResponse> deletePlate(@Path('id') int id);
 }

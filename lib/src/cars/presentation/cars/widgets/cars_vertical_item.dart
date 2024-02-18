@@ -28,9 +28,10 @@ class CarVerticalItem extends BaseStatelessWidget {
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onRequestPrice;
+  final Function(int)? onDelete;
 
   // final Task task;
-   CarVerticalItem({
+  CarVerticalItem({
     Key? key,
     required this.car,
     this.onToggleFavorite,
@@ -44,6 +45,7 @@ class CarVerticalItem extends BaseStatelessWidget {
     this.onSold,
     this.onSpecial,
     this.onRequestPrice,
+    this.onDelete,
   }) : super(key: key);
 
   @override
@@ -99,7 +101,10 @@ class CarVerticalItem extends BaseStatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Spacer(),
-                    if(isMyCar && car.isSold == false && car.isHide == false && car.isApproved == false)
+                    if (isMyCar &&
+                        car.isSold == false &&
+                        car.isHide == false &&
+                        car.isApproved == false)
                       MyAdStatus(
                         isSold: car.isSold ?? false,
                         isHidden: car.isHide ?? false,
@@ -134,7 +139,7 @@ class CarVerticalItem extends BaseStatelessWidget {
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: Stack(
                 children: [
                   ImageNetwork(
@@ -163,6 +168,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                             onHide: onHide,
                             onSold: onSold,
                             onSpecial: onSpecial,
+                      onDelete: onDelete,
                           )
                         : FavoriteButton(
                             iconSize: 15,

@@ -26,7 +26,7 @@ class PlatesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 160,
       child: StreamStateWidget<List<Plate>?>(
           stream: platesStream,
           builder: (context, snapshot) {
@@ -73,7 +73,7 @@ class PlateVert extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(
-              alignment: AlignmentDirectional.bottomStart,
+              alignment: AlignmentDirectional.bottomCenter,
               children: [
                 Container(
                   width: 225,
@@ -84,17 +84,23 @@ class PlateVert extends StatelessWidget {
                     plate: plate,
                   ),
                 ),
-                Container(
-                  alignment: AlignmentDirectional.bottomStart,
-                  height: 50,
-                  width: 50,
-                  child: FavoriteButton(
-                      margin: 20.paddingTop + 10.paddingHoriz,
-                      isFavorite: plate.isFavorite ?? false,
-                      onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
-                      // isFavorite: true,
-                      ),
+                PositionedDirectional(bottom: 0,
+                  // height: 50,
+                  start: 0,
+                  // width: 50,
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: FavoriteButton(
+                        margin: 20.paddingTop + 10.paddingHoriz,
+                        isFavorite: plate.isFavorite ?? false,
+                        onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
+                        // isFavorite: true,
+                        ),
+                  ),
                 ),
+
+                PriceWidget(price: plate.price ?? '0'),
                 PositionedDirectional(
                   bottom: 0,
                   end: 10,
@@ -105,17 +111,17 @@ class PlateVert extends StatelessWidget {
                 ),
               ],
             ),
-            8.ph,
-            Padding(
-              padding: 10.paddingStart,
-              child: Text(
-                '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}\t\t${plate.plateNumber}',
-                style: context.bodySmall,
-                textDirection: TextDirection.rtl,
-              ),
-            ),
-            8.ph,
-            PriceWidget(price: plate.price ?? '0'),
+            // 8.ph,
+            // Padding(
+            //   padding: 10.paddingStart,
+            //   child: Text(
+            //     '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}\t\t${plate.plateNumber}',
+            //     style: context.bodySmall,
+            //     textDirection: TextDirection.rtl,
+            //   ),
+            // ),
+            // 8.ph,
+            // PriceWidget(price: plate.price ?? '0'),
           ],
         ),
       ),

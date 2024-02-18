@@ -21,12 +21,12 @@ class MyPlatesCubit extends BaseCubit {
 
 
   List<Plate> allPlates = [];
-  List<Plate> plates = [];
   int page = 0;
   bool isLastPage = false;
 
   fetchMyPlates({bool isRefresh = true}) async {
     isRefresh ? {page = 1, allPlates.clear()} : page++;
+    List<Plate> plates = [];
     print('page onSuccess$page');
     executeBuilder(
       isRefresh: isRefresh,
@@ -36,10 +36,9 @@ class MyPlatesCubit extends BaseCubit {
         print('isLastPage ${isLastPage}');
         plates = data.data?.map((e) => Plate.fromDto(e)).toList() ?? [];
         allPlates.addAll(plates);
-        if(plates.isEmpty){
+        if(allPlates.isEmpty){
           throw EmptyListException();
         } else {
-          allPlates.addAll(plates);
           emit(DataSuccess<List<Plate>>(allPlates));
         }
       },
@@ -59,7 +58,7 @@ class MyPlatesCubit extends BaseCubit {
   }
 
   void deletePlate(int id) async {
-    executeEmitterListener(() => platesUseCase.addSpecialPlate(AdSpecialParams(id: id, type: AdTypes.featured)));
+    executeEmitterListener(() => platesUseCase.deletePlate(id));
   }
 
 }

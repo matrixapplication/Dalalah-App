@@ -16,4 +16,5 @@ abstract class BasePlatesRepo {
   Future<ApiResponse> hidePlate(int id);
   Future<ApiResponse> soldPlate(int id);
   Future<ApiResponse> addSpecialPlate(AdSpecialParams params);
+  Future<ApiResponse> deletePlate(int id);
 }

@@ -27,7 +27,7 @@ class ShowroomDetailsPage
         showAddRateDialog(state.data?.id ?? 0);
       },
       onFollow: () {
-        bloc.addFollowShowrooms(getArguments(context).id);
+        bloc.addFollowShowrooms(state.data?.id ?? 0);
       },
     );
   }

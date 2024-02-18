@@ -17,4 +17,5 @@ abstract class BaseCarsRepo {
   Future<ApiResponse> hideCar(int id);
   Future<ApiResponse> soldCar(int id);
   Future<ApiResponse> addSpecialCar(AdSpecialParams params);
+  Future<ApiResponse> deleteCar(int id);
 }

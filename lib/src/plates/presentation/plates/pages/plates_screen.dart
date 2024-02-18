@@ -11,7 +11,8 @@ class PlatesScreen extends StatelessWidget {
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
-  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate, this.isMyPlate = false, this.onHide, this.onSold, this.onSpecial}) : super(key: key);
+  final Function(int)? onDelete;
+  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate, this.isMyPlate = false, this.onHide, this.onSold, this.onSpecial, this.onDelete}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class PlatesScreen extends StatelessWidget {
             onHide: onHide,
             onSold: onSold,
             onSpecial: onSpecial,
+            onDelete: onDelete,
           );
         },
       ),

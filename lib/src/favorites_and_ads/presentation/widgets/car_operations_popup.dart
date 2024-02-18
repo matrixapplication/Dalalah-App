@@ -17,11 +17,20 @@ class CarOperationsPopup extends BaseStatelessWidget {
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
-  CarOperationsPopup({super.key, this.car, this.plate, this.onHide, this.onSold, this.onSpecial});
+  final Function(int)? onDelete;
+
+  CarOperationsPopup(
+      {super.key,
+      this.car,
+      this.plate,
+      this.onHide,
+      this.onSold,
+      this.onSpecial,
+      this.onDelete});
 
   @override
   Widget build(BuildContext context) {
-    int id  = car?.id ?? plate?.id ?? 0;
+    int id = car?.id ?? plate?.id ?? 0;
     String type = car != null ? AdTypes.car : AdTypes.plate;
     bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
     bool isSold = car?.isSold ?? plate?.isSold ?? false;
@@ -68,11 +77,21 @@ class CarOperationsPopup extends BaseStatelessWidget {
           //     title: context.strings.special,
           //   ),
           // ),
+          PopupMenuItem(
+            value: 5,
+            // padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: PopupItem(
+              title: strings.delete,
+              isDivider: false,
+              textColor: context.errorColor,
+            ),
+          ),
         ],
         child: Icon(Icons.more_vert, color: context.outlineVariant, size: 18),
         onSelected: (value) {
           if (value == 1) {
-            pushNamed(car != null ?Routes.sellCarPage : Routes.plateFilterPage , arguments: car ?? PlateArgs(plate: plate, isEdit: true));
+            pushNamed(car != null ? Routes.sellCarPage : Routes.plateFilterPage,
+                arguments: car ?? PlateArgs(plate: plate, isEdit: true));
           } else if (value == 2) {
             if (onHide != null) {
               onHide!(id);
@@ -87,6 +106,11 @@ class CarOperationsPopup extends BaseStatelessWidget {
           //     pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
           //   }
           // }
+          else if (value == 5) {
+            if (onSold != null) {
+              onDelete!(id);
+            }
+          }
         },
       ),
     );
@@ -96,21 +120,26 @@ class CarOperationsPopup extends BaseStatelessWidget {
 class PopupItem extends StatelessWidget {
   final String title;
   final bool isDivider;
-  const PopupItem({super.key, required this.title, this.isDivider = true});
+  final Color? textColor;
+
+  const PopupItem({super.key, required this.title, this.isDivider = true, this.textColor});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: 5.paddingHoriz + 10.paddingBottom,
-          child: Text(title, style: context.bodyMedium.copyWith(fontSize: 12), textAlign: TextAlign.center,),
+        Text(
+          title,
+          style: context.bodyMedium.copyWith(fontSize: 12, color: textColor),
+          textAlign: TextAlign.center,
         ),
-        5.pw,
-
-        Divider(color: context.outlineVariant, height: 1),
+          ...[
+          (isDivider ? 15 : 0).ph,
+          Divider(color: isDivider ? context.outlineVariant : Colors.transparent, height: 1),
+        ]
       ],
     );
   }

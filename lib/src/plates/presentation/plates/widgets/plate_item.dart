@@ -1,5 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/routes/routes.dart';
+import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class PlateItem extends StatelessWidget {
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
+  final Function(int)? onDelete;
 
   const PlateItem({
     Key? key,
@@ -30,6 +32,7 @@ class PlateItem extends StatelessWidget {
     this.onHide,
     this.onSold,
     this.onSpecial,
+    this.onDelete,
   }) : super(key: key);
 
   @override
@@ -74,32 +77,36 @@ class PlateItem extends StatelessWidget {
                     plate: plate,
                   isSeeAll: isSeeAll,
                 ),
-                FittedBox(
-                  child: Padding(
-                    padding:10.paddingHoriz,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
-                          style: context.bodyMedium,
-                          textDirection: TextDirection.rtl,
-                        ),
-                        5.pw,
-                        PriceWidget(price: plate.price ?? '0'),
-                        5.pw,
-                        onFavoritePlate == null
-                            ? const EditIconButton(
-                                iconSize: 30,
-                                circleSize: 40,
-                              )
-                            : FavoriteButton(
-                                isFavorite: plate.isFavorite  ?? false,
-                          onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
-                          iconSize: 15,
-                              ),
-                      ],
-                    ),
+                Padding(
+                  padding:10.paddingHoriz,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ShareIconButton(
+                        route: Routes.plateAppLink,
+                        id: plate.id.toString() ?? '',
+                      ),
+                      // Text(
+                      //   '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
+                      //   style: context.bodyMedium,
+                      //   textDirection: TextDirection.rtl,
+                      // ),
+                      // 5.pw,
+                      PriceWidget(price: plate.price ?? '0'),
+                      // 5.pw,
+                      // onFavoritePlate == null
+                      //     ? const EditIconButton(
+                      //         iconSize: 30,
+                      //         circleSize: 40,
+                      //       )
+                      //     :
+                      if(!isMyPlate)
+                      FavoriteButton(
+                              isFavorite: plate.isFavorite  ?? false,
+                        onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
+                        iconSize: 15,
+                            ),
+                    ],
                   ),
                 ),
 
@@ -117,6 +124,7 @@ class PlateItem extends StatelessWidget {
               onHide: onHide,
               onSold: onSold,
               onSpecial: onSpecial,
+              onDelete: onDelete,
             )
           ],
         ),

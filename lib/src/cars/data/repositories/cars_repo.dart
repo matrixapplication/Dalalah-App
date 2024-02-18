@@ -62,4 +62,9 @@ class CarsRepo extends BaseCarsRepo{
   Future<ApiResponse> addSpecialCar(AdSpecialParams params) async {
     return await datasource.addSpecialCar(params);
   }
+
+  @override
+  Future<ApiResponse> deleteCar(int id) async {
+    return await datasource.deleteCar(id);
+  }
 }

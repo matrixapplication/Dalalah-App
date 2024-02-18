@@ -16,8 +16,9 @@ class ChipAd extends StatelessWidget {
         backgroundColor: AppColors.grey_d9,
         value: text,
         fontSize: 14,
-        labelColor: AppColors.blue_31,
+        labelColor: context.bodyMedium.color,
         padding: 3.paddingVert + 10.paddingHoriz,
+          borderColor: Colors.transparent,
       ),
     );
   }

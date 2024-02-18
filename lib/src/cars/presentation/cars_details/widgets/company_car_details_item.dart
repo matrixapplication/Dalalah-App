@@ -112,6 +112,7 @@
 
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
+import 'package:dalalah/src/cars/presentation/cars_details/widgets/request_for_quotation.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../home/domain/entities/car.dart';
@@ -121,7 +122,9 @@ import '../../cars/widgets/custom_company_container.dart';
 
 class CompanyCarDetailsItem extends BaseStatelessWidget {
   final SameCar? car;
-  CompanyCarDetailsItem({super.key, this.car});
+  final Function(int)? onRequestPrice;
+
+  CompanyCarDetailsItem({super.key, this.car, this.onRequestPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -152,63 +155,73 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
       ),
       body: Container(
         padding: 10.paddingHoriz,
-        child: Row(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
-              flex: 2,
-                child: CustomSquareCompanyLogo(logoPath: AppImages.splash_logo)),
-            Expanded(
-              flex: 7,
-           //   fit: BoxFit.scaleDown,
-              child: Padding(
-                padding: 5.paddingHoriz,
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+            Row(
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: CustomSquareCompanyLogo(
+                        logoPath: AppImages.splash_logo)),
+                Expanded(
+                  flex: 7,
+                  //   fit: BoxFit.scaleDown,
+                  child: Padding(
+                    padding: 5.paddingHoriz,
+                    child: Row(
                       children: [
-                        Text(
-                          car?.showroom?.ownerName ?? '',
-                          style: context.textTheme.bodySmall!.copyWith(
-                            color: AppColors.grey_41,
-                            fontSize: 12,
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              car?.showroom?.ownerName ?? '',
+                              style: context.textTheme.bodySmall!.copyWith(
+                                color: AppColors.grey_41,
+                                fontSize: 12,
+                              ),
+                            ),
+                            15.ph,
+                            IconText(
+                              text: car?.city?.name ?? '',
+                              sizedBoxWidth: 5,
+                              textStyle: context.textTheme.bodySmall!.copyWith(
+                                color: AppColors.grey_68,
+                              ),
+                              icon: AppIcons.location_2,
+                              iconSize: 20,
+                            )
+                          ],
                         ),
-                        15.ph,
-                        IconText(
-                          text: car?.city?.name ?? '',
-                          sizedBoxWidth: 5,
-                          textStyle: context.textTheme.bodySmall!.copyWith(
-                            color: AppColors.grey_68,
-                          ),
-                          icon: AppIcons.location_2,
-                          iconSize: 20,
-                        )
+                        const Spacer(),
+                        CustomColumn(
+                          title: strings.price,
+                          value: car?.price ?? '',
+                        ),
+                        const Spacer(),
+                        CustomColumn(
+                          title: strings.monthly_installment,
+                          value:
+                              '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
+                          textColor: AppColors.grey_41,
+                        ),
                       ],
                     ),
-                    Spacer(),
-                    CustomColumn(
-                      title: strings.price,
-                      value: car?.price ?? '',
-                    ),
-                    Spacer(),
-                    CustomColumn(
-                      title: strings.monthly_installment,
-                      value: '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
-                      textColor: AppColors.grey_41,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
+            // RequestForQuotation(
+            //   onRequestPrice: () => onRequestPrice?.call(car?.id ?? 0),
+            // ),
           ],
         ),
       ),
     );
   }
 
-  showDescriptionDetails(BuildContext context){
+  showDescriptionDetails(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
@@ -219,8 +232,10 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
             ),
           ),
           scrollable: true,
-          title: Text(strings.description, style: context.bodySmall.copyWith(fontSize: 16)),
-          content: Text(car?.description ?? '', style: context.bodySmall.copyWith(fontSize: 12)),
+          title: Text(strings.description,
+              style: context.bodySmall.copyWith(fontSize: 16)),
+          content: Text(car?.description ?? '',
+              style: context.bodySmall.copyWith(fontSize: 12)),
           actions: [
             TextButton(
               onPressed: () {

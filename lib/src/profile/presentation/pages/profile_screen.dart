@@ -102,7 +102,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.notifications,
                     routeName: Routes.notificationsPage,
                   ),
-                  if(profile.role != Roles.USER && profile.isDisablePayment != true)
+                  if(profile.role != Roles.USER && profile.isDisablePayment != true && profile.token != null)
                     ProfileItem(
                       title: strings.payment_ways,
                       icon: AppIcons.box,

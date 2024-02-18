@@ -35,7 +35,7 @@ class AddPlateCubit extends BaseCubit {
       logParams =
           FeaturedPaymentParams.fromJson(jsonDecode(data));
       logParams.adId = idOrMsg;
-      logParams.adType = AdTypes.car;
+      logParams.adType = AdTypes.plate;
       idOrMsg = await paymentUseCase.addFeaturedPaymentAd(logParams);
     }
     emit(SuccessStateListener<String>(idOrMsg));
