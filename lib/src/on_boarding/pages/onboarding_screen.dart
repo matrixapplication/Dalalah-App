@@ -64,7 +64,7 @@ class OnBoardingScreen extends StatelessWidget {
   Widget skipTextButton(BuildContext context) {
     return GestureDetector(
       onTap: () async{
-        Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+        pushNamedAndRemoveUntil(Routes.navigationPages);
         await HelperMethods.setFirstTime();
       },
       child: Text(
@@ -121,7 +121,7 @@ class OnBoardingScreen extends StatelessWidget {
   startButton(BuildContext context){
     return GestureDetector(
       onTap: () async{
-         Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+         pushNamedAndRemoveUntil(Routes.navigationPages);
          await HelperMethods.setFirstTime();
       },
       child: Center(

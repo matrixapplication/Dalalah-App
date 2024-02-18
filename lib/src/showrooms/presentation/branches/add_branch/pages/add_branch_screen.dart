@@ -71,12 +71,16 @@ class AddBranchesScreen extends BaseStatelessWidget {
             CustomTextField(
               title: strings.phone_number,
               hintText: strings.phone_number,
+              keyboardType: TextInputType.phone,
               controller: phoneController,
+              validator: (value) => Validation.validatePhone(value ?? ''),
             ),
             CustomTextField(
               title: strings.whatsapp,
               hintText: strings.whatsapp,
               controller: whatsappController,
+                keyboardType: TextInputType.phone,
+                validator: (value) => Validation.validatePhone(value ?? '')
             ),
             CustomTextField(
               title: strings.link,

@@ -104,6 +104,7 @@ dependencies:
   # payment packages
   urwaypayment: ^2.0.2
   facebook_app_events: ^0.19.0
+  responsive_sizer: ^3.3.0+1
 
 
 dev_dependencies:

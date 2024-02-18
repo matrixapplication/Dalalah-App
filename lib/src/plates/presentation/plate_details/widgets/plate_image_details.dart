@@ -41,22 +41,22 @@ class PlateImageDetails extends BaseStatelessWidget {
         children: [
           Positioned(
             top: 42,
-            right: 26.width,
+            right: context.width * 0.24,
             child: buildTitle(plate.letterAr ?? ''),
           ),
           Positioned(
             top: 43,
-            left: 24.width,
+            left: context.width * 0.22,
             child: buildTitle(plate.plateNumber?.toArabicNumbers() ?? ''),
           ),
           Positioned(
             top: 116,
-            right: 26.width,
+            right: context.width * 0.24,
             child: buildTitle(plate.letterEn?.toArabicChars() ?? ''),
           ),
           Positioned(
             top: 116,
-            left: 24.width,
+            left: context.width * 0.22,
             child: buildTitle(plate.plateNumber ?? ''),
           ),
         ],

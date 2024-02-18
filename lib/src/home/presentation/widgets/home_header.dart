@@ -30,7 +30,7 @@ class HomeHeader extends StatelessWidget {
           size: 28,
           circleSize: 40,
           onPressed: () {
-            Navigators.pushNamed(Routes.notificationsPage);
+            pushNamed(Routes.notificationsPage);
           },
         ),
         15.pw,

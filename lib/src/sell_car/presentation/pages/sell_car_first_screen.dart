@@ -56,9 +56,10 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
-                onSelected: (value) {
+                onSelected: car?.status?.key == null ?
+                    (value) {
                   status = value?.id ?? '';
-                },
+                } : null,
               ),
               DropDownField(
                 title: strings.years,

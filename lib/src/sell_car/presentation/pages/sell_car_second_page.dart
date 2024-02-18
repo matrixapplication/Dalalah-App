@@ -19,7 +19,8 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
   @override
   void loadInitialData(BuildContext context) {
     SellCarArgs args = getArguments(context);
-    bloc.fetchInitialData(args.params!);
+    print('args: $args');
+    bloc.fetchInitialData(args);
   }
 
 
@@ -41,6 +42,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
       car: state.car ?? args.car,
       state: state,
       onNext: (SellCarParams params) {
+        params.id = args.car?.id ?? 0;
         params.carId = state.car?.id ?? 0;
         params.modelId = args.params?.modelId ?? 0;
         params.modelRole = args.params?.modelRole ?? '';
@@ -50,7 +52,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
         params.carModelExtensionId =  args.params?.carModelExtensionId ?? 0;
         params.year =  args.params?.year ?? 0;
         params.newCarMiles =  state.car?.newCarMiles ?? args.params?.newCarMiles ?? 0;
-        Navigators.pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
+        pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
           car: state.car ?? args.car,
           params: params,
           isEdit: args.isEdit,

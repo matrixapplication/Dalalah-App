@@ -53,7 +53,6 @@ class EditProfileScreen extends BaseStatelessWidget {
                   onEditImage(file);
                 },
               ),
-              TextFormField(),
               if(profile.role == Roles.USER)
               EditTextField(
                 title: strings.full_name,

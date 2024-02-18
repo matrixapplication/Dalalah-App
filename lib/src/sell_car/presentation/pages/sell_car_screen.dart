@@ -143,7 +143,7 @@ class SellCarScreen extends BaseStatelessWidget {
               Navigator.pop(context);
             },
             onPressed1: () {
-              Navigators.pushNamed(Routes.sellCarPropertiesPage);
+              pushNamed(Routes.sellCarPropertiesPage);
             },
           ),
           6.ph,

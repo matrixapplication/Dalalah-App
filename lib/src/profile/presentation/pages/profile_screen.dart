@@ -46,7 +46,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     icon: AppIcons.profile,
                     subTitle: strings.edit_name_email_picture_change_password,
                     onTap: () async {
-                      final isRefresh = await Navigators.pushNamed(
+                      final isRefresh = await pushNamed(
                           Routes.editProfilePage,
                           arguments: profile);
                       if (isRefresh is bool) {

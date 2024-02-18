@@ -50,7 +50,7 @@ class CarVerticalItem extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     print("isSold ${car.isHide}}");
     return InkWell(
-      onTap: () => Navigators.pushNamed(
+      onTap: () => pushNamed(
         isEditCar ? Routes.sellCarPage : Routes.carDetailsPage,
         arguments: car.id,
       ),

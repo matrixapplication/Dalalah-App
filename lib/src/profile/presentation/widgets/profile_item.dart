@@ -76,7 +76,7 @@ class ProfileItem extends StatelessWidget {
               ),
         onTap: () {
             if (routeName != null) {
-              Navigators.pushNamed(routeName ?? '', arguments: arguments);
+             Navigator.of(context).pushNamed(routeName!, arguments: arguments);
             } else {
               onTap!();
             }

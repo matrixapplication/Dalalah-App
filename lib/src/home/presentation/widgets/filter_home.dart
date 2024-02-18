@@ -41,7 +41,7 @@ class FilterHome extends StatelessWidget {
             space: 12,
             textStyle: textStyle,
             onTap: () {
-              Navigators.pushNamed(routeName, arguments: arguments);
+              pushNamed(routeName, arguments: arguments);
             },
           ),
           SizedBox(

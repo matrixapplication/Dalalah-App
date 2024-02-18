@@ -58,7 +58,7 @@ class Car {
   String? door4Img;
   List<ImageDto>? images;
   List<Feature>? features;
-  int? newCarMiles;
+  dynamic newCarMiles;
 
   Car(
       {this.id,

@@ -27,7 +27,7 @@ class FavoritePlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, Favori
   //
   // @override
   // onAddButtonPressed() {
-  //   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+  //   pushNamed(Routes.plateFilterPage, arguments: true);
   // }
   //
   // @override
