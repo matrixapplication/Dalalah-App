@@ -30,7 +30,7 @@ class SlidersCarDetails extends StatelessWidget {
               ),
               url: images[index],
               width: double.infinity,
-              fit: BoxFit.fill,
+              fit: isDialog ? BoxFit.contain : BoxFit.fill,
               // height: 245,
             );
           },

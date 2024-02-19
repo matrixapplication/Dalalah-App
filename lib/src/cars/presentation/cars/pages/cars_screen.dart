@@ -35,13 +35,13 @@ class CarsScreen extends BaseStatelessWidget {
           padding: 10.paddingHoriz + 10.paddingTop,
           controller: ScrollController(),
           itemBuilder: (context, index) {
-            // bool isNew = (cars[index].status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isUser);
+            bool isNew = (cars[index].status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isUser);
             return
-            //   isNew ? NewCarItem(
-            //   car: cars[index],
-            //   onToggleFavorite: onToggleFavorite,
-            //   onRequestPrice: onRequestPrice,
-            // ) :
+              isNew ? NewCarItem(
+              car: cars[index],
+              onToggleFavorite: onToggleFavorite,
+              onRequestPrice: onRequestPrice,
+            ) :
               CarVerticalItem(
               imageHasOnlyTopRadius: false,
               isMyCar: isMyCar,

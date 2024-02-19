@@ -21,12 +21,13 @@ class RequestForQuotation extends BaseStatelessWidget {
                 width: double.infinity,
                 alignment: Alignment.center,
                 padding: 6.paddingVert,
-                decoration: Decorations.kDecorationBorderRadius(
-                    color: AppColors.yellow_15,
-                    borderRadius: const BorderRadiusDirectional.only(
-                      bottomStart: Radius.circular(5),
-                      bottomEnd: Radius.circular(5),
-                    )),
+                color: AppColors.yellow_15,
+                // decoration: Decorations.kDecorationBorderRadius(
+                //     color: AppColors.yellow_15,
+                //     borderRadius: const BorderRadiusDirectional.only(
+                //       bottomStart: Radius.circular(5),
+                //       bottomEnd: Radius.circular(5),
+                //     )),
                 child: Text(
                   strings.request_for_quotation,
                   style: context.textTheme.labelLarge!

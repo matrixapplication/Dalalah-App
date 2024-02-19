@@ -22,6 +22,7 @@ class IconText extends StatelessWidget {
   final IconData? iconData;
   final bool isIconData;
   final MainAxisSize? mainAxisSize;
+  final double? imageRadius;
 
   const IconText({
     Key? key,
@@ -42,6 +43,7 @@ class IconText extends StatelessWidget {
     this.iconData,
     this.isIconData = false,
     this.mainAxisSize,
+    this.imageRadius,
   }) : super(key: key);
 
   @override
@@ -92,7 +94,7 @@ class IconText extends StatelessWidget {
       );
 
   Widget buildIconOrImage(BuildContext context) =>
-      icon?.contains('http') ?? false ? ImageNetwork(url: icon,width: iconSize, height: iconSize,) :
+      icon?.contains('http') ?? false ? ImageNetwork(url: icon,width: iconSize, height: iconSize, radius: imageRadius,) :
       icon?.split('/').last.contains('.png') ?? false
           ? Image.asset(icon ?? '', height: iconSize, width: iconSize)
           : isIconData

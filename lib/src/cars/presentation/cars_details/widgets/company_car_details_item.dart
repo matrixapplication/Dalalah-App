@@ -154,68 +154,70 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
         },
       ),
       body: Container(
-        padding: 10.paddingHoriz,
+        // padding: 10.paddingHoriz,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Padding(
+              padding: 5.paddingAll,
+              child: Row(
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: CustomSquareCompanyLogo(
+                          logoPath: AppImages.splash_logo)),
+                  Expanded(
+                    flex: 7,
+                    //   fit: BoxFit.scaleDown,
+                    child: Padding(
+                      padding: 5.paddingHoriz,
+                      child: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                car?.showroom?.ownerName ?? '',
+                                style: context.textTheme.bodySmall!.copyWith(
+                                  color: AppColors.grey_41,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              15.ph,
+                              IconText(
+                                text: car?.city?.name ?? '',
+                                sizedBoxWidth: 5,
+                                textStyle: context.textTheme.bodySmall!.copyWith(
+                                  color: AppColors.grey_68,
+                                ),
+                                icon: AppIcons.location_2,
+                                iconSize: 20,
+                              )
+                            ],
+                          ),
+                          const Spacer(),
+                          CustomColumn(
+                            title: strings.price,
+                            value: car?.price ?? '',
+                          ),
+                          const Spacer(),
+                          CustomColumn(
+                            title: strings.monthly_installment,
+                            value:
+                                '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
+                            textColor: AppColors.grey_41,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             RequestForQuotation(
               onRequestPrice: () => onRequestPrice?.call(car?.id ?? 0),
             ),
-            Row(
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: CustomSquareCompanyLogo(
-                        logoPath: AppImages.splash_logo)),
-                Expanded(
-                  flex: 7,
-                  //   fit: BoxFit.scaleDown,
-                  child: Padding(
-                    padding: 5.paddingHoriz,
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              car?.showroom?.ownerName ?? '',
-                              style: context.textTheme.bodySmall!.copyWith(
-                                color: AppColors.grey_41,
-                                fontSize: 12,
-                              ),
-                            ),
-                            15.ph,
-                            IconText(
-                              text: car?.city?.name ?? '',
-                              sizedBoxWidth: 5,
-                              textStyle: context.textTheme.bodySmall!.copyWith(
-                                color: AppColors.grey_68,
-                              ),
-                              icon: AppIcons.location_2,
-                              iconSize: 20,
-                            )
-                          ],
-                        ),
-                        const Spacer(),
-                        CustomColumn(
-                          title: strings.price,
-                          value: car?.price ?? '',
-                        ),
-                        const Spacer(),
-                        CustomColumn(
-                          title: strings.monthly_installment,
-                          value:
-                              '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
-                          textColor: AppColors.grey_41,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
           ],
         ),
       ),

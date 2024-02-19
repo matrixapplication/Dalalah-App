@@ -62,6 +62,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
             itemBuilder: (context, index) {
               return CompanyCarDetailsItem(
                 car: carDetails.sameCars![index],
+                onRequestPrice: onRequestPrice,
               );
             },
           ),
