@@ -64,7 +64,7 @@ class SellCarCubit extends BaseCubit {
   //       : usecase.editCar(params));
   // }
 
-  Future<void> sellCar(SellCarParams params) async {
+  Future<void> sellCar(SellCarParams params, String featurePrice) async {
     emit(LoadingStateListener());
     FeaturedPaymentParams logParams = FeaturedPaymentParams();
     dynamic idOrMsg = 0;
@@ -80,7 +80,7 @@ class SellCarCubit extends BaseCubit {
       if(params.adType == AdTypes.featured){
         params.id = idOrMsg;
          final data = await PaymentRequests.urWayPayment(
-            id: idOrMsg.toString(), amount: params.price.toString());
+            id: idOrMsg.toString(), amount: featurePrice);
         print('Result in Main is $data');
          logParams =
         FeaturedPaymentParams.fromJson(jsonDecode(data));

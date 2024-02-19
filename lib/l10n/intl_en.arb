@@ -358,7 +358,7 @@
   "sold": "Sold",
   "un_sold": "Un Sold",
   "cancel_sale": "Cancel Sale",
-  "special": "special",
+  "special": "Special",
   "edit": "Edit",
   "report": "Report",
     "delete": "Delete",
@@ -387,5 +387,7 @@
   "please_upload_logo": "Please upload logo",
   "payment_disabled_msg":"Ad highlighting is not available now",
   "description_ar": "Description (Arabic)",
-    "description_en": "Description (English)"
+    "description_en": "Description (English)",
+  "not_special": "Not Special",
+  "must_be_numbers": "Must be numbers"
 }

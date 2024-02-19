@@ -376,5 +376,7 @@
   "please_upload_logo": "من فضلك قم برفع الشعار",
   "payment_disabled_msg":"تمييز الاعلان غير متاح الان",
   "description_ar": "الوصف (عربي)",
-  "description_en": "الوصف (إنجليزي)"
+  "description_en": "الوصف (إنجليزي)",
+  "not_special": "غير مميز",
+  "must_be_numbers": "يجب أن يكون أرقام فقط"
 }

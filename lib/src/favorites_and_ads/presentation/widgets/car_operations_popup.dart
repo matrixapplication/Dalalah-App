@@ -14,6 +14,7 @@ import '../../domain/entites/ad_args.dart';
 class CarOperationsPopup extends BaseStatelessWidget {
   final Car? car;
   final Plate? plate;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
@@ -23,6 +24,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
       {super.key,
       this.car,
       this.plate,
+      this.isHidePayment = false,
       this.onHide,
       this.onSold,
       this.onSpecial,
@@ -69,14 +71,14 @@ class CarOperationsPopup extends BaseStatelessWidget {
               title: isSold ? strings.cancel_sale : strings.sold,
             ),
           ),
-          // if(!isFeatured)
-          // PopupMenuItem(
-          //   value: 4,
-          //   padding: EdgeInsets.zero,
-          //   child: PopupItem(
-          //     title: context.strings.special,
-          //   ),
-          // ),
+          if(!isHidePayment)
+          PopupMenuItem(
+            value: 4,
+            padding: EdgeInsets.zero,
+            child: PopupItem(
+              title: isFeatured ? context.strings.not_special : context.strings.special,
+            ),
+          ),
           PopupMenuItem(
             value: 5,
             // padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -101,11 +103,11 @@ class CarOperationsPopup extends BaseStatelessWidget {
               onSold!(id);
             }
           }
-          // else if (value == 4) {
-          //   if (onSpecial != null) {
-          //     pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
-          //   }
-          // }
+          else if (value == 4) {
+            if (onSpecial != null) {
+              pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
+            }
+          }
           else if (value == 5) {
             if (onSold != null) {
               onDelete!(id);

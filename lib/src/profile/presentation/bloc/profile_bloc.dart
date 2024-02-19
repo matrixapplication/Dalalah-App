@@ -32,7 +32,7 @@ class ProfileBloc extends BaseCubit {
       }else{
         profile = await usecase.fetchProfileData();
       }
-      profile.isDisablePayment = paymentStatusDto.isHide;
+      profile.isHidePayment = paymentStatusDto.isHide;
       emit(DataSuccess<Profile>(profile));
     } catch (e) {
       emit(DataFailed(e));

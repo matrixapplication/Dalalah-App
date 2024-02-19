@@ -158,6 +158,9 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            RequestForQuotation(
+              onRequestPrice: () => onRequestPrice?.call(car?.id ?? 0),
+            ),
             Row(
               children: [
                 Expanded(
@@ -212,9 +215,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                 ),
               ],
             ),
-            // RequestForQuotation(
-            //   onRequestPrice: () => onRequestPrice?.call(car?.id ?? 0),
-            // ),
+
           ],
         ),
       ),

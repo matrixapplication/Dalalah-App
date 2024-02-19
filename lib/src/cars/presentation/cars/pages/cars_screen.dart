@@ -1,4 +1,3 @@
-
 import 'package:dalalah/core/utils/helper_methods.dart';
 
 import '../../../../home/domain/entities/car.dart';
@@ -9,6 +8,7 @@ import '../widgets/cars_vertical_item.dart';
 
 class CarsScreen extends BaseStatelessWidget {
   final bool isMyCar;
+  final bool isHidePayment;
   final bool isCarDetails;
   final List<Car> cars;
   final Function(int)? onToggleFavorite;
@@ -18,7 +18,7 @@ class CarsScreen extends BaseStatelessWidget {
   final Function(int)? onRequestPrice;
   final Function(int)? onDelete;
 
-  CarsScreen({Key? key, required this.cars,  this.isMyCar = false, this.onToggleFavorite, this.onHide, this.onSold, this.onSpecial, this.onRequestPrice, this.isCarDetails = false, this.onDelete})
+  CarsScreen({Key? key, required this.cars,  this.isMyCar = false, this.onToggleFavorite, this.onHide, this.onSold, this.onSpecial, this.onRequestPrice, this.isCarDetails = false, this.onDelete, this.isHidePayment = false})
       : super(key: key);
 
   @override
@@ -35,13 +35,13 @@ class CarsScreen extends BaseStatelessWidget {
           padding: 10.paddingHoriz + 10.paddingTop,
           controller: ScrollController(),
           itemBuilder: (context, index) {
-            bool isNew = (cars[index].status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isUser);
+            // bool isNew = (cars[index].status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isUser);
             return
-              isNew ? NewCarItem(
-              car: cars[index],
-              onToggleFavorite: onToggleFavorite,
-              onRequestPrice: onRequestPrice,
-            ) :
+            //   isNew ? NewCarItem(
+            //   car: cars[index],
+            //   onToggleFavorite: onToggleFavorite,
+            //   onRequestPrice: onRequestPrice,
+            // ) :
               CarVerticalItem(
               imageHasOnlyTopRadius: false,
               isMyCar: isMyCar,
@@ -52,6 +52,7 @@ class CarsScreen extends BaseStatelessWidget {
               onSpecial: onSpecial,
               onRequestPrice: onRequestPrice,
               onDelete: onDelete,
+              isHidePayment: isHidePayment,
             );
           },
         );

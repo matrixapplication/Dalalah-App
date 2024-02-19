@@ -25,6 +25,7 @@ class ProfileScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return RefreshIndicator(
       color: context.primaryColor,
       onRefresh: () async {
@@ -77,7 +78,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     icon: AppIcons.heart_solid,
                     subTitle: strings.favorites,
                     routeName: Routes.favoritesAndAdsTabs,
-                    arguments: FavoritesAndAdsParams(isAds: false, isUser:profile.role == Roles.USER),
+                    arguments: FavoritesAndAdsParams(isAds: false, isUser:profile.role == Roles.USER, isShowPayment: profile.isHidePayment ?? false),
                   ),
                   if(profile.token != null)
                   ProfileItem(
@@ -85,7 +86,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     icon: AppIcons.save,
                     subTitle: strings.my_ads,
                     routeName: Routes.favoritesAndAdsTabs,
-                    arguments: FavoritesAndAdsParams(isAds: true, isUser:profile.role == Roles.USER),
+                    arguments: FavoritesAndAdsParams(isAds: true, isUser:profile.role == Roles.USER, isShowPayment: profile.isHidePayment ?? false),
                   ),
                   if(profile.token != null && profile.role == Roles.USER)
                     ProfileItem(
@@ -102,7 +103,7 @@ class ProfileScreen extends BaseStatelessWidget {
                     subTitle: strings.notifications,
                     routeName: Routes.notificationsPage,
                   ),
-                  if(profile.role != Roles.USER && profile.isDisablePayment != true && profile.token != null)
+                  if(profile.role != Roles.USER && profile.isHidePayment != true && profile.token != null)
                     ProfileItem(
                       title: strings.payment_ways,
                       icon: AppIcons.box,

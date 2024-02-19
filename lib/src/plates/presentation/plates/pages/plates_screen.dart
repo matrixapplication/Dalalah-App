@@ -8,11 +8,12 @@ class PlatesScreen extends StatelessWidget {
   final List<Plate> plates;
   final Function(int) onFavoritePlate;
   final bool isMyPlate;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onDelete;
-  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate, this.isMyPlate = false, this.onHide, this.onSold, this.onSpecial, this.onDelete}) : super(key: key);
+  const PlatesScreen({Key? key, required this.plates, required this.onFavoritePlate, this.isMyPlate = false, this.isHidePayment = false, this.onHide, this.onSold, this.onSpecial, this.onDelete}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class PlatesScreen extends StatelessWidget {
             onFavoritePlate: (id) => onFavoritePlate(id),
             isSeeAll: true,
             isMyPlate: isMyPlate,
+            isHidePayment: isHidePayment,
             onHide: onHide,
             onSold: onSold,
             onSpecial: onSpecial,

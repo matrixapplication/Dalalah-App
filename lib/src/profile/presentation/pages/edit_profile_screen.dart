@@ -33,7 +33,7 @@ class EditProfileScreen extends BaseStatelessWidget {
   TextEditingController confirmPasswordController = TextEditingController();
   int cityId = 0;
 
-  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +121,8 @@ class EditProfileScreen extends BaseStatelessWidget {
               EditTextField(
                 title: strings.change_password,
                 controller: passwordController,
-                isPasswordVisible: false,
+                isPassword: true,
+                isValidator: false,
               ),
             ],
           ),
@@ -148,8 +149,9 @@ class EditProfileScreen extends BaseStatelessWidget {
           ownerNameEn: ownerNameEnController.text,
           nameAr: nameArController.text,
           nameEn: nameEnController.text,
-          addressAr: descArController.text,
-          addressEn: descEnController.text,
+          descriptionAr: descArController.text,
+          descriptionEn: descEnController.text,
+          // address: descArController.text,
           email: emailController.text,
           phone: phoneController.text,
           password: passwordController.text,

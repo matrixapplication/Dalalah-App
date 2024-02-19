@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
+import '../network/base_client.dart';
 import 'notification_service.dart';
 
 class HelperMethods {
@@ -200,6 +201,20 @@ class HelperMethods {
     } on Exception catch (e) {
       print('profile?.token ${e.toString()}');
       return '';
+    }
+  }
+
+
+  static Future<HeaderParams> getHeaderParams() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      return HeaderParams(
+        token: profile?.token ?? '',
+        role: profile?.role ?? '',
+      );
+    } on Exception catch (e) {
+      print('profile?.token ${e.toString()}');
+      return HeaderParams(token: '', role: '');
     }
   }
 

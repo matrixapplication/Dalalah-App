@@ -18,6 +18,7 @@ class PlateItem extends StatelessWidget {
   final Function(int)? onFavoritePlate;
   final bool isSeeAll;
   final bool isMyPlate;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
@@ -29,6 +30,7 @@ class PlateItem extends StatelessWidget {
      this.onFavoritePlate,
     this.isSeeAll = false,
     this.isMyPlate = false,
+    this.isHidePayment = false,
     this.onHide,
     this.onSold,
     this.onSpecial,
@@ -125,6 +127,7 @@ class PlateItem extends StatelessWidget {
               onSold: onSold,
               onSpecial: onSpecial,
               onDelete: onDelete,
+                isHidePayment: isHidePayment,
             )
           ],
         ),

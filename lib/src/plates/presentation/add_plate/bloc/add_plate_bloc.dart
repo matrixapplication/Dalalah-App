@@ -21,7 +21,7 @@ class AddPlateCubit extends BaseCubit {
 
   AddPlateCubit(this.usecase, this.sellCar, this.paymentUseCase);
 
-  addPlate(AddPlateParams params) async {
+  addPlate(AddPlateParams params,String featurePrice) async {
     emit(LoadingStateListener());
   FeaturedPaymentParams logParams = FeaturedPaymentParams();
   dynamic idOrMsg = 0;
@@ -30,7 +30,7 @@ class AddPlateCubit extends BaseCubit {
     idOrMsg = (params.id == null || params.id == 0) ? await usecase.addPlate(params) : await usecase.editPlate(params);
     if(params.adType == AdTypes.featured){
       final data = await PaymentRequests.urWayPayment(
-          id: idOrMsg.toString(), amount: params.price.toString());
+          id: idOrMsg.toString(), amount: featurePrice);
       print('Result in Main is $data');
       logParams =
           FeaturedPaymentParams.fromJson(jsonDecode(data));

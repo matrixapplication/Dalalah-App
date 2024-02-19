@@ -9,7 +9,8 @@ import '../bloc/my_plates_bloc.dart';
 
 class MyPlatesPage
     extends BaseBlocWidget<DataSuccess<List<Plate>>, MyPlatesCubit> {
-  MyPlatesPage({Key? key}) : super(key: key);
+  final bool isHidePayment;
+  MyPlatesPage({Key? key, required this.isHidePayment}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
@@ -46,8 +47,8 @@ class MyPlatesPage
         isMyPlate: true,
         onHide: (id) => bloc.hidePlate(id),
         onSold: (id) => bloc.soldPlate(id),
-        //onSpecial: (id) => bloc.(id),
         onDelete: (id) => bloc.deletePlate(id),
+        isHidePayment: isHidePayment,
       ),
     );
   }

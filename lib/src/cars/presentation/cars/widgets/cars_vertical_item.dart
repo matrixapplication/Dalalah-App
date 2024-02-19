@@ -24,6 +24,7 @@ class CarVerticalItem extends BaseStatelessWidget {
   final bool imageHasOnlyTopRadius;
   final bool isEditCar;
   final bool isMyCar;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
@@ -46,6 +47,7 @@ class CarVerticalItem extends BaseStatelessWidget {
     this.onSpecial,
     this.onRequestPrice,
     this.onDelete,
+    this.isHidePayment = false,
   }) : super(key: key);
 
   @override
@@ -112,7 +114,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       ),
                     FittedBox(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ChipAd(
                             text: car.status?.name ?? '',
@@ -125,9 +127,12 @@ class CarVerticalItem extends BaseStatelessWidget {
                       ),
                     ),
                     5.ph,
-                    PriceWidget(
-                      price: '${car.price}',
-                      // padding: 3.paddingVert + 5.paddingHoriz,
+                    Align(
+                      alignment: AlignmentDirectional.center,
+                      child: PriceWidget(
+                        price: '${car.price}',
+                        // padding: 3.paddingVert + 5.paddingHoriz,
+                      ),
                     ),
                     5.ph,
                     CarInfo(
@@ -154,7 +159,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                         : BorderRadiusDirectional.circular(5),
                   ),
                   if (car.isFeatured ?? false)
-                    const PositionedDirectional(
+                  const PositionedDirectional(
                       top: 5,
                       start: 5,
                       child: FeaturedIcon(),
@@ -168,7 +173,8 @@ class CarVerticalItem extends BaseStatelessWidget {
                             onHide: onHide,
                             onSold: onSold,
                             onSpecial: onSpecial,
-                      onDelete: onDelete,
+                            onDelete: onDelete,
+                            isHidePayment: isHidePayment,
                           )
                         : FavoriteButton(
                             iconSize: 15,

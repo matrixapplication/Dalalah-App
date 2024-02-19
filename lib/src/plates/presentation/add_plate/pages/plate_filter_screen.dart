@@ -1,4 +1,5 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/resources/validation.dart';
 import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/buttons/primary_button.dart';
 import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
@@ -12,11 +13,13 @@ import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
+import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 import '../../../../sell_car/domain/entities/city.dart';
 import '../../../data/models/plate_filter_params.dart';
 import '../../../domain/entities/plate_args.dart';
 import '../../../domain/entities/plate_types.dart';
 import '../../plates/widgets/filter_item.dart';
+import '../widgets/plate_pin_code.dart';
 
 ///  Created by harby on 10/12/2023.
 class PlateFilterScreen extends BaseStatelessWidget {
@@ -35,6 +38,9 @@ class PlateFilterScreen extends BaseStatelessWidget {
   int cityId = 0;
   String plateType = '';
   final _formKey = GlobalKey<FormState>();
+  TextEditingController _arController = TextEditingController();
+  TextEditingController enController = TextEditingController();
+  TextEditingController _numController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +50,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
-        padding: 16.paddingAll,
+        padding: 16.paddingHoriz,
         child: Column(
           children: [
             SelectionButtonChip(
@@ -55,7 +61,6 @@ class PlateFilterScreen extends BaseStatelessWidget {
                 plateType = item?.id ?? PlateTypes.private;
               },
             ),
-            10.ph,
             Container(
               margin: 10.paddingTop,
               padding: 16.paddingVert + 10.paddingHoriz,
@@ -65,21 +70,39 @@ class PlateFilterScreen extends BaseStatelessWidget {
               ),
               child: Column(
                 children: [
-                  FilterItem(
+                  // FilterItem(
+                  //   title: strings.arabic_letters,
+                  //   controllers: controllersArLetters,
+                  // ),
+                  PlatePinCode(
                     title: strings.arabic_letters,
-                    controllers: controllersArLetters,
+                    pinCodeController: _arController,
+                    keyboardType: TextInputType.text,
+                      validator: (value) => Validation.validateOnlyArabicText(value ?? ''),
                   ),
-                  40.ph,
-                  FilterItem(
+                  PlatePinCode(
                     title: strings.english_letters,
-                    controllers: controllersEnLetters,
+                    pinCodeController: enController,
+                    keyboardType: TextInputType.text,
+                    validator: (value) => Validation.validateOnlyEnglishLetters(value ?? ''),
                   ),
-                  40.ph,
-                  FilterItem(
+                  PlatePinCode(
                     title: strings.numbers,
-                    controllers: controllersNumbers,
+                    pinCodeController: _numController,
+                    length: 4,
+                    fieldWidth: 60,
+                    validator: (value) => Validation.validateOnlyNumbers(value ?? ''),
                   ),
-                  10.ph,
+                  // FilterItem(
+                  //   title: strings.english_letters,
+                  //   controllers: controllersEnLetters,
+                  // ),
+                  // 40.ph,
+                  // FilterItem(
+                  //   title: strings.numbers,
+                  //   controllers: controllersNumbers,
+                  // ),
+                  // 10.ph,
                   // if(isAddPage)
                   CustomTextField(
                     title: strings.price,
@@ -89,6 +112,8 @@ class PlateFilterScreen extends BaseStatelessWidget {
                     keyboardType: TextInputType.number,
                   ),
                   DropDownField(
+                    title: strings.city,
+                    titleStyle:  context.textTheme.labelLarge,
                     items: cities
                         .map((e) => DropDownItem(
                             id: e.id?.toString() ?? '', title: e.name))
@@ -134,10 +159,12 @@ class PlateFilterScreen extends BaseStatelessWidget {
       onAddEditPlate!(AddPlateParams(
         id: id,
         cityId: cityId,
-        letterAr:
-            controllersArLetters.map((e) => e.text).join().toArabicChars(),
-        letterEn: controllersEnLetters.map((e) => e.text).join(),
-        plateNumber: controllersNumbers.map((e) => e.text).join(),
+        letterAr: _arController.text.toArabicChars(),
+        letterEn: enController.text,
+        plateNumber: _numController.text,
+        // letterAr: controllersArLetters.map((e) => e.text).join().toArabicChars(),
+        // letterEn: controllersEnLetters.map((e) => e.text).join(),
+        // plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,
         price: priceController.text.toInt,
         userId: getUserId,

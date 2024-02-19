@@ -21,7 +21,7 @@ class Profile {
   String? image;
   City? city;
   String? token;
-  bool? isDisablePayment;
+  bool? isHidePayment;
 
   Profile(
       {this.id,
@@ -33,7 +33,7 @@ class Profile {
       this.image,
       this.city,
       this.token,
-      this.isDisablePayment,
+      this.isHidePayment,
       this.ownerNameEn,
       this.ownerNameAr,
       this.nameAr,
@@ -62,7 +62,7 @@ class Profile {
       image: json.image,
       city: City.fromDto(json.city ?? CityDto()),
       token: json.token,
-      isDisablePayment: false,
+      isHidePayment: false,
     );
   }
 //

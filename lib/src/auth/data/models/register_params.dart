@@ -7,8 +7,7 @@ class RegisterParams {
   final String? name;
   final String? nameAr;
   final String? nameEn;
-  final String? addressAr;
-  final String? addressEn;
+  final String? address;
   final String descriptionAr;
   final String descriptionEn;
   final String? email;
@@ -31,8 +30,7 @@ class RegisterParams {
     this.name,
     this.nameAr,
     this.nameEn,
-    this.addressAr,
-    this.addressEn,
+    this.address,
     this.descriptionAr = '',
     this.descriptionEn = '',
     this.email,
@@ -54,6 +52,12 @@ class RegisterParams {
     Map<String, dynamic> data = {
       'type': type ?? '',
       'name': name ?? '',
+      'owner_name_en': ownerNameEn ?? '',
+      'owner_name_ar': ownerNameAr ?? '',
+      'name_ar': nameAr ?? '',
+      "name_en": nameEn ?? "",
+      "description_ar": descriptionAr ?? "",
+      "description_en": descriptionEn ?? "",
       'phone': phone ?? '',
       'email': email ?? '',
       'password': password ?? '',

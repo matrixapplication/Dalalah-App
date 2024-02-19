@@ -33,8 +33,8 @@ class UserRegisterScreen extends BaseStatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController nameArController = TextEditingController();
   TextEditingController nameEnController = TextEditingController();
-  TextEditingController addressArController = TextEditingController();
-  TextEditingController addressEnController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController descriptionEnController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController whatsappController = TextEditingController();
 
@@ -57,26 +57,18 @@ class UserRegisterScreen extends BaseStatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: AuthTextField(
-                      hint: isShowroom ? strings.name_ar : strings.full_name,
-                      prefixIcon: AppIcons.user,
-                      controller:
-                          isShowroom ? nameArController : fullNameController,
-                    ),
-                  ),
-                  if (isShowroom)
-                    Expanded(
-                      child: AuthTextField(
-                        hint: strings.name_en,
-                        prefixIcon: AppIcons.user,
-                        controller: nameEnController,
-                        margin: 10.paddingEnd,
-                      ),
-                    ),
-                ],
+            AuthTextField(
+              hint: isShowroom ? strings.name_ar : strings.full_name,
+              prefixIcon: AppIcons.user,
+              controller:
+              isShowroom ? nameArController : fullNameController,
+            ),
+
+            if (isShowroom)
+              AuthTextField(
+                hint: strings.name_en,
+                prefixIcon: AppIcons.user,
+                controller: nameEnController,
               ),
             if (isShowroom)
               Column(
@@ -86,21 +78,21 @@ class UserRegisterScreen extends BaseStatelessWidget {
                     prefixIcon: AppIcons.user,
                     controller: ownerNameArController,
                   ),
-                    AuthTextField(
-                      hint: strings.owner_name_en,
-                      prefixIcon: AppIcons.user,
-                      controller: ownerNameEnController,
-                      margin: 10.paddingEnd,
-                    ),  AuthTextField(
+                  AuthTextField(
+                    hint: strings.owner_name_en,
+                    prefixIcon: AppIcons.user,
+                    controller: ownerNameEnController,
+                  ),
+                  AuthTextField(
                     hint: strings.address_ar,
                     prefixIcon: AppIcons.location_2,
-                    controller: addressArController,
+                    controller: addressController,
                   ),
-                    AuthTextField(
-                      hint: strings.address_en,
-                      prefixIcon: AppIcons.location_2,
-                      controller: addressEnController,
-                    ),
+                  AuthTextField(
+                    hint: strings.address_en,
+                    prefixIcon: AppIcons.location_2,
+                    controller: descriptionEnController,
+                  ),
                 ],
               ),
 
@@ -157,12 +149,12 @@ class UserRegisterScreen extends BaseStatelessWidget {
               ),
 
             if (isShowroom)
-            EditProfileImage(
-              image: '',
-              onSelectImage: (file){
-                this.file = file;
-              },
-            ),
+              EditProfileImage(
+                image: '',
+                onSelectImage: (file) {
+                  this.file = file;
+                },
+              ),
             // StatefulBuilder(
             //     builder: (context, setState) {
             //       return PrimaryButton(
@@ -218,7 +210,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
 
   onRegisterPressed() async {
     if (formKey.currentState!.validate()) {
-      if(isShowroom && file.path.isEmpty){
+      if (isShowroom && file.path.isEmpty) {
         SnackBarManager.showErrorSnackBar(strings.please_upload_logo);
         return;
       }
@@ -230,8 +222,9 @@ class UserRegisterScreen extends BaseStatelessWidget {
           ownerNameEn: ownerNameEnController.text,
           nameAr: nameArController.text,
           nameEn: nameEnController.text,
-          addressAr: addressArController.text,
-          addressEn: addressEnController.text,
+          // address: addressController.text,
+          descriptionAr: addressController.text,
+          descriptionEn: descriptionEnController.text,
           email: emailController.text,
           phone: phoneNumberController.text,
           password: passwordController.text,
