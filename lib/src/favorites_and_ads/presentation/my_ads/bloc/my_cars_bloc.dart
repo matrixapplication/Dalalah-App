@@ -33,10 +33,10 @@ class MyCarsCubit extends BaseCubit {
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages)! <= page;
         cars = data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
-        if(cars.isEmpty){
+        allCars.addAll(cars);
+        if(allCars.isEmpty){
           throw EmptyListException();
         } else {
-          allCars.addAll(cars);
           emit(DataSuccess<List<Car>>(allCars));
         }
       },
@@ -53,6 +53,10 @@ class MyCarsCubit extends BaseCubit {
 
   void addSpecialCar(int id) async {
     executeEmitterListener(() => carsUseCase.addSpecialCar(AdSpecialParams(id: id, type: AdTypes.featured)));
+  }
+
+  void deleteCar(int id) async {
+    executeEmitterListener(() => carsUseCase.deleteCar(id));
   }
 
 }

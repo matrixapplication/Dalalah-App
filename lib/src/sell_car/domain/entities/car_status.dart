@@ -36,7 +36,7 @@ class CarStatus {
   static List<CarStatus> getCarStatuses() {
     AppLocalizations strings = injector<ServicesLocator>().navigatorKey.currentContext!.strings;
     return [
-      CarStatus(key: '', name: strings.all),
+      // CarStatus(key: '', name: strings.all),
       CarStatus(key: 'new', name: strings.new_),
       CarStatus(key: 'used', name: strings.used),
     ];

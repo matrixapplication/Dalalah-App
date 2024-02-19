@@ -15,6 +15,9 @@ class Validation {
   static bool isValidIDNumber(String id) =>
       RegExp("^[1-2][0-9]{1,10}\$").hasMatch(id);
 
+  static bool isValidNumber(String id) =>
+      RegExp("^[0-9]{1,10}\$").hasMatch(id);
+
   static bool isEmailValid(String email) => RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(email);
@@ -103,6 +106,36 @@ class Validation {
       return strings.this_field_is_required;
     } else if (!Validation.isArabicLettersWithNumbers(value)) {
       return strings.must_be_arabic_letters;
+    }
+    return null;
+  }
+
+  static String? validateOnlyArabicText(String value){
+    final strings = injector<ServicesLocator>().strings;
+    if (value.isNullOrEmpty()) {
+      return strings.this_field_is_required;
+    } else if (!Validation.isArabicLetters(value)) {
+      return strings.must_be_arabic_letters;
+    }
+    return null;
+  }
+
+  static String? validateOnlyNumbers(String value){
+    final strings = injector<ServicesLocator>().strings;
+    if (value.isNullOrEmpty()) {
+      return strings.this_field_is_required;
+    } else if (!Validation.isValidNumber(value)) {
+      return strings.must_be_numbers;
+    }
+    return null;
+  }
+
+  static String? validateOnlyEnglishLetters(String value) {
+    final strings = injector<ServicesLocator>().strings;
+    if (value.isNullOrEmpty()) {
+      return strings.this_field_is_required;
+    } else if (!Validation.isEnglishLetters(value)) {
+      return strings.must_be_english_letters;
     }
     return null;
   }

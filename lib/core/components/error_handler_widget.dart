@@ -74,7 +74,7 @@ class ErrorPlaceHolderWidget extends StatelessWidget {
               radius: 50,
               onPressed: () {
                 if (isUnAuthorized) {
-                  Navigators.pushNamedAndRemoveUntil(Routes.login);
+                  pushNamedAndRemoveUntil(Routes.login);
                 } else {
                   onClickReload!();
                 }

@@ -15,7 +15,7 @@ class ShowroomDetailsPage
 
   @override
   void loadInitialData(BuildContext context) {
-    int id = getArguments(context).id;
+    int id = getArguments(context);
     bloc.fetchShowroomDetails(id);
   }
 
@@ -27,7 +27,7 @@ class ShowroomDetailsPage
         showAddRateDialog(state.data?.id ?? 0);
       },
       onFollow: () {
-        bloc.addFollowShowrooms(getArguments(context).id);
+        bloc.addFollowShowrooms(state.data?.id ?? 0);
       },
     );
   }

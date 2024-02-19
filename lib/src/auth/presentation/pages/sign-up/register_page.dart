@@ -30,7 +30,7 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
     return Container(
       alignment: Alignment.center,
       padding: 10.paddingAll,
-      margin: 16.paddingHoriz + (180).paddingTop + 50.paddingBottom,
+      margin: 16.paddingHoriz + (150).paddingTop + 10.paddingBottom,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: Decorations.shapeDecorationShadow(
           colorShadow: context.primaryColor, radius: 30),
@@ -72,6 +72,6 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
 
   @override
   onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
+    pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
   }
 }

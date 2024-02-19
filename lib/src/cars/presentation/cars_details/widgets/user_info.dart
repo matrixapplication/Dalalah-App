@@ -29,6 +29,7 @@ class UserInfo extends StatelessWidget {
             text: user.name ?? '',
             icon: user.image ?? '',
             iconSize: 50,
+              imageRadius: 50,
           ),
           Spacer(),
           ChatWhatsAppButton(phone: user.whatsapp ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),

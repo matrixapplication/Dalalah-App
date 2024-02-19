@@ -39,6 +39,6 @@ class ProfilePage extends BaseBlocWidget<DataSuccess<Profile>, ProfileBloc> {
 
   @override
   onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.login);
+    pushNamedAndRemoveUntil(Routes.login);
   }
 }

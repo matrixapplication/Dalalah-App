@@ -7,18 +7,18 @@ class Slide {
   String? image;
   String? url;
   String? type;
-  int? typeId;
+  int? showroomId;
 
-  Slide({this.id, this.title, this.image, this.url, this.type, this.typeId});
+  Slide({this.id, this.title, this.image, this.url, this.type, this.showroomId});
 
    factory Slide.fromDto(SlideDto json) {
     return Slide(
       id: json.id,
       title: json.title,
       image: json.image,
-      url: json.url,
+      url: json.link,
       type: json.type,
-      typeId: json.typeId,
+      showroomId: json.showroomId is int ? json.showroomId : 0,
     );
    }
 }

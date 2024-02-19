@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dalalah/core/di/injector.dart';
+import 'package:dalalah/main.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -237,6 +238,20 @@ extension MediaQueryExtension on BuildContext{
   double get devicePixelRatio => MediaQuery.of(this).devicePixelRatio;
   double get devicePixelWidth => MediaQuery.of(this).size.width * devicePixelRatio;
   double get devicePixelHeight => MediaQuery.of(this).size.height * devicePixelRatio;
+}
+
+
+extension MediaQueryNumExtension on num{
+  BuildContext get context => navigatorMainKey.currentContext!;
+  bool  get isTablet => MediaQuery.of(context).size.shortestSide >= 600;
+  double get width => MediaQuery.of(context).size.width * ((isTablet ? (this + 4) : this) / 100);
+  double get height => MediaQuery.of(context).size.height;
+  double get statusBarHeight => MediaQuery.of(context).padding.top;
+  double get bottomBarHeight => MediaQuery.of(context).padding.bottom;
+  double get textScaleFactor => MediaQuery.of(context).textScaleFactor;
+  double get devicePixelRatio => MediaQuery.of(context).devicePixelRatio;
+  double get devicePixelWidth => MediaQuery.of(context).size.width * devicePixelRatio;
+  double get devicePixelHeight => MediaQuery.of(context).size.height * devicePixelRatio;
 }
 
 extension FirstWhereOrNull<E> on Iterable<E> {

@@ -24,13 +24,15 @@ class CarVerticalItem extends BaseStatelessWidget {
   final bool imageHasOnlyTopRadius;
   final bool isEditCar;
   final bool isMyCar;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onRequestPrice;
+  final Function(int)? onDelete;
 
   // final Task task;
-   CarVerticalItem({
+  CarVerticalItem({
     Key? key,
     required this.car,
     this.onToggleFavorite,
@@ -44,13 +46,15 @@ class CarVerticalItem extends BaseStatelessWidget {
     this.onSold,
     this.onSpecial,
     this.onRequestPrice,
+    this.onDelete,
+    this.isHidePayment = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     print("isSold ${car.isHide}}");
     return InkWell(
-      onTap: () => Navigators.pushNamed(
+      onTap: () => pushNamed(
         isEditCar ? Routes.sellCarPage : Routes.carDetailsPage,
         arguments: car.id,
       ),
@@ -82,7 +86,7 @@ class CarVerticalItem extends BaseStatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 3,
+              flex: 6,
               child: Padding(
                 padding: 8.paddingHoriz + 5.paddingBottom,
                 // width: 220,
@@ -99,30 +103,34 @@ class CarVerticalItem extends BaseStatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Spacer(),
-                    if(isMyCar && car.isSold == false && car.isHide == false && car.isApproved == false)
+                    if (isMyCar &&
+                        car.isSold == false &&
+                        car.isHide == false &&
+                        car.isApproved == false)
                       MyAdStatus(
                         isSold: car.isSold ?? false,
                         isHidden: car.isHide ?? false,
                         isApproved: car.isApproved ?? false,
                       ),
-                    FittedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ChipAd(
-                            text: car.status?.name ?? '',
-                          ),
-                          10.pw,
-                          ChipAd(
-                            text: car.year ?? "",
-                          ),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ChipAd(
+                          text: car.status?.name ?? '',
+                        ),
+                        10.pw,
+                        ChipAd(
+                          text: car.year ?? "",
+                        ),
+                      ],
                     ),
                     5.ph,
-                    PriceWidget(
-                      price: '${car.price}',
-                      // padding: 3.paddingVert + 5.paddingHoriz,
+                    Align(
+                      alignment: AlignmentDirectional.center,
+                      child: PriceWidget(
+                        price: '${car.price}',
+                        // padding: 3.paddingVert + 5.paddingHoriz,
+                      ),
                     ),
                     5.ph,
                     CarInfo(
@@ -134,12 +142,13 @@ class CarVerticalItem extends BaseStatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 6,
               child: Stack(
                 children: [
                   ImageNetwork(
                     url: car.mainImage ?? '',
                     height: double.infinity,
+                    fit: BoxFit.fill,
                     borderRadius: imageHasOnlyTopRadius
                         ? const BorderRadiusDirectional.only(
                             topStart: Radius.circular(5),
@@ -148,7 +157,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                         : BorderRadiusDirectional.circular(5),
                   ),
                   if (car.isFeatured ?? false)
-                    const PositionedDirectional(
+                  const PositionedDirectional(
                       top: 5,
                       start: 5,
                       child: FeaturedIcon(),
@@ -162,6 +171,8 @@ class CarVerticalItem extends BaseStatelessWidget {
                             onHide: onHide,
                             onSold: onSold,
                             onSpecial: onSpecial,
+                            onDelete: onDelete,
+                            isHidePayment: isHidePayment,
                           )
                         : FavoriteButton(
                             iconSize: 15,

@@ -15,8 +15,9 @@ import 'cars_screen.dart';
 class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   final bool isDetailsPage;
   final CarFilterParams? params;
-  CarsPage({Key? key, this.params, this.isDetailsPage = false}) : super(key: key);
 
+  CarsPage({Key? key, this.params, this.isDetailsPage = false})
+      : super(key: key);
 
   CarFilterParams paramsFilter = CarFilterParams();
   int tabIndex = 0;
@@ -24,11 +25,11 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   int brandModelId = 0;
   String order = FilterOrderTypes.asc;
 
+  bool isFilter = true;
 
-  bool isFilter =  true;
   @override
   void loadInitialData(BuildContext context) {
-    isFilter =  (params == null && getArguments(context) == null);
+    isFilter = (params == null && getArguments(context) == null);
     isFilter ? bloc.fetchBrands() : null;
     bloc.fetchCars(params ?? getArguments(context) ?? CarFilterParams());
   }
@@ -41,58 +42,70 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   @override
   Function()? onTabSelected(index) {
     tabIndex = index;
-    bloc.fetchCars(CarFilterParams(
-      status: CarStatus.getStatusByIndex(index),
-    ), );
+    bloc.fetchCars(
+      CarFilterParams(
+        status: CarStatus.getStatusByIndex(index),
+        brand: brandId,
+        order: order,
+        carModel: brandModelId,
+      ),
+    );
     return null;
   }
 
   @override
   Widget build(BuildContext context) {
-     isFilter =  (params == null && getArguments(context) == null);
+    isFilter = (params == null && getArguments(context) == null);
     return mainFrame(
       body: Column(
         children: [
-          if (isFilter)
-        ...[  FilterHome(
-            routeName: Routes.carsSearchPage,
-            onFilterOrder: (filterOrder) {
-              order = filterOrder;
-
-              bloc.fetchCars(CarFilterParams(
-                status: CarStatus.getStatusByIndex(tabIndex),
-                brand: brandId,
-                order: order,
-              ));
-            },
-          ),
-          10.ph,
-          BrandsFilterStream(
-            brandsStream: bloc.brandsStream,
-            onFilter: (value) {
-              brandId = value;
-              if (value == 0) return bloc.fetchCars(CarFilterParams());
-              bloc.fetchCars(CarFilterParams(brand: value, order: order, status: CarStatus.getStatusByIndex(tabIndex)));
-              bloc.fetchBrandModels(value);
+          if (isFilter) ...[
+            FilterHome(
+              routeName: Routes.carsSearchPage,
+              onFilterOrder: (filterOrder) {
+                order = filterOrder;
+                bloc.fetchCars(CarFilterParams(
+                  status: CarStatus.getStatusByIndex(tabIndex),
+                  brand: brandId,
+                  order: order,
+                ));
               },
-          ),
-          BrandModelsFilterStream(
-            brandModelsStream: bloc.brandModelsStream,
-            onFilter: (value) {
-              brandModelId = value;
-              bloc.fetchCars(CarFilterParams(carModel: brandModelId,brand: brandId, order: order, status: CarStatus.getStatusByIndex(tabIndex)));
-            },
-          ),
-
-        ],
+            ),
+            10.ph,
+            BrandsFilterStream(
+              brandsStream: bloc.brandsStream,
+              onFilter: (value) {
+                brandId = value;
+                if (value == 0) return bloc.fetchCars(CarFilterParams());
+                bloc.fetchCars(CarFilterParams(
+                    brand: value,
+                    order: order,
+                    status: CarStatus.getStatusByIndex(tabIndex)));
+                bloc.fetchBrandModels(value);
+              },
+            ),
+            BrandModelsFilterStream(
+              brandModelsStream: bloc.brandModelsStream,
+              onFilter: (value) {
+                brandModelId = value;
+                bloc.fetchCars(CarFilterParams(
+                    carModel: brandModelId,
+                    brand: brandId,
+                    order: order,
+                    status: CarStatus.getStatusByIndex(tabIndex)));
+              },
+            ),
+          ],
           Expanded(child: buildConsumer(context)),
         ],
       ),
-      tabs: isFilter ?  [
-        TabModel(label: context.strings.all),
-        TabModel(label: context.strings.new_),
-        TabModel(label: context.strings.used),
-      ] : null,
+      tabs: isFilter
+          ? [
+              TabModel(label: context.strings.all),
+              TabModel(label: context.strings.new_),
+              TabModel(label: context.strings.used),
+            ]
+          : null,
     );
   }
 
@@ -101,25 +114,29 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     return CarsScreen(
       isCarDetails: isDetailsPage,
       cars: state.data ?? [],
-        onToggleFavorite: (id) {
-          bloc.toggleFavorite(id);
-        },
-        onRequestPrice: (id) {
-          bloc.requestPrice(id);
-        },
+      onToggleFavorite: (id) {
+        bloc.toggleFavorite(id);
+      },
+      onRequestPrice: (id) {
+        bloc.requestPrice(id);
+      },
     );
     // return 0.ph;
   }
 
   @override
   String? title(BuildContext context) {
-    return  isDetailsPage ? null  : isFilter ? context.strings.cars : context.strings.results_filter;
+    return isDetailsPage
+        ? null
+        : isFilter
+            ? context.strings.cars
+            : context.strings.results_filter;
   }
 
   @override
   onAddButtonPressed() {
     HelperMethods.isAuth().then((value) {
-      if(value == true) {
+      if (value == true) {
         pushNamed(Routes.sellCarPage);
       } else {
         DialogsManager.showInfoDialogToLogin();
@@ -128,10 +145,9 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     return null;
   }
 
-
   @override
   bool isAddButton() {
-    isFilter =  (params == null && getArguments(context!) == null);
+    isFilter = (params == null && getArguments(context!) == null);
     return isFilter;
   }
 

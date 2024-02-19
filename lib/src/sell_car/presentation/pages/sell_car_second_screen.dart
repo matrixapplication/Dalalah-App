@@ -76,7 +76,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
                 onSelected: isNewCar ? null : (value) {
-                  driveTypeId = value.id ?? '';
+                  driveTypeId = value?.id ?? '';
                 },
               ),
               DropDownField(
@@ -153,13 +153,14 @@ class SellCarSecondScreen extends BaseStatelessWidget {
   }
 
   _initialValues() {
+    driveTypeId = car?.driveType?.key ?? state.driveTypes.first.key ?? '';
     if (car != null) {
       colorsController.text = car?.color ?? '';
       selectedDriveType = ChipItem(
           id: car?.driveType?.key ?? '',
           title: car?.driveType?.name ?? '',
       );
-      driveTypeId = car?.driveType?.key ?? '';
+      print('driveTypeId $driveTypeId');
       bodyTypeId = car?.bodyType?.id ?? 0;
       fuelType = car?.fuelType?.key ?? '';
       cylindersController.text = car?.cylinders?.toString() ?? '';

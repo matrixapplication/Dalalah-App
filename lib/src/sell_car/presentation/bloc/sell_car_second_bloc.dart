@@ -10,6 +10,7 @@ import '../../../home/domain/entities/car.dart';
 import '../../data/models/admin_car_params.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/entities/car_status.dart';
+import '../../domain/entities/sell_car_args.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 
 @Injectable()
@@ -34,11 +35,12 @@ class SellCarSecondCubit extends BaseCubit {
   }
 
 
-  fetchInitialData(SellCarParams params) async {
+  fetchInitialData(SellCarArgs args) async {
+    SellCarParams params = args.params!;
     emit(DataLoading());
-    Car? car;
+    Car? car = args.car;
     try {
-      if(params.status == CarStatus.newCar) {
+      if(params.status == CarStatus.newCar && car == null) {
         car = await usecase.fetchAdminCar(AdminCarParams(
           brandId: params.brandId,
           carModelId: params.carModelId,

@@ -63,4 +63,9 @@ class PlatesRepo extends BasePlatesRepo {
     return await remoteDataSource.addSpecialPlate(params);
   }
 
+  @override
+  Future<ApiResponse> deletePlate(int id) async {
+    return await remoteDataSource.deletePlate(id);
+  }
+
 }

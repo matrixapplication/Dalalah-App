@@ -58,4 +58,9 @@ class CarsUseCase {
     final data = await repository.addSpecialCar(params);
     return data.message ?? '';
   }
+
+  Future<String> deleteCar(int id) async {
+    final data = await repository.deleteCar(id);
+    return data.message ?? '';
+  }
 }

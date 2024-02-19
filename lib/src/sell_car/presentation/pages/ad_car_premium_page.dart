@@ -24,7 +24,7 @@ class CarPremiumPage
       onSave: ( adType) {
         SellCarParams params = getArguments(context);
         params.adType = adType;
-        bloc.sellCar(params);
+        bloc.sellCar(params, state.data?.featureDurationPrice ?? '0');
       },
     );
   }

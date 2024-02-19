@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
             ],
             // routerConfig: router(token.isNotEmpty),
             routes: Routes.routes(context),
-            initialRoute: state.isFirstTime ? Routes.onBoardingPage : Routes.navigationPages,
+            initialRoute: state.isFirstTime ? Routes.navigationPages : Routes.navigationPages,
             onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
           );
         },

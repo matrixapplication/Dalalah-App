@@ -58,7 +58,7 @@ class Car {
   String? door4Img;
   List<ImageDto>? images;
   List<Feature>? features;
-  int? newCarMiles;
+  dynamic newCarMiles;
 
   Car(
       {this.id,
@@ -154,6 +154,6 @@ class Car {
   }
 
   String fullName() {
-    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}';
+    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
   }
 }

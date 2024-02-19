@@ -72,7 +72,7 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
       features: (json['features'] as List<dynamic>?)
           ?.map((e) => FeatureDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      newCarMiles: json['new_car_miles'] as int?,
+      newCarMiles: json['new_car_miles'],
       monthlyInstallment: json['monthly_installment'] as int?,
       portId: json['port_id'] as int?,
     );

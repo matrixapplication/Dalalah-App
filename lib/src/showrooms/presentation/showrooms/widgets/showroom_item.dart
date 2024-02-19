@@ -15,9 +15,9 @@ class ShowroomItem extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigators.pushNamed(
-          Routes.exhibitionDetailsPage,
-          arguments: showroom,
+        pushNamed(
+          Routes.showroomDetailsPage,
+          arguments: showroom.id,
         );
       },
       child: CustomCompanyContainer(

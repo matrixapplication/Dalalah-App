@@ -7,7 +7,8 @@ import '../../../../home/domain/entities/car.dart';
 import '../bloc/my_cars_bloc.dart';
 
 class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
-  MyCarsPage({Key? key}) : super(key: key);
+  final bool isHidePayment;
+  MyCarsPage({Key? key, required this.isHidePayment}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
@@ -24,6 +25,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
+    print('isShowPayment $isHidePayment');
     if (bloc.isLastPage) {
       print('isLastPage ${bloc.isLastPage}');
       refreshController.loadNoData();
@@ -46,6 +48,7 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
       },
       child: CarsScreen(
         isMyCar: true,
+        isHidePayment: isHidePayment,
         cars: state.data ?? [],
         onHide: (id) {
           bloc.hideCar(id);
@@ -55,6 +58,9 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         },
         onSpecial: (id) {
           bloc.addSpecialCar(id);
+        },
+        onDelete: (id) {
+          bloc.deleteCar(id);
         },
       ),
     );

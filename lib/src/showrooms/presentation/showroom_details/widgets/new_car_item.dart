@@ -13,14 +13,18 @@ class NewCarItem extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: 15.paddingBottom,
+      width: double.infinity,
       decoration: Decorations.kDecorationBoxShadow(),
       child: Column(
         children: [
-          CarVerticalItem(
-            bottomMargin: 0,
-            imageHasOnlyTopRadius: true,
-            car: car,
-            onToggleFavorite: onToggleFavorite,
+          SizedBox(
+            width: double.infinity,
+            child: CarVerticalItem(
+              bottomMargin: 0,
+              imageHasOnlyTopRadius: true,
+              car: car,
+              onToggleFavorite: onToggleFavorite,
+            ),
           ),
           GestureDetector(
             onTap: () => onRequestPrice?.call(car.id ?? 0),

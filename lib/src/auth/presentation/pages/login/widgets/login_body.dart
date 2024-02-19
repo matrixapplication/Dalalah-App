@@ -59,7 +59,7 @@ class LoginBody extends BaseStatelessWidget {
             //
             // GestureDetector(
             //   onTap: () {
-            //     Navigators.pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
+            //     pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
             //   },
             //   child:  Text(strings.forgot_password,
             //       style: context.bodySmall.copyWith(fontSize: 10)),
@@ -110,7 +110,7 @@ class LoginBody extends BaseStatelessWidget {
               child:  UnderlineTextButton(
                 title: strings.login_as_guest,
                 onTap: () {
-                  Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+                 pushNamedAndRemoveUntil(Routes.navigationPages);
                 },
               ),
             ),

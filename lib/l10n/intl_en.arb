@@ -296,7 +296,7 @@
   "drive_types": "Drive Types",
   "engine": "Engine",
   "type_engine": "Type Engine",
-  "must_be_at_least_11_characters": "Must be at least 11 characters",
+  "must_be_at_least_11_characters": "Must be at least 9 characters",
   "you_must_login_first": "You must login first",
   "price_must_be_a_number": "Price must be a number",
   "select_main_image": "Select Main Image",
@@ -358,7 +358,7 @@
   "sold": "Sold",
   "un_sold": "Un Sold",
   "cancel_sale": "Cancel Sale",
-  "special": "special",
+  "special": "Special",
   "edit": "Edit",
   "report": "Report",
     "delete": "Delete",
@@ -387,5 +387,7 @@
   "please_upload_logo": "Please upload logo",
   "payment_disabled_msg":"Ad highlighting is not available now",
   "description_ar": "Description (Arabic)",
-    "description_en": "Description (English)"
+    "description_en": "Description (English)",
+  "not_special": "Not Special",
+  "must_be_numbers": "Must be numbers"
 }

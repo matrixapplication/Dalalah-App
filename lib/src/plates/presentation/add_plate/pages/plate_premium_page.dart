@@ -27,7 +27,7 @@ class PlatePremiumPage
       onSave: ( adType) {
         AddPlateParams params = getArguments(context);
         params.adType = adType;
-        bloc.addPlate(params);
+        bloc.addPlate(params, state.data?.featureDurationPrice ?? '0');
       },
     );
   }

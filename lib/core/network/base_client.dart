@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/profile/domain/entities/profile.dart';
 import 'package:dio/dio.dart';
 import '../../src/profile/data/models/profile_dto.dart';
@@ -24,11 +26,9 @@ class ClientCreator {
 }
 
 class HeaderInterceptor extends Interceptor {
-  final SUCCESS_CODE = 'false';
   final keyJson = "application/json";
   final keyAuthorization = "authorization";
-  final keyApiKey = "apiKey";
-  final apiKeyValue = "Nas@manpoweragent";
+  final keyRole = "role";
   final keyLanguage = "Accept-Language";
 
   final String accessToken;
@@ -36,15 +36,14 @@ class HeaderInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
- //   String? token = accessToken.isNotEmpty ? accessToken : await HelperMethods.getToken();
-  //  profile?.token = ;
-    options.headers[keyAuthorization] = 'Bearer ${ await HelperMethods.getToken()}';
+    HeaderParams params = await HelperMethods.getHeaderParams();
+    options.headers[keyAuthorization] = 'Bearer ${params.token}';
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
-    options.headers[keyApiKey] = apiKeyValue;
-    options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';
+    options.headers[keyRole] = params.role == Roles.USER ? Roles.USER : Roles.SHOWROOM;
+    // options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';
     print('-----------------------------------------------------------------------------');
-    print('body: ${options.data}');
-    print('headers: ${options.headers}');
+    log('body: ${options.data}');
+    log('headers: ${options.headers}');
     super.onRequest(options, handler);
   }
 
@@ -85,4 +84,11 @@ class HeaderInterceptor extends Interceptor {
       throw ApiException(message, int.parse(code.toString()));
     }
   }
+}
+
+
+class HeaderParams{
+  final String role;
+  final String token;
+  HeaderParams({required this.role, required this.token});
 }

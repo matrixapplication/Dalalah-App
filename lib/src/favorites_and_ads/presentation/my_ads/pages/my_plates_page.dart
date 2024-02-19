@@ -9,7 +9,8 @@ import '../bloc/my_plates_bloc.dart';
 
 class MyPlatesPage
     extends BaseBlocWidget<DataSuccess<List<Plate>>, MyPlatesCubit> {
-  MyPlatesPage({Key? key}) : super(key: key);
+  final bool isHidePayment;
+  MyPlatesPage({Key? key, required this.isHidePayment}) : super(key: key);
 
   @override
   void loadInitialData(BuildContext context) {
@@ -22,7 +23,6 @@ class MyPlatesPage
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
     if (bloc.isLastPage) {
-      print('isLastPage ${bloc.isLastPage}');
       refreshController.loadNoData();
     }
     return PaginationWidget(
@@ -43,18 +43,19 @@ class MyPlatesPage
       },
       child: PlatesScreen(
         plates: state.data ?? [],
-        onFavoritePlate: (id) => bloc.toggleFavoritePlate(id),
+        onFavoritePlate: (id) => null,
         isMyPlate: true,
         onHide: (id) => bloc.hidePlate(id),
         onSold: (id) => bloc.soldPlate(id),
-        //onSpecial: (id) => bloc.(id),
+        onDelete: (id) => bloc.deletePlate(id),
+        isHidePayment: isHidePayment,
       ),
     );
   }
 //
 // @override
 // onAddButtonPressed() {
-//   Navigators.pushNamed(Routes.plateFilterPage, arguments: true);
+//   pushNamed(Routes.plateFilterPage, arguments: true);
 // }
 //
 // @override

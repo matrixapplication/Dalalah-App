@@ -1,7 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/main_index.dart';
 
+import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../domain/entities/slide.dart';
 
@@ -15,6 +17,7 @@ class SliderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int sliderIndex = 0;
+    // print('snapshot slide ${snapshot.f}');
     return Container(
       width: double.infinity,
       margin: 16.paddingHoriz,
@@ -32,24 +35,39 @@ class SliderWidget extends StatelessWidget {
             itemCount: snapshot?.length ?? 0,
             index: (snapshot?.length ?? 0) - 1,
             itemBuilder: (BuildContext context, int index) {
-              return  Stack(
-                alignment: AlignmentDirectional.bottomStart,
-                children: [
-                  ImageNetwork(
-                    url: snapshot?[index].image ?? '',
-                    fit: BoxFit.fill,
-                    height: 200,
-                    width: double.infinity,
-                    radius: 0,
-                  ),
-                  Padding(
-                    padding: 10.paddingAll,
-                    child: Text(
-                      snapshot?[index].title ?? '',
-                      style: context.headlineLarge,
+              print('snapshot slide ${snapshot?[index]}');
+              final slide = snapshot?[index];
+              return  GestureDetector(
+                onTap: () async {
+                  print('slide?.showroomId ${slide?.showroomId}');
+                  print('slide?.url ${slide?.url}');
+
+                  if(slide?.showroomId != null && slide?.showroomId != 0){
+                    pushNamed(Routes.showroomDetailsPage, arguments: slide?.showroomId);
+                  } else if(slide?.url != null && slide!.url!.isNotEmpty){
+                    String id = slide.url?.split('/').last ?? '';
+                    pushNamed(slide.type == 'car' ? Routes.carDetailsPage : Routes.plateAppLink, arguments: int.parse(id));
+                  }
+                },
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomStart,
+                  children: [
+                    ImageNetwork(
+                      url: snapshot?[index].image ?? '',
+                      fit: BoxFit.fill,
+                      height: 200,
+                      width: double.infinity,
+                      radius: 0,
                     ),
-                  )
-                ],
+                    Padding(
+                      padding: 10.paddingAll,
+                      child: Text(
+                        snapshot?[index].title ?? '',
+                        style: context.headlineLarge,
+                      ),
+                    )
+                  ],
+                ),
               );
             },
             curve: Curves.bounceOut,

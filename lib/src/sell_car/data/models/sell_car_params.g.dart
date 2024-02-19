@@ -42,7 +42,7 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
           .toList(),
       installment: json['monthly_installment'] as int?,
       adType: json['ad_type'] as String?,
-      newCarMiles: json['new_car_miles'] as int?,
+      newCarMiles: json['new_car_miles'],
     );
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>

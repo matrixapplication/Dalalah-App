@@ -1,6 +1,7 @@
 import 'package:dalalah/core/bloc/base_cubit.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../data/models/agency_params.dart';
 import '../../../domain/entities/showroom.dart';
@@ -24,7 +25,12 @@ class ShowroomsCubit extends BaseCubit {
       onSuccess: (data) {
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];
         allShowrooms.addAll(showrooms);
-        emit(DataSuccess<List<Showroom>>(allShowrooms));
+        if(allShowrooms.isEmpty){
+          throw EmptyListException();
+        } else {
+          allShowrooms.addAll(showrooms);
+          emit(DataSuccess<List<Showroom>>(allShowrooms));
+        }
       },
     );
   }

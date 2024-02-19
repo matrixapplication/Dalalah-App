@@ -1,4 +1,3 @@
-
 import 'package:dalalah/core/utils/helper_methods.dart';
 
 import '../../../../home/domain/entities/car.dart';
@@ -9,6 +8,7 @@ import '../widgets/cars_vertical_item.dart';
 
 class CarsScreen extends BaseStatelessWidget {
   final bool isMyCar;
+  final bool isHidePayment;
   final bool isCarDetails;
   final List<Car> cars;
   final Function(int)? onToggleFavorite;
@@ -16,8 +16,9 @@ class CarsScreen extends BaseStatelessWidget {
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onRequestPrice;
+  final Function(int)? onDelete;
 
-  CarsScreen({Key? key, required this.cars,  this.isMyCar = false, this.onToggleFavorite, this.onHide, this.onSold, this.onSpecial, this.onRequestPrice, this.isCarDetails = false})
+  CarsScreen({Key? key, required this.cars,  this.isMyCar = false, this.onToggleFavorite, this.onHide, this.onSold, this.onSpecial, this.onRequestPrice, this.isCarDetails = false, this.onDelete, this.isHidePayment = false})
       : super(key: key);
 
   @override
@@ -36,11 +37,11 @@ class CarsScreen extends BaseStatelessWidget {
           itemBuilder: (context, index) {
             bool isNew = (cars[index].status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isUser);
             return
-            //   isNew ? NewCarItem(
-            //   car: cars[index],
-            //   onToggleFavorite: onToggleFavorite,
-            //   onRequestPrice: onRequestPrice,
-            // ) :
+              isNew ? NewCarItem(
+              car: cars[index],
+              onToggleFavorite: onToggleFavorite,
+              onRequestPrice: onRequestPrice,
+            ) :
               CarVerticalItem(
               imageHasOnlyTopRadius: false,
               isMyCar: isMyCar,
@@ -50,6 +51,8 @@ class CarsScreen extends BaseStatelessWidget {
               onSold: onSold,
               onSpecial: onSpecial,
               onRequestPrice: onRequestPrice,
+              onDelete: onDelete,
+              isHidePayment: isHidePayment,
             );
           },
         );

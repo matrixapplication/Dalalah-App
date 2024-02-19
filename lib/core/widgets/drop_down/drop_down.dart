@@ -33,6 +33,7 @@ class DropDownField extends StatelessWidget {
   final InputDecoration? inputDecoration;
   final bool isLoading;
   final bool disabled;
+  final Color? backgroundColor;
 
   const DropDownField(
       {Key? key,
@@ -57,7 +58,8 @@ class DropDownField extends StatelessWidget {
       this.isDecoration = false,
       this.inputDecoration,
       this.isLoading = false,
-      this.disabled = false
+      this.disabled = false,
+      this.backgroundColor,
       })
       : super(key: key);
 
@@ -69,6 +71,7 @@ class DropDownField extends StatelessWidget {
       margin: margin ?? 10.paddingVert - 8.paddingBottom,
       decoration: isDecoration
           ?  Decorations.kDecorationField() : null,
+      // color: isDecoration ? null : backgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

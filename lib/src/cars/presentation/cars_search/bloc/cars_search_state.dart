@@ -1,7 +1,9 @@
 
 
+import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../home/domain/entities/brand.dart';
+import '../../../../sell_car/domain/entities/brand_model.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../../sell_car/domain/entities/drive_type.dart';
 import '../../../../sell_car/domain/entities/fuel_type.dart';
@@ -12,6 +14,7 @@ class CarsSearchState  extends DataStateFBuilder {
   List<int> years = [];
   List<FuelType> fuelTypes = [];
   List<DriveType> driveTypes = [];
+  StreamStateInitial<List<BrandModel>?>? brandModelsStream;
 
 
   CarsSearchState({
@@ -20,5 +23,6 @@ class CarsSearchState  extends DataStateFBuilder {
     this.years = const [],
     this.fuelTypes = const [],
     this.driveTypes = const [],
+    this.brandModelsStream,
   });
 }

@@ -111,7 +111,7 @@ class Routes {
 
   /* ============================================== */
   static const String showroomsPage = 'showroomsPage';
-  static const String exhibitionDetailsPage = 'exhibitionDetailsPage';
+  static const String showroomDetailsPage = 'exhibitionDetailsPage';
   static const String carsSearchPage = 'carsSearchPage';
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
   static const String carAppLink = 'car';
@@ -168,7 +168,7 @@ class Routes {
     changeLanguage: (context) => ChangLanguagePage(),
     aboutUs: (context) => AboutUsPage(),
     showroomsPage: (context) => ShowroomsPage(),
-    exhibitionDetailsPage: (context) => ShowroomDetailsPage(),
+    showroomDetailsPage: (context) => ShowroomDetailsPage(),
     carsSearchPage: (context) => CarsSearchPage(),
     showroomsAndBranchesTabs: (context) => ShowroomsAndBranchesTabs(),
     supportPage: (context) => SupportPage(),
@@ -190,98 +190,98 @@ class Routes {
       //   return pushNamed(carAppLink, arguments: 36);
       case plateAppLink:
         return CupertinoPageRoute(builder: (_) => SharePlateDetailsPage());
-      case navigationPages:
-        return CupertinoPageRoute(builder: (_) => NavigationPages());
-      case login:
-        return CupertinoPageRoute(builder: (_) => LoginPage());
-      case platesPage:
-        return CupertinoPageRoute(builder: (_) => PlatesPage());
-      case platesDetailsPage:
-        return CupertinoPageRoute(builder: (_) => PlatesDetailsPage());
-      case plateFilterPage:
-        return CupertinoPageRoute(builder: (_) => AddPlatesPage());
-      case installmentPage:
-        return CupertinoPageRoute(builder: (_) => InstallmentPage());
-      case favoritesAndAdsTabs:
-        return CupertinoPageRoute(builder: (_) => FavoritesAndAdsTabs());
-      case sectionsScreen:
-        return CupertinoPageRoute(builder: (_) => AddYourAdPage());
-      case monthlyInstallmentPage:
-        return CupertinoPageRoute(builder: (_) => MonthlyInstallmentPage());
-      case realEstatePage:
-        return CupertinoPageRoute(builder: (_) => RealEstatePage());
-      case addCarPremiumPage:
-        return CupertinoPageRoute(builder: (_) => CarPremiumPage());
-      case addPlatePremiumPage:
-        return CupertinoPageRoute(builder: (_) => PlatePremiumPage());
-      case branchesPage:
-        return CupertinoPageRoute(builder: (_) => BranchesPage());
-      case addBranchPage:
-        return CupertinoPageRoute(builder: (_) => AddBranchPage());
-      case commentsPage:
-        return CupertinoPageRoute(
-            builder: (_) => CommentsPage(params: CommentParams()));
-      case followedShowroomsPage:
-        return CupertinoPageRoute(builder: (_) => FollowedShowroomsPage());
-
-    ////////////////////////////////
-      case register:
-        return CupertinoPageRoute(builder: (_) => RegisterPage());
-      case profilePage:
-        return CupertinoPageRoute(builder: (_) => ProfilePage());
-      case editProfilePage:
-        return CupertinoPageRoute(builder: (_) => EditProfilePage());
-      case notificationsPage:
-        return CupertinoPageRoute(builder: (_) => NotificationsPage());
-      case homePage:
-        return CupertinoPageRoute(builder: (_) => HomePage());
-      case carsPage:
-        return CupertinoPageRoute(builder: (_) => CarsPage());
-      case onBoardingPage:
-        return CupertinoPageRoute(builder: (_) => OnBoardingPage());
-      case sellCarPage:
-        return CupertinoPageRoute(builder: (_) => SellCarFirstPage());
-
-
-      case sellCarSecondPage:
-        return CupertinoPageRoute(builder: (_) => SellCarSecondPage());
-      case sellCarImagePickerPage:
-        return CupertinoPageRoute(builder: (_) => SellCarImagePickerPage());
-      case sellCarPropertiesPage:
-        return CupertinoPageRoute(builder: (_) => SellCarPropertiesPage());
-      case favoritesAndAdsPage:
-        return CupertinoPageRoute(builder: (_) => FavoritesAndAdsTabs());
-      case filterPage:
-        return CupertinoPageRoute(builder: (_) => FilterPage());
-      case sortByPage:
-        return CupertinoPageRoute(builder: (_) => SortByPage());
-      case paymentPage:
-        return CupertinoPageRoute(builder: (_) => PaymentPage());
-
-      case enterPhoneNumberPage:
-        return CupertinoPageRoute(builder: (_) => EnterPhoneNumberPage());
-      case enterPinCodePage:
-        return CupertinoPageRoute(builder: (_) => EnterPinCodePage());
-      case newPasswordPage:
-        return CupertinoPageRoute(builder: (_) => NewPasswordPage());
-      case carDetailsPage:
-        return CupertinoPageRoute(builder: (_) => CarsDetailsPage());
-      case settingsPage:
-        return CupertinoPageRoute(builder: (_) => SettingsPage());
-      case changeLanguage:
-        return CupertinoPageRoute(builder: (_) => ChangLanguagePage());
-      case aboutUs:
-        return CupertinoPageRoute(builder: (_) => AboutUsPage());
-      case showroomsPage:
-        return CupertinoPageRoute(builder: (_) => ShowroomsPage());
-      case exhibitionDetailsPage:
-        return CupertinoPageRoute(builder: (_) => ShowroomDetailsPage());
-      case carsSearchPage:
-        return CupertinoPageRoute(builder: (_) => CarsSearchPage());
-      case showroomsAndBranchesTabs:
-        return CupertinoPageRoute(builder: (_) => ShowroomsAndBranchesTabs());
-      case supportPage:
-        return CupertinoPageRoute(builder: (_) => SupportPage());
+    //   case navigationPages:
+    //     return CupertinoPageRoute(builder: (_) => NavigationPages());
+    //   case login:
+    //     return CupertinoPageRoute(builder: (_) => LoginPage());
+    //   case platesPage:
+    //     return CupertinoPageRoute(builder: (_) => PlatesPage());
+    //   case platesDetailsPage:
+    //     return CupertinoPageRoute(builder: (_) => PlatesDetailsPage());
+    //   case plateFilterPage:
+    //     return CupertinoPageRoute(builder: (_) => AddPlatesPage());
+    //   case installmentPage:
+    //     return CupertinoPageRoute(builder: (_) => InstallmentPage());
+    //   case favoritesAndAdsTabs:
+    //     return CupertinoPageRoute(builder: (_) => FavoritesAndAdsTabs());
+    //   case sectionsScreen:
+    //     return CupertinoPageRoute(builder: (_) => AddYourAdPage());
+    //   case monthlyInstallmentPage:
+    //     return CupertinoPageRoute(builder: (_) => MonthlyInstallmentPage());
+    //   case realEstatePage:
+    //     return CupertinoPageRoute(builder: (_) => RealEstatePage());
+    //   case addCarPremiumPage:
+    //     return CupertinoPageRoute(builder: (_) => CarPremiumPage());
+    //   case addPlatePremiumPage:
+    //     return CupertinoPageRoute(builder: (_) => PlatePremiumPage());
+    //   case branchesPage:
+    //     return CupertinoPageRoute(builder: (_) => BranchesPage());
+    //   case addBranchPage:
+    //     return CupertinoPageRoute(builder: (_) => AddBranchPage());
+    //   case commentsPage:
+    //     return CupertinoPageRoute(
+    //         builder: (_) => CommentsPage(params: CommentParams()));
+    //   case followedShowroomsPage:
+    //     return CupertinoPageRoute(builder: (_) => FollowedShowroomsPage());
+    //
+    // ////////////////////////////////
+    //   case register:
+    //     return CupertinoPageRoute(builder: (_) => RegisterPage());
+    //   case profilePage:
+    //     return CupertinoPageRoute(builder: (_) => ProfilePage());
+    //   case editProfilePage:
+    //     return CupertinoPageRoute(builder: (_) => EditProfilePage());
+    //   case notificationsPage:
+    //     return CupertinoPageRoute(builder: (_) => NotificationsPage());
+    //   case homePage:
+    //     return CupertinoPageRoute(builder: (_) => HomePage());
+    //   case carsPage:
+    //     return CupertinoPageRoute(builder: (_) => CarsPage());
+    //   case onBoardingPage:
+    //     return CupertinoPageRoute(builder: (_) => OnBoardingPage());
+    //   case sellCarPage:
+    //     return CupertinoPageRoute(builder: (_) => SellCarFirstPage());
+    //
+    //
+    //   case sellCarSecondPage:
+    //     return CupertinoPageRoute(builder: (_) => SellCarSecondPage());
+    //   case sellCarImagePickerPage:
+    //     return CupertinoPageRoute(builder: (_) => SellCarImagePickerPage());
+    //   case sellCarPropertiesPage:
+    //     return CupertinoPageRoute(builder: (_) => SellCarPropertiesPage());
+    //   case favoritesAndAdsPage:
+    //     return CupertinoPageRoute(builder: (_) => FavoritesAndAdsTabs());
+    //   case filterPage:
+    //     return CupertinoPageRoute(builder: (_) => FilterPage());
+    //   case sortByPage:
+    //     return CupertinoPageRoute(builder: (_) => SortByPage());
+    //   case paymentPage:
+    //     return CupertinoPageRoute(builder: (_) => PaymentPage());
+    //
+    //   case enterPhoneNumberPage:
+    //     return CupertinoPageRoute(builder: (_) => EnterPhoneNumberPage());
+    //   case enterPinCodePage:
+    //     return CupertinoPageRoute(builder: (_) => EnterPinCodePage());
+    //   case newPasswordPage:
+    //     return CupertinoPageRoute(builder: (_) => NewPasswordPage());
+    //   case carDetailsPage:
+    //     return CupertinoPageRoute(builder: (_) => CarsDetailsPage());
+    //   case settingsPage:
+    //     return CupertinoPageRoute(builder: (_) => SettingsPage());
+    //   case changeLanguage:
+    //     return CupertinoPageRoute(builder: (_) => ChangLanguagePage());
+    //   case aboutUs:
+    //     return CupertinoPageRoute(builder: (_) => AboutUsPage());
+    //   case showroomsPage:
+    //     return CupertinoPageRoute(builder: (_) => ShowroomsPage());
+    //   case showroomDetailsPage:
+    //     return CupertinoPageRoute(builder: (_) => ShowroomDetailsPage());
+    //   case carsSearchPage:
+    //     return CupertinoPageRoute(builder: (_) => CarsSearchPage());
+    //   case showroomsAndBranchesTabs:
+    //     return CupertinoPageRoute(builder: (_) => ShowroomsAndBranchesTabs());
+    //   case supportPage:
+    //     return CupertinoPageRoute(builder: (_) => SupportPage());
       // default:
       //   return CupertinoPageRoute(builder: (_) => NavigationPages());
     }}

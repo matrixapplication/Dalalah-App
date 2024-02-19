@@ -29,7 +29,7 @@ class ProfileDto {
   @JsonKey(name: 'email')
   String? email;
   @JsonKey(name: 'code')
-  String? code;
+  dynamic code;
   @JsonKey(name: 'phone')
   String? phone;
   @JsonKey(name: 'whatsapp')

@@ -25,9 +25,8 @@ class CarInfo extends StatelessWidget {
             icon: AppIcons.fuel,
           ),
           5.pw,
-          if(!isNew)
           CarDetailsContainer(
-            label: car.mileage ?? "",
+            label: isNew ? car.newCarMiles?.toString() ?? '' : car.mileage ?? "",
             icon: AppIcons.timer,
           ),
           5.pw,

@@ -32,11 +32,11 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: 20.paddingBottom,
-      height: 140,
+      height: 155,
       clipBehavior: Clip.antiAlias,
       decoration: decoration ??
           Decorations.kDecorationBorder(
-            radius: 8,
+            radius: 10,
             borderWidth: 1
           ),
       child: Column(
@@ -47,17 +47,23 @@ class CustomCompanyContainer extends BaseStatelessWidget {
               child: body),
           SizedBox(
             height: 38,
-            child: RowTextsIconsButtons(
-              icon1: AppIcons.call,
-              icon2: secondButtonIcon ?? AppIcons.location_2,
-              iconColor2: iconColor2,
-              title1: strings.contact,
-              title2: secondButtonLabel ?? strings.branches,
-              backgroundColor2: backgroundColor2 ?? context.onSecondaryContainer,
-              centerWidget: centerWidget,
-              onPressed1: firstOnTap,
-              onPressed2: secondOnTap,
-                titleStyle2: titleStyle2,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+              child: RowTextsIconsButtons(
+                icon1: AppIcons.call,
+                icon2: secondButtonIcon ?? AppIcons.location_2,
+                iconColor2: iconColor2,
+                title1: strings.contact,
+                title2: secondButtonLabel ?? strings.branches,
+                backgroundColor2: backgroundColor2 ?? context.onSecondaryContainer,
+                centerWidget: centerWidget,
+                onPressed1: firstOnTap,
+                onPressed2: secondOnTap,
+                  titleStyle2: titleStyle2,
+              ),
             ),
           )
         ],

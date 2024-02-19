@@ -1,5 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:dalalah/core/routes/routes.dart';
+import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
@@ -15,27 +16,31 @@ import '../../../domain/entities/plate.dart';
 class PlateItem extends StatelessWidget {
   final Plate plate;
   final Function(int)? onFavoritePlate;
-  final bool isAll;
+  final bool isSeeAll;
   final bool isMyPlate;
+  final bool isHidePayment;
   final Function(int)? onHide;
   final Function(int)? onSold;
   final Function(int)? onSpecial;
+  final Function(int)? onDelete;
 
   const PlateItem({
     Key? key,
     required this.plate,
      this.onFavoritePlate,
-    this.isAll = false,
+    this.isSeeAll = false,
     this.isMyPlate = false,
+    this.isHidePayment = false,
     this.onHide,
     this.onSold,
     this.onSpecial,
+    this.onDelete,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigators.pushNamed(
+      onTap: () => pushNamed(
         Routes.platesDetailsPage,
         arguments: plate,
       ),
@@ -72,34 +77,38 @@ class PlateItem extends StatelessWidget {
               children: [
                 PlateImage(
                     plate: plate,
-                  isAll: isAll,
+                  isSeeAll: isSeeAll,
                 ),
-                FittedBox(
-                  child: Padding(
-                    padding:10.paddingHoriz,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
-                          style: context.bodyMedium,
-                          textDirection: TextDirection.rtl,
-                        ),
-                        5.pw,
-                        PriceWidget(price: plate.price ?? '0'),
-                        5.pw,
-                        onFavoritePlate == null
-                            ? const EditIconButton(
-                                iconSize: 30,
-                                circleSize: 40,
-                              )
-                            : FavoriteButton(
-                                isFavorite: plate.isFavorite  ?? false,
-                          onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
-                          iconSize: 15,
-                              ),
-                      ],
-                    ),
+                Padding(
+                  padding:10.paddingHoriz,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ShareIconButton(
+                        route: Routes.plateAppLink,
+                        id: plate.id.toString() ?? '',
+                      ),
+                      // Text(
+                      //   '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
+                      //   style: context.bodyMedium,
+                      //   textDirection: TextDirection.rtl,
+                      // ),
+                      // 5.pw,
+                      PriceWidget(price: plate.price ?? '0'),
+                      // 5.pw,
+                      // onFavoritePlate == null
+                      //     ? const EditIconButton(
+                      //         iconSize: 30,
+                      //         circleSize: 40,
+                      //       )
+                      //     :
+                      if(!isMyPlate)
+                      FavoriteButton(
+                              isFavorite: plate.isFavorite  ?? false,
+                        onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
+                        iconSize: 15,
+                            ),
+                    ],
                   ),
                 ),
 
@@ -117,6 +126,8 @@ class PlateItem extends StatelessWidget {
               onHide: onHide,
               onSold: onSold,
               onSpecial: onSpecial,
+              onDelete: onDelete,
+                isHidePayment: isHidePayment,
             )
           ],
         ),

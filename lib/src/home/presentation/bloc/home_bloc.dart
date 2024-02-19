@@ -49,6 +49,7 @@ class HomeCubit extends BaseCubit {
       slidesStream.setData(response);
     } catch (e) {
       slidesStream.setError(e);
+      // rethrow;
     }
   }
 

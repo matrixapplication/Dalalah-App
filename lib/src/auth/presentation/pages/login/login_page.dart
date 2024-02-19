@@ -39,6 +39,6 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
 
   @override
   onSuccessDismissed() {
-    Navigators.pushNamedAndRemoveUntil(Routes.navigationPages);
+    pushNamedAndRemoveUntil(Routes.navigationPages);
   }
 }

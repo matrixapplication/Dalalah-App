@@ -109,7 +109,7 @@ class _SectionsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     int startPadding = index == 0 ? 20 : 0;
     return GestureDetector(
-      onTap: () => Navigators.pushNamed(section.routeName, ),
+      onTap: () => pushNamed(section.routeName, ),
       child: Container(
         margin: startPadding.paddingStart + 10.paddingEnd,
         padding: 10.paddingVert,

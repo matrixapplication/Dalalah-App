@@ -126,7 +126,7 @@ class FilterScreen extends BaseStatelessWidget {
           PrimaryButton(
             title: strings.show_results,
             onPressed: () {
-              Navigators.pushNamed(Routes.carsPage, arguments: CarsPageArgs(categoryName: strings.results_filter, paramsFilter: ''));
+              pushNamed(Routes.carsPage, arguments: CarsPageArgs(categoryName: strings.results_filter, paramsFilter: ''));
             },
           ),
         ],

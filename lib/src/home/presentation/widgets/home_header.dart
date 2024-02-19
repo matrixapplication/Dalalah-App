@@ -1,5 +1,6 @@
 import 'package:dalalah/core/assets/app_icons.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:dalalah/core/widgets/images/logo.dart';
@@ -22,15 +23,23 @@ class HomeHeader extends StatelessWidget {
         const Logo(size: 65),
         ChangeLanguagePopup(),
         const Spacer(),
-        AppCircularIconButton(
-          icon: AppIcons.notification,
-          backgroundColor: context.cardColor,
-          color: context.primaryColor,
-          padding: 9,
-          size: 28,
-          circleSize: 40,
-          onPressed: () {
-            Navigators.pushNamed(Routes.notificationsPage);
+        FutureBuilder(
+          initialData: false,
+          future: HelperMethods.isAuth(),
+          builder: (context, snapshot) {
+            return snapshot.data == true
+                ? AppCircularIconButton(
+                    icon: AppIcons.notification,
+                    backgroundColor: context.cardColor,
+                    color: context.primaryColor,
+                    padding: 9,
+                    size: 28,
+                    circleSize: 40,
+                    onPressed: () {
+                      pushNamed(Routes.notificationsPage);
+                    },
+                  )
+                : 0.ph;
           },
         ),
         15.pw,

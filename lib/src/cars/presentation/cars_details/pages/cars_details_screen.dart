@@ -85,7 +85,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 560 : 700.0,
+          expandedHeight: isNew ? 635 : 700.0,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -118,16 +118,19 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "${car.brandModel?.brand} ${car.brandModel?.name}",
-                            style: context.textTheme.titleSmall!.copyWith(
-                              color: AppColors.grey_2C,
+                          Flexible(
+                            child: Text(
+                              "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
+                              style: context.textTheme.titleSmall!.copyWith(
+                                color: AppColors.grey_2C,
+                              ),
                             ),
                           ),
                           PriceWidget(
                             price: car.price ?? '0.0',
-                            fontSize: 20,
+                            fontSize: 18,
                           ),
                         ],
                       ),

@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../src/main_index.dart';
 import '../../src/profile/data/models/profile_dto.dart';
+import '../network/base_client.dart';
 import 'notification_service.dart';
 
 class HelperMethods {
@@ -65,20 +66,34 @@ class HelperMethods {
   }
 
   static Future<void> launchCallPhone(String phoneNumber) async {
-    Uri telephoneUrl = Uri.parse("tel:+2${phoneNumber}");
-    if (await canLaunchUrl(telephoneUrl)) {
-      await launchUrl(telephoneUrl);
+    if (phoneNumber.isNotEmpty) {
+      Uri telephoneUrl = Uri.parse("tel:${getPhoneNumber(phoneNumber)}");
+      if (await canLaunchUrl(telephoneUrl)) {
+        await launchUrl(telephoneUrl);
+      } else {
+        showErrorToast('حدث خطأ أثناء الاتصال بالرقم');
+      }
     } else {
-      showErrorToast('حدث خطأ أثناء الاتصال بالرقم');
+      showErrorToast('رقم الهاتف غير متاح');
     }
   }
 
+  static String getPhoneNumber(String phoneNumber) {
+    if (phoneNumber.isEmpty) throw 'Phone number is empty';
+    String newPhoneNumber = phoneNumber.isEmpty ? '' : phoneNumber.contains('+') ? phoneNumber : '+966$phoneNumber';
+    return newPhoneNumber;
+  }
+
   static Future<void> launchWhatsApp(String phoneNumber) async {
-    Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=+2$phoneNumber");
-    if (await canLaunchUrl(whatsUpUrl)) {
-      await launchUrl(whatsUpUrl);
+    if (phoneNumber.isNotEmpty) {
+      Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=${getPhoneNumber(phoneNumber)}");
+      if (await canLaunchUrl(whatsUpUrl)) {
+        await launchUrl(whatsUpUrl);
+      } else {
+        showErrorToast('حدث خطأ اثناء الاتصال بالواتساب');
+      }
     } else {
-      showErrorToast('حدث خطأ اثناء الاتصال بالواتساب');
+      showErrorToast('رقم الواتساب غير متاح');
     }
   }
 
@@ -186,6 +201,20 @@ class HelperMethods {
     } on Exception catch (e) {
       print('profile?.token ${e.toString()}');
       return '';
+    }
+  }
+
+
+  static Future<HeaderParams> getHeaderParams() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      return HeaderParams(
+        token: profile?.token ?? '',
+        role: profile?.role ?? '',
+      );
+    } on Exception catch (e) {
+      print('profile?.token ${e.toString()}');
+      return HeaderParams(token: '', role: '');
     }
   }
 

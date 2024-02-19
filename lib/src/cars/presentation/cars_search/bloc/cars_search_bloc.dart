@@ -3,6 +3,7 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/resources/data_state.dart';
+import '../../../../sell_car/domain/entities/brand_model.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../../sell_car/domain/entities/drive_type.dart';
 import '../../../../sell_car/domain/entities/fuel_type.dart';
@@ -15,17 +16,17 @@ class CarsSearchCubit extends BaseCubit {
 
   CarsSearchCubit(this.usecase);
 
+  StreamStateInitial<List<BrandModel>?> brandModelsStream = StreamStateInitial();
   fetchInitialData() async {
-    AppLocalizations strings = injector<ServicesLocator>().navigatorKey.currentContext!.strings;
     emit(DataLoading());
     try {
 
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
       final driveTypes = await usecase.fetchDriveTypes();
-      driveTypes.insert(0, DriveType(name: strings.all, key: ''));
+      // driveTypes.insert(0, DriveType(name: strings.all, key: ''));
       final fuelTypes = await usecase.fetchFuelTypes();
-      fuelTypes.insert(0, FuelType(name: strings.all, key: ''));
+      // fuelTypes.insert(0, FuelType(name: strings.all, key: ''));
       emit(
         CarsSearchState(
           carStatuses: CarStatus.getCarStatuses(),
@@ -33,10 +34,22 @@ class CarsSearchCubit extends BaseCubit {
           years: years,
           driveTypes: driveTypes,
           fuelTypes: fuelTypes,
+          brandModelsStream: brandModelsStream,
         ),
       );
     } on Exception catch (e) {
       emit(DataFailed(e));
+    }
+  }
+
+
+  void fetchBrandModels(int id) async{
+    brandModelsStream.setData(null);
+    try {
+      final models = await usecase.fetchBrandModels(id);
+      brandModelsStream.setData(models);
+    } catch (e) {
+      brandModelsStream.setError(e);
     }
   }
 }

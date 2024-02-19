@@ -150,8 +150,6 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         body: body,
         tabs: tabs,
         onTabSelected: (index) {
-          print('onTabSelected $index');
-
           onTabSelected?.call(index);
         },
         onAddButtonPressed: onAddButtonPressed,

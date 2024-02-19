@@ -9,19 +9,26 @@ class CustomPinCode extends BaseStatelessWidget {
   final TextEditingController pinCodeController;
   final Function(String)? onCompleted;
   final int length;
-   CustomPinCode({Key? key, required this.pinCodeController, this.onCompleted, this.length = 3}) : super(key: key);
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
+  final double? fieldWidth;
+   CustomPinCode({Key? key, required this.pinCodeController, this.onCompleted, this.length = 4, this.keyboardType, this.validator, this.fieldWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
       controller: pinCodeController,
       appContext: context,
-      length: 5,
-      onChanged: (value) {},
+      length: length,
+      onChanged: (value) {
+        onCompleted?.call(value);
+      },
       showCursor: false,
-      keyboardType: TextInputType.number,
+      keyboardType: keyboardType ?? TextInputType.number,
       autoFocus: true,
       enableActiveFill: true,
+      backgroundColor: context.primaryColor,
+      validator: validator,
       pinTheme: PinTheme(
         activeFillColor: context.cardColor,
         inactiveFillColor: context.cardColor,

@@ -10,16 +10,16 @@ SlideDto _$SlideDtoFromJson(Map<String, dynamic> json) => SlideDto(
       id: json['id'] as int?,
       title: json['title'] as String?,
       image: json['image'] as String?,
-      url: json['url'] as String?,
+      link: json['link'] as String?,
       type: json['type'] as String?,
-      typeId: json['type_id'] as int?,
+      showroomId: json['showroom_id'],
     );
 
 Map<String, dynamic> _$SlideDtoToJson(SlideDto instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'image': instance.image,
-      'url': instance.url,
+      'link': instance.link,
       'type': instance.type,
-      'type_id': instance.typeId,
+      'showroom_id': instance.showroomId,
     };
