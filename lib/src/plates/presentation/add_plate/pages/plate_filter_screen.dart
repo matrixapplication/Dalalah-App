@@ -108,6 +108,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
                     title: strings.numbers,
                     controllers: controllersNumbers,
                     validator: (value) => Validation.validateOnlyNumbers(value ?? ''),
+                    keyboardType: TextInputType.number,
                   ),
                   10.ph,
                   // if(isAddPage)
