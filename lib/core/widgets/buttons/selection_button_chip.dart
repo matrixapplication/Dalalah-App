@@ -173,6 +173,7 @@ class SelectItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
       ),
+      showCheckmark: false,
       selectedColor: context.primaryColor,
       backgroundColor: context.cardColor,
       visualDensity: const VisualDensity(horizontal: -4, vertical: -4),

@@ -87,6 +87,7 @@ class BrandsFilterList extends StatelessWidget {
                       selected: item == e.name,
                       backgroundColor: context.scaffoldBackgroundColor,
                       selectedColor: context.scaffoldBackgroundColor,
+                      showCheckmark: false,
                       shape: const CircleBorder(),
                       side: BorderSide(
                         color: item == e.name

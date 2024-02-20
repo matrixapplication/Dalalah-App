@@ -104,6 +104,7 @@ class BrandModelsFilterList extends StatelessWidget {
                               selectedColor: context.scaffoldBackgroundColor,
                               visualDensity: const VisualDensity(
                                   horizontal: -4, vertical: -4),
+                              showCheckmark: false,
                               side: BorderSide(
                                 color: item == e.name
                                     ? context.primaryColor
