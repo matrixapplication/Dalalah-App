@@ -53,7 +53,7 @@ class CarsHomeListHoriz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 270,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: 10.paddingStart,
@@ -86,8 +86,7 @@ class CarHorizontalItem extends StatelessWidget {
         Navigator.pushNamed(context, Routes.carDetailsPage, arguments: car.id);
       },
       child: Container(
-        height: 250,
-        width: 240,
+        width: 250,
         padding: const EdgeInsets.all(5),
         margin: 5.paddingStart + 10.paddingEnd,
         clipBehavior: Clip.antiAlias,
@@ -142,8 +141,10 @@ class CarHorizontalItem extends StatelessWidget {
                       style: context.headlineSmall.copyWith(
                         color: AppColors.grey_40,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    10.ph,
+                    Spacer(),
                     FittedBox(
                       child: Row(
                         children: [
@@ -168,7 +169,6 @@ class CarHorizontalItem extends StatelessWidget {
                         ],
                       ),
                     ),
-                     const Spacer(),
                     CarInfo(
                       isNew: CarStatus.newCar == car.status?.key,
                       car: car,

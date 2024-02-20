@@ -42,6 +42,7 @@ class PlatePinCode extends BaseStatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           errorTextSpace: 22,
           autoDismissKeyboard: false,
+          enabled: true,
           textInputAction: TextInputAction.next,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           pinTheme: PinTheme(
