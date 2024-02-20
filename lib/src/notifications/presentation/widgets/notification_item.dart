@@ -21,6 +21,7 @@ class NotificationItem extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         padding: 16.paddingHoriz + 12.paddingVert,
+        margin: 10.paddingBottom,
         decoration: Decorations.kDecorationBorderWithRadius(
             color: context.cardColor,
             borderColor: context.colorScheme.onSecondary),
@@ -28,7 +29,7 @@ class NotificationItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomSquareCompanyLogo(
-              logoPath: AppImages.splash_logo,
+              logoPath: AppImages.logo,
               width: 60,
               height: 60,
             ),

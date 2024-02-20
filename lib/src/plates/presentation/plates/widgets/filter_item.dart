@@ -10,8 +10,9 @@ class FilterItem extends BaseStatelessWidget {
   final String? title;
   final String? Function(String?)? validator;
   final List<TextEditingController> controllers;
+  final TextInputType? keyboardType;
 
-  FilterItem({Key? key, required this.controllers, this.title, this.validator})
+  FilterItem({Key? key, required this.controllers, this.title, this.validator, this.keyboardType})
       : super(key: key);
 
   @override
@@ -47,6 +48,7 @@ class FilterItem extends BaseStatelessWidget {
                 controller: controllers[index],
                 padding: 8.paddingHoriz,
                 labelStyle: context.labelSmall,
+               keyboardType: keyboardType,
                maxLength: 1,
                 validator:validator,
               ),
