@@ -390,5 +390,5 @@
   "description_en": "Description (English)",
   "not_special": "Not Special",
   "must_be_numbers": "Must be numbers",
-  "exit_app_msg": "Press back again to exit"
+  "exit_app_msg": "Are you sure you want to exit the app?"
 }

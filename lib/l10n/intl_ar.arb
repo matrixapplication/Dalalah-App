@@ -378,5 +378,6 @@
   "description_ar": "الوصف (عربي)",
   "description_en": "الوصف (إنجليزي)",
   "not_special": "غير مميز",
-  "must_be_numbers": "يجب أن يكون أرقام فقط"
+  "must_be_numbers": "يجب أن يكون أرقام فقط",
+  "exit_app_msg": "هل تريد الخروج من التطبيق؟"
 }

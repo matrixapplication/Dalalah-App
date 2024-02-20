@@ -65,7 +65,7 @@ class DialogsManager {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(message, style: context.bodySmall.copyWith(fontSize: 14)),
+                Text(message, style: context.bodySmall.copyWith(fontSize: 14), textAlign: TextAlign.center),
               ],
             ),
           ),

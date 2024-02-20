@@ -127,7 +127,9 @@ class NavigationPages extends StatelessWidget {
   }
 
   Future<bool> _onWillPop(BuildContext context) async {
-    return (await DialogsManager.showInfoDialog(context, message: context.) ??
+    return (await DialogsManager.showInfoDialog(context, message: context.strings.exit_app_msg, onClickOk: (){
+      SystemNavigator.pop();
+    }) ??
         false);
   }
 }
