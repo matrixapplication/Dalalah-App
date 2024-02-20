@@ -1,6 +1,9 @@
 
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
+
 import '../../../../../../core/utils/helper_methods.dart';
 import '../../../../../main_index.dart';
+import '../../../../../sell_car/domain/entities/car_status.dart';
 import '../../../../domain/entities/car_details.dart';
 import '../../widgets/company_car_details_item.dart';
 import '../../widgets/request_for_quotation.dart';
@@ -39,6 +42,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
             ),
           ),
           15.ph,
+          if(carDetails.car?.modelRole == Roles.ADMIN)
           RequestForQuotation(
             onRequestPrice: ()=> onRequestPrice?.call(carDetails.car?.id ?? 0),
           ),

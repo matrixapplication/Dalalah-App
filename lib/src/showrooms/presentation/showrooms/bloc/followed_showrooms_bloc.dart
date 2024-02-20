@@ -24,10 +24,10 @@ class FollowedShowroomsCubit extends BaseCubit {
       onSuccess: (data) {
         isLastPage = (data.pagination?.totalPages ?? 0) <= page;
         showrooms = data.data?.map((e) => Showroom.fromDto(e)).toList() ?? [];
-        if(showrooms.isEmpty){
+        allShowrooms.addAll(showrooms);
+        if(allShowrooms.isEmpty){
           throw EmptyListException();
         } else {
-          allShowrooms.addAll(showrooms);
           emit(DataSuccess<List<Showroom>>(allShowrooms));
         }
       },

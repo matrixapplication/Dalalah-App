@@ -78,7 +78,7 @@ class SellCarCubit extends BaseCubit {
         idOrMsg = await usecase.editCar(params);
       }
       if(params.adType == AdTypes.featured){
-        params.id = idOrMsg;
+        // params.id = idOrMsg;
          final data = await PaymentRequests.urWayPayment(
             id: idOrMsg.toString(), amount: featurePrice);
         print('Result in Main is $data');

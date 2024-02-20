@@ -34,10 +34,10 @@ class PriceRequestsCubit extends BaseCubit {
         isLastPage ? refreshController.loadNoData() : refreshController.loadComplete();
         cars = data.data?.map((e) => RequestPrice.fromJson(e)).toList() ?? [];
         allCars.addAll(cars);
-        emit(DataSuccess<List<RequestPrice>>(allCars));
         if(allCars.isEmpty){
           throw EmptyListException();
         } else {
+          emit(DataSuccess<List<RequestPrice>>(allCars));
         }
       },
     );

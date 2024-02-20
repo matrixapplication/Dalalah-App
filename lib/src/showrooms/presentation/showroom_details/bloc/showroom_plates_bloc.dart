@@ -36,10 +36,10 @@ class ShowroomPlateCubit extends BaseCubit {
         isLastPage = (data.pagination?.totalPages)! <= page;
         plates = data.data?.map((e) => Plate.fromDto(e)).toList() ?? [];
         isLastPage ? refreshController.loadNoData() : refreshController.loadComplete();
-        if(plates.isEmpty){
+        allPlates.addAll(plates);
+        if(allPlates.isEmpty){
           throw EmptyListException();
         } else {
-          allPlates.addAll(plates);
           emit(DataSuccess<List<Plate>>(allPlates));
         }
       },

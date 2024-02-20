@@ -8,9 +8,10 @@ import '../../../../../core/components/base_stateless_widget.dart';
 ///  Created by harby on 10/12/2023.
 class FilterItem extends BaseStatelessWidget {
   final String? title;
+  final String? Function(String?)? validator;
   final List<TextEditingController> controllers;
 
-  FilterItem({Key? key, required this.controllers, this.title})
+  FilterItem({Key? key, required this.controllers, this.title, this.validator})
       : super(key: key);
 
   @override
@@ -47,7 +48,7 @@ class FilterItem extends BaseStatelessWidget {
                 padding: 8.paddingHoriz,
                 labelStyle: context.labelSmall,
                maxLength: 1,
-               // validator: (value) => Validation.validatePlate(value),
+                validator:validator,
               ),
             ),
           ),

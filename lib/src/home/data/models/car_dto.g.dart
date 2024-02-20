@@ -74,12 +74,12 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
           .toList(),
       newCarMiles: json['new_car_miles'],
       monthlyInstallment: json['monthly_installment'] as int?,
-      portId: json['port_id'] as int?,
+      modelRole: json['model_role'] as String?,
     );
 
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'id': instance.id,
-      'port_id': instance.portId,
+      'model_role': instance.modelRole,
       'model_object': instance.modelObject,
       'car_contact_details': instance.carContactDetails,
       'brand': instance.brand,

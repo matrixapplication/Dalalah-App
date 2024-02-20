@@ -20,8 +20,8 @@ import '../../data/models/car_dto.dart';
 
 class Car {
   int? id;
-  int? portId;
   CarContactDetails? carContactDetails;
+  String? modelRole;
   ModelObject? modelObject;
   BrandDto? brand;
   BrandModel? brandModel;
@@ -62,10 +62,10 @@ class Car {
 
   Car(
       {this.id,
-      this.portId,
       this.carContactDetails,
       this.brand,
       this.brandModel,
+        this.modelRole,
       this.modelObject,
       this.brandModelExtension,
       this.branch,
@@ -106,9 +106,9 @@ class Car {
   factory Car.fromDto(CarDto json) {
     return Car(
       id: json.id,
-      portId: json.portId,
       carContactDetails: json.carContactDetails,
       brand: json.brand,
+      modelRole: json.modelRole,
       modelObject: json.modelObject,
       brandModel: BrandModel.fromDto(json.brandModel ?? BrandModelDto()),
       brandModelExtension: BrandModelExtension.fromDto(

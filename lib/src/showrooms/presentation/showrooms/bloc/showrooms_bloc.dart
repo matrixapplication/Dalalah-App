@@ -28,7 +28,6 @@ class ShowroomsCubit extends BaseCubit {
         if(allShowrooms.isEmpty){
           throw EmptyListException();
         } else {
-          allShowrooms.addAll(showrooms);
           emit(DataSuccess<List<Showroom>>(allShowrooms));
         }
       },

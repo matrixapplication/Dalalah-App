@@ -74,11 +74,11 @@ class PlatesDetailsScreen extends StatelessWidget {
                                 margin: 10.paddingTop,
                                 onToggleFavorite: onToggleFavorite,
                               )),
-                          Text(
-                            '${plate.letterAr?.toArabicChars() ?? ''}   ${plate.letterEn}',
-                            style: context.bodyLarge,
-                          ),
-                          18.ph,
+                          // Text(
+                          //   '${plate.letterAr?.toArabicChars() ?? ''}   ${plate.letterEn}',
+                          //   style: context.bodyLarge,
+                          // ),
+                          // 18.ph,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

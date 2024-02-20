@@ -136,15 +136,17 @@ class CarHorizontalItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      car.fullName() ?? '',
-                      style: context.headlineSmall.copyWith(
-                        color: AppColors.grey_40,
+                    Expanded(
+                      child: Text(
+                        car.fullName() ?? '',
+                        style: context.headlineSmall.copyWith(
+                          color: AppColors.grey_40,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                    Spacer(),
+
                     FittedBox(
                       child: Row(
                         children: [
@@ -177,7 +179,6 @@ class CarHorizontalItem extends StatelessWidget {
                 ),
               ),
             ),
-            5.ph,
           ],
         ),
       ),

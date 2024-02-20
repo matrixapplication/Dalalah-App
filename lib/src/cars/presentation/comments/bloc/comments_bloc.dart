@@ -27,7 +27,7 @@ class CommentsCubit extends BaseCubit {
       isLastPage = (data.pagination?.totalPages)! <= page;
       comments = data.data?.map((e) => Comment.fromDto(e)).toList() ?? [];
       allComments.addAll(comments);
-      if(comments.isEmpty){
+      if(allComments.isEmpty){
         throw EmptyListException();
       } else {
         emit(DataSuccess<List<Comment>>(allComments));

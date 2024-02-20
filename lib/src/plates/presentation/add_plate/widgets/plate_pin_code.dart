@@ -45,6 +45,9 @@ class PlatePinCode extends BaseStatelessWidget {
           enabled: true,
           textInputAction: TextInputAction.next,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+          onTap: () {
+            pinCodeController.clear();
+          },
           pinTheme: PinTheme(
             activeFillColor: context.cardColor,
             inactiveFillColor: context.cardColor,

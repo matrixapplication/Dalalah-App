@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/buttons/edit_icon_button.dart';
+import '../../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
@@ -128,7 +129,14 @@ class PlateItem extends StatelessWidget {
               onSpecial: onSpecial,
               onDelete: onDelete,
                 isHidePayment: isHidePayment,
-            )
+            ),
+
+            if (plate.isFeatured ?? false)
+              const PositionedDirectional(
+                top: 0,
+                start: 0,
+                child: FeaturedIcon(),
+              ),
           ],
         ),
       ),

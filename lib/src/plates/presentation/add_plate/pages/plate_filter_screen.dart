@@ -70,39 +70,46 @@ class PlateFilterScreen extends BaseStatelessWidget {
               ),
               child: Column(
                 children: [
-                  // FilterItem(
-                  //   title: strings.arabic_letters,
-                  //   controllers: controllersArLetters,
-                  // ),
-                  PlatePinCode(
+                  FilterItem(
                     title: strings.arabic_letters,
-                    pinCodeController: _arController,
-                    keyboardType: TextInputType.text,
-                      validator: (value) => Validation.validateOnlyArabicText(value ?? ''),
+                    controllers: controllersArLetters,
+                    validator: (value) => Validation.validateOnlyArabicText(value ?? ''),
                   ),
-                  PlatePinCode(
+      //             Pinput(
+      //             onCompleted: (pin) => print(pin),
+      //
+      // ),
+      //             PlatePinCode(
+      //               title: strings.arabic_letters,
+      //               pinCodeController: _arController,
+      //               keyboardType: TextInputType.text,
+      //                 validator: (value) => Validation.validateOnlyArabicText(value ?? ''),
+      //             ),
+      //             PlatePinCode(
+      //               title: strings.english_letters,
+      //               pinCodeController: enController,
+      //               keyboardType: TextInputType.text,
+      //               validator: (value) => Validation.validateOnlyEnglishLetters(value ?? ''),
+      //             ),
+      //             PlatePinCode(
+      //               title: strings.numbers,
+      //               pinCodeController: _numController,
+      //               length: 4,
+      //               fieldWidth: 60,
+      //               validator: (value) => Validation.validateOnlyNumbers(value ?? ''),
+      //             ),
+                  FilterItem(
                     title: strings.english_letters,
-                    pinCodeController: enController,
-                    keyboardType: TextInputType.text,
+                    controllers: controllersEnLetters,
                     validator: (value) => Validation.validateOnlyEnglishLetters(value ?? ''),
                   ),
-                  PlatePinCode(
+                  40.ph,
+                  FilterItem(
                     title: strings.numbers,
-                    pinCodeController: _numController,
-                    length: 4,
-                    fieldWidth: 60,
+                    controllers: controllersNumbers,
                     validator: (value) => Validation.validateOnlyNumbers(value ?? ''),
                   ),
-                  // FilterItem(
-                  //   title: strings.english_letters,
-                  //   controllers: controllersEnLetters,
-                  // ),
-                  // 40.ph,
-                  // FilterItem(
-                  //   title: strings.numbers,
-                  //   controllers: controllersNumbers,
-                  // ),
-                  // 10.ph,
+                  10.ph,
                   // if(isAddPage)
                   CustomTextField(
                     title: strings.price,
@@ -159,12 +166,12 @@ class PlateFilterScreen extends BaseStatelessWidget {
       onAddEditPlate!(AddPlateParams(
         id: id,
         cityId: cityId,
-        letterAr: _arController.text.toArabicChars(),
-        letterEn: enController.text,
-        plateNumber: _numController.text,
-        // letterAr: controllersArLetters.map((e) => e.text).join().toArabicChars(),
-        // letterEn: controllersEnLetters.map((e) => e.text).join(),
-        // plateNumber: controllersNumbers.map((e) => e.text).join(),
+        // letterAr: _arController.text.toArabicChars(),
+        // letterEn: enController.text,
+        // plateNumber: _numController.text,
+        letterAr: controllersArLetters.map((e) => e.text).join().toArabicChars(),
+        letterEn: controllersEnLetters.map((e) => e.text).join(),
+        plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,
         price: priceController.text.toInt,
         userId: getUserId,

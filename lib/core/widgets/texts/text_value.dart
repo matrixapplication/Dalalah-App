@@ -1,6 +1,8 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
+import '../../themes/colors.dart';
+
 class TextValue extends StatelessWidget {
   final String? title;
   final Widget? titleWidget;
@@ -45,11 +47,18 @@ class TextValue extends StatelessWidget {
         textDirection: textDirection,
         textAlign: TextAlign.start,
         text: TextSpan(
+          text: '$title : ' ?? '',
+          style: titleStyle ??  context.textTheme.bodySmall!.copyWith(
+            color: AppColors.grey_68,
+            fontSize: 12,
+          ),
           children: [
-            if (isExpanded)
+            // if (isExpanded)
               TextSpan(
-                text: title ?? '',
-                style: titleStyle ?? context.bodyMedium,
+                text: value ?? '',
+                style: valueStyle ?? context.bodyMedium.copyWith(
+                  fontSize: 12,
+                ),
               ),
           ],
         ),

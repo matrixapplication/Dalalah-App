@@ -33,7 +33,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController nameArController = TextEditingController();
   TextEditingController nameEnController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
+  TextEditingController descriptionArController = TextEditingController();
   TextEditingController descriptionEnController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController whatsappController = TextEditingController();
@@ -84,13 +84,13 @@ class UserRegisterScreen extends BaseStatelessWidget {
                     controller: ownerNameEnController,
                   ),
                   AuthTextField(
-                    hint: strings.address_ar,
-                    prefixIcon: AppIcons.location_2,
-                    controller: addressController,
+                    hint: strings.description_ar,
+                    prefixIcon: AppIcons.description,
+                    controller: descriptionArController,
                   ),
                   AuthTextField(
-                    hint: strings.address_en,
-                    prefixIcon: AppIcons.location_2,
+                    hint: strings.description_en,
+                    prefixIcon: AppIcons.description,
                     controller: descriptionEnController,
                   ),
                 ],
@@ -223,7 +223,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
           nameAr: nameArController.text,
           nameEn: nameEnController.text,
           // address: addressController.text,
-          descriptionAr: addressController.text,
+          descriptionAr: descriptionArController.text,
           descriptionEn: descriptionEnController.text,
           email: emailController.text,
           phone: phoneNumberController.text,

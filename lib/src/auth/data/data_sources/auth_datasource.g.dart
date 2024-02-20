@@ -155,11 +155,11 @@ class _AuthDataSource implements AuthDataSource {
       ownerNameEn,
     ));
     _data.fields.add(MapEntry(
-      'address_ar',
+      'description_ar',
       addressAr,
     ));
     _data.fields.add(MapEntry(
-      'address_en',
+      'description_en',
       addressEn,
     ));
     _data.fields.add(MapEntry(

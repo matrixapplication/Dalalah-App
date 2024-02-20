@@ -111,10 +111,12 @@
 // }
 
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/cars/presentation/cars/widgets/custom_square_company_logo.dart';
 import 'package:dalalah/src/cars/presentation/cars_details/widgets/request_for_quotation.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
+import '../../../../../core/widgets/texts/text_value.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
 import '../../../domain/entities/same_car.dart';
@@ -164,49 +166,50 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                 children: [
                   Expanded(
                       flex: 2,
-                      child: CustomSquareCompanyLogo(
-                          logoPath: AppImages.splash_logo)),
+                      child: ImageNetwork(
+                        url: car?.showroom?.image ?? '',
+                        size: 70,
+                        borderWidth: 1,
+                      )),
                   Expanded(
                     flex: 7,
                     //   fit: BoxFit.scaleDown,
                     child: Padding(
                       padding: 5.paddingHoriz,
-                      child: Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                car?.showroom?.ownerName ?? '',
-                                style: context.textTheme.bodySmall!.copyWith(
-                                  color: AppColors.grey_41,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              15.ph,
-                              IconText(
-                                text: car?.city?.name ?? '',
-                                sizedBoxWidth: 5,
-                                textStyle: context.textTheme.bodySmall!.copyWith(
-                                  color: AppColors.grey_68,
-                                ),
-                                icon: AppIcons.location_2,
-                                iconSize: 20,
-                              )
-                            ],
+                          Text(
+                            car?.showroom?.showroomName ?? '',
+                            style: context.textTheme.bodySmall!.copyWith(
+                              color: AppColors.grey_41,
+                              fontSize: 12,
+                            ),
                           ),
-                          const Spacer(),
-                          CustomColumn(
+                          TextValue(
+                            title: strings.address,
+                            value: (car?.showroom?.address ?? '').removeMark,
+                          ),
+                          // IconText(
+                          //   text: car?.showroom?.address ?? '',
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   mainAxisSize: MainAxisSize.min,
+                          //   sizedBoxWidth: 5,
+                          //   textStyle:
+                          //   context.textTheme.bodySmall!.copyWith(
+                          //     color: AppColors.grey_68,
+                          //   ),
+                          //   icon: AppIcons.location_2,
+                          //   iconSize: 20,
+                          // ),
+                          TextValue(
                             title: strings.price,
                             value: car?.price ?? '',
                           ),
-                          const Spacer(),
-                          CustomColumn(
+                          TextValue(
                             title: strings.monthly_installment,
-                            value:
-                                '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
-                            textColor: AppColors.grey_41,
+                            value: '${car?.monthlyInstallment ?? ''} ${context.strings.rs}',
+                            // textColor: AppColors.grey_41,
                           ),
                         ],
                       ),

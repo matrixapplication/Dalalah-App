@@ -81,10 +81,12 @@ class EditProfileScreen extends BaseStatelessWidget {
                   EditTextField(
                     title: strings.description_ar,
                     controller: descArController,
+                    isValidator: false,
                   ),
                   EditTextField(
-                    title: strings.description_ar,
+                    title: strings.description_en,
                     controller: descEnController,
+                    isValidator: false,
                   ),
                 ],
               ),

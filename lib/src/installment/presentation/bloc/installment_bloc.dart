@@ -43,10 +43,10 @@ class InstallmentBloc extends BaseCubit {
         isLastPage = (data.pagination?.totalPages)! <= page;
         cars = data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
         isLastPage ? refreshController.loadNoData() : refreshController.loadComplete();
-        if(cars.isEmpty){
+        allCars.addAll(cars);
+        if(allCars.isEmpty){
           throw EmptyListException();
         } else {
-          allCars.addAll(cars);
           emit(DataSuccess<List<Car>>(allCars));
         }
       },
