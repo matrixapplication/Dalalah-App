@@ -2,7 +2,9 @@
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 import 'core/routes/app_links_service.dart';
 import 'core/themes/light_theme.dart';
@@ -30,11 +32,11 @@ Future<void> main() async {
   )).create());
   injector.registerSingleton(AddCarRepo(injector()));
   runApp(
-    MyApp(token: token),
-    //   DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => MyApp(token: token), // Wrap your app
-    // ),
+    //MyApp(token: token),
+      DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(token: token), // Wrap your app
+    ),
   );
 }
 

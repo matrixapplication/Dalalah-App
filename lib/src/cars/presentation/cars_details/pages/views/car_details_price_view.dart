@@ -42,7 +42,7 @@ class CarDetailsPriceView extends BaseStatelessWidget {
             ),
           ),
           15.ph,
-          if(carDetails.car?.modelRole == Roles.ADMIN)
+          if(carDetails.car?.modelRole != Roles.ADMIN)
           RequestForQuotation(
             onRequestPrice: ()=> onRequestPrice?.call(carDetails.car?.id ?? 0),
           ),

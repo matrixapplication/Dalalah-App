@@ -22,7 +22,8 @@ class CarsHomeListHorizStream extends StatelessWidget {
   final StreamStateInitial<List<Car>?> carsStream;
   final Function(int)? onToggleFavorite;
 
-  const CarsHomeListHorizStream({Key? key, required this.carsStream, required this.onToggleFavorite})
+  const CarsHomeListHorizStream(
+      {Key? key, required this.carsStream, required this.onToggleFavorite})
       : super(key: key);
 
   @override
@@ -33,12 +34,11 @@ class CarsHomeListHorizStream extends StatelessWidget {
           stream: carsStream,
           builder: (context, snapshot) {
             print('snapshot ${snapshot?.length}');
-          return CarsHomeListHoriz(
-            cars: snapshot ?? [],
-            onToggleFavorite: onToggleFavorite,
-          );
-        }
-      ),
+            return CarsHomeListHoriz(
+              cars: snapshot ?? [],
+              onToggleFavorite: onToggleFavorite,
+            );
+          }),
     );
   }
 }
@@ -47,7 +47,8 @@ class CarsHomeListHoriz extends StatelessWidget {
   final List<Car> cars;
   final Function(int)? onToggleFavorite;
 
-  const CarsHomeListHoriz({Key? key, required this.cars, required this.onToggleFavorite})
+  const CarsHomeListHoriz(
+      {Key? key, required this.cars, required this.onToggleFavorite})
       : super(key: key);
 
   @override
@@ -146,7 +147,6 @@ class CarHorizontalItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-
                     FittedBox(
                       child: Row(
                         children: [

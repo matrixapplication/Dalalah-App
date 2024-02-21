@@ -16,7 +16,12 @@ class NotificationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        pushNamed(Routes.carDetailsPage, arguments: notification.carId);
+
+        if(notification.carId != null){
+        pushNamed(
+          notification.type == "approved_showroom_car" ? Routes.carDetailsPage :
+          Routes.plateAppLink, arguments: notification.carId);
+        }
       },
       child: Container(
         alignment: Alignment.center,

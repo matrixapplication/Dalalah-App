@@ -1,3 +1,5 @@
+import 'package:dalalah/core/widgets/snack_bar/snack_bar_manager.dart';
+
 import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../core/widgets/buttons/stack_button.dart';
@@ -115,18 +117,22 @@ class SellCarFirstScreen extends BaseStatelessWidget {
 
   onNextPressed() async {
     if (_formKey.currentState!.validate()) {
-      ProfileDto? user = await HelperMethods.getProfile();
-      onNext?.call(
-        SellCarParams(
-          modelId: user?.id ?? 0,
-          modelRole: user?.role ?? '',
-          status: status ,
-          brandId: brandId,
-          carModelId: carModelId,
-          carModelExtensionId: extensionId,
-          year: year,
-        ),
-      );
+      if (brandId != 0 && carModelId != 0 && extensionId != 0 && year != 0) {
+        ProfileDto? user = await HelperMethods.getProfile();
+        onNext?.call(
+          SellCarParams(
+            modelId: user?.id ?? 0,
+            modelRole: user?.role ?? '',
+            status: status ,
+            brandId: brandId,
+            carModelId: carModelId,
+            carModelExtensionId: extensionId,
+            year: year,
+          ),
+        );
+      } else {
+        SnackBarManager.showErrorSnackBar(strings.please_fill_all_fields);
+      }
     }
   }
 

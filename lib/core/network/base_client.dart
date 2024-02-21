@@ -39,7 +39,7 @@ class HeaderInterceptor extends Interceptor {
     HeaderParams params = await HelperMethods.getHeaderParams();
     options.headers[keyAuthorization] = 'Bearer ${params.token}';
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
-    options.headers[keyRole] = params.role == Roles.USER ? Roles.USER : Roles.SHOWROOM;
+    options.headers[keyRole] = params.role;
     // options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';
     print('-----------------------------------------------------------------------------');
     log('body: ${options.data}');

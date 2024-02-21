@@ -28,6 +28,7 @@ class CarDetailsPropertyItem extends StatelessWidget {
                 child: Text(
                   property.title ?? '',
                   style: context.headlineSmall.copyWith(fontSize: 12),
+                  overflow: TextOverflow.clip,
                 ),
               ),
               FittedBox(child: AppIcon(icon: property.icon, size: property.sizeIcon ?? 18, color: context.primaryColor,)),

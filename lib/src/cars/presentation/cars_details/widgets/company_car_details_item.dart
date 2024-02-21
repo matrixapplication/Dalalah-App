@@ -119,20 +119,23 @@ import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../core/widgets/texts/text_value.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
+import '../../../../showrooms/domain/entities/branch_args.dart';
 import '../../../domain/entities/same_car.dart';
 import '../../cars/widgets/custom_company_container.dart';
 
 class CompanyCarDetailsItem extends BaseStatelessWidget {
   final SameCar? car;
+  final bool? isNew;
   final Function(int)? onRequestPrice;
 
-  CompanyCarDetailsItem({super.key, this.car, this.onRequestPrice});
+  CompanyCarDetailsItem({super.key, this.car, this.onRequestPrice, this.isNew});
 
   @override
   Widget build(BuildContext context) {
     return CustomCompanyContainer(
       // secondButtonLabel: strings.whatsapp,
       // secondButtonIcon: AppIcons.whatsapp,
+      height: 155,
       backgroundColor2: context.primaryColor,
       iconColor2: context.cardColor,
       titleStyle2: context.labelMedium,
@@ -142,7 +145,10 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
       secondOnTap: () {
         pushNamed(
           Routes.branchesPage,
-          arguments: car?.showroom?.id ?? 0,
+          arguments: BranchArgs(
+            id: car?.showroom?.id ?? 0,
+            isEdit: false,
+          )
         );
       },
       centerWidget: PrimaryButton(
@@ -188,7 +194,7 @@ class CompanyCarDetailsItem extends BaseStatelessWidget {
                           ),
                           TextValue(
                             title: strings.address,
-                            value: (car?.showroom?.address ?? '').removeMark,
+                            value: car?.showroom?.address?.replaceAll(',', '') ?? '',
                           ),
                           // IconText(
                           //   text: car?.showroom?.address ?? '',

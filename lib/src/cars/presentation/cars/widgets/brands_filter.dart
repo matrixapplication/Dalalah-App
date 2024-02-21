@@ -80,7 +80,7 @@ class BrandsFilterList extends StatelessWidget {
                         (e) => ChoiceChip(
                       label: ImageNetworkCircle(
                         image: e.image,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                         size: 25,
                         iconErrorSize: 20,
                       ),

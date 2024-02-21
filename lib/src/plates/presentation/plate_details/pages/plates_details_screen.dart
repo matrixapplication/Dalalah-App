@@ -61,6 +61,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   leading: 0.ph,
+                  toolbarHeight: 0,
                   bottom: PreferredSize(
                     preferredSize: const Size.fromHeight(290),
                     child: SingleChildScrollView(

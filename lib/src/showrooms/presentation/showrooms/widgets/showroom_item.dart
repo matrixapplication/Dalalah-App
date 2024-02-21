@@ -44,7 +44,7 @@ class ShowroomItem extends BaseStatelessWidget {
               ColumnTexts(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 title: showroom.showroomName ?? '',
-                value: showroom.address ?? '',
+                value: showroom.address?.replaceAll(',', '') ?? '',
                 titleStyle: context.textTheme.bodyMedium,
                 valueStyle: context.textTheme.displaySmall,
               ),

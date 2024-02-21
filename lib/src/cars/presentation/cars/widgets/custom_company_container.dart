@@ -13,6 +13,7 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   final Decoration? decoration;
   final Widget? centerWidget;
   final TextStyle? titleStyle2;
+  final double? height;
 
   CustomCompanyContainer({
     super.key,
@@ -26,13 +27,14 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   this.centerWidget,
   this.titleStyle2,
     required this.body,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: 20.paddingBottom,
-      height: 155,
+      height: height ?? 155,
       clipBehavior: Clip.antiAlias,
       decoration: decoration ??
           Decorations.kDecorationBorder(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,6 +9,7 @@ import '../../../../core/commen/common_state.dart';
 import '../../../../core/resources/data_state.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../../installment/domain/entities/roles.dart';
 import '../../../payment/data/models/featured_payment_params.dart';
 import '../../../payment/domain/entities/payment_requests.dart';
 import '../../../payment/domain/use_cases/payment_usecase.dart';
@@ -36,6 +38,7 @@ class SellCarCubit extends BaseCubit {
   fetchFirstInitialData(Car? car) async {
     emit(DataLoading());
     try {
+      String role = await HelperMethods.getUserRole();
       final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
@@ -46,7 +49,9 @@ class SellCarCubit extends BaseCubit {
 
       emit(
         FirstPageSellCarState(
-          carStatuses: carStatuses,
+          carStatuses: role == Roles.USER ? carStatuses
+              .where((element) => element.key == CarStatus.usedCar)
+              .toList() : carStatuses,
           brands: brands,
           years: years,
           brandsModelsStream: brandsModelsStream,
@@ -69,21 +74,19 @@ class SellCarCubit extends BaseCubit {
     FeaturedPaymentParams logParams = FeaturedPaymentParams();
     dynamic idOrMsg = 0;
     try {
-
-      if(params.id == null || params.id == 0){
+      if (params.id == null || params.id == 0) {
         idOrMsg = params.status == CarStatus.newCar
             ? await usecase.addNewCar(params)
             : await usecase.sellCar(params);
       } else {
         idOrMsg = await usecase.editCar(params);
       }
-      if(params.adType == AdTypes.featured){
+      if (params.adType == AdTypes.featured) {
         // params.id = idOrMsg;
-         final data = await PaymentRequests.urWayPayment(
+        final data = await PaymentRequests.urWayPayment(
             id: idOrMsg.toString(), amount: featurePrice);
         print('Result in Main is $data');
-         logParams =
-        FeaturedPaymentParams.fromJson(jsonDecode(data));
+        logParams = FeaturedPaymentParams.fromJson(jsonDecode(data));
         logParams.adId = idOrMsg;
         logParams.adType = AdTypes.car;
         idOrMsg = await paymentUseCase.addFeaturedPaymentAd(logParams);
@@ -126,11 +129,12 @@ class SellCarCubit extends BaseCubit {
   }
 
   fetchAdFeature() {
-    executeBuilder(() => paymentUseCase.fetchPaymentStatus(), isRefresh: true, onSuccess: (data)  async {
+    executeBuilder(() => paymentUseCase.fetchPaymentStatus(), isRefresh: true,
+        onSuccess: (data) async {
       print('fetchPaymentStatus ${data.isHide}');
-      if(data.isHide == true){
+      if (data.isHide == true) {
         emit(const DataSuccess<AdFeature?>(null));
-      } else{
+      } else {
         final data2 = await platesUseCase.fetchAdFeature();
         print('fetchAdFeature ${data2}');
         emit(DataSuccess<AdFeature?>(data2));

@@ -40,6 +40,7 @@ class FilterHome extends StatelessWidget {
             iconColor: context.primaryColor,
             space: 12,
             textStyle: textStyle,
+
             onTap: () {
               pushNamed(routeName, arguments: arguments);
             },
