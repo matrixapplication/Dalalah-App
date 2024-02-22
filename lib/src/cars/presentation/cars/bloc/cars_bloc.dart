@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
+import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../../home/data/models/car_filter_params.dart';
@@ -45,9 +46,13 @@ class CarsCubit extends BaseCubit {
           ? carsUseCase.fetchMyCars(page)
           : usecase.fetchCars(params),
       onSuccess: (data) {
-        cars = data;
+        cars = data?.data?.map((e) => Car.fromDto(e)).toList() ?? [];
         allCars.addAll(cars);
-        emit(DataSuccess<List<Car>>(allCars));
+        if(allCars.isEmpty){
+          throw EmptyListException();
+        } else {
+          emit(DataSuccess<List<Car>>(allCars));
+        }
       },
     );
   }

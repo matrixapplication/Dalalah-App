@@ -79,7 +79,7 @@ class HomeCubit extends BaseCubit {
     yourCarsStream.setData(null);
     try { // CarFilterParams(startYear: DateTime.now().year)
       final response = await usecase.fetchCars(CarFilterParams());
-      yourCarsStream.setData(response);
+      yourCarsStream.setData(response.data?.map((e) => Car.fromDto(e)).toList());
     } catch (e) {
       yourCarsStream.setError(e);
     }
@@ -111,6 +111,7 @@ class HomeCubit extends BaseCubit {
   }
 
   Future<List<Car>> fetchCarsBySearch(String search) async {
-    return await usecase.fetchCars(CarFilterParams(search: search));
+    final data=  await usecase.fetchCars(CarFilterParams(search: search));
+    return data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
   }
 }

@@ -36,11 +36,11 @@ class PlateDetailsPage extends BaseBlocWidget<DataSuccess<Plate>, PlatesDetailsC
 
   @override
   List<Widget> actions() {
-    Plate plate = getArguments(context!);
+    final plate = getArguments(context!);
     return [ShareIconButton(
       padding: 15.paddingAll,
       route: Routes.plateAppLink,
-      id: plate.id?.toString() ?? '',
+      id: plate is int ? plate.toString() : (plate as Plate).id.toString(),
       iconColor: context?.cardColor,
       isDecoration: false,
     )];
