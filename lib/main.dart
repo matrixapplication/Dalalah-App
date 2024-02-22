@@ -32,11 +32,11 @@ Future<void> main() async {
   )).create());
   injector.registerSingleton(AddCarRepo(injector()));
   runApp(
-    //MyApp(token: token),
-      DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(token: token), // Wrap your app
-    ),
+    MyApp(token: token),
+    //   DevicePreview(
+    //   enabled: kDebugMode,
+    //   builder: (context) => MyApp(token: token), // Wrap your app
+    // ),
   );
 }
 

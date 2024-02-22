@@ -8,6 +8,7 @@ import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart'
 import 'package:flutter/material.dart';
 
 import '../../../../core/commen/common_state.dart';
+import '../../../../core/components/loading_widget.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/buttons/share_icon_button.dart';
@@ -30,12 +31,15 @@ class CarsHomeListHorizStream extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 260,
-      child: StreamStateWidget<List<Car>?>(
-          stream: carsStream,
+      child: StreamBuilder<List<Car>?>(
+          stream: carsStream.stream,
           builder: (context, snapshot) {
-            print('snapshot ${snapshot?.length}');
-            return CarsHomeListHoriz(
-              cars: snapshot ?? [],
+            final data = snapshot.data;
+            return snapshot.connectionState == ConnectionState.waiting
+                ? const LoadingView()
+                :
+              CarsHomeListHoriz(
+              cars: data ?? [],
               onToggleFavorite: onToggleFavorite,
             );
           }),
@@ -58,13 +62,13 @@ class CarsHomeListHoriz extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: 10.paddingStart,
+        itemCount: cars.length ?? 0,
         itemBuilder: (_, index) {
           return CarHorizontalItem(
             car: cars[index],
             onToggleFavorite: (id) => onToggleFavorite!(cars[index].id ?? 0),
           );
         },
-        itemCount: cars.length ?? 0,
       ),
     );
   }
@@ -115,7 +119,7 @@ class CarHorizontalItem extends StatelessWidget {
                       iconSize: 15,
                       isFavorite: car.isFavorite ?? false,
                       onToggleFavorite: () {
-                        onToggleFavorite!(car.id!);
+                        return onToggleFavorite!(car.id!);
                       },
                     ),
                   ),

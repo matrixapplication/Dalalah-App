@@ -70,7 +70,7 @@ class ProfileScreen extends BaseStatelessWidget {
                       icon: AppIcons.box,
                       subTitle: strings.my_branches,
                       routeName: Routes.branchesPage,
-                      arguments: BranchArgs(role: profile.role, id: profile.id, isEdit: true),
+                      // arguments: BranchArgs(role: profile.role, id: profile.id, isEdit: true),
                     ),
                   if(profile.token != null && profile.role == Roles.USER)
                   ProfileItem(

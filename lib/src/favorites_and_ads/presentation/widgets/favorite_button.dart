@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/assets/app_icons.dart';
 import '../../../../core/utils/helper_methods.dart';
+import '../../../home/presentation/bloc/home_bloc.dart';
 
 ///  Created by harby on 10/11/2023.
 class FavoriteButton extends StatelessWidget {
@@ -25,51 +26,45 @@ class FavoriteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isFavorite = this.isFavorite;
-    return FutureBuilder(
-      future: HelperMethods.isAdmin(),
-      initialData: false,
-      builder: (context, snapshot) {
-        return snapshot.data == true ? 0.ph :
-          Container(
-          margin: margin,
-          decoration: const ShapeDecoration(
-            color: Colors.white,
-            shape: OvalBorder(),
-            shadows: [
-              BoxShadow(
-                color: Color(0x3F8D8D8D),
-                blurRadius: 4,
-                offset: Offset(0, 4),
-                spreadRadius: 0,
-              )
-            ],
-          ),
-          child:  StatefulBuilder(builder: (context, setState) {
-              return AppIconButton(
-                padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
-                size: iconSize ?? 20,
-                icon: icon ?? (isFavorite ? AppIcons.heart_solid : AppIcons.heart),
-                color: context.primaryColor,
-                onPressed: () async {
-                  bool isAuth = await HelperMethods.isAuth();
-                  if(isAuth){
-                    try {
-                      await onToggleFavorite?.call();
-                      isFavorite = !isFavorite;
-                      setState(() {});
-                    } on Exception catch (e) {
-                      print('onToggleFavorite: $e');
-                    }
-                  } else {
-                    DialogsManager.showErrorDialog(context, context.strings.you_must_login_first);
-                  }
-                },
-              );
+    // bool isFavorite = this.isFavorite;
+    return !isGlobalUser == true ? 0.ph :
+    Container(
+      margin: margin,
+      decoration: const ShapeDecoration(
+        color: Colors.white,
+        shape: OvalBorder(),
+        shadows: [
+          BoxShadow(
+            color: Color(0x3F8D8D8D),
+            blurRadius: 4,
+            offset: Offset(0, 4),
+            spreadRadius: 0,
+          )
+        ],
+      ),
+      child:  StatefulBuilder(builder: (context, setState) {
+        return AppIconButton(
+          padding: 7.paddingHoriz + 10.paddingTop + 7.paddingBottom,
+          size: iconSize ?? 20,
+          icon: icon ?? (isFavorite ? AppIcons.heart_solid : AppIcons.heart),
+          color: context.primaryColor,
+          onPressed: () async {
+            bool isAuth = await HelperMethods.isAuth();
+            if(isAuth){
+              try {
+                 await onToggleFavorite?.call();
+               // isFavorite = !isFavorite;
+               //  setState(() {});
+              } on Exception catch (e) {
+                print('onToggleFavorite: $e');
+              }
+            } else {
+              DialogsManager.showErrorDialog(context, context.strings.you_must_login_first);
             }
-          ),
+          },
         );
       }
+      ),
     );
   }
 }

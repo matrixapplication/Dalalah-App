@@ -44,6 +44,8 @@ class HeaderInterceptor extends Interceptor {
     print('-----------------------------------------------------------------------------');
     log('body: ${options.data}');
     log('headers: ${options.headers}');
+    log('method: ${options.method}');
+    log('queryParameters: ${options.queryParameters}');
     super.onRequest(options, handler);
   }
 

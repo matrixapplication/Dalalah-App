@@ -8,6 +8,7 @@ import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/core/widgets/scaffold/app_scaffold.dart';
 import 'package:dalalah/src/cars/presentation/comments/pages/comments_page.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
+import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/assets/app_icons.dart';
@@ -43,7 +44,7 @@ class PlatesDetailsScreen extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 240,
+                height: 250,
                 width: double.infinity,
                 color: context.gray_f8,
               ),
@@ -63,7 +64,7 @@ class PlatesDetailsScreen extends StatelessWidget {
                   leading: 0.ph,
                   toolbarHeight: 0,
                   bottom: PreferredSize(
-                    preferredSize: const Size.fromHeight(290),
+                    preferredSize: Size.fromHeight(isGlobalUser ? 320 : 260),
                     child: SingleChildScrollView(
                       padding: 10.paddingAll,
                       child: Column(
@@ -72,14 +73,15 @@ class PlatesDetailsScreen extends StatelessWidget {
                           Align(
                               alignment: AlignmentDirectional.centerEnd,
                               child: FavoriteButton(
-                                margin: 10.paddingTop,
+                                // margin: 10.paddingTop,
+                                isFavorite: plate.isFavorite ?? false,
                                 onToggleFavorite: onToggleFavorite,
                               )),
                           // Text(
                           //   '${plate.letterAr?.toArabicChars() ?? ''}   ${plate.letterEn}',
                           //   style: context.bodyLarge,
                           // ),
-                          // 18.ph,
+                          10.ph,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

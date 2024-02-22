@@ -3,8 +3,10 @@ import 'package:dalalah/core/components/base_widget_bloc.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/home/presentation/widgets/filter_home.dart';
 import 'package:dalalah/src/plates/domain/entities/plate_args.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../../../core/utils/navigator.dart';
+import '../../../../../core/widgets/pagination/pagination_widget.dart';
 import '../../../../../core/widgets/tabview/animated_tabs_bar.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/plate_filter_params.dart';
@@ -43,7 +45,7 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
     bloc.fetchPlates(getArguments(context!) ?? PlateFilterParams(plateType: type));
     return null;
   }
-
+  PlateFilterParams params = PlateFilterParams(plateType: PlateTypes.private);
   @override
   Widget build(BuildContext context) {
 
@@ -55,7 +57,7 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
             routeName: Routes.plateFilterPage,
             arguments: PlateArgs(isFilter: true),
             onFilterOrder: (filterOrder){
-              PlateFilterParams params = getArguments(context) ?? PlateFilterParams(plateType: type);
+              params = getArguments(context) ?? PlateFilterParams(plateType: type);
               params.order = filterOrder;
               bloc.fetchPlates(params);
             },
@@ -71,9 +73,24 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
   }
 
 
+  RefreshController refreshController = RefreshController();
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Plate>> state) {
-    return PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavorite(id));
+    if (bloc.isLastPage) {
+      refreshController.loadNoData();
+    }
+    return PaginationWidget(
+        refreshController: refreshController,
+        onRefresh: () async {
+          await bloc.fetchPlates(params);
+        },
+        onLoading: () async {
+          await bloc.fetchPlates(params, isRefresh: false);
+          Future.delayed(Duration(milliseconds: 5000), () {
+            refreshController.loadComplete();
+          });
+        },
+        child: PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavorite(id)));
   }
 
   @override
@@ -91,5 +108,10 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
   @override
   bool isAddButton() {
     return true;
+  }
+
+  @override
+  void onSuccessDismissed() {
+    bloc.fetchPlates(params);
   }
 }

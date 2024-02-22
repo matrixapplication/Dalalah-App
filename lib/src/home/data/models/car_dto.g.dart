@@ -48,7 +48,7 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
       isFeatured: json['is_featured'] as bool?,
       isHide: json['is_hide'] as bool?,
       isApproved: json['is_approved'] as bool?,
-      isFavorite: json['is_favorite'] as bool?,
+      isFavourite: json['is_favourite'] as int?,
       price: json['price'] as String?,
       shipping: json['shipping'] as String?,
       customs: json['customs'] == null
@@ -98,7 +98,7 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'is_sold': instance.isSold,
       'is_hide': instance.isHide,
       'is_approved': instance.isApproved,
-      'is_favorite': instance.isFavorite,
+      'is_favourite': instance.isFavourite,
       'price': instance.price,
       'shipping': instance.shipping,
       'customs': instance.customs,

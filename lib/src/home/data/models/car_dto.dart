@@ -56,8 +56,8 @@ class CarDto {
   bool? isHide;
   @JsonKey(name: 'is_approved')
   bool? isApproved;
-  @JsonKey(name: 'is_favorite')
-  bool? isFavorite;
+  @JsonKey(name: 'is_favourite')
+  int? isFavourite;
   @JsonKey(name: 'price')
   String? price;
   @JsonKey(name: 'shipping')
@@ -97,7 +97,7 @@ class CarDto {
   @JsonKey(name: 'new_car_miles')
   dynamic newCarMiles;
 
-  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavorite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole});
+  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole});
 
    factory CarDto.fromJson(Map<String, dynamic> json) => _$CarDtoFromJson(json);
 

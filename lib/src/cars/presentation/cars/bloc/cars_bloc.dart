@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
@@ -37,7 +38,6 @@ class CarsCubit extends BaseCubit {
   fetchCars(CarFilterParams params,
       {bool isRefresh = true, bool isMyCars = false, }) async {
     isRefresh ? {page = 1, allCars.clear()} : page++;
-    print('page onSuccess$page');
     params.page = page;
     executeBuilder(
       isRefresh: isRefresh,
@@ -46,7 +46,7 @@ class CarsCubit extends BaseCubit {
           : usecase.fetchCars(params),
       onSuccess: (data) {
         cars = data;
-        allCars.addAll(data);
+        allCars.addAll(cars);
         emit(DataSuccess<List<Car>>(allCars));
       },
     );

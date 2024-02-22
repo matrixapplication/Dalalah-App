@@ -22,7 +22,9 @@ class PlatesDetailsWidget extends StatelessWidget {
   final Plate plate;
   final Function()? onToggleFavorite;
 
-  const PlatesDetailsWidget({Key? key, required this.plate, this.onToggleFavorite}) : super(key: key);
+  const PlatesDetailsWidget(
+      {Key? key, required this.plate, this.onToggleFavorite})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +35,18 @@ class PlatesDetailsWidget extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            padding: 16.paddingStart,
+            padding: 10.paddingAll,
             margin: 20.paddingBottom,
             decoration: Decorations.kDecorationBorderWithRadius(
                 color: context.scaffoldBackgroundColor,
                 borderColor: context.gray_5c,
-                radius: 50
-            ),
+                radius: 50),
             child: IconText(
               mainAxisAlignment: MainAxisAlignment.start,
               text: plate.user?.name ?? '',
               icon: plate.user?.image ?? '',
-              iconSize: 50,
+              iconSize: 40,
+              imageRadius: 500,
             ),
           ),
           Row(
@@ -52,9 +54,7 @@ class PlatesDetailsWidget extends StatelessWidget {
               Expanded(
                 child: PlatesDetailsProperty(
                   label: context.strings.plate_type,
-                  value: plate.plateType == 'private'
-                      ? 'خصوصي'
-                      : 'نقل',
+                  value: plate.plateType == 'private' ? 'خصوصي' : 'نقل',
                 ),
               ),
               14.pw,
@@ -69,7 +69,7 @@ class PlatesDetailsWidget extends StatelessWidget {
           20.ph,
           PlatesDetailsProperty(
             label: context.strings.announcement_date,
-            value:  plate.createdAt ?? '',
+            value: plate.createdAt ?? '',
           ),
         ],
       ),

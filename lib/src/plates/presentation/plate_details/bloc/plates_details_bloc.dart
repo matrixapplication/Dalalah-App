@@ -1,8 +1,10 @@
+import 'package:dalalah/core/resources/data_state.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
+import '../../../domain/entities/plate.dart';
 import '../../../domain/use_cases/plates_usecase.dart';
 
 @Injectable()
@@ -12,8 +14,12 @@ class PlatesDetailsCubit extends BaseCubit {
 
   PlatesDetailsCubit(this.usecase, this.favoritesUseCase);
 
-  fetchFavorites(int id) async {
-    executeSuccess(() => usecase.fetchPlateDetails(id));
+  fetchPlateDetails({Plate? plate, bool isRefresh = false}) async {
+    if (isRefresh) {
+      executeSuccess(() => usecase.fetchPlateDetails(plate?.id ?? 0));
+    } else {
+      emit(DataSuccess<Plate>(plate!));
+    }
   }
 
   toggleFavorite(int id) async {

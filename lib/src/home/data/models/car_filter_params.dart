@@ -14,7 +14,7 @@ class CarFilterParams {
   int? startYear;
   int? endYear;
 
-  CarFilterParams({this.page = 1, this.limit = 30, this.order, this.status, this.brand, this.carModel, this.search, this.driveType, this.fuelType, this.startPrice, this.endPrice, this.startYear, this.endYear});
+  CarFilterParams({this.page = 1, this.limit = 10, this.order, this.status, this.brand, this.carModel, this.search, this.driveType, this.fuelType, this.startPrice, this.endPrice, this.startYear, this.endYear});
 
    factory CarFilterParams.fromJson(Map<String, dynamic> json) {
       return CarFilterParams(

@@ -123,11 +123,11 @@ class Routes {
     'ar' : (context) => NavigationPages(),
     'en' : (context) => NavigationPages(),
     carAppLink : (context) => CarsDetailsPage(),
-    plateAppLink : (context) => SharePlateDetailsPage(),
+    plateAppLink : (context) => PlateDetailsPage(),
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
-    platesDetailsPage: (context) => PlatesDetailsPage(),
+    platesDetailsPage: (context) => PlateDetailsPage(),
     plateFilterPage: (context) => AddPlatesPage(),
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
@@ -189,7 +189,7 @@ class Routes {
       // case carAppLink:
       //   return pushNamed(carAppLink, arguments: 36);
       case plateAppLink:
-        return CupertinoPageRoute(builder: (_) => SharePlateDetailsPage());
+        return CupertinoPageRoute(builder: (_) => PlateDetailsPage());
     //   case navigationPages:
     //     return CupertinoPageRoute(builder: (_) => NavigationPages());
     //   case login:

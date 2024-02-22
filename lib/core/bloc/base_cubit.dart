@@ -11,7 +11,7 @@ import '../resources/data_state.dart';
 abstract class BaseCubit extends Cubit<DataState>{
   BaseCubit() : super(UnInitState());
 
-  executeSuccess<T>(Future<T> Function() invoke) async {
+  executeSuccess<T>(Future<T> Function() invoke, {Function()? onAfterSuccess }) async {
     try {
       emit(DataLoading());
       final response = await invoke();
@@ -90,9 +90,12 @@ abstract class BaseCubit extends Cubit<DataState>{
     }
   }
 
-  executeEmitterListener(Future Function() invoke) {
+  executeEmitterListener(Future Function() invoke, {ValueChanged? onSuccess}) {
     executeListener(() => invoke(), onSuccess: (v) {
       print('executeEmitterListener $v');
+      if(onSuccess!=null){
+        onSuccess(v);
+      }
       emit((SuccessStateListener<String>(v.toString())));
     });
   }

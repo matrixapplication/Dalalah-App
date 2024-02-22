@@ -27,6 +27,7 @@ class ProfilePage extends BaseBlocWidget<DataSuccess<Profile>, ProfileBloc> {
     DialogsManager.showInfoDialog(context!, message: strings.logout_description,
         onClickOk: () {
       bloc.logout();
+
     });
   }
 

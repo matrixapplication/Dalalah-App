@@ -1,4 +1,5 @@
-import 'package:json_annotation/json_annotation.dart'; 
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'model_object.g.dart'; 
 

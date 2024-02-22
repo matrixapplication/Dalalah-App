@@ -1,3 +1,5 @@
+import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
@@ -13,6 +15,10 @@ import '../../domain/entities/car.dart';
 import '../../domain/entities/slide.dart';
 import '../../domain/use_cases/home_usecase.dart';
 
+// For the purpose of this example, we will use a global variable to check if the user is normal user or showroom user
+bool isGlobalUser = false;
+String useRole = Roles.USER;
+
 @Injectable()
 class HomeCubit extends BaseCubit {
   final HomeUseCase usecase;
@@ -26,6 +32,7 @@ class HomeCubit extends BaseCubit {
   StreamStateInitial<List<Car>?> yourCarsStream = StreamStateInitial();
   StreamStateInitial<List<Plate>?> otherCarsStream = StreamStateInitial();
 
+
   fetchInitialData() async {
     // emit(DataLoading());
     // try {
@@ -38,8 +45,13 @@ class HomeCubit extends BaseCubit {
     // }
     await fetchSlides();
   //  await fetchBrands();
+    isGlobalUser = await HelperMethods.isUser();
+    useRole =  await HelperMethods.getUserRole();
+    print('isUser $isGlobalUser');
+    print('useRole $useRole');
     await fetchYourCars();
-   await fetchOtherCars();
+   await fetchPlates();
+
   }
 
   fetchSlides() async {
@@ -74,11 +86,12 @@ class HomeCubit extends BaseCubit {
   }
 
 
-  fetchOtherCars() async {
+  fetchPlates() async {
     try {
       otherCarsStream.setData(null);
       final response = await platesUseCase.fetchPlates(PlateFilterParams());
-      otherCarsStream.setData(response);
+      final data = response.data?.map((e) => Plate.fromDto(e)).toList();
+      otherCarsStream.setData(data);
     } catch (e) {
       otherCarsStream.setError(e);
     }
@@ -86,12 +99,15 @@ class HomeCubit extends BaseCubit {
 
   Future<void> toggleFavorite(int id) async {
     executeEmitterListener(() =>
-        favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)));
+        favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(carId: id)),  onSuccess: (v) async {
+      await fetchYourCars();
+    });
   }
 
   Future<void> toggleFavoritePlate(int id) async {
-    executeEmitterListener(() =>
-        favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(plateId: id)));
+    executeEmitterListener(() => favoritesUseCase.toggleFavoriteCarOrPlate(AddToFavoriteParams(plateId: id),),  onSuccess: (v) async {
+      await fetchPlates();
+    });
   }
 
   Future<List<Car>> fetchCarsBySearch(String search) async {

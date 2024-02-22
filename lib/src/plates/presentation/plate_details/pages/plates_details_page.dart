@@ -11,25 +11,26 @@ import '../bloc/plates_details_bloc.dart';
 import 'plates_details_screen.dart';
 
 
-class PlatesDetailsPage extends BaseBlocWidget<UnInitState, PlatesDetailsCubit> {
-  PlatesDetailsPage({Key? key}) : super(key: key);
+class PlateDetailsPage extends BaseBlocWidget<DataSuccess<Plate>, PlatesDetailsCubit> {
+  PlateDetailsPage({Key? key}) : super(key: key);
 
-
-  // @override
-  // void loadInitialData(BuildContext context) {
-  //   bloc.fetchFavorites();
-  // }
+  dynamic plateOrId;
+  @override
+  void loadInitialData(BuildContext context) {
+    // we check here because if come from app or from share link
+     plateOrId = getArguments(context);
+    bloc.fetchPlateDetails(plate: plateOrId is int ? Plate(id: plateOrId) : plateOrId, isRefresh: plateOrId is int);
+  }
 
 
   @override
   String? title(context)=> strings.plates;
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
-    Plate plate = getArguments(context);
+  Widget buildWidget(BuildContext context, DataSuccess<Plate> state) {
     return PlatesDetailsScreen(
-        plate: plate,
-      onToggleFavorite: () => bloc.toggleFavorite(plate.id ?? 0),
+        plate: state.data ?? Plate(),
+      onToggleFavorite: () => bloc.toggleFavorite(state.data?.id ?? 0),
     );
   }
 
@@ -43,5 +44,10 @@ class PlatesDetailsPage extends BaseBlocWidget<UnInitState, PlatesDetailsCubit> 
       iconColor: context?.cardColor,
       isDecoration: false,
     )];
+  }
+
+  @override
+  void onSuccessDismissed() {
+    bloc.fetchPlateDetails(isRefresh: true, plate: plateOrId is int ? Plate(id: plateOrId) : plateOrId);
   }
 }

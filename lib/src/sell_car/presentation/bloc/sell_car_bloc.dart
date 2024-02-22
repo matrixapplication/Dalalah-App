@@ -38,7 +38,6 @@ class SellCarCubit extends BaseCubit {
   fetchFirstInitialData(Car? car) async {
     emit(DataLoading());
     try {
-      String role = await HelperMethods.getUserRole();
       final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
@@ -49,9 +48,7 @@ class SellCarCubit extends BaseCubit {
 
       emit(
         FirstPageSellCarState(
-          carStatuses: role == Roles.USER ? carStatuses
-              .where((element) => element.key == CarStatus.usedCar)
-              .toList() : carStatuses,
+          carStatuses: await getCarStatuses(carStatuses),
           brands: brands,
           years: years,
           brandsModelsStream: brandsModelsStream,
@@ -60,6 +57,17 @@ class SellCarCubit extends BaseCubit {
       );
     } on Exception catch (e) {
       emit(DataFailed(e));
+    }
+  }
+
+  Future<List<CarStatus>> getCarStatuses(List<CarStatus> carStatuses) async {
+    String role = await HelperMethods.getUserRole();
+    if (role == Roles.USER) {
+      return carStatuses.where((element) => element.key == CarStatus.usedCar).toList();
+    } else if (role == Roles.AGENCY) {
+      return carStatuses.where((element) => element.key == CarStatus.newCar).toList();
+    } else {
+      return carStatuses;
     }
   }
 

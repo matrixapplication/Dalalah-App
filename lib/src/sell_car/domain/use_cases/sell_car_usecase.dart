@@ -11,6 +11,7 @@ import '../../data/models/port_dto.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../data/models/settings_price_dto.dart';
 import '../../data/repositories/add_car_repo.dart';
+import '../../presentation/bloc/add_new_car_params.dart';
 import '../entities/body_type.dart';
 import '../entities/brand_model.dart';
 import '../entities/brand_model_extension.dart';
@@ -36,7 +37,7 @@ class SellCarUseCase {
   }
 
   Future<dynamic> addNewCar(SellCarParams params) async {
-    final data = await repository.addNewCar(params);
+    final data = await repository.addNewCar(AddNewCarParams.fromParams(params));
     return params.adType == AdTypes.featured ? data.data : data.message;
   }
 

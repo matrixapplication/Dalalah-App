@@ -1,5 +1,7 @@
+import 'package:dalalah/core/widgets/pagination/pagination_widget.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/utils/navigator.dart';
@@ -23,7 +25,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   int tabIndex = 0;
   int brandId = 0;
   int brandModelId = 0;
-  String order = FilterOrderTypes.asc;
+  String order = '';
 
   bool isFilter = true;
 
@@ -111,15 +113,44 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
-    return CarsScreen(
-      isCarDetails: isDetailsPage,
-      cars: state.data ?? [],
-      onToggleFavorite: (id) {
-        bloc.toggleFavorite(id);
+    RefreshController refreshController = RefreshController();
+    if (bloc.cars.isEmpty) {
+      refreshController.loadNoData();
+    }
+    return PaginationWidget(
+      refreshController: refreshController,
+      onRefresh: () async {
+        await bloc.fetchCars(CarFilterParams(
+          status: CarStatus.getStatusByIndex(tabIndex),
+          brand: brandId,
+          order: order,
+          carModel: brandModelId,
+        ));
       },
-      onRequestPrice: (id) {
-        bloc.requestPrice(id);
+      onLoading: () async {
+        await bloc.fetchCars(
+          CarFilterParams(
+            status: CarStatus.getStatusByIndex(tabIndex),
+            brand: brandId,
+            order: order,
+            carModel: brandModelId,
+          ),
+          isRefresh: false,
+        );
+        Future.delayed(Duration(milliseconds: 5000), () {
+          refreshController.loadComplete();
+        });
       },
+      child: CarsScreen(
+        isCarDetails: isDetailsPage,
+        cars: state.data ?? [],
+        onToggleFavorite: (id) {
+          bloc.toggleFavorite(id);
+        },
+        onRequestPrice: (id) {
+          bloc.requestPrice(id);
+        },
+      ),
     );
     // return 0.ph;
   }
@@ -153,6 +184,16 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
 
   @override
   onClickReload() {
+    bloc.fetchCars(CarFilterParams(
+      status: CarStatus.getStatusByIndex(tabIndex),
+      brand: brandId,
+      order: order,
+      carModel: brandModelId,
+    ));
+  }
+
+  @override
+  void onSuccessDismissed() {
     bloc.fetchCars(CarFilterParams(
       status: CarStatus.getStatusByIndex(tabIndex),
       brand: brandId,

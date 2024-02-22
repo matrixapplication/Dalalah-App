@@ -9,6 +9,7 @@ import '../../../../core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../home/data/models/brand_dto.dart';
 import '../../../home/data/models/car_dto.dart';
+import '../../presentation/bloc/add_new_car_params.dart';
 import '../models/admin_car_params.dart';
 import '../models/body_type_dto.dart';
 import '../models/brand_model_dto.dart';
@@ -63,11 +64,11 @@ abstract class SellCarDatasource {
     @Part(name: 'main_image') File file,
     @Part(name: 'images[]') List<File> images,
     @Part(name: 'features[]') List<String> features,
-      @Part(name: 'ad_type') String adType,
+      // @Part(name: 'ad_type') String adType,
   );
 
   @POST('/add-new-car')
-  Future<ApiResponse<int>> addNewCar(@Body() SellCarParams params);
+  Future<ApiResponse<int>> addNewCar(@Body() AddNewCarParams params);
 
   @MultiPart()
   @POST('/edit_car/{id}')

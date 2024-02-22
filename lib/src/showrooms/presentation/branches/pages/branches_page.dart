@@ -43,7 +43,7 @@ class BranchesPage extends BaseBlocWidget<DataSuccess<List<Branch>>, BranchesCub
    isAddButton() {
     BranchArgs? args = getArguments(context!) is BranchArgs ? getArguments(context!) : null;
     print('args?.role: ${args?.role}');
-    return ((args?.role ?? '').isNotEmpty && args?.role != Roles.USER);
+    return args == null;
   }
 
 }

@@ -1,4 +1,5 @@
 import '../../../cars/data/models/model_object.dart';
+import '../../../profile/domain/entities/roles.dart';
 import '../../../sell_car/data/models/body_type_dto.dart';
 import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
@@ -17,6 +18,7 @@ import '../../../showrooms/data/models/branch_dto.dart';
 import '../../../showrooms/domain/entities/branch.dart';
 import '../../data/models/brand_dto.dart';
 import '../../data/models/car_dto.dart';
+import '../../presentation/bloc/home_bloc.dart';
 
 class Car {
   int? id;
@@ -126,7 +128,7 @@ class Car {
       isHide: json.isHide,
       isSold: json.isSold,
       isApproved: json.isApproved,
-      isFavorite: json.isFavorite,
+      isFavorite: json.isFavourite == 1,
       price: json.price,
       shipping: json.shipping,
       customs: json.customs,
@@ -154,6 +156,8 @@ class Car {
   }
 
   String fullName() {
-    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''} ${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''} ${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
+    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
   }
+
+  bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && !(modelRole != Roles.ADMIN));
 }

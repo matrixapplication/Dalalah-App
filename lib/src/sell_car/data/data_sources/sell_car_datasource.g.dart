@@ -47,7 +47,6 @@ class _SellCarDatasource implements SellCarDatasource {
     File file,
     List<File> images,
     List<String> features,
-    String adType,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -157,10 +156,6 @@ class _SellCarDatasource implements SellCarDatasource {
     features.forEach((i) {
       _data.fields.add(MapEntry('features[]', i));
     });
-    _data.fields.add(MapEntry(
-      'ad_type',
-      adType,
-    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
@@ -187,7 +182,7 @@ class _SellCarDatasource implements SellCarDatasource {
   }
 
   @override
-  Future<ApiResponse<int>> addNewCar(SellCarParams params) async {
+  Future<ApiResponse<int>> addNewCar(AddNewCarParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

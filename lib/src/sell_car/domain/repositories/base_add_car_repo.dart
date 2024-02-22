@@ -21,12 +21,13 @@ import '../../data/models/fuel_type_dto.dart';
 import '../../data/models/port_dto.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../data/models/settings_price_dto.dart';
+import '../../presentation/bloc/add_new_car_params.dart';
 
 abstract class BaseAddCarRepo{
 
   Future<ApiResponse<int>> addCar(SellCarParams params);
 
-  Future<ApiResponse<int>> addNewCar(SellCarParams params);
+  Future<ApiResponse<int>> addNewCar(AddNewCarParams params);
 
   Future<ApiResponse<int>> editCar(SellCarParams params);
 

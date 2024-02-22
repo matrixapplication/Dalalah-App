@@ -48,7 +48,7 @@ class CustomCompanyContainer extends BaseStatelessWidget {
               flex: 3,
               child: body),
           SizedBox(
-            height: 38,
+            height: 40,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),

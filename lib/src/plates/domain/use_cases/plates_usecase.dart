@@ -1,4 +1,6 @@
 
+import 'package:dalalah/core/network/api_response.dart';
+import 'package:dalalah/src/plates/data/models/plate_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../cars/data/models/add_special_params.dart';
@@ -15,9 +17,8 @@ class PlatesUseCase {
 
   PlatesUseCase(this.repository);
 
-  Future<List<Plate>> fetchPlates(PlateFilterParams params) async {
-   final data = await repository.fetchPlates(params);
-    return data.data!.map((e) => Plate.fromDto(e)).toList();
+  Future<ApiResponse<List<PlateDto>>> fetchPlates(PlateFilterParams params) async {
+   return  await repository.fetchPlates(params);
   }
 
   Future<Plate> fetchPlateDetails(int id) async {

@@ -60,4 +60,8 @@ class CarsDetailsPage extends BaseBlocWidget<DataSuccess<CarDetails>, CarsDetail
   //   );
   // }
 
+@override
+  void onSuccessDismissed() {
+    loadInitialData(context!);
+  }
 }

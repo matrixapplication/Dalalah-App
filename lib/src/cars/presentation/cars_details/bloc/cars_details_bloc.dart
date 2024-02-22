@@ -15,7 +15,7 @@ class CarsDetailsCubit extends BaseCubit {
   CarsDetailsCubit(this.usecase, this.favoritesUseCase, this.priceRequestsUseCase);
 
   Future<void> fetchCarDetails(int id) async {
-    executeSuccess(() => usecase.fetchCarDetails(id));
+    executeSuccess(() => usecase.fetchCarDetails(id), );
   }
 
   Future<void> toggleFavorite(int id) async {
