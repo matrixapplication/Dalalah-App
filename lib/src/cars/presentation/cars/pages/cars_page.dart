@@ -111,11 +111,16 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
     );
   }
 
+  // RefreshController refreshController = RefreshController();
+
+  RefreshController refreshController = RefreshController();
+
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Car>> state) {
-    RefreshController refreshController = RefreshController();
-    if (bloc.cars.isEmpty) {
+    if (bloc.isLastPage) {
       refreshController.loadNoData();
+    } else {
+      refreshController.loadComplete();
     }
     return PaginationWidget(
       refreshController: refreshController,
@@ -137,9 +142,6 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
           ),
           isRefresh: false,
         );
-        Future.delayed(Duration(milliseconds: 5000), () {
-          refreshController.loadComplete();
-        });
       },
       child: CarsScreen(
         isCarDetails: isDetailsPage,

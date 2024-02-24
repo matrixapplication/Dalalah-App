@@ -21,7 +21,7 @@ class MyAdStatus extends BaseStatelessWidget {
         ChipAd(
           text: strings.sold ?? "",
         ),
-        if(isApproved)
+        if(!isApproved)
         ChipAd(
           text: strings.pending ?? "",
         ),

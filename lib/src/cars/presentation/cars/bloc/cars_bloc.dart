@@ -35,6 +35,7 @@ class CarsCubit extends BaseCubit {
   List<Car> allCars = [];
   List<Car> cars = [];
   int page = 1;
+  bool isLastPage = false;
 
   fetchCars(CarFilterParams params,
       {bool isRefresh = true, bool isMyCars = false, }) async {
@@ -46,7 +47,8 @@ class CarsCubit extends BaseCubit {
           ? carsUseCase.fetchMyCars(page)
           : usecase.fetchCars(params),
       onSuccess: (data) {
-        cars = data?.data?.map((e) => Car.fromDto(e)).toList() ?? [];
+        isLastPage = data.pagination?.currentPage == data.pagination?.totalPages;
+        cars = data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
         allCars.addAll(cars);
         if(allCars.isEmpty){
           throw EmptyListException();

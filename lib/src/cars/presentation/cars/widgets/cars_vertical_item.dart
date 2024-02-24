@@ -103,10 +103,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Spacer(),
-                    if (isMyCar &&
-                        car.isSold == false &&
-                        car.isHide == false &&
-                        car.isApproved == false)
+                    if (isMyCar)
                       MyAdStatus(
                         isSold: car.isSold ?? false,
                         isHidden: car.isHide ?? false,
@@ -182,6 +179,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                             },
                           ),
                   ),
+                  if(car.isApproved ?? false)
                   PositionedDirectional(
                     bottom: 5,
                     end: 5,

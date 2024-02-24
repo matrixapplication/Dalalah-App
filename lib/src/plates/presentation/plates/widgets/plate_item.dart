@@ -85,6 +85,7 @@ class PlateItem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      if(plate.isApproved ?? false)
                       ShareIconButton(
                         route: Routes.plateAppLink,
                         id: plate.id.toString() ?? '',
@@ -117,7 +118,7 @@ class PlateItem extends StatelessWidget {
                   MyAdStatus(
                     isSold: plate.isSold ?? false,
                     isHidden: plate.isHide ?? false,
-                    isApproved: plate.isFeatured ?? false,
+                    isApproved: plate.isApproved ?? false,
                   ),
               ],
             ),
