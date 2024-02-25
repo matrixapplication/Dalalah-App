@@ -10,19 +10,19 @@ import '../../../plates/presentation/plates/widgets/packages_list.dart';
 
 class AddPremiumScreen extends BaseStatelessWidget {
   final AdFeature? adFeature;
-  final bool isDisableSaveButton;
+  final bool isFromMyAds;
   final Function(String)? onSave;
 
   AddPremiumScreen(
       {Key? key,
       required this.adFeature,
       this.onSave,
-      this.isDisableSaveButton = false})
+      this.isFromMyAds = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool isPremium = false;
+    bool isPremium = isFromMyAds;
     StreamStateInitial<bool> isPremiumStream = StreamStateInitial<bool>();
     return Padding(
       padding: 16.paddingAll + (kToolbarHeight).paddingTop,
@@ -46,8 +46,9 @@ class AddPremiumScreen extends BaseStatelessWidget {
             DistinguishAdWidget(),
             16.ph,
             PackagesList(
+    isFromMyAds: isFromMyAds,
               adFeature: adFeature ?? AdFeature(),
-              onChange: (value) {
+              onChange: isFromMyAds ? null : (value) {
                 isPremium = value;
                 isPremiumStream.setData(isPremium);
               },
@@ -55,7 +56,7 @@ class AddPremiumScreen extends BaseStatelessWidget {
           ],
           const Spacer(),
           StreamBuilder<bool>(
-            initialData: false,
+            initialData: isFromMyAds,
             stream: isPremiumStream.stream,
             builder: (context, snapshot) {
               return PrimaryButton(

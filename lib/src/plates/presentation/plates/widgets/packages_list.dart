@@ -5,13 +5,14 @@ import '../../../domain/entities/ad_feature.dart';
 
 class PackagesList extends StatelessWidget {
   final AdFeature adFeature;
+  final bool isFromMyAds;
   final Function(bool)? onChange;
 
-  const PackagesList({super.key, required this.adFeature, this.onChange});
+  const PackagesList({super.key, required this.adFeature, this.onChange, this.isFromMyAds = false});
 
   @override
   Widget build(BuildContext context) {
-    bool isPremium = false;
+    bool isPremium = isFromMyAds;
     return Container(
       padding: 12.paddingAll,
       margin: 12.paddingBottom,
@@ -25,6 +26,7 @@ class PackagesList extends StatelessWidget {
                 return Checkbox(
                   value: isPremium,
                   onChanged: (value) {
+                    if (isFromMyAds) return;
                     isPremium = !isPremium;
                     onChange?.call(isPremium);
                     setState(() {});

@@ -104,9 +104,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
             }
           }
           else if (value == 4) {
-            if (onSpecial != null) {
-              pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
-            }
+            pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
           }
           else if (value == 5) {
             if (onSold != null) {

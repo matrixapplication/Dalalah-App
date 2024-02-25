@@ -20,7 +20,7 @@ class AddPremiumADPage
   Widget buildWidget(BuildContext context, DataSuccess<AdFeature?> state) {
     return AddPremiumScreen(
       adFeature: state.data,
-      isDisableSaveButton: true,
+      isFromMyAds: true,
       onSave: (adType) {
         ADArgs args = getArguments(context);
         bloc.addFeaturedPaymentAd(
