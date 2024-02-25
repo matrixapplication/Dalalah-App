@@ -78,10 +78,11 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
               brandsStream: bloc.brandsStream,
               onFilter: (value) {
                 brandId = value;
-                if (value == 0) return bloc.fetchCars(CarFilterParams());
+                if (value == 0) return bloc.fetchCars(CarFilterParams(status: CarStatus.getStatusByIndex(tabIndex)));
                 bloc.fetchCars(CarFilterParams(
                     brand: value,
                     order: order,
+
                     status: CarStatus.getStatusByIndex(tabIndex)));
                 bloc.fetchBrandModels(value);
               },

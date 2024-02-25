@@ -12,7 +12,6 @@ AddNewCarParams _$AddNewCarParamsFromJson(Map<String, dynamic> json) =>
       price: json['price'] as int?,
       description: json['description'] as String?,
       monthlyInstallment: json['monthly_installment'] as int?,
-      newCarMiles: json['new_car_miles'] as int?,
       adType: json['ad_type'] as String?,
     );
 
@@ -22,6 +21,5 @@ Map<String, dynamic> _$AddNewCarParamsToJson(AddNewCarParams instance) =>
       'price': instance.price,
       'description': instance.description,
       'monthly_installment': instance.monthlyInstallment,
-      'new_car_miles': instance.newCarMiles,
       'ad_type': instance.adType,
     };

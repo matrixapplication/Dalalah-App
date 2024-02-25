@@ -13,12 +13,10 @@ class AddNewCarParams {
   String? description;
   @JsonKey(name: 'monthly_installment')
   int? monthlyInstallment;
-  @JsonKey(name: 'new_car_miles')
-  int? newCarMiles;
   @JsonKey(name: 'ad_type')
   String? adType;
 
-  AddNewCarParams({this.carId, this.price, this.description, this.monthlyInstallment, this.newCarMiles, this.adType});
+  AddNewCarParams({this.carId, this.price, this.description, this.monthlyInstallment, this.adType});
 
    // factory AddNewCarParams.fromJson(Map<String, dynamic> json) => _$AddNewCarParamsFromJson(json);
 
@@ -30,7 +28,6 @@ class AddNewCarParams {
       price: json.price,
       description: json.description,
       monthlyInstallment: json.installment,
-      newCarMiles: json.newCarMiles,
       adType: json.adType,
     );
   }

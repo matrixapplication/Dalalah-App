@@ -217,7 +217,7 @@ class _ProfileDataSource implements ProfileDataSource {
     final _headers = <String, dynamic>{};
     final _data = FormData();
     _data.files.add(MapEntry(
-      'image',
+      'logo',
       MultipartFile.fromFileSync(
         image.path,
         filename: image.path.split(Platform.pathSeparator).last,

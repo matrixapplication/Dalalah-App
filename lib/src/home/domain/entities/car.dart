@@ -61,6 +61,7 @@ class Car {
   List<ImageDto>? images;
   List<Feature>? features;
   dynamic newCarMiles;
+  bool? isUserHideCar;
 
   Car(
       {this.id,
@@ -103,6 +104,7 @@ class Car {
       this.images,
       this.features,
       this.newCarMiles,
+      this.isUserHideCar,
       });
 
   factory Car.fromDto(CarDto json) {
@@ -148,6 +150,7 @@ class Car {
       images: json.images,
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
       newCarMiles: json.newCarMiles,
+        isUserHideCar: json.userCarStatus == 1,
     );
   }
 
@@ -159,5 +162,5 @@ class Car {
     return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
   }
 
-  bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && !(modelRole != Roles.ADMIN));
+  bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && (modelRole != Roles.ADMIN));
 }

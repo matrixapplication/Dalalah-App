@@ -34,7 +34,7 @@ class EditProfileBloc extends BaseCubit {
 
   editProfileImage(File file) async {
     bool isShowroom = await HelperMethods.isAdmin();
-    executeEmitterListener(() => isShowroom ? usecase.editLogoShowroom(file) : usecase.editProfileImage(file));
+    executeEmitterListener(() => isShowroom ? usecase.editProfileImageShowroom(file) : usecase.editProfileImage(file));
   }
 
 

@@ -96,8 +96,9 @@ class CarVerticalItem extends BaseStatelessWidget {
                     4.ph,
                     Text(
                       "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
-                      style: context.textTheme.labelLarge!.copyWith(
+                      style: context.labelLarge!.copyWith(
                         color: AppColors.grey_2C,
+                        fontSize: 14,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -106,8 +107,9 @@ class CarVerticalItem extends BaseStatelessWidget {
                     if (isMyCar)
                       MyAdStatus(
                         isSold: car.isSold ?? false,
-                        isHidden: car.isHide ?? false,
+                        isHidden: car.isUserHideCar ?? false,
                         isApproved: car.isApproved ?? false,
+                        isHiddenByAdmin: car.isHide ?? false,
                       ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

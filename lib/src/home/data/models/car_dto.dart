@@ -96,8 +96,10 @@ class CarDto {
   List<FeatureDto>? features;
   @JsonKey(name: 'new_car_miles')
   dynamic newCarMiles;
+  @JsonKey(name: 'user_car_status')
+  int? userCarStatus;
 
-  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole});
+  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole, this.userCarStatus});
 
    factory CarDto.fromJson(Map<String, dynamic> json) => _$CarDtoFromJson(json);
 

@@ -38,7 +38,7 @@ abstract class  ProfileDataSource{
   Future<ApiResponse<ProfileDto>> editProfileDataShowroom(@Body() RegisterParams params);
 
   @POST('/edit-showroom-image')
-  Future<ApiResponse<ProfileDto>> editProfileImageShowroom(@Part(name: 'image') File image);
+  Future<ApiResponse<ProfileDto>> editProfileImageShowroom(@Part(name: 'logo') File image);
 
   @POST('/edit-showroom')
   Future<ApiResponse<ProfileDto>> editLogoShowroom(@Part(name: 'logo') File image);

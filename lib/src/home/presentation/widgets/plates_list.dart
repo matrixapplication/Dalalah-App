@@ -11,6 +11,7 @@ import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/presentation/plates/widgets/plate_image.dart';
 
@@ -84,6 +85,12 @@ class PlateVert extends StatelessWidget {
                     plate: plate,
                   ),
                 ),
+                if (plate.isFeatured ?? false)
+                  const PositionedDirectional(
+                    top: 8,
+                    start: 10,
+                    child: FeaturedIcon(),
+                  ),
                 PositionedDirectional(bottom: 0,
                   // height: 50,
                   start: 0,

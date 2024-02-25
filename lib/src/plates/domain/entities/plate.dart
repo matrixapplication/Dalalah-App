@@ -22,8 +22,9 @@ class Plate {
   ProfileDto? user;
   bool? isFavorite;
   String? createdAt;
+  bool? isUserHide;
 
-  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.createdAt});
+  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.isUserHide, this.createdAt});
 
    factory Plate.fromDto(PlateDto json) {
      return Plate(
@@ -44,6 +45,7 @@ class Plate {
        user: json.user,
         isFavorite: json.isFavorite,
        createdAt: json.createdAt ?? '',
+         isUserHide: json.userCarStatus == 1,
      );
    }
 }

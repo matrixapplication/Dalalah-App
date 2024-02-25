@@ -28,7 +28,7 @@ class PlateItem extends StatelessWidget {
   const PlateItem({
     Key? key,
     required this.plate,
-     this.onFavoritePlate,
+    this.onFavoritePlate,
     this.isSeeAll = false,
     this.isMyPlate = false,
     this.isHidePayment = false,
@@ -77,19 +77,19 @@ class PlateItem extends StatelessWidget {
             Column(
               children: [
                 PlateImage(
-                    plate: plate,
+                  plate: plate,
                   isSeeAll: isSeeAll,
                 ),
                 Padding(
-                  padding:10.paddingHoriz,
+                  padding: 10.paddingHoriz,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if(plate.isApproved ?? false)
-                      ShareIconButton(
-                        route: Routes.plateAppLink,
-                        id: plate.id.toString() ?? '',
-                      ),
+                      if (plate.isApproved ?? false)
+                        ShareIconButton(
+                          route: Routes.plateAppLink,
+                          id: plate.id.toString() ?? '',
+                        ),
                       // Text(
                       //   '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
                       //   style: context.bodyMedium,
@@ -104,34 +104,38 @@ class PlateItem extends StatelessWidget {
                       //         circleSize: 40,
                       //       )
                       //     :
-                      if(!isMyPlate)
-                      FavoriteButton(
-                              isFavorite: plate.isFavorite  ?? false,
-                        onToggleFavorite: () => onFavoritePlate!(plate.id ?? 0),
-                        iconSize: 15,
-                            ),
+                      if (!isMyPlate)
+                        FavoriteButton(
+                          isFavorite: plate.isFavorite ?? false,
+                          onToggleFavorite: () =>
+                              onFavoritePlate!(plate.id ?? 0),
+                          iconSize: 15,
+                        ),
                     ],
                   ),
                 ),
-
-                if(isMyPlate)
+                if (isMyPlate)
                   MyAdStatus(
                     isSold: plate.isSold ?? false,
-                    isHidden: plate.isHide ?? false,
+                    isHidden: plate.isUserHide ?? false,
                     isApproved: plate.isApproved ?? false,
+                    isHiddenByAdmin: plate.isHide ?? false,
                   ),
               ],
             ),
-            if(isMyPlate)
-            CarOperationsPopup(
-              plate: plate,
-              onHide: onHide,
-              onSold: onSold,
-              onSpecial: onSpecial,
-              onDelete: onDelete,
-                isHidePayment: isHidePayment,
-            ),
-
+            if (isMyPlate)
+              PositionedDirectional(
+                top: 0,
+                end: 0,
+                child: CarOperationsPopup(
+                  plate: plate,
+                  onHide: onHide,
+                  onSold: onSold,
+                  onSpecial: onSpecial,
+                  onDelete: onDelete,
+                  isHidePayment: isHidePayment,
+                ),
+              ),
             if (plate.isFeatured ?? false)
               const PositionedDirectional(
                 top: 0,

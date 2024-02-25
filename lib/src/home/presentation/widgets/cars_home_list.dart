@@ -14,6 +14,7 @@ import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
+import '../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../cars/presentation/cars_details/widgets/car_info.dart';
 import '../../../sell_car/domain/entities/car_status.dart';
 import '../../domain/entities/car.dart';
@@ -112,8 +113,15 @@ class CarHorizontalItem extends StatelessWidget {
                     width: double.infinity,
                     height: 140,
                   ),
+
+                  if (car.isFeatured ?? false)
+                    const PositionedDirectional(
+                      top: 8,
+                      start: 10,
+                      child: FeaturedIcon(),
+                    ),
                   PositionedDirectional(
-                    top: 8,
+                    bottom: 8,
                     start: 10,
                     child: FavoriteButton(
                       iconSize: 15,
@@ -124,7 +132,7 @@ class CarHorizontalItem extends StatelessWidget {
                     ),
                   ),
                   PositionedDirectional(
-                    top: 10,
+                    bottom: 8,
                     end: 10,
                     child: ShareIconButton(
                       route: Routes.carAppLink,

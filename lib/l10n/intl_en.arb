@@ -392,5 +392,6 @@
   "must_be_numbers": "Must be numbers",
   "exit_app_msg": "Are you sure you want to exit the app?",
   "please_fill_all_fields": "Please fill all fields",
-  "required": "Required"
+  "required": "Required",
+  "hidden_by_admin": "Hidden by admin"
 }
