@@ -11,11 +11,11 @@ class PaymentRequests{
     try {
       ProfileDto? profile = await HelperMethods.getProfile();
       print('profile is ${profile?.toJson()}');
+
       final data = await Payment.makepaymentService(
           context: injector<ServicesLocator>().navigatorKey.currentContext!,
           country: "SA",
-          trackid:
-          "${profile?.id ?? '0'}$id${DateTime.now().millisecondsSinceEpoch}",
+          trackid: "${profile?.id ?? '0'}$id${DateTime.now().millisecondsSinceEpoch}",
           currency: "SAR",
           action: "1",
           amt: amount,
@@ -31,7 +31,10 @@ class PaymentRequests{
           state: "Pending",
           tokenizationType: "1",
           zipCode: "",
-          tokenOperation: "A/U/D", metadata:"");
+          tokenOperation: "A/U/D", metadata:"",
+      );
+
+
       print('Result in Main is $data');
       return data;
     } on Exception catch (e) {

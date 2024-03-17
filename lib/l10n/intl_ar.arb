@@ -380,5 +380,6 @@
   "not_special": "غير مميز",
   "must_be_numbers": "يجب أن يكون أرقام فقط",
   "exit_app_msg": "هل تريد الخروج من التطبيق؟",
-  "hidden_by_admin": "مخفي من قبل الادارة"
+  "hidden_by_admin": "مخفي من قبل الادارة",
+  "dalalah_treaty": "معاهدة الدلالة"
 }

@@ -83,7 +83,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
               15.ph,
               if(car.status?.key == CarStatus.usedCar)
               PickerCarImages(
-                  initialMainImage: car.mainImage ?? '',
+                  initialMainImage: car.mainImage,
                   initialImages: car.images,
                 onEditCarImage: car.id != null ? onEditCarImage : null,
                 onAddCarImage: onAddCarImage,
@@ -103,7 +103,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'معاهدة دلاله',
+                      strings.dalalah_treaty,
                       style: context.headlineLarge.copyWith(
                         fontSize: 18, ),
                       textAlign: TextAlign.justify,

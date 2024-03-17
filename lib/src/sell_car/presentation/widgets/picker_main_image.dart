@@ -59,12 +59,15 @@ class PickerMainImage extends StatelessWidget {
                                 height: 100,
                                 width: 120,
                               )
-                            : Image.asset(
-                                AppImages.photo,
-                                height: 35,
-                                width: 35,
-                                fit: BoxFit.contain,
-                              ),
+                            : Padding(
+                      padding: 10.paddingTop,
+                              child: Image.asset(
+                                  AppImages.photo,
+                                  height: 35,
+                                  width: 35,
+                                  fit: BoxFit.contain,
+                                ),
+                            ),
                     PrimaryIconButton(
                       height: 45,
                       icon: '',
