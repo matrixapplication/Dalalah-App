@@ -16,8 +16,6 @@ class SliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int sliderIndex = 0;
-    // print('snapshot slide ${snapshot.f}');
     return Container(
       width: double.infinity,
       margin: 16.paddingHoriz,
@@ -35,12 +33,9 @@ class SliderWidget extends StatelessWidget {
             itemCount: snapshot?.length ?? 0,
             index: (snapshot?.length ?? 0) - 1,
             itemBuilder: (BuildContext context, int index) {
-              print('snapshot slide ${snapshot?[index]}');
               final slide = snapshot?[index];
               return  GestureDetector(
                 onTap: () async {
-                  print('slide?.showroomId ${slide?.showroomId}');
-                  print('slide?.url ${slide?.url}');
 
                   if(slide?.showroomId != null && slide?.showroomId != 0){
                     pushNamed(Routes.showroomDetailsPage, arguments: slide?.showroomId);
