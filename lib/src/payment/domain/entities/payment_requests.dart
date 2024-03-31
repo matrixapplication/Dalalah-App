@@ -1,8 +1,8 @@
-import 'package:urwaypayment/urwaypayment.dart';
 
 import '../../../../core/utils/helper_methods.dart';
 import '../../../main_index.dart';
 import '../../../profile/data/models/profile_dto.dart';
+import '../../src/urwaypayment.dart';
 
 class PaymentRequests{
 

@@ -1,8 +1,8 @@
 
-import 'package:urwaypayment/urwaypayment.dart';
 
 import '../../../main_index.dart';
 import '../../domain/entities/package.dart';
+import '../../src/urwaypayment.dart';
 
 class PaymentScreen extends BaseStatelessWidget {
   final List<Package> packages;

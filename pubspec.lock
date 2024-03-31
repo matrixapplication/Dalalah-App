@@ -42,7 +42,7 @@ packages:
     source: hosted
     version: "3.5.0"
   apple_pay_flutter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: apple_pay_flutter
       sha256: cfcd9bb17c739282c7404d018639678505eda6e6bc306421a3a76e6d261cbbff
@@ -234,7 +234,7 @@ packages:
     source: hosted
     version: "1.17.2"
   connectivity_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: connectivity_plus
       sha256: "224a77051d52a11fbad53dd57827594d3bd24f945af28bd70bab376d68d437f0"
@@ -250,7 +250,7 @@ packages:
     source: hosted
     version: "1.2.4"
   convert:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: convert
       sha256: "0f08b14755d163f6e2134cb58222dd25ea2a2ee8a195e53983d57c075324d592"
@@ -266,7 +266,7 @@ packages:
     source: hosted
     version: "0.3.3+5"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: ff625774173754681d66daaf4a448684fb04b78f902da9cb3d308c19cc5e8bab
@@ -290,7 +290,7 @@ packages:
     source: hosted
     version: "1.0.5"
   dart_ipify:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dart_ipify
       sha256: "3b70d589504126107e81ad0703d91394cc8e2039cb0a11ebd92b9b824a5e9561"
@@ -322,7 +322,7 @@ packages:
     source: hosted
     version: "1.1.0"
   device_info_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: device_info_plus
       sha256: "77f757b789ff68e4eaf9c56d1752309bd9f7ad557cb105b938a7f8eb89e59110"
@@ -362,7 +362,7 @@ packages:
     source: hosted
     version: "2.3.9"
   email_validator:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: email_validator
       sha256: e9a90f27ab2b915a27d7f9c2a7ddda5dd752d6942616ee83529b686fc086221b
@@ -942,7 +942,7 @@ packages:
     source: hosted
     version: "2.1.0"
   package_info_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: package_info_plus
       sha256: "7e76fad405b3e4016cd39d08f455a4eb5199723cf594cd1b8916d47140d93017"
@@ -1022,7 +1022,7 @@ packages:
     source: hosted
     version: "2.2.0"
   permission_handler:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: permission_handler
       sha256: "284a66179cabdf942f838543e10413246f06424d960c92ba95c84439154fcac8"
@@ -1474,14 +1474,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
-  urwaypayment:
-    dependency: "direct main"
-    description:
-      name: urwaypayment
-      sha256: "99753df9fc5a46efd2cfa3b2d8d65424bb5169f76a2c55b21211f3561a0c183d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   uuid:
     dependency: transitive
     description:
@@ -1555,7 +1547,7 @@ packages:
     source: hosted
     version: "3.0.4"
   webview_flutter_android:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: webview_flutter_android
       sha256: "8b3b2450e98876c70bfcead876d9390573b34b9418c19e28168b74f6cb252dbd"
@@ -1571,7 +1563,7 @@ packages:
     source: hosted
     version: "1.9.5"
   webview_flutter_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: webview_flutter_plus
       sha256: bea8756ae096529254725def7c4a633851a785c7d49206e0817125ab02b14307

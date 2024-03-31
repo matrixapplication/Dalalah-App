@@ -102,7 +102,19 @@ dependencies:
   share_plus: ^7.2.1
 
   # payment packages
-  urwaypayment: ^2.0.2
+  permission_handler: ^11.0.1
+
+  convert: ^3.0.0
+  crypto: ^3.0.3
+  connectivity_plus: ^5.0.1
+  email_validator: ^2.0.1
+  device_info_plus: ^9.1.0
+  dart_ipify: ^1.1.1
+  apple_pay_flutter: ^1.0.1
+  package_info_plus: ^4.2.0
+  webview_flutter_plus: ^0.3.0
+  webview_flutter_android: ^2.10.4
+#  urwaypayment: ^2.0.2
   facebook_app_events: ^0.19.0
   responsive_sizer: ^3.3.0+1
 
