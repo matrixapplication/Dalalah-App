@@ -18,7 +18,7 @@ class CustomTextField extends BaseStatelessWidget {
   final Widget? suffixIcon;
   final int? maxLines;
   final Color? colorBorderSide;
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? contentPadding;
   final double? radius;
   final bool isValidator;
@@ -45,7 +45,7 @@ class CustomTextField extends BaseStatelessWidget {
     this.prefixIcon,
     this.maxLines,
     this.colorBorderSide,
-    this.padding,
+    this.margin,
     this.contentPadding,
     this.suffixIcon,
     this.radius,
@@ -62,7 +62,7 @@ class CustomTextField extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Container(
-      padding: padding ?? EdgeInsets.zero,
+      padding: margin ?? EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

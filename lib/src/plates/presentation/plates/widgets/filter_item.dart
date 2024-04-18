@@ -46,7 +46,7 @@ class FilterItem extends BaseStatelessWidget {
                     ? itemsLetters[index]
                     : itemsNumber[index],
                 controller: controllers[index],
-                padding: 8.paddingHoriz,
+                margin: 8.paddingHoriz,
                 labelStyle: context.labelSmall,
                keyboardType: keyboardType,
                maxLength: 1,
