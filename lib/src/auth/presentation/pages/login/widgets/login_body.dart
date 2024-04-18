@@ -83,9 +83,7 @@ class LoginBody extends BaseStatelessWidget {
               },
             ),
 
-
-            if(isUser)
-           ...[20.ph,
+            20.ph,
             Center(
               child: FittedBox(
                 child: Row(
@@ -103,7 +101,6 @@ class LoginBody extends BaseStatelessWidget {
                 ),
               ),
             ),
-           ],
             20.ph,
             Align(
               alignment: Alignment.center,

@@ -67,11 +67,15 @@ class ImageNetwork extends StatelessWidget {
         borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
         child: FadeInImage.assetNetwork(
           fit: fit ?? BoxFit.cover,
-          placeholder: 'assets/images/loading.gif',
-         // placeholderScale: 20,
-          placeholderCacheHeight: 5,
-          placeholderCacheWidth: 5,
-          placeholderFit: BoxFit.contain,
+          placeholder: 'assets/logo/logo_loading.gif',
+         placeholderErrorBuilder: (c, o, s) {
+            // print('placeholderErrorBuilder error  $s ');
+            return Image.asset('assets/logo/logo_loading.gif',scale: 5);
+          },
+         placeholderScale: 20,
+         //  placeholderCacheHeight: 100,
+         //  placeholderCacheWidth: 100,
+          placeholderFit: BoxFit.scaleDown,
           image: url ?? '',
           width: size ?? height,
           height: size ?? width,

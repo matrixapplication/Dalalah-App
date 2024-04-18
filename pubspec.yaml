@@ -117,7 +117,7 @@ dependencies:
   webview_flutter_android: ^2.10.4
 #  urwaypayment: ^2.0.2
   facebook_app_events: ^0.19.0
-  responsive_sizer: ^3.3.0+1
+#  responsive_sizer: ^3.3.0+1
 
 
 dev_dependencies:
@@ -161,12 +161,10 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    - assets/images/done.png
     - assets/images/error.gif
     - assets/images/loading.gif
-    - assets/images/on_boarding1.png
-    - assets/images/on_boarding3.png
-    - assets/images/plate_background.png
+    - assets/logo/logo.gif
+    - assets/logo/logo_light.gif
     - assets/images/success.gif
     - assets/logo/
     - assets/logo/splash.png

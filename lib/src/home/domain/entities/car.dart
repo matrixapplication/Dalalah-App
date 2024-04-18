@@ -4,6 +4,7 @@ import '../../../sell_car/data/models/body_type_dto.dart';
 import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
 import '../../../sell_car/data/models/car_status_dto.dart';
+import '../../../sell_car/data/models/city_dto.dart';
 import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
@@ -11,6 +12,7 @@ import '../../../sell_car/domain/entities/body_type.dart';
 import '../../../sell_car/domain/entities/brand_model.dart';
 import '../../../sell_car/domain/entities/brand_model_extension.dart';
 import '../../../sell_car/domain/entities/car_status.dart';
+import '../../../sell_car/domain/entities/city.dart';
 import '../../../sell_car/domain/entities/drive_type.dart';
 import '../../../sell_car/domain/entities/feature.dart';
 import '../../../sell_car/domain/entities/fuel_type.dart';
@@ -62,6 +64,8 @@ class Car {
   List<Feature>? features;
   dynamic newCarMiles;
   bool? isUserHideCar;
+  City? city;
+
 
   Car(
       {this.id,
@@ -105,6 +109,7 @@ class Car {
       this.features,
       this.newCarMiles,
       this.isUserHideCar,
+      this.city,
       });
 
   factory Car.fromDto(CarDto json) {
@@ -151,6 +156,7 @@ class Car {
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
       newCarMiles: json.newCarMiles,
         isUserHideCar: json.userCarStatus == 1,
+      city: City.fromDto(json.city ?? CityDto()),
     );
   }
 

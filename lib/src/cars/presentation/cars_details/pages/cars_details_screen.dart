@@ -85,7 +85,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 635 : 700.0,
+          expandedHeight: isNew ? 635 : 710.0,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(

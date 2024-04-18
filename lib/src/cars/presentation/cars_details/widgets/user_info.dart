@@ -16,7 +16,7 @@ class UserInfo extends StatelessWidget {
     return   Container(
       alignment: Alignment.center,
       padding: 5.paddingVert + 10.paddingHoriz,
-      margin: 20.paddingTop,
+      margin: 5.paddingTop,
       decoration: Decorations.kDecorationBorderWithRadius(
           color: context.scaffoldBackgroundColor,
           borderColor: context.gray_5c,

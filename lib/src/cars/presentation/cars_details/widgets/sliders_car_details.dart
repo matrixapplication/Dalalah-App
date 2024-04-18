@@ -15,7 +15,7 @@ class SlidersCarDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showImages(context),
+      onTap: isDialog ? null : () => showImages(context),
       child: SizedBox(
         height: height,
         child: Swiper(

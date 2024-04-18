@@ -8,6 +8,7 @@ import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart'
 import 'package:flutter/material.dart';
 
 import '../../../../core/commen/common_state.dart';
+import '../../../../core/components/base_stateless_widget.dart';
 import '../../../../core/components/loading_widget.dart';
 import '../../../../core/decorations/decorations.dart';
 import '../../../../core/routes/routes.dart';
@@ -31,7 +32,7 @@ class CarsHomeListHorizStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 275,
       child: StreamBuilder<List<Car>?>(
           stream: carsStream.stream,
           builder: (context, snapshot) {
@@ -59,7 +60,7 @@ class CarsHomeListHoriz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 270,
+      height: 275,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: 10.paddingStart,
@@ -75,11 +76,11 @@ class CarsHomeListHoriz extends StatelessWidget {
   }
 }
 
-class CarHorizontalItem extends StatelessWidget {
+class CarHorizontalItem extends BaseStatelessWidget {
   final Car car;
   final Function(int)? onToggleFavorite;
 
-  const CarHorizontalItem({
+  CarHorizontalItem({
     super.key,
     required this.car,
     this.onToggleFavorite,
@@ -92,7 +93,7 @@ class CarHorizontalItem extends StatelessWidget {
         Navigator.pushNamed(context, Routes.carDetailsPage, arguments: car.id);
       },
       child: Container(
-        width: 250,
+        width: 270,
         padding: const EdgeInsets.all(5),
         margin: 5.paddingStart + 10.paddingEnd,
         clipBehavior: Clip.antiAlias,
@@ -149,16 +150,22 @@ class CarHorizontalItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Text(
-                        car.fullName() ?? '',
-                        style: context.headlineSmall.copyWith(
-                          color: AppColors.grey_40,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                    Text(
+                      car.fullName() ?? '',
+                      style: context.headlineSmall.copyWith(
+                        color: AppColors.grey_40,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
+                    5.ph,
+                    IconText(
+                      text: 'Jada',
+                      textStyle: bodySmall,
+                      icon: AppIcons.yellow_location,
+                      iconSize: 20,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                    ),
+                    5.ph,
                     FittedBox(
                       child: Row(
                         children: [

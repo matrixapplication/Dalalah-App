@@ -7,6 +7,7 @@ import '../../assets/app_icons.dart';
 import '../../decorations/decorations.dart';
 import '../buttons/app_icon.dart';
 import '../pagination/loading_widget.dart';
+import '../text-field/custom_text_field.dart';
 
 class DropDownField extends StatelessWidget {
   final List<DropDownItem> items;
@@ -67,6 +68,7 @@ class DropDownField extends StatelessWidget {
   Widget build(BuildContext context) {
     Color? colorBorderSide = isDecoration ? context.cardColor : context.colorScheme.outline;
     Color? fillColor = context.cardColor;
+    TextEditingController controller = TextEditingController();
     return Container(
       margin: margin ?? 10.paddingVert - 8.paddingBottom,
       decoration: isDecoration
@@ -87,6 +89,7 @@ class DropDownField extends StatelessWidget {
             child: DropdownButtonFormField2<DropDownItem>(
               isExpanded: true,
               value: getDropDownItemById(valueId.toString()),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: inputDecoration ?? InputDecoration(
                 // Add Horizontal padding using menuItemStyleData.padding so it matches
                 // the menu padding when button's width is not specified.
@@ -170,6 +173,8 @@ class DropDownField extends StatelessWidget {
               ),
               dropdownStyleData: DropdownStyleData(
                 maxHeight: 200,
+                // offset: Offset(0, 0),
+                openInterval: const Interval(0.25, 0.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(radius ?? 8),
                   boxShadow: [
@@ -183,6 +188,25 @@ class DropDownField extends StatelessWidget {
               ),
               menuItemStyleData: const MenuItemStyleData(
                 padding: EdgeInsets.symmetric(horizontal: 16),
+              ),
+              dropdownSearchData: DropdownSearchData(
+                searchInnerWidgetHeight: 50,
+                searchController: controller,
+                searchInnerWidget: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomTextField(
+                    hintText: context.strings.search_here,
+                    controller: controller,
+                    prefixIcon: Icon(Icons.search, color: context.primaryColor),
+                    isValidator: false,
+                  ),
+                ),
+                searchMatchFn: (DropdownMenuItem<DropDownItem> item, String text) {
+                  return item.value?.title
+                      ?.toLowerCase()
+                      .contains(text.toLowerCase()) ??
+                      false;
+                },
               ),
             ),
           ),

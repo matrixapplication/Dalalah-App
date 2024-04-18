@@ -63,7 +63,7 @@ class AppScaffold extends StatelessWidget {
     return DefaultTabController(
       length: tabs == null ? 0 : tabs!.length,
       child: Scaffold(
-        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        // resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         body: body,
         // extendBody: true,
         backgroundColor: backgroundColor ?? theme.scaffoldBackgroundColor,

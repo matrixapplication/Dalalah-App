@@ -5,6 +5,7 @@ import '../../../sell_car/data/models/body_type_dto.dart';
 import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
 import '../../../sell_car/data/models/car_status_dto.dart';
+import '../../../sell_car/data/models/city_dto.dart';
 import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/feature_dto.dart';
@@ -98,8 +99,10 @@ class CarDto {
   dynamic newCarMiles;
   @JsonKey(name: 'user_car_status')
   int? userCarStatus;
+  @JsonKey(name: 'city')
+  CityDto? city;
 
-  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole, this.userCarStatus});
+  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole, this.userCarStatus, this.city});
 
    factory CarDto.fromJson(Map<String, dynamic> json) => _$CarDtoFromJson(json);
 

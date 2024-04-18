@@ -3,6 +3,7 @@ import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
 import '../../../../../core/widgets/buttons/share_icon_button.dart';
+import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
@@ -60,7 +61,7 @@ class CarVerticalItem extends BaseStatelessWidget {
       ),
       child: Container(
         // isAds ? 250 :
-        height: 160,
+        height: 165,
         width: 200,
         margin: (bottomMargin ?? 14).paddingBottom,
         decoration: bottomMargin == 0
@@ -103,7 +104,15 @@ class CarVerticalItem extends BaseStatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Spacer(),
+                    const Spacer(),
+                    IconText(
+                      text: 'Jada',
+                      textStyle: bodySmall,
+                      icon: AppIcons.yellow_location,
+                      iconSize: 20,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                    ),
+                    5.ph,
                     if (isMyCar)
                       MyAdStatus(
                         isSold: car.isSold ?? false,

@@ -1,3 +1,5 @@
+import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
+
 import '../../../main_index.dart';
 
 class AuthWidget extends StatelessWidget {
@@ -23,6 +25,12 @@ class AuthWidget extends StatelessWidget {
           child: Image.asset(AppImages.logo_white, ),
         ),
         Align(alignment: Alignment.center, child: child),
+        PositionedDirectional(
+            top: 40,
+            start: 20,
+            child: CustomBackButton(
+    isPrimaryColor: false,
+    ))
       ],
     );
   }
