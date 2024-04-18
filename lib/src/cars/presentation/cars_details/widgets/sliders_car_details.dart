@@ -1,7 +1,6 @@
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
-import '../../../../../core/widgets/buttons/app_circular_icon_button.dart';
 import '../../../../main_index.dart';
 
 ///  Created by harby on 9/6/2023.
@@ -9,8 +8,9 @@ class SlidersCarDetails extends StatelessWidget {
   final double height;
   final bool isDialog;
   final List<String> images;
+  final Function(int)? onIndexChanged;
 
-  SlidersCarDetails({super.key, required this.images, this.height = 300, this.isDialog = false});
+  SlidersCarDetails({super.key, required this.images, this.height = 300, this.isDialog = false, this.onIndexChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,6 @@ class SlidersCarDetails extends StatelessWidget {
         height: height,
         child: Swiper(
           itemCount: images.length,
-          index: images.length - 1,
           itemBuilder: (BuildContext context, int index) {
             return ImageNetwork(
               padding: (isDialog ? 0 : 20).paddingBottom,
@@ -69,26 +68,49 @@ class SlidersCarDetails extends StatelessWidget {
           autoplayDelay: 5000,
           autoplayDisableOnInteraction: true,
           allowImplicitScrolling: false,
+          onIndexChanged: onIndexChanged,
         ),
       ),
     );
   }
 
   showImages(BuildContext context) {
+    StreamStateInitial<int> streamStateInitial = StreamStateInitial<int>();
     showModalBottomSheet(
       context: context,
+isScrollControlled: true,
+      backgroundColor: Colors.black,
       builder: (BuildContext context) {
         return Stack(
           children: [
             SlidersCarDetails(
               images: images,
-              height: 400,
+              height: double.infinity,
               isDialog: true,
+                onIndexChanged: (index) {
+                  streamStateInitial.setData(index + 1);
+                },
             ),
             const PositionedDirectional(
-              top: 0,
+              top: 35,
               start: 0,
               child: CustomBackButton(isPrimaryColor: true),
+            ),
+             Align(
+              alignment: AlignmentDirectional.topCenter,
+              child: Padding(
+                padding: 45.paddingTop,
+                child: StreamBuilder<int>(
+                  stream: streamStateInitial.stream,
+                  initialData: 1,
+                  builder: (context, snapshot) {
+                    return Text(
+                      '${snapshot.data}/${images.length}',
+                      style: context.labelMedium.copyWith(fontSize: 20),
+                    );
+                  }
+                ),
+              ),
             ),
           ],
         );

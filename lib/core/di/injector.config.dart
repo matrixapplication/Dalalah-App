@@ -53,11 +53,6 @@ import '../../src/favorites_and_ads/presentation/my_ads/bloc/my_cars_bloc.dart'
     as _i64;
 import '../../src/favorites_and_ads/presentation/my_ads/bloc/my_plates_bloc.dart'
     as _i96;
-import '../../src/filter/data/data_sources/filter_datasource.dart' as _i9;
-import '../../src/filter/data/repositories/filter_repo.dart' as _i33;
-import '../../src/filter/domain/repositories/base_filter_repo.dart' as _i32;
-import '../../src/filter/domain/use_cases/filter_usecase.dart' as _i60;
-import '../../src/filter/presentation/bloc/filter_bloc.dart' as _i91;
 import '../../src/home/data/data_sources/home_datasource.dart' as _i11;
 import '../../src/home/data/repositories/home_repo.dart' as _i37;
 import '../../src/home/domain/repositories/base_home_repo.dart' as _i36;
@@ -178,7 +173,6 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i7.CarsDatasource>(() => _i7.CarsDatasource(gh<_i4.Dio>()));
   gh.factory<_i8.FavoritesDatasource>(
       () => _i8.FavoritesDatasource(gh<_i4.Dio>()));
-  gh.factory<_i9.FilterDatasource>(() => _i9.FilterDatasource(gh<_i4.Dio>()));
   gh.factory<_i10.ForgotPasswordDataSource>(
       () => _i10.ForgotPasswordDataSource(gh<_i4.Dio>()));
   gh.factory<_i11.HomeDatasource>(() => _i11.HomeDatasource(gh<_i4.Dio>()));
@@ -214,8 +208,6 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i28.BaseCarsRepo>(() => _i29.CarsRepo(gh<_i7.CarsDatasource>()));
   gh.factory<_i30.BaseFavoritesRepo>(
       () => _i31.FavoritesRepo(gh<_i8.FavoritesDatasource>()));
-  gh.factory<_i32.BaseFilterRepo>(
-      () => _i33.FilterRepo(gh<_i9.FilterDatasource>()));
   gh.factory<_i34.BaseForgotPasswordRepo>(
       () => _i35.ForgotPasswordRepo(gh<_i10.ForgotPasswordDataSource>()));
   gh.factory<_i36.BaseHomeRepo>(() => _i37.HomeRepo(gh<_i11.HomeDatasource>()));
@@ -244,8 +236,6 @@ Future<_i1.GetIt> $initGetIt(
       () => _i58.CommentsCubit(gh<_i57.CarsUseCase>()));
   gh.factory<_i59.FavoritesUseCase>(
       () => _i59.FavoritesUseCase(gh<_i30.BaseFavoritesRepo>()));
-  gh.factory<_i60.FilterUseCase>(
-      () => _i60.FilterUseCase(gh<_i32.BaseFilterRepo>()));
   gh.factory<_i61.ForgotPasswordUseCase>(
       () => _i61.ForgotPasswordUseCase(gh<_i34.BaseForgotPasswordRepo>()));
   gh.factory<_i62.HomeUseCase>(() => _i62.HomeUseCase(gh<_i36.BaseHomeRepo>()));
@@ -331,8 +321,6 @@ Future<_i1.GetIt> $initGetIt(
       ));
   gh.factory<_i90.FavoritePlatesCubit>(
       () => _i90.FavoritePlatesCubit(gh<_i59.FavoritesUseCase>()));
-  gh.factory<_i91.FilterCubit>(
-      () => _i91.FilterCubit(gh<_i60.FilterUseCase>()));
   gh.factory<_i92.FollowedShowroomsCubit>(
       () => _i92.FollowedShowroomsCubit(gh<_i77.ShowroomsUseCase>()));
   gh.factory<_i93.ForgotPasswordCubit>(

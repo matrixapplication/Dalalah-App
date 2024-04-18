@@ -3,6 +3,7 @@ import 'package:dalalah/src/home/data/models/car_filter_params.dart';
 
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
+import '../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../main_index.dart';
 import '../../cars/widgets/brand_models_filter.dart';
 import '../../cars/widgets/brands_filter.dart';
@@ -28,6 +29,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
     String status = '';
     String fulTypeId = '';
     int brandModelId = 0;
+    int cityId = 0;
 
     return SingleChildScrollView(
       padding: 16.paddingAll,
@@ -41,6 +43,19 @@ class CarsSearchScreen extends BaseStatelessWidget {
                 .toList(),
             onSelected: (value) {
               status = value?.id ?? '';
+            },
+          ),
+          DropDownField(
+            title: strings.city,
+            titleStyle:  context.textTheme.labelLarge,
+            items: state.cities
+                .map((e) => DropDownItem(
+                id: e.id?.toString() ?? '', title: e.name))
+                .toList(),
+            hint: context.strings.city,
+            // isDecoration: true,
+            onChanged: (value) {
+              cityId = int.parse(value?.id ?? '0');
             },
           ),
           10.ph,
@@ -118,6 +133,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
                     driveType: driveTypeId,
                     fuelType: fulTypeId,
                     carModel: brandModelId,
+                    cityId: cityId,
                   ));
             },
           ),

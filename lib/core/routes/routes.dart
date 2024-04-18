@@ -1,4 +1,3 @@
-import 'package:dalalah/core/utils/navigator.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../navigation_pages.dart';
@@ -15,7 +14,6 @@ import '../../src/cars/presentation/cars_search/pages/cars_search_page.dart';
 import '../../src/cars/presentation/comments/pages/comments_page.dart';
 import '../../src/favorites_and_ads/presentation/favorites_tabs.dart';
 import '../../src/favorites_and_ads/presentation/my_ads/pages/add_premium_ad_page.dart';
-import '../../src/filter/presentation/pages/filter_page.dart';
 import '../../src/home/presentation/pages/home_page.dart';
 import '../../src/add__ads/pages/sections_screen.dart';
 import '../../src/installment/presentation/pages/installment_page.dart';
@@ -26,7 +24,6 @@ import '../../src/payment/presentation/pages/payment_page.dart';
 import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
-import '../../src/plates/presentation/plate_details/pages/share_plates_details_page.dart';
 import '../../src/price_requests/presentation/pages/price_requests_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
@@ -156,7 +153,6 @@ class Routes {
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),
     favoritesAndAdsPage: (context) => FavoritesAndAdsTabs(),
-    filterPage: (context) => FilterPage(),
     sortByPage: (context) => SortByPage(),
     paymentPage: (context) => PaymentPage(),
 
