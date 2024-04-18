@@ -96,8 +96,8 @@ class CarVerticalItem extends BaseStatelessWidget {
                   children: [
                     4.ph,
                     Text(
-                      "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
-                      style: context.labelLarge!.copyWith(
+                      car.fullName(),
+                      style: context.labelLarge.copyWith(
                         color: AppColors.grey_2C,
                         fontSize: 14,
                       ),
@@ -106,7 +106,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                     ),
                     const Spacer(),
                     IconText(
-                      text: 'Jada',
+                      text: car.city?.name ?? '',
                       textStyle: bodySmall,
                       icon: AppIcons.yellow_location,
                       iconSize: 20,

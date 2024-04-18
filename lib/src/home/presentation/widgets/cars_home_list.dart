@@ -150,16 +150,19 @@ class CarHorizontalItem extends BaseStatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      car.fullName() ?? '',
-                      style: context.headlineSmall.copyWith(
-                        color: AppColors.grey_40,
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        car.fullName() ?? '',
+                        style: context.headlineSmall.copyWith(
+                          color: AppColors.grey_40,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      overflow: TextOverflow.ellipsis,
                     ),
                     5.ph,
                     IconText(
-                      text: 'Jada',
+                      text: car.city?.name ?? '',
                       textStyle: bodySmall,
                       icon: AppIcons.yellow_location,
                       iconSize: 20,
