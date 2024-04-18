@@ -22,7 +22,7 @@ class SearchHome extends StatelessWidget {
         const HomeHeader(),
         10.ph,
         CustomTextField(
-          padding: 16.paddingHoriz,
+          margin: 16.paddingHoriz,
          // radius: 50,
    //   fillColor: Color(0xff95989A),
           maxHeight: 70,

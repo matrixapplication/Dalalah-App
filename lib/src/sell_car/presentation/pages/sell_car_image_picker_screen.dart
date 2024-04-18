@@ -6,22 +6,27 @@ import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
 import '../../../../core/utils/navigator.dart';
 import '../../../../core/widgets/checkbox/custom_checkbox.dart';
+import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/edit_image_params.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/city.dart';
 import '../widgets/picker_car_images.dart';
 
 class SellCarImagePickerScreen extends BaseStatelessWidget {
   final Car car;
+  final List<City> cities;
   final Function(SellCarParams) onSave;
   final Function(EditImageCarParams)? onEditCarImage;
   final Function(EditImageCarParams)? onAddCarImage;
   final Function(int)? onDeleteCarImage;
 
   SellCarImagePickerScreen(
-      {Key? key, required this.car, required this.onSave,
+      {Key? key, required this.car,
+        required this.cities,
+        required this.onSave,
         this.onEditCarImage,
         this.onAddCarImage,
         this.onDeleteCarImage,
@@ -37,6 +42,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
   List<File> imagesSelected = [];
   final _formKey = GlobalKey<FormState>();
   StreamStateInitial<bool> isNextPressedStream = StreamStateInitial<bool>();
+  int cityId = 0;
   @override
   Widget build(BuildContext context) {
     _initialValues();
@@ -66,13 +72,28 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 controller: priceController,
                 keyboardType: TextInputType.number,
               ),
-              10.ph,
               if(car.status?.key == CarStatus.newCar)
               CustomTextField(
                 title: strings.installment_value_monthly,
                 hintText: strings.enter_installment_value,
                 keyboardType: TextInputType.number,
                 controller: installmentController,
+                  margin: 10.paddingBottom,
+              ),
+              DropDownField(
+                title: strings.city,
+                titleStyle:  context.textTheme.labelLarge,
+                items: cities
+                    .map((e) => DropDownItem(
+                    id: e.id?.toString() ?? '', title: e.name))
+                    .toList(),
+                hint: context.strings.city,
+                // isDecoration: true,
+                valueId: cityId.toString(),
+                  margin: 0.paddingAll,
+                onChanged: (value) {
+                  cityId = int.parse(value?.id ?? '0');
+                },
               ),
               10.ph,
               CustomTextField(
@@ -146,6 +167,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
           description: descController.text.trim(),
           mainImage: mainImage,
           images: imagesSelected,
+          cityId: cityId,
         ),
       );
   }
@@ -157,6 +179,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
       priceController.text = car.price?.toString().removeMark ?? '';
       installmentController.text = car.monthlyInstallment?.toString().removeMark ?? '';
       descController.text = car.description ?? '';
+      cityId = car.city?.id ?? 0;
       // mainImage = File(car.mainImage ?? '');
       // imagesSelected = car.images?.map((e) => File(e.image ?? '')).toList() ?? [];
     }

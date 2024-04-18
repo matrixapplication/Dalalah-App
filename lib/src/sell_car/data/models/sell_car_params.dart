@@ -68,8 +68,10 @@ class SellCarParams {
   String? adType;
   @JsonKey(name: 'new_car_miles')
   dynamic newCarMiles;
+  @JsonKey(name: 'city_id')
+  int? cityId;
 
-  SellCarParams({this.id, this.carId, this.brandId, this.modelId, this.modelRole, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.color, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment, this.adType, this.newCarMiles});
+  SellCarParams({this.id, this.carId, this.brandId, this.modelId, this.modelRole, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.color, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment, this.adType, this.newCarMiles, this.cityId});
 
    factory SellCarParams.fromJson(Map<String, dynamic> json) => _$SellCarParamsFromJson(json);
 

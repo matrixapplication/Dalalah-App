@@ -7,18 +7,19 @@ import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
 import '../../domain/entities/car_status.dart';
+import '../../domain/entities/city.dart';
 import '../../domain/entities/sell_car_args.dart';
 import '../bloc/sell_car_image_picker_bloc.dart';
 import '../widgets/header_sell_car.dart';
 
-class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
+class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<List<City>>,
     SellCarImagePickerCubit> {
   SellCarImagePickerPage({Key? key}) : super(key: key);
 
-  // @override
-  // void loadInitialData(BuildContext context) {
-  //   bloc.fetchInitialData();
-  // }
+  @override
+  void loadInitialData(BuildContext context) {
+    bloc.fetchCities();
+  }
 
   // @override
   // String? title(BuildContext context) => '';
@@ -34,9 +35,10 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
   }
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
+  Widget buildWidget(BuildContext context, DataSuccess<List<City>> state) {
     SellCarArgs args = getArguments(context);
     return SellCarImagePickerScreen(
+        cities: state.data ?? [],
         car: args.car ?? Car(status: CarStatus(key: args.params?.status ?? '')),
         onSave: (params) {
           // if id is null or 0 then it's new car
@@ -46,9 +48,8 @@ class SellCarImagePickerPage extends BaseBlocWidget<UnInitState,
           args.params?.description = params.description;
           args.params?.mainImage = params.mainImage;
           args.params?.images = params.images;
-          print('params features ${args.params?.features}');
+          args.params?.cityId = params.cityId;
           pushNamed(Routes.addCarPremiumPage, arguments: args.params);
-          // bloc.sellCar(args.params ?? SellCarParams());
         },
       onAddCarImage: (params) {
         params.carId = args.car?.id;

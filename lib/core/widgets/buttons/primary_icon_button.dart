@@ -41,7 +41,7 @@ class PrimaryIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Container(
-      padding: padding ?? const EdgeInsets.symmetric(vertical: 8),
+      padding: padding ?? const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
       width: width,
       height: height,
       decoration: decoration ??
@@ -54,24 +54,27 @@ class PrimaryIconButton extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         radius: 100,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title!,
-              style: titleStyle ?? theme.textTheme.labelMedium,
-              textAlign: TextAlign.center,
-            ),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title!,
+                style: titleStyle ?? theme.textTheme.labelMedium,
+                textAlign: TextAlign.center,
+              ),
 
-            const SizedBox(width: 10),
-            iconData != null
-                ? Icon(
-              iconData,
-              color: iconColor,
-            )
-                : AppIcon(icon: icon!, color: iconColor, size: 20),
-          ],
+              const SizedBox(width: 10),
+              iconData != null
+                  ? Icon(
+                iconData,
+                color: iconColor,
+              )
+                  : AppIcon(icon: icon!, color: iconColor, size: 20),
+            ],
+          ),
         ),
       ),
     );

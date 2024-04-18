@@ -108,7 +108,7 @@ class InstallmentScreen extends BaseStatelessWidget {
                           controller: personalFinanceAcceptController,
                           hintText: strings.enter_the_value_in_saudi_riyals,
                             keyboardType: TextInputType.number,
-                            padding: 15.paddingBottom,
+                            margin: 15.paddingBottom,
                         ) : 0.ph;
                       }
                     ),
@@ -144,7 +144,7 @@ class InstallmentScreen extends BaseStatelessWidget {
                           return snapshot.data! ?
                           CustomTextField(
                             controller: mortgageAcceptController,
-                            padding: 15.paddingBottom,
+                            margin: 15.paddingBottom,
                             keyboardType: TextInputType.number,
                             hintText: strings.enter_the_value_in_saudi_riyals,
                           ) : 0.ph;
