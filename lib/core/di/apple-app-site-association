@@ -1,18 +1,15 @@
 {
   "applinks": {
-      "apps": [],
-      "details": [
+    "apps": [],
+    "details": [
       {
-      "appIDs": [ "5L2F4NS698.com.dalalah.app" ],
-      "appID": "5L2F4NS698.com.dalalah.app",
-        "paths": ["*"]
+        "appIDs": [
+          "5L2F4NS698.com.dalalah.app"
+        ],
+        "paths": [
+          "*"
+        ]
       }
     ]
-  },
-  "webcredentials": {
-        "apps": [ "5L2F4NS698.com.dalalah.app" ]
-  },
-  "appclips": {
-      "apps": ["5L2F4NS698.com.dalalah.app"]
   }
 }
