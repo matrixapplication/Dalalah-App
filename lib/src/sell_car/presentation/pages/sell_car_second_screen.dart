@@ -1,6 +1,7 @@
 import '../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../core/widgets/buttons/stack_button.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
+import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../../core/widgets/text-field/custom_text_field.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../main_index.dart';
@@ -70,7 +71,7 @@ class SellCarSecondScreen extends BaseStatelessWidget {
               ),
               5.ph,
               SelectionButtonChip(
-                title: strings.motion_vector,
+                title: strings.drive_type,
                 initialValue: driveTypeId,
                 types: state.driveTypes
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
@@ -133,7 +134,9 @@ class SellCarSecondScreen extends BaseStatelessWidget {
   }
 
   onNextPressed() {
-    if (_formKey.currentState!.validate()) {
+    if (driveTypeId.isEmpty) {
+      SnackBarManager.showErrorSnackBar(strings.please_select_drive_type);
+    } else if (_formKey.currentState!.validate()) {
       onNext?.call(SellCarParams(
         branchId: 1,
         color: colorsController.text.trim(),

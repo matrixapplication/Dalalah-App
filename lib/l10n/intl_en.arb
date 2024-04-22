@@ -197,7 +197,7 @@
   "banzene": "Banzene",
   "dizel": "Dizel",
   "natural_gas": "Natural gas",
-  "motion_vector": "Motion vector",
+  "drive_type": "Drive type",
   "status": "Status",
   "see_available_cars": "See available cars",
   "enter_the_credit_limit": "Enter the credit limit",
@@ -252,11 +252,7 @@
   "extensions": "Extensions",
   "select_extension": "Select Extension",
   "years": "Years",
-  "select_year": "Select Year",
   "colors": "Colors",
-  "select_color": "Select Color",
-  "status": "Status",
-  "select_status": "Select Status",
   "ports": "Ports",
   "select_port": "Select Port",
   "cylinders": "Cylinders",
@@ -394,5 +390,7 @@
   "please_fill_all_fields": "Please fill all fields",
   "required": "Required",
   "hidden_by_admin": "Hidden by admin",
-  "dalalah_treaty": "Dalalah Treaty"
+  "dalalah_treaty": "Dalalah Treaty",
+  "please_select_status_car": "Please select the car status",
+  "please_select_drive_type": "Please select the drive type"
 }

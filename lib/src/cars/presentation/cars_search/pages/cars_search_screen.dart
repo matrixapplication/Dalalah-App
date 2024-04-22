@@ -94,7 +94,7 @@ class CarsSearchScreen extends BaseStatelessWidget {
             },
           ),
           SelectionButtonChip(
-            title: strings.motion_vector,
+            title: strings.drive_type,
             types: state.driveTypes
                 .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                 .toList(),

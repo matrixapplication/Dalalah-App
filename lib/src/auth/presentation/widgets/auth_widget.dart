@@ -22,15 +22,19 @@ class AuthWidget extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(70),
                   bottomRight: Radius.circular(70))),
-          child: Image.asset(AppImages.logo_white, ),
+          child: Image.asset(
+            AppImages.logo_white,
+          ),
         ),
         Align(alignment: Alignment.center, child: child),
-        PositionedDirectional(
+        if (Navigator.canPop(context))
+          const PositionedDirectional(
             top: 40,
             start: 20,
             child: CustomBackButton(
-    isPrimaryColor: false,
-    ))
+              isPrimaryColor: false,
+            ),
+          ),
       ],
     );
   }

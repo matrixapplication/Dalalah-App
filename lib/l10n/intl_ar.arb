@@ -169,7 +169,7 @@
   "add_car_image_at_most_10": "اضف صورةالسيارة (بحد أقصى 10 صور)",
   "share": "نشر",
   "status": "الحالة",
-  "motion_vector": "ناقل الحركة",
+  "drive_type": "نوع القيادة",
   "model": "الموديل",
   "select_images": "إختر الصور",
   "total_salary": "إجمالي الراتب",
@@ -381,5 +381,7 @@
   "must_be_numbers": "يجب أن يكون أرقام فقط",
   "exit_app_msg": "هل تريد الخروج من التطبيق؟",
   "hidden_by_admin": "مخفي من قبل الادارة",
-  "dalalah_treaty": "معاهدة الدلالة"
+  "dalalah_treaty": "معاهدة الدلالة",
+  "please_select_status_car": "من فضلك اختر حالة السيارة",
+  "please_select_drive_type": "من فضلك اختر نوع القيادة"
 }

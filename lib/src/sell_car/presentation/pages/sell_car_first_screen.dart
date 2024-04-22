@@ -19,17 +19,15 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   final Function(SellCarParams)? onNext;
   final Function()? onPrevPressed;
 
-  SellCarFirstScreen(
-      {Key? key,
-      this.car,
-      required this.state,
-      this.onNext,
-      this.onFetchBrandModels,
-      this.onFetchBrandModelsExtension,
-      this.onPrevPressed,
-      })
-      : super(key: key);
-
+  SellCarFirstScreen({
+    Key? key,
+    this.car,
+    required this.state,
+    this.onNext,
+    this.onFetchBrandModels,
+    this.onFetchBrandModelsExtension,
+    this.onPrevPressed,
+  }) : super(key: key);
 
   String status = '';
   int brandId = 0;
@@ -58,18 +56,20 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
-                onSelected: car?.status?.key == null ?
-                    (value) {
-                  status = value?.id ?? '';
-                } : null,
+                onSelected: car?.status?.key == null
+                    ? (value) {
+                        status = value?.id ?? '';
+                      }
+                    : null,
               ),
               DropDownField(
                 title: strings.years,
                 hint: strings.select_year,
                 valueId: year.toString(),
+                margin: 10.paddingBottom,
                 items: state.years
                     .map((e) =>
-                    DropDownItem(id: e.toString(), title: e.toString()))
+                        DropDownItem(id: e.toString(), title: e.toString()))
                     .toList(),
                 onChanged: (value) {
                   year = int.parse(value?.id ?? '0');
@@ -116,14 +116,16 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   }
 
   onNextPressed() async {
-    if (_formKey.currentState!.validate()) {
+    if (status.isEmpty) {
+      SnackBarManager.showErrorSnackBar(strings.please_select_status_car);
+    } else if (_formKey.currentState!.validate()) {
       if (brandId != 0 && carModelId != 0 && extensionId != 0 && year != 0) {
         ProfileDto? user = await HelperMethods.getProfile();
         onNext?.call(
           SellCarParams(
             modelId: user?.id ?? 0,
             modelRole: user?.role ?? '',
-            status: status ,
+            status: status,
             brandId: brandId,
             carModelId: carModelId,
             carModelExtensionId: extensionId,
