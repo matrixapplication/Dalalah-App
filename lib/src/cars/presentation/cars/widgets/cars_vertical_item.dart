@@ -110,6 +110,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       textStyle: bodySmall,
                       icon: AppIcons.yellow_location,
                       iconSize: 20,
+                      sizedBoxWidth: 0,
                       mainAxisAlignment: MainAxisAlignment.start,
                     ),
                     5.ph,
