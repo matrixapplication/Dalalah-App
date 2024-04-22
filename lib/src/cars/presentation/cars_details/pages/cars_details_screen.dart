@@ -2,6 +2,7 @@ import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/cars/presentation/cars/pages/cars_page.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
+import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
@@ -85,7 +86,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 635 : 710.0,
+          expandedHeight: isNew ? 645 : 730.0,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -111,23 +112,33 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: 15.paddingHoriz + 10.paddingTop,
+                  padding: 15.paddingHoriz,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      Text(
+                        car.fullName(),
+                        style: context.textTheme.titleSmall!.copyWith(
+                          color: AppColors.grey_2C,
+                        ),
+                      ),
+                      10.ph,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Flexible(
+                          AppIcon(
+                            icon: AppIcons.yellow_location,
+                            size: 25,
+                          ),
+                          Expanded(
                             child: Text(
-                              "${car.brandModel?.brand} ${car.brandModel?.name} ${car.brandModelExtension?.name ?? ''}",
-                              style: context.textTheme.titleSmall!.copyWith(
-                                color: AppColors.grey_2C,
-                              ),
+                              car.city?.name ?? '',
+                              style: bodyMedium,
                             ),
                           ),
+                          10.pw,
                           PriceWidget(
                             price: car.price ?? '0.0',
                             fontSize: 18,

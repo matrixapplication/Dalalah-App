@@ -15,7 +15,7 @@ class ChipAd extends StatelessWidget {
       child: CustomChip(
         backgroundColor: AppColors.grey_d9,
         value: text,
-        fontSize: 14,
+        fontSize: 12,
         labelColor: context.bodyMedium.color,
         padding: 3.paddingVert + 10.paddingHoriz,
           borderColor: Colors.transparent,

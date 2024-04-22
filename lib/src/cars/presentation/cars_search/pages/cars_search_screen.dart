@@ -47,7 +47,6 @@ class CarsSearchScreen extends BaseStatelessWidget {
           ),
           DropDownField(
             title: strings.city,
-            titleStyle:  context.textTheme.labelLarge,
             items: state.cities
                 .map((e) => DropDownItem(
                 id: e.id?.toString() ?? '', title: e.name))
