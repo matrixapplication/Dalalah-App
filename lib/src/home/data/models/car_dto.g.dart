@@ -76,6 +76,9 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
       monthlyInstallment: json['monthly_installment'] as int?,
       modelRole: json['model_role'] as String?,
       userCarStatus: json['user_car_status'] as int?,
+      city: json['city'] == null
+          ? null
+          : CityDto.fromJson(json['city'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
@@ -120,6 +123,7 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'features': instance.features,
       'new_car_miles': instance.newCarMiles,
       'user_car_status': instance.userCarStatus,
+      'city': instance.city,
     };
 
 CarContactDetails _$CarContactDetailsFromJson(Map<String, dynamic> json) =>

@@ -43,6 +43,7 @@ SellCarParams _$SellCarParamsFromJson(Map<String, dynamic> json) =>
       installment: json['monthly_installment'] as int?,
       adType: json['ad_type'] as String?,
       newCarMiles: json['new_car_miles'],
+      cityId: json['city_id'] as int?,
     );
 
 Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
@@ -78,6 +79,7 @@ Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) =>
       'monthly_installment': instance.installment,
       'ad_type': instance.adType,
       'new_car_miles': instance.newCarMiles,
+      'city_id': instance.cityId,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

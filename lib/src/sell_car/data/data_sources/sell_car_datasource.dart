@@ -64,6 +64,7 @@ abstract class SellCarDatasource {
     @Part(name: 'main_image') File file,
     @Part(name: 'images[]') List<File> images,
     @Part(name: 'features[]') List<String> features,
+  @Part(name: 'city_id') int cityId,
       // @Part(name: 'ad_type') String adType,
   );
 
@@ -100,6 +101,7 @@ abstract class SellCarDatasource {
     // @Part(name: 'main_image') File file,
     // @Part(name: 'images[]') List<File> images,
     @Part(name: 'features[]') List<String> features,
+      @Part(name: 'city_id') int cityId,
   );
 
   @GET('/brands')
