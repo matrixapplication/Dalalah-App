@@ -36,7 +36,7 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
   @override
   Widget buildWidget(BuildContext context, FirstPageSellCarState state) {
     Car? car = getArguments(context) is Car ? getArguments(context) : null;
-    print('car:status ${car?.status?.name}');
+    print('regionalSpecification ${car?.regionalSpecification?.id}');
     return SellCarFirstScreen(
       car: car,
       state: state,

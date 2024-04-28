@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class CustomCheckbox extends StatelessWidget {
   final String title;
   final Function(bool)? onChanged;
+  final Function()? onTextTap;
   final bool? isUnderline;
 
   const CustomCheckbox(
-      {Key? key, required this.title, this.onChanged, this.isUnderline = false})
+      {Key? key, required this.title, this.onChanged, this.isUnderline = false, this.onTextTap})
       : super(key: key);
 
   @override
@@ -29,13 +30,16 @@ class CustomCheckbox extends StatelessWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           );
         }),
-        Flexible(
-            child: Text(title,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall!
-                    .copyWith(fontSize: 12, decoration: isUnderline! ? TextDecoration.underline : TextDecoration.none)
-            )
+        GestureDetector(
+          onTap: onTextTap,
+          child: Flexible(
+              child: Text(title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 12, decoration: isUnderline! ? TextDecoration.underline : TextDecoration.none)
+              )
+          ),
         ),
       ],
     );

@@ -12,7 +12,6 @@ import '../../domain/entities/feature.dart';
 import '../../domain/entities/fuel_type.dart';
 
 class SellCarSecondState  extends DataStateFBuilder {
-  Car? car;
   List<DriveType> driveTypes = [];
   List<BodyType> bodyTypes = [];
   List<FuelType> fuelTypes = [];
@@ -25,7 +24,6 @@ class SellCarSecondState  extends DataStateFBuilder {
   List<Feature> features = [];
 
   SellCarSecondState({
-    this.car,
     this.driveTypes = const [],
     this.bodyTypes = const [],
     this.fuelTypes = const [],

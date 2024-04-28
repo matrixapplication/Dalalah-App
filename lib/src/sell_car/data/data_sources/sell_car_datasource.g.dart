@@ -48,6 +48,9 @@ class _SellCarDatasource implements SellCarDatasource {
     List<File> images,
     List<String> features,
     int cityId,
+    String regionalSpecificationKey,
+    String lat,
+    String lng,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -161,6 +164,18 @@ class _SellCarDatasource implements SellCarDatasource {
       'city_id',
       cityId.toString(),
     ));
+    _data.fields.add(MapEntry(
+      'regional_specification_id',
+      regionalSpecificationKey,
+    ));
+    _data.fields.add(MapEntry(
+      'lat',
+      lat,
+    ));
+    _data.fields.add(MapEntry(
+      'lng',
+      lng,
+    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
       method: 'POST',
@@ -237,6 +252,9 @@ class _SellCarDatasource implements SellCarDatasource {
     String description,
     List<String> features,
     int cityId,
+    String regionalSpecificationKey,
+    String lat,
+    String lng,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -308,6 +326,18 @@ class _SellCarDatasource implements SellCarDatasource {
     _data.fields.add(MapEntry(
       'city_id',
       cityId.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'regional_specification_id',
+      regionalSpecificationKey,
+    ));
+    _data.fields.add(MapEntry(
+      'lat',
+      lat,
+    ));
+    _data.fields.add(MapEntry(
+      'lng',
+      lng,
     ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(

@@ -23,8 +23,11 @@ class Plate {
   bool? isFavorite;
   String? createdAt;
   bool? isUserHide;
+  double? lat;
+  double? lng;
 
-  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.isUserHide, this.createdAt});
+
+  Plate({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.isUserHide, this.createdAt, this.lat, this.lng});
 
    factory Plate.fromDto(PlateDto json) {
      return Plate(
@@ -46,6 +49,8 @@ class Plate {
         isFavorite: json.isFavorite,
        createdAt: json.createdAt ?? '',
          isUserHide: json.userCarStatus == 1,
+        lat: json.lat ?? 0.0,
+        lng: json.lng ?? 0.0,
      );
    }
 }

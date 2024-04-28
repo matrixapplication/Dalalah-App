@@ -6,6 +6,7 @@ import 'package:dalalah/core/widgets/drop_down/drop_down.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:dalalah/src/plates/data/models/add_plate_params.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../core/components/base_stateless_widget.dart';
 import '../../../../../core/decorations/decorations.dart';
@@ -14,6 +15,7 @@ import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
+import '../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../sell_car/domain/entities/city.dart';
 import '../../../data/models/plate_filter_params.dart';
 import '../../../domain/entities/plate_args.dart';
@@ -41,6 +43,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
   TextEditingController _arController = TextEditingController();
   TextEditingController enController = TextEditingController();
   TextEditingController _numController = TextEditingController();
+  LatLng? initialLocation;
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +139,16 @@ class PlateFilterScreen extends BaseStatelessWidget {
                 ],
               ),
             ),
+            if(!args.isFilter)
+            Padding(
+              padding: 10.paddingTop,
+              child: CustomGoogleMap(
+                initialLocation: initialLocation,
+                onGetLocation: (lat, lng) {
+                  initialLocation = LatLng(lat, lng);
+                },
+              ),
+            ),
             20.ph,
             args.isFilter
                 ? PrimaryOutlinesButtons(
@@ -176,6 +189,8 @@ class PlateFilterScreen extends BaseStatelessWidget {
         plateType: plateType,
         price: priceController.text.toInt,
         userId: getUserId,
+        lat: initialLocation?.latitude ?? 0.0,
+        lng: initialLocation?.longitude ?? 0.0,
       ));
     }
   }
@@ -196,23 +211,42 @@ class PlateFilterScreen extends BaseStatelessWidget {
   }
 
   _initData(PlateArgs args) async {
-    print('args.plate ${args.plate?.id}');
-    if (args.plate != null) {
-      for (var element in controllersArLetters) {
-        element.text = args.plate!.letterAr!
-            .split('')[controllersArLetters.indexOf(element)]
-            .toArabicChars();
+    try {
+      print('args.plate ${args.plate?.id}');
+      print('args.plate ${args.plate?.letterEn}');
+      print('args.plate ${args.plate?.letterAr}');
+      String letterEn = args.plate?.letterEn?.toArabicCharsWithoutSpace() ?? '';
+      String letterAr = args.plate?.letterAr?.toArabicCharsWithoutSpace() ?? '';
+      print('lettersAr $letterAr');
+      initialLocation = LatLng(
+        args.plate!.lat ?? 0.0,
+        args.plate!.lng ?? 0.0,
+      );
+      if (args.plate != null) {
+        priceController.text = args.plate!.price.toString();
+        cityId = args.plate!.city?.id ?? 0;
+        for (var element in controllersNumbers) {
+          element.text = args.plate!.plateNumber!
+              .split('')[controllersNumbers.indexOf(element)];
+        }
+        if(args.plate!.letterEn?.length ==1) {
+          controllersEnLetters[0].text = args.plate!.letterEn!;
+        } else{
+        for (var element in controllersEnLetters) {
+          element.text = letterEn
+              .split('')[controllersEnLetters.indexOf(element)];
+          print('element ${element.text}');
+        } }
+        for (var element in controllersArLetters) {
+          element.text = letterAr
+              .split('')[controllersEnLetters.indexOf(element)] == ' ' ? letterAr
+              .split('')[controllersEnLetters.indexOf(element) + 1] : letterAr
+              .split('')[controllersEnLetters.indexOf(element)];
+        }
       }
-      for (var element in controllersEnLetters) {
-        element.text = args.plate!.letterEn!
-            .split('')[controllersEnLetters.indexOf(element)];
-      }
-      for (var element in controllersNumbers) {
-        element.text = args.plate!.plateNumber!
-            .split('')[controllersNumbers.indexOf(element)];
-      }
-      priceController.text = args.plate!.price.toString();
-      cityId = args.plate!.city?.id ?? 0;
+    } on Exception catch (e) {
+      print('error in init data $e');
+      rethrow;
     }
   }
 }

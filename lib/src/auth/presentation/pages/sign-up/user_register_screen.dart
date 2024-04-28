@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/core/widgets/checkbox/custom_checkbox.dart';
 import 'package:dalalah/core/widgets/snack_bar/snack_bar_manager.dart';
 
 import '../../../../../core/resources/validation.dart';
@@ -11,6 +12,7 @@ import '../../../../installment/domain/entities/roles.dart';
 import '../../../../main_index.dart';
 import '../../../../profile/presentation/widgets/edit_profile_image.dart';
 import '../../../../sell_car/domain/entities/city.dart';
+import '../../../../settings/domain/entities/about_us_types_.dart';
 import '../../../data/models/register_params.dart';
 import '../../widgets/auth_text_field.dart';
 import '../../widgets/showroom_register_types.dart';
@@ -47,6 +49,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
   int cityId = 0;
   String type = Roles.SHOWROOM;
   File file = File('');
+  bool isAgree = false;
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +176,15 @@ class UserRegisterScreen extends BaseStatelessWidget {
             //       );
             //     }
             // ),
+            CustomCheckbox(title: strings.i_agree_to_the_terms_and_conditions,
+            isUnderline: true,
+            onChanged: (value) {
+              isAgree = value;
+              },
+              onTextTap: () {
+                pushNamed(Routes.aboutUs, arguments: AboutUsTypes.TERMS_AND_CONDITIONS);
+              },
+            ),
             PrimaryButton(
               title: strings.create.toUpperCase(),
               radius: 30,
@@ -210,6 +222,10 @@ class UserRegisterScreen extends BaseStatelessWidget {
 
   onRegisterPressed() async {
     if (formKey.currentState!.validate()) {
+      if (!isAgree) {
+        SnackBarManager.showErrorSnackBar(strings.please_agree_to_terms_and_conditions);
+        return;
+      }
       if (isShowroom && file.path.isEmpty) {
         SnackBarManager.showErrorSnackBar(strings.please_upload_logo);
         return;

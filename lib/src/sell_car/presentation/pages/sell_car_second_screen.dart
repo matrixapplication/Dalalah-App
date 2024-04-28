@@ -111,14 +111,14 @@ class SellCarSecondScreen extends BaseStatelessWidget {
                 onTap: isNewCar ? (){} : null,
                 isValidator: false,
               ),
-              CustomTextField(
-                title: strings.engine,
-                hintText: strings.type_engine,
-                controller: engineController,
-                keyboardType: TextInputType.number,
-                isValidator: false,
-                onTap: isNewCar ? (){} : null,
-              ),
+              // CustomTextField(
+              //   title: strings.engine,
+              //   hintText: strings.type_engine,
+              //   controller: engineController,
+              //   keyboardType: TextInputType.number,
+              //   isValidator: false,
+              //   onTap: isNewCar ? (){} : null,
+              // ),
               CustomTextField(
                 title: strings.cylinders,
                 hintText: strings.number_car_cylinders,
@@ -138,13 +138,15 @@ class SellCarSecondScreen extends BaseStatelessWidget {
       SnackBarManager.showErrorSnackBar(strings.please_select_drive_type);
     } else if (_formKey.currentState!.validate()) {
       onNext?.call(SellCarParams(
+        id: car?.id ?? 0,
         branchId: 1,
         color: colorsController.text.trim(),
         driveType: driveTypeId.isEmpty
             ? state.driveTypes.first.key ?? ''
             : driveTypeId,
-        carTypeId: 1,
+        carTypeId: bodyTypeId,
         fuelType: fuelType.isEmpty ? state.fuelTypes.first.key : fuelType,
+
         doors: 4,
         engine: engineController.text.trim(),
         cc: engineController.text.trim(),

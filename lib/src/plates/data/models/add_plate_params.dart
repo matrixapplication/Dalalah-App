@@ -24,8 +24,12 @@ class AddPlateParams {
   String? plateType;
   @JsonKey(name: 'ad_type')
   String? adType;
+  @JsonKey(name: 'lat')
+  double? lat;
+  @JsonKey(name: 'lng')
+  double? lng;
 
-  AddPlateParams({this.id, this.userId, this.cityId, this.districtId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType});
+  AddPlateParams({this.id, this.userId, this.cityId, this.districtId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType, this.lat, this.lng});
 
    factory AddPlateParams.fromJson(Map<String, dynamic> json) => _$AddPlateParamsFromJson(json);
 

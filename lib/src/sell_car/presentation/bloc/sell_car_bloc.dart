@@ -17,6 +17,7 @@ import '../../../plates/domain/entities/ad_feature.dart';
 import '../../../plates/domain/entities/ad_types.dart';
 import '../../../plates/domain/use_cases/plates_usecase.dart';
 import '../../data/models/sell_car_params.dart';
+import '../../domain/entities/regional_specification.dart';
 import '../../domain/use_cases/sell_car_usecase.dart';
 import 'sell_car_state.dart';
 
@@ -38,7 +39,7 @@ class SellCarCubit extends BaseCubit {
   fetchFirstInitialData(Car? car) async {
     emit(DataLoading());
     try {
-      final carStatuses = await usecase.fetchCarStatuses();
+      // final carStatuses = await usecase.fetchCarStatuses();
       final brands = await usecase.fetchBrands();
       final years = await usecase.fetchYears();
       if (car != null) {
@@ -48,7 +49,8 @@ class SellCarCubit extends BaseCubit {
 
       emit(
         FirstPageSellCarState(
-          carStatuses: await getCarStatuses(carStatuses),
+          carStatuses: CarStatus.getCarStatuses(),
+          specification: RegionalSpecification.getSpecifications(),
           brands: brands,
           years: years,
           brandsModelsStream: brandsModelsStream,

@@ -74,7 +74,7 @@ class CustomTextField extends BaseStatelessWidget {
                 style: labelStyle ?? context.bodySmall,
               ),
             ),
-            10.ph,
+            5.ph,
           ],
           TextFormField(
             onTap: onTap,

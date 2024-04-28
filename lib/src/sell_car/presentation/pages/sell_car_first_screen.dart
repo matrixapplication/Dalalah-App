@@ -33,6 +33,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   int brandId = 0;
   int carModelId = 0;
   int extensionId = 0;
+  int regionalId = 1;
   int? year;
   final _formKey = GlobalKey<FormState>();
 
@@ -52,7 +53,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
               SelectionButtonChip(
                 title: strings.car_status,
                 initialValue: car?.status?.key ?? status,
-                margin: 0.paddingAll,
+                margin: 12.paddingBottom,
                 types: state.carStatuses
                     .map((e) => ChipItem(id: e.key ?? '', title: e.name ?? ''))
                     .toList(),
@@ -74,6 +75,18 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                 onChanged: (value) {
                   year = int.parse(value?.id ?? '0');
                   // isModelYearStream.setData(year == DateTime.now().year);
+                },
+              ),
+              DropDownField(
+                title: strings.regional_specifications,
+                hint: strings.select_regional_specifications,
+                valueId: regionalId,
+                items: state.specification
+                    .map(
+                        (e) => DropDownItem(id: e.id.toString(), title: e.name))
+                    .toList(),
+                onChanged: (item) {
+                  regionalId = int.parse(item?.id ?? '0');
                 },
               ),
               DropDownField(
@@ -123,6 +136,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
         ProfileDto? user = await HelperMethods.getProfile();
         onNext?.call(
           SellCarParams(
+            id: car?.id ?? 0,
             modelId: user?.id ?? 0,
             modelRole: user?.role ?? '',
             status: status,
@@ -139,9 +153,6 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   }
 
   _initialValues() {
-    print('car: ${car?.status?.key}');
-    print('car: ${car?.brand?.id}');
-    print('car: ${car?.brandModel?.id}');
     status = state.carStatuses.first.key ?? '';
     if (car != null) {
       carModelId = car?.brandModel?.id ?? 0;
@@ -149,6 +160,8 @@ class SellCarFirstScreen extends BaseStatelessWidget {
       brandId = car?.brand?.id ?? 0;
       extensionId = car?.brandModelExtension?.id ?? 0;
       year = int.parse(car?.year ?? DateTime.now().year.toString());
+      regionalId = car?.regionalSpecification?.id ?? 1;
+      print('regionalKey ${regionalId}');
     }
   }
 }

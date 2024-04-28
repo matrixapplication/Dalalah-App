@@ -37,6 +37,7 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<List<City>>,
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<City>> state) {
     SellCarArgs args = getArguments(context);
+    print('car:status id ${args.car?.id}');
     return SellCarImagePickerScreen(
         cities: state.data ?? [],
         car: args.car ?? Car(status: CarStatus(key: args.params?.status ?? '')),
@@ -49,6 +50,8 @@ class SellCarImagePickerPage extends BaseBlocWidget<DataSuccess<List<City>>,
           args.params?.mainImage = params.mainImage;
           args.params?.images = params.images;
           args.params?.cityId = params.cityId;
+          args.params?.lat = params.lat;
+          args.params?.lng = params.lng;
           pushNamed(Routes.addCarPremiumPage, arguments: args.params);
         },
       onAddCarImage: (params) {

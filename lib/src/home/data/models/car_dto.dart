@@ -6,10 +6,11 @@ import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
 import '../../../sell_car/data/models/car_status_dto.dart';
 import '../../../sell_car/data/models/city_dto.dart';
-import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/feature_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
+import '../../../sell_car/data/models/regional_specification_dto.dart';
+import '../../../sell_car/domain/entities/regional_specification.dart';
 import '../../../showrooms/data/models/branch_dto.dart';
 import 'brand_dto.dart';
 
@@ -101,8 +102,14 @@ class CarDto {
   int? userCarStatus;
   @JsonKey(name: 'city')
   CityDto? city;
+  @JsonKey(name: 'regional_specification')
+  RegionalSpecificationDto? regionalSpecification;
+  @JsonKey(name: 'lat')
+  String? lat;
+  @JsonKey(name: 'lng')
+  String? lng;
 
-  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole, this.userCarStatus, this.city});
+  CarDto({this.id, this.carContactDetails, this.modelObject, this.brand, this.brandModel, this.brandModelExtension, this.branch, this.year, this.color, this.driveType, this.bodyType, this.fuelType, this.status, this.country, this.type, this.isSold, this.isFeatured, this.isHide,this.isApproved, this.isFavourite, this.price, this.shipping, this.customs, this.total, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.door1Img, this.door2Img, this.door3Img, this.door4Img, this.images, this.features, this.newCarMiles, this.monthlyInstallment, this.modelRole, this.userCarStatus, this.city, this.regionalSpecification, this.lat, this.lng});
 
    factory CarDto.fromJson(Map<String, dynamic> json) => _$CarDtoFromJson(json);
 

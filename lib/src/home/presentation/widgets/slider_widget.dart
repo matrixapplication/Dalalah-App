@@ -54,11 +54,13 @@ class SliderWidget extends StatelessWidget {
                       width: double.infinity,
                       radius: 0,
                     ),
-                    Padding(
+                    Container(
                       padding: 10.paddingAll,
+                      // margin: ,
+                      decoration: Decorations.kDecorationEndRadius(color: context.primaryColor),
                       child: Text(
                         snapshot?[index].title ?? '',
-                        style: context.headlineLarge,
+                        style: context.labelLarge,
                       ),
                     )
                   ],

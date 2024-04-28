@@ -392,5 +392,18 @@
   "hidden_by_admin": "Hidden by admin",
   "dalalah_treaty": "Dalalah Treaty",
   "please_select_status_car": "Please select the car status",
-  "please_select_drive_type": "Please select the drive type"
+  "please_select_drive_type": "Please select the drive type",
+  "saudi": "Saudi",
+  "gulf": "Gulf",
+  "importation": "Importation",
+  "select_specifications": "Select Specifications",
+  "regional_specifications": "Regional Specifications",
+  "select_regional_specifications": "Select Regional Specifications",
+  "regional": "Regional",
+  "whats_your_location": "What's your location?",
+  "allow_your_location": "Allow your location",
+  "pick_you_location": "Pick your location",
+  "i_agree_to_the_terms_and_conditions": "I agree to the terms and conditions",
+  "please_agree_to_terms_and_conditions": "Please agree to the terms and conditions",
+  "only_500_characters_allowed": "Only 500 characters allowed"
 }

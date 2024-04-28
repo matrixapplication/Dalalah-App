@@ -7,7 +7,6 @@ import '../../../main_index.dart';
 import '../../data/models/sell_car_params.dart';
 import '../bloc/sell_car_bloc.dart';
 import '../bloc/sell_car_state.dart';
-import 'sell_car_screen.dart';
 
 class SellCarPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubit> {
   SellCarPage({Key? key}) : super(key: key);
@@ -84,6 +83,5 @@ class SellCarPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubit> {
         ),
       ],
     );
-    return SellCarScreen(shipments: bloc.state.data);
   }
 }

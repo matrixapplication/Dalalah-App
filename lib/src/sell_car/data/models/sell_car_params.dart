@@ -6,7 +6,7 @@ part 'sell_car_params.g.dart';
 
 @JsonSerializable(ignoreUnannotated: false)
 class SellCarParams {
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   int? id;
   @JsonKey(name: 'car_id')
   int? carId;
@@ -70,8 +70,16 @@ class SellCarParams {
   dynamic newCarMiles;
   @JsonKey(name: 'city_id')
   int? cityId;
+  @JsonKey(name: 'regional_specification_key')
+  String? regionalSpecificationKey;
+  @JsonKey(name: 'lat')
+  String? lat;
+  @JsonKey(name: 'lng')
+  String? lng;
 
-  SellCarParams({this.id, this.carId, this.brandId, this.modelId, this.modelRole, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.color, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment, this.adType, this.newCarMiles, this.cityId});
+
+
+  SellCarParams({this.id, this.carId, this.brandId, this.modelId, this.modelRole, this.carModelId, this.portId, this.carModelExtensionId, this.branchId, this.year, this.color, this.driveType, this.carTypeId, this.fuelType, this.status, this.type, this.originCountry, this.price, this.doors, this.engine, this.cc, this.cylinders, this.mileage, this.description, this.mainImage, this.images, this.features, this.installment, this.adType, this.newCarMiles, this.cityId, this.regionalSpecificationKey, this.lat, this.lng});
 
    factory SellCarParams.fromJson(Map<String, dynamic> json) => _$SellCarParamsFromJson(json);
 

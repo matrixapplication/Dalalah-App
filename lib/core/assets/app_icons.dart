@@ -36,6 +36,7 @@ class AppIcons {
   static String help = '$_iconsPath/help.svg';
   static String calendar = '$_iconsPath/calendar.svg';
   static String description = '$_iconsPath/description.svg';
+  static String regional = '$_iconsPath/regional.svg';
 
   /* =================================================== */
 

@@ -358,6 +358,15 @@ extension SeparateArabicCharacters on String {
     }
     return separatedString.trim(); // Removes trailing space
   }
+
+// remove space between arabic characters
+  String toArabicCharsWithoutSpace() {
+    String separatedString = '';
+    for (int i = 0; i < length; i++) {
+      separatedString += this[i];
+    }
+    return separatedString.trim(); // Removes trailing space
+  }
 }
 
 extension FirstOrNull<E> on List<E> {

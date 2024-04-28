@@ -383,5 +383,17 @@
   "hidden_by_admin": "مخفي من قبل الادارة",
   "dalalah_treaty": "معاهدة الدلالة",
   "please_select_status_car": "من فضلك اختر حالة السيارة",
-  "please_select_drive_type": "من فضلك اختر نوع القيادة"
+  "please_select_drive_type": "من فضلك اختر نوع القيادة",
+  "saudi": "سعودي",
+  "gulf": "خليجي",
+  "importation": "استيراد",
+  "select_specifications": "اختر المواصفات",
+  "regional_specifications": "المواصفات الاقليمية",
+  "regional": "اقليمي",
+  "whats_your_location": "ما هو موقعك؟",
+  "allow_your_location": "السماح بموقعك",
+  "pick_you_location": "اختر موقعك",
+  "i_agree_to_the_terms_and_conditions": "أوافق على الشروط والأحكام",
+  "please_agree_to_terms_and_conditions": "من فضلك وافق على الشروط والأحكام",
+  "only_500_characters_allowed": "يسمح فقط بـ 500 حرف"
 }

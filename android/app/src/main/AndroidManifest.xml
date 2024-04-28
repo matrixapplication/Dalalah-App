@@ -138,5 +138,8 @@
                <data android:scheme="@string/fb_login_protocol_scheme" />
            </intent-filter>
        </activity>
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyCcLzjD-Xxomlnw7ALIFCNzp4pQzoAp64Y"/>
     </application>
 </manifest>

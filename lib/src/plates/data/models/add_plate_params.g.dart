@@ -18,6 +18,8 @@ AddPlateParams _$AddPlateParamsFromJson(Map<String, dynamic> json) =>
       price: json['price'] as int?,
       plateType: json['plate_type'] as String?,
       adType: json['ad_type'] as String?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lng: (json['lng'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$AddPlateParamsToJson(AddPlateParams instance) =>
@@ -32,4 +34,6 @@ Map<String, dynamic> _$AddPlateParamsToJson(AddPlateParams instance) =>
       'price': instance.price,
       'plate_type': instance.plateType,
       'ad_type': instance.adType,
+      'lat': instance.lat,
+      'lng': instance.lng,
     };

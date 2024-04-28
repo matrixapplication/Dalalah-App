@@ -37,8 +37,9 @@ class SellCarPropertiesPage extends BaseBlocWidget<DataSuccess<List<Feature>>, S
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Feature>> state) {
     SellCarArgs args = getArguments(context);
+    print('car:status id ${args.car?.id}');
     return SellCarPropertiesScreen(
-      isNewCar: args.car?.status?.key == CarStatus.newCar,
+      isNewCar: false,
       features: state.data ?? [],
       initialFeatures: args.car?.features ?? [],
       onNextPressed: (selected) {

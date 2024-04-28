@@ -18,9 +18,7 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
 
   @override
   void loadInitialData(BuildContext context) {
-    SellCarArgs args = getArguments(context);
-    print('args: $args');
-    bloc.fetchInitialData(args);
+    bloc.fetchInitialData();
   }
 
 
@@ -38,23 +36,25 @@ class SellCarSecondPage extends BaseBlocWidget<SellCarSecondState, SellCarSecond
   @override
   Widget buildWidget(BuildContext context, SellCarSecondState state) {
     SellCarArgs args = getArguments(context);
+    SellCarParams params = args.params ?? SellCarParams();
+    print('car:status id ${args.car?.id}');
     return SellCarSecondScreen(
-      car: state.car ?? args.car,
+      car: args.car,
       state: state,
-      onNext: (SellCarParams params) {
-        params.id = args.car?.id ?? 0;
-        params.carId = state.car?.id ?? 0;
-        params.modelId = args.params?.modelId ?? 0;
-        params.modelRole = args.params?.modelRole ?? '';
-        params.status = args.params?.status ?? '';
-        params.brandId =  args.params?.brandId ?? 0;
-        params.carModelId =  args.params?.carModelId ?? 0;
-        params.carModelExtensionId =  args.params?.carModelExtensionId ?? 0;
-        params.year =  args.params?.year ?? 0;
-        params.newCarMiles =  state.car?.newCarMiles ?? args.params?.newCarMiles ?? 0;
+      onNext: (SellCarParams newParams) {
+        newParams.id = params.id ?? 0;
+        newParams.modelId = params.modelId ?? 0;
+        newParams.modelRole = params.modelRole ?? '';
+        newParams.status = params.status ?? '';
+        newParams.brandId =  params.brandId ?? 0;
+        newParams.carModelId =  params.carModelId ?? 0;
+        newParams.carModelExtensionId =  params.carModelExtensionId ?? 0;
+        newParams.year =  params.year ?? 0;
+        newParams.newCarMiles =  params.newCarMiles ?? 0;
+        newParams.regionalSpecificationKey =  params.regionalSpecificationKey ?? '1';
         pushNamed(Routes.sellCarPropertiesPage, arguments: SellCarArgs(
-          car: state.car ?? args.car,
-          params: params,
+          car: args.car,
+          params: newParams,
           isEdit: args.isEdit,
         ));
       },

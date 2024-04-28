@@ -62,7 +62,9 @@ class AddCarRepo implements BaseAddCarRepo {
       params.images ?? [],
       params.features ?? [],
       params.cityId ?? 0,
-      // params.adType ?? '',
+      params.regionalSpecificationKey ?? '',
+      params.lat.toString() ?? '',
+      params.lng.toString() ?? '',
     );
   }
 
@@ -103,6 +105,9 @@ class AddCarRepo implements BaseAddCarRepo {
       // params.images!,
       params.features ?? [],
       params.cityId ?? 0,
+      params.regionalSpecificationKey ?? '',
+      params.lat?.toString() ?? '',
+      params.lng?.toString() ?? '',
     );
   }
 

@@ -1,3 +1,5 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../../../cars/data/models/model_object.dart';
 import '../../../profile/domain/entities/roles.dart';
 import '../../../sell_car/data/models/body_type_dto.dart';
@@ -8,6 +10,7 @@ import '../../../sell_car/data/models/city_dto.dart';
 import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
+import '../../../sell_car/data/models/regional_specification_dto.dart';
 import '../../../sell_car/domain/entities/body_type.dart';
 import '../../../sell_car/domain/entities/brand_model.dart';
 import '../../../sell_car/domain/entities/brand_model_extension.dart';
@@ -16,6 +19,7 @@ import '../../../sell_car/domain/entities/city.dart';
 import '../../../sell_car/domain/entities/drive_type.dart';
 import '../../../sell_car/domain/entities/feature.dart';
 import '../../../sell_car/domain/entities/fuel_type.dart';
+import '../../../sell_car/domain/entities/regional_specification.dart';
 import '../../../showrooms/data/models/branch_dto.dart';
 import '../../../showrooms/domain/entities/branch.dart';
 import '../../data/models/brand_dto.dart';
@@ -65,6 +69,9 @@ class Car {
   dynamic newCarMiles;
   bool? isUserHideCar;
   City? city;
+  RegionalSpecification? regionalSpecification;
+  double? lat;
+  double? lng;
 
 
   Car(
@@ -110,6 +117,9 @@ class Car {
       this.newCarMiles,
       this.isUserHideCar,
       this.city,
+      this.regionalSpecification,
+      this.lat,
+      this.lng,
       });
 
   factory Car.fromDto(CarDto json) {
@@ -157,6 +167,10 @@ class Car {
       newCarMiles: json.newCarMiles,
         isUserHideCar: json.userCarStatus == 1,
       city: City.fromDto(json.city ?? CityDto()),
+      regionalSpecification: RegionalSpecification.fromDto(
+          json.regionalSpecification ?? RegionalSpecificationDto()),
+      lat: json.lat == null ? 0.0 : double.parse(json.lat!),
+      lng: json.lng == null ? 0.0 : double.parse(json.lng!),
     );
   }
 

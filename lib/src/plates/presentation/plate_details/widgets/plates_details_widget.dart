@@ -10,11 +10,13 @@ import 'package:dalalah/src/cars/presentation/comments/pages/comments_page.dart'
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/decorations/decorations.dart';
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/widgets/buttons/contact_social_buttons.dart';
 import '../../../../cars/data/models/comment_params.dart';
+import '../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../domain/entities/plate.dart';
 import '../widgets/plate_property.dart';
 
@@ -70,6 +72,11 @@ class PlatesDetailsWidget extends StatelessWidget {
           PlatesDetailsProperty(
             label: context.strings.announcement_date,
             value: plate.createdAt ?? '',
+          ),
+          CustomGoogleMap(
+            initialLocation: LatLng(plate.lat ?? 0, plate.lng ?? 0),
+            onGetLocation: (lat, lng) {
+            },
           ),
         ],
       ),

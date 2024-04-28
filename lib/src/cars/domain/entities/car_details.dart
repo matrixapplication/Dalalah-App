@@ -38,10 +38,16 @@ class CarDetails {
          subtitle: context.strings.kilometers,
          icon: AppIcons.timer,
        ),
+       // CarProperty(
+       //   title: '${car?.engine ?? ''} ${context.strings.cc}',
+       //   subtitle: context.strings.engine_capacity,
+       //   icon: AppIcons.cylinder,
+       //   sizeIcon: 20,
+       // ),
        CarProperty(
-         title: '${car?.engine ?? ''} ${context.strings.cc}',
-         subtitle: context.strings.engine_capacity,
-         icon: AppIcons.cylinder,
+         title: car?.regionalSpecification?.name ?? '',
+         subtitle: context.strings.regional,
+         icon: AppIcons.regional,
          sizeIcon: 20,
        ),
        CarProperty(

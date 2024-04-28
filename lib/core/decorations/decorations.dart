@@ -57,15 +57,28 @@ class Decorations {
     );
   }
 
-  static BoxDecoration kDecorationLiftRadius({
+  static BoxDecoration kDecorationStartRadius({
+     Color? color,
+    double? radius,
+  }) {
+    return BoxDecoration(
+      color: color ?? Colors.white,
+      borderRadius: BorderRadiusDirectional.only(
+        topStart: Radius.circular(radius ?? 15),
+        bottomStart: Radius.circular(radius ?? 15),
+      ),
+    );
+  }
+
+  static BoxDecoration kDecorationEndRadius({
     required Color color,
     double? radius,
   }) {
     return BoxDecoration(
       color: color,
       borderRadius: BorderRadiusDirectional.only(
-        topStart: Radius.circular(radius ?? 15),
-        bottomStart: Radius.circular(radius ?? 15),
+        topEnd: Radius.circular(radius ?? 12),
+        bottomEnd: Radius.circular(radius ?? 12),
       ),
     );
   }
