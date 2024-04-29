@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dalalah/core/widgets/buttons/stack_button.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
+import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -54,7 +55,7 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
     _initialValues();
     isNextPressedStream.setData(false);
     final strings = context.strings;
-
+StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
     return StackButton(
       streamNextPressed: isNextPressedStream,
       nextTitle: strings.save,
@@ -78,13 +79,33 @@ class SellCarImagePickerScreen extends BaseStatelessWidget {
                 controller: priceController,
                 keyboardType: TextInputType.number,
               ),
-              if (car.status?.key == CarStatus.newCar)
-                CustomTextField(
-                  title: strings.installment_value_monthly,
-                  hintText: strings.enter_installment_value,
-                  keyboardType: TextInputType.number,
-                  controller: installmentController,
-                  margin: 10.paddingBottom,
+              if (isGlobalUser)
+                Column(
+                  children: [
+                    5.ph,
+                    CustomCheckbox(
+                      title: strings.available_for_installments,
+                      onChanged: (value) {
+                        isInstallmentStream.setData(value);
+                        if (!value) {
+                          installmentController.text = '';
+                        }
+                      },
+                    ),
+                    StreamBuilder<bool>(
+                      stream: isInstallmentStream.stream,
+                      builder: (context, snapshot) {
+                        return snapshot.data == true
+                            ?
+                          CustomTextField(
+                          hintText: strings.enter_installment_value,
+                          keyboardType: TextInputType.number,
+                          controller: installmentController,
+                          margin: 10.paddingBottom,
+                        ) : 0.ph;
+                      }
+                    ),
+                  ],
                 ),
               DropDownField(
                 title: strings.city,
