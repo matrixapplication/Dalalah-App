@@ -11,7 +11,7 @@ class CarDetailsPropertyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: 8.paddingAll,
+      padding: 5.paddingAll,
       // margin: 5.paddingAll,
       decoration: Decorations.kDecorationBorderRadius(
         colorBorder: context.dividerColor,

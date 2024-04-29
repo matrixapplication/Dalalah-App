@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -51,6 +52,9 @@ class CustomGoogleMap extends StatelessWidget {
                   ),
             ),
           );
+        } else {
+          // open map
+          HelperMethods.launchMap(_initialLocation?.latitude ?? 0.0, _initialLocation?.longitude ?? 0.0);
         }
       },
       child: IgnorePointer(

@@ -9,6 +9,7 @@ import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart'
 import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
+import '../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../data/models/comment_params.dart';
 import '../../../data/models/model_object.dart';
@@ -86,7 +87,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 645 : 730.0,
+          expandedHeight: isNew ? 870 : 950.0,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -157,6 +158,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       //      );
                       //    }).toList() ?? [],
                       // ),
+
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -216,6 +218,13 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         UserInfo(
                           user: car.modelObject ?? ModelObject(),
                         ),
+10.ph,
+                      CustomGoogleMap(
+                        initialLocation: carDetails.getLatLng(),
+                        isOpenMap: true,
+                        onGetLocation: (lat, lng) {
+                        },
+                      ),
                     ],
                   ),
                 ),

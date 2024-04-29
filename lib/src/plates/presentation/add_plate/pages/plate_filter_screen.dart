@@ -78,6 +78,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
                     controllers: controllersArLetters,
                     validator: (value) => Validation.validateOnlyArabicText(value ?? ''),
                   ),
+                  10.ph,
       //             Pinput(
       //             onCompleted: (pin) => print(pin),
       //
@@ -106,7 +107,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
                     controllers: controllersEnLetters,
                     validator: (value) => Validation.validateOnlyEnglishLetters(value ?? ''),
                   ),
-                  40.ph,
+                  10.ph,
                   FilterItem(
                     title: strings.numbers,
                     controllers: controllersNumbers,
@@ -180,9 +181,6 @@ class PlateFilterScreen extends BaseStatelessWidget {
       onAddEditPlate!(AddPlateParams(
         id: id,
         cityId: cityId,
-        // letterAr: _arController.text.toArabicChars(),
-        // letterEn: enController.text,
-        // plateNumber: _numController.text,
         letterAr: controllersArLetters.map((e) => e.text).join().toArabicChars(),
         letterEn: controllersEnLetters.map((e) => e.text).join(),
         plateNumber: controllersNumbers.map((e) => e.text).join(),
@@ -212,12 +210,10 @@ class PlateFilterScreen extends BaseStatelessWidget {
 
   _initData(PlateArgs args) async {
     try {
-      print('args.plate ${args.plate?.id}');
-      print('args.plate ${args.plate?.letterEn}');
-      print('args.plate ${args.plate?.letterAr}');
       String letterEn = args.plate?.letterEn?.toArabicCharsWithoutSpace() ?? '';
       String letterAr = args.plate?.letterAr?.toArabicCharsWithoutSpace() ?? '';
-      print('lettersAr $letterAr');
+      String plateNumber = args.plate?.plateNumber ?? '';
+      print('lat: ${args.plate!.lat} lng: ${args.plate!.lng}');
       initialLocation = LatLng(
         args.plate!.lat ?? 0.0,
         args.plate!.lng ?? 0.0,
@@ -225,27 +221,17 @@ class PlateFilterScreen extends BaseStatelessWidget {
       if (args.plate != null) {
         priceController.text = args.plate!.price.toString();
         cityId = args.plate!.city?.id ?? 0;
-        for (var element in controllersNumbers) {
-          element.text = args.plate!.plateNumber!
-              .split('')[controllersNumbers.indexOf(element)];
+        for (var element in letterEn.split('')) {
+          controllersEnLetters[letterEn.split('').indexOf(element)].text = element;
         }
-        if(args.plate!.letterEn?.length ==1) {
-          controllersEnLetters[0].text = args.plate!.letterEn!;
-        } else{
-        for (var element in controllersEnLetters) {
-          element.text = letterEn
-              .split('')[controllersEnLetters.indexOf(element)];
-          print('element ${element.text}');
-        } }
-        for (var element in controllersArLetters) {
-          element.text = letterAr
-              .split('')[controllersEnLetters.indexOf(element)] == ' ' ? letterAr
-              .split('')[controllersEnLetters.indexOf(element) + 1] : letterAr
-              .split('')[controllersEnLetters.indexOf(element)];
+        for (var element in letterAr.split('')) {
+          controllersArLetters[letterAr.split('').indexOf(element)].text = element;
+        }
+        for (var element in plateNumber.split('')) {
+          controllersNumbers[plateNumber.split('').indexOf(element)].text = element;
         }
       }
     } on Exception catch (e) {
-      print('error in init data $e');
       rethrow;
     }
   }

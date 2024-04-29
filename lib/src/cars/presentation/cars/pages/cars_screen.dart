@@ -44,13 +44,15 @@ class CarsScreen extends BaseStatelessWidget {
       itemBuilder: (context, index) {
         bool isShowRequestPrice =
         cars[index].isShowRequestPrice(isCarDetails, isMyCar);
-        return isShowRequestPrice
-            ? NewCarItem(
-          car: cars[index],
-          onToggleFavorite: onToggleFavorite,
-          onRequestPrice: onRequestPrice,
-        )
-            : CarVerticalItem(
+        return
+        //   isShowRequestPrice
+        //     ? NewCarItem(
+        //   car: cars[index],
+        //   onToggleFavorite: onToggleFavorite,
+        //   onRequestPrice: onRequestPrice,
+        // )
+        //     :
+        CarVerticalItem(
           imageHasOnlyTopRadius: false,
           isMyCar: isMyCar,
           car: cars[index],

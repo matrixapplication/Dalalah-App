@@ -121,6 +121,15 @@ class HelperMethods {
     }
   }
 
+  static Future<void> launchMap(double lat, double long) async {
+    Uri mapUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=$lat,$long');
+    if (await canLaunchUrl(mapUrl)) {
+      await launchUrl(mapUrl, mode: LaunchMode.externalApplication);
+    } else {
+      showErrorToast('حدث خطأ أثناء الاتصال بالخريطة');
+    }
+  }
+
   // show date picker
   static Future<String> datePicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(

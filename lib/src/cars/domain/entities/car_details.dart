@@ -1,5 +1,6 @@
 
 import 'package:dalalah/src/cars/domain/entities/same_car.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../home/data/models/car_dto.dart';
 import '../../../home/domain/entities/car.dart';
@@ -91,5 +92,9 @@ class CarDetails {
 
   List<String> allImages(){
     return  [car?.mainImage ?? '', ...car?.images?.map((e) => e.image ?? '') ?? []];
+  }
+
+  LatLng getLatLng(){
+    return LatLng(car?.lat ?? 0.0, car?.lng ?? 0.0);
   }
 }

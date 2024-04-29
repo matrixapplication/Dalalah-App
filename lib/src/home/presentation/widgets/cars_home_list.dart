@@ -133,13 +133,34 @@ class CarHorizontalItem extends BaseStatelessWidget {
                     ),
                   ),
                   PositionedDirectional(
-                    bottom: 8,
+                    top: 8,
                     end: 10,
                     child: ShareIconButton(
                       route: Routes.carAppLink,
                       id: car.id.toString() ?? '',
                     ),
                   ),
+                  // if (car.monthlyInstallment != null)
+                    PositionedDirectional(
+                      bottom: 0,
+                      end: 0,
+                      child: Container(
+                        padding: 5.paddingAll + 10.paddingEnd,
+                        decoration: BoxDecoration(
+                          color: context.primaryColor,
+                          borderRadius: const BorderRadiusDirectional.only(
+                            topStart: Radius.circular(5),
+                          ),
+                        ),
+                        child: Text(
+                          strings.available_for_installments,
+                          style: context.labelSmall.copyWith(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),

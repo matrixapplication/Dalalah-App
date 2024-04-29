@@ -10,8 +10,6 @@ class AddPlateParams {
   int? userId;
   @JsonKey(name: 'city_id')
   int? cityId;
-  @JsonKey(name: 'district_id')
-  int? districtId;
   @JsonKey(name: 'letter_ar')
   String? letterAr;
   @JsonKey(name: 'letter_en')
@@ -29,7 +27,7 @@ class AddPlateParams {
   @JsonKey(name: 'lng')
   double? lng;
 
-  AddPlateParams({this.id, this.userId, this.cityId, this.districtId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType, this.lat, this.lng});
+  AddPlateParams({this.id, this.userId, this.cityId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType, this.lat, this.lng});
 
    factory AddPlateParams.fromJson(Map<String, dynamic> json) => _$AddPlateParamsFromJson(json);
 

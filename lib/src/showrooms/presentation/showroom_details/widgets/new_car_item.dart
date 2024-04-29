@@ -7,7 +7,11 @@ class NewCarItem extends BaseStatelessWidget {
   final Function(int)? onRequestPrice;
   final Function(int)? onToggleFavorite;
 
-  NewCarItem({super.key, required this.car, this.onRequestPrice, this.onToggleFavorite});
+  NewCarItem(
+      {super.key,
+      required this.car,
+      this.onRequestPrice,
+      this.onToggleFavorite});
 
   @override
   Widget build(BuildContext context) {

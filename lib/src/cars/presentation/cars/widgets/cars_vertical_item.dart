@@ -103,13 +103,15 @@ class CarVerticalItem extends BaseStatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const Spacer(),
-                    IconText(
-                      text: car.city?.name ?? '',
-                      textStyle: bodySmall,
-                      icon: AppIcons.yellow_location,
-                      iconSize: 20,
-                      sizedBoxWidth: 0,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    FittedBox(
+                      child: IconText(
+                        text: car.city?.name ?? '',
+                        textStyle: bodySmall,
+                        icon: AppIcons.yellow_location,
+                        iconSize: 20,
+                        sizedBoxWidth: 0,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                      ),
                     ),
                     5.ph,
                     if (isMyCar)
@@ -191,12 +193,33 @@ class CarVerticalItem extends BaseStatelessWidget {
                   ),
                   if(car.isApproved ?? false)
                   PositionedDirectional(
-                    bottom: 5,
+                    bottom: 30,
                     end: 5,
                     child: ShareIconButton(
                       route: Routes.carAppLink,
                       id: car.id.toString() ?? '',
                     ),
+                  ),
+                  if (car.monthlyInstallment != null)
+                  PositionedDirectional(
+                    bottom: 0,
+                    end: 0,
+                    child: Container(
+                      padding: 5.paddingAll,
+                      decoration: BoxDecoration(
+                        color: context.primaryColor,
+                        borderRadius: const BorderRadiusDirectional.only(
+                          topStart: Radius.circular(5),
+                        ),
+                      ),
+                       child: Text(
+                        strings.available_for_installments,
+                        style: context.labelSmall.copyWith(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                        ),
+                    ),
+                  ),
                   ),
                 ],
               ),
