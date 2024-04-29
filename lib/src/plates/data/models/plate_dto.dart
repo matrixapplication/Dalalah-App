@@ -44,9 +44,9 @@ class PlateDto {
   @JsonKey(name: 'created_at')
   String? createdAt;
   @JsonKey(name: 'lat')
-  double? lat;
+  String? lat;
   @JsonKey(name: 'lng')
-  double? lng;
+  String? lng;
 
 
   PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.userCarStatus, this.createdAt, this.lat, this.lng});

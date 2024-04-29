@@ -94,6 +94,8 @@ class HomeCubit extends BaseCubit {
       otherCarsStream.setData(data);
     } catch (e) {
       otherCarsStream.setError(e);
+      print('error $e');
+      rethrow;
     }
   }
 

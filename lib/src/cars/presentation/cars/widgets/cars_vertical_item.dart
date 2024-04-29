@@ -200,7 +200,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (car.monthlyInstallment != null)
+                  // if (car.monthlyInstallment != null)
                   PositionedDirectional(
                     bottom: 0,
                     end: 0,
