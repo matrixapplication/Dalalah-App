@@ -179,7 +179,7 @@ class Car {
   }
 
   String fullName() {
-    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
+    return '${brand?.name ?? ''} ${brandModel?.name ?? ''}  ${brandModelExtension?.name ?? ''}';
   }
 
   bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && (modelRole != Roles.ADMIN));

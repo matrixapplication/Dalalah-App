@@ -127,6 +127,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 title: strings.car_description,
                 hintText: strings.enter_car_description,
                 controller: descController,
+                maxLength: 500,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return strings.enter_car_description;

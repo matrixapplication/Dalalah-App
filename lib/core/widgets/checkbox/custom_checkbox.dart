@@ -30,15 +30,15 @@ class CustomCheckbox extends StatelessWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           );
         }),
-        GestureDetector(
-          onTap: onTextTap,
-          child: Flexible(
-              child: Text(title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .copyWith(fontSize: 12, decoration: isUnderline! ? TextDecoration.underline : TextDecoration.none)
-              )
+        Flexible(
+          child: GestureDetector(
+            onTap: onTextTap,
+            child: Text(title,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontSize: 12, decoration: isUnderline! ? TextDecoration.underline : TextDecoration.none)
+            ),
           ),
         ),
       ],
