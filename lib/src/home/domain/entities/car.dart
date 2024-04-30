@@ -183,4 +183,7 @@ class Car {
   }
 
   bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && (modelRole != Roles.ADMIN));
+
+
+  bool isShowInstallment () => (monthlyInstallment != null && (modelRole != Roles.USER));
 }

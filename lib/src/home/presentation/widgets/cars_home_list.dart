@@ -17,6 +17,7 @@ import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../cars/presentation/cars_details/widgets/car_info.dart';
+import '../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
 import '../../../sell_car/domain/entities/car_status.dart';
 import '../../domain/entities/car.dart';
 
@@ -191,26 +192,26 @@ class CarHorizontalItem extends BaseStatelessWidget {
                     ),
                     5.ph,
                     FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: Row(
                         children: [
                           PriceWidget(
                             price: car.price?.toString() ?? '',
                             fontSize: 12,
                           ),
-                          10.pw,
-                          CustomChip(
-                            backgroundColor: AppColors.grey_d9,
-                            value: car.status?.name ?? "",
-                            fontSize: 10,
-                            labelColor: AppColors.blue_31,
+                          5.pw,
+                          ChipAd(
+                            text: car.status?.name ?? "",
                           ),
-                          10.pw,
-                          CustomChip(
-                            backgroundColor: AppColors.grey_d9,
-                            value: car.year ?? "",
-                            fontSize: 10,
-                            labelColor: AppColors.blue_31,
+                          5.pw,
+                          ChipAd(
+                            text: car.year ?? "",
                           ),
+                          if(car.isSold ?? false)
+                            ChipAd(
+                              text: strings.sold ?? "",
+                              backgroundColor: context.errorColor,
+                            ),
                         ],
                       ),
                     ),

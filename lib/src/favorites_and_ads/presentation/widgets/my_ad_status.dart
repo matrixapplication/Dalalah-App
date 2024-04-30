@@ -27,6 +27,7 @@ class MyAdStatus extends BaseStatelessWidget {
            if(isSold)
           ChipAd(
             text: strings.sold ?? "",
+            backgroundColor: context.errorColor,
           ),
           if(!isApproved)
           ChipAd(

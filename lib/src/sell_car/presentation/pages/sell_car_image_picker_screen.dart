@@ -79,7 +79,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 controller: priceController,
                 keyboardType: TextInputType.number,
               ),
-              if (isGlobalUser)
+              if (!isGlobalUser)
                 Column(
                   children: [
                     5.ph,

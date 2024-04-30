@@ -211,7 +211,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
   _initData(PlateArgs args) async {
     try {
       String letterEn = args.plate?.letterEn?.toArabicCharsWithoutSpace() ?? '';
-      String letterAr = args.plate?.letterAr?.toArabicCharsWithoutSpace() ?? '';
+      String letterAr = args.plate?.letterAr ?? '';
       String plateNumber = args.plate?.plateNumber ?? '';
       print('lat: ${args.plate!.lat} lng: ${args.plate!.lng}');
       initialLocation = LatLng(
@@ -224,8 +224,8 @@ class PlateFilterScreen extends BaseStatelessWidget {
         for (var element in letterEn.split('')) {
           controllersEnLetters[letterEn.split('').indexOf(element)].text = element;
         }
-        for (var element in letterAr.split('')) {
-          controllersArLetters[letterAr.split('').indexOf(element)].text = element;
+        for (var element in letterAr.split(' ')) {
+          controllersArLetters[letterAr.split(' ').indexOf(element)].text = element;
         }
         for (var element in plateNumber.split('')) {
           controllersNumbers[plateNumber.split('').indexOf(element)].text = element;

@@ -6,17 +6,18 @@ import '../../../home/presentation/widgets/sub_custom_container.dart';
 
 class ChipAd extends StatelessWidget {
   final String text;
-  const ChipAd({super.key, required this.text});
+  final Color? backgroundColor;
+  const ChipAd({super.key, required this.text, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: 3.paddingHoriz,
+      padding: 2.paddingHoriz,
       child: CustomChip(
-        backgroundColor: AppColors.grey_d9,
+        backgroundColor: backgroundColor ?? AppColors.grey_d9,
         value: text,
-        fontSize: 12,
-        labelColor: context.bodyMedium.color,
+        fontSize: 10,
+        labelColor: backgroundColor == context.errorColor ? context.labelMedium.color : context.bodyMedium.color,
         padding: 3.paddingVert + 10.paddingHoriz,
           borderColor: Colors.transparent,
       ),

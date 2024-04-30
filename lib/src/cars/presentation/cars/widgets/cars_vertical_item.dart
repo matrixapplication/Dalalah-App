@@ -1,5 +1,6 @@
 import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
+import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
 import 'package:dalalah/src/sell_car/domain/entities/car_status.dart';
 
 import '../../../../../core/widgets/buttons/share_icon_button.dart';
@@ -87,7 +88,7 @@ class CarVerticalItem extends BaseStatelessWidget {
             Expanded(
               flex: 6,
               child: Padding(
-                padding: 8.paddingHoriz + 5.paddingBottom,
+                padding: 5.paddingHoriz + 5.paddingBottom,
                 // width: 220,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,10 +128,14 @@ class CarVerticalItem extends BaseStatelessWidget {
                         ChipAd(
                           text: car.status?.name ?? '',
                         ),
-                        10.pw,
                         ChipAd(
                           text: car.year ?? "",
                         ),
+                        if((car.isSold ?? false) && !isMyCar)
+                          ChipAd(
+                            text: strings.sold ?? "",
+                            backgroundColor: context.errorColor,
+                          ),
                       ],
                     ),
                     5.ph,
@@ -200,7 +205,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (car.monthlyInstallment != null)
+                  if (car.isShowInstallment())
                   PositionedDirectional(
                     bottom: 0,
                     end: 0,

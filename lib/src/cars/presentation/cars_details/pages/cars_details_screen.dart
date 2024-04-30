@@ -101,6 +101,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       images: car.allImages(),
                     ),
                     PositionedDirectional(
+
                       bottom: 0,
                       end: 10,
                       child: FavoriteButton(

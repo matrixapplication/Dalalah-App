@@ -85,9 +85,7 @@ class SellCarCubit extends BaseCubit {
     dynamic idOrMsg = 0;
     try {
       if (params.id == null || params.id == 0) {
-        idOrMsg = params.status == CarStatus.newCar
-            ? await usecase.addNewCar(params)
-            : await usecase.sellCar(params);
+        idOrMsg = await usecase.sellCar(params);
       } else {
         idOrMsg = await usecase.editCar(params);
       }
