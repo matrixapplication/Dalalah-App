@@ -11,6 +11,7 @@ import '../../../../core/widgets/checkbox/custom_checkbox.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../home/domain/entities/car.dart';
+import '../../../installment/domain/entities/roles.dart';
 import '../../../main_index.dart';
 import '../../../map_picker/widgets/custom_google_map.dart';
 import '../../data/models/edit_image_params.dart';
@@ -79,7 +80,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 controller: priceController,
                 keyboardType: TextInputType.number,
               ),
-              if (!isGlobalUser)
+              if (useRole != Roles.USER)
                 Column(
                   children: [
                     5.ph,

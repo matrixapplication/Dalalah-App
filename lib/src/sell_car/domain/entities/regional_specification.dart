@@ -25,7 +25,7 @@ class RegionalSpecification {
     return [
       RegionalSpecification(id: 1, name: strings.saudi),
       RegionalSpecification(id: 2, name: strings.gulf),
-      RegionalSpecification(id: 3, name: strings.importation),
+      RegionalSpecification(id: 3, name: strings.import),
     ];
   }
 }

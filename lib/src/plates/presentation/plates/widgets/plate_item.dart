@@ -9,6 +9,7 @@ import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/buttons/edit_icon_button.dart';
 import '../../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
+import '../../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
 import '../../../domain/entities/plate.dart';
@@ -98,6 +99,11 @@ class PlateItem extends StatelessWidget {
                       // ),
                       // 5.pw,
                       PriceWidget(price: plate.price ?? '0'),
+                      if((plate.isSold ?? false) && !isMyPlate)
+                        ChipAd(
+                          text: context.strings.sold ?? "",
+                          backgroundColor: context.errorColor,
+                        ),
                       // 5.pw,
                       // onFavoritePlate == null
                       //     ? const EditIconButton(
@@ -143,6 +149,7 @@ class PlateItem extends StatelessWidget {
                 start: 0,
                 child: FeaturedIcon(),
               ),
+
           ],
         ),
       ),

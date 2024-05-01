@@ -25,6 +25,7 @@ class CustomGoogleMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _initialLocation = initialLocation;
     fetchCurrentLocation();
     return  InkWell(
       onTap: () {

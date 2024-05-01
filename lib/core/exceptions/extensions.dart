@@ -282,7 +282,9 @@ extension DurationExtension on int {
 }
 
 extension ToInt on String {
-  int get toInt => isNotEmpty ? int.parse(this) : 0;
+  // remove any non digit character from string and return the integer value
+  String get removeNonDigit => replaceAll(RegExp(r'[^\d]'), '');
+  int get toInt => isNotEmpty ? int.parse(removeNonDigit) : 0;
 }
 
 extension UserIdShared on String {

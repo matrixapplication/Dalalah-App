@@ -9,6 +9,7 @@ import '../../../../../core/widgets/images/image_network.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
 import '../../../../favorites_and_ads/presentation/widgets/my_ad_status.dart';
 import '../../../../home/domain/entities/car.dart';
+import '../../../../installment/domain/entities/roles.dart';
 import '../../../../main_index.dart';
 import '../../cars_details/widgets/car_info.dart';
 import '../../../../favorites_and_ads/presentation/widgets/car_operations_popup.dart';
@@ -205,7 +206,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (car.isShowInstallment())
+                  if (useRole != Roles.USER)
                   PositionedDirectional(
                     bottom: 0,
                     end: 0,

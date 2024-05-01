@@ -12,9 +12,10 @@ class LocaleCubit extends Cubit<LocalState> {
 
 
   Future setLanguageData(String value) async {
+    emit(LocalState(language: lang, isLoading: true, isFirstTime: false));
     lang = value;
     await HelperMethods.setLanguage(value);
-    emit(LocalState(language: lang, isLoading: false, isFirstTime: false));
+    getLanguageData();
   }
 
   Future getLanguageData() async {

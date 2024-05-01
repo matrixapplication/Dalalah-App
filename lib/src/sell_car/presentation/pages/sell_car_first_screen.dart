@@ -33,7 +33,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
   int brandId = 0;
   int carModelId = 0;
   int extensionId = 0;
-  int regionalId = 1;
+  String regionalId = '1';
   int? year;
   final _formKey = GlobalKey<FormState>();
 
@@ -86,7 +86,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
                         (e) => DropDownItem(id: e.id.toString(), title: e.name))
                     .toList(),
                 onChanged: (item) {
-                  regionalId = int.parse(item?.id ?? '0');
+                  regionalId = item?.id ?? '1';
                 },
               ),
               DropDownField(
@@ -144,6 +144,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
             carModelId: carModelId,
             carModelExtensionId: extensionId,
             year: year,
+            regionalSpecificationKey: regionalId,
           ),
         );
       } else {
@@ -160,7 +161,7 @@ class SellCarFirstScreen extends BaseStatelessWidget {
       brandId = car?.brand?.id ?? 0;
       extensionId = car?.brandModelExtension?.id ?? 0;
       year = int.parse(car?.year ?? DateTime.now().year.toString());
-      regionalId = car?.regionalSpecification?.id ?? 1;
+      regionalId = car?.regionalSpecification?.id.toString() ?? '1';
       print('regionalKey ${regionalId}');
     }
   }

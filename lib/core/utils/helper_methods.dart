@@ -156,6 +156,7 @@ class HelperMethods {
 
   static Future<String> getLanguage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.reload();
     return prefs.getString('language') ?? 'en';
   }
 
@@ -270,7 +271,7 @@ class HelperMethods {
 
 
   static Future<String> getUserRole() async {
-    return await getProfile()?.then((value) => value?.role ?? '') ?? '';
+    return await getProfile()?.then((value) => value?.role ?? Roles.USER) ?? '';
   }
 
   static copyToClipboard(String text) {

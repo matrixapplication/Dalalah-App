@@ -210,10 +210,14 @@ class PlateFilterScreen extends BaseStatelessWidget {
 
   _initData(PlateArgs args) async {
     try {
-      String letterEn = args.plate?.letterEn?.toArabicCharsWithoutSpace() ?? '';
-      String letterAr = args.plate?.letterAr ?? '';
+      List<String> letterEn = args.plate?.letterEn?.split('') ?? [];
+      List<String> letterAr = args.plate?.letterAr?.split(' ') ?? [];
       String plateNumber = args.plate?.plateNumber ?? '';
       print('lat: ${args.plate!.lat} lng: ${args.plate!.lng}');
+      // convert string to list char
+      print('letterEn: $letterEn');
+      print('letterAr: ${letterAr} + length: ${letterAr.length}');
+      print('plateNumber: ${plateNumber}');
       initialLocation = LatLng(
         args.plate!.lat ?? 0.0,
         args.plate!.lng ?? 0.0,
@@ -221,17 +225,18 @@ class PlateFilterScreen extends BaseStatelessWidget {
       if (args.plate != null) {
         priceController.text = args.plate!.price.toString();
         cityId = args.plate!.city?.id ?? 0;
-        for (var element in letterEn.split('')) {
-          controllersEnLetters[letterEn.split('').indexOf(element)].text = element;
+        for (int i = 0; i < letterAr.length; i++) {
+          controllersArLetters[i].text = letterAr[i];
         }
-        for (var element in letterAr.split(' ')) {
-          controllersArLetters[letterAr.split(' ').indexOf(element)].text = element;
+        for (int i = 0; i < letterEn.length; i++) {
+          controllersEnLetters[i].text = letterEn[i];
         }
         for (var element in plateNumber.split('')) {
           controllersNumbers[plateNumber.split('').indexOf(element)].text = element;
         }
       }
     } on Exception catch (e) {
+
       rethrow;
     }
   }

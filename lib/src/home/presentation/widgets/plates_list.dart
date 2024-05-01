@@ -12,6 +12,7 @@ import '../../../../core/widgets/buttons/share_icon_button.dart';
 import '../../../../core/widgets/icons/icon_text.dart';
 import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../cars/presentation/cars/widgets/featured_icon.dart';
+import '../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/presentation/plates/widgets/plate_image.dart';
 
@@ -108,9 +109,23 @@ class PlateVert extends StatelessWidget {
                 ),
 
                 PriceWidget(price: plate.price ?? '0'),
+
+                if(plate.isSold ?? false)
+                  PositionedDirectional(
+                    bottom: 0,
+                    end: 10,
+                    child: Container(
+                      padding: 5.paddingVert + 10.paddingHoriz,
+                      decoration: Decorations.kDecorationOnlyRadius(color: context.errorColor, radius: 20),
+                      child: Text(
+                        context.strings.sold,
+                        style: context.labelSmall
+                      ),
+                    ),
+                  ),
                 PositionedDirectional(
-                  bottom: 0,
-                  end: 10,
+                  top: 0,
+                  end: 0,
                   child: ShareIconButton(
                     route: Routes.plateAppLink,
                     id: plate.id.toString() ?? '',

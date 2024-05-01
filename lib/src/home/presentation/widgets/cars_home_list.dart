@@ -4,6 +4,7 @@ import 'package:dalalah/core/themes/colors.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/favorites_and_ads/presentation/widgets/favorite_button.dart';
+import 'package:dalalah/src/home/presentation/bloc/home_bloc.dart';
 import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ import '../../../../core/widgets/stream/stream_state_widget.dart';
 import '../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../cars/presentation/cars_details/widgets/car_info.dart';
 import '../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
+import '../../../installment/domain/entities/roles.dart';
 import '../../../sell_car/domain/entities/car_status.dart';
 import '../../domain/entities/car.dart';
 
@@ -141,7 +143,7 @@ class CarHorizontalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (car.monthlyInstallment != null)
+                  if (useRole != Roles.USER)
                     PositionedDirectional(
                       bottom: 0,
                       end: 0,

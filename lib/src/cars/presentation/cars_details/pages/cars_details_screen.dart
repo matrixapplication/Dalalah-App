@@ -51,26 +51,26 @@ class CarsDetailsScreen extends BaseStatelessWidget {
               onToggleFavorite: onToggleFavorite,
             ),
           ),
-          if (isNew)
-            TabItemModel(
-              label: strings.price,
-              page: CarDetailsPriceView(
-                carDetails: carDetails,
-                onRequestPrice: onRequestPrice,
-              ),
-            ),
-          if (isNew)
-            TabItemModel(
-              label: strings.categories,
-              page: CarsPage(
-                isDetailsPage: true,
-                params: CarFilterParams(
-                  startYear: int.parse(car.year ?? '0'),
-                  brand: car.brand?.id ?? 0,
-                  carModel: car.brandModel?.id ?? 0,
-                ),
-              ),
-            ),
+          // if (isNew)
+          //   TabItemModel(
+          //     label: strings.price,
+          //     page: CarDetailsPriceView(
+          //       carDetails: carDetails,
+          //       onRequestPrice: onRequestPrice,
+          //     ),
+          //   ),
+          // if (isNew)
+          //   TabItemModel(
+          //     label: strings.categories,
+          //     page: CarsPage(
+          //       isDetailsPage: true,
+          //       params: CarFilterParams(
+          //         startYear: int.parse(car.year ?? '0'),
+          //         brand: car.brand?.id ?? 0,
+          //         carModel: car.brandModel?.id ?? 0,
+          //       ),
+          //     ),
+          //   ),
           //   if(isNew)
           TabItemModel(
             label: strings.comments,

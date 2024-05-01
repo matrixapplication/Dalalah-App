@@ -74,6 +74,7 @@ class PlatesDetailsWidget extends StatelessWidget {
             value: plate.createdAt ?? '',
           ),
           CustomGoogleMap(
+            isOpenMap: true,
             initialLocation: LatLng(plate.lat ?? 0, plate.lng ?? 0),
             onGetLocation: (lat, lng) {
             },

@@ -1,6 +1,7 @@
 import 'package:dalalah/core/widgets/buttons/icon_text_button.dart';
 
-import '../../../../core/widgets/icons/icon_text.dart';
+import '../../../../core/utils/helper_methods.dart';
+import '../../../../core/widgets/restart_app_widget.dart';
 import '../../../main_index.dart';
 import '../../../settings/presentation/bloc/locale_cubit.dart';
 import '../../../settings/presentation/bloc/locale_state.dart';
@@ -28,21 +29,30 @@ class ChangeLanguagePopup extends BaseStatelessWidget {
       child: BlocBuilder<LocaleCubit, LocalState>(
         bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
-          return isOnlyText
+          return state.isLoading
+              ? const SizedBox.shrink()
+              :
+            isOnlyText
               ? IconTextButton(
                   icon: AppIcons.arrow_down,
                   iconSize: 10,
                   iconColor: context.cardColor,
-                  text: state.language == context.en
-                      ? strings.english
-                      : strings.arabic,
+                  text: context.locale.languageCode == 'en'
+                      ? 'english'
+                      : 'عربي',
                   textStyle: context.labelMedium,
-                  onTap: () {
-                    if (state.language == context.en) {
-                      context.read<LocaleCubit>().setLanguageData(context.ar);
+                  onTap: () async {
+                    print('state.language ${state.language}');
+                    if (context.locale.languageCode == 'en') {
+                    await  context.read<LocaleCubit>().setLanguageData(context.ar);
                     } else {
-                      context.read<LocaleCubit>().setLanguageData(context.en);
+                      await context.read<LocaleCubit>().setLanguageData(context.en);
                     }
+
+                    // await HelperMethods.setLanguage(state.language == context.en
+                    //     ? context.ar
+                    //     : context.en);
+                    // RestartWidget.restartApp(context);
                   },
                 )
               : DropdownButtonHideUnderline(
