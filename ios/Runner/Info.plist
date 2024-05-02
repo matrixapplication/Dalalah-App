@@ -91,5 +91,9 @@
 	<string>دلالة</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>NSLocationUsageDescription</key>
+	<string>This app needs location access to show the nearest merchants.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to location when open.</string>
 </dict>
 </plist>
