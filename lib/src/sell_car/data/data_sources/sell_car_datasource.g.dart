@@ -43,7 +43,7 @@ class _SellCarDatasource implements SellCarDatasource {
     int cylinders,
     int mileage,
     String description,
-    int monthlyInstallment,
+    int? monthlyInstallment,
     File file,
     List<File> images,
     List<String> features,
@@ -54,6 +54,7 @@ class _SellCarDatasource implements SellCarDatasource {
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
     _data.fields.add(MapEntry(
@@ -140,10 +141,12 @@ class _SellCarDatasource implements SellCarDatasource {
       'description',
       description,
     ));
-    _data.fields.add(MapEntry(
-      'monthly_installment',
-      monthlyInstallment.toString(),
-    ));
+    if (monthlyInstallment != null) {
+      _data.fields.add(MapEntry(
+        'monthly_installment',
+        monthlyInstallment.toString(),
+      ));
+    }
     _data.files.add(MapEntry(
       'main_image',
       MultipartFile.fromFileSync(

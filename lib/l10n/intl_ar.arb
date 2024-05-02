@@ -151,15 +151,12 @@
   "car_status": "حالة السيارة",
   "car_type": "نوع السيارة",
   "car_model": "مودل السيارة",
-  "select_year": "إختر السنة",
   "manual": "مانيوال",
   "automatic": "اوتوماتيك",
-  "select_status": "اختر الحاله",
   "select_shape": "اختر الشكل",
   "select_fuel": "اختر الوقود",
   "fuel_type": "نوع الوقود",
   "car_color": "لون السيارة",
-  "select_color": "إختر اللون",
   "add_car_features": "اضف مميزات السيارة",
   "car_price": "سعر السيارة",
   "enter_car_price": "ادخل سعر السيارة",
@@ -168,7 +165,6 @@
   "select_image": "اختر الصورة",
   "add_car_image_at_most_10": "اضف صورةالسيارة (بحد أقصى 10 صور)",
   "share": "نشر",
-  "status": "الحالة",
   "drive_type": "نوع القيادة",
   "model": "الموديل",
   "select_images": "إختر الصور",
@@ -396,5 +392,6 @@
   "i_agree_to_the_terms_and_conditions": "أوافق على الشروط والأحكام",
   "please_agree_to_terms_and_conditions": "من فضلك وافق على الشروط والأحكام",
   "only_500_characters_allowed": "يسمح فقط بـ 500 حرف",
-  "available_for_installments": "متاح للتقسيط"
+  "available_for_installments": "متاح للتقسيط",
+  "monthly": "شهري"
 }

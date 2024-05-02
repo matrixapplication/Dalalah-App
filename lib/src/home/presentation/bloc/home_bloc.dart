@@ -17,7 +17,7 @@ import '../../domain/use_cases/home_usecase.dart';
 
 // For the purpose of this example, we will use a global variable to check if the user is normal user or showroom user
 bool isGlobalUser = false;
-String useRole = Roles.USER;
+String globalUseRole = Roles.USER;
 
 @Injectable()
 class HomeCubit extends BaseCubit {
@@ -46,9 +46,9 @@ class HomeCubit extends BaseCubit {
     await fetchSlides();
   //  await fetchBrands();
     isGlobalUser = await HelperMethods.isUser();
-    useRole =  await HelperMethods.getUserRole();
+    globalUseRole =  await HelperMethods.getUserRole();
     print('isUser $isGlobalUser');
-    print('useRole $useRole');
+    print('useRole $globalUseRole');
     await fetchYourCars();
    await fetchPlates();
 

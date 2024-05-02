@@ -87,7 +87,7 @@ Map<String, dynamic> _$SellCarParamsToJson(SellCarParams instance) {
   val['images'] =
       instance.images?.map(const FileJsonConverter().toJson).toList();
   val['features'] = instance.features;
-  val['monthly_installment'] = instance.installment;
+  writeNotNull('monthly_installment', instance.installment);
   val['ad_type'] = instance.adType;
   val['new_car_miles'] = instance.newCarMiles;
   val['city_id'] = instance.cityId;

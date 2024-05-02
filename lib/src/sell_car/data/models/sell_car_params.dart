@@ -62,7 +62,7 @@ class SellCarParams {
   List<File>? images;
   @JsonKey(name: 'features')
   List<String>? features;
-  @JsonKey(name: 'monthly_installment')
+  @JsonKey(name: 'monthly_installment', includeIfNull: false)
   int? installment;
   @JsonKey(name: 'ad_type')
   String? adType;

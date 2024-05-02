@@ -1,4 +1,3 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../cars/data/models/model_object.dart';
 import '../../../profile/domain/entities/roles.dart';
@@ -7,7 +6,6 @@ import '../../../sell_car/data/models/brand_model_dto.dart';
 import '../../../sell_car/data/models/brand_model_extension_dto.dart';
 import '../../../sell_car/data/models/car_status_dto.dart';
 import '../../../sell_car/data/models/city_dto.dart';
-import '../../../sell_car/data/models/color_dto.dart';
 import '../../../sell_car/data/models/drive_type_dto.dart';
 import '../../../sell_car/data/models/fuel_type_dto.dart';
 import '../../../sell_car/data/models/regional_specification_dto.dart';
@@ -72,7 +70,6 @@ class Car {
   RegionalSpecification? regionalSpecification;
   double? lat;
   double? lng;
-
 
   Car(
       {this.id,
@@ -185,5 +182,5 @@ class Car {
   bool isShowRequestPrice(bool isCarDetails, bool isMyCar)=> (status?.key == CarStatus.newCar && !isCarDetails && !isMyCar && isGlobalUser && (modelRole != Roles.ADMIN));
 
 
-  bool isShowInstallment () => (monthlyInstallment != null && (modelRole != Roles.USER));
+  bool isShowInstallment() => ((globalUseRole != Roles.USER) && (monthlyInstallment != null && monthlyInstallment != 0));
 }

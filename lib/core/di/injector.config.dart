@@ -68,13 +68,13 @@ import '../../src/installment/domain/use_cases/installment_usecase.dart'
 import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i91;
 import '../../src/map_picker/bloc/map_picker_cubit.dart' as _i13;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
-    as _i14;
+    as _i15;
 import '../../src/notifications/data/repositories/notifications_repo.dart'
-    as _i39;
+    as _i41;
 import '../../src/notifications/domain/repositories/base_notifications_repo.dart'
-    as _i38;
+    as _i40;
 import '../../src/notifications/domain/use_cases/notifications_usecase.dart'
-    as _i62;
+    as _i63;
 import '../../src/notifications/presentation/bloc/notifications_bloc.dart'
     as _i93;
 import '../../src/payment/data/data_sources/payment_datasource.dart' as _i16;
@@ -108,13 +108,13 @@ import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i67;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i85;
 import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i98;
 import '../../src/real_estate/data/data_sources/notifications_datasource.dart'
-    as _i15;
+    as _i14;
 import '../../src/real_estate/data/repositories/notifications_repo.dart'
-    as _i41;
+    as _i39;
 import '../../src/real_estate/domain/repositories/base_notifications_repo.dart'
-    as _i40;
+    as _i38;
 import '../../src/real_estate/domain/use_cases/notifications_usecase.dart'
-    as _i63;
+    as _i62;
 import '../../src/real_estate/presentation/bloc/real_estate_bloc.dart' as _i68;
 import '../../src/sell_car/data/data_sources/sell_car_datasource.dart' as _i20;
 import '../../src/sell_car/data/repositories/add_car_repo.dart' as _i22;
@@ -260,7 +260,7 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i67.ProfileUseCase>(
       () => _i67.ProfileUseCase(gh<_i48.BaseProfileRepo<dynamic>>()));
   gh.factory<_i68.RealEstatePageCubit>(
-      () => _i68.RealEstatePageCubit(gh<_i63.NotificationsUseCase>()));
+      () => _i68.RealEstatePageCubit(gh<_i62.NotificationsUseCase>()));
   gh.factory<_i69.SellCarCubit>(() => _i69.SellCarCubit(
         gh<_i21.SellCarUseCase>(),
         gh<_i65.PlatesUseCase>(),
@@ -341,7 +341,7 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i65.PlatesUseCase>(),
       ));
   gh.factory<_i93.NotificationsCubit>(
-      () => _i93.NotificationsCubit(gh<_i62.NotificationsUseCase>()));
+      () => _i93.NotificationsCubit(gh<_i63.NotificationsUseCase>()));
   gh.factory<_i94.PaymentBloc>(
       () => _i94.PaymentBloc(gh<_i64.PaymentUseCase>()));
   gh.factory<_i95.PlatesCubit>(() => _i95.PlatesCubit(

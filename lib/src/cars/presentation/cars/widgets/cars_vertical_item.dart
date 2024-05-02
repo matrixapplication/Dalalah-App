@@ -206,7 +206,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (useRole != Roles.USER)
+                  if (globalUseRole != Roles.USER)
                   PositionedDirectional(
                     bottom: 0,
                     end: 0,

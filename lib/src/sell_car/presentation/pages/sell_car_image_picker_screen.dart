@@ -80,7 +80,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 controller: priceController,
                 keyboardType: TextInputType.number,
               ),
-              if (useRole != Roles.USER)
+              if (globalUseRole != Roles.USER)
                 Column(
                   children: [
                     5.ph,

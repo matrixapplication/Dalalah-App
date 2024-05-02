@@ -119,11 +119,21 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        car.fullName(),
-                        style: context.textTheme.titleSmall!.copyWith(
-                          color: AppColors.grey_2C,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            car.fullName(),
+                            style: context.textTheme.titleSmall!.copyWith(
+                              color: AppColors.grey_2C,
+                            ),
+                          ),
+
+                          PriceWidget(
+                            price: car.price ?? '0.0',
+                            fontSize: 18,
+                          ),
+                        ],
                       ),
                       10.ph,
                       Row(
@@ -142,8 +152,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                           ),
                           10.pw,
                           PriceWidget(
-                            price: car.price ?? '0.0',
-                            fontSize: 18,
+                            price: '${car.monthlyInstallment} ${context.strings.rs} ${strings.monthly}',
+                            isEgp: false,
+                            fontSize: 14,
                           ),
                         ],
                       ),

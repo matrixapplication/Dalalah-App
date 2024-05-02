@@ -57,7 +57,7 @@ class AddCarRepo implements BaseAddCarRepo {
       params.cylinders ?? 0,
       params.mileage ?? 0,
       params.description ?? '',
-      params.installment ?? 0,
+      params.installment,
       params.mainImage!,
       params.images ?? [],
       params.features ?? [],

@@ -29,8 +29,8 @@ PlateDto _$PlateDtoFromJson(Map<String, dynamic> json) => PlateDto(
       isFavorite: json['is_favorite'] as bool?,
       userCarStatus: json['user_car_status'] as int?,
       createdAt: json['created_at'] as String?,
-      lat: (json['lat'] as String?),
-      lng: (json['lng'] as String?),
+      lat: json['lat'] as String?,
+      lng: json['lng'] as String?,
     );
 
 Map<String, dynamic> _$PlateDtoToJson(PlateDto instance) => <String, dynamic>{
