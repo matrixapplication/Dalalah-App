@@ -25,7 +25,7 @@ class CarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, CarsCubit> {
   int tabIndex = 0;
   int brandId = 0;
   int brandModelId = 0;
-  String order = '';
+  String order = 'desc';
 
   bool isFilter = true;
 
