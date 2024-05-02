@@ -143,7 +143,7 @@ class CarHorizontalItem extends BaseStatelessWidget {
                       id: car.id.toString() ?? '',
                     ),
                   ),
-                  if (car.isShowInstallment() ?? false)
+                  if(car.isShowInstallment())
                     PositionedDirectional(
                       bottom: 0,
                       end: 0,
