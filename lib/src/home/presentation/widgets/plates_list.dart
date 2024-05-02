@@ -15,6 +15,7 @@ import '../../../cars/presentation/cars/widgets/featured_icon.dart';
 import '../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/presentation/plates/widgets/plate_image.dart';
+import '../../../plates/presentation/plates/widgets/sold_widget.dart';
 
 ///  Created by harby on 9/5/2023.
 class PlatesList extends StatelessWidget {
@@ -135,25 +136,7 @@ class PlateVert extends StatelessWidget {
               ],
             ),
 
-            if(plate.isSold ?? false)
-              PositionedDirectional(
-                top: 0,
-                end: 0,
-                child: Container(
-                  padding: 5.paddingVert + 10.paddingHoriz,
-                  decoration: BoxDecoration(
-                    color: context.errorColor,
-                    borderRadius: const BorderRadiusDirectional.only(
-                      topEnd: Radius.circular(5),
-                      bottomStart: Radius.circular(5),
-                    ),
-                  ),
-                  child: Text(
-                      context.strings.sold,
-                      style: context.labelSmall
-                  ),
-                ),
-              ),
+            if(plate.isSold ?? false)SoldWidget(),
           ],
         ),
       ),

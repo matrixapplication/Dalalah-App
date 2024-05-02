@@ -3,6 +3,7 @@ import 'package:dalalah/core/routes/routes.dart';
 import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
 import 'package:dalalah/src/plates/presentation/plates/widgets/plate_image.dart';
+import 'package:dalalah/src/plates/presentation/plates/widgets/sold_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/navigator.dart';
@@ -48,7 +49,7 @@ class PlateItem extends StatelessWidget {
         arguments: plate,
       ),
       child: Container(
-        padding: 8.paddingAll,
+        // padding: 8.paddingAll,
         margin: 12.paddingBottom,
         decoration: ShapeDecoration(
           // color: Colors.white,
@@ -76,64 +77,62 @@ class PlateItem extends StatelessWidget {
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
-            Column(
-              children: [
-                PlateImage(
-                  plate: plate,
-                  isSeeAll: isSeeAll,
-                ),
-                Padding(
-                  padding: 10.paddingHoriz,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      if (plate.isApproved ?? false)
-                        ShareIconButton(
-                          route: Routes.plateAppLink,
-                          id: plate.id.toString() ?? '',
-                        ),
-                      // Text(
-                      //   '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
-                      //   style: context.bodyMedium,
-                      //   textDirection: TextDirection.rtl,
-                      // ),
-                      // 5.pw,
-                      PriceWidget(price: plate.price ?? '0'),
-                      if((plate.isSold ?? false) && !isMyPlate)
-                        ChipAd(
-                          text: context.strings.sold ?? "",
-                          backgroundColor: context.errorColor,
-                        ),
-                      // 5.pw,
-                      // onFavoritePlate == null
-                      //     ? const EditIconButton(
-                      //         iconSize: 30,
-                      //         circleSize: 40,
-                      //       )
-                      //     :
-                      if (!isMyPlate)
-                        FavoriteButton(
-                          isFavorite: plate.isFavorite ?? false,
-                          onToggleFavorite: () =>
-                              onFavoritePlate!(plate.id ?? 0),
-                          iconSize: 15,
-                        ),
-                    ],
+            Padding(
+              padding: 8.paddingAll,
+              child: Column(
+                children: [
+                  PlateImage(
+                    plate: plate,
+                    isSeeAll: isSeeAll,
                   ),
-                ),
-                if (isMyPlate)
-                  MyAdStatus(
-                    isSold: plate.isSold ?? false,
-                    isHidden: plate.isUserHide ?? false,
-                    isApproved: plate.isApproved ?? false,
-                    isHiddenByAdmin: plate.isHide ?? false,
+                  Padding(
+                    padding: 10.paddingHoriz,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        if (plate.isApproved ?? false)
+                          ShareIconButton(
+                            route: Routes.plateAppLink,
+                            id: plate.id.toString() ?? '',
+                          ),
+                        // Text(
+                        //   '${plate.letterAr}\t\t${plate.letterEn?.toArabicChars()}\t\t${plate.plateNumber}',
+                        //   style: context.bodyMedium,
+                        //   textDirection: TextDirection.rtl,
+                        // ),
+                        // 5.pw,
+                        PriceWidget(price: plate.price ?? '0'),
+                        // 5.pw,
+                        // onFavoritePlate == null
+                        //     ? const EditIconButton(
+                        //         iconSize: 30,
+                        //         circleSize: 40,
+                        //       )
+                        //     :
+                        if (!isMyPlate)
+                          FavoriteButton(
+                            isFavorite: plate.isFavorite ?? false,
+                            onToggleFavorite: () =>
+                                onFavoritePlate!(plate.id ?? 0),
+                            iconSize: 15,
+                          ),
+                      ],
+                    ),
                   ),
-              ],
+                  if (isMyPlate)
+                    MyAdStatus(
+                      isSold: plate.isSold ?? false,
+                      isHidden: plate.isUserHide ?? false,
+                      isApproved: plate.isApproved ?? false,
+                      isHiddenByAdmin: plate.isHide ?? false,
+                    ),
+                ],
+              ),
             ),
             if (isMyPlate)
               PositionedDirectional(
-                top: 0,
-                end: 0,
+                top: 8,
+                end: 8,
                 child: CarOperationsPopup(
                   plate: plate,
                   onHide: onHide,
@@ -145,11 +144,12 @@ class PlateItem extends StatelessWidget {
               ),
             if (plate.isFeatured ?? false)
               const PositionedDirectional(
-                top: 0,
-                start: 0,
+                top: 8,
+                start: 8,
                 child: FeaturedIcon(),
               ),
 
+            if((plate.isSold ?? false) && !isMyPlate)SoldWidget(),
           ],
         ),
       ),

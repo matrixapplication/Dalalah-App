@@ -23,8 +23,8 @@ class LoginBody extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(kDebugMode){
-     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1472');
-     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123456789' : '123456');
+     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1440');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123456789' : '12345678');
     }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,
@@ -45,6 +45,7 @@ class LoginBody extends BaseStatelessWidget {
               hint: isUser ? context.strings.email_or_phone : context.strings.code,
               prefixIcon: isUser ? AppIcons.email : AppIcons.id_card,
               controller: emailController,
+              keyboardType: isUser ? TextInputType.emailAddress : TextInputType.number,
           //    validator: (phone) => Validation.validatePhone(phone ?? ''),
             ),
             10.ph,
