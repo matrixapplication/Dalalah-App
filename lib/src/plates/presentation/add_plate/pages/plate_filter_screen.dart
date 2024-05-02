@@ -212,7 +212,7 @@ class PlateFilterScreen extends BaseStatelessWidget {
     try {
       List<String> letterEn = args.plate?.letterEn?.split('') ?? [];
       List<String> letterAr = args.plate?.letterAr?.split(' ') ?? [];
-      String plateNumber = args.plate?.plateNumber ?? '';
+      List<String> plateNumber = args.plate?.plateNumber?.split('') ?? [];
       print('lat: ${args.plate!.lat} lng: ${args.plate!.lng}');
       // convert string to list char
       print('letterEn: $letterEn');
@@ -231,8 +231,8 @@ class PlateFilterScreen extends BaseStatelessWidget {
         for (int i = 0; i < letterEn.length; i++) {
           controllersEnLetters[i].text = letterEn[i];
         }
-        for (var element in plateNumber.split('')) {
-          controllersNumbers[plateNumber.split('').indexOf(element)].text = element;
+        for (int i = 0; i < plateNumber.length; i++) {
+          controllersNumbers[i].text = plateNumber[i];
         }
       }
     } on Exception catch (e) {

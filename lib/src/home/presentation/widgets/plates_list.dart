@@ -37,8 +37,7 @@ class PlatesList extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               padding: 10.paddingStart,
               itemBuilder: (_, index) {
-                return PlateVert(
-                    plate: snapshot![index], onFavoritePlate: onFavoritePlate);
+                return PlateVert(plate: snapshot![index], onFavoritePlate: onFavoritePlate);
               },
               itemCount: snapshot?.length ?? 0,
             );
@@ -69,81 +68,92 @@ class PlateVert extends StatelessWidget {
       },
       child: Container(
         margin: 8.paddingHoriz,
-        padding: 4.paddingAll,
+        // padding: 4.paddingAll,
         decoration: Decorations.kDecorationBorderWithRadius(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: [
-            Stack(
-              alignment: AlignmentDirectional.bottomCenter,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 225,
-                  height: 120,
-                  padding: 10.paddingHoriz + 12.paddingVert,
-                  margin: 20.paddingBottom,
-                  child: PlateImage(
-                    plate: plate,
-                  ),
-                ),
-                if (plate.isFeatured ?? false)
-                  const PositionedDirectional(
-                    top: 8,
-                    start: 10,
-                    child: FeaturedIcon(),
-                  ),
-                PositionedDirectional(bottom: 0,
-                  // height: 50,
-                  start: 0,
-                  // width: 50,
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: FavoriteButton(
-                        margin: 20.paddingTop + 10.paddingHoriz,
-                        isFavorite: plate.isFavorite ?? false,
-                        onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
-                        // isFavorite: true,
-                        ),
-                  ),
-                ),
-
-                PriceWidget(price: plate.price ?? '0'),
-
-                if(plate.isSold ?? false)
-                  PositionedDirectional(
-                    bottom: 0,
-                    end: 10,
-                    child: Container(
-                      padding: 5.paddingVert + 10.paddingHoriz,
-                      decoration: Decorations.kDecorationOnlyRadius(color: context.errorColor, radius: 20),
-                      child: Text(
-                        context.strings.sold,
-                        style: context.labelSmall
+                Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: [
+                    Container(
+                      width: 225,
+                      height: 120,
+                      padding: 10.paddingHoriz + 12.paddingVert,
+                      margin: 20.paddingBottom,
+                      child: PlateImage(
+                        plate: plate,
                       ),
                     ),
-                  ),
-                PositionedDirectional(
-                  top: 0,
-                  end: 0,
-                  child: ShareIconButton(
-                    route: Routes.plateAppLink,
-                    id: plate.id.toString() ?? '',
-                  ),
+                    if (plate.isFeatured ?? false)
+                      const PositionedDirectional(
+                        top: 8,
+                        start: 10,
+                        child: FeaturedIcon(),
+                      ),
+                    PositionedDirectional(bottom: 0,
+                      // height: 50,
+                      start: 0,
+                      // width: 50,
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: FavoriteButton(
+                            margin: 20.paddingTop + 10.paddingHoriz,
+                            isFavorite: plate.isFavorite ?? false,
+                            onToggleFavorite: () => onFavoritePlate(plate.id ?? 0)
+                            // isFavorite: true,
+                            ),
+                      ),
+                    ),
+
+                    PriceWidget(price: plate.price ?? '0'),
+
+                    PositionedDirectional(
+                      bottom: 0,
+                      end: 10,
+                      child: ShareIconButton(
+                        route: Routes.plateAppLink,
+                        id: plate.id.toString() ?? '',
+                      ),
+                    ),
+                  ],
                 ),
+                // 8.ph,
+                // Padding(
+                //   padding: 10.paddingStart,
+                //   child: Text(
+                //     '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}\t\t${plate.plateNumber}',
+                //     style: context.bodySmall,
+                //     textDirection: TextDirection.rtl,
+                //   ),
+                // ),
+                // 8.ph,
+                // PriceWidget(price: plate.price ?? '0'),
               ],
             ),
-            // 8.ph,
-            // Padding(
-            //   padding: 10.paddingStart,
-            //   child: Text(
-            //     '${plate.letterAr?.toArabicChars()}\t\t${plate.letterEn}\t\t${plate.plateNumber}',
-            //     style: context.bodySmall,
-            //     textDirection: TextDirection.rtl,
-            //   ),
-            // ),
-            // 8.ph,
-            // PriceWidget(price: plate.price ?? '0'),
+
+            if(plate.isSold ?? false)
+              PositionedDirectional(
+                top: 0,
+                end: 0,
+                child: Container(
+                  padding: 5.paddingVert + 10.paddingHoriz,
+                  decoration: BoxDecoration(
+                    color: context.errorColor,
+                    borderRadius: const BorderRadiusDirectional.only(
+                      topEnd: Radius.circular(5),
+                      bottomStart: Radius.circular(5),
+                    ),
+                  ),
+                  child: Text(
+                      context.strings.sold,
+                      style: context.labelSmall
+                  ),
+                ),
+              ),
           ],
         ),
       ),
