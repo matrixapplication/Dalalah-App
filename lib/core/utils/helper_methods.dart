@@ -86,7 +86,7 @@ class HelperMethods {
 
   static Future<void> launchWhatsApp(String phoneNumber) async {
     if (phoneNumber.isNotEmpty) {
-      Uri whatsUpUrl = Uri.parse("whatsapp://send?phone=${getPhoneNumber(phoneNumber)}");
+      Uri whatsUpUrl = Uri.parse("https://wa.me/$phoneNumber");
       if (await canLaunchUrl(whatsUpUrl)) {
         await launchUrl(whatsUpUrl);
       } else {

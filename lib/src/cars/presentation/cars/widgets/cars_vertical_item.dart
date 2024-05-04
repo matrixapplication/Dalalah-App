@@ -61,7 +61,7 @@ class CarVerticalItem extends BaseStatelessWidget {
       ),
       child: Container(
         // isAds ? 250 :
-        height: isMyCar ? 195 : 165,
+        height: isMyCar ? 195 : 175,
         width: 200,
         margin: (bottomMargin ?? 14).paddingBottom,
         decoration: bottomMargin == 0

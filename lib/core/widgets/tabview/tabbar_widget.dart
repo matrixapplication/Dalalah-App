@@ -44,6 +44,7 @@ class TabBarWidget extends StatelessWidget {
             ),
             child: TabBar(
               // indicatorColor: Colors.white,
+
               isScrollable: tabs.length > 3,
               unselectedLabelStyle: context.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.w700,
@@ -67,6 +68,7 @@ class TabBarWidget extends StatelessWidget {
               indicator: indicatorDecoration,
               indicatorColor: context.primaryColor,
               indicatorSize: TabBarIndicatorSize.tab,
+              tabAlignment: TabAlignment.start,
 
               tabs: tabs.map((e) => e.builder()).toList(),
             ),
