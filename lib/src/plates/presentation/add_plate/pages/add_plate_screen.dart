@@ -26,11 +26,11 @@ import '../../plates/widgets/filter_item.dart';
 import '../widgets/plate_pin_code.dart';
 
 ///  Created by harby on 10/12/2023.
-class PlateFilterScreen extends BaseStatelessWidget {
+class AddPlateScreen extends BaseStatelessWidget {
   final List<City> cities;
   final Function(AddPlateParams)? onAddEditPlate;
 
-  PlateFilterScreen({super.key, required this.cities, this.onAddEditPlate});
+  AddPlateScreen({super.key, required this.cities, this.onAddEditPlate});
 
   List<TextEditingController> controllersArLetters =
       List.generate(3, (index) => TextEditingController());

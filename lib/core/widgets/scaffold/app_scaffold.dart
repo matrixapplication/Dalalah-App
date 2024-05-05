@@ -29,6 +29,7 @@ class AppScaffold extends StatelessWidget {
   final Function()? onAddButtonPressed;
   final bool isAddButton;
   final Function(int)? onTabSelected;
+  final int initialIndex;
 
   const AppScaffold({
     Key? key,
@@ -54,6 +55,7 @@ class AppScaffold extends StatelessWidget {
     this.onAddButtonPressed,
     this.isAddButton = false,
     this.onTabSelected,
+    this.initialIndex = 0,
   }) : super(key: key);
 
   @override
@@ -113,40 +115,47 @@ class AppScaffold extends StatelessWidget {
                               Size.fromHeight(hasTabBarView ? 50 : 20),
                           child: !hasTabBarView
                               ? 0.ph
-                              : TabBar(
-                                  // splashBorderRadius: BorderRadius.circular(8),
-                                  // tabAlignment: TabAlignment.fill,
-                                  // padding: 15.paddingHoriz,
-                                  onTap: (index) {
-                                    onTabSelected?.call(index);
-                                  },
-                                  overlayColor: MaterialStateProperty.all(
-                                      Colors.transparent),
-                                  // isScrollable: true,
-                                  indicatorSize: TabBarIndicatorSize.tab,
-                                  labelStyle:
-                                      context.textTheme.labelMedium!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                  labelColor: Colors.white,
-                                  unselectedLabelStyle:
-                                      context.textTheme.labelMedium!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                  unselectedLabelColor: Colors.white,
-                                  indicatorPadding: 15.paddingHoriz,
-                                  indicatorColor: Colors.white,
-                                  indicatorWeight: 3,
-                                  tabs: tabs!
-                                      .map(
-                                        (tab) => Tab(
-                                          child: Text(tab.label),
-                                        ),
-                                      )
-                                      .toList(),
-                                ),
+                              : Builder(
+                                builder: (context) {
+                                  return TabBar(
+                                      // splashBorderRadius: BorderRadius.circular(8),
+                                      // tabAlignment: TabAlignment.fill,
+                                      // padding: 15.paddingHoriz,
+                                      onTap: (index) {
+                                        onTabSelected?.call(index);
+                                      },
+                                      controller: TabController(
+                                          length: tabs!.length,
+                                          initialIndex: initialIndex, vsync: Scaffold.of(context)),
+                                      overlayColor: MaterialStateProperty.all(
+                                          Colors.transparent),
+                                      // isScrollable: true,
+                                      indicatorSize: TabBarIndicatorSize.tab,
+                                      labelStyle:
+                                          context.textTheme.labelMedium!.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                      labelColor: Colors.white,
+                                      unselectedLabelStyle:
+                                          context.textTheme.labelMedium!.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                      unselectedLabelColor: Colors.white,
+                                      indicatorPadding: 15.paddingHoriz,
+                                      indicatorColor: Colors.white,
+                                      indicatorWeight: 3,
+                                      tabs: tabs!
+                                          .map(
+                                            (tab) => Tab(
+                                              child: Text(tab.label),
+                                            ),
+                                          )
+                                          .toList(),
+                                    );
+                                }
+                              ),
                         ),
                 ),
       ),

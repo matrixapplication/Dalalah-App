@@ -125,7 +125,7 @@ class Routes {
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
     platesDetailsPage: (context) => PlateDetailsPage(),
-    plateFilterPage: (context) => AddPlatesPage(),
+    plateFilterPage: (context) => AddOrPlatesPage(),
     installmentPage: (context) => InstallmentPage(),
     favoritesAndAdsTabs: (context) => FavoritesAndAdsTabs(),
     sectionsScreen: (context) => AddYourAdPage(),

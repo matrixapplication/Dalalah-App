@@ -135,6 +135,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
     List<Widget>? tabViews,
  //   Function(int)? onTabSelected,
     // Widget? leading,
+    int initialIndex = 0,
   }) {
     return WillPopScope(
       onWillPop: () => _onWillPop(context!),
@@ -152,6 +153,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
         onTabSelected: (index) {
           onTabSelected?.call(index);
         },
+          initialIndex: initialIndex,
         onAddButtonPressed: onAddButtonPressed,
         isAddButton: isAddButton(),
         tabViews: tabViews,
