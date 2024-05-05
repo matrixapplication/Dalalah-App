@@ -52,6 +52,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                       width: 20,
                       radius: 50,
                       margin: 10.paddingTop + 10.paddingStart,
+                      padding: 12.paddingAll,
                       title: showroom.isFollowed ?? false
                           ? context.strings.follower
                           : context.strings.follow,
