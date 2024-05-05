@@ -12,6 +12,7 @@ class MyAdStatus extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("isSold $isSold");
+
     return    SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
