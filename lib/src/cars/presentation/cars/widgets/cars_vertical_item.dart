@@ -119,7 +119,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                     if (isMyCar)
                       MyAdStatus(
                         isSold: car.isSold ?? false,
-                        isHidden: car.isUserHideCar ?? false,
+                        isUserShowCar: car.isUserShowCar ?? false,
                         isApproved: car.isApproved ?? false,
                         isHiddenByAdmin: car.isHide ?? false,
                       ),

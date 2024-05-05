@@ -36,8 +36,8 @@ class CarOperationsPopup extends BaseStatelessWidget {
     String type = car != null ? AdTypes.car : AdTypes.plate;
     bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
     bool isSold = car?.isSold ?? plate?.isSold ?? false;
-    bool isHidden = car?.isUserHideCar ?? plate?.isUserHide ?? false;
-    print('isHidden: $isHidden');
+    bool isShow = car?.isUserShowCar ?? plate?.isUserShowPlate ?? false;
+    print('isShow: $isShow');
     return Container(
       height: 32,
       width: 32,
@@ -61,7 +61,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
             value: 2,
             padding: EdgeInsets.zero,
             child: PopupItem(
-              title: isHidden ? strings.visible : strings.hide,
+              title: isShow ? strings.hide : strings.visible,
             ),
           ),
           PopupMenuItem(
