@@ -22,8 +22,8 @@ class ProfileRepo extends BaseProfileRepo{
   }
 
   @override
-  Future<String> deleteProfileData() async{
-    final response = await apiProvider.deleteProfileData();
+  Future<String> deleteProfileData(String modelRole) async{
+    final response = await apiProvider.deleteProfileData(modelRole);
     return response.message ?? 'error';
   }
 
@@ -73,7 +73,4 @@ class ProfileRepo extends BaseProfileRepo{
   Future<ApiResponse<ProfileDto>> editCommercialImageShowroom(File image) async{
     return await apiProvider.editCommercialImageShowroom(image);
   }
-
-
-
 }

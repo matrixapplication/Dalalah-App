@@ -17,6 +17,7 @@ import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 import '../../../../map_picker/widgets/custom_google_map.dart';
+import '../../../../profile/data/models/profile_dto.dart';
 import '../../../../sell_car/domain/entities/city.dart';
 import '../../../data/models/plate_filter_params.dart';
 import '../../../domain/entities/plate_args.dart';
@@ -177,12 +178,12 @@ class PlateFilterScreen extends BaseStatelessWidget {
   }
 
   onSelectedPressed(int id) async {
-    int getUserId = await HelperMethods.getUserId();
     if (initialLocation == null || initialLocation!.latitude == 0.0 || initialLocation!.longitude == 0.0) {
     SnackBarManager.showErrorSnackBar(strings.please_select_plate_location);
     return;
     }
     if (_formKey.currentState!.validate()) {
+      ProfileDto? user = await HelperMethods.getProfile();
       onAddEditPlate!(AddPlateParams(
         id: id,
         cityId: cityId,
@@ -191,7 +192,8 @@ class PlateFilterScreen extends BaseStatelessWidget {
         plateNumber: controllersNumbers.map((e) => e.text).join(),
         plateType: plateType,
         price: priceController.text.toInt,
-        userId: getUserId,
+        modelId: user?.id ?? 0,
+        modelRole: user?.role ?? '',
         lat: initialLocation?.latitude ?? 0.0,
         lng: initialLocation?.longitude ?? 0.0,
       ));

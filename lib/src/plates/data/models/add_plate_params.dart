@@ -6,8 +6,10 @@ part 'add_plate_params.g.dart';
 class AddPlateParams {
   @JsonKey(name: 'id')
   int? id;
-  @JsonKey(name: 'user_id')
-  int? userId;
+  @JsonKey(name: 'model_id')
+  int? modelId;
+  @JsonKey(name: 'model_role')
+  String? modelRole;
   @JsonKey(name: 'city_id')
   int? cityId;
   @JsonKey(name: 'letter_ar')
@@ -27,7 +29,7 @@ class AddPlateParams {
   @JsonKey(name: 'lng')
   double? lng;
 
-  AddPlateParams({this.id, this.userId, this.cityId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType, this.lat, this.lng});
+  AddPlateParams({this.id, this.modelId, this.modelRole, this.cityId, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.adType, this.lat, this.lng});
 
    factory AddPlateParams.fromJson(Map<String, dynamic> json) => _$AddPlateParamsFromJson(json);
 

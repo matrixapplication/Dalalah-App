@@ -16,12 +16,6 @@ class EditProfileBloc extends BaseCubit {
 
   EditProfileBloc(this.usecase, this.sellCarUseCase);
 
-  deleteAccount() async {
-    executeListener(() => usecase.deleteProfileData(), onSuccess: (value) async {
-      await HelperMethods.removeProfile();
-      emit(SuccessStateListener<String>(value));
-    });
-  }
 
   logout() async {
     executeEmitterSuccess(() => HelperMethods.removeProfile());
