@@ -60,9 +60,11 @@ class FilterHome extends StatelessWidget {
                 icon: filterOrder == FilterOrderTypes.asc
                     ? AppIcons.sort_asc
                     : AppIcons.sort_desc,
+
                 text: filterOrder == FilterOrderTypes.asc
                     ? context.strings.newest
                     : context.strings.oldest,
+
                 textStyle: textStyle,
                 iconColor: context.primaryColor,
                 iconSize: 20,
