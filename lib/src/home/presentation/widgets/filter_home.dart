@@ -40,7 +40,6 @@ class FilterHome extends StatelessWidget {
             iconColor: context.primaryColor,
             space: 12,
             textStyle: textStyle,
-
             onTap: () {
               pushNamed(routeName, arguments: arguments);
             },
@@ -61,7 +60,9 @@ class FilterHome extends StatelessWidget {
                 icon: filterOrder == FilterOrderTypes.asc
                     ? AppIcons.sort_asc
                     : AppIcons.sort_desc,
-                text: context.strings.sort_by,
+                text: filterOrder == FilterOrderTypes.asc
+                    ? context.strings.newest
+                    : context.strings.oldest,
                 textStyle: textStyle,
                 iconColor: context.primaryColor,
                 iconSize: 20,

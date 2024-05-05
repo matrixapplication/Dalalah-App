@@ -396,5 +396,7 @@
   "monthly": "شهري",
   "please_select_car_location": "من فضلك اختر موقع السيارة",
   "please_select_plate_location": "من فضلك اختر موقع اللوحة",
-  "ad_number": "رقم الإعلان"
+  "ad_number": "رقم الإعلان",
+  "newest": "الأحدث",
+  "oldest": "الأقدم"
 }

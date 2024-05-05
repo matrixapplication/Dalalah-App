@@ -22,7 +22,7 @@ abstract class  ProfileDataSource{
   Future<ApiResponse<ProfileDto>> fetchProfileData();
 
   @POST('/deleteAccount')
-  Future<ApiResponse<String>> deleteProfileData(@Query('model_id') String modelRole);
+  Future<ApiResponse<String>> deleteProfileData(@Query('model_role') String modelRole);
 
   @POST('/edit-user')
   Future<ApiResponse<ProfileDto>> editProfileData(@Body() RegisterParams params);
