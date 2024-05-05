@@ -48,7 +48,7 @@ class Plate {
        user: json.user,
         isFavorite: json.isFavorite,
        createdAt: json.createdAt ?? '',
-         isUserShowPlate: json.userCarStatus == 1,
+         isUserShowPlate: json.userPlateStatus == 1,
         lat: double.tryParse(json.lat ?? '0.0'),
         lng: double.tryParse(json.lng ?? '0.0'),
      );
