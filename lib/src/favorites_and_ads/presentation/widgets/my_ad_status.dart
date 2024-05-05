@@ -4,10 +4,10 @@ import 'chip_ad.dart';
 
 class MyAdStatus extends BaseStatelessWidget {
   final bool isSold;
-  final bool isHidden;
+  final bool isUserShowCar;
   final bool isApproved;
   final bool isHiddenByAdmin;
-   MyAdStatus({super.key, required this.isSold, required this.isHidden, required this.isApproved, required this.isHiddenByAdmin});
+   MyAdStatus({super.key, required this.isSold, required this.isUserShowCar, required this.isApproved, required this.isHiddenByAdmin});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MyAdStatus extends BaseStatelessWidget {
             ChipAd(
               text: strings.hidden_by_admin,
             ),
-          if(isHidden)
+          if(!isUserShowCar)
             ChipAd(
               text: strings.hidden,
             ),

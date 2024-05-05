@@ -10,7 +10,7 @@ import '../entities/profile.dart';
 
 abstract class BaseProfileRepo<T>{
   Future<ProfileDto> fetchProfileData();
-  Future<String> deleteProfileData();
+  Future<String> deleteProfileData(String modelRole);
   Future<ApiResponse<ProfileDto>> editProfileData(RegisterParams params);
   Future<ApiResponse<ProfileDto>> editProfileImage(File image);
   // Showrooms APIs

@@ -65,7 +65,7 @@ class Car {
   List<ImageDto>? images;
   List<Feature>? features;
   dynamic newCarMiles;
-  bool? isUserHideCar;
+  bool? isUserShowCar;
   City? city;
   RegionalSpecification? regionalSpecification;
   double? lat;
@@ -112,7 +112,7 @@ class Car {
       this.images,
       this.features,
       this.newCarMiles,
-      this.isUserHideCar,
+      this.isUserShowCar,
       this.city,
       this.regionalSpecification,
       this.lat,
@@ -162,7 +162,7 @@ class Car {
       images: json.images,
       features: json.features?.map((e) => Feature.fromDto(e)).toList() ?? [],
       newCarMiles: json.newCarMiles,
-        isUserHideCar: json.userCarStatus == 1,
+      isUserShowCar: json.userCarStatus == 1,
       city: City.fromDto(json.city ?? CityDto()),
       regionalSpecification: RegionalSpecification.fromDto(
           json.regionalSpecification ?? RegionalSpecificationDto()),

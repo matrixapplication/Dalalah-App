@@ -6,6 +6,8 @@ import '../../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../../main_index.dart';
 import '../../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../../sell_car/data/models/feature_dto.dart';
+import '../../widgets/ad_numbering.dart';
+import '../../widgets/border_widget.dart';
 import '../../widgets/car_properties.dart';
 
 class CarDetailsDetailsView extends BaseStatelessWidget {
@@ -34,8 +36,7 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
               title: '${context.strings.description}: ',
               value: carDetails.car?.description ?? '',
               // style: context.bodyMedium,
-              valueStyle: context.bodySmall.copyWith(
-              ),
+              valueStyle: context.bodySmall.copyWith(),
               textAlign: TextAlign.justify,
             ),
           ),
@@ -74,8 +75,11 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
               );
             },
           ),
+          AdNumbering(
+            id: carDetails.car?.id ?? 0,
+          ),
           Padding(
-            padding: 20.paddingTop + 10.paddingBottom + 10.paddingStart,
+            padding: 10.paddingBottom + 10.paddingStart,
             child: Text(
               context.strings.similar_ads,
               style: context.headlineMedium,
@@ -133,9 +137,8 @@ class DetailsViewListTile extends StatelessWidget {
                 print('OptionDto: ${optionDto.id}');
                 return CarPropertyItem(
                   property: optionDto,
-                  selected: selected.contains(optionDto.id ?? 0)
-                      ? optionDto
-                      : null,
+                  selected:
+                      selected.contains(optionDto.id ?? 0) ? optionDto : null,
                   onTap: (id) {
                     print('after: $selected');
                     if (selected.contains(id)) {

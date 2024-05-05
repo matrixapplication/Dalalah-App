@@ -51,9 +51,9 @@ class _ProfileDataSource implements ProfileDataSource {
   }
 
   @override
-  Future<ApiResponse<String>> deleteProfileData() async {
+  Future<ApiResponse<String>> deleteProfileData(String modelRole) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'model_id': modelRole};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(

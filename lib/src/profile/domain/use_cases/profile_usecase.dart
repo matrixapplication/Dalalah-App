@@ -4,6 +4,7 @@ import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../auth/data/models/register_params.dart';
+import '../../data/models/profile_dto.dart';
 import '../entities/profile.dart';
 import '../repositories/base_profile_repo.dart';
 
@@ -19,12 +20,13 @@ class ProfileUseCase {
   }
 
   Future<String> deleteProfileData() async {
-    return repository.deleteProfileData();
+    ProfileDto? user = await HelperMethods.getProfile();
+    return repository.deleteProfileData(user?.role ?? '');
   }
 
   Future<String> editProfileData(RegisterParams params) async {
     final data = await repository.editProfileData(params);
-    print('repository ${data?.data?.toJson()}');
+    print('repository ${data.data?.toJson()}');
     await HelperMethods.saveProfile(data.data!);
     final profile = await HelperMethods.getProfile();
     print('editProfileData ${profile?.toJson()}');

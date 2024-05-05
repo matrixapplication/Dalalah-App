@@ -24,6 +24,7 @@ abstract class BaseStatelessWidget extends StatelessWidget {
   TextStyle get titleMedium => context!.titleMedium;
   TextStyle get titleLarge => context!.titleLarge;
   Color get primaryColor => theme.primaryColor;
+  Color get scaffoldBackgroundColor => theme.scaffoldBackgroundColor;
   final local = injector<ServicesLocator>().navigatorKey.currentContext?.languageCode.toString();
 
   //static String routeName (){return '';}
