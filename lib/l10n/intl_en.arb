@@ -407,5 +407,7 @@
   "please_agree_to_terms_and_conditions": "Please agree to the terms and conditions",
   "only_500_characters_allowed": "Only 500 characters allowed",
   "available_for_installments": "Available for installments",
-  "monthly": "Monthly"
+  "monthly": "Monthly",
+  "please_select_car_location": "Please select the car location",
+  "please_select_plate_location": "Please select the plate location"
 }

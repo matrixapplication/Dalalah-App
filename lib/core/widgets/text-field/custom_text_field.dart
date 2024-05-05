@@ -23,6 +23,7 @@ class CustomTextField extends BaseStatelessWidget {
   final double? radius;
   final bool isValidator;
   final double? maxHeight;
+  final bool isHasConstraints;
   final TextStyle? labelStyle;
   final int?maxLength;
   final List<TextInputFormatter>? inputFormatters;
@@ -52,6 +53,7 @@ class CustomTextField extends BaseStatelessWidget {
     this.iconPath,
     this.isValidator = true,
     this.maxHeight,
+    this.isHasConstraints = true,
     this.labelStyle,
     this.maxLength,
     this.inputFormatters,
@@ -88,7 +90,7 @@ class CustomTextField extends BaseStatelessWidget {
             style: context.bodyMedium,
             cursorColor: context.primaryColor,
             autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
-            textInputAction: TextInputAction.next,
+            textInputAction:keyboardType == TextInputType.multiline ? TextInputAction.newline : TextInputAction.next,
             inputFormatters: inputFormatters,
             decoration: inputDecoration ??
                 InputDecoration(
@@ -104,8 +106,8 @@ class CustomTextField extends BaseStatelessWidget {
                       context.displaySmall.copyWith(fontSize: 12),
                   fillColor: fillColor ?? theme.colorScheme.background,
                   filled: true,
-                  constraints: BoxConstraints(
-                      maxHeight: maxHeight ?? 70, minHeight: maxHeight ?? 45),
+                  constraints: isHasConstraints ? BoxConstraints(
+                      maxHeight: maxHeight ?? 70, minHeight: maxHeight ?? 45) : null,
                   prefixIcon: iconPath != null
                       ? AppIcon(
                           padding: const EdgeInsets.all(12),

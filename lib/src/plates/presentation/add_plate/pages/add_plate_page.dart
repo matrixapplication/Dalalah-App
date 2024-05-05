@@ -1,6 +1,6 @@
 
 import 'package:dalalah/core/components/base_widget_bloc.dart';
-import 'package:dalalah/src/plates/presentation/add_plate/pages/plate_filter_screen.dart';
+import 'package:dalalah/src/plates/presentation/add_plate/pages/add_plate_screen.dart';
 import 'package:dalalah/src/sell_car/domain/entities/city.dart';
 
 import '../../../../../core/utils/navigator.dart';

@@ -87,7 +87,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: isNew ? 870 : 950.0,
+          expandedHeight: 740,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -101,7 +101,6 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       images: car.allImages(),
                     ),
                     PositionedDirectional(
-
                       bottom: 0,
                       end: 10,
                       child: FavoriteButton(
@@ -130,7 +129,6 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                               ),
                             ),
                           ),
-
                           PriceWidget(
                             price: car.price ?? '0.0',
                             fontSize: 18,
@@ -153,12 +151,13 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                             ),
                           ),
                           10.pw,
-                          if(car.isShowInstallment())
-                          PriceWidget(
-                            price: '${car.monthlyInstallment ?? ''} ${context.strings.rs} ${strings.monthly}',
-                            isEgp: false,
-                            fontSize: 14,
-                          ),
+                          if (car.isShowInstallment())
+                            PriceWidget(
+                              price:
+                                  '${car.monthlyInstallment ?? ''} ${context.strings.rs} ${strings.monthly}',
+                              isEgp: false,
+                              fontSize: 14,
+                            ),
                         ],
                       ),
                       15.ph,
@@ -211,6 +210,9 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                         },
                       ),
                       16.ph,
+                      UserInfo(
+                        user: car.modelObject ?? ModelObject(),
+                      ),
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.end,
                       //   children: [
@@ -229,17 +231,6 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       //     ),
                       //   ],
                       // ),
-                      if (!isNew)
-                        UserInfo(
-                          user: car.modelObject ?? ModelObject(),
-                        ),
-10.ph,
-                      CustomGoogleMap(
-                        initialLocation: carDetails.getLatLng(),
-                        isOpenMap: true,
-                        onGetLocation: (lat, lng) {
-                        },
-                      ),
                     ],
                   ),
                 ),

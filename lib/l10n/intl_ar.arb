@@ -382,7 +382,7 @@
   "please_select_drive_type": "من فضلك اختر نوع القيادة",
   "saudi": "سعودي",
   "gulf": "خليجي",
-  "import": "استيراد",
+  "import": "مستورد",
   "select_specifications": "اختر المواصفات",
   "regional_specifications": "المواصفات الاقليمية",
   "regional": "اقليمي",
@@ -393,5 +393,7 @@
   "please_agree_to_terms_and_conditions": "من فضلك وافق على الشروط والأحكام",
   "only_500_characters_allowed": "يسمح فقط بـ 500 حرف",
   "available_for_installments": "متاح للتقسيط",
-  "monthly": "شهري"
+  "monthly": "شهري",
+  "please_select_car_location": "من فضلك اختر موقع السيارة",
+  "please_select_plate_location": "من فضلك اختر موقع اللوحة"
 }

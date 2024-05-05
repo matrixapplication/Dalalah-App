@@ -14,6 +14,7 @@ import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
+import '../../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 import '../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../sell_car/domain/entities/city.dart';
@@ -177,6 +178,10 @@ class PlateFilterScreen extends BaseStatelessWidget {
 
   onSelectedPressed(int id) async {
     int getUserId = await HelperMethods.getUserId();
+    if (initialLocation == null || initialLocation!.latitude == 0.0 || initialLocation!.longitude == 0.0) {
+    SnackBarManager.showErrorSnackBar(strings.please_select_plate_location);
+    return;
+    }
     if (_formKey.currentState!.validate()) {
       onAddEditPlate!(AddPlateParams(
         id: id,

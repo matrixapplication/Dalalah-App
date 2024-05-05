@@ -68,7 +68,7 @@ class TabBarWidget extends StatelessWidget {
               indicator: indicatorDecoration,
               indicatorColor: context.primaryColor,
               indicatorSize: TabBarIndicatorSize.tab,
-              tabAlignment: TabAlignment.start,
+              tabAlignment: tabs.length > 3 ? TabAlignment.start : TabAlignment.fill,
 
               tabs: tabs.map((e) => e.builder()).toList(),
             ),

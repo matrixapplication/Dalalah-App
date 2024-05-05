@@ -4,6 +4,7 @@ import 'package:dalalah/src/sell_car/domain/entities/feature.dart';
 import '../../../../../home/domain/entities/car.dart';
 import '../../../../../home/presentation/widgets/cars_home_list.dart';
 import '../../../../../main_index.dart';
+import '../../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../../sell_car/data/models/feature_dto.dart';
 import '../../widgets/car_properties.dart';
 
@@ -36,6 +37,16 @@ class CarDetailsDetailsView extends BaseStatelessWidget {
               valueStyle: context.bodySmall.copyWith(
               ),
               textAlign: TextAlign.justify,
+            ),
+          ),
+
+          10.ph,
+          Padding(
+            padding: 16.paddingHoriz,
+            child: CustomGoogleMap(
+              initialLocation: carDetails.getLatLng(),
+              isOpenMap: true,
+              onGetLocation: (lat, lng) {},
             ),
           ),
           // carDetails.car?.features?.isEmpty ?? true

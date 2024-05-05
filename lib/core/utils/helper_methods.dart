@@ -86,9 +86,9 @@ class HelperMethods {
 
   static Future<void> launchWhatsApp(String phoneNumber) async {
     if (phoneNumber.isNotEmpty) {
-      Uri whatsUpUrl = Uri.parse("https://wa.me/$phoneNumber");
+      Uri whatsUpUrl = Uri.parse("https://wa.me/${getPhoneNumber(phoneNumber)}");
       if (await canLaunchUrl(whatsUpUrl)) {
-        await launchUrl(whatsUpUrl);
+        await launchUrl(whatsUpUrl, mode: LaunchMode.externalApplication);
       } else {
         showErrorToast('حدث خطأ اثناء الاتصال بالواتساب');
       }

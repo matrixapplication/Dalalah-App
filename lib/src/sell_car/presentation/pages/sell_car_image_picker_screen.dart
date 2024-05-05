@@ -129,6 +129,8 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 hintText: strings.enter_car_description,
                 controller: descController,
                 maxLength: 500,
+                isHasConstraints: false,
+                keyboardType: TextInputType.multiline,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return strings.enter_car_description;
@@ -206,6 +208,9 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
   void onSavePressed() {
     if (car.id == null && mainImage.path.isEmpty) {
       SnackBarManager.showErrorSnackBar(context!.strings.select_main_image);
+      return;
+    }  else if (lat == 0.0 || lng == 0.0) {
+      SnackBarManager.showErrorSnackBar(context!.strings.please_select_car_location);
       return;
     }
     imagesSelected = imagesSelected.isEmpty ? [mainImage] : imagesSelected;

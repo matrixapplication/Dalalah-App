@@ -62,7 +62,7 @@ class CustomGoogleMap extends StatelessWidget {
         ignoring: true,
         child: Container(
           padding: 10.paddingAll,
-          margin: 20.paddingBottom,
+          margin: 10.paddingVert,
           decoration:  Decorations.kDecorationOnlyRadius(color: context.hintColor.withOpacity(0.7)),
           child: Container(
             height: 150,
