@@ -16,6 +16,8 @@ class Profile {
   String? descriptionEn;
   String? email;
   String? phone;
+  String? anotherPhone1;
+  String? anotherPhone2;
   String? whatsApp;
   String? role;
   String? image;
@@ -28,6 +30,8 @@ class Profile {
       this.name,
       this.email,
       this.phone,
+      this.anotherPhone1,
+      this.anotherPhone2,
       this.whatsApp,
       this.role,
       this.image,
@@ -41,7 +45,8 @@ class Profile {
       this.addressAr,
       this.addressEn,
       this.descriptionAr,
-      this.descriptionEn});
+      this.descriptionEn,
+      });
 
   factory Profile.fromDto(ProfileDto json) {
     return Profile(
@@ -57,6 +62,8 @@ class Profile {
       descriptionEn: json.descriptionEn,
       email: json.email,
       phone: json.phone,
+      anotherPhone1: json.anotherPhone1,
+      anotherPhone2: json.anotherPhone2,
       whatsApp: json.whatsapp,
       role: json.role,
       image: json.image,

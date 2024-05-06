@@ -126,6 +126,8 @@ class _AuthDataSource implements AuthDataSource {
     String email,
     String password,
     String phone,
+    String anotherPhone1,
+    String anotherPhone2,
     String whatsapp,
     int cityId,
     File logo,
@@ -173,6 +175,14 @@ class _AuthDataSource implements AuthDataSource {
     _data.fields.add(MapEntry(
       'phone',
       phone,
+    ));
+    _data.fields.add(MapEntry(
+      'another_phone_1',
+      anotherPhone1,
+    ));
+    _data.fields.add(MapEntry(
+      'another_phone_2',
+      anotherPhone2,
     ));
     _data.fields.add(MapEntry(
       'whatsapp',

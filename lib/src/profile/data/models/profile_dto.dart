@@ -32,6 +32,10 @@ class ProfileDto {
   dynamic code;
   @JsonKey(name: 'phone')
   String? phone;
+  @JsonKey(name: 'another_phone_1')
+  String? anotherPhone1;
+  @JsonKey(name: 'another_phone_2')
+  String? anotherPhone2;
   @JsonKey(name: 'whatsapp')
   String? whatsapp;
   @JsonKey(name: 'end_tax_card')
@@ -61,7 +65,7 @@ class ProfileDto {
   @JsonKey(name: 'token')
   String? token;
 
-  ProfileDto({this.id, this.name, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.code, this.phone, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.avgRate, this.city, this.address, this.isBlocked, this.isHide, this.followers, this.isFollowed, this.image, this.coverImage, this.token});
+  ProfileDto({this.id, this.name, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.code, this.phone, this.anotherPhone1, this.anotherPhone2, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.avgRate, this.city, this.address, this.isBlocked, this.isHide, this.followers, this.isFollowed, this.image, this.coverImage, this.token});
 
    factory ProfileDto.fromJson(Map<String, dynamic> json) => _$ProfileDtoFromJson(json);
 

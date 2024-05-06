@@ -45,6 +45,8 @@ class AuthRepo extends BaseAuthRepo{
       params.email ?? '',
       params.password ?? '',
       params.phone ?? '',
+      params.anotherPhone1 ?? '',
+      params.anotherPhone2 ?? '',
       params.whatsapp ?? '',
       params.cityId ?? 0,
       params.logo!,

@@ -398,5 +398,7 @@
   "please_select_plate_location": "من فضلك اختر موقع اللوحة",
   "ad_number": "رقم الإعلان",
   "newest": "الأحدث",
-  "oldest": "الأقدم"
+  "oldest": "الأقدم",
+  "another_phone_1": "رقم هاتف اخر 1",
+    "another_phone_2": "رقم هاتف اخر 2"
 }

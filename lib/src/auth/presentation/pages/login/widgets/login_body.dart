@@ -23,8 +23,8 @@ class LoginBody extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(kDebugMode){
-     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1440');
-     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123456789' : '12345678');
+     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1463');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123456789' : '123456789');
     }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,

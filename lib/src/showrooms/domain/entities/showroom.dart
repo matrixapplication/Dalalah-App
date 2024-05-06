@@ -8,6 +8,8 @@ class Showroom {
   String? description;
   String? code;
   String? phone;
+  String? anotherPhone1;
+  String? anotherPhone2;
   String? whatsapp;
   String? endTaxCard;
   String? role;
@@ -21,7 +23,7 @@ class Showroom {
   bool? isFollowed;
   String? avgRate;
 
-  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.followers, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency, this.isFollowed, this.avgRate});
+  Showroom({this.id, this.ownerName, this.showroomName, this.description, this.code, this.phone, this.anotherPhone1, this.anotherPhone2, this.followers, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.address, this.isBlocked, this.image, this.coverImage, this.isAgency, this.isFollowed, this.avgRate});
 
    factory Showroom.fromDto(ShowroomDto json){
      return Showroom(
@@ -42,9 +44,13 @@ class Showroom {
        coverImage: json.coverImage,
        isFollowed: json.isFollowed,
         avgRate: json.avgRate,
+       anotherPhone1: json.anotherPhone1,
+        anotherPhone2: json.anotherPhone2,
 
        // isAgency: json.role == 'agency',
      );
    }
+
+   bool get isAnotherPhone1Exist => (anotherPhone1 != null && anotherPhone1!.isNotEmpty) || (anotherPhone2 != null && anotherPhone2!.isNotEmpty);
 }
 

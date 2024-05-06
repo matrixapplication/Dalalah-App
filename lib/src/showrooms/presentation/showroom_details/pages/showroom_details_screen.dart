@@ -15,6 +15,7 @@ import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../domain/entities/showroom.dart';
 import '../../branches/pages/branches_page.dart';
 import '../../showrooms/widgets/custom_exhibition_circle_logo.dart';
+import '../widgets/phone_call_widget.dart';
 
 class ExhibitionDetailsScreen extends BaseStatelessWidget {
   final Showroom showroom;
@@ -36,10 +37,12 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
         SliverAppBar(
           backgroundColor: Colors.white,
           forceElevated: innerBoxIsScrolled,
+          leading: 0.ph,
           bottom: PreferredSize(
-            preferredSize: const Size(0, 290),
+            preferredSize: Size(0, showroom.isAnotherPhone1Exist ? 330 : 280),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -88,8 +91,9 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                       10.ph,
                       RowTexts(
                         title: showroom.showroomName ?? '',
-                        value: '${showroom.followers ?? 0} ${context.strings.followers}',
-                        titleStyle:  context.bodyLarge,
+                        value:
+                            '${showroom.followers ?? 0} ${context.strings.followers}',
+                        titleStyle: context.bodyLarge,
                         valueStyle: context.headlineMedium,
                       ),
                       Row(
@@ -119,6 +123,15 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                           ),
                         ],
                       ),
+                      if (showroom.isAnotherPhone1Exist)
+                      Row(
+                        children: [
+                          if (showroom.anotherPhone1 != null)
+                          PhoneCallWidget(phone: showroom.anotherPhone1 ?? ''),
+                          if (showroom.anotherPhone2 != null)
+                          PhoneCallWidget(phone: showroom.anotherPhone2 ?? ''),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -137,7 +150,9 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
             TabItemModel(
               label: context.strings.used,
               page: ShowroomCarsPage(
-                  status: CarStatus.usedCar, id: showroom.id ?? 0, ),
+                status: CarStatus.usedCar,
+                id: showroom.id ?? 0,
+              ),
             ),
           TabItemModel(
             label: context.strings.plates,

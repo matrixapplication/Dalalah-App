@@ -412,5 +412,7 @@
   "please_select_plate_location": "Please select the plate location",
   "ad_number": "Ad Number",
   "newest": "Newest",
-  "oldest": "Oldest"
+  "oldest": "Oldest",
+  "another_phone_1": "Another Phone 1",
+  "another_phone_2": "Another Phone 2"
 }

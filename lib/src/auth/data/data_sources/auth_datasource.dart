@@ -42,6 +42,8 @@ abstract class  AuthDataSource{
       @Part(name: 'email') String email,
       @Part(name: 'password') String password,
       @Part(name: 'phone') String phone,
+      @Part(name: 'another_phone_1') String anotherPhone1,
+      @Part(name: 'another_phone_2') String anotherPhone2,
       @Part(name: 'whatsapp') String whatsapp,
       @Part(name: 'city_id') int cityId,
       @Part(name: 'logo') File logo,
