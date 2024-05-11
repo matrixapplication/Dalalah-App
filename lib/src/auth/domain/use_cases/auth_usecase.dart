@@ -5,7 +5,9 @@ import '../../../profile/data/models/profile_dto.dart';
 import '../../../profile/domain/entities/profile.dart';
 import '../../data/models/login_params.dart';
 import '../../data/models/register_params.dart';
+import '../../data/models/send_otp_params.dart';
 import '../../data/models/showroom_login_params.dart';
+import '../../data/models/verify_otp_params.dart';
 import '../repositories/base_auth_repo.dart';
 
 @Injectable()
@@ -33,6 +35,14 @@ class AuthUseCase {
 
   Future<String> registerAsShowroom(RegisterParams params) async{
     return await  repository.registerAsShowroom(params);
+  }
+
+  Future<String> sendOtp(SendOTPParams params) async{
+    return await  repository.sendOtp(params);
+  }
+
+  Future<String> verifyOtp(VerifyOTPParams  params) async{
+    return await  repository.verifyOtp(params);
   }
 
 }

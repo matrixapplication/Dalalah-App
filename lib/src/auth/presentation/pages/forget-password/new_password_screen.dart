@@ -1,11 +1,9 @@
 import '../../../../../core/resources/validation.dart';
-import '../../../../../core/widgets/text-field/custom_text_field.dart';
 import '../../../../main_index.dart';
-import '../../../data/models/forgot_password_params.dart';
 import '../../widgets/auth_text_field.dart';
 
 class NewPasswordScreen extends BaseStatelessWidget {
-  final Function(ForgotPasswordParams) onForgotPasswordParams;
+  final Function(String password) onForgotPasswordParams;
 
   NewPasswordScreen({Key? key, required this.onForgotPasswordParams})
       : super(key: key);
@@ -56,10 +54,7 @@ class NewPasswordScreen extends BaseStatelessWidget {
               margin: const EdgeInsets.only(top: 40, left: 35, right: 35),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  onForgotPasswordParams(ForgotPasswordParams(
-                    newPassword: newPasswordController.text,
-                    confirmPassword: confirmNewPasswordController.text,
-                  ));
+                  onForgotPasswordParams(newPasswordController.text);
                 }
               },
             ),

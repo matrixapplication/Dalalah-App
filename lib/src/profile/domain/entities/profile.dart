@@ -1,3 +1,4 @@
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/sell_car/data/models/city_dto.dart';
 
 import '../../../sell_car/domain/entities/city.dart';
@@ -23,6 +24,7 @@ class Profile {
   String? image;
   City? city;
   String? token;
+  bool? isVerified;
   bool? isHidePayment;
 
   Profile(
@@ -46,6 +48,7 @@ class Profile {
       this.addressEn,
       this.descriptionAr,
       this.descriptionEn,
+      this.isVerified,
       });
 
   factory Profile.fromDto(ProfileDto json) {
@@ -69,21 +72,12 @@ class Profile {
       image: json.image,
       city: City.fromDto(json.city ?? CityDto()),
       token: json.token,
+      isVerified: json.isVerified == 1 ? true : false,
       isHidePayment: false,
     );
   }
-//
-// Map<String, dynamic> toJson() {
-//   return {
-//     'id': id,
-//     'name': name,
-//     'email': email,
-//     'phone': phone,
-//     'whatsApp': whatsApp,
-//     'role': role,
-//     'image': image,
-//     'city': city?.toJson(),
-//     'token': token,
-//   };
-// }
+
+  bool isUser() {
+    return role == Roles.USER;
+  }
 }

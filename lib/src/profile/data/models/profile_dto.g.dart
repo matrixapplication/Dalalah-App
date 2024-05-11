@@ -36,6 +36,7 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       image: json['image'] as String?,
       coverImage: json['cover_image'] as String?,
       token: json['token'] as String?,
+      isVerified: json['is_verified'] as int?,
     )
       ..addressAr = json['address_en'] as String?
       ..addressEn = json['address_ar'] as String?;
@@ -71,4 +72,5 @@ Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
       'image': instance.image,
       'cover_image': instance.coverImage,
       'token': instance.token,
+      'is_verified': instance.isVerified,
     };

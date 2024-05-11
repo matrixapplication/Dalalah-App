@@ -19,6 +19,11 @@ class ProfileUseCase {
     return Profile.fromDto(data);
   }
 
+  Future<Profile> fetchProfileDataFromCash() async{
+    final data  = await HelperMethods.getProfile();
+    return Profile.fromDto(data!);
+  }
+
   Future<String> deleteProfileData() async {
     ProfileDto? user = await HelperMethods.getProfile();
     return repository.deleteProfileData(user?.role ?? '');

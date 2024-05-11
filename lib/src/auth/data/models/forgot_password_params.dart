@@ -1,13 +1,15 @@
 class ForgotPasswordParams {
-  final String newPassword;
-  final String confirmPassword;
+  final String loginUse;
+  final String modelRole;
+  final String password;
 
-  ForgotPasswordParams({required this.newPassword, required this.confirmPassword});
+  ForgotPasswordParams({required this.loginUse, required this.modelRole, required this.password});
 
   Map<String, dynamic> toJson() {
     return {
-      'newPassword': newPassword,
-      'confirmPassword': confirmPassword,
+      'login_use': loginUse,
+      'model_role': modelRole,
+      'password': password,
     };
   }
 }

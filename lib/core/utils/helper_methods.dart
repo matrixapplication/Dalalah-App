@@ -186,6 +186,7 @@ class HelperMethods {
   static Future<ProfileDto?>? getProfile() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.reload();
       final data = ProfileDto.fromJson(
           jsonDecode(prefs.getString('profile') ?? '{}') ?? {});
       print('getProfile ${data.toJson()}');
@@ -225,6 +226,17 @@ class HelperMethods {
     } on Exception catch (e) {
       print('profile?.token ${e.toString()}');
       return HeaderParams(token: '', role: '');
+    }
+  }
+
+  static Future<bool> isVerified() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      if (profile?.isVerified == null) return false;
+      return profile?.isVerified == 1 ? true : false;
+    } on Exception catch (e) {
+      print('profile?.isVerified ${e.toString()}');
+      return false;
     }
   }
 

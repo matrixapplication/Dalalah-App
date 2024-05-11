@@ -1,21 +1,22 @@
 import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
 
 import '../../../../main_index.dart';
+import '../../../../profile/domain/entities/profile.dart';
 import '../../widgets/auth_text_field.dart';
 
-class EnterPhoneNumberScreen extends BaseStatelessWidget {
-  final bool isUser;
+class SendOTPScreen extends BaseStatelessWidget {
+  final Profile profile;
   final Function(String) onEnterPhoneNumber;
 
-  EnterPhoneNumberScreen(
-      {Key? key, required this.onEnterPhoneNumber, this.isUser = true})
+  SendOTPScreen({Key? key, required this.profile, required this.onEnterPhoneNumber})
       : super(key: key);
 
-  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    bool isUser = profile.isUser();
     ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -29,19 +30,16 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  strings.forgot_password_title,
+                  strings.send_otp_title,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.headlineLarge,
                 ),
                 20.ph,
                 AuthTextField(
-                  controller: emailController,
-                  hint: isUser ? strings.phone_number : strings.code,
-                  prefixIcon: isUser ? AppIcons.phone : AppIcons.id_card,
-                  keyboardType: isUser
-                      ? TextInputType.emailAddress
-                      : TextInputType.number,
-
+                  controller: phoneController,
+                  hint: isUser ? strings.phone_number : strings.email,
+                  prefixIcon:  isUser ? AppIcons.phone : AppIcons.email,
+                  keyboardType: TextInputType.phone,
                 ),
                 30.ph,
                 PrimaryButton(
@@ -51,9 +49,7 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                   margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      onEnterPhoneNumber(isUser
-                          ? '966${emailController.text}'
-                          : emailController.text);
+                      onEnterPhoneNumber('966${phoneController.text}');
                     }
                   },
                 ),

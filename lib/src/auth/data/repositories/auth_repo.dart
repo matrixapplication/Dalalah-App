@@ -6,7 +6,9 @@ import '../../../profile/data/models/profile_dto.dart';
 import '../../domain/repositories/base_auth_repo.dart';
 import '../data_sources/auth_datasource.dart';
 import '../models/register_params.dart';
+import '../models/send_otp_params.dart';
 import '../models/showroom_login_params.dart';
+import '../models/verify_otp_params.dart';
 
 @Injectable(as: BaseAuthRepo)
 class AuthRepo extends BaseAuthRepo{
@@ -51,6 +53,18 @@ class AuthRepo extends BaseAuthRepo{
       params.cityId ?? 0,
       params.logo!,
     );
+    return response.message ?? '';
+  }
+
+  @override
+  Future<String> sendOtp(SendOTPParams params) async{
+    final response = await apiProvider.sendOtp(params);
+    return response.message ?? '';
+  }
+
+  @override
+  Future<String> verifyOtp(VerifyOTPParams params) async{
+    final response = await apiProvider.verifyOtp(params);
     return response.message ?? '';
   }
 
