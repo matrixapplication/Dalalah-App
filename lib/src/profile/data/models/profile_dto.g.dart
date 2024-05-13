@@ -18,6 +18,8 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       email: json['email'] as String?,
       code: json['code'],
       phone: json['phone'] as String?,
+      anotherPhone1: json['another_phone_1'] as String?,
+      anotherPhone2: json['another_phone_2'] as String?,
       whatsapp: json['whatsapp'] as String?,
       endTaxCard: json['end_tax_card'] as String?,
       role: json['role'] as String?,
@@ -34,6 +36,7 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       image: json['image'] as String?,
       coverImage: json['cover_image'] as String?,
       token: json['token'] as String?,
+      isVerified: json['is_verified'] as int?,
     )
       ..addressAr = json['address_en'] as String?
       ..addressEn = json['address_ar'] as String?;
@@ -53,6 +56,8 @@ Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
       'email': instance.email,
       'code': instance.code,
       'phone': instance.phone,
+      'another_phone_1': instance.anotherPhone1,
+      'another_phone_2': instance.anotherPhone2,
       'whatsapp': instance.whatsapp,
       'end_tax_card': instance.endTaxCard,
       'role': instance.role,
@@ -67,4 +72,5 @@ Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
       'image': instance.image,
       'cover_image': instance.coverImage,
       'token': instance.token,
+      'is_verified': instance.isVerified,
     };

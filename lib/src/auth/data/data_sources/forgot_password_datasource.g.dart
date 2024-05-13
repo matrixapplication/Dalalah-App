@@ -21,7 +21,7 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<dynamic>> resetPassword(RegisterParams params) async {
+  Future<ApiResponse<dynamic>> generateOTP(PasswordOTPParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -35,7 +35,7 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
     )
             .compose(
               _dio.options,
-              '/reset-password',
+              '/reset-password/generate-otp',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -52,20 +52,22 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
   }
 
   @override
-  Future<ApiResponse<String>> enterCode(String code) async {
+  Future<ApiResponse<dynamic>> verifyPasswordOTP(
+      VerifyPasswordOTPParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = code;
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+        _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/reset-password/confirm-otp',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -74,15 +76,15 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as dynamic,
     );
     return value;
   }
 
   @override
-  Future<ApiResponse<String>> forgotPassword(
+  Future<ApiResponse<dynamic>> forgotPassword(
       ForgotPasswordParams params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -90,14 +92,14 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+        _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/Operations/GetAllOperations',
+              '/reset-password/change-password',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -106,9 +108,9 @@ class _ForgotPasswordDataSource implements ForgotPasswordDataSource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as dynamic,
     );
     return value;
   }

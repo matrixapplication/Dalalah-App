@@ -396,5 +396,11 @@
   "monthly": "شهري",
   "please_select_car_location": "من فضلك اختر موقع السيارة",
   "please_select_plate_location": "من فضلك اختر موقع اللوحة",
-  "ad_number": "رقم الإعلان"
+  "ad_number": "رقم الإعلان",
+  "newest": "الأحدث",
+  "oldest": "الأقدم",
+  "another_phone_1": "رقم هاتف اخر 1",
+    "another_phone_2": "رقم هاتف اخر 2",
+  "send_otp_title": "أدخل رقم هاتفك لإرسال رمز التحقق",
+  "we_sent_you_verification_code": "لقد أرسلنا لك رمز التحقق"
 }

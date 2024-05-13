@@ -1,3 +1,7 @@
+import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/installment/domain/entities/profile.dart';
+import 'package:dalalah/src/profile/data/models/profile_dto.dart';
+
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
@@ -72,6 +76,7 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
 
   @override
   onSuccessDismissed() {
-    pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
+    pushNamedAndRemoveUntil(Routes.sendOTPPage);
+    // pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
   }
 }

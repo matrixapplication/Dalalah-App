@@ -39,8 +39,8 @@ class PlateDto {
   ProfileDto? user;
   @JsonKey(name: 'is_favorite')
   bool? isFavorite;
-  @JsonKey(name: 'user_car_status')
-  int? userCarStatus;
+  @JsonKey(name: 'user_plate_status')
+  int? userPlateStatus;
   @JsonKey(name: 'created_at')
   String? createdAt;
   @JsonKey(name: 'lat')
@@ -49,7 +49,7 @@ class PlateDto {
   String? lng;
 
 
-  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.userCarStatus, this.createdAt, this.lat, this.lng});
+  PlateDto({this.id, this.letterAr, this.letterEn, this.plateNumber, this.price, this.plateType, this.boughtStatus, this.adType, this.address,  this.isSold, this.isFeatured, this.isHide,this.isApproved, this.city, this.user, this.isFavorite, this.userPlateStatus, this.createdAt, this.lat, this.lng});
 
    factory PlateDto.fromJson(Map<String, dynamic> json) => _$PlateDtoFromJson(json);
 

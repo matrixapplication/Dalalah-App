@@ -17,20 +17,24 @@ import 'plates_screen.dart';
 
 
 class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
-  final bool isFilter;
-  PlatesPage({Key? key, this.isFilter = true}) : super(key: key);
+  PlatesPage({Key? key}) : super(key: key);
 
+
+
+  String type = PlateTypes.private;
+  PlateFilterParams params = PlateFilterParams(plateType: PlateTypes.private);
 
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchPlates(getArguments(context) ?? PlateFilterParams(plateType: type));
+    params = getArguments(context) ?? PlateFilterParams(plateType: type);
+    params.plateType == null ? params.plateType!.isEmpty ? params.plateType = type : null : null;
+    bloc.fetchPlates(params);
   }
 
 
   @override
-  String? title(context)=> isFilter ? strings.plates : null;
+  String? title(context)=> getArguments(context) != null ? strings.results_filter : strings.plates;
 
-  String type = PlateTypes.private;
 
 
   @override
@@ -42,28 +46,33 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
   @override
   Function()? onTabSelected(index) {
     type = index == 0 ? PlateTypes.private : PlateTypes.transfer;
-    bloc.fetchPlates(getArguments(context!) ?? PlateFilterParams(plateType: type));
+    params.plateType = type;
+    bloc.fetchPlates(params);
     return null;
   }
-  PlateFilterParams params = PlateFilterParams(plateType: PlateTypes.private);
+
   @override
   Widget build(BuildContext context) {
-
+    params = getArguments(context) ?? PlateFilterParams(plateType: type);
     return mainFrame(
-      body: Column(
-        children: [
-          if(isFilter && getArguments(context) == null)
-          FilterHome(
-            routeName: Routes.plateFilterPage,
-            arguments: PlateArgs(isFilter: true),
-            onFilterOrder: (filterOrder){
-              params = getArguments(context) ?? PlateFilterParams(plateType: type);
-              params.order = filterOrder;
-              bloc.fetchPlates(params);
-            },
-          ),
-          Expanded(child: buildConsumer(context)),
-        ],
+      initialIndex: params.plateType == PlateTypes.private ? 0 : 1,
+      body: Builder(
+        builder: (context) {
+          return Column(
+            children: [
+              if(getArguments(context) == null)
+              FilterHome(
+                routeName: Routes.plateFilterPage,
+                arguments: PlateArgs(isFilter: true),
+                onFilterOrder: (filterOrder){
+                  params.order = filterOrder;
+                  bloc.fetchPlates(params);
+                },
+              ),
+              Expanded(child: buildConsumer(context)),
+            ],
+          );
+        }
       ),
       tabs: [
         TabModel(label: context.strings.plate_private),

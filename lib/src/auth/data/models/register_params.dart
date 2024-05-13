@@ -13,6 +13,8 @@ class RegisterParams {
   final String? email;
   final String? password;
   final String? phone;
+  final String? anotherPhone1;
+  final String? anotherPhone2;
   final String? whatsapp;
   final int? cityId;
   final int? districtId;
@@ -36,6 +38,8 @@ class RegisterParams {
     this.email,
     this.password,
     this.phone,
+    this.anotherPhone1,
+    this.anotherPhone2,
     this.whatsapp,
     this.cityId,
     this.districtId,
@@ -59,6 +63,8 @@ class RegisterParams {
       "description_ar": descriptionAr ?? "",
       "description_en": descriptionEn ?? "",
       'phone': phone ?? '',
+      'another_phone_1': anotherPhone1 ?? '',
+      'another_phone_2': anotherPhone2 ?? '',
       'email': email ?? '',
       'password': password ?? '',
       'city_id': cityId ?? '',

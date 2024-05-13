@@ -1,12 +1,10 @@
 import '../../../../main_index.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 
-class EnterPinCodeScreen extends BaseStatelessWidget {
+class VerifyAccountScreen extends BaseStatelessWidget {
   final Function(String) onPinCode;
-  final String? email;
 
-  EnterPinCodeScreen({Key? key, required this.onPinCode, this.email})
-      : super(key: key);
+  VerifyAccountScreen({Key? key, required this.onPinCode}) : super(key: key);
 
   TextEditingController pinCodeController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -22,7 +20,7 @@ class EnterPinCodeScreen extends BaseStatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              strings.we_sent_you_verification_code_email,
+              strings.we_sent_you_verification_code,
               textAlign: TextAlign.center,
               style: theme.textTheme.headlineMedium,
             ),
@@ -34,25 +32,25 @@ class EnterPinCodeScreen extends BaseStatelessWidget {
             CustomPinCode(
               pinCodeController: pinCodeController,
             ),
+            20.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(strings.i_did_not_receive_code,
-                    textAlign: TextAlign.center,
-                    style: context.displaySmall.copyWith(
-                      color: context.scrim,
-                    ),
+                Text(
+                  strings.i_did_not_receive_code,
+                  textAlign: TextAlign.center,
+                  style: context.displaySmall.copyWith(
+                    color: context.scrim,
+                  ),
                 ),
                 4.pw,
                 GestureDetector(
                   onTap: () {
                     pinCodeController.clear();
                   },
-                  child: Text(
-                    strings.resend,
-                    textAlign: TextAlign.center,
-                      style: theme.textTheme.headlineSmall!
-                  ),
+                  child: Text(strings.resend,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.headlineSmall!),
                 ),
               ],
             ),

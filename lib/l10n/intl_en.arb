@@ -410,5 +410,11 @@
   "monthly": "Monthly",
   "please_select_car_location": "Please select the car location",
   "please_select_plate_location": "Please select the plate location",
-  "ad_number": "Ad Number"
+  "ad_number": "Ad Number",
+  "newest": "Newest",
+  "oldest": "Oldest",
+  "another_phone_1": "Another Phone 1",
+  "another_phone_2": "Another Phone 2",
+  "send_otp_title": "Enter your phone number and verification code",
+  "we_sent_you_verification_code": "We have sent you a verification code"
 }

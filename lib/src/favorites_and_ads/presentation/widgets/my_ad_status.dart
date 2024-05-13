@@ -4,14 +4,15 @@ import 'chip_ad.dart';
 
 class MyAdStatus extends BaseStatelessWidget {
   final bool isSold;
-  final bool isUserShowCar;
+  final bool isUserShow;
   final bool isApproved;
   final bool isHiddenByAdmin;
-   MyAdStatus({super.key, required this.isSold, required this.isUserShowCar, required this.isApproved, required this.isHiddenByAdmin});
+   MyAdStatus({super.key, required this.isSold, required this.isUserShow, required this.isApproved, required this.isHiddenByAdmin});
 
   @override
   Widget build(BuildContext context) {
     print("isSold $isSold");
+
     return    SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -20,7 +21,7 @@ class MyAdStatus extends BaseStatelessWidget {
             ChipAd(
               text: strings.hidden_by_admin,
             ),
-          if(!isUserShowCar)
+          if(!isUserShow)
             ChipAd(
               text: strings.hidden,
             ),

@@ -298,6 +298,7 @@ Future<_i1.GetIt> $initGetIt(
   gh.factory<_i81.AuthCubit>(() => _i81.AuthCubit(
         gh<_i26.AuthUseCase>(),
         gh<_i21.SellCarUseCase>(),
+        gh<_i67.ProfileUseCase>(),
       ));
   gh.factory<_i82.BranchesCubit>(
       () => _i82.BranchesCubit(gh<_i74.ShowroomsUseCase>()));

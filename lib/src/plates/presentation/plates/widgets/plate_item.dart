@@ -122,7 +122,7 @@ class PlateItem extends StatelessWidget {
                   if (isMyPlate)
                     MyAdStatus(
                       isSold: plate.isSold ?? false,
-                      isUserShowCar: plate.isUserShowPlate ?? false,
+                      isUserShow: plate.isUserShowPlate ?? false,
                       isApproved: plate.isApproved ?? false,
                       isHiddenByAdmin: plate.isHide ?? false,
                     ),
