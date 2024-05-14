@@ -1,10 +1,13 @@
+import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
+
 import '../../../../main_index.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 
 class VerifyAccountScreen extends BaseStatelessWidget {
+  final Function() onResend;
   final Function(String) onPinCode;
 
-  VerifyAccountScreen({Key? key, required this.onPinCode}) : super(key: key);
+  VerifyAccountScreen({Key? key,required this.onResend, required this.onPinCode}) : super(key: key);
 
   TextEditingController pinCodeController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -17,14 +20,19 @@ class VerifyAccountScreen extends BaseStatelessWidget {
         key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            10.ph,
+            Align(
+                alignment: AlignmentDirectional.topStart,
+                child: CustomBackButton()),
+            100.ph,
             Text(
               strings.we_sent_you_verification_code,
               textAlign: TextAlign.center,
               style: theme.textTheme.headlineMedium,
             ),
-            20.ph,
+            40.ph,
             Text(strings.enter_verification_code_continue,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.headlineMedium!),
@@ -47,6 +55,7 @@ class VerifyAccountScreen extends BaseStatelessWidget {
                 GestureDetector(
                   onTap: () {
                     pinCodeController.clear();
+                    onResend();
                   },
                   child: Text(strings.resend,
                       textAlign: TextAlign.center,

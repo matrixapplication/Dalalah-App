@@ -19,6 +19,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   Widget buildWidget(BuildContext context, T state);
 
   void buildListener(BuildContext context, dynamic state) {
+    print('sxZxZx ${state}');
     if (state is LoadingStateListener) {
      showProgress();
     } else {

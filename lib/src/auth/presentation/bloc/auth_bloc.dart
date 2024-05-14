@@ -46,12 +46,42 @@ class AuthCubit extends BaseCubit {
     executeSuccessNotLoading(() => sellCarUseCase.fetchCities());
   }
 
-  void sendOtp(SendOTPParams params) async {
-    executeEmitterListener(() => usecase.sendOtp(params));
+  void sendOtp() async {
+    try {
+      emit(LoadingStateListener());
+      ProfileDto? data = await HelperMethods.getProfile();
+     await usecase.sendOtp(
+          SendOTPParams(
+            modelRole: data?.role ?? '',
+              modelId: data?.id?.toString() ?? '0',
+          ),
+      );
+      emit((SuccessState('res')));
+     //  emit(const DataSuccess<String>('data'));
+    } catch (e) {
+      emit(FailureStateListener(e));
+    }
   }
 
-  void verifyOtp(VerifyOTPParams params) async {
+  void resendOtp(VerifyOTPParams params) async {
     executeEmitterListener(() => usecase.verifyOtp(params));
+  }
+
+  void verifyOtp(String otp) async {
+    try {
+      emit(LoadingStateListener());
+      ProfileDto? data = await HelperMethods.getProfile();
+      VerifyOTPParams  params = VerifyOTPParams(
+        modelRole: data?.role ?? '',
+        modelId: data?.id?.toString() ?? '0',
+        otp: otp,
+      );
+      String msg = await usecase.verifyOtp(params);
+      //  emit((SuccessStateListener('res')));
+      emit(SuccessState<String>(msg));
+    } catch (e) {
+      emit(FailureStateListener(e));
+    }
   }
 
   void fetchProfileDataFromCash() {

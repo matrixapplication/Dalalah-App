@@ -32,7 +32,7 @@ class CustomPinCode extends BaseStatelessWidget {
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        color: const Color.fromRGBO(234, 239, 243, 1),
+        color: context.primaryColor,
       ),
     );
 
@@ -47,6 +47,7 @@ class CustomPinCode extends BaseStatelessWidget {
       showCursor: true,
       controller: pinCodeController,
       errorTextStyle: displaySmall.copyWith(color: Colors.red),
+
     );
   }
 }

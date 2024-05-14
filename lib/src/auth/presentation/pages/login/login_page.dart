@@ -39,7 +39,8 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
   }
 
   @override
-  onSuccessDismissed() {
-    pushNamedAndRemoveUntil(Routes.navigationPages);
+  onSuccessDismissed() async {
+    bool isVerified = await HelperMethods.isVerified();
+    isVerified ? pushNamedAndRemoveUntil(Routes.navigationPages) :  pushNamed(Routes.verifyAccountPage);
   }
 }

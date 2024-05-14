@@ -2,7 +2,7 @@ class SendOTPParams {
   String? modelRole;
   String? modelId;
 
-  SendOTPParams({this.modelRole});
+  SendOTPParams({this.modelRole, this.modelId});
 
   Map<String, dynamic> toJson() {
     return {

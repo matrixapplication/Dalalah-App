@@ -6,7 +6,6 @@ import 'package:dalalah/core/network/api_response.dart';
 import '../../../../core/utils/constants.dart';
 import '../models/forgot_password_params.dart';
 import '../models/password_otp_params.dart';
-import '../models/register_params.dart';
 import '../models/verify_password_otp_params.dart';
 
 part 'forgot_password_datasource.g.dart';
