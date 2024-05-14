@@ -37,7 +37,7 @@ class NewPasswordScreen extends BaseStatelessWidget {
               hint: context.strings.password,
               prefixIcon: AppIcons.lock,
               controller: newPasswordController,
-              validator: (password) => Validation.validatePhone(password ?? ''),
+              validator: (password) => Validation.validatePassword(password ?? ''),
             ),
             10.ph,
             AuthTextField(
@@ -45,7 +45,7 @@ class NewPasswordScreen extends BaseStatelessWidget {
               hint: context.strings.password,
               prefixIcon: AppIcons.lock,
               controller: confirmNewPasswordController,
-              validator: (password) => Validation.validatePhone(password ?? ''),
+              validator: (password) => Validation.validateConfirmPassword(password ?? '', newPasswordController.text),
             ),
             PrimaryButton(
               title: strings.confirm,

@@ -28,6 +28,6 @@ class ForgotPasswordRepo extends BaseForgotPasswordRepo{
   @override
   Future<String> forgotPassword(ForgotPasswordParams params) async{
     final response = await apiProvider.forgotPassword(params);
-    return response.data!;
+    return response.message ?? '';
   }
 }
