@@ -19,9 +19,9 @@ abstract class  ForgotPasswordDataSource{
   @POST('/reset-password/generate-otp')
   Future<ApiResponse> generateOTP(@Body() PasswordOTPParams params);
 
-  @GET('/reset-password/confirm-otp')
+  @POST('/reset-password/confirm-otp')
   Future<ApiResponse> verifyPasswordOTP(@Body() VerifyPasswordOTPParams params);
 
-  @GET('/reset-password/change-password')
+  @POST('/reset-password/change-password')
   Future<ApiResponse> forgotPassword(@Body() ForgotPasswordParams params);
 }

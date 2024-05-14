@@ -74,6 +74,15 @@ class Validation {
     }
     return null;
   }
+  static String? validatePhoneRequired(String value) {
+    if (value.isEmpty) {
+      return injector<ServicesLocator>().strings.this_field_is_required;
+    }
+    if (value.length > 9) {
+      return injector<ServicesLocator>().strings.must_be_at_least_11_characters;
+    }
+    return null;
+  }
 
   static String? validatePrice(String value, String max, String min) {
     if(!isValidIDNumber(value)){

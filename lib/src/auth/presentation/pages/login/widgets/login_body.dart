@@ -57,12 +57,15 @@ class LoginBody extends BaseStatelessWidget {
               validator: (password) => Validation.validatePassword(password ?? ''),
             ),
          //   if(isUser)
-            GestureDetector(
-              onTap: () {
-                pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
-              },
-              child:  Text(strings.forgot_password,
-                  style: context.bodySmall.copyWith(fontSize: 10)),
+            Padding(
+              padding: 10.paddingHoriz,
+              child: GestureDetector(
+                onTap: () {
+                  pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
+                },
+                child:  Text(strings.forgot_password,
+                    style: context.bodySmall.copyWith(fontSize: 12)),
+              ),
             ),
             PrimaryButton(
               title: strings.login.toUpperCase(),

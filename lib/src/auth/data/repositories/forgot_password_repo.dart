@@ -16,13 +16,13 @@ class ForgotPasswordRepo extends BaseForgotPasswordRepo{
   @override
   Future<String> generateOTP(PasswordOTPParams params) async{
     final response = await apiProvider.generateOTP(params);
-    return response.data!;
+    return response.message.toString();
   }
 
   @override
   Future<String> verifyPasswordOTP(VerifyPasswordOTPParams params) async{
     final response = await apiProvider.verifyPasswordOTP(params);
-    return response.data!;
+    return response.message.toString();
   }
 
   @override

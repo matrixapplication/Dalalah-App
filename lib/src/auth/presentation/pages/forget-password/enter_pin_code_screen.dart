@@ -3,9 +3,8 @@ import '../../../../../core/widgets/text-field/custom_pin_code.dart';
 
 class EnterPinCodeScreen extends BaseStatelessWidget {
   final Function(String) onPinCode;
-  final String? email;
 
-  EnterPinCodeScreen({Key? key, required this.onPinCode, this.email})
+  EnterPinCodeScreen({Key? key, required this.onPinCode})
       : super(key: key);
 
   TextEditingController pinCodeController = TextEditingController();
@@ -29,11 +28,12 @@ class EnterPinCodeScreen extends BaseStatelessWidget {
             20.ph,
             Text(strings.enter_verification_code_continue,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.headlineMedium!),
+                style: bodyMedium),
             16.ph,
             CustomPinCode(
               pinCodeController: pinCodeController,
             ),
+            20.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

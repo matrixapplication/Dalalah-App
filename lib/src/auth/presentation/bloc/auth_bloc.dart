@@ -34,11 +34,15 @@ class AuthCubit extends BaseCubit {
     executeEmitterSuccess(() => usecase.loginAsShowroom(params));
   }
 
-  void register(RegisterParams params) {
+  Future<void> register(RegisterParams params) async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterSuccess(() => usecase.register(params));
   }
 
-  void registerAsShowroom(RegisterParams params) {
+  Future<void> registerAsShowroom(RegisterParams params) async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterListener(() => usecase.registerAsShowroom(params));
   }
 
@@ -46,32 +50,27 @@ class AuthCubit extends BaseCubit {
     executeSuccessNotLoading(() => sellCarUseCase.fetchCities());
   }
 
-  void sendOtp() async {
+  void sendOtp({isResend = false}) async {
     try {
       emit(LoadingStateListener());
       ProfileDto? data = await HelperMethods.getProfile();
-     await usecase.sendOtp(
-          SendOTPParams(
-            modelRole: data?.role ?? '',
-              modelId: data?.id?.toString() ?? '0',
-          ),
+      final msg = await usecase.sendOtp(
+        SendOTPParams(
+          modelRole: data?.role ?? '',
+          modelId: data?.id?.toString() ?? '0',
+        ),
       );
-      emit((SuccessState('res')));
-     //  emit(const DataSuccess<String>('data'));
+      emit((isResend ? SuccessMessageState(msg) : SuccessNoActionState('res')));
     } catch (e) {
       emit(FailureStateListener(e));
     }
-  }
-
-  void resendOtp(VerifyOTPParams params) async {
-    executeEmitterListener(() => usecase.verifyOtp(params));
   }
 
   void verifyOtp(String otp) async {
     try {
       emit(LoadingStateListener());
       ProfileDto? data = await HelperMethods.getProfile();
-      VerifyOTPParams  params = VerifyOTPParams(
+      VerifyOTPParams params = VerifyOTPParams(
         modelRole: data?.role ?? '',
         modelId: data?.id?.toString() ?? '0',
         otp: otp,

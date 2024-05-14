@@ -31,7 +31,13 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                 Text(
                   strings.forgot_password_title,
                   textAlign: TextAlign.center,
-                  style: theme.textTheme.headlineLarge,
+                  style: headlineLarge.copyWith(fontSize: 20),
+                ),
+                50.ph,
+                Text(
+                  isUser ? strings.forgot_password_mobile_desc : strings.forgot_password_id_desc,
+                  textAlign: TextAlign.center,
+                  style: bodyMedium,
                 ),
                 20.ph,
                 AuthTextField(
@@ -52,7 +58,7 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       onEnterPhoneNumber(isUser
-                          ? '966${emailController.text}'
+                          ? emailController.text
                           : emailController.text);
                     }
                   },

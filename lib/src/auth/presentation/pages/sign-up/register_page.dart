@@ -76,7 +76,7 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
 
   @override
   onSuccessDismissed() {
-    pushNamed(Routes.verifyAccountPage);
+    pushNamed(Routes.login);
     // pushNamedAndRemoveUntil(pageIndex == 0 ? Routes.navigationPages : Routes.login);
   }
 }

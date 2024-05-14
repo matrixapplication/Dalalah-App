@@ -402,5 +402,7 @@
   "another_phone_1": "رقم هاتف اخر 1",
     "another_phone_2": "رقم هاتف اخر 2",
   "send_otp_title": "أدخل رقم هاتفك لإرسال رمز التحقق",
-  "we_sent_you_verification_code": "لقد أرسلنا لك رمز التحقق"
+  "we_sent_you_verification_code": "لقد أرسلنا لك رمز التحقق",
+  "forgot_password_mobile_desc": "أدخل رقم هاتفك لإعادة تعيين كلمة السر",
+  "forgot_password_id_desc": "أدخل كود المعرض لإعادة تعيين كلمة السر"
 }

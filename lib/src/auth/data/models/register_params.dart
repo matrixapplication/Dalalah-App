@@ -23,7 +23,7 @@ class RegisterParams {
   final File? logo;
   final File? coverImage;
   final File? commercial;
-  final String? fcmToken;
+   String? fcmToken;
 
   RegisterParams({
     this.type,

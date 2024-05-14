@@ -14,7 +14,6 @@ class EnterPinCodePage
   Widget buildWidget(BuildContext context, UnInitState state) {
     PasswordOTPParams params = getArguments(context);
     return EnterPinCodeScreen(
-      email: getArguments(context),
       onPinCode: (String code) {
         bloc.verifyPasswordOTP(
           VerifyPasswordOTPParams(
