@@ -78,6 +78,9 @@ class Validation {
     if (value.isEmpty) {
       return injector<ServicesLocator>().strings.this_field_is_required;
     }
+    if (value.startsWith('0')) {
+      return injector<ServicesLocator>().strings.phone_number_must_start_with_5;
+    }
     if (value.length > 9) {
       return injector<ServicesLocator>().strings.must_be_at_least_11_characters;
     }

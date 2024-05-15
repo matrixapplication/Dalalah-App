@@ -1,5 +1,6 @@
 import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
 
+import '../../../../../core/resources/validation.dart';
 import '../../../../main_index.dart';
 import '../../widgets/auth_text_field.dart';
 
@@ -47,6 +48,8 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                   keyboardType: isUser
                       ? TextInputType.emailAddress
                       : TextInputType.number,
+                  validator: (phone) => Validation.validatePhoneRequired(phone ?? ''),
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
 
                 ),
                 30.ph,
@@ -57,9 +60,7 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                   margin: const EdgeInsets.only(top: 20, left: 35, right: 35),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      onEnterPhoneNumber(isUser
-                          ? emailController.text
-                          : emailController.text);
+                      onEnterPhoneNumber(emailController.text);
                     }
                   },
                 ),

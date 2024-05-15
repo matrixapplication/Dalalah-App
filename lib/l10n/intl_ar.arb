@@ -404,5 +404,6 @@
   "send_otp_title": "أدخل رقم هاتفك لإرسال رمز التحقق",
   "we_sent_you_verification_code": "لقد أرسلنا لك رمز التحقق",
   "forgot_password_mobile_desc": "أدخل رقم هاتفك لإعادة تعيين كلمة السر",
-  "forgot_password_id_desc": "أدخل كود المعرض لإعادة تعيين كلمة السر"
+  "forgot_password_id_desc": "أدخل كود المعرض لإعادة تعيين كلمة السر",
+  "phone_number_must_start_with_5": "رقم الهاتف يجب أن يبدأ بـ 5"
 }

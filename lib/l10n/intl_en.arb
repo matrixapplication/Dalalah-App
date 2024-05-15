@@ -418,5 +418,6 @@
   "send_otp_title": "Enter your phone number and verification code",
   "we_sent_you_verification_code": "We have sent you a verification code",
   "forgot_password_mobile_desc": "Enter the phone number associated with the account to reset the password",
-  "forgot_password_id_desc": "Enter the Showroom code associated with the account to reset the password"
+  "forgot_password_id_desc": "Enter the Showroom code associated with the account to reset the password",
+  "phone_number_must_start_with_5": "Phone number must start with 5"
 }
