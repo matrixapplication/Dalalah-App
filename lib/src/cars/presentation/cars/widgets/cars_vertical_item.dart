@@ -123,21 +123,24 @@ class CarVerticalItem extends BaseStatelessWidget {
                         isApproved: car.isApproved ?? false,
                         isHiddenByAdmin: car.isHide ?? false,
                       ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ChipAd(
-                          text: car.status?.name ?? '',
-                        ),
-                        ChipAd(
-                          text: car.year ?? "",
-                        ),
-                        if((car.isSold ?? false) && !isMyCar)
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           ChipAd(
-                            text: strings.sold ?? "",
-                            backgroundColor: context.errorColor,
+                            text: car.status?.name ?? '',
                           ),
-                      ],
+                          ChipAd(
+                            text: car.year ?? "",
+                          ),
+                          if((car.isSold ?? false) && !isMyCar)
+                            ChipAd(
+                              text: strings.sold ?? "",
+                              backgroundColor: context.errorColor,
+                            ),
+                        ],
+                      ),
                     ),
                     5.ph,
                     Align(
