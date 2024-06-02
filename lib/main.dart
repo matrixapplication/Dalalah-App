@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
             ],
             // routerConfig: router(token.isNotEmpty),
             routes: Routes.routes(context),
-            initialRoute: state.isFirstTime ? Routes.onBoardingPage : Routes.login,
+            initialRoute: state.isFirstTime ? Routes.onBoardingPage : Routes.navigationPages,
             onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
           );
         },

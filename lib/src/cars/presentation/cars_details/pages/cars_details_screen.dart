@@ -150,6 +150,10 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                               style: bodyMedium,
                             ),
                           ),
+                          Text(
+                            car.city?.name ?? '',
+                            style: bodyMedium,
+                          ),
                           10.pw,
                           if (car.isShowInstallment())
                             PriceWidget(

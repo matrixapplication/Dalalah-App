@@ -134,8 +134,8 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 validator: (value) {
                   if (value!.isEmpty) {
                     return strings.enter_car_description;
-                  } else if (value.length > 500) {
-                    return strings.only_500_characters_allowed;
+                  } else if (value.length > 2000) {
+                    return strings.only_2000_characters_allowed;
                   }
                   return null;
                 },
