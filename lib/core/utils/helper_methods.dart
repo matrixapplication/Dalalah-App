@@ -21,7 +21,8 @@ class HelperMethods {
 
   static Future<CroppedFile?> getImagePicker() async {
     XFile? imageFile;
-    imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    imageFile = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 25);
+    print('imageFile length ${await imageFile?.length()}'); // 4271
     return await ImageCropper().cropImage(
       sourcePath: imageFile!.path,
       //  aspectRatio: const CropAspectRatio(ratioX: 2, ratioY: 1),
