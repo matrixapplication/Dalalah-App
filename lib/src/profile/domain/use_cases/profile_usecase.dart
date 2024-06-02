@@ -31,10 +31,7 @@ class ProfileUseCase {
 
   Future<String> editProfileData(RegisterParams params) async {
     final data = await repository.editProfileData(params);
-    print('repository ${data.data?.toJson()}');
     await HelperMethods.saveProfile(data.data!);
-    final profile = await HelperMethods.getProfile();
-    print('editProfileData ${profile?.toJson()}');
     return data.message ?? '';
   }
 

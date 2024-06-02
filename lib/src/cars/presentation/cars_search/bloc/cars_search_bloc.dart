@@ -13,6 +13,9 @@ class CarsSearchCubit extends BaseCubit {
   CarsSearchCubit(this.usecase);
 
   StreamStateInitial<List<BrandModel>?> brandModelsStream = StreamStateInitial();
+  StreamStateInitial<List<BrandModel>> brandsModelsExtensionStream =
+  StreamStateInitial<List<BrandModel>>();
+
   fetchInitialData() async {
     emit(DataLoading());
     try {
@@ -33,6 +36,7 @@ class CarsSearchCubit extends BaseCubit {
           fuelTypes: fuelTypes,
           cities: cities,
           brandModelsStream: brandModelsStream,
+          brandsModelsExtensionStream: brandsModelsExtensionStream,
         ),
       );
     } on Exception catch (e) {
@@ -48,6 +52,19 @@ class CarsSearchCubit extends BaseCubit {
       brandModelsStream.setData(models);
     } catch (e) {
       brandModelsStream.setError(e);
+    }
+  }
+
+  fetchBrandModelExtensions(int id) async {
+    brandsModelsExtensionStream.setData([]);
+    try {
+      final brandsModelExtensions = await usecase.fetchBrandModelExtensions(id);
+      final dropDownItems = brandsModelExtensions
+          .map((e) => BrandModel(id: e.id, name: e.name))
+          .toList();
+      brandsModelsExtensionStream.setData(dropDownItems);
+    } on Exception catch (e) {
+      brandsModelsExtensionStream.setError(e);
     }
   }
 }

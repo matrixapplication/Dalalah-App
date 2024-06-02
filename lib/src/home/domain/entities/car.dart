@@ -70,6 +70,8 @@ class Car {
   RegionalSpecification? regionalSpecification;
   double? lat;
   double? lng;
+  String? createdAt;
+  String? updatedAt;
 
   Car(
       {this.id,
@@ -117,6 +119,8 @@ class Car {
       this.regionalSpecification,
       this.lat,
       this.lng,
+      this.createdAt,
+      this.updatedAt,
       });
 
   factory Car.fromDto(CarDto json) {
@@ -168,6 +172,7 @@ class Car {
           json.regionalSpecification ?? RegionalSpecificationDto()),
       lat: json.lat == null ? 0.0 : double.parse(json.lat!),
       lng: json.lng == null ? 0.0 : double.parse(json.lng!),
+        createdAt: json.createdAt,
     );
   }
 

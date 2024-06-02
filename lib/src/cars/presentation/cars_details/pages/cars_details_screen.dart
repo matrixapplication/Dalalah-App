@@ -1,15 +1,11 @@
-import 'package:dalalah/core/widgets/buttons/share_icon_button.dart';
 import 'package:dalalah/core/widgets/chip/price_widget.dart';
-import 'package:dalalah/src/cars/presentation/cars/pages/cars_page.dart';
-import 'package:dalalah/src/home/presentation/widgets/sub_custom_container.dart';
+import 'package:dalalah/core/widgets/texts/row_texts.dart';
 import '../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../../core/widgets/tabview/tabbar_widget.dart';
 import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
-import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../main_index.dart';
-import '../../../../map_picker/widgets/custom_google_map.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../data/models/comment_params.dart';
 import '../../../data/models/model_object.dart';
@@ -17,10 +13,10 @@ import '../../../domain/entities/car_details.dart';
 import '../../comments/pages/comments_page.dart';
 import '../widgets/car_details_property_item.dart';
 import '../widgets/car_properties.dart';
+import '../widgets/dates_create_widget.dart';
 import '../widgets/sliders_car_details.dart';
 import '../widgets/user_info.dart';
 import 'views/car_details_details_view.dart';
-import 'views/car_details_price_view.dart';
 
 class CarsDetailsScreen extends BaseStatelessWidget {
   final bool isNew;
@@ -87,7 +83,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
           forceElevated: innerBoxIsScrolled,
           backgroundColor: Colors.white,
           leading: 0.ph,
-          expandedHeight: 740,
+          expandedHeight: car.isShowInstallment() ? 920 : 820,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Column(
@@ -150,19 +146,40 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                               style: bodyMedium,
                             ),
                           ),
-                          Text(
-                            car.city?.name ?? '',
-                            style: bodyMedium,
-                          ),
-                          10.pw,
-                          if (car.isShowInstallment())
-                            PriceWidget(
-                              price:
-                                  '${car.monthlyInstallment ?? ''} ${context.strings.rs} ${strings.monthly}',
-                              isEgp: false,
-                              fontSize: 14,
-                            ),
                         ],
+                      ),
+                     if (car.isShowInstallment())
+                      Container(
+                        padding: 10.paddingAll,
+                        margin: 10.paddingTop,
+                        decoration: Decorations.kDecorationBorderRadius(
+                          colorBorder: context.dividerColor,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RowTexts(
+                              title: strings.monthly_installment,
+                              value: '${car.monthlyInstallment ?? ''} ${context.strings.rs}',
+                              titleStyle: context.bodyMedium,
+                              valueStyle: context.headlineMedium,
+                            ),
+                            10.ph,
+                            Text(
+                              '${strings.notice}:',
+                              style: context.bodySmall,
+                            ),
+                            5.ph,
+                            Text(
+                              strings.installment_notice_desc,
+                              style: context.displaySmall,
+                            ),
+                          ],
+                        ),
+                      ),
+                      DatesCreateWidget(
+                        createdDate: car.createdAt ?? '',
+                        updatedDate: car.updatedAt ?? '',
                       ),
                       15.ph,
                       // Wrap(
@@ -180,7 +197,7 @@ class CarsDetailsScreen extends BaseStatelessWidget {
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: carDetails.properties(context)?.length ?? 0,
+                        itemCount: carDetails.properties(context).length ?? 0,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 8,

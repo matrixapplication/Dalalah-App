@@ -1,9 +1,9 @@
 
-
 import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../home/domain/entities/brand.dart';
 import '../../../../sell_car/domain/entities/brand_model.dart';
+import '../../../../sell_car/domain/entities/brand_model_extension.dart';
 import '../../../../sell_car/domain/entities/car_status.dart';
 import '../../../../sell_car/domain/entities/city.dart';
 import '../../../../sell_car/domain/entities/drive_type.dart';
@@ -17,6 +17,7 @@ class CarsSearchState  extends DataStateFBuilder {
   List<DriveType> driveTypes = [];
   List<City> cities = [];
   StreamStateInitial<List<BrandModel>?>? brandModelsStream;
+  StreamStateInitial<List<BrandModel>?>? brandsModelsExtensionStream;
 
 
   CarsSearchState({
@@ -27,5 +28,6 @@ class CarsSearchState  extends DataStateFBuilder {
     this.driveTypes = const [],
     this.cities = const [],
     this.brandModelsStream,
+    this.brandsModelsExtensionStream,
   });
 }

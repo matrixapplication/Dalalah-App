@@ -4,8 +4,10 @@ import 'package:dalalah/src/home/data/models/car_filter_params.dart';
 import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../core/widgets/drop_down/drop_down.dart';
+import '../../../../../core/widgets/text-field/custom_text_field.dart';
 import '../../../../main_index.dart';
-import '../../cars/widgets/brand_models_filter.dart';
+import '../../cars/widgets/brand_models_extension_filter_stream.dart';
+import '../../cars/widgets/brand_models_filter_stream.dart';
 import '../../cars/widgets/brands_filter.dart';
 import '../bloc/cars_search_state.dart';
 import '../widges/price_range_slider.dart';
@@ -14,22 +16,28 @@ import '../widges/years_drop_downs.dart';
 class CarsSearchScreen extends BaseStatelessWidget {
   final CarsSearchState state;
   final Function(int) onFetchBrandModels;
+  final Function(int) onFetchBrandModelsExtension;
 
   CarsSearchScreen(
-      {super.key, required this.state, required this.onFetchBrandModels});
+      {super.key, required this.state, required this.onFetchBrandModels, required this.onFetchBrandModelsExtension});
+
+
+  double startPriceRange = 10000;
+  double endPriceRange = 9000000;
+  int startYear = 0;
+  int endYear = 0;
+  String driveTypeId = '';
+  int brandId = 0;
+  String status = '';
+  String fulTypeId = '';
+  int brandModelId = 0;
+  int extensionId = 0;
+  int cityId = 0;
+  final cylindersController = TextEditingController();
+  final kilometersController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    double startPriceRange = 10000;
-    double endPriceRange = 9000000;
-    int startYear = 0;
-    int endYear = 0;
-    String driveTypeId = '';
-    int brandId = 0;
-    String status = '';
-    String fulTypeId = '';
-    int brandModelId = 0;
-    int cityId = 0;
 
     return SingleChildScrollView(
       padding: 16.paddingAll,
@@ -76,7 +84,32 @@ class CarsSearchScreen extends BaseStatelessWidget {
             brandModelsStream: state.brandModelsStream!,
             onFilter: (value) {
               brandModelId = value;
+              onFetchBrandModelsExtension(value);
             },
+          ),
+          10.ph,
+          BrandModelsFilterStream(
+            title: strings.select_extension,
+            brandModelsStream: state.brandsModelsExtensionStream!,
+            onFilter: (value) {
+              extensionId = value;
+            },
+          ),
+          10.ph,
+          CustomTextField(
+            title: strings.kilometers,
+            hintText: strings.number_kilometers_km,
+            controller: kilometersController,
+            keyboardType: TextInputType.number,
+            isValidator: false,
+          ),
+          10.ph,
+          CustomTextField(
+            title: strings.cylinders,
+            hintText: strings.number_car_cylinders,
+            controller: cylindersController,
+            keyboardType: TextInputType.number,
+            isValidator: false,
           ),
           10.ph,
           PriceRangeSlider(
@@ -133,6 +166,9 @@ class CarsSearchScreen extends BaseStatelessWidget {
                     fuelType: fulTypeId,
                     carModel: brandModelId,
                     cityId: cityId,
+                    mileage: kilometersController.text.toInt,
+                    cylinders: cylindersController.text.toInt,
+                    carModelExtensionId: extensionId,
                   ));
             },
           ),

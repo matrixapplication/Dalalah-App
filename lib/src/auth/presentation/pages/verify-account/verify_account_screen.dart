@@ -1,4 +1,5 @@
 import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 import '../../../../main_index.dart';
 import '../../../../../core/widgets/text-field/custom_pin_code.dart';
@@ -41,6 +42,7 @@ class VerifyAccountScreen extends BaseStatelessWidget {
               pinCodeController: pinCodeController,
             ),
             20.ph,
+            timerWidget(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,9 +59,15 @@ class VerifyAccountScreen extends BaseStatelessWidget {
                     pinCodeController.clear();
                     onResend();
                   },
-                  child: Text(strings.resend,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.headlineSmall!),
+                  child: Row(
+                    children: [
+                      Text(strings.resend_after,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.headlineSmall!),
+                      5.pw,
+                      timer(),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -77,6 +85,41 @@ class VerifyAccountScreen extends BaseStatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget timerWidget() {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        text: '${strings.not_receive_code_with_in} ',
+        style: displayMedium,
+        children: [
+          WidgetSpan(
+            alignment: PlaceholderAlignment.top,
+            child: timer(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget timer() {
+    return TimerCountdown(
+      format: CountDownTimerFormat.minutesSeconds,
+      timeTextStyle: headlineMedium,
+      // colonsTextStyle: kTextSemiBold.copyWith(
+      //     color: const Color(0xffFF0000), fontSize: 29),
+      enableDescriptions: false,
+      endTime: DateTime.now().add(
+        const Duration(
+          seconds: 120,
+        ),
+      ),
+      spacerWidth: 0,
+      onEnd: () {
+        // isSendAgain.setData(true);
+      },
     );
   }
 }

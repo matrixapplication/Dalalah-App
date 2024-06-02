@@ -13,8 +13,7 @@ class PlatesDetailsWidget extends BaseStatelessWidget {
   final Plate plate;
   final Function()? onToggleFavorite;
 
-  PlatesDetailsWidget(
-      {Key? key, required this.plate, this.onToggleFavorite})
+  PlatesDetailsWidget({Key? key, required this.plate, this.onToggleFavorite})
       : super(key: key);
 
   @override
@@ -45,7 +44,9 @@ class PlatesDetailsWidget extends BaseStatelessWidget {
               Expanded(
                 child: PlatesDetailsProperty(
                   label: strings.plate_type,
-                  value: plate.plateType == 'private' ? strings.plate_private : strings.plate_transfer,
+                  value: plate.plateType == 'private'
+                      ? strings.plate_private
+                      : strings.plate_transfer,
                 ),
               ),
               14.pw,
@@ -69,18 +70,21 @@ class PlatesDetailsWidget extends BaseStatelessWidget {
               14.pw,
               Expanded(
                 child: PlatesDetailsProperty(
-                  label: strings.ad_number,
-                  value: plate.id.toString(),
+                  label: strings.updated_at,
+                  value: plate.updatedAt ?? '',
                 ),
               ),
             ],
+          ),
+          PlatesDetailsProperty(
+            label: strings.ad_number,
+            value: plate.id.toString(),
           ),
           20.ph,
           CustomGoogleMap(
             isOpenMap: true,
             initialLocation: LatLng(plate.lat ?? 0, plate.lng ?? 0),
-            onGetLocation: (lat, lng) {
-            },
+            onGetLocation: (lat, lng) {},
           ),
         ],
       ),

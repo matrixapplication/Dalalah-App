@@ -85,6 +85,8 @@ CarDto _$CarDtoFromJson(Map<String, dynamic> json) => CarDto(
               json['regional_specification'] as Map<String, dynamic>),
       lat: json['lat'] as String?,
       lng: json['lng'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
@@ -133,6 +135,8 @@ Map<String, dynamic> _$CarDtoToJson(CarDto instance) => <String, dynamic>{
       'regional_specification': instance.regionalSpecification,
       'lat': instance.lat,
       'lng': instance.lng,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };
 
 CarContactDetails _$CarContactDetailsFromJson(Map<String, dynamic> json) =>

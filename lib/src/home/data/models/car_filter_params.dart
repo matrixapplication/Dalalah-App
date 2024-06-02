@@ -14,8 +14,11 @@ class CarFilterParams {
   int? startYear;
   int? endYear;
   int? cityId;
+  int? mileage;
+  int? cylinders;
+  int? carModelExtensionId;
 
-  CarFilterParams({this.page = 1, this.limit = 10, this.order, this.status, this.brand, this.carModel, this.search, this.driveType, this.fuelType, this.startPrice, this.endPrice, this.startYear, this.endYear, this.cityId});
+  CarFilterParams({this.page = 1, this.limit = 10, this.order, this.status, this.brand, this.carModel, this.search, this.driveType, this.fuelType, this.startPrice, this.endPrice, this.startYear, this.endYear, this.cityId, this.mileage, this.cylinders, this.carModelExtensionId});
 
    factory CarFilterParams.fromJson(Map<String, dynamic> json) {
       return CarFilterParams(
@@ -33,6 +36,9 @@ class CarFilterParams {
         startYear: json['start_year'],
         endYear: json['end_year'],
         cityId: json['city_id'],
+        mileage: json['mileage'],
+        cylinders: json['cylinders'],
+        carModelExtensionId: json['car_model_extension_id'],
       );
    }
 
@@ -52,6 +58,9 @@ class CarFilterParams {
       data['start_year'] = startYear;
       data['end_year'] = endYear;
       data['city_id'] = cityId;
+      data['mileage'] = mileage;
+      data['cylinders'] = cylinders;
+      data['car_model_extension_id'] = carModelExtensionId;
       data.removeWhere((key, value) => value == null || value == '' || value == 0 || value == '0');
       return data;
    }

@@ -19,6 +19,9 @@ class CarsSearchPage extends BaseBlocWidget<CarsSearchState, CarsSearchCubit> {
       onFetchBrandModels: (id) {
         bloc.fetchBrandModels(id);
       },
+      onFetchBrandModelsExtension: (id) {
+        bloc.fetchBrandModelExtensions(id);
+      },
     );
   }
 

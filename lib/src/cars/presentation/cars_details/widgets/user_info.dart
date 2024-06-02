@@ -22,21 +22,28 @@ class UserInfo extends StatelessWidget {
           borderColor: context.gray_5c,
           radius: 50
       ),
-      child: Row(
-        children: [
-          IconText(
-            mainAxisAlignment: MainAxisAlignment.start,
-            text: user.name ?? '',
-            icon: user.image ?? '',
-            iconSize: 50,
-              imageRadius: 50,
-          ),
-          Spacer(),
-          ChatWhatsAppButton(phone: user.whatsapp ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
-          5.ph,
-          CallButton(phone: user.phone ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, Routes.showroomDetailsPage, arguments: user.id);
+        },
+        child: Row(
+          children: [
+            Expanded(
+              child: IconText(
+                mainAxisAlignment: MainAxisAlignment.start,
+                text: user.name ?? '',
+                icon: user.image ?? '',
+                iconSize: 50,
+                  imageRadius: 50,
+                isExpanded: true,
+              ),
+            ),
+            ChatWhatsAppButton(phone: user.whatsapp ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
+            5.ph,
+            CallButton(phone: user.phone ?? '', decoration: Decorations.kDecorationBorder(radius: 50)),
 
-        ],
+          ],
+        ),
       ),
     );
   }

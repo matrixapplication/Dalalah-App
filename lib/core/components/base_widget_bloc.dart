@@ -231,11 +231,11 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          title: Icon(Icons.check_circle_outline,
+          title: const Icon(Icons.check_circle_outline,
               size: 60, color: Colors.green),
           content: WillPopScope(
             onWillPop: () async {
-              return true;
+              return false;
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,

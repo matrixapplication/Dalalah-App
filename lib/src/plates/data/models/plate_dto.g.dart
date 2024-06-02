@@ -28,9 +28,10 @@ PlateDto _$PlateDtoFromJson(Map<String, dynamic> json) => PlateDto(
           : ProfileDto.fromJson(json['user'] as Map<String, dynamic>),
       isFavorite: json['is_favorite'] as bool?,
       userPlateStatus: json['user_plate_status'] as int?,
-      createdAt: json['created_at'] as String?,
       lat: json['lat'] as String?,
       lng: json['lng'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
     );
 
 Map<String, dynamic> _$PlateDtoToJson(PlateDto instance) => <String, dynamic>{
@@ -51,7 +52,8 @@ Map<String, dynamic> _$PlateDtoToJson(PlateDto instance) => <String, dynamic>{
       'user': instance.user,
       'is_favorite': instance.isFavorite,
       'user_plate_status': instance.userPlateStatus,
-      'created_at': instance.createdAt,
       'lat': instance.lat,
       'lng': instance.lng,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };

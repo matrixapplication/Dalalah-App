@@ -1,5 +1,7 @@
 
 import '../../../../core/components/base_widget_bloc.dart';
+import '../../../../core/utils/helper_methods.dart';
+import '../../../../core/utils/navigator.dart';
 import '../../../main_index.dart';
 import '../../../sell_car/domain/entities/city.dart';
 import '../../domain/entities/profile.dart';
@@ -33,8 +35,9 @@ class EditProfilePage extends BaseBlocWidget<DataSuccess<List<City>>, EditProfil
   }
 
   @override
-  onSuccessDismissed() {
-    Navigator.pop(context!, true);
+  onSuccessDismissed() async {
+    bool isVerified = await HelperMethods.isVerified();
+    isVerified ? Navigator.pop(context!, true) : pushNamed(Routes.verifyAccountPage);
   }
 }
 

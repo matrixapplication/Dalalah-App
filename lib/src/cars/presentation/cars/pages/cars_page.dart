@@ -10,7 +10,7 @@ import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../home/presentation/widgets/filter_home.dart';
 import '../bloc/cars_bloc.dart';
-import '../widgets/brand_models_filter.dart';
+import '../widgets/brand_models_filter_stream.dart';
 import '../widgets/brands_filter.dart';
 import 'cars_screen.dart';
 
