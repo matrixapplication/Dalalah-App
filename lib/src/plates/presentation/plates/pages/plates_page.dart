@@ -95,11 +95,13 @@ class PlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, PlatesCubit> {
         },
         onLoading: () async {
           await bloc.fetchPlates(params, isRefresh: false);
-          Future.delayed(Duration(milliseconds: 5000), () {
+          Future.delayed(const Duration(milliseconds: 5000), () {
             refreshController.loadComplete();
           });
         },
-        child: PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavorite(id)));
+        child: PlatesScreen(plates: state.data ?? [], onFavoritePlate: (id) => bloc.toggleFavorite(id),
+
+        ));
   }
 
   @override

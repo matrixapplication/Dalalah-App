@@ -31,6 +31,7 @@ class CarVerticalItem extends BaseStatelessWidget {
   final Function(int)? onSpecial;
   final Function(int)? onRequestPrice;
   final Function(int)? onDelete;
+  final Function(int)? onUpdateDate;
 
   // final Task task;
   CarVerticalItem({
@@ -49,6 +50,7 @@ class CarVerticalItem extends BaseStatelessWidget {
     this.onRequestPrice,
     this.onDelete,
     this.isHidePayment = false,
+    this.onUpdateDate,
   }) : super(key: key);
 
   @override
@@ -134,7 +136,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                           ChipAd(
                             text: car.year ?? "",
                           ),
-                          if((car.isSold ?? false) && !isMyCar)
+                          if ((car.isSold ?? false) && !isMyCar)
                             ChipAd(
                               text: strings.sold ?? "",
                               backgroundColor: context.errorColor,
@@ -175,7 +177,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                         : BorderRadiusDirectional.circular(5),
                   ),
                   if (car.isFeatured ?? false)
-                  const PositionedDirectional(
+                    const PositionedDirectional(
                       top: 5,
                       start: 5,
                       child: FeaturedIcon(),
@@ -191,6 +193,7 @@ class CarVerticalItem extends BaseStatelessWidget {
                             onSpecial: onSpecial,
                             onDelete: onDelete,
                             isHidePayment: isHidePayment,
+                            onUpdateDate: onUpdateDate,
                           )
                         : FavoriteButton(
                             iconSize: 15,
@@ -200,36 +203,36 @@ class CarVerticalItem extends BaseStatelessWidget {
                             },
                           ),
                   ),
-                  if(car.isApproved ?? false)
-                  PositionedDirectional(
-                    bottom: 30,
-                    end: 5,
-                    child: ShareIconButton(
-                      route: Routes.carAppLink,
-                      id: car.id.toString() ?? '',
+                  if (car.isApproved ?? false)
+                    PositionedDirectional(
+                      bottom: 30,
+                      end: 5,
+                      child: ShareIconButton(
+                        route: Routes.carAppLink,
+                        id: car.id.toString() ?? '',
+                      ),
                     ),
-                  ),
-                  if(car.isShowInstallment())
-                  PositionedDirectional(
-                    bottom: 0,
-                    end: 0,
-                    child: Container(
-                      padding: 5.paddingAll,
-                      decoration: BoxDecoration(
-                        color: context.primaryColor,
-                        borderRadius: const BorderRadiusDirectional.only(
-                          topStart: Radius.circular(5),
+                  if (car.isShowInstallment())
+                    PositionedDirectional(
+                      bottom: 0,
+                      end: 0,
+                      child: Container(
+                        padding: 5.paddingAll,
+                        decoration: BoxDecoration(
+                          color: context.primaryColor,
+                          borderRadius: const BorderRadiusDirectional.only(
+                            topStart: Radius.circular(5),
+                          ),
+                        ),
+                        child: Text(
+                          strings.available_for_installments,
+                          style: context.labelSmall.copyWith(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                       child: Text(
-                        strings.available_for_installments,
-                        style: context.labelSmall.copyWith(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                        ),
                     ),
-                  ),
-                  ),
                 ],
               ),
             ),

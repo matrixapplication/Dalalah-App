@@ -4,6 +4,7 @@ import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
 import '../../../../cars/data/models/add_special_params.dart';
+import '../../../../cars/data/models/update_car_date_params.dart';
 import '../../../../cars/domain/use_cases/cars_usecase.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../../../../plates/domain/entities/ad_types.dart';
@@ -57,6 +58,10 @@ class MyCarsCubit extends BaseCubit {
 
   void deleteCar(int id) async {
     executeEmitterListener(() => carsUseCase.deleteCar(id));
+  }
+
+  void updateCarDate(int id) async {
+    executeEmitterListener(() => carsUseCase.updateCarDate(id));
   }
 
 }

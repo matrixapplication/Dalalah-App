@@ -223,10 +223,11 @@ class HelperMethods {
       return HeaderParams(
         token: profile?.token ?? '',
         role: profile?.role ?? '',
+        id: profile?.id ?? 0,
       );
     } on Exception catch (e) {
       print('profile?.token ${e.toString()}');
-      return HeaderParams(token: '', role: '');
+      return HeaderParams(token: '', role: '', id: 0);
     }
   }
 

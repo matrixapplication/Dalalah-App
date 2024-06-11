@@ -128,7 +128,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
                 title: strings.car_description,
                 hintText: strings.enter_car_description,
                 controller: descController,
-                maxLength: 500,
+                maxLength: 2000,
                 isHasConstraints: false,
                 keyboardType: TextInputType.multiline,
                 validator: (value) {

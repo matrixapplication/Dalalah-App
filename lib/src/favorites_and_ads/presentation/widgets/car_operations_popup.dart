@@ -19,16 +19,19 @@ class CarOperationsPopup extends BaseStatelessWidget {
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onDelete;
+  final Function(int)? onUpdateDate;
 
-  CarOperationsPopup(
-      {super.key,
-      this.car,
-      this.plate,
-      this.isHidePayment = false,
-      this.onHide,
-      this.onSold,
-      this.onSpecial,
-      this.onDelete});
+  CarOperationsPopup({
+    super.key,
+    this.car,
+    this.plate,
+    this.isHidePayment = false,
+    this.onHide,
+    this.onSold,
+    this.onSpecial,
+    this.onDelete,
+    this.onUpdateDate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,33 +57,42 @@ class CarOperationsPopup extends BaseStatelessWidget {
             value: 1,
             padding: EdgeInsets.zero,
             child: PopupItem(
-              title: strings.edit,
+              title: strings.update,
             ),
           ),
           PopupMenuItem(
             value: 2,
             padding: EdgeInsets.zero,
             child: PopupItem(
-              title: isShow ? strings.hide : strings.visible,
+              title: strings.edit,
             ),
           ),
           PopupMenuItem(
             value: 3,
             padding: EdgeInsets.zero,
             child: PopupItem(
-              title: isSold ? strings.cancel_sale : strings.sold,
+              title: isShow ? strings.hide : strings.visible,
             ),
           ),
-          if(!isHidePayment)
           PopupMenuItem(
             value: 4,
             padding: EdgeInsets.zero,
             child: PopupItem(
-              title: isFeatured ? context.strings.not_special : context.strings.special,
+              title: isSold ? strings.cancel_sale : strings.sold,
             ),
           ),
+          if (!isHidePayment)
+            PopupMenuItem(
+              value: 5,
+              padding: EdgeInsets.zero,
+              child: PopupItem(
+                title: isFeatured
+                    ? context.strings.not_special
+                    : context.strings.special,
+              ),
+            ),
           PopupMenuItem(
-            value: 5,
+            value: 6,
             // padding: const EdgeInsets.symmetric(horizontal: 5),
             child: PopupItem(
               title: strings.delete,
@@ -92,21 +104,22 @@ class CarOperationsPopup extends BaseStatelessWidget {
         child: Icon(Icons.more_vert, color: context.outlineVariant, size: 18),
         onSelected: (value) {
           if (value == 1) {
+            onUpdateDate?.call(id);
+          } else if (value == 2) {
             pushNamed(car != null ? Routes.sellCarPage : Routes.plateFilterPage,
                 arguments: car ?? PlateArgs(plate: plate, isEdit: true));
-          } else if (value == 2) {
+          } else if (value == 3) {
             if (onHide != null) {
               onHide!(id);
             }
-          } else if (value == 3) {
+          } else if (value == 4) {
             if (onSold != null) {
               onSold!(id);
             }
-          }
-          else if (value == 4) {
-            pushNamed(Routes.addPremiumADPage, arguments: ADArgs(id: id, type: type));
-          }
-          else if (value == 5) {
+          } else if (value == 5) {
+            pushNamed(Routes.addPremiumADPage,
+                arguments: ADArgs(id: id, type: type));
+          } else if (value == 6) {
             if (onSold != null) {
               onDelete!(id);
             }
@@ -122,7 +135,8 @@ class PopupItem extends StatelessWidget {
   final bool isDivider;
   final Color? textColor;
 
-  const PopupItem({super.key, required this.title, this.isDivider = true, this.textColor});
+  const PopupItem(
+      {super.key, required this.title, this.isDivider = true, this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -136,9 +150,11 @@ class PopupItem extends StatelessWidget {
           style: context.bodyMedium.copyWith(fontSize: 12, color: textColor),
           textAlign: TextAlign.center,
         ),
-          ...[
+        ...[
           (isDivider ? 15 : 0).ph,
-          Divider(color: isDivider ? context.outlineVariant : Colors.transparent, height: 1),
+          Divider(
+              color: isDivider ? context.outlineVariant : Colors.transparent,
+              height: 1),
         ]
       ],
     );

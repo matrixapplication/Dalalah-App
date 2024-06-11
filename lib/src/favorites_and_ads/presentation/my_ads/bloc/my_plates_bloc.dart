@@ -61,4 +61,8 @@ class MyPlatesCubit extends BaseCubit {
     executeEmitterListener(() => platesUseCase.deletePlate(id));
   }
 
+  void updateDate(int id) async {
+    executeEmitterListener(() => platesUseCase.updatePlateDate(id));
+  }
+
 }

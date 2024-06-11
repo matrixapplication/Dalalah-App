@@ -90,7 +90,8 @@ class HeaderInterceptor extends Interceptor {
 
 
 class HeaderParams{
+  final int id;
   final String role;
   final String token;
-  HeaderParams({required this.role, required this.token});
+  HeaderParams({required this.role, required this.token, required this.id});
 }

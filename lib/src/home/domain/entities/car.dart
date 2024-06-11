@@ -173,6 +173,7 @@ class Car {
       lat: json.lat == null ? 0.0 : double.parse(json.lat!),
       lng: json.lng == null ? 0.0 : double.parse(json.lng!),
         createdAt: json.createdAt,
+        updatedAt: json.updatedAt,
     );
   }
 

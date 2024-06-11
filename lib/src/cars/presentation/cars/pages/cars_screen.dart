@@ -18,6 +18,8 @@ class CarsScreen extends BaseStatelessWidget {
   final Function(int)? onSpecial;
   final Function(int)? onRequestPrice;
   final Function(int)? onDelete;
+  final Function(int)? onUpdateDate;
+
 
   CarsScreen(
       {Key? key,
@@ -30,7 +32,9 @@ class CarsScreen extends BaseStatelessWidget {
       this.onRequestPrice,
       this.isCarDetails = false,
       this.onDelete,
-      this.isHidePayment = false})
+      this.isHidePayment = false,
+      this.onUpdateDate,
+      })
       : super(key: key);
 
   @override
@@ -63,6 +67,7 @@ class CarsScreen extends BaseStatelessWidget {
           onRequestPrice: onRequestPrice,
           onDelete: onDelete,
           isHidePayment: isHidePayment,
+          onUpdateDate: onUpdateDate,
         );
       },
     );

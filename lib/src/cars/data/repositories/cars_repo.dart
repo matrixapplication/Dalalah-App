@@ -10,6 +10,7 @@ import '../models/add_special_params.dart';
 import '../models/car_details_dto.dart';
 import '../models/comment_dto.dart';
 import '../models/comment_params.dart';
+import '../models/update_car_date_params.dart';
 
 
 @Injectable(as: BaseCarsRepo)
@@ -66,5 +67,10 @@ class CarsRepo extends BaseCarsRepo{
   @override
   Future<ApiResponse> deleteCar(int id) async {
     return await datasource.deleteCar(id);
+  }
+
+  @override
+  Future<ApiResponse> updateCarDate(UpdateCarDateParams params) async {
+    return await datasource.updateCarDate(params);
   }
 }

@@ -49,6 +49,7 @@ class MyPlatesPage
         onSold: (id) => bloc.soldPlate(id),
         onDelete: (id) => bloc.deletePlate(id),
         isHidePayment: isHidePayment,
+        onUpdateDate: (id) => bloc.updateDate(id),
       ),
     );
   }

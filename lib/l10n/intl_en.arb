@@ -426,5 +426,6 @@
   "not_receive_code_with_in": "Didn't receive the code within",
   "resend_after": "Resend after",
   "created_at": "Created at",
-  "updated_at": "Updated at"
+  "updated_at": "Updated at",
+  "update": "Update"
 }

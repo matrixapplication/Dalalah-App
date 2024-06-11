@@ -412,5 +412,6 @@
   "activate_account_note": "حسابك غير مفعل هل تريد تفعيل الحساب ؟",
   "not_receive_code_with_in": "لم تستلم الرمز؟",
   "created_at": "تاريخ الإنشاء",
-  "updated_at": "تاريخ التحديث"
+  "updated_at": "تاريخ التحديث",
+  "update": "تحديث"
 }

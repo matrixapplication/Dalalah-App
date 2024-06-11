@@ -8,6 +8,7 @@ import '../models/ad_feature_dto.dart';
 import '../models/add_plate_params.dart';
 import '../models/plate_dto.dart';
 import '../models/plate_filter_params.dart';
+import '../models/update_plate_date_params.dart';
 
 @Injectable(as: BasePlatesRepo)
 class PlatesRepo extends BasePlatesRepo {
@@ -66,6 +67,11 @@ class PlatesRepo extends BasePlatesRepo {
   @override
   Future<ApiResponse> deletePlate(int id) async {
     return await remoteDataSource.deletePlate(id);
+  }
+
+  @override
+  Future<ApiResponse> updatePlateDate(UpdatePlateDateParams params) async {
+    return await remoteDataSource.updatePlateDate(params);
   }
 
 }

@@ -10,6 +10,7 @@ import '../../../cars/data/models/add_special_params.dart';
 import '../models/ad_feature_dto.dart';
 import '../models/add_plate_params.dart';
 import '../models/plate_filter_params.dart';
+import '../models/update_plate_date_params.dart';
 
 part 'plates_datasource.g.dart';
 
@@ -48,4 +49,7 @@ abstract class PlatesDatasource {
 
   @DELETE('/delete_car_plate/{id}')
   Future<ApiResponse> deletePlate(@Path('id') int id);
+
+  @POST('/renew-my-car-plate')
+  Future<ApiResponse> updatePlateDate(@Body() UpdatePlateDateParams params);
 }

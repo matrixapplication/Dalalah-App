@@ -1,11 +1,13 @@
-
 import 'package:dalalah/core/network/api_response.dart';
 import 'package:dalalah/src/plates/data/models/plate_dto.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/utils/helper_methods.dart';
 import '../../../cars/data/models/add_special_params.dart';
+import '../../../profile/data/models/profile_dto.dart';
 import '../../data/models/add_plate_params.dart';
 import '../../data/models/plate_filter_params.dart';
+import '../../data/models/update_plate_date_params.dart';
 import '../entities/ad_feature.dart';
 import '../entities/ad_types.dart';
 import '../entities/plate.dart';
@@ -17,8 +19,9 @@ class PlatesUseCase {
 
   PlatesUseCase(this.repository);
 
-  Future<ApiResponse<List<PlateDto>>> fetchPlates(PlateFilterParams params) async {
-   return  await repository.fetchPlates(params);
+  Future<ApiResponse<List<PlateDto>>> fetchPlates(
+      PlateFilterParams params) async {
+    return await repository.fetchPlates(params);
   }
 
   Future<Plate> fetchPlateDetails(int id) async {
@@ -31,11 +34,12 @@ class PlatesUseCase {
   }
 
   Future<dynamic> addPlate(AddPlateParams params) async {
-    final data=  await repository.addPlate(params);
+    final data = await repository.addPlate(params);
     return params.adType == AdTypes.featured ? data.data! : data.message;
   }
+
   Future<dynamic> editPlate(AddPlateParams params) async {
-    final data=  await repository.editPlate(params);
+    final data = await repository.editPlate(params);
     return params.adType == AdTypes.featured ? data.data! : data.message;
   }
 
@@ -61,6 +65,18 @@ class PlatesUseCase {
 
   Future<String> deletePlate(int id) async {
     final data = await repository.deletePlate(id);
+    return data.message ?? '';
+  }
+
+  Future<String> updatePlateDate(int id) async {
+    ProfileDto? profile = await HelperMethods.getProfile();
+    final data = await repository.updatePlateDate(
+      UpdatePlateDateParams(
+        modelId: profile?.id ?? 0,
+        modelRole: profile?.role ?? '',
+        plateId: id,
+      ),
+    );
     return data.message ?? '';
   }
 }

@@ -5,6 +5,7 @@ import '../../data/models/ad_feature_dto.dart';
 import '../../data/models/add_plate_params.dart';
 import '../../data/models/plate_dto.dart';
 import '../../data/models/plate_filter_params.dart';
+import '../../data/models/update_plate_date_params.dart';
 
 abstract class BasePlatesRepo {
   Future<ApiResponse<List<PlateDto>>> fetchPlates(PlateFilterParams params);
@@ -17,4 +18,5 @@ abstract class BasePlatesRepo {
   Future<ApiResponse> soldPlate(int id);
   Future<ApiResponse> addSpecialPlate(AdSpecialParams params);
   Future<ApiResponse> deletePlate(int id);
+  Future<ApiResponse> updatePlateDate(UpdatePlateDateParams params);
 }

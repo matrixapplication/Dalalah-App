@@ -10,6 +10,7 @@ import '../models/add_special_params.dart';
 import '../models/car_details_dto.dart';
 import '../models/comment_dto.dart';
 import '../models/comment_params.dart';
+import '../models/update_car_date_params.dart';
 
 part 'cars_datasource.g.dart';
 @Injectable()
@@ -48,5 +49,11 @@ abstract class  CarsDatasource{
 
   @DELETE('/delete_car/{id}')
   Future<ApiResponse> deleteCar(@Path('id') int id);
+
+  @POST('/add-car')
+  Future<ApiResponse> addCar(@Body() CarDto car);
+
+  @POST('/renew-my-car')
+  Future<ApiResponse> updateCarDate(@Body() UpdateCarDateParams params);
 
 }

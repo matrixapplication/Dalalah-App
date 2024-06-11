@@ -26,6 +26,7 @@ class PlateItem extends StatelessWidget {
   final Function(int)? onSold;
   final Function(int)? onSpecial;
   final Function(int)? onDelete;
+  final Function(int)? onUpdateDate;
 
   const PlateItem({
     Key? key,
@@ -38,6 +39,7 @@ class PlateItem extends StatelessWidget {
     this.onSold,
     this.onSpecial,
     this.onDelete,
+    this.onUpdateDate,
   }) : super(key: key);
 
   @override
@@ -140,6 +142,7 @@ class PlateItem extends StatelessWidget {
                   onSpecial: onSpecial,
                   onDelete: onDelete,
                   isHidePayment: isHidePayment,
+                  onUpdateDate: onUpdateDate,
                 ),
               ),
             if (plate.isFeatured ?? false)

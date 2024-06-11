@@ -2,6 +2,7 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/widgets/pagination/pagination_widget.dart';
+import '../../../../cars/data/models/update_car_date_params.dart';
 import '../../../../cars/presentation/cars/pages/cars_screen.dart';
 import '../../../../home/domain/entities/car.dart';
 import '../bloc/my_cars_bloc.dart';
@@ -61,6 +62,9 @@ class MyCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, MyCarsCubit> {
         },
         onDelete: (id) {
           bloc.deleteCar(id);
+        },
+        onUpdateDate: (id) {
+          bloc.updateCarDate(id);
         },
       ),
     );
