@@ -17,6 +17,10 @@ class AppIcons {
   static String showrooms = '$_iconsPath/showrooms.svg';
   static String more = '$_iconsPath/more.svg';
   static String call = '$_iconsPath/call.svg';
+  static String pyano = '$_iconsPath/pyano.svg';
+  static String tak = '$_iconsPath/tak.svg';
+  static String tak2 = '$_iconsPath/tak2.svg';
+  static String up = '$_iconsPath/up.svg';
   static String location_2 = '$_iconsPath/location_2.svg';
   static String down_arrow = '$_iconsPath/down_down.svg';
   static String left_arrow = '$_iconsPath/right_arrow.svg';
@@ -49,6 +53,7 @@ class AppIcons {
   static const String edit = "$_iconsPath/edit.svg";
   static const String arrow_right_solid = "$_iconsPath/arrow_right_solid.svg";
   static const String drawer = "$_iconsPath/drawer.svg";
+  static const String image = "$_iconsPath/image.svg";
   static String sort_solid = '$_iconsPath/sort_solid.svg';
   static String arrow_up_filter_solid = '$_iconsPath/arrow_up_filter_solid.svg';
 
@@ -134,7 +139,6 @@ class AppIcons {
   static const String phoneSuccess = '$_iconsPath/phone_success.svg';
   static const String phoneFail = '$_iconsPath/phoneFail.svg';
   static const String directions = '$_iconsPath/directions.svg';
-  static const String image = '$_iconsPath/image.svg';
   static const String done = '$_iconsPath/done.svg';
   static const String remove = '$_iconsPath/remove.svg';
   static const String chat = '$_iconsPath/chat.svg';

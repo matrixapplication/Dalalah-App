@@ -202,7 +202,8 @@ class InstallmentScreen extends BaseStatelessWidget {
               StreamBuilder<int?>(
                   stream: installmentValueStream.stream,
                   builder: (context, snapshot) {
-                    return PrimaryOutlinesButtons(
+                    return
+                      PrimaryOutlinesButtons(
                       title1: snapshot.data == null
                           ? strings.calculate_your_installment
                           : strings.see_available_cars,

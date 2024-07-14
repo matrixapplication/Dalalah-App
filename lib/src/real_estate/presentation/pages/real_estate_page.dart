@@ -1,4 +1,6 @@
 
+import 'package:dalalah/core/utils/navigator.dart';
+
 import '../../../../core/components/base_widget_bloc.dart';
 import '../../../main_index.dart';
 import '../../domain/entities/notification.dart';
@@ -15,6 +17,15 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
    }
 
    @override
+   bool isAddButton() {
+     return true;
+   }
+   @override
+    onAddButtonPressed() {
+     pushNamed(Routes.addRealStateScreen);
+   }
+
+   @override
    Widget? leading(BuildContext context) => 0.ph;
 
   @override
@@ -23,9 +34,9 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
      notifications: state.data!,
    );
   }
-  //
-  // @override
-  // String? title(BuildContext context) {
-  //   return strings.real_estate;
-  // }
+
+  @override
+  String? title(BuildContext context) {
+    return strings.real_estate;
+  }
 }

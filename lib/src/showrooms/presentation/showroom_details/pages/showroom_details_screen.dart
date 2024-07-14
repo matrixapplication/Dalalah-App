@@ -46,7 +46,7 @@ class ExhibitionDetailsScreen extends BaseStatelessWidget {
                 Stack(
                   children: [
                     SlidersCarDetails(
-                      height: 260,
+                      height: 255,
                       images: [showroom.image ?? ''],
                     ),
                     PrimaryButton(

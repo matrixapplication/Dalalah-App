@@ -45,7 +45,7 @@ class SlidersCarDetails extends StatelessWidget {
                     (index) => Container(
                       height: 10,
                       width: 10,
-                      margin: (isDialog ? height - 50 : 150).paddingTop + 3.paddingHoriz,
+                      margin: (isDialog ? height - 50 : 200).paddingTop + 3.paddingHoriz,
                       decoration: Decorations.kDecorationOnlyRadius(
                         // color: config.activeIndex == index
                         //     ? context.primaryColor

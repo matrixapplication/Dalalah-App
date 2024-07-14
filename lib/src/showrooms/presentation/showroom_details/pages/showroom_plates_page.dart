@@ -27,7 +27,7 @@ class ShowroomPlatesPage extends BaseBlocWidget<DataSuccess<List<Plate>>, Showro
         bloc.fetchShowroomPlates(id);
       },
       onLoading: () async {
-        await bloc.fetchShowroomPlates(id);
+        await bloc.fetchShowroomPlates(id,isRefresh: false);
       },
       child: PlatesScreen(
         plates: state.data ?? [],

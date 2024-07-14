@@ -8,8 +8,10 @@ class CityDto {
   int? id;
   @JsonKey(name: 'name')
   String? name;
+  @JsonKey(name: 'city_payment')
+  String? cityPayment;
 
-  CityDto({this.id, this.name});
+  CityDto({this.id, this.name, this.cityPayment});
 
    factory CityDto.fromJson(Map<String, dynamic> json) => _$CityDtoFromJson(json);
 

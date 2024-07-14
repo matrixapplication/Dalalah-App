@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import '../../../core/widgets/buttons/stacked_button.dart';
 import '../../../core/widgets/icons/icon_text.dart';
 import '../../main_index.dart';
@@ -81,7 +79,6 @@ class MapPickerScreen extends BaseStatelessWidget {
             return GoogleMap(
               myLocationEnabled: true,
               myLocationButtonEnabled: true,
-
               initialCameraPosition: CameraPosition(
                 target: LatLng(position?.latitude ?? 0.0, position?.longitude ?? 0.0),
                 zoom: 15,

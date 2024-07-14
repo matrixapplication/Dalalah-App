@@ -17,7 +17,6 @@ class ShowroomsCubit extends BaseCubit {
   int page = 1;
 
   fetchShowrooms({bool isRefresh = true, bool isAgency = false}) async {
-    print('fetchShowrooms isAgency: $isAgency');
     isRefresh ? {page = 1, allShowrooms.clear()} : page++;
     executeBuilder(
       isRefresh: isRefresh,

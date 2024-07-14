@@ -29,7 +29,7 @@ class ShowroomCarsPage extends BaseBlocWidget<DataSuccess<List<Car>>, ShowroomCa
         bloc.fetchShowroomCars(status, id);
       },
       onLoading: () async {
-        await bloc.fetchShowroomCars(status, id);
+        await bloc.fetchShowroomCars(status, id,isRefresh: false);
       },
       child: CarsScreen(
         isMyCar: false,

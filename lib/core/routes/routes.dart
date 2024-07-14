@@ -27,6 +27,11 @@ import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
 import '../../src/price_requests/presentation/pages/price_requests_page.dart';
+import '../../src/real_estate/presentation/pages/add_real_estate/add_images_real_estate.dart';
+import '../../src/real_estate/presentation/pages/add_real_estate/add_real_estate_screen.dart';
+import '../../src/real_estate/presentation/pages/add_real_estate/add_real_estate_second_screen.dart';
+import '../../src/real_estate/presentation/pages/filters_real_estate/filter/filter_real_estate_page.dart';
+import '../../src/real_estate/presentation/pages/filters_real_estate/filter/filter_real_estate_screen.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
 import '../../src/profile/presentation/pages/edit_profile_page.dart';
@@ -117,6 +122,10 @@ class Routes {
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
   static const String carAppLink = 'car';
   static const String plateAppLink = 'plate';
+  static const String addRealStateScreen = 'addRealStateScreen';
+  static const String addRealStateSecondScreen = 'addRealStateSecondScreen';
+  static const String addImagesRealEstateScreen = 'addImagesRealEstateScreen';
+  static const String filterRealEstatePage = 'filterRealEstatePage';
 
 
   static routes(BuildContext context) => {
@@ -125,6 +134,10 @@ class Routes {
     'en' : (context) => NavigationPages(),
     carAppLink : (context) => CarsDetailsPage(),
     plateAppLink : (context) => PlateDetailsPage(),
+    addRealStateScreen : (context) => AddRealStateScreen(),
+    addRealStateSecondScreen : (context) => AddRealStateSecondScreen(),
+    addImagesRealEstateScreen : (context) => AddImagesRealEstateScreen(),
+    filterRealEstatePage : (context) => FilterRealEstatePage(),
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
