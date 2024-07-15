@@ -2,7 +2,7 @@
   "sign_up": "تسجيل",
   "cars": "السيارات",
   "plates": "اللوحات",
-  "real_estate": "العقارات",
+  "real_estates": "العقارات",
   "rs": "ريال",
   "detailed_research": "بحث مفصل",
   "plate_type": "نوع اللوحة",
@@ -60,8 +60,7 @@
   "price_egp": "السعر (ريال)",
   "car_description": "وصف السيارة",
   "select_properties": "اختر الخصائص",
-  "add_main_images": "إضافة الصور الرئيسية",
-  "add_main_image": "إضافة الصورة الرئيسية",
+  "add_main_images": "اضف الصور الرئيسية",
   "maximum_number_images": "الحد الأقصى لعدد الصور",
   "other_images": "صور أخرى",
   "add_car": "إضافة سيارة",
@@ -416,7 +415,7 @@
   "update": "تحديث",
   "to_sell": "للبيع",
   "for_rent": "للايجار",
-  "add_real_estate": "أضف عقارك",
+  "add_your_real_estate": "أضف عقارك",
   "status_real_estate": "حالة العقار",
   "type_real_estate": "نوع العقار",
   "apartment": "شقة",
@@ -443,9 +442,7 @@
   "choose_image": "اختر الصورة",
   "choose_image_mess": "اضف صور العقار (بحد أقصى 10 صور)",
   "detailed_search": "بحث مفصل",
-  "show_results": "عرض النتائج",
   "meter": "متر",
-
   "bedrooms_bathrooms": "غرف النوم والحمامات",
   "real_estate": "عقار",
   "lists": "القوائم",
@@ -454,6 +451,5 @@
   "finishing": "التشطيب",
   "advantages": "المميزات",
   "piano": "بيانو",
-  "conditioning": "تكييف",
-  "elevator2": "مصعد"
+  "conditioning": "تكييف"
 }

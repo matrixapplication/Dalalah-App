@@ -35,6 +35,6 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
 
   @override
   String? title(BuildContext context) {
-    return strings.real_estate;
+    return strings.real_estates;
   }
 }
