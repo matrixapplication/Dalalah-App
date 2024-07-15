@@ -1,11 +1,9 @@
 import 'package:dalalah/src/main_index.dart';
-import 'package:flutter/cupertino.dart';
-
 import '../../../../../../core/utils/helper_methods.dart';
 import '../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../../../core/widgets/radio/radio_grid_list.dart';
-import '../../../widgets/type_real_estate_choose_widget.dart';
+import '../../add_real_estate/widgets/type_real_estate_choose_widget.dart';
 
 class FilterRealEstateScreen extends BaseStatelessWidget {
    FilterRealEstateScreen({super.key});

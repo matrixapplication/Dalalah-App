@@ -1,7 +1,7 @@
 import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
+import '../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 
 class AddImagesRealEstateScreen extends BaseStatelessWidget {
    AddImagesRealEstateScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:dalalah/core/decorations/decorations.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/themes/colors.dart';
+import '../../../../../core/themes/colors.dart';
 
 class ChipWithText extends StatelessWidget {
   final String text;

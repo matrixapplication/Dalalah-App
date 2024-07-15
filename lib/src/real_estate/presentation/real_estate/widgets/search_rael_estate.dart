@@ -1,9 +1,9 @@
 import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 
-import '../../../home/domain/entities/car.dart';
-import '../../../home/presentation/pages/search_screen.dart';
-import '../../../main_index.dart';
+import '../../../../home/domain/entities/car.dart';
+import '../../../../home/presentation/pages/search_screen.dart';
+import '../../../../main_index.dart';
 
 class SearchRealEstate extends StatelessWidget {
   final Future<List<Car>>? Function(String)? onSearch;

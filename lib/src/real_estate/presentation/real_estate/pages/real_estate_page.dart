@@ -1,9 +1,7 @@
-
 import 'package:dalalah/core/utils/navigator.dart';
-
-import '../../../../core/components/base_widget_bloc.dart';
-import '../../../main_index.dart';
-import '../../domain/entities/notification.dart';
+import '../../../../../core/components/base_widget_bloc.dart';
+import '../../../../main_index.dart';
+import '../../../domain/entities/real_estate.dart';
 import '../bloc/real_estate_bloc.dart';
 import 'real_estate_screen.dart';
 

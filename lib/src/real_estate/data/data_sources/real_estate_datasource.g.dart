@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notifications_datasource.dart';
+part of 'real_estate_datasource.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'notifications_datasource.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _NotificationsDatasource implements NotificationsDatasource {
-  _NotificationsDatasource(
+class _RealEstateDatasource implements RealEstateDatasource {
+  _RealEstateDatasource(
     this._dio, {
     this.baseUrl,
   }) {

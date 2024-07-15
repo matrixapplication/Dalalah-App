@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
     FirebaseNotification firebase = FirebaseNotification();
     firebase.initialize(context);
     AppLinkingService.init();
-    // //
+    //
     return BlocProvider(
       create: (BuildContext context) => LocaleCubit()..getLanguageData(),
       child: BlocBuilder<LocaleCubit, LocalState>(

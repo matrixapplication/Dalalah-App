@@ -2,7 +2,7 @@ import 'package:dalalah/core/decorations/decorations.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../../core/components/base_stateless_widget.dart';
+import '../../../../../core/components/base_stateless_widget.dart';
 
 class AdvantagesItem extends BaseStatelessWidget {
    AdvantagesItem ( {super.key,required this.icon, required this.text,});

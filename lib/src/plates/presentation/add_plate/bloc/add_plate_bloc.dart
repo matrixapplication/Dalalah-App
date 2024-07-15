@@ -32,8 +32,7 @@ class AddPlateCubit extends BaseCubit {
       final data = await PaymentRequests.urWayPayment(
           id: idOrMsg.toString(), amount: featurePrice);
       print('Result in Main is $data');
-      logParams =
-          FeaturedPaymentParams.fromJson(jsonDecode(data));
+      logParams = FeaturedPaymentParams.fromJson(jsonDecode(data));
       logParams.adId = idOrMsg;
       logParams.adType = AdTypes.plate;
       idOrMsg = await paymentUseCase.addFeaturedPaymentAd(logParams);

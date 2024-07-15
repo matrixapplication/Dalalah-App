@@ -1,12 +1,13 @@
+import 'package:dalalah/src/favorites_and_ads/presentation/widgets/chip_ad.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:dalalah/src/map_picker/widgets/custom_google_map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../../../../core/widgets/icons/icon_text.dart';
-import '../../../../../core/widgets/images/image_network.dart';
+import '../../../../../../core/widgets/icons/icon_text.dart';
+import '../../../../../../core/widgets/images/image_network.dart';
 import '../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
-import '../../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
-import '../../widgets/advantages_item.dart';
-import '../../widgets/real_details_item.dart';
+import '../widgets/advantages_item.dart';
+import '../widgets/real_details_item.dart';
+
 
 class RealEstateDetailsScreen extends BaseStatelessWidget {
    RealEstateDetailsScreen({super.key});

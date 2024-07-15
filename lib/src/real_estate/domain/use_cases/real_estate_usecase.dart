@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
 
-import '../entities/notification.dart';
-import '../repositories/base_notifications_repo.dart';
+import '../entities/real_estate.dart';
+import '../repositories/base_real_estate_repo.dart';
 
 @Injectable()
-class NotificationsUseCase {
-  final BaseNotificationsRepo repository;
+class RealEstateUseCase {
+  final BaseRealEstateRepo repository;
 
-  NotificationsUseCase(this.repository);
+  RealEstateUseCase(this.repository);
 
   Future<List<Notifications>> fetchNotifications() async {
   //  return await repository.fetchNotifications();

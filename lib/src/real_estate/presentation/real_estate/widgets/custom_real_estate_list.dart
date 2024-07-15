@@ -1,4 +1,4 @@
-import 'package:dalalah/src/real_estate/presentation/widgets/real_estate_item.dart';
+import 'package:dalalah/src/real_estate/presentation/real_estate/widgets/real_estate_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

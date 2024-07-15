@@ -3,7 +3,7 @@ import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/components/base_stateless_widget.dart';
+import '../../../../../core/components/base_stateless_widget.dart';
 
 class RealDetailsItem extends BaseStatelessWidget {
    RealDetailsItem({super.key,required this.icon,required this.title, required this.text,  });

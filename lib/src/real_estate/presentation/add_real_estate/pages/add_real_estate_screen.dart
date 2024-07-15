@@ -1,12 +1,12 @@
 import 'package:dalalah/core/utils/navigator.dart';
 import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:dalalah/src/main_index.dart';
-import '../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
-import '../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
-import '../../../../../core/widgets/custom_counter_widget.dart';
-import '../../../../../core/widgets/drop_down/drop_down.dart';
-import '../../../../../core/widgets/radio/radio_grid_list.dart';
-import '../../widgets/type_real_estate_choose_widget.dart';
+import '../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
+import '../../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
+import '../../../../../../core/widgets/custom_counter_widget.dart';
+import '../../../../../../core/widgets/drop_down/drop_down.dart';
+import '../../../../../../core/widgets/radio/radio_grid_list.dart';
+import '../widgets/type_real_estate_choose_widget.dart';
 
 class AddRealStateScreen extends BaseStatelessWidget {
    AddRealStateScreen({super.key});
@@ -68,7 +68,7 @@ class AddRealStateScreen extends BaseStatelessWidget {
               ),
               ChooseFromListItemWidget(
                   onChoose: (String type) {
-                  print(type);
+
                 }, items: [strings.apartment,strings.villa,strings.apartment_complex,strings.duplex],),
               20.ph,
               Text(strings.price,

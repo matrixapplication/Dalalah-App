@@ -1,17 +1,14 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/assets/app_icons.dart';
-import '../../../../core/components/base_stateless_widget.dart';
-import '../../../../core/decorations/decorations.dart';
-import '../../../../core/themes/colors.dart';
-import '../../../../core/widgets/chip/price_widget.dart';
-import '../../../../core/widgets/icons/icon_text.dart';
-import '../../../../core/widgets/images/image_network.dart';
-import '../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
-import '../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
-import '../pages/real_estate_details/real_estate_details.dart';
+import '../../../../../core/assets/app_icons.dart';
+import '../../../../../core/components/base_stateless_widget.dart';
+import '../../../../../core/decorations/decorations.dart';
+import '../../../../../core/themes/colors.dart';
+import '../../../../../core/widgets/icons/icon_text.dart';
+import '../../../../../core/widgets/images/image_network.dart';
+import '../../../../favorites_and_ads/presentation/widgets/chip_ad.dart';
+import '../../../../favorites_and_ads/presentation/widgets/favorite_button.dart';
+import '../pages/real_estate_details.dart';
 import 'chip_with_text.dart';
 
 class RealStateItemWidget extends BaseStatelessWidget {
