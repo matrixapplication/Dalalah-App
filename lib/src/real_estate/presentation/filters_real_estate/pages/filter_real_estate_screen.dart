@@ -3,7 +3,7 @@ import '../../../../../../core/utils/helper_methods.dart';
 import '../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
 import '../../../../../../core/widgets/radio/radio_grid_list.dart';
-import '../../add_real_estate/widgets/type_real_estate_choose_widget.dart';
+import '../../../../../core/widgets/choose_from_list_widget.dart';
 
 class FilterRealEstateScreen extends BaseStatelessWidget {
    FilterRealEstateScreen({super.key});
@@ -38,10 +38,15 @@ class FilterRealEstateScreen extends BaseStatelessWidget {
               style: titleSmall,
             ),
             ChooseFromListItemWidget(
-              radius: 4,
-              onChoose: (String type) {
-                print(type);
-              }, items: [strings.apartment,strings.villa,strings.apartment_complex,strings.duplex],),
+                onChoose: (ChooseItemListModel type) {
+
+                }, items: [ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment)]),
+
+            // ChooseFromListItemWidget(
+            //   radius: 4,
+            //   onChoose: (String type) {
+            //     print(type);
+            //   }, items: [strings.apartment,strings.villa,strings.apartment_complex,strings.duplex],),
             20.ph,
             Text(strings.price,
               style: titleSmall,
@@ -67,34 +72,44 @@ class FilterRealEstateScreen extends BaseStatelessWidget {
               style: titleSmall,
             ),
             ChooseFromListItemWidget(
-              radius: 4,
-              onChoose: (String type) {
-                print(type);
-              }, items: const ['1','2','3','4','5','+5'],),
+                onChoose: (ChooseItemListModel type) {
+
+                }, items: [ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment)]),
+
+            // ChooseFromListItemWidget(
+            //   radius: 4,
+            //   onChoose: (String type) {
+            //     print(type);
+            //   }, items: const ['1','2','3','4','5','+5'],),
             20.ph,
             Text(strings.bathrooms,
               style: titleSmall,
             ),
             ChooseFromListItemWidget(
-              radius: 4,
-              onChoose: (String type) {
-                print(type);
-              }, items: const ['1','2','3','4','5','+5'],),
+                onChoose: (ChooseItemListModel type) {
+
+                }, items: [ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment)]),
+
+            // ChooseFromListItemWidget(
+            //   radius: 4,
+            //   onChoose: (String type) {
+            //     print(type);
+            //   }, items: const ['1','2','3','4','5','+5'],),
             Text(strings.brushes,
               style: titleSmall,
             ),
             16.ph,
-            Center(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: RadioGridList(
-                  items: [
-                    RadioItem(value: '0', title: strings.furnished,),
-                    RadioItem(value: '1', title: strings.unfurnished,)],
-                  groupValue:'1', onChanged: (RadioItem r) {},
-                ),
-              ),
-            ),
+            // Center(
+            //   child: FittedBox(
+            //     fit: BoxFit.scaleDown,
+            //     child: RadioGridList(
+            //       items: [
+            //         RadioItem(value: '0', title: strings.furnished,),
+            //         RadioItem(value: '1', title: strings.unfurnished,)],
+            //       groupValue:'1', onChanged: (RadioItem r) {},
+            //     ),
+            //   ),
+            // ),
             20.ph,
             Text(strings.space,
               style: titleSmall,

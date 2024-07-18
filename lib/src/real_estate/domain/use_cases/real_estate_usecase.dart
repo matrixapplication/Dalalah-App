@@ -1,5 +1,9 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/network/api_response.dart';
+import '../../../plates/data/models/plate_dto.dart';
+import '../../data/models/category_details_dto.dart';
+import '../../data/models/real_estate_type_dto.dart';
 import '../entities/real_estate.dart';
 import '../repositories/base_real_estate_repo.dart';
 
@@ -8,6 +12,14 @@ class RealEstateUseCase {
   final BaseRealEstateRepo repository;
 
   RealEstateUseCase(this.repository);
+
+  Future<List<RealEstateCategoryDto>> fetchRealEstateCategories() async {
+    return await repository.fetchRealEstateCategories();
+  }
+  Future<RealEstateCategoryDetailsDto> fetchRealEstateCategoriesDetails(int id) async {
+    return await repository.fetchRealEstateCategoriesDetails(id);
+  }
+
 
   Future<List<Notifications>> fetchNotifications() async {
   //  return await repository.fetchNotifications();

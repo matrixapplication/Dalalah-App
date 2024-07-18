@@ -10,14 +10,17 @@ import '../../data/models/edit_image_params.dart';
 ///  Created by harby on 9/7/2023.
 class PickerCarImages extends BaseStatelessWidget {
   final String? initialMainImage;
+  final String? mainTitle;
+  final String? title;
   final List<ImageDto>? initialImages;
   final Function(File, List<File>) onImagesSelected;
   final Function(EditImageCarParams)? onEditCarImage;
   final Function(EditImageCarParams)? onAddCarImage;
   final Function(int)? onDeleteCarImage;
 
-  PickerCarImages({
+  PickerCarImages( {
     Key? key,
+    this.mainTitle, this.title,
     this.initialMainImage,
     this.initialImages,
     required this.onImagesSelected,
@@ -35,6 +38,7 @@ class PickerCarImages extends BaseStatelessWidget {
       children: [
         10.ph,
         Text(
+          mainTitle??
           strings.add_main_image,
           style: context.bodySmall,
         ),

@@ -295,8 +295,10 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i63.PaymentUseCase>(),
         gh<_i64.PlatesUseCase>(),
       ));
-  gh.factory<_i79.AddRealEstatePageCubit>(
-      () => _i79.AddRealEstatePageCubit(gh<_i67.RealEstateUseCase>()));
+  gh.factory<_i79.AddRealEstatePageCubit>(() => _i79.AddRealEstatePageCubit(
+        gh<_i67.RealEstateUseCase>(),
+        gh<_i21.SellCarUseCase>(),
+      ));
   gh.factory<_i80.AgencyCubit>(
       () => _i80.AgencyCubit(gh<_i73.ShowroomsUseCase>()));
   gh.factory<_i81.AuthCubit>(() => _i81.AuthCubit(

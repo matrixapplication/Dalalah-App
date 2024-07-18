@@ -16,7 +16,6 @@ class SellCarFirstPage extends BaseBlocWidget<FirstPageSellCarState, SellCarCubi
   SellCarFirstPage({Key? key,
     this.onNext,
     this.onPrevPressed,}) : super(key: key);
-
   @override
   void loadInitialData(BuildContext context) {
     Car? car = getArguments(context) is Car ? getArguments(context) : null;

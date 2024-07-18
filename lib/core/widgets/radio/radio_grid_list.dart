@@ -51,7 +51,7 @@ class RadioGridList extends StatelessWidget {
 }
 
 class RadioItem {
-  final String value;
+  final int value;
   final String title;
   final String tooltipMessage;
   RadioItem({required this.value, required this.title, this.tooltipMessage = ''});

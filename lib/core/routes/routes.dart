@@ -27,9 +27,12 @@ import '../../src/plates/presentation/add_plate/pages/add_plate_page.dart';
 import '../../src/plates/presentation/add_plate/pages/plate_premium_page.dart';
 import '../../src/plates/presentation/plate_details/pages/plates_details_page.dart';
 import '../../src/price_requests/presentation/pages/price_requests_page.dart';
-import '../../src/real_estate/presentation/add_real_estate/pages/add_images_real_estate.dart';
-import '../../src/real_estate/presentation/add_real_estate/pages/add_real_estate_screen.dart';
-import '../../src/real_estate/presentation/add_real_estate/pages/add_real_estate_second_screen.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/add_address_real_estate/add_real_estate_second_page.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/add_image/add_image_real_estate_page.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/add_image/add_images_real_estate.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/add_real_estate/add_real_estate_page.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/add_address_real_estate/add_real_estate_second_screen.dart';
+import '../../src/real_estate/presentation/add_real_estate/pages/feature_real_estate/feature_real_estate_page.dart';
 import '../../src/real_estate/presentation/filters_real_estate/pages/filter_real_estate_page.dart';
 import '../../src/real_estate/presentation/real_estate/pages/real_estate_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
@@ -121,10 +124,11 @@ class Routes {
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
   static const String carAppLink = 'car';
   static const String plateAppLink = 'plate';
-  static const String addRealStateScreen = 'addRealStateScreen';
-  static const String addRealStateSecondScreen = 'addRealStateSecondScreen';
-  static const String addImagesRealEstateScreen = 'addImagesRealEstateScreen';
+  static const String addRealEstatePage = 'addRealEstatePage';
+  static const String addRealEstateSecondPage = 'addRealEstateSecondPage';
+  static const String addImageRealEstatePage = 'addImageRealEstatePage';
   static const String filterRealEstatePage = 'filterRealEstatePage';
+  static const String featureRealEstatePage = 'featureRealEstatePage';
 
 
   static routes(BuildContext context) => {
@@ -133,9 +137,10 @@ class Routes {
     'en' : (context) => NavigationPages(),
     carAppLink : (context) => CarsDetailsPage(),
     plateAppLink : (context) => PlateDetailsPage(),
-    addRealStateScreen : (context) => AddRealStateScreen(),
-    addRealStateSecondScreen : (context) => AddRealStateSecondScreen(),
-    addImagesRealEstateScreen : (context) => AddImagesRealEstateScreen(),
+    addRealEstatePage : (context) => AddRealEstatePage(),
+    addRealEstateSecondPage : (context) => AddRealEstateSecondPage(),
+    featureRealEstatePage : (context) => FeatureRealEstatePage(),
+    addImageRealEstatePage : (context) => AddImageRealEstatePage(),
     filterRealEstatePage : (context) => FilterRealEstatePage(),
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),

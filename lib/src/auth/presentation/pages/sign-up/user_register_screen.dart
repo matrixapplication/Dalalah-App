@@ -123,8 +123,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             DropDownField(
-              items: cities
-                  .map((e) =>
+              items: cities.map((e) =>
                       DropDownItem(id: e.id?.toString() ?? '', title: e.name))
                   .toList(),
               hint: context.strings.city,

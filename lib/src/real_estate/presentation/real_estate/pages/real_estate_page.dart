@@ -20,7 +20,7 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
    }
    @override
     onAddButtonPressed() {
-     pushNamed(Routes.addRealStateScreen);
+     pushNamed(Routes.addRealEstatePage);
    }
 
    @override

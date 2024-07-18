@@ -71,6 +71,7 @@ class PickerMainImage extends StatelessWidget {
                     PrimaryIconButton(
                       height: 45,
                       icon: '',
+                      padding: 10.paddingHoriz,
                       iconData: Icons.add_a_photo_rounded,
                       iconColor: Colors.white,
                       title: initialMainImage != null

@@ -410,6 +410,7 @@
   "monthly": "Monthly",
   "please_select_car_location": "Please select the car location",
   "please_select_plate_location": "Please select the plate location",
+  "please_select_real_estate_location": "Please select the real estate location",
   "ad_number": "Ad Number",
   "newest": "Newest",
   "oldest": "Oldest",
@@ -479,7 +480,13 @@
       "advantages": "Advantages",
       "piano": "Piano",
       "conditioning": "Conditioning",
-      "elevator2": "Elevator"
+      "elevator2": "Elevator",
+      "add_feature_real_estate": "Add real estate features",
+      "residential": "Residential",
+      "commercial": "Commercial"
+
+
+
 
 
 }
