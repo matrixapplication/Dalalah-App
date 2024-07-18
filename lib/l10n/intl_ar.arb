@@ -2,7 +2,7 @@
   "sign_up": "تسجيل",
   "cars": "السيارات",
   "plates": "اللوحات",
-  "real_estate": "العقارات",
+  "real_estates": "العقارات",
   "rs": "ريال",
   "detailed_research": "بحث مفصل",
   "plate_type": "نوع اللوحة",
@@ -397,7 +397,6 @@
   "monthly": "شهري",
   "please_select_car_location": "من فضلك اختر موقع السيارة",
   "please_select_plate_location": "من فضلك اختر موقع اللوحة",
-  "please_select_real_estate_location": "من فضلك اختر موقع العقار",
   "ad_number": "رقم الإعلان",
   "newest": "الأحدث",
   "oldest": "الأقدم",
@@ -446,6 +445,7 @@
   "detailed_search": "بحث مفصل",
   "show_results": "عرض النتائج",
   "meter": "متر",
+
   "bedrooms_bathrooms": "غرف النوم والحمامات",
   "real_estate": "عقار",
   "lists": "القوائم",
@@ -455,9 +455,5 @@
   "advantages": "المميزات",
   "piano": "بيانو",
   "conditioning": "تكييف",
-  "elevator2": "مصعد",
-
-  "add_feature_real_estate": "اضف مميزات العقار",
-  "residential": "سكني",
-    "commercial": "تجاري"
+  "elevator2": "مصعد"
 }

@@ -34,7 +34,7 @@ class Section {
         routeName: Routes.installmentPage,
       ),
       Section(
-        title: context.strings.real_estate,
+        title: context.strings.real_estates,
         image: AppImages.house_location,
         routeName: Routes.realEstatePage,
       ),
