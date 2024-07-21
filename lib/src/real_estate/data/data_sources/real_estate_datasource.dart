@@ -44,10 +44,10 @@ abstract class  RealEstateDatasource{
     @Part(name: 'street_name') String streetName,
     @Part(name: 'lat') String lat,
     @Part(name: 'lng') String lng,
-    @Part(name: 'features[]') List<int> features,
+    @Part(name: 'features[]') List<String> features,
     @Part(name: 'cover') File cover,
     @Part(name: 'images[]') List<File> images,
-    @Part(name: 'details_ids[]') List<int> ids,
+    @Part(name: 'details_ids[]') List<String> ids,
     @Part(name: 'details_vals[]')  List<String> values,
   );
 

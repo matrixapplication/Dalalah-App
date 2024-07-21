@@ -16,8 +16,8 @@ class ClientCreator {
   ClientCreator({this.interceptor});
   Dio create() {
     final dio2 = Dio(); // Provide a dio instance
-    dio2.options.receiveTimeout = const Duration(seconds: 70);
-    dio2.options.connectTimeout = const Duration(seconds: 70);
+    dio2.options.receiveTimeout = const Duration(seconds: 10);
+    dio2.options.connectTimeout = const Duration(seconds: 10);
     dio2.interceptors.add(LogInterceptor(responseBody: true));
     if (interceptor != null) {
       dio2.interceptors.add(interceptor!);

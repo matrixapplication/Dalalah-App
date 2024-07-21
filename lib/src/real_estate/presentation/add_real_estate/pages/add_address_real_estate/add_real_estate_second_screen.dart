@@ -13,7 +13,7 @@ import '../../../../data/models/add_real_estate_params.dart';
 import '../../../../data/models/category_details_dto.dart';
 
 class AddRealStateSecondScreen extends BaseStatelessWidget {
-  final  StreamStateInitial<RealEstateCategoryDetailsDto?>  categoryDetailsDto;
+  final  RealEstateCategoryDetailsDto  categoryDetailsDto;
   final List<City> citiesList;
   final String categoryName;
   final Function(AddRealEstateParams params)? onTapNext;

@@ -1,4 +1,5 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/pagination/loading_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/commen/common_state.dart';
@@ -32,183 +33,168 @@ class RealEstateScreen extends BaseStatelessWidget {
         fontSize: 16,
         color: Colors.black54
     );
-    return
-        Scaffold(
-          body:
-            Column(
-              children: [
-                SearchRealEstate(
-                  onSearch: (ca) {},
-                  onToggleFavorite: (onToggleFavorite) {},
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: 16.paddingHoriz,
-                    child: Column(
+    return Column(
+        children: [
+          SearchRealEstate(
+            onSearch: (ca) {},
+            onToggleFavorite: (onToggleFavorite) {},
+          ),
+          Expanded(
+            child: Padding(
+              padding: 16.paddingHoriz,
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              SizedBox(
+                        SizedBox(
+                          width: 100,
+                          child: DropDownField(
+                            valueId: 1,
+                            items: typeList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                            onChanged: (item) {
+                              // brandId = int.parse(item?.id ?? '0');
+                              // onFetchBrandModels?.call(brandId);
+                            },
+                          ),
+                        ),
+                        5.pw,
+                        SizedBox(
+                          width: 100,
+                          child: DropDownField(
+                            valueId: 1,
+                            items: statusList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                            onChanged: (item) {
+                              // brandId = int.parse(item?.id ?? '0');
+                              // onFetchBrandModels?.call(brandId);
+                            },
+                          ),
+                        ),
+                        5.pw,
+                        StreamBuilder<List<RealEstateCategoryDto>?>(
+                            stream: realEstateCategoriesList.stream,
+                            builder: (context, snapshot) {
+                              final data = snapshot.data;
+                              return SizedBox(
                                 width: 100,
                                 child: DropDownField(
-                                  hint: '',
-                                  valueId: 1,
-                                  items: typeList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                                  hint: (data != null && data.isNotEmpty) ? data[0].name ?? '' : '',
+                                  isLoading: snapshot.data==null,
+                                  items: data?.map((e) => DropDownItem(id: e.id.toString(), title: e.name?.toString()??'')).toList() ?? [],
                                   onChanged: (item) {
-                                    // brandId = int.parse(item?.id ?? '0');
-                                    // onFetchBrandModels?.call(brandId);
+                                    onGetDetailsType!(int.parse(item?.id??''));
+                                    categoryId=int.parse(item?.id??'');
+                                    categoryName=item?.title??'';
                                   },
                                 ),
-                              ),
-                              5.pw,
-                              SizedBox(
-                                width: 100,
-                                child: DropDownField(
-                                  hint: '',
-                                  valueId: 1,
-                                  items: statusList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
-                                  onChanged: (item) {
-                                    // brandId = int.parse(item?.id ?? '0');
-                                    // onFetchBrandModels?.call(brandId);
-                                  },
-                                ),
-                              ),
-                              5.pw,
-                              StreamBuilder<List<RealEstateCategoryDto>?>(
-                                  stream: realEstateCategoriesList.stream,
-                                  builder: (context, snapshot) {
-                                    final data = snapshot.data;
-                                    if(snapshot.connectionState == ConnectionState.waiting
-                                        ||data==null){
-                                      return const LoadingView();
-                                    }else{
-                                      categoryId=data[0].id!;
-                                      categoryName=data[0].name??'';
-                                      return
-
-                                        SizedBox(
-                                          width: 100,
-                                          child: DropDownField(
-                                            hint: '${data[0].name}',
-                                            // valueId: data[0].id!,
-                                            items: data.map((e) => DropDownItem(id: e.id.toString(), title: e.name?.toString()??'')).toList(),
-                                            onChanged: (item) {
-                                              onGetDetailsType!(int.parse(item?.id??''));
-                                              categoryId=int.parse(item?.id??'');
-                                              categoryName=item?.title??'';
-                                            },
+                              );
+                            }),
+                        5.pw,
+                        StreamBuilder<RealEstateCategoryDetailsDto?>(
+                            stream: categoriesDetails.stream,
+                            builder: (context, snapshot) {
+                              final data = snapshot.data?.details;
+                              return snapshot.connectionState == ConnectionState.waiting
+                                  ||data==null
+                                  ? const SmallLoading()
+                                  :
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    ...categoriesDetails.data!.details!.map((e) {
+                                      if(e.type!='input'){
+                                        return Padding(
+                                          padding: 3.paddingHoriz,
+                                          child: SizedBox(
+                                            width: 100,
+                                            child: DropDownField(
+                                              hint: e.name??'',
+                                              items: e.options?.map((a) => DropDownItem(id: a.id.toString(), title: a.name?.toString()??'')).toList()??[],
+                                              onChanged: (item) {
+                                                // brandId = int.parse(item?.id ?? '0');
+                                                // onFetchBrandModels?.call(brandId);
+                                              },
+                                            ),
                                           ),
                                         );
-                                    }
-                                  }),
-                              5.pw,
-                              StreamBuilder<RealEstateCategoryDetailsDto?>(
-                                  stream: categoriesDetails.stream,
-                                  builder: (context, snapshot) {
-                                    final data = snapshot.data?.details;
-                                    return snapshot.connectionState == ConnectionState.waiting
-                                        ||data==null
-                                        ? const LoadingView()
-                                        :
-                                    SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: [
-                                          ...categoriesDetails.data!.details!.map((e) {
-                                            if(e.type!='input'){
-                                              return Padding(
-                                                padding: 3.paddingHoriz,
-                                                child: SizedBox(
-                                                  width: 100,
-                                                  child: DropDownField(
-                                                    hint: e.name??'',
-                                                    items: e.options?.map((a) => DropDownItem(id: a.id.toString(), title: a.name?.toString()??'')).toList()??[],
-                                                    onChanged: (item) {
-                                                      // brandId = int.parse(item?.id ?? '0');
-                                                      // onFetchBrandModels?.call(brandId);
-                                                    },
-                                                  ),
-                                                ),
-                                              );
-                                            }else{
-                                              return const SizedBox();
-                                            }
+                                      }else{
+                                        return const SizedBox();
+                                      }
 
-                                          })
-                                        ],
-                                      ),
-                                    );
-                                  }),
-
-                            ],
-                          ),
-                        ),
-                        16.ph,
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                '58 عقار',
-                                style: context.textTheme.displaySmall!.copyWith(
-                                  color: AppColors.grey_95,
-                                  fontSize: 16,
+                                    })
+                                  ],
                                 ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: StatefulBuilder(
-                                builder: (context, setState) {
-                                  return IconTextButton(
-                                    icon: filterOrder == FilterOrderTypes.asc
-                                        ? AppIcons.filter_order
-                                        : AppIcons.filter_order,
-                                    text: context.strings.sort_by,
-                                    textStyle: textStyle,
-                                    iconColor: context.primaryColor,
-                                    iconSize: 20,
-                                    isFirstIcon: false,
-                                    onTap: () {
-                                      filterOrder = filterOrder == FilterOrderTypes.asc
-                                          ? FilterOrderTypes.desc
-                                          : FilterOrderTypes.asc;
-                                      setState(() {
-                                        // onFilterOrder(filterOrder);
-                                      });
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        16.ph,
-                        Expanded(
-                          child: CustomTabItemModel(
-                            tabs: [
-                              TabItemModel(
-                                label: 'القوائم',
-                                page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
-                              ),
-                              TabItemModel(
-                                label: 'الخريطة',
-                                page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
-                              ),
-                            ],
+                              );
+                            }),
+
+                      ],
+                    ),
+                  ),
+                  16.ph,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '58 عقار',
+                          style: context.textTheme.displaySmall!.copyWith(
+                            color: AppColors.grey_95,
+                            fontSize: 16,
                           ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: StatefulBuilder(
+                          builder: (context, setState) {
+                            return IconTextButton(
+                              icon: filterOrder == FilterOrderTypes.asc
+                                  ? AppIcons.filter_order
+                                  : AppIcons.filter_order,
+                              text: context.strings.sort_by,
+                              textStyle: textStyle,
+                              iconColor: context.primaryColor,
+                              iconSize: 20,
+                              isFirstIcon: false,
+                              onTap: () {
+                                filterOrder = filterOrder == FilterOrderTypes.asc
+                                    ? FilterOrderTypes.desc
+                                    : FilterOrderTypes.asc;
+                                setState(() {
+                                  // onFilterOrder(filterOrder);
+                                });
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  16.ph,
+                  Expanded(
+                    child: CustomTabItemModel(
+                      tabs: [
+                        TabItemModel(
+                          label: 'القوائم',
+                          page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
+                        ),
+                        TabItemModel(
+                          label: 'الخريطة',
+                          page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-        );
+          ),
+        ],
+      );
   }
 
   List<DropDownItem> typeList (context) => [

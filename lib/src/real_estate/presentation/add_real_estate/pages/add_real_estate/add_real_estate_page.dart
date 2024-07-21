@@ -3,11 +3,13 @@ import '../../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../main_index.dart';
 import '../../../../data/models/real_estate_type_dto.dart';
 import '../../../../domain/entities/real_estate.dart';
+import '../../../../domain/entities/real_estate_args.dart';
 import '../../bloc/add_real_estate_bloc.dart';
+import '../../bloc/real_estate_categories_state.dart';
 import 'add_real_estate_screen.dart';
 
 
-class AddRealEstatePage extends BaseBlocWidget<UnInitState, AddRealEstatePageCubit> {
+class AddRealEstatePage extends BaseBlocWidget<DataSuccess<RealEstateCategoriesState>, AddRealEstatePageCubit> {
   AddRealEstatePage({Key? key}) : super(key: key);
 
 
@@ -16,23 +18,24 @@ class AddRealEstatePage extends BaseBlocWidget<UnInitState, AddRealEstatePageCub
      bloc.fetchRealEstateCategories();
    }
 
-
    @override
-   Widget? leading(BuildContext context) => 0.ph;
+  String? title(BuildContext context) => strings.add_real_estate;
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
+  Widget buildWidget(BuildContext context, DataSuccess<RealEstateCategoriesState> state) {
    return AddRealStateScreen(
-     realEstateCategoriesList:bloc.categoriesList,
+     state: state.data!,
      onGetDetailsType: (id)async{
       await bloc.fetchRealEstateCategoriesDetails(id);
      },
-     categoriesDetails:bloc.categoriesDetails,
+     categoriesDetails: bloc.categoriesDetailsStream,
      onTapNext: (param,categoryName){
-       pushNamed(Routes.addRealEstateSecondPage,arguments:{'categoriesDetails':bloc.categoriesDetails,'param':param,'categoryName':categoryName});
+       pushNamed(Routes.addRealEstateSecondPage, arguments: RealEstateArgs(
+         categoryDetailsDto: state.data!.categoriesDetailsStream.data!,
+         addRealEstateParams: param,
+         categoryName: categoryName,
+       ));
      },
    );
   }
-
-
 }

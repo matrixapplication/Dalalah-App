@@ -24,7 +24,7 @@ class RealEstatePageCubit extends BaseCubit {
       await fetchRealEstateCategoriesDetails(categoriesList.data![0].id!);
     } catch (e) {
       categoriesList.setError(e);
-      // rethrow;
+      rethrow;
     }
   }
   fetchRealEstateCategoriesDetails(int id) async {
@@ -34,7 +34,7 @@ class RealEstatePageCubit extends BaseCubit {
       categoriesDetails.setData(response);
     } catch (e) {
       categoriesDetails.setError(e);
-      // rethrow;
+      rethrow;
     }
   }
 

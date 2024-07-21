@@ -135,6 +135,7 @@ class DropDownField extends StatelessWidget {
                 hint ?? '',
                 style: context.displaySmall
                     .copyWith(fontSize: hintFontSize ?? 12, color: hintColor),
+                overflow: TextOverflow.ellipsis,
               ),
               items: items
                   .map((item) => DropdownMenuItem<DropDownItem>(
@@ -192,7 +193,8 @@ class DropDownField extends StatelessWidget {
               menuItemStyleData: const MenuItemStyleData(
                 padding: EdgeInsets.symmetric(horizontal: 16),
               ),
-              dropdownSearchData: DropdownSearchData(
+              dropdownSearchData: items.length < 10 ? null :
+              DropdownSearchData(
                 searchInnerWidgetHeight: 50,
                 searchController: controller,
                 searchInnerWidget: Padding(

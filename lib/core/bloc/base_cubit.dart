@@ -63,6 +63,7 @@ abstract class BaseCubit extends Cubit<DataState>{
       emit(DoubleDataSuccess(data1: response1, data2: response2));
     } catch (e) {
       emit(DataFailed(e));
+      rethrow;
     }
   }
 

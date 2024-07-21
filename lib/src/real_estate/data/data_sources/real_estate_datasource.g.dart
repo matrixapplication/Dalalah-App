@@ -133,10 +133,10 @@ class _RealEstateDatasource implements RealEstateDatasource {
     String streetName,
     String lat,
     String lng,
-    List<int> features,
+    List<String> features,
     File cover,
     List<File> images,
-    List<int> ids,
+    List<String> ids,
     List<String> values,
   ) async {
     const _extra = <String, dynamic>{};
@@ -179,12 +179,9 @@ class _RealEstateDatasource implements RealEstateDatasource {
       'lng',
       lng,
     ));
-    _data.files.add(MapEntry(
-        'features[]',
-        MultipartFile.fromBytes(
-          features,
-          filename: null,
-        )));
+    features.forEach((i) {
+      _data.fields.add(MapEntry('features[]', i));
+    });
     _data.files.add(MapEntry(
       'cover',
       MultipartFile.fromFileSync(
@@ -198,12 +195,9 @@ class _RealEstateDatasource implements RealEstateDatasource {
           i.path,
           filename: i.path.split(Platform.pathSeparator).last,
         ))));
-    _data.files.add(MapEntry(
-        'details_ids[]',
-        MultipartFile.fromBytes(
-          ids,
-          filename: null,
-        )));
+    ids.forEach((i) {
+      _data.fields.add(MapEntry('details_ids[]', i));
+    });
     values.forEach((i) {
       _data.fields.add(MapEntry('details_vals[]', i));
     });

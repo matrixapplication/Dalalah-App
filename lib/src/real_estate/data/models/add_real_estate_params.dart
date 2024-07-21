@@ -33,8 +33,8 @@ class AddRealEstateParams {
   @FileJsonConverter()
   List<File>? images;
   @JsonKey(name: 'features')
-  List<int>? features;
-  @JsonKey(name: 'details[]')
+  List<String>? features;
+  @JsonKey(name: 'details')
   List<DetailsItemModelDto>? detailsList;
 
 

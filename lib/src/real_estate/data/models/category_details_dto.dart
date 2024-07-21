@@ -21,8 +21,8 @@ class DetailsDto {
   String? name;
   String? unit;
   String? type;
-  int? min;
-  int? max;
+  dynamic min;
+  dynamic max;
   String? icon;
   List<OptionsDto>? options;
 

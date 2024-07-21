@@ -177,7 +177,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
   Widget handleUiState(DataState state, BuildContext context) {
     print('handleUiState $T == $state => ${state is T}');
     if (state is DataLoading) {
-      return LoadingView();
+      return const LoadingView();
     }
     if (state is T) {
       return buildWidget(context, state as T);

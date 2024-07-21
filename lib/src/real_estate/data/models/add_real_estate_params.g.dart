@@ -23,9 +23,10 @@ AddRealEstateParams _$AddRealEstateParamsFromJson(Map<String, dynamic> json) =>
       images: (json['images'] as List<dynamic>?)
           ?.map((e) => const FileJsonConverter().fromJson(e as String))
           .toList(),
-      features:
-          (json['features'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      detailsList: (json['details[]'] as List<dynamic>?)
+      features: (json['features'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      detailsList: (json['details'] as List<dynamic>?)
           ?.map((e) => DetailsItemModelDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -47,7 +48,7 @@ Map<String, dynamic> _$AddRealEstateParamsToJson(
           instance.cover, const FileJsonConverter().toJson),
       'images': instance.images?.map(const FileJsonConverter().toJson).toList(),
       'features': instance.features,
-      'details[]': instance.detailsList,
+      'details': instance.detailsList,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

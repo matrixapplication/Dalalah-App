@@ -2,9 +2,6 @@ import 'package:dalalah/core/utils/navigator.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/add_real_estate_params.dart';
-import '../../../data/models/get_real_estate_params.dart';
-import '../../../data/models/real_estate_model.dart';
-import '../../../domain/entities/real_estate.dart';
 import '../bloc/real_estate_bloc.dart';
 import 'real_estate_screen.dart';
 
@@ -31,7 +28,7 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
      //   type: 'sell',
      //   status: 'rent',
      // ));
-     pushNamed(Routes.addRealEstatePage);
+     pushNamed(Routes.addRealEstatePage, );
    }
 
    @override

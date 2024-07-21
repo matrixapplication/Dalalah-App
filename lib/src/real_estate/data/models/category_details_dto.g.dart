@@ -29,8 +29,8 @@ DetailsDto _$DetailsDtoFromJson(Map<String, dynamic> json) => DetailsDto(
       name: json['name'] as String?,
       unit: json['unit'] as String?,
       type: json['type'] as String?,
-      min: json['min'] as int?,
-      max: json['max'] as int?,
+      min: json['min'],
+      max: json['max'],
       icon: json['icon'] as String?,
       options: (json['options'] as List<dynamic>?)
           ?.map((e) => OptionsDto.fromJson(e as Map<String, dynamic>))
