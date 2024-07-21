@@ -34,6 +34,7 @@ class PickerMainImage extends StatelessWidget {
           builder: (ctx, snapshot) {
             return InkWell(
               onTap: () async {
+
                 await HelperMethods.getImagePicker().then((value) {
                   if (value != null) {
                     streamStateInitial.setData(File(value.path));

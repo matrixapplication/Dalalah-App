@@ -446,13 +446,13 @@
   "furnished": "Furnished",
   "elevator": "Elevator",
   "price_real_estate": "Real Estate Price",
-  "enter_price_real_estate": "Enter Real Estate Price",
+  "enter_price_real_estate": "Enter Price",
   "description_real_estate": "Real Estate Description",
-  "enter_description_real_estate": "Enter Real Estate Description",
+  "enter_description_real_estate": "Enter Description",
   "address_real_estate": "Real Estate Address",
   "street": "Street",
   "location_real_estate": "Real Estate Location",
-  "images_real_estate": "Real Estate Images",
+  "images_real_estate": "Images",
   "choose_image": "Choose Image",
   "choose_image_mess": "Add Real Estate Images (maximum 10 images)",
   "detailed_search": "Detailed Search",
@@ -464,5 +464,23 @@
   "finishing": "Finishing",
   "advantages": "Advantages",
   "piano": "Piano",
-  "conditioning": "Conditioning"
+  "conditioning": "Conditioning",
+  "elevator2": "The Elevator",
+  "add_feature_real_estate": "Add features",
+  "residential": "Residential",
+  "commercial": "Commercial",
+  "real_estates": "Real Estates",
+  "please_select_real_estate_location": "Please select the real estate location",
+  "please_select_max_ten_image": "Please select a maximum of 10 images",
+  "price2": "Price",
+  "description2": "Description",
+  "address2": "Address",
+  "add_images": "Add Images",
+  "add_images_max_ten_image": "(Maximum 10 images)",
+   "advertiser": "Advertiser",
+    "propertyType": "Property Type",
+    "propertyArea": "The Area"
+
+
+
 }

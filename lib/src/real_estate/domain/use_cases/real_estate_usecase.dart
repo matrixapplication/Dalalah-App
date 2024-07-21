@@ -1,8 +1,11 @@
+import 'package:dalalah/src/real_estate/data/models/real_estate_model.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_response.dart';
 import '../../../plates/data/models/plate_dto.dart';
+import '../../data/models/add_real_estate_params.dart';
 import '../../data/models/category_details_dto.dart';
+import '../../data/models/get_real_estate_params.dart';
 import '../../data/models/real_estate_type_dto.dart';
 import '../entities/real_estate.dart';
 import '../repositories/base_real_estate_repo.dart';
@@ -20,6 +23,12 @@ class RealEstateUseCase {
     return await repository.fetchRealEstateCategoriesDetails(id);
   }
 
+  Future<int> addRealEstate(AddRealEstateParams params) async {
+    return await repository.addRealEstate(params);
+  }
+  Future<RealEstatesModel> fetchRealEstates(AddRealEstateParams params) async {
+    return await repository.fetchRealEstates(params);
+  }
 
   Future<List<Notifications>> fetchNotifications() async {
   //  return await repository.fetchNotifications();

@@ -6,16 +6,19 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
 import '../../../../../../core/utils/helper_methods.dart';
+import '../../../../../sell_car/presentation/widgets/picker_car_images.dart';
+import '../../../../data/models/add_real_estate_params.dart';
 
-class AddImagesRealEstateScreen extends StatefulWidget {
-   AddImagesRealEstateScreen({super.key});
+class AddImagesRealEstateScreen extends BaseStatelessWidget {
+   AddImagesRealEstateScreen( {super.key,required this.categoryName,this.onShare});
+   final String categoryName;
 
-  @override
-  State<AddImagesRealEstateScreen> createState() => _AddImagesRealEstateScreenState();
-}
+   final Function(AddRealEstateParams params)? onShare;
 
-class _AddImagesRealEstateScreenState extends State<AddImagesRealEstateScreen> {
-  File? mainImage;
+  File mainImage = File('');
+
+  List<File> imagesList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,155 +28,31 @@ class _AddImagesRealEstateScreenState extends State<AddImagesRealEstateScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(context.strings.images_real_estate,
+              Text('${context.strings.images_real_estate} $categoryName',
                 style: context.labelMedium.copyWith(
                     color: Colors.black
                 ),
               ),
-              Text(context.strings.add_main_image,
-                style: context.labelMedium.copyWith(
-                    color: Colors.grey
-                ),
-              ),
               10.ph,
-              Container(
-                width: double.infinity,
-                decoration: Decorations.kDecorationBorder(
-                  radius: 8
-                ),
-                child: Padding(
-                  padding: 35.paddingVert,
-                  child: Column(
-                    children: [
-                      mainImage!=null?
-                        ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: Image.file(
-                          mainImage!,
-                          width: 200,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ):
-                      Image.asset(AppImages.image),
-                      10.ph,
-                      InkWell(
-                        onTap: (){
-                          setState(() async{
-                            mainImage=await  HelperMethods.getImageFromGallery();
-                          });
-                         },
-                        child: Container(
-                          width: 140,
-                          height: 40,
-                          decoration: Decorations.kDecorationBorder(
-                              radius: 4,
-                            backgroundColor:context. primaryColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.add_a_photo,color: Colors.white,),
-                              5.pw,
-                              Text(context.strings.choose_image,
-                              style: context.labelMedium.copyWith(
-                                  color: Colors.white),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      )
-
-                    ],
-                  ),
-                ),
-              ),
-              32.ph,
-              Text(context.strings.choose_image_mess,
-                style: context.labelMedium.copyWith(
-                    color: Colors.grey
-                ),
-              ),
-              10.ph,
-              Container(
-                height:_images.length <=3? 200:330,
-                width: double.infinity,
-                decoration: Decorations.kDecorationBorder(
-                    radius: 8
-                ),
-                child: Padding(
-                  padding:_images.isNotEmpty?16.paddingVert: 35.paddingVert,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _images.isNotEmpty?
-                      Expanded(
-                        child: Padding(
-                          padding: 10.paddingHoriz,
-                          child: GridView.builder(
-
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 4.0,
-                              mainAxisSpacing: 4.0,
-                            ),
-                            padding: EdgeInsets.zero,
-                            itemCount: _images.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                margin: const EdgeInsets.all(4.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(color: Colors.grey),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(4),
-                                  child: Image.file(
-                                    _images[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ):
-                      Image.asset(AppImages.image),
-                      10.ph,
-                      InkWell(
-                        onTap: _pickImages,
-                        child: Container(
-                          width: 140,
-                          height: 40,
-                          decoration: Decorations.kDecorationBorder(
-                            radius: 4,
-                            backgroundColor: context.primaryColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.add_a_photo,color: Colors.white,),
-                              5.pw,
-                              Text(context.strings.choose_image,
-                                style: context.labelMedium.copyWith(
-                                    color: Colors.white),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      )
-
-                    ],
-                  ),
-                ),
+              PickerCarImages(
+                length: 10,
+                mainTitle:context.strings.add_main_image,
+                title: '${context.strings.add_images} $categoryName ${context.strings.add_images_max_ten_image}',
+                onImagesSelected: (File x, List<File> images) {
+                  mainImage=x;
+                  imagesList=images;
+                },
               ),
               85.ph,
               PrimaryOutlinesButtons(
                 title1: context.strings.share,
                 title2: context.strings.back,
                 onPressed1: () {
+                  AddRealEstateParams addRealEstateParams=AddRealEstateParams(
+                    cover: mainImage,
+                    images: imagesList
+                  );
+                  onShare!(addRealEstateParams);
                 },
                 onPrevPressed: () {
 
@@ -185,18 +64,4 @@ class _AddImagesRealEstateScreenState extends State<AddImagesRealEstateScreen> {
       ),
     );
   }
-
-   final ImagePicker _picker = ImagePicker();
-
-   List<File> _images = [];
-
-   Future<void> _pickImages() async {
-     final List<XFile>? pickedFiles = await _picker.pickMultiImage();
-
-     if (pickedFiles != null) {
-       setState(() {
-         _images = pickedFiles.map((pickedFile) => File(pickedFile.path)).toList();
-       });
-     }
-   }
 }

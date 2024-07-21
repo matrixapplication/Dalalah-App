@@ -47,8 +47,13 @@ class FeatureRealEstatePage extends BaseBlocWidget<UnInitState,AddRealEstatePage
           lat: oldParams.lat,
           lng:oldParams.lng,
         );
-        pushNamed(Routes.addImageRealEstatePage,arguments:  addRealEstateParams);
+        pushNamed(Routes.addImageRealEstatePage,arguments:
+        {
+          'param': addRealEstateParams,
+          'categoryName': getArguments(context)['categoryName'],
+        });
       },
-      categoriesDetails:  getArguments(context)['categoriesDetails'],);
+      categoriesDetails:  getArguments(context)['categoriesDetails'],
+      categoryName:getArguments(context)['categoryName'],);
   }
 }

@@ -17,11 +17,12 @@ class AddRealStateScreen extends BaseStatelessWidget {
    final StreamStateInitial<List<RealEstateCategoryDto>?> realEstateCategoriesList;
    final StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetails;
    final Function(int id)? onGetDetailsType;
-   final Function(AddRealEstateParams params)? onTapNext;
+   final Function(AddRealEstateParams params,String categoryName)? onTapNext;
 
    AddRealStateScreen( {super.key,this.onTapNext,required this.realEstateCategoriesList,this.onGetDetailsType,required this.categoriesDetails,});
    String type='sell';
    String status='residential';
+   String categoryName='';
    int categoryId=0;
    List<DetailsItemModelDto> detailsList=[];
    @override
@@ -83,10 +84,13 @@ class AddRealStateScreen extends BaseStatelessWidget {
                       return const LoadingView();
                     }else{
                       categoryId=data[0].id!;
+                      categoryName=data[0].name??'';
                       return ChooseFromListItemWidget(
                           onChoose: (ChooseItemListModel item) {
                             onGetDetailsType!(item.id);
                             categoryId=item.id;
+                            categoryName=item.title;
+
                           },
                           items: data.map((e) => ChooseItemListModel( id: e.id!, title: e.name!)).toList()
                       );
@@ -193,7 +197,7 @@ class AddRealStateScreen extends BaseStatelessWidget {
                     categoryId: categoryId,
                     detailsList: detailsList
                   );
-                   onTapNext!(addRealEstateParams);
+                   onTapNext!(addRealEstateParams,categoryName);
                 },
                 onPrevPressed: () {
 

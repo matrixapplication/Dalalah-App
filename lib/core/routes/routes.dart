@@ -34,6 +34,7 @@ import '../../src/real_estate/presentation/add_real_estate/pages/add_real_estate
 import '../../src/real_estate/presentation/add_real_estate/pages/add_address_real_estate/add_real_estate_second_screen.dart';
 import '../../src/real_estate/presentation/add_real_estate/pages/feature_real_estate/feature_real_estate_page.dart';
 import '../../src/real_estate/presentation/filters_real_estate/pages/filter_real_estate_page.dart';
+import '../../src/real_estate/presentation/real_estate/pages/real_estate_details/real_estate_details_page.dart';
 import '../../src/real_estate/presentation/real_estate/pages/real_estate_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
 import '../../src/plates/presentation/plates/pages/plates_page.dart';
@@ -129,6 +130,7 @@ class Routes {
   static const String addImageRealEstatePage = 'addImageRealEstatePage';
   static const String filterRealEstatePage = 'filterRealEstatePage';
   static const String featureRealEstatePage = 'featureRealEstatePage';
+  static const String realEstateDetailsPage = 'realEstateDetailsPage';
 
 
   static routes(BuildContext context) => {
@@ -145,6 +147,7 @@ class Routes {
     navigationPages: (context) => NavigationPages(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
+    realEstateDetailsPage: (context) => RealEstateDetailsPage(),
     platesDetailsPage: (context) => PlateDetailsPage(),
     plateFilterPage: (context) => AddOrPlatesPage(),
     installmentPage: (context) => InstallmentPage(),

@@ -21,10 +21,27 @@ class AddImageRealEstatePage extends BaseBlocWidget<UnInitState, AddRealEstatePa
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
-    AddRealEstateParams addRealEstateParams =getArguments(context);
-    print("dddddddddddddd ${addRealEstateParams.toJson().toString()}");
    return AddImagesRealEstateScreen(
-
+     onShare: (param){
+       AddRealEstateParams oldParams=getArguments(context)['param'];
+       AddRealEstateParams addRealEstateParams=AddRealEstateParams(
+         cover: param.cover,
+         images: param.images,
+         features: oldParams.features,
+         type: oldParams.type,
+         status: oldParams.status,
+         categoryId: oldParams.categoryId,
+         detailsList: oldParams.detailsList,
+         price: oldParams.price,
+         description: oldParams.description,
+         cityId: oldParams.cityId,
+         streetName: oldParams.streetName,
+         lat: oldParams.lat,
+         lng:oldParams.lng,
+       );
+       print('yehya s ${addRealEstateParams.toJson().toString()}');
+        bloc.addRealEstate(addRealEstateParams);
+     }, categoryName: getArguments(context)['categoryName']
    );
   }
 

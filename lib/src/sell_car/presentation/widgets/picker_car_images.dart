@@ -4,6 +4,7 @@ import 'package:dalalah/src/sell_car/presentation/widgets/picker_main_image.dart
 import 'package:dalalah/src/sell_car/presentation/widgets/sub_image_item.dart';
 import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/images/image_network.dart';
+import '../../../../core/widgets/snack_bar/snack_bar_manager.dart';
 import '../../../main_index.dart';
 import '../../data/models/edit_image_params.dart';
 
@@ -11,6 +12,7 @@ import '../../data/models/edit_image_params.dart';
 class PickerCarImages extends BaseStatelessWidget {
   final String? initialMainImage;
   final String? mainTitle;
+  final int? length;
   final String? title;
   final List<ImageDto>? initialImages;
   final Function(File, List<File>) onImagesSelected;
@@ -21,6 +23,7 @@ class PickerCarImages extends BaseStatelessWidget {
   PickerCarImages( {
     Key? key,
     this.mainTitle, this.title,
+    this.length,
     this.initialMainImage,
     this.initialImages,
     required this.onImagesSelected,
@@ -57,16 +60,17 @@ class PickerCarImages extends BaseStatelessWidget {
         ),
         20.ph,
         Text(
-          strings.add_car_image_at_most_10,
+          title??strings.add_car_image_at_most_10,
           style: context.bodySmall,
         ),
         10.ph,
         PickerSubImages(
+          length: length!,
           // initialImages: initialImages,
          // onEditCarImage: onEditCarImage,
           onImagesSelected: (files) {
-            images = files;
-            onImagesSelected(mainImage, images);
+              images = files;
+              onImagesSelected(mainImage, images);
           },
         ),
         10.ph,
@@ -101,8 +105,9 @@ class PickerCarImages extends BaseStatelessWidget {
   }
 }
 class PickerSubImages extends StatelessWidget {
+  final int? length;
   final Function(List<File>)? onImagesSelected;
-  const PickerSubImages({super.key, this.onImagesSelected});
+  const PickerSubImages({super.key, this.onImagesSelected, this.length});
 
   @override
   Widget build(BuildContext context) {
@@ -124,9 +129,22 @@ class PickerSubImages extends StatelessWidget {
                 icon: Icons.add_photo_alternate_rounded,
                 //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
                 onImageSelected: (image) {
-                  images.add(image);
-                  onImagesSelected?.call(images.sublist(1));
-                  setSate(() {});
+                  if(length!=null){
+                      if(images.length<=length!){
+                        images.add(image);
+                        onImagesSelected?.call(images.sublist(1));
+                        setSate(() {});
+                      }else{
+                        SnackBarManager.showErrorSnackBar(
+                            context.strings.please_select_max_ten_image);
+                        return;
+                      }
+                    }else{
+                      images.add(image);
+                      onImagesSelected?.call(images.sublist(1));
+                      setSate(() {});
+                    }
+
                 },
               );
             }
@@ -167,7 +185,7 @@ class PickerSubImages extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if(index <= 4)
+                  if(length!=null?index<=length!:index <= 4)
                     Align(
                       alignment: AlignmentDirectional.bottomCenter,
                       child: Container(

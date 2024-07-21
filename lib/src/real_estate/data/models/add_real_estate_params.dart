@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:json_annotation/json_annotation.dart';
-
 import '../../../sell_car/data/models/sell_car_params.dart';
 
 part 'add_real_estate_params.g.dart';

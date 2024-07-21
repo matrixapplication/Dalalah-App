@@ -1,22 +1,30 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/assets/app_icons.dart';
+import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/components/base_stateless_widget.dart';
+import '../../../../../core/components/loading_widget.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/widgets/buttons/icon_text_button.dart';
 import '../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../../../core/widgets/tabview/custom_tabbar_widget.dart';
 import '../../../../home/presentation/widgets/filter_home.dart';
+import '../../../data/models/category_details_dto.dart';
+import '../../../data/models/real_estate_model.dart';
+import '../../../data/models/real_estate_type_dto.dart';
 import '../../../domain/entities/real_estate.dart';
 import '../widgets/custom_real_estate_list.dart';
 import '../widgets/search_rael_estate.dart';
 
 class RealEstateScreen extends BaseStatelessWidget {
-  final List<Notifications> notifications;
-
-  RealEstateScreen({Key? key, required this.notifications}) : super(key: key);
-
+  final StreamStateInitial<List<RealEstateCategoryDto>?> realEstateCategoriesList;
+  final StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetails;
+  final Function(int id)? onGetDetailsType;
+  final StreamStateInitial<RealEstatesModel?>  realEstatesData;
+  RealEstateScreen( {Key? key,  required this.realEstatesData,required this.realEstateCategoriesList, required this.categoriesDetails, this.onGetDetailsType,}) : super(key: key);
+  String categoryName='';
+  int categoryId=0;
   @override
   Widget build(BuildContext context) {
     String filterOrder = FilterOrderTypes.asc;
@@ -45,9 +53,9 @@ class RealEstateScreen extends BaseStatelessWidget {
                               SizedBox(
                                 width: 100,
                                 child: DropDownField(
-                                  hint: 'للبيع',
-                                  valueId: 5,
-                                  items: items1.map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                                  hint: '',
+                                  valueId: 1,
+                                  items: typeList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
                                   onChanged: (item) {
                                     // brandId = int.parse(item?.id ?? '0');
                                     // onFetchBrandModels?.call(brandId);
@@ -58,9 +66,9 @@ class RealEstateScreen extends BaseStatelessWidget {
                               SizedBox(
                                 width: 100,
                                 child: DropDownField(
-                                  hint: 'شقة',
-                                  valueId: 5,
-                                  items: items1.map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                                  hint: '',
+                                  valueId: 1,
+                                  items: statusList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
                                   onChanged: (item) {
                                     // brandId = int.parse(item?.id ?? '0');
                                     // onFetchBrandModels?.call(brandId);
@@ -68,31 +76,72 @@ class RealEstateScreen extends BaseStatelessWidget {
                                 ),
                               ),
                               5.pw,
-                              SizedBox(
-                                width: 100,
-                                child: DropDownField(
-                                  hint: 'Price',
-                                  valueId: 5,
-                                  items: items1.map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
-                                  onChanged: (item) {
-                                    // brandId = int.parse(item?.id ?? '0');
-                                    // onFetchBrandModels?.call(brandId);
-                                  },
-                                ),
-                              ),
+                              StreamBuilder<List<RealEstateCategoryDto>?>(
+                                  stream: realEstateCategoriesList.stream,
+                                  builder: (context, snapshot) {
+                                    final data = snapshot.data;
+                                    if(snapshot.connectionState == ConnectionState.waiting
+                                        ||data==null){
+                                      return const LoadingView();
+                                    }else{
+                                      categoryId=data[0].id!;
+                                      categoryName=data[0].name??'';
+                                      return
+
+                                        SizedBox(
+                                          width: 100,
+                                          child: DropDownField(
+                                            hint: '${data[0].name}',
+                                            // valueId: data[0].id!,
+                                            items: data.map((e) => DropDownItem(id: e.id.toString(), title: e.name?.toString()??'')).toList(),
+                                            onChanged: (item) {
+                                              onGetDetailsType!(int.parse(item?.id??''));
+                                              categoryId=int.parse(item?.id??'');
+                                              categoryName=item?.title??'';
+                                            },
+                                          ),
+                                        );
+                                    }
+                                  }),
                               5.pw,
-                              SizedBox(
-                                width: 170,
-                                child: DropDownField(
-                                  hint: 'غرف النوم والحمامات',
-                                  valueId: 5,
-                                  items: items1.map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
-                                  onChanged: (item) {
-                                    // brandId = int.parse(item?.id ?? '0');
-                                    // onFetchBrandModels?.call(brandId);
-                                  },
-                                ),
-                              ),
+                              StreamBuilder<RealEstateCategoryDetailsDto?>(
+                                  stream: categoriesDetails.stream,
+                                  builder: (context, snapshot) {
+                                    final data = snapshot.data?.details;
+                                    return snapshot.connectionState == ConnectionState.waiting
+                                        ||data==null
+                                        ? const LoadingView()
+                                        :
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          ...categoriesDetails.data!.details!.map((e) {
+                                            if(e.type!='input'){
+                                              return Padding(
+                                                padding: 3.paddingHoriz,
+                                                child: SizedBox(
+                                                  width: 100,
+                                                  child: DropDownField(
+                                                    hint: e.name??'',
+                                                    items: e.options?.map((a) => DropDownItem(id: a.id.toString(), title: a.name?.toString()??'')).toList()??[],
+                                                    onChanged: (item) {
+                                                      // brandId = int.parse(item?.id ?? '0');
+                                                      // onFetchBrandModels?.call(brandId);
+                                                    },
+                                                  ),
+                                                ),
+                                              );
+                                            }else{
+                                              return const SizedBox();
+                                            }
+
+                                          })
+                                        ],
+                                      ),
+                                    );
+                                  }),
+
                             ],
                           ),
                         ),
@@ -144,11 +193,11 @@ class RealEstateScreen extends BaseStatelessWidget {
                             tabs: [
                               TabItemModel(
                                 label: 'القوائم',
-                                page: CustomRealEstateListWidget(),
+                                page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
                               ),
                               TabItemModel(
                                 label: 'الخريطة',
-                                page: CustomRealEstateListWidget(),
+                                page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
                               ),
                             ],
                           ),
@@ -162,9 +211,13 @@ class RealEstateScreen extends BaseStatelessWidget {
         );
   }
 
-  List<DropDownItem> items1 = [
-    const DropDownItem(id: '1', title: 'first'),
-    const DropDownItem(id: '2', title: 'second'),
-    const DropDownItem(id: '3', title: 'third'),
+  List<DropDownItem> typeList (context) => [
+     DropDownItem(id: '1', title: strings.to_sell),
+     DropDownItem(id: '2', title: strings.for_rent),
   ];
+  List<DropDownItem> statusList (context) => [
+    DropDownItem(id: '1', title: strings.residential),
+    DropDownItem(id: '2', title: strings.commercial),
+  ];
+
 }

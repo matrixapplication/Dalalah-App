@@ -25,9 +25,10 @@ AddRealEstateParams _$AddRealEstateParamsFromJson(Map<String, dynamic> json) =>
           .toList(),
       features:
           (json['features'] as List<dynamic>?)?.map((e) => e as int).toList(),
-    )..detailsList = (json['details[]'] as List<dynamic>?)
-        ?.map((e) => DetailsItemModelDto.fromJson(e as Map<String, dynamic>))
-        .toList();
+      detailsList: (json['details[]'] as List<dynamic>?)
+          ?.map((e) => DetailsItemModelDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$AddRealEstateParamsToJson(
         AddRealEstateParams instance) =>

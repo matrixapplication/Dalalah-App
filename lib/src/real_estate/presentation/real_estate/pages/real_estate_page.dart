@@ -1,17 +1,24 @@
 import 'package:dalalah/core/utils/navigator.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../main_index.dart';
+import '../../../data/models/add_real_estate_params.dart';
+import '../../../data/models/get_real_estate_params.dart';
+import '../../../data/models/real_estate_model.dart';
 import '../../../domain/entities/real_estate.dart';
 import '../bloc/real_estate_bloc.dart';
 import 'real_estate_screen.dart';
 
-class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, RealEstatePageCubit> {
+class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
    RealEstatePage({Key? key}) : super(key: key);
 
 
    @override
    void loadInitialData(BuildContext context) {
-     bloc.fetchNotifications();
+     bloc.fetchRealEstateCategories();
+     bloc.fetchRealEstates(AddRealEstateParams(
+       type: 'sell',
+       status: 'rent',
+     ));
    }
 
    @override
@@ -20,6 +27,10 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
    }
    @override
     onAddButtonPressed() {
+     // bloc.fetchRealEstates(AddRealEstateParams(
+     //   type: 'sell',
+     //   status: 'rent',
+     // ));
      pushNamed(Routes.addRealEstatePage);
    }
 
@@ -27,9 +38,15 @@ class RealEstatePage extends BaseBlocWidget<DataSuccess<List<Notifications>>, Re
    Widget? leading(BuildContext context) => 0.ph;
 
   @override
-  Widget buildWidget(BuildContext context, DataSuccess<List<Notifications>> state) {
+  Widget buildWidget(BuildContext context, UnInitState state) {
    return RealEstateScreen(
-     notifications: state.data!,
+     realEstateCategoriesList:bloc.categoriesList,
+     realEstatesData: bloc.realEstatesData,
+     categoriesDetails: bloc.categoriesDetails,
+     onGetDetailsType: (id)async{
+       await bloc.fetchRealEstateCategoriesDetails(id);
+     },
+
    );
   }
 

@@ -139,12 +139,15 @@ class DropDownField extends StatelessWidget {
               items: items
                   .map((item) => DropdownMenuItem<DropDownItem>(
                         value: item,
-                        child: Text(
-                          item.title ?? '',
-                          style: context.textTheme.labelLarge!.copyWith(
-                            color: AppColors.blue_49,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            item.title ?? '',
+                            style: context.textTheme.labelLarge!.copyWith(
+                              color: AppColors.blue_49,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ))
                   .toList(),

@@ -15,9 +15,10 @@ import '../../../../data/models/category_details_dto.dart';
 class AddRealStateSecondScreen extends BaseStatelessWidget {
   final  StreamStateInitial<RealEstateCategoryDetailsDto?>  categoryDetailsDto;
   final List<City> citiesList;
+  final String categoryName;
   final Function(AddRealEstateParams params)? onTapNext;
 
-  AddRealStateSecondScreen(   {super.key,this.onTapNext,required this.categoryDetailsDto,required this.citiesList,});
+  AddRealStateSecondScreen(  {super.key,required this.categoryName,this.onTapNext,required this.categoryDetailsDto,required this.citiesList,});
   LatLng? initialLocation;
 //getProfile
   int cityId = 0;
@@ -38,37 +39,37 @@ class AddRealStateSecondScreen extends BaseStatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(strings.add_real_estate,
+              Text('${strings.add} $categoryName',
                 style: titleSmall,
               ),
               20.ph,
-              Text(strings.price_real_estate,
+              Text('${strings.price2} $categoryName',
                 style: labelMedium.copyWith(
                   color: Colors.black
                 ),
               ),
              16.ph,
              CustomTextField(
-               hintText: strings.enter_price_real_estate,
+               hintText: '${strings.enter_price_real_estate} $categoryName',
                onChanged: (val){
                  price=val;
                },
              ),
               16.ph,
-              Text(strings.description_real_estate,
+              Text('${strings.description2} $categoryName',
                 style: labelMedium.copyWith(
                     color: Colors.black
                 ),
               ),
               16.ph,
               CustomTextField(
-                hintText: strings.enter_description_real_estate,
+                hintText: '${strings.enter_description_real_estate} $categoryName',
                 onChanged: (val){
                   description=val;
                 },
               ),
               16.ph,
-              Text(strings.address_real_estate,
+              Text('${strings.address2} $categoryName',
                 style: labelMedium.copyWith(
                     color: Colors.black
                 ),
@@ -106,7 +107,7 @@ class AddRealStateSecondScreen extends BaseStatelessWidget {
                 },
               ),
               16.ph,
-              Text(strings.location_real_estate,
+              Text(strings.location,
                 style: labelMedium.copyWith(
                     color: Colors.black
                 ),

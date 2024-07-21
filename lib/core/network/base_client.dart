@@ -16,7 +16,8 @@ class ClientCreator {
   ClientCreator({this.interceptor});
   Dio create() {
     final dio2 = Dio(); // Provide a dio instance
-    // dio2.options.connectTimeout(Duration(seconds: 60).inMilliseconds));
+    dio2.options.receiveTimeout = const Duration(seconds: 70);
+    dio2.options.connectTimeout = const Duration(seconds: 70);
     dio2.interceptors.add(LogInterceptor(responseBody: true));
     if (interceptor != null) {
       dio2.interceptors.add(interceptor!);
@@ -33,7 +34,17 @@ class HeaderInterceptor extends Interceptor {
 
   final String accessToken;
   HeaderInterceptor({required this.accessToken});
+  void logFormData(FormData formData) {
+    // Convert the FormData fields to a map
+    Map<String, dynamic> fields = {};
 
+    for (var field in formData.fields) {
+      fields[field.key] = field.value;
+    }
+
+    // Print the fields map
+    print('body: $fields');
+  }
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
     HeaderParams params = await HelperMethods.getHeaderParams();
@@ -42,7 +53,15 @@ class HeaderInterceptor extends Interceptor {
     options.headers[keyRole] = params.role;
     // options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';
     print('-----------------------------------------------------------------------------');
-    log('body: ${options.data}');
+
+    // log('body: ${options.data}');
+    if(options.data!=null){
+      try{
+        logFormData(options.data);
+      }catch(e){
+
+      }
+    }
     log('headers: ${options.headers}');
     log('method: ${options.method}');
     log('queryParameters: ${options.queryParameters}');
@@ -51,12 +70,10 @@ class HeaderInterceptor extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    print(
-        'DIO ERROR onError ${err.response != null} =>error message is  ${err.message}');
+    print('DIO ERROR onError ${err.response != null} =>error message is  ${err.message}');
 
     if (err.response != null) {
-      print(
-          'err.response ${err.response != null} =>error message is  ${err.error}');
+      print('err.response ${err.response != null} =>error message is  ${err.error}');
       Map<String, dynamic> data = json.decode(err.response.toString());
 
       final message = data.containsKey('message') ? data['message'] : "Error";

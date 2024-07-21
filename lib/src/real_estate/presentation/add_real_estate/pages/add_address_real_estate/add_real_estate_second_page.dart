@@ -25,6 +25,7 @@ class AddRealEstateSecondPage extends BaseBlocWidget<DataSuccess<List<City>>, Ad
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<City>> state) {
    return AddRealStateSecondScreen(
+     categoryName: getArguments(context)['categoryName'],
      categoryDetailsDto: getArguments(context)['categoriesDetails'],
      citiesList:state.data!,
      onTapNext: (param){
@@ -43,7 +44,11 @@ class AddRealEstateSecondPage extends BaseBlocWidget<DataSuccess<List<City>>, Ad
          lng:param.lng,
        );
 
-        pushNamed(Routes.featureRealEstatePage,arguments: {'categoriesDetails':getArguments(context)['categoriesDetails'],'param':addRealEstateParams});
+        pushNamed(Routes.featureRealEstatePage,arguments: {
+          'categoriesDetails':getArguments(context)['categoriesDetails'],
+          'param':addRealEstateParams,
+          'categoryName':getArguments(context)['categoryName'],
+        });
      },
    );
   }

@@ -1,12 +1,13 @@
 import 'package:dalalah/core/decorations/decorations.dart';
 import 'package:dalalah/core/exceptions/extensions.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/themes/colors.dart';
 
 class ChipWithText extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final String icon;
   final Color? labelColor;
   final double? fontSize;
   final double? radius;
@@ -18,7 +19,7 @@ class ChipWithText extends StatelessWidget {
     return Container(
       decoration: Decorations.kDecorationRadius(
         radius: radius??5,
-        color: backgroundColor??AppColors.blue_49.withOpacity(0.40)
+        color: backgroundColor??AppColors.blue_49.withOpacity(0.2)
       ),
       child:
       Padding(
@@ -33,7 +34,11 @@ class ChipWithText extends StatelessWidget {
               ),
             ),
             10.pw,
-            Icon(icon,color: context.primaryColor,size: 12,)
+            ImageNetwork(
+              height: 40,
+              width: 40,
+              url: 'icon',
+              color: context.primaryColor,size: 12,)
           ],
         ),
       ),

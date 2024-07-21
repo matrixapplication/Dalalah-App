@@ -28,9 +28,8 @@ class AddRealEstatePage extends BaseBlocWidget<UnInitState, AddRealEstatePageCub
       await bloc.fetchRealEstateCategoriesDetails(id);
      },
      categoriesDetails:bloc.categoriesDetails,
-     onTapNext: (param){
-
-       pushNamed(Routes.addRealEstateSecondPage,arguments:{'categoriesDetails':bloc.categoriesDetails,'param':param});
+     onTapNext: (param,categoryName){
+       pushNamed(Routes.addRealEstateSecondPage,arguments:{'categoriesDetails':bloc.categoriesDetails,'param':param,'categoryName':categoryName});
      },
    );
   }

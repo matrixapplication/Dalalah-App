@@ -13,8 +13,8 @@ import '../../widgets/feature_item_widget.dart';
 class FeatureRealEstateScreen extends BaseStatelessWidget {
   final StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetails;
   final Function(AddRealEstateParams params)? onTapNext;
-
-  FeatureRealEstateScreen( {super.key, required this.categoriesDetails,this.onTapNext,});
+ final String categoryName;
+  FeatureRealEstateScreen( {super.key,required this.categoryName, required this.categoriesDetails,this.onTapNext,});
   List<FeaturesDto> featuresDtoList =[];
   @override
   Widget build(BuildContext context) {
@@ -23,11 +23,11 @@ class FeatureRealEstateScreen extends BaseStatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(strings.add_real_estate,
+          Text('${strings.add} $categoryName',
             style: titleSmall,
           ),
           20.ph,
-          Text(strings.add_feature_real_estate,
+          Text('${strings.add_feature_real_estate} $categoryName',
             style: labelMedium.copyWith(
                 color: Colors.grey
             ),
@@ -73,7 +73,6 @@ class FeatureRealEstateScreen extends BaseStatelessWidget {
             onPressed1: () {
               AddRealEstateParams addRealEstateParams=AddRealEstateParams(
                   features: featuresDtoList.map((e) => e.id!).toList(),
-
               );
               onTapNext!(addRealEstateParams);
             },

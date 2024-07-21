@@ -88,6 +88,150 @@ class _RealEstateDatasource implements RealEstateDatasource {
     return value;
   }
 
+  @override
+  Future<ApiResponse<RealEstatesModel>> fetchRealEstates(String type) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'type',
+      type,
+    ));
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<RealEstatesModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/get-properties',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<RealEstatesModel>.fromJson(
+      _result.data!,
+      (json) => RealEstatesModel.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<int>> addRealEstate(
+    String type,
+    String status,
+    int categoryId,
+    dynamic price,
+    String description,
+    int cityId,
+    String streetName,
+    String lat,
+    String lng,
+    List<int> features,
+    File cover,
+    List<File> images,
+    List<int> ids,
+    List<String> values,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'type',
+      type,
+    ));
+    _data.fields.add(MapEntry(
+      'prop_status',
+      status,
+    ));
+    _data.fields.add(MapEntry(
+      'category_id',
+      categoryId.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'price',
+      price,
+    ));
+    _data.fields.add(MapEntry(
+      'description',
+      description,
+    ));
+    _data.fields.add(MapEntry(
+      'city_id',
+      cityId.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'street_name',
+      streetName,
+    ));
+    _data.fields.add(MapEntry(
+      'lat',
+      lat,
+    ));
+    _data.fields.add(MapEntry(
+      'lng',
+      lng,
+    ));
+    _data.files.add(MapEntry(
+        'features[]',
+        MultipartFile.fromBytes(
+          features,
+          filename: null,
+        )));
+    _data.files.add(MapEntry(
+      'cover',
+      MultipartFile.fromFileSync(
+        cover.path,
+        filename: cover.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    _data.files.addAll(images.map((i) => MapEntry(
+        'images[]',
+        MultipartFile.fromFileSync(
+          i.path,
+          filename: i.path.split(Platform.pathSeparator).last,
+        ))));
+    _data.files.add(MapEntry(
+        'details_ids[]',
+        MultipartFile.fromBytes(
+          ids,
+          filename: null,
+        )));
+    values.forEach((i) {
+      _data.fields.add(MapEntry('details_vals[]', i));
+    });
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/store-property',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<int>.fromJson(
+      _result.data!,
+      (json) => json as int,
+    );
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

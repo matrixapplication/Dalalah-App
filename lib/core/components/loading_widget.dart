@@ -9,11 +9,11 @@ class LoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: kPrimaryLight,
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const <Widget>[
+            children: <Widget>[
               SizedBox(
                 height: 30,
                 width: 30,

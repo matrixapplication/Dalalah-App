@@ -15,7 +15,7 @@ import 'core/widgets/base/splash_screen.dart';
 import 'src/main_index.dart';
 
 final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
-
+//now ios
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -32,7 +32,7 @@ Future<void> main() async {
   )).create());
   injector.registerSingleton(AddCarRepo(injector()));
   runApp(
-    MyApp(token: token),
+      MyApp(token: token),
     //   DevicePreview(
     //   enabled: kDebugMode,
     //   builder: (context) => MyApp(token: token), // Wrap your app
