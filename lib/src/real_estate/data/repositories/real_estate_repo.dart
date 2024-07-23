@@ -31,16 +31,16 @@ class RealEstateRepo extends BaseRealEstateRepo {
   @override
   Future<RealEstatesModel> fetchRealEstates(AddRealEstateParams params) async {
     final data = await datasource.fetchRealEstates(
-      'rent',
+      // 'rent',
       // 'residential'
+      //خصوصي
     );
     print("yehya repo ${data.data!.toJson().toString()}");
     return data.data!;
   }
 
   @override
-  Future<int> addRealEstate(AddRealEstateParams params) async {
-    print("repoooooo ${params.toJson().toString()}");
+  Future<String> addRealEstate(AddRealEstateParams params) async {
     final data = await datasource.addRealEstate(
       params.type ?? '',
       params.status ?? '',
@@ -57,6 +57,6 @@ class RealEstateRepo extends BaseRealEstateRepo {
       params.detailsList?.map((e) => e.id?.toString() ?? '0').toList() ?? [],
       params.detailsList?.map((e) => e.title ?? '0').toList() ?? [],
     );
-    return data.data!;
+    return data.message!;
   }
 }

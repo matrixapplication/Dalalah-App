@@ -143,6 +143,7 @@ StreamStateInitial<bool> isInstallmentStream = StreamStateInitial<bool>();
               15.ph,
               // if (car.status?.key == CarStatus.usedCar)
                 PickerCarImages(
+                  length: 10,
                   initialMainImage: car.mainImage,
                   initialImages: car.images,
                   onEditCarImage: car.id != null ? onEditCarImage : null,

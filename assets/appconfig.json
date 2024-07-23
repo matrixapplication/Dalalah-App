@@ -2,7 +2,7 @@
   "merchantKey":"4f9de7be448f220c4e1753b91dbb318df0e7dea394361151810e04aadcf3d043",
   "terminalId":  "dalalah",
   "terminalPass": "dalalah@URWAY_365",
-  "requestUrl":"https://payments-dev.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest"
+  "requestUrl":"https://payments.urway-tech.com/URWAYPGService/transaction/jsonProcess/JSONrequest"
 }
 
 

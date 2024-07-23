@@ -3,6 +3,7 @@ import 'package:dalalah/src/showrooms/presentation/showrooms/pages/showrooms_pag
 import '../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../main_index.dart';
+import '../../real_estate/presentation/real_estate/pages/real_estate_page.dart';
 import 'branches/pages/branches_page.dart';
 
 class ShowroomsAndBranchesTabs extends BaseStatelessWidget {
@@ -23,7 +24,8 @@ class ShowroomsAndBranchesTabs extends BaseStatelessWidget {
               label: context.strings.show_rooms,
               page: ShowroomsPage(),
             ),
-            TabItemModel(label: context.strings.agencies, page: ShowroomsPage(isAgency: true)),
+            TabItemModel(label: context.strings.real_estates, page:
+            RealEstatePage(showTitle: false,)),
           ],
         ),
       ),

@@ -18,8 +18,7 @@ class AddRealEstatePage extends BaseBlocWidget<DataSuccess<RealEstateCategoriesS
      bloc.fetchRealEstateCategories();
    }
 
-   @override
-  String? title(BuildContext context) => strings.add_real_estate;
+
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<RealEstateCategoriesState> state) {

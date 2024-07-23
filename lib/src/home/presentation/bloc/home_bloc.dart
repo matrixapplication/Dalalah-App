@@ -1,6 +1,7 @@
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../../../core/commen/common_state.dart';

@@ -89,15 +89,11 @@ class _RealEstateDatasource implements RealEstateDatasource {
   }
 
   @override
-  Future<ApiResponse<RealEstatesModel>> fetchRealEstates(String type) async {
+  Future<ApiResponse<RealEstatesModel>> fetchRealEstates() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    _data.fields.add(MapEntry(
-      'type',
-      type,
-    ));
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<RealEstatesModel>>(Options(
       method: 'GET',
@@ -123,7 +119,7 @@ class _RealEstateDatasource implements RealEstateDatasource {
   }
 
   @override
-  Future<ApiResponse<int>> addRealEstate(
+  Future<ApiResponse<dynamic>> addRealEstate(
     String type,
     String status,
     int categoryId,
@@ -201,8 +197,8 @@ class _RealEstateDatasource implements RealEstateDatasource {
     values.forEach((i) {
       _data.fields.add(MapEntry('details_vals[]', i));
     });
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<int>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -219,9 +215,9 @@ class _RealEstateDatasource implements RealEstateDatasource {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<int>.fromJson(
+    final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as int,
+      (json) => json as dynamic,
     );
     return value;
   }

@@ -1,6 +1,8 @@
 import 'package:dalalah/core/network/api_response.dart';
+import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/home/data/models/car_dto.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/car_filter_params.dart';
 import '../entities/brand.dart';

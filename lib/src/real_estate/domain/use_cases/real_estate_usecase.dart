@@ -23,7 +23,7 @@ class RealEstateUseCase {
     return await repository.fetchRealEstateCategoriesDetails(id);
   }
 
-  Future<int> addRealEstate(AddRealEstateParams params) async {
+  Future<dynamic> addRealEstate(AddRealEstateParams params) async {
     return await repository.addRealEstate(params);
   }
   Future<RealEstatesModel> fetchRealEstates(AddRealEstateParams params) async {

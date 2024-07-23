@@ -10,8 +10,7 @@ class PaymentRequests{
   static urWayPayment({required String id, required String amount}) async {
     try {
       ProfileDto? profile = await HelperMethods.getProfile();
-      print('profile is ${profile?.toJson()}');
-
+      print('=================================================');
       final data = await Payment.makepaymentService(
           context: injector<ServicesLocator>().navigatorKey.currentContext!,
           country: "SA",
@@ -33,9 +32,10 @@ class PaymentRequests{
           zipCode: "",
           tokenOperation: "A/U/D", metadata:"",
       );
+      print('=================================================');
 
 
-      print('Result in Main is $data');
+      print('Resultteest in Main is $data');
       return data;
     } on Exception catch (e) {
       print('Error in platform $e');

@@ -11,6 +11,7 @@ class AdvantagesItem extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: 3.paddingHoriz,
       decoration: Decorations.kDecorationBorder(
         borderColor: Colors.grey.shade300,
         radius: 10

@@ -13,60 +13,92 @@ class FilterRealEstateScreen extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: 16.paddingHoriz+60.paddingTop,
+        padding: 16.paddingHoriz+40.paddingTop,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomChooseWidget(
-              radius: 4,
-              onTap: (value) {
-                // personalFinanceAcceptStream.setData(value);
-              },
-              items: [
-                ChooseItemModel(
-                  label: strings.to_sell,
-                  value: true,
-                ),
-                ChooseItemModel(
-                  label: strings.for_rent,
-                  value: false,
-                ),
-              ],
+            Text(
+              strings.status_real_estate,
+              style: titleSmall,
             ),
-            30.ph,
+            ChooseFromListItemWidget(
+              radius: 4,
+                width: MediaQuery.of(context).size.width * 0.42,
+                onChoose: (ChooseItemListModel item) {
+                  if (item.id == 2) {
+                    // status = 'commercial';
+                  } else {
+                    // status = 'residential';
+                  }
+                },
+                items: [
+                  ChooseItemListModel(
+                    id: 1,
+                    title: strings.to_sell,
+                  ),
+                  ChooseItemListModel(id: 2, title: strings.for_rent),
+                ]),
+            16.ph,
             Text(strings.type_real_estate,
               style: titleSmall,
             ),
             ChooseFromListItemWidget(
-                onChoose: (ChooseItemListModel type) {
-
-                }, items: [ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment),ChooseItemListModel( id: 1, title: strings.apartment)]),
-
-            // ChooseFromListItemWidget(
-            //   radius: 4,
-            //   onChoose: (String type) {
-            //     print(type);
-            //   }, items: [strings.apartment,strings.villa,strings.apartment_complex,strings.duplex],),
-            20.ph,
+                radius: 20,
+                width: MediaQuery.of(context).size.width * 0.42,
+                onChoose: (ChooseItemListModel item) {
+                  if (item.id == 2) {
+                    // status = 'commercial';
+                  } else {
+                    // status = 'residential';
+                  }
+                },
+                items: [
+                  ChooseItemListModel(
+                    id: 1,
+                    title: strings.residential,
+                  ),
+                  ChooseItemListModel(id: 2, title: strings.commercial),
+                ]),
+             20.ph,
             Text(strings.price,
               style: titleSmall,
             ),
             StatefulBuilder(builder: (context,setState){
-              return Slider(
-                  activeColor:primaryColor,
-                  inactiveColor:Colors.grey.shade300,
-                  value: sliderValue,
-                  max: 30000,
-                  divisions: 5,
-                  label: context.strings.price_currency(
-                    HelperMethods.numberFormat(sliderValue.toInt()),
+              return Column(
+                children: [
+                  Slider(
+                      activeColor:primaryColor,
+                      inactiveColor:Colors.grey.shade300,
+                      value: sliderValue,
+                      max: 30000,
+                      divisions: 5,
+                      label: context.strings.price_currency(
+                        HelperMethods.numberFormat(sliderValue.toInt()),
+                      ),
+                      onChanged: (double value){
+                        setState((){
+                          sliderValue =value;
+                        });
+                      }),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: 16.paddingHoriz,
+                        child: Text(context.strings.price_currency(
+                                HelperMethods.numberFormat(sliderValue.toInt()),
+                                ),
+                          style: labelSmall.copyWith(
+                              color: Colors.grey
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  onChanged: (double value){
-                    setState((){
-                      sliderValue =value;
-                    });
-                  });
+                ],
+              );
             }),
+
             20.ph,
             Text(strings.bed_room,
               style: titleSmall,
@@ -115,18 +147,35 @@ class FilterRealEstateScreen extends BaseStatelessWidget {
               style: titleSmall,
             ),
             StatefulBuilder(builder: (context,setState){
-              return Slider(
-                  activeColor:primaryColor,
-                  inactiveColor:Colors.grey.shade300,
-                  value: sliderValue2,
-                  max: 3000,
-                  divisions: 5,
-                  label: '$sliderValue2 m',
-                  onChanged: (double value){
-                    setState((){
-                      sliderValue2 =value;
-                    });
-                  });
+              return Column(
+                children: [
+                  Slider(
+                      activeColor:primaryColor,
+                      inactiveColor:Colors.grey.shade300,
+                      value: sliderValue2,
+                      max: 30000,
+                      divisions: 5,
+                      label: '${sliderValue2} m',
+                      onChanged: (double value){
+                        setState((){
+                          sliderValue2 =value;
+                        });
+                      }),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: 16.paddingHoriz,
+                        child: Text('${sliderValue2} m',
+                          style: labelSmall.copyWith(
+                              color: Colors.grey
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
             }),
             40.ph,
             PrimaryOutlinesButtons(

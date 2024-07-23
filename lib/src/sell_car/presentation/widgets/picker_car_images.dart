@@ -65,7 +65,7 @@ class PickerCarImages extends BaseStatelessWidget {
         ),
         10.ph,
         PickerSubImages(
-          length: length!,
+          length: length??0,
           // initialImages: initialImages,
          // onEditCarImage: onEditCarImage,
           onImagesSelected: (files) {
@@ -129,7 +129,7 @@ class PickerSubImages extends StatelessWidget {
                 icon: Icons.add_photo_alternate_rounded,
                 //   imageUrl: (initialImages != null && initialImages!.isNotEmpty) ? initialImages?.first : null,
                 onImageSelected: (image) {
-                  if(length!=null){
+                  if(length!=null &&length!=0){
                       if(images.length<=length!){
                         images.add(image);
                         onImagesSelected?.call(images.sublist(1));
@@ -139,7 +139,8 @@ class PickerSubImages extends StatelessWidget {
                             context.strings.please_select_max_ten_image);
                         return;
                       }
-                    }else{
+                    }
+                  else{
                       images.add(image);
                       onImagesSelected?.call(images.sublist(1));
                       setSate(() {});

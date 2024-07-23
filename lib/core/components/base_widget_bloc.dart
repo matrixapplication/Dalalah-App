@@ -255,18 +255,18 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
                           Navigator.pop(context);
                           showOnlyMessage ? null : onSuccessDismissed();
                         },
-                        child: Text(
+                        style: ElevatedButton.styleFrom(
+                          primary: context.primaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
                           'حسنا',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: context.primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),

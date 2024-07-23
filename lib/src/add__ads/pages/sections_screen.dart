@@ -81,7 +81,7 @@ class AddYourAdPage extends BaseStatelessWidget {
                                 section: Section(
                                   title: strings.add_real_estate,
                                   image: AppImages.add_real_estate,
-                                  routeName: Routes.realEstatePage,
+                                  routeName: Routes.addRealEstatePage,
                                   width: double.infinity,
                                 ),
                                 index: 0,

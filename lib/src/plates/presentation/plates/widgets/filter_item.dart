@@ -51,7 +51,7 @@ class FilterItem extends BaseStatelessWidget {
                keyboardType: keyboardType,
                maxLength: 1,
                 isValidator: index == 0 ? true : false,
-                validator: index == 0 ? validator : null,
+                validator: index <= 3 ? validator : null,
               ),
             ),
           ),

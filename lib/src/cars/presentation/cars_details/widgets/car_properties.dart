@@ -90,6 +90,7 @@ class CarPropertyItem extends StatelessWidget {
                     color: selected == property ? context.primaryColor : null,
                     fontSize: 10,
                   ),
+                  maxLines: 2,
                   textAlign: TextAlign.center,
                   // overflow: TextOverflow.ellipsis,
                 ),

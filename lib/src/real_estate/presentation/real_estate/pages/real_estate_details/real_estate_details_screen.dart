@@ -4,6 +4,7 @@ import 'package:dalalah/src/map_picker/widgets/custom_google_map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../../../core/widgets/images/image_network.dart';
+import '../../../../../cars/presentation/cars_details/widgets/ad_numbering.dart';
 import '../../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../data/models/real_estate_model.dart';
 import '../../widgets/advantages_item.dart';
@@ -92,7 +93,7 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                             16.ph,
                             Row(
                               children: [
-                                ImageNetworkCircle(
+                                const ImageNetworkCircle(
                                   image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg/800px-Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg',
                                   size: 65,
                                 ),
@@ -107,6 +108,13 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                                     ),
                                     Text('صالح علي',
                                     style: bodyMedium,
+                                    ),
+                                    5.ph,
+                                    Text('رقم الترخيص: 123456',
+                                      style: bodySmall.copyWith(
+                                          color: Colors.grey,
+                                        fontSize: 12
+                                      ),
                                     ),
 
                                   ],
@@ -154,6 +162,7 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
 
                             if(realEstate.features !=null && realEstate.features!.isNotEmpty)
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(strings.advantages,
                                   style: bodyMedium,
@@ -176,6 +185,11 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                                 6.ph,
                               ],
                             ),
+                            AdNumbering(
+                              margin: EdgeInsets.zero,
+                              id: realEstate.id ?? 0,
+                            ),
+                            10.ph,
                             Text(strings.location,
                               style: bodyMedium,
                             ),

@@ -15,7 +15,7 @@ import 'core/widgets/base/splash_screen.dart';
 import 'src/main_index.dart';
 
 final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
-//now ios
+//now ios23/7
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

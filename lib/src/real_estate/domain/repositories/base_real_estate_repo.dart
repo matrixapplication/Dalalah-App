@@ -13,5 +13,5 @@ abstract class BaseRealEstateRepo {
   Future<RealEstatesModel> fetchRealEstates(AddRealEstateParams params);
 
 
-  Future<int> addRealEstate(AddRealEstateParams params);
+  Future<dynamic> addRealEstate(AddRealEstateParams params);
 }

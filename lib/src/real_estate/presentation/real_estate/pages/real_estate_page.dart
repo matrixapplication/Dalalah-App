@@ -6,7 +6,8 @@ import '../bloc/real_estate_bloc.dart';
 import 'real_estate_screen.dart';
 
 class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
-   RealEstatePage({Key? key}) : super(key: key);
+   final bool? showTitle;
+   RealEstatePage({Key? key,this.showTitle,}) : super(key: key);
 
 
    @override
@@ -27,8 +28,8 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
      // bloc.fetchRealEstates(AddRealEstateParams(
      //   type: 'sell',
      //   status: 'rent',
-     // ));
-     pushNamed(Routes.addRealEstatePage, );
+     // ));sssssssis
+     pushNamed(Routes.addRealEstatePage,);
    }
 
    @override
@@ -49,6 +50,6 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
 
   @override
   String? title(BuildContext context) {
-    return strings.real_estates;
+    return showTitle==false? '': strings.real_estates;
   }
 }

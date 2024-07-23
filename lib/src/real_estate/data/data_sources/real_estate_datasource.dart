@@ -26,7 +26,7 @@ abstract class  RealEstateDatasource{
 
   @GET('/get-properties')
   Future<ApiResponse<RealEstatesModel>> fetchRealEstates(
-      @Part(name: 'type') String type,
+      // @Part(name: 'type') String type,
       // @Part(name: 'prop_status') String status,
       );
 
@@ -34,7 +34,7 @@ abstract class  RealEstateDatasource{
 ///Add Real Estate
   @MultiPart()
   @POST('/store-property')
-  Future<ApiResponse<int>> addRealEstate(
+  Future<ApiResponse> addRealEstate(
     @Part(name: 'type') String type,
     @Part(name: 'prop_status') String status,
     @Part(name: 'category_id') int categoryId,

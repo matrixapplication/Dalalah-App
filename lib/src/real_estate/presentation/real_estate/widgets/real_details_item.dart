@@ -16,22 +16,19 @@ class RealDetailsItem extends BaseStatelessWidget {
       padding: 10.paddingVert,
       child: Row(
         children: [
-           Expanded(
-             child: Row(
-               children: [
-                 SvgPicture.asset(icon),
-                 12.pw,
-                 Text(title,
-                   style: bodyMedium,
-                 ),
-               ],
-             ),
+           Row(
+             children: [
+               SvgPicture.asset(icon),
+               12.pw,
+               Text(title,
+                 style: bodyMedium,
+               ),
+             ],
            ),
-           Expanded(
-            child: Text(text,
-              style: bodyMedium,
-            ),
-          ),
+           10.pw,
+           Text(text,
+             style: bodyMedium,
+           ),
         ],
       ),
     );
