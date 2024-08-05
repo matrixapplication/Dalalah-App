@@ -6,31 +6,24 @@ import '../../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../../core/resources/data_state.dart';
 import '../../../../../../core/routes/routes.dart';
 import '../../../../data/models/add_real_estate_params.dart';
+import '../../../../data/models/my_properties_response.dart';
 import '../../bloc/real_estate_bloc.dart';
-class RealEstateDetailsPage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
-  RealEstateDetailsPage({Key? key}) : super(key: key);
+class RealEstateDetailsPage extends BaseBlocWidget<DataSuccess<Property>, RealEstatePageCubit> {
+  RealEstateDetailsPage({Key? key,}) : super(key: key);
 
 
    @override
    void loadInitialData(BuildContext context) {
-
-     bloc.fetchRealEstates(
-         AddRealEstateParams(
-           type: 'sell',
-           status: 'rent',
-         )
-     );
+      bloc.fetchPropertyDetails(getArguments(context));
    }
-
-
 
    @override
    Widget? leading(BuildContext context) => 0.ph;
 
   @override
-  Widget buildWidget(BuildContext context, UnInitState state) {
+  Widget buildWidget(BuildContext context, DataSuccess<Property> state) {
    return RealEstateDetailsScreen(
-     realEstate: getArguments(context),
+     realEstate: state.data!,
    );
   }
 

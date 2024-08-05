@@ -5,6 +5,7 @@ import 'package:dalalah/src/auth/data/models/login_params.dart';
 import '../../../profile/data/models/profile_dto.dart';
 import '../../domain/repositories/base_auth_repo.dart';
 import '../data_sources/auth_datasource.dart';
+import '../models/login_real_estate_developer_params.dart';
 import '../models/register_params.dart';
 import '../models/send_otp_params.dart';
 import '../models/showroom_login_params.dart';
@@ -18,6 +19,11 @@ class AuthRepo extends BaseAuthRepo{
   @override
   Future<ProfileDto> loginAsUser(LoginParams params) async{
     final response = await apiProvider.loginAsUser(params);
+    return response.data!;
+  }
+  @override
+  Future<ProfileDto> loginAsRealEstateDeveloper(LoginRealEstateDeveloperParams params) async{
+    final response = await apiProvider.loginAsRealEstateDeveloper(params);
     return response.data!;
   }
 
@@ -52,6 +58,26 @@ class AuthRepo extends BaseAuthRepo{
       params.whatsapp ?? '',
       params.cityId ?? 0,
       params.logo!,
+    );
+    return response.message ?? '';
+  }
+ @override
+  Future<String> registerAsRealEstateDevelopers(RegisterParams params) async{
+    final response = await apiProvider.registerAsRealEstateDevelopers(
+      params.nameAr ?? '',
+      params.nameEn ?? '',
+      params.ownerNameAr ?? '',
+      params.ownerNameEn ?? '',
+      params.descriptionAr ?? '',
+      params.descriptionEn ?? '',
+      params.email ?? '',
+      params.password ?? '',
+      params.phone ?? '',
+      params.whatsapp ?? '',
+      params.cityId ?? 0,
+      params.logo!,
+      params.fcmToken??'',
+      params.licenseNumber??''
     );
     return response.message ?? '';
   }

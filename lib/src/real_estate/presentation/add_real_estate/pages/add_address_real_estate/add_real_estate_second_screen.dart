@@ -21,7 +21,6 @@ class AddRealStateSecondScreen extends BaseStatelessWidget {
 
   AddRealStateSecondScreen(  {super.key,required this.categoryName,this.onTapNext,required this.categoryDetailsDto,required this.citiesList,});
   LatLng? initialLocation;
-//getProfile
   int cityId = 0;
   String price='';
   String description='';

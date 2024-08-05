@@ -24,6 +24,7 @@ class VerifyAccountPage extends BaseBlocWidget<UnInitState, AuthCubit> {
       onResend: (){
         bloc.sendOtp(isResend: true);
       },
+      //pro
       onPinCode: (String code) {
         bloc.verifyOtp(code);
       },

@@ -1,4 +1,5 @@
 import '../../../../../../core/components/base_widget_bloc.dart';
+import '../../../../../../core/utils/navigator.dart';
 import '../../../../../main_index.dart';
 import '../../../../domain/entities/real_estate_args.dart';
 import '../../bloc/add_real_estate_bloc.dart';
@@ -19,10 +20,12 @@ class AddImageRealEstatePage
       onShare: (param) {
         args.addRealEstateParams.images = param.images;
         args.addRealEstateParams.cover = param.cover;
-
-        print('addRealEstateParams data ${args.addRealEstateParams.toJson().toString()}');
         bloc.addRealEstate(args.addRealEstateParams);
       },
     );
+  }
+  @override
+  void onSuccessDismissed() {
+    pushNamedAndRemoveUntil(Routes.navigationPages);
   }
 }

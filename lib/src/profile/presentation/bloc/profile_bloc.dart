@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dalalah/core/utils/helper_methods.dart';
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/payment/data/models/payment_status_dto.dart';
 import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -20,9 +21,10 @@ class ProfileBloc extends BaseCubit {
   ProfileBloc(this.usecase, this.paymentUseCase);
 
   ProfileDto? profileDto = ProfileDto();
-  fetchProfileData({bool isRefresh = true}) async {
+  fetchProfileData({bool isRefresh = true,}) async {
     emit(DataLoading());
     profileDto = await HelperMethods.getProfile();
+   bool isRealEstateDeveloper = await HelperMethods.isRealEstateDeveloper();
     Profile profile = Profile();
 
     try {
@@ -30,7 +32,13 @@ class ProfileBloc extends BaseCubit {
       if(isRefresh == false){
         profile = Profile.fromDto(profileDto ?? ProfileDto(name: 'Guest'));
       }else{
-        profile = await usecase.fetchProfileData();
+        if(isRealEstateDeveloper==true){
+          profile = await usecase.fetchProfileRealEstateDeveloper();
+
+        }else{
+          profile = await usecase.fetchProfileData();
+
+        }
       }
       profile.isHidePayment = paymentStatusDto.isHide;
       emit(DataSuccess<Profile>(profile));

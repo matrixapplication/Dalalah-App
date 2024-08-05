@@ -58,12 +58,14 @@ class AppLinkingService {
       print('appLinks route id path $id');
       print('appLinks uri $route');
       await pushNamed(route, arguments: int.parse(id));
+      //محتاج اربط لو في id  اجيب التفاصيل ب api جديد
     } on Exception catch (e) {
       print('appLinks goToRoute error $e');
     }
   }
 
   static String createDynamicLink(String route, {String? id}) {
+    print('ffff ${'${getLink()}/$route/$id'}');
     return '${getLink()}/$route/$id';
   }
 

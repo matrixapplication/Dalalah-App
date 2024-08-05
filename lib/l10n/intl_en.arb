@@ -479,8 +479,13 @@
   "add_images_max_ten_image": "(Maximum 10 images)",
    "advertiser": "Advertiser",
     "propertyType": "Property Type",
-    "propertyArea": "The Area"
+    "propertyArea": "The Area",
 
+  "real_estate_developers": "Real estate developers",
+  "real_estate_developer": "Real estate developer",
+  "license_number": "License number",
+    "must_be_10_numbers": "Must be 10 numbers",
+  "latest_properties": "Latest Real Estate"
 
 
 }

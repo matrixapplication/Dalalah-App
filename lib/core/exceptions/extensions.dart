@@ -23,7 +23,6 @@ extension AppResource on BuildContext {
   }
 
 
-
   String handleApiErrorMessage({required dynamic exception}) {
     String message = injector<ServicesLocator>().appContext.strings.something_went_wrong;
     String code = "0";

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../../profile/data/models/profile_dto.dart';
 import '../../../profile/domain/entities/profile.dart';
 import '../../data/models/login_params.dart';
+import '../../data/models/login_real_estate_developer_params.dart';
 import '../../data/models/register_params.dart';
 import '../../data/models/send_otp_params.dart';
 import '../../data/models/showroom_login_params.dart';
@@ -17,6 +18,11 @@ class AuthUseCase {
 
   Future<Profile> loginAsUser(LoginParams params) async {
     final data = await repository.loginAsUser(params);
+    await HelperMethods.saveProfile(data);
+    return Profile.fromDto(data);
+  }
+  Future<Profile> loginAsRealEstateDeveloper(LoginRealEstateDeveloperParams params) async {
+    final data = await repository.loginAsRealEstateDeveloper(params);
     await HelperMethods.saveProfile(data);
     return Profile.fromDto(data);
   }
@@ -35,6 +41,9 @@ class AuthUseCase {
 
   Future<String> registerAsShowroom(RegisterParams params) async{
     return await  repository.registerAsShowroom(params);
+  }
+  Future<String> registerAsRealEstateDevelopers(RegisterParams params) async{
+    return await  repository.registerAsRealEstateDevelopers(params);
   }
 
   Future<String> sendOtp(SendOTPParams params) async{

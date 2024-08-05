@@ -1,10 +1,13 @@
 
+import 'dart:io';
+
 import 'package:dalalah/src/sell_car/data/repositories/add_car_repo.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'core/routes/app_links_service.dart';
 import 'core/themes/light_theme.dart';
@@ -15,7 +18,7 @@ import 'core/widgets/base/splash_screen.dart';
 import 'src/main_index.dart';
 
 final GlobalKey<NavigatorState> navigatorMainKey = GlobalKey<NavigatorState>();
-//now ios23/7
+//now ios23/7initDeepLinks
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -44,7 +47,8 @@ class MyApp extends StatelessWidget {
   final String token;
 
   const MyApp({super.key, required this.token});
-//push
+
+//push ios 5/8/2024
   @override
   Widget build(BuildContext context) {
     FirebaseNotification firebase = FirebaseNotification();

@@ -47,7 +47,8 @@ class SearchRealEstate extends StatelessWidget {
           ),
           InkWell(
             onTap: (){
-              pushNamed(Routes.filterRealEstatePage);
+              // pushNamed(Routes.filterRealEstatePage);
+              Navigator.pushReplacementNamed(context, Routes.filterRealEstatePage);
             },
             child: Container(
               decoration: Decorations.kDecorationRadius(radius: 8,

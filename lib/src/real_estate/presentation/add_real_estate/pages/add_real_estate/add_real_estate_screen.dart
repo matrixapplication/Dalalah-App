@@ -1,18 +1,10 @@
-import 'package:dalalah/core/utils/navigator.dart';
-import 'package:dalalah/core/widgets/buttons/stacked_button.dart';
-import 'package:dalalah/core/widgets/text-field/custom_text_field.dart';
 import 'package:dalalah/src/main_index.dart';
-import '../../../../../../../core/widgets/buttons/primary_outlined_buttons.dart';
-import '../../../../../../../core/widgets/choose_widget/custom_choose_widget.dart';
-import '../../../../../../../core/widgets/custom_counter_widget.dart';
 import '../../../../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../../../../../core/widgets/radio/radio_grid_list.dart';
-import '../../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../../core/widgets/buttons/stack_button.dart';
 import '../../../../../../core/widgets/choose_from_list_widget.dart';
 import '../../../../data/models/add_real_estate_params.dart';
 import '../../../../data/models/category_details_dto.dart';
-import '../../../../data/models/real_estate_type_dto.dart';
 import '../../bloc/real_estate_categories_state.dart';
 import '../../widgets/input_widget.dart';
 
@@ -21,7 +13,6 @@ class AddRealStateScreen extends BaseStatelessWidget {
   final StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetails;
   final Function(int id)? onGetDetailsType;
   final Function(AddRealEstateParams params, String categoryName)? onTapNext;
-
   AddRealStateScreen({
     super.key,
     this.onTapNext,
@@ -141,13 +132,10 @@ class AddRealStateScreen extends BaseStatelessWidget {
                                 if (detailsList
                                     .map((w) => w.id == e.id)
                                     .isNotEmpty) {
-                                  detailsList
-                                      .removeWhere((w) => w.id == e.id);
-                                  detailsList.add(DetailsItemModelDto(
-                                      id: e.id, title: val));
+                                  detailsList.removeWhere((w) => w.id == e.id);
+                                  detailsList.add(DetailsItemModelDto(id: e.id, title: val));
                                 } else {
-                                  detailsList.add(DetailsItemModelDto(
-                                      id: e.id, title: val));
+                                  detailsList.add(DetailsItemModelDto(id: e.id, title: val));
                                 }
                               },
                             ),
@@ -165,7 +153,8 @@ class AddRealStateScreen extends BaseStatelessWidget {
                                 ),
                                 SizedBox(
                                   width: double.infinity,
-                                  child: DropDownField(
+                                  child:
+                                  DropDownField(
                                     hint: '',
                                     items: e.options!
                                         .map((a) => DropDownItem(

@@ -22,7 +22,7 @@ class AddYourAdPage extends BaseStatelessWidget {
             future: HelperMethods.isAuth(),
             builder: (context, snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
-                  ? LoadingView()
+                  ? const LoadingView()
                   : snapshot.data != true
                       ? ErrorPlaceHolderWidget(
                           exception: ApiException(
@@ -75,18 +75,18 @@ class AddYourAdPage extends BaseStatelessWidget {
                             //     ) : 0.ph;
                             //   }
                             // ),
-                            20.ph,
-                            Expanded(
-                              child: _SectionsItem(
-                                section: Section(
-                                  title: strings.add_real_estate,
-                                  image: AppImages.add_real_estate,
-                                  routeName: Routes.addRealEstatePage,
-                                  width: double.infinity,
-                                ),
-                                index: 0,
-                              ),
-                            ),
+                            // 20.ph,
+                            // Expanded(
+                            //   child: _SectionsItem(
+                            //     section: Section(
+                            //       title: strings.add_real_estate,
+                            //       image: AppImages.add_real_estate,
+                            //       routeName: Routes.addRealEstatePage,
+                            //       width: double.infinity,
+                            //     ),
+                            //     index: 0,
+                            //   ),
+                            // ),
                           ],
                         );
             }),

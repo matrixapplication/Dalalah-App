@@ -20,6 +20,11 @@ class ProfileRepo extends BaseProfileRepo{
     final response = await apiProvider.fetchProfileData();
     return response.data!;
   }
+  @override
+  Future<ProfileDto> fetchProfileRealEstateDeveloper() async{
+    final response = await apiProvider.fetchProfileRealEstateDeveloper();
+    return response.data!;
+  }
 
   @override
   Future<String> deleteProfileData(String modelRole) async{
@@ -49,10 +54,12 @@ class ProfileRepo extends BaseProfileRepo{
     return await apiProvider.editProfileDataShowroom(params);
   }
 
+
   @override
   Future<ApiResponse<ProfileDto>> editProfileImageShowroom(File image) async{
     return await apiProvider.editProfileImageShowroom(image);
   }
+
 
   @override
   Future<ApiResponse<ProfileDto>> editLogoShowroom(File image) async{
@@ -72,5 +79,12 @@ class ProfileRepo extends BaseProfileRepo{
   @override
   Future<ApiResponse<ProfileDto>> editCommercialImageShowroom(File image) async{
     return await apiProvider.editCommercialImageShowroom(image);
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileDataRealEstateDeveloper(RegisterParams params) async{
+    return await apiProvider.editProfileDataRealEstateDeveloper(
+        params
+    );
   }
 }

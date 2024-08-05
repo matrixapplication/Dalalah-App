@@ -20,6 +20,8 @@ abstract class  ProfileDataSource{
 
   @GET('/get-user')
   Future<ApiResponse<ProfileDto>> fetchProfileData();
+  @GET('/prop-developer/profile')
+  Future<ApiResponse<ProfileDto>> fetchProfileRealEstateDeveloper();
 
   @POST('/deleteAccount')
   Future<ApiResponse<String>> deleteProfileData(@Query('model_role') String modelRole);
@@ -52,4 +54,9 @@ abstract class  ProfileDataSource{
   @POST('/edit-showroom')
   Future<ApiResponse<ProfileDto>> editCommercialImageShowroom(@Part(name: 'commercial') File image);
 
+
+  @POST('/prop-developer/update-profile')
+  Future<ApiResponse<ProfileDto>> editProfileDataRealEstateDeveloper(
+      @Body() RegisterParams params
+      );
 }

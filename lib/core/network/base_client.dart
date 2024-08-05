@@ -5,6 +5,7 @@ import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/installment/domain/entities/roles.dart';
 import 'package:dalalah/src/profile/domain/entities/profile.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../src/profile/data/models/profile_dto.dart';
 import '../di/injector.dart';
 import '../exceptions/api_exception.dart';
@@ -22,6 +23,14 @@ class ClientCreator {
     if (interceptor != null) {
       dio2.interceptors.add(interceptor!);
     }
+    //onRespons
+    dio2.interceptors.add(
+      PrettyDioLogger(
+        requestBody: true,
+        requestHeader: true,
+        responseHeader: true,
+      ),
+    );
     return dio2;
   }
 }
@@ -52,19 +61,19 @@ class HeaderInterceptor extends Interceptor {
     options.headers[keyLanguage] = injector<ServicesLocator>().languageCode.toString();
     options.headers[keyRole] = params.role;
     // options.headers['platform'] = Platform.isAndroid ? 'Android' : 'IOS';
-    print('-----------------------------------------------------------------------------');
-
+    // print('-----------------------------------------------------------------------------');
+    //
     // log('body: ${options.data}');
-    if(options.data!=null){
-      try{
-        logFormData(options.data);
-      }catch(e){
-
-      }
-    }
-    log('headers: ${options.headers}');
-    log('method: ${options.method}');
-    log('queryParameters: ${options.queryParameters}');
+    // if(options.data!=null){
+    //   try{
+    //     logFormData(options.data);
+    //   }catch(e){
+    //
+    //   }
+    // }
+    // log('headers: ${options.headers}');
+    // log('method: ${options.method}');
+    // log('queryParameters: ${options.queryParameters}');
     super.onRequest(options, handler);
   }
 
@@ -98,7 +107,7 @@ class HeaderInterceptor extends Interceptor {
     final message = data.containsKey('message') ? data['message'] : "Error";
     final status = data.containsKey('status') ? data['status'] : "Error";
     final code = data.containsKey('code') ? response.data['code'] : "E";
-    print('onRespons ${response.toString()} => ${code != 'Ok'}');
+    // print('onRespons ${response.toString()} => ${code != 'Ok'}');
     if (status == false) {
       throw ApiException(message, int.parse(code.toString()));
     }

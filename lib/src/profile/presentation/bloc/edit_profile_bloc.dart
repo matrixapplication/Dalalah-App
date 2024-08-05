@@ -23,7 +23,14 @@ class EditProfileBloc extends BaseCubit {
 
   editProfileData(RegisterParams params) async {
     bool isShowroom = await HelperMethods.isAdmin();
-    executeEmitterListener(() => isShowroom ? usecase.editProfileDataShowroom(params): usecase.editProfileData(params));
+    bool isRealEstateDeveloper = await HelperMethods.isRealEstateDeveloper();
+    if(isRealEstateDeveloper==true){
+      executeEmitterListener(() => usecase.editProfileDataRealEstateDeveloper(params));
+    }else if(isShowroom==true){
+      executeEmitterListener(() => usecase.editProfileDataShowroom(params));
+    }else{
+      executeEmitterListener(() =>usecase.editProfileData(params));
+    }
   }
 
   editProfileImage(File file) async {

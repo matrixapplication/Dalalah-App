@@ -256,7 +256,7 @@ class HelperMethods {
     try {
       ProfileDto? profile = await getProfile();
       if (profile?.role == null || profile!.role!.isEmpty) return false;
-      return profile.role != Roles.USER;
+      return profile.role == Roles.SHOWROOM;
     } on Exception catch (e) {
       // print('profile?.token ${e.toString()}');
       return false;
@@ -264,11 +264,22 @@ class HelperMethods {
   }
 
 
+
   static Future<bool> isUser() async {
     try {
       ProfileDto? profile = await getProfile();
       if (profile?.role == null || profile!.role!.isEmpty) return false;
       return profile.role == Roles.USER;
+    } on Exception catch (e) {
+      // print('profile?.token ${e.toString()}');
+      return false;
+    }
+  }
+  static Future<bool> isRealEstateDeveloper() async {
+    try {
+      ProfileDto? profile = await getProfile();
+      if (profile?.role == null || profile!.role!.isEmpty) return false;
+      return profile.role == Roles.RealEstateDeveloper;
     } on Exception catch (e) {
       // print('profile?.token ${e.toString()}');
       return false;

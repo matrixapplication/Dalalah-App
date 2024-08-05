@@ -21,7 +21,8 @@ class ShowroomsPage extends BaseBlocWidget<DataSuccess<List<Showroom>>, Showroom
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Showroom>> state) {
-    return PaginationWidget(
+    return
+      PaginationWidget(
       refreshController: controller,
       onRefresh: () {
         loadInitialData(context);

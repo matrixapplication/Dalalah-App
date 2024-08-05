@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/components/base_stateless_widget.dart';
+import '../../../../../core/widgets/images/image_network.dart';
 
 class RealDetailsItem extends BaseStatelessWidget {
    RealDetailsItem({super.key,required this.icon,required this.title, required this.text,  });
@@ -18,7 +19,10 @@ class RealDetailsItem extends BaseStatelessWidget {
         children: [
            Row(
              children: [
-               SvgPicture.asset(icon),
+               ImageNetworkCircle(
+                 image:icon,
+                 size: 20,
+               ),
                12.pw,
                Text(title,
                  style: bodyMedium,

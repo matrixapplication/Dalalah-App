@@ -36,7 +36,7 @@ class EditProfileScreen extends BaseStatelessWidget {
   int cityId = 0;
 
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  File? imageFile;
   @override
   Widget build(BuildContext context) {
     _initData();
@@ -52,7 +52,10 @@ class EditProfileScreen extends BaseStatelessWidget {
               EditProfileImage(
               image: profile.image ?? '',
                 onSelectImage: (file){
+                if(profile.role != Roles.REALESTATEDEVELOPERS){
                   onEditImage(file);
+                  imageFile=file;
+                }
                 },
               ),
               if(profile.role == Roles.USER)
@@ -167,7 +170,7 @@ class EditProfileScreen extends BaseStatelessWidget {
       onEdit(
         RegisterParams(
           name: fullNameController.text,
-          ownerNameAr: ownerNameEnController.text,
+          ownerNameAr: ownerNameArController.text,
           ownerNameEn: ownerNameEnController.text,
           nameAr: nameArController.text,
           nameEn: nameEnController.text,
@@ -181,6 +184,7 @@ class EditProfileScreen extends BaseStatelessWidget {
           password: passwordController.text,
           whatsapp: whatsAppController.text,
           cityId: cityId,
+          logo: profile.role == Roles.REALESTATEDEVELOPERS?imageFile:null
         ),
       );
     }

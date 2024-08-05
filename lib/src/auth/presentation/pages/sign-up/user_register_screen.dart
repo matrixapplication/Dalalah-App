@@ -19,14 +19,14 @@ import '../../widgets/showroom_register_types.dart';
 
 class UserRegisterScreen extends BaseStatelessWidget {
   final List<City> cities;
-  final bool isShowroom;
+  final String registerType;
   final Function(RegisterParams)? onRegister;
 
   UserRegisterScreen(
       {Key? key,
       this.onRegister,
       required this.cities,
-      this.isShowroom = false})
+      this.registerType = Roles.USER})
       : super(key: key);
 
   TextEditingController fullNameController = TextEditingController();
@@ -38,6 +38,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
   TextEditingController descriptionArController = TextEditingController();
   TextEditingController descriptionEnController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController licenseNumberController = TextEditingController();
   TextEditingController whatsappController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
@@ -61,19 +62,19 @@ class UserRegisterScreen extends BaseStatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AuthTextField(
-              hint: isShowroom ? strings.name_ar : strings.full_name,
+              hint: registerType!=Roles.USER ? strings.name_ar : strings.full_name,
               prefixIcon: AppIcons.user,
               controller:
-              isShowroom ? nameArController : fullNameController,
+              registerType!=Roles.USER ? nameArController : fullNameController,
             ),
 
-            if (isShowroom)
+            if (registerType!=Roles.USER)
               AuthTextField(
                 hint: strings.name_en,
                 prefixIcon: AppIcons.user,
                 controller: nameEnController,
               ),
-            if (isShowroom)
+            if (registerType!=Roles.USER)
               Column(
                 children: [
                   AuthTextField(
@@ -101,10 +102,12 @@ class UserRegisterScreen extends BaseStatelessWidget {
 
             AuthTextField(
               hint: strings.email,
+              keyboardType: TextInputType.emailAddress,
               prefixIcon: AppIcons.email,
               controller: emailController,
               validator: (phone) => Validation.validateEmail(phone ?? ''),
             ),
+
             AuthTextField(
               hint: context.strings.phone_number,
               prefixIcon: AppIcons.smartphone,
@@ -120,6 +123,15 @@ class UserRegisterScreen extends BaseStatelessWidget {
               controller: whatsappController,
               isColor: false,
               validator: (phone) => Validation.validatePhone(phone ?? ''),
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
+            if(registerType==Roles.REALESTATEDEVELOPERS)
+            AuthTextField(
+              hint: context.strings.license_number,
+              prefixIcon: AppIcons.id_card,
+              controller: licenseNumberController,
+              keyboardType: TextInputType.number,
+              validator: (phone) => Validation.validateOnlyNumbers(phone ?? ''),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             DropDownField(
@@ -143,14 +155,14 @@ class UserRegisterScreen extends BaseStatelessWidget {
               validator: (password) =>
                   Validation.validatePassword(password ?? ''),
             ),
-            if (isShowroom)
+            if (registerType==Roles.SHOWROOM)
               ShowroomRegisterTypes(
                 onChange: (value) {
                   type = value;
                 },
               ),
 
-            if (isShowroom)
+            if (registerType!=Roles.USER)
               EditProfileImage(
                 image: '',
                 onSelectImage: (file) {
@@ -225,13 +237,13 @@ class UserRegisterScreen extends BaseStatelessWidget {
         SnackBarManager.showErrorSnackBar(strings.please_agree_to_terms_and_conditions);
         return;
       }
-      if (isShowroom && file.path.isEmpty) {
+      if (registerType==Roles.SHOWROOM && file.path.isEmpty) {
         SnackBarManager.showErrorSnackBar(strings.please_upload_logo);
         return;
       }
       onRegister!(
         RegisterParams(
-          type: isShowroom ? type : '',
+          type: registerType==Roles.SHOWROOM ? type : '',
           name: fullNameController.text,
           ownerNameAr: ownerNameArController.text,
           ownerNameEn: ownerNameEnController.text,
@@ -247,6 +259,7 @@ class UserRegisterScreen extends BaseStatelessWidget {
           whatsapp: whatsappController.text,
           logo: file,
           fcmToken: await FirebaseNotification().getToken(),
+          licenseNumber: licenseNumberController.text
         ),
       );
     }

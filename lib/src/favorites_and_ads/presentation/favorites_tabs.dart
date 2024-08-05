@@ -1,4 +1,6 @@
 
+import 'package:dalalah/src/installment/domain/entities/roles.dart';
+
 import '../../../core/widgets/scaffold/tab_bar_widget.dart';
 import '../../../core/widgets/tabview/tabbar_line_widget.dart';
 import '../../main_index.dart';
@@ -7,6 +9,7 @@ import 'favorites/pages/favorites_cars_page.dart';
 import 'favorites/pages/favorites_plates_page.dart';
 import 'my_ads/pages/my_cars_page.dart';
 import 'my_ads/pages/my_plates_page.dart';
+import 'my_ads/pages/my_real_estates_page.dart';
 
 class FavoritesAndAdsTabs
     extends BaseStatelessWidget {
@@ -19,17 +22,16 @@ class FavoritesAndAdsTabs
     bool isAds = params?.isAds ?? false;
     return AppScaffold(
       title: isAds ? context.strings.my_ads : context.strings.favorites,
-      body: TabBarCustomWidget(
+      body:
+        params?.type ==Roles.REALESTATEDEVELOPERS?
+        MyRealEstatesPage(isHidePayment: true,):
+      TabBarCustomWidget(
      //   backgroundColor: context.scaffoldBackgroundColor,
         tabs: [
           TabItemModel(label: context.strings.cars, page: isAds ? MyCarsPage(isHidePayment: params?.isShowPayment ?? false) : FavoriteCarsPage()),
          // if(isAds && !(params!.isUser))
-          TabItemModel(label: context.strings.plates, page:  isAds ? MyPlatesPage(isHidePayment: params?.isShowPayment ?? false) : FavoritePlatesPage()),
-          TabItemModel(label: context.strings.buildings, page: Container(
-            color: context.scaffoldBackgroundColor,
-            alignment: Alignment.center,
-            child: Text(strings.soon),
-          ),),
+            TabItemModel(label: context.strings.plates, page:  isAds ? MyPlatesPage(isHidePayment: params?.isShowPayment ?? false) : FavoritePlatesPage()),
+
         ],
       ),
     );

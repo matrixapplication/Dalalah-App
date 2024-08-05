@@ -10,6 +10,9 @@ import '../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
 import '../../../plates/data/models/plate_filter_params.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/domain/use_cases/plates_usecase.dart';
+import '../../../real_estate/data/models/real_estate_model.dart';
+import '../../../real_estate/data/models/real_estate_params.dart';
+import '../../../real_estate/domain/use_cases/real_estate_usecase.dart';
 import '../../data/models/car_filter_params.dart';
 import '../../domain/entities/brand.dart';
 import '../../domain/entities/car.dart';
@@ -25,13 +28,15 @@ class HomeCubit extends BaseCubit {
   final HomeUseCase usecase;
   final FavoritesUseCase favoritesUseCase;
   final PlatesUseCase platesUseCase;
+  final RealEstateUseCase realEstateUseCase;
 
-  HomeCubit(this.usecase, this.favoritesUseCase, this.platesUseCase);
+  HomeCubit(this.usecase, this.favoritesUseCase, this.platesUseCase, this.realEstateUseCase);
 
   StreamStateInitial<List<Slide>?> slidesStream = StreamStateInitial();
   StreamStateInitial<List<Brand>?> brandsStream = StreamStateInitial();
   StreamStateInitial<List<Car>?> yourCarsStream = StreamStateInitial();
   StreamStateInitial<List<Plate>?> otherCarsStream = StreamStateInitial();
+  StreamStateInitial<RealEstatesModel?> realEstatesStream = StreamStateInitial();
 
 
   fetchInitialData() async {
@@ -51,7 +56,8 @@ class HomeCubit extends BaseCubit {
     print('isUser $isGlobalUser');
     print('useRole $globalUseRole');
     await fetchYourCars();
-   await fetchPlates();
+    await fetchPlates();
+    await fetchRealEstates();
 
   }
 
@@ -117,4 +123,16 @@ class HomeCubit extends BaseCubit {
     final data=  await usecase.fetchCars(CarFilterParams(search: search));
     return data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
   }
+  fetchRealEstates() async {
+    realEstatesStream.setData(null);
+    try {
+      RealEstateParams params =RealEstateParams();
+      final response = await realEstateUseCase.fetchRealEstates(params);
+      realEstatesStream.setData(response);
+    } catch (e) {
+      realEstatesStream.setError(e);
+      // rethrow;
+    }
+  }
+
 }

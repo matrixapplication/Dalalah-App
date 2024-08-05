@@ -2,10 +2,12 @@ import '../../../../core/routes/app_links_service.dart';
 import '../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../main_index.dart';
 import '../../../plates/domain/entities/plate.dart';
+import '../../../real_estate/data/models/real_estate_model.dart';
 import '../../domain/entities/brand.dart';
 import '../../domain/entities/car.dart';
 import '../../domain/entities/slide.dart';
 import '../widgets/plates_list.dart';
+import '../widgets/real_estates_list.dart';
 import '../widgets/search_home.dart';
 import '../../../add__ads/widgets/ads_types_list.dart';
 import '../widgets/slider_widget.dart';
@@ -16,11 +18,12 @@ class HomeScreen extends BaseStatelessWidget {
   final StreamStateInitial<List<Brand>?> brandsStream;
   final StreamStateInitial<List<Car>?> yourCarsStream;
   final StreamStateInitial<List<Plate>?> platesStream;
+  final StreamStateInitial<RealEstatesModel?> realEstatesStream;
   final Function(int)? onFavoriteCar;
   final Function(int)? onFavoritePlate;
   final Future<List<Car>>? Function(String)? onSearch;
   final Function(int)? onToggleFavorite;
-  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.platesStream, this.onFavoriteCar, this.onFavoritePlate, this.onSearch, this.onToggleFavorite}) : super(key: key);
+  HomeScreen({Key? key, required this.slidesStream, required this.brandsStream, required this.yourCarsStream, required this.platesStream, this.onFavoriteCar, this.onFavoritePlate, this.onSearch, this.onToggleFavorite,required this.realEstatesStream, }) : super(key: key);
 
   ScrollController scrollController = ScrollController();
   @override
@@ -40,7 +43,7 @@ class HomeScreen extends BaseStatelessWidget {
             slidesStream: slidesStream,
           ),
           25.ph,
-          AdTypesList(),
+          const AdTypesList(),
           Container(
             color: context.cardColor,
             child: SingleChildScrollView(
@@ -64,6 +67,14 @@ class HomeScreen extends BaseStatelessWidget {
                     platesStream: platesStream,
                     onFavoritePlate: (id) async => await onFavoritePlate!(id),
                   ),
+                  // RowSeeAllText(
+                  //   routeName: Routes.carsPage,
+                  //   title: context.strings.latest_properties,
+                  // ),
+                  // RealEstatesList(
+                  //   realEstatesStream: realEstatesStream,
+                  //   onFavoritePlate: (id) async => await onFavoritePlate!(id),
+                  // ),
                 ],
               )
             ),

@@ -13,7 +13,7 @@ class _FavoritesDatasource implements FavoritesDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalalah.co/api';
+    baseUrl ??= 'https://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -184,6 +184,41 @@ class _FavoritesDatasource implements FavoritesDatasource {
           ? json
               .map<PlateDto>(
                   (i) => PlateDto.fromJson(i as Map<String, dynamic>))
+              .toList()
+          : List.empty(),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<List<Property>>> fetchMyRealEstate(int page) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<List<Property>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/prop-developer/properties',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<List<Property>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json
+              .map<Property>(
+                  (i) => Property.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );

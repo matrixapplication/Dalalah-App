@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import '../../../home/domain/entities/car.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../data/models/add_to_favorite_params.dart';
+import '../../../real_estate/data/models/my_properties_response.dart';
 import '../repositories/base_favorites_repo.dart';
 
 @Injectable()
@@ -39,5 +40,10 @@ class FavoritesUseCase {
   Future<List<Plate>> fetchFavoritePlates(int page) async {
     final data = (await repository.fetchFavoritePlates(page));
     return data.data!.map((e) => Plate.fromDto(e)).toList();
+  }
+
+  Future<ApiResponse<List<Property>>> fetchMyRealEstate(int page) async {
+    final data = (await repository.fetchMyRealEstate(page));
+    return data;
   }
 }

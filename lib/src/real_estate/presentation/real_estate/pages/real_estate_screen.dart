@@ -13,19 +13,26 @@ import '../../../../../core/widgets/tabview/custom_tabbar_widget.dart';
 import '../../../../home/presentation/widgets/filter_home.dart';
 import '../../../data/models/category_details_dto.dart';
 import '../../../data/models/real_estate_model.dart';
+import '../../../data/models/real_estate_params.dart';
 import '../../../data/models/real_estate_type_dto.dart';
 import '../../../domain/entities/real_estate.dart';
 import '../widgets/custom_real_estate_list.dart';
+import '../widgets/custom_real_estates_map.dart';
 import '../widgets/search_rael_estate.dart';
 
 class RealEstateScreen extends BaseStatelessWidget {
   final StreamStateInitial<List<RealEstateCategoryDto>?> realEstateCategoriesList;
   final StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetails;
   final Function(int id)? onGetDetailsType;
+  final Function(RealEstateParams params)? onTapGetRealEstates;
   final StreamStateInitial<RealEstatesModel?>  realEstatesData;
-  RealEstateScreen( {Key? key,  required this.realEstatesData,required this.realEstateCategoriesList, required this.categoriesDetails, this.onGetDetailsType,}) : super(key: key);
+  RealEstateScreen({Key? key,  this.onTapGetRealEstates,  required this.realEstatesData,required this.realEstateCategoriesList, required this.categoriesDetails, this.onGetDetailsType,}) : super(key: key);
   String categoryName='';
   int categoryId=0;
+  bool sortDesc=true;
+  RealEstateParams params =RealEstateParams();
+  List<DetailsItemModel<int>> detailsIds=[];
+  List<DetailsItemModel<int>> detailsValues=[];
   @override
   Widget build(BuildContext context) {
     String filterOrder = FilterOrderTypes.asc;
@@ -51,11 +58,11 @@ class RealEstateScreen extends BaseStatelessWidget {
                         SizedBox(
                           width: 100,
                           child: DropDownField(
-                            valueId: 1,
-                            items: typeList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                            hint: typeList(context)[0].title??'',
+                            items: typeList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString(),value: e.value)).toList(),
                             onChanged: (item) {
-                              // brandId = int.parse(item?.id ?? '0');
-                              // onFetchBrandModels?.call(brandId);
+                              params.type=item?.value??'';
+                              onTapGetRealEstates!(params);
                             },
                           ),
                         ),
@@ -63,11 +70,11 @@ class RealEstateScreen extends BaseStatelessWidget {
                         SizedBox(
                           width: 100,
                           child: DropDownField(
-                            valueId: 1,
-                            items: statusList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString())).toList(),
+                            hint: statusList(context)[0].title??'',
+                            items: statusList(context).map((e) => DropDownItem(id: e.id.toString(), title: e.title.toString(),value: e.value)).toList(),
                             onChanged: (item) {
-                              // brandId = int.parse(item?.id ?? '0');
-                              // onFetchBrandModels?.call(brandId);
+                              params.propStatus=item?.value??'';
+                              onTapGetRealEstates!(params);
                             },
                           ),
                         ),
@@ -86,6 +93,8 @@ class RealEstateScreen extends BaseStatelessWidget {
                                     onGetDetailsType!(int.parse(item?.id??''));
                                     categoryId=int.parse(item?.id??'');
                                     categoryName=item?.title??'';
+                                    params.categoryId=categoryId;
+                                    onTapGetRealEstates!(params);
                                   },
                                 ),
                               );
@@ -104,7 +113,7 @@ class RealEstateScreen extends BaseStatelessWidget {
                                 child: Row(
                                   children: [
                                     ...categoriesDetails.data!.details!.map((e) {
-                                      if(e.type!='input'){
+                                      if(e.type=='dropdown'){
                                         return Padding(
                                           padding: 3.paddingHoriz,
                                           child: SizedBox(
@@ -113,8 +122,20 @@ class RealEstateScreen extends BaseStatelessWidget {
                                               hint: e.name??'',
                                               items: e.options?.map((a) => DropDownItem(id: a.id.toString(), title: a.name?.toString()??'')).toList()??[],
                                               onChanged: (item) {
-                                                // brandId = int.parse(item?.id ?? '0');
-                                                // onFetchBrandModels?.call(brandId);
+                                                var idData =DetailsItemModel(id: e.id??0, value: e.id??0 );
+                                                var stringData =DetailsItemModel(id: e.id??0, value: int.parse(item?.id??'0'));
+                                                if(detailsIds.where((element) => element.id==e.id).isNotEmpty){
+                                                  detailsIds.removeWhere((element) => element.id==e.id);
+                                                  detailsValues.removeWhere((element) => element.id==e.id);
+                                                  detailsValues.add(stringData);
+                                                  detailsIds.add(idData);
+                                                }else{
+                                                  detailsValues.add(stringData);
+                                                  detailsIds.add(idData);
+                                                }
+                                                params.detailsIds=detailsIds.map((e) => e.value).toList();
+                                                params.detailsValues=detailsValues.map((e) => e.value.toString()).toList();
+                                                onTapGetRealEstates!(params);
                                               },
                                             ),
                                           ),
@@ -136,13 +157,27 @@ class RealEstateScreen extends BaseStatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          '58 عقار',
-                          style: context.textTheme.displaySmall!.copyWith(
-                            color: AppColors.grey_95,
-                            fontSize: 16,
-                          ),
-                        ),
+                        child:
+                  StreamBuilder<RealEstatesModel?>(
+                      stream: realEstatesData.stream,
+                      builder: (context, snapshot) {
+                        final data = snapshot.data?.properties??[];
+                        if(snapshot.connectionState == ConnectionState.waiting
+                            ||data==null ||data.isEmpty){
+                          return const LoadingView();
+                        }else{
+
+                          return
+                            Text(
+                              '${data.length} ${strings.real_estates}',
+                              style: context.textTheme.displaySmall!.copyWith(
+                                color: AppColors.grey_95,
+                                fontSize: 16,
+                              ),
+                            );
+                        }
+                      })
+
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -165,6 +200,14 @@ class RealEstateScreen extends BaseStatelessWidget {
                                     ? FilterOrderTypes.desc
                                     : FilterOrderTypes.asc;
                                 setState(() {
+                                    if(sortDesc==true){
+                                      params.sortOrder='asc';
+                                      sortDesc=false;
+                                    }else{
+                                      params.sortOrder='desc';
+                                      sortDesc=true;
+                                    }
+                                  onTapGetRealEstates!(params);
                                   // onFilterOrder(filterOrder);
                                 });
                               },
@@ -182,10 +225,10 @@ class RealEstateScreen extends BaseStatelessWidget {
                           label: 'القوائم',
                           page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
                         ),
-                        TabItemModel(
-                          label: 'الخريطة',
-                          page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
-                        ),
+                        // TabItemModel(
+                        //   label: 'الخريطة',
+                        //   page: CustomRealEstatesMapWidget(realEstatesData: realEstatesData,),
+                        // ),
                       ],
                     ),
                   ),
@@ -198,12 +241,17 @@ class RealEstateScreen extends BaseStatelessWidget {
   }
 
   List<DropDownItem> typeList (context) => [
-     DropDownItem(id: '1', title: strings.to_sell),
-     DropDownItem(id: '2', title: strings.for_rent),
+     DropDownItem(id: '1', title: strings.to_sell,value: 'sell'),
+     DropDownItem(id: '2', title: strings.for_rent,value: 'rent'),
   ];
   List<DropDownItem> statusList (context) => [
-    DropDownItem(id: '1', title: strings.residential),
-    DropDownItem(id: '2', title: strings.commercial),
+    DropDownItem(id: '1', title: strings.residential,value: 'residential'),
+    DropDownItem(id: '2', title: strings.commercial,value: 'commercial'),
   ];
 
+}
+class DetailsItemModel<T>{
+  final int id ;
+  final T value ;
+  DetailsItemModel({required this.id, required this.value});
 }

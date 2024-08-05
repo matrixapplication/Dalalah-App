@@ -24,6 +24,8 @@ class RegisterParams {
   final File? coverImage;
   final File? commercial;
    String? fcmToken;
+  final String? licenseNumber;
+
 
   RegisterParams({
     this.type,
@@ -49,6 +51,9 @@ class RegisterParams {
     this.coverImage,
     this.commercial,
     this.fcmToken,
+    this.licenseNumber,
+
+
   });
 
   // For User Registration
@@ -70,6 +75,7 @@ class RegisterParams {
       'city_id': cityId ?? '',
       'whatsapp': whatsapp ?? '',
       'fcm_token': fcmToken ?? '',
+      'license_number': licenseNumber ?? '',
     };
 
     // remove null values from map

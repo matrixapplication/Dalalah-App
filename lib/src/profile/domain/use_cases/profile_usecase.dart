@@ -18,6 +18,11 @@ class ProfileUseCase {
     HelperMethods.saveProfile(data);
     return Profile.fromDto(data);
   }
+  Future<Profile> fetchProfileRealEstateDeveloper() async{
+    final data = await repository.fetchProfileRealEstateDeveloper();
+    HelperMethods.saveProfile(data);
+    return Profile.fromDto(data);
+  }
 
   Future<Profile> fetchProfileDataFromCash() async{
     final data  = await HelperMethods.getProfile();
@@ -83,4 +88,9 @@ class ProfileUseCase {
     return data.message ?? '';
   }
 
+  Future<String> editProfileDataRealEstateDeveloper(RegisterParams params) async {
+    final data = await repository.editProfileDataRealEstateDeveloper(params);
+    await HelperMethods.saveProfile(data.data!);
+    return data.message ?? '';
+  }
 }

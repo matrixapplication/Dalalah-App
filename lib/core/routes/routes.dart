@@ -33,7 +33,13 @@ import '../../src/real_estate/presentation/add_real_estate/pages/add_image/add_i
 import '../../src/real_estate/presentation/add_real_estate/pages/add_real_estate/add_real_estate_page.dart';
 import '../../src/real_estate/presentation/add_real_estate/pages/add_address_real_estate/add_real_estate_second_screen.dart';
 import '../../src/real_estate/presentation/add_real_estate/pages/feature_real_estate/feature_real_estate_page.dart';
+import '../../src/real_estate/presentation/edit_real_estate/pages/edit_address_real_estate/edit_real_estate_second_page.dart';
+import '../../src/real_estate/presentation/edit_real_estate/pages/edit_feature_real_estate/edit_feature_real_estate_page.dart';
+import '../../src/real_estate/presentation/edit_real_estate/pages/edit_image/edit_image_real_estate_page.dart';
+import '../../src/real_estate/presentation/edit_real_estate/pages/edit_real_estate/edit_real_estate_page.dart';
 import '../../src/real_estate/presentation/filters_real_estate/pages/filter_real_estate_page.dart';
+import '../../src/real_estate/presentation/properties_developers/pages/properties_developer_details/properties_developers_details_page.dart';
+import '../../src/real_estate/presentation/properties_developers/pages/properties_developers_page.dart';
 import '../../src/real_estate/presentation/real_estate/pages/real_estate_details/real_estate_details_page.dart';
 import '../../src/real_estate/presentation/real_estate/pages/real_estate_page.dart';
 import '../../src/sell_car/presentation/pages/ad_car_premium_page.dart';
@@ -123,28 +129,41 @@ class Routes {
   static const String showroomDetailsPage = 'exhibitionDetailsPage';
   static const String carsSearchPage = 'carsSearchPage';
   static const String showroomsAndBranchesTabs = 'showroomsAndBranchesTabs';
-  static const String carAppLink = 'car';
-  static const String plateAppLink = 'plate';
+  static const String propertyAppLink = 'property';
+  static const String carAppLink = 'cars';
+  static const String plateAppLink = 'plates';
   static const String addRealEstatePage = 'addRealEstatePage';
   static const String addRealEstateSecondPage = 'addRealEstateSecondPage';
   static const String addImageRealEstatePage = 'addImageRealEstatePage';
   static const String filterRealEstatePage = 'filterRealEstatePage';
   static const String featureRealEstatePage = 'featureRealEstatePage';
   static const String realEstateDetailsPage = 'realEstateDetailsPage';
+  static const String editRealEstatePage = 'editRealEstatePage';
+  static const String editRealEstateSecondPage = 'editRealEstateSecondPage';
+  static const String editFeatureRealEstatePage = 'editFeatureRealEstatePage';
+  static const String editImageRealEstatePage = 'editImageRealEstatePage';
+  static const String propertiesDevelopersDetailsPage = 'propertiesDevelopersDetailsPage';
+  static const String propertiesDevelopersPage = 'propertiesDevelopersPage';
 
 
   static routes(BuildContext context) => {
     '/{id}' : (context) => NavigationPages(),
     'ar' : (context) => NavigationPages(),
     'en' : (context) => NavigationPages(),
+    propertyAppLink : (context) => RealEstateDetailsPage(),
     carAppLink : (context) => CarsDetailsPage(),
     plateAppLink : (context) => PlateDetailsPage(),
     addRealEstatePage : (context) => AddRealEstatePage(),
     addRealEstateSecondPage : (context) => AddRealEstateSecondPage(),
+    propertiesDevelopersDetailsPage : (context) => PropertiesDevelopersDetailsPage(),
     featureRealEstatePage : (context) => FeatureRealEstatePage(),
     addImageRealEstatePage : (context) => AddImageRealEstatePage(),
     filterRealEstatePage : (context) => FilterRealEstatePage(),
     navigationPages: (context) => NavigationPages(),
+    editRealEstatePage: (context) => EditRealEstatePage(),
+    editRealEstateSecondPage: (context) => EditRealEstateSecondPage(),
+    editFeatureRealEstatePage: (context) => EditFeatureRealEstatePage(),
+    editImageRealEstatePage: (context) => EditImageRealEstatePage(),
     login: (context) => LoginPage(),
     platesPage: (context) => PlatesPage(),
     realEstateDetailsPage: (context) => RealEstateDetailsPage(),
@@ -175,6 +194,7 @@ class Routes {
     carsPage: (context) => CarsPage(),
     onBoardingPage: (context) => OnBoardingPage(),
     sellCarPage: (context) => SellCarFirstPage(),
+    propertiesDevelopersPage: (context) => PropertiesDevelopersPage(),
     sellCarSecondPage: (context) => SellCarSecondPage(),
     sellCarImagePickerPage: (context) => SellCarImagePickerPage(),
     sellCarPropertiesPage: (context) => SellCarPropertiesPage(),

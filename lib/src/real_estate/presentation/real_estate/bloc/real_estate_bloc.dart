@@ -5,6 +5,7 @@ import '../../../data/models/add_real_estate_params.dart';
 import '../../../data/models/category_details_dto.dart';
 import '../../../data/models/get_real_estate_params.dart';
 import '../../../data/models/real_estate_model.dart';
+import '../../../data/models/real_estate_params.dart';
 import '../../../data/models/real_estate_type_dto.dart';
 import '../../../domain/use_cases/real_estate_usecase.dart';
 
@@ -38,7 +39,8 @@ class RealEstatePageCubit extends BaseCubit {
     }
   }
 
-  fetchRealEstates(AddRealEstateParams params) async {
+  fetchRealEstates(RealEstateParams params) async {
+    print('testggg ${params.toJson().toString()}');
     realEstatesData.setData(null);
     try {
       final response = await usecase.fetchRealEstates(params);
@@ -49,7 +51,7 @@ class RealEstatePageCubit extends BaseCubit {
     }
   }
 
-  fetchNotifications() async {
-    executeSuccess(() => usecase.fetchNotifications());
+  fetchPropertyDetails(int id) async {
+    executeSuccess(() => usecase.fetchPropertyDetails(id));
   }
 }

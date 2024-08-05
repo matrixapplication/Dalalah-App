@@ -2,8 +2,10 @@ import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/core/widgets/buttons/app_circular_icon_button.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:share_plus/share_plus.dart';
-
+import 'package:flutter/material.dart';
+import 'dart:async';
 import '../../routes/app_links_service.dart';
+import 'package:uni_links/uni_links.dart';
 
 ///  Created by harby on 9/6/2023.
 class ShareIconButton extends StatelessWidget {
@@ -43,5 +45,6 @@ class ShareIconButton extends StatelessWidget {
     String url = AppLinkingService.createDynamicLink(route, id: id);
     HelperMethods.copyToClipboard(url);
     Share.share(url);
+    //"https://dalalah.co/cars/show/41"
   }
 }

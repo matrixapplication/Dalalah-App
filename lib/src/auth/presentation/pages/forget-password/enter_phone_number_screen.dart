@@ -1,15 +1,16 @@
 import 'package:dalalah/core/widgets/scaffold/back_button_icon.dart';
 
 import '../../../../../core/resources/validation.dart';
+import '../../../../installment/domain/entities/roles.dart';
 import '../../../../main_index.dart';
 import '../../widgets/auth_text_field.dart';
 
 class EnterPhoneNumberScreen extends BaseStatelessWidget {
-  final bool isUser;
+  final String type;
   final Function(String) onEnterPhoneNumber;
 
   EnterPhoneNumberScreen(
-      {Key? key, required this.onEnterPhoneNumber, this.isUser = true})
+      {Key? key, required this.onEnterPhoneNumber, this.type = Roles.USER})
       : super(key: key);
 
   TextEditingController emailController = TextEditingController();
@@ -36,16 +37,16 @@ class EnterPhoneNumberScreen extends BaseStatelessWidget {
                 ),
                 50.ph,
                 Text(
-                  isUser ? strings.forgot_password_mobile_desc : strings.forgot_password_id_desc,
+                  type !=Roles.SHOWROOM ? strings.forgot_password_mobile_desc : strings.forgot_password_id_desc,
                   textAlign: TextAlign.center,
                   style: bodyMedium,
                 ),
                 20.ph,
                 AuthTextField(
                   controller: emailController,
-                  hint: isUser ? strings.phone_number : strings.code,
-                  prefixIcon: isUser ? AppIcons.phone : AppIcons.id_card,
-                  keyboardType: isUser
+                  hint:  type !=Roles.SHOWROOM  ? strings.phone_number : strings.code,
+                  prefixIcon:  type !=Roles.SHOWROOM  ? AppIcons.phone : AppIcons.id_card,
+                  keyboardType:  type !=Roles.SHOWROOM
                       ? TextInputType.emailAddress
                       : TextInputType.number,
                   validator: (phone) => Validation.validatePhoneRequired(phone ?? ''),

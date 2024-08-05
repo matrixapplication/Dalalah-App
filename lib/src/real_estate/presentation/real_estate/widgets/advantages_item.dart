@@ -1,4 +1,5 @@
 import 'package:dalalah/core/decorations/decorations.dart';
+import 'package:dalalah/core/widgets/images/image_network.dart';
 import 'package:dalalah/src/main_index.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -21,7 +22,13 @@ class AdvantagesItem extends BaseStatelessWidget {
         padding: 8.paddingVert+12.paddingHoriz,
         child: Column(
           children: [
-            SvgPicture.asset(icon),
+             ImageNetwork(
+               height: 30,
+              width: 30,
+              radius: 50,
+              url: icon,
+            ),
+            10.pw,
             Text(text,
               style: bodyMedium.copyWith(
                 fontSize: 12

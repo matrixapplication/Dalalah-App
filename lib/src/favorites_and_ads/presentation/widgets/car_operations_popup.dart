@@ -9,10 +9,12 @@ import '../../../home/domain/entities/car.dart';
 import '../../../plates/domain/entities/ad_types.dart';
 import '../../../plates/domain/entities/plate.dart';
 import '../../../plates/domain/entities/plate_args.dart';
+import '../../../real_estate/data/models/my_properties_response.dart';
 import '../../domain/entites/ad_args.dart';
 
 class CarOperationsPopup extends BaseStatelessWidget {
   final Car? car;
+  final Property? property;
   final Plate? plate;
   final bool isHidePayment;
   final Function(int)? onHide;
@@ -23,6 +25,7 @@ class CarOperationsPopup extends BaseStatelessWidget {
 
   CarOperationsPopup({
     super.key,
+    this.property,
     this.car,
     this.plate,
     this.isHidePayment = false,
@@ -35,8 +38,8 @@ class CarOperationsPopup extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int id = car?.id ?? plate?.id ?? 0;
-    String type = car != null ? AdTypes.car : AdTypes.plate;
+    int id = car?.id ?? plate?.id ?? property?.id??0;
+    String type = car != null ? AdTypes.car :plate!=null? AdTypes.plate:AdTypes.property ;
     bool isFeatured = car?.isFeatured ?? plate?.isFeatured ?? false;
     bool isSold = car?.isSold ?? plate?.isSold ?? false;
     bool isShow = car?.isUserShowCar ?? plate?.isUserShowPlate ?? false;
@@ -106,8 +109,8 @@ class CarOperationsPopup extends BaseStatelessWidget {
           if (value == 1) {
             onUpdateDate?.call(id);
           } else if (value == 2) {
-            pushNamed(car != null ? Routes.sellCarPage : Routes.plateFilterPage,
-                arguments: car ?? PlateArgs(plate: plate, isEdit: true));
+            pushNamed(car != null ? Routes.sellCarPage :plate !=null? Routes.plateFilterPage :Routes.editRealEstatePage,
+                arguments: car ?? (plate !=null? PlateArgs(plate: plate, isEdit: true):property));
           } else if (value == 3) {
             if (onHide != null) {
               onHide!(id);

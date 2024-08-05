@@ -3,6 +3,7 @@ import '../../../../../core/utils/helper_methods.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/login_params.dart';
+import '../../../data/models/login_real_estate_developer_params.dart';
 import '../../../data/models/showroom_login_params.dart';
 import '../../bloc/auth_bloc.dart';
 import '../../widgets/auth_widget.dart';
@@ -18,7 +19,15 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
       //  child: Text('Login', style: context.titleLarge),
       child: LoginScreen(
         onLogin: (LoginParams params) {
+          print("111111111111");
           bloc.login(params);
+        },
+        onRealEstateDevelopersLogin: (LoginParams params) {
+          LoginRealEstateDeveloperParams developerParams=LoginRealEstateDeveloperParams(
+            phone: params.email,
+            password: params.password,
+          );
+          bloc.loginAsRealEstateDeveloper(developerParams);
         },
         onShowRoomLogin: (LoginParams params) {
           ShowroomLoginParams roomParams = ShowroomLoginParams(

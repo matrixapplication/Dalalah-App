@@ -467,10 +467,14 @@
   "address2": "عنوان",
   "add_images": "اضف صور",
   "add_images_max_ten_image": "(بحد أقصى 10 صور)",
-
   "advertiser": "المعلن",
   "propertyType": "نوع العقار",
-  "propertyArea": "المساحة"
+  "propertyArea": "المساحة",
+  "real_estate_developers": "مطوري العقارات",
+  "real_estate_developer": "مطور عقاري",
+  "license_number": "رقم الترخيص",
+  "must_be_10_numbers": "يجب ان يكون 10 ارقام",
+  "latest_properties": "أحدث العقارات"
 
 
 }

@@ -19,7 +19,6 @@ class AddRealEstatePageCubit extends BaseCubit {
   AddRealEstatePageCubit(this.usecase, this.sellCarUseCase);
 
   StreamStateInitial<RealEstateCategoryDetailsDto?> categoriesDetailsStream = StreamStateInitial();
-
   AddRealEstateParams addRealEstateParams=AddRealEstateParams();
   fetchRealEstateCategories() async {
     executeBuilder(

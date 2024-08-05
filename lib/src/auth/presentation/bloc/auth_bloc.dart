@@ -8,6 +8,7 @@ import '../../../../core/utils/notification_service.dart';
 import '../../../profile/domain/use_cases/profile_usecase.dart';
 import '../../../sell_car/domain/use_cases/sell_car_usecase.dart';
 import '../../data/models/login_params.dart';
+import '../../data/models/login_real_estate_developer_params.dart';
 import '../../data/models/register_params.dart';
 import '../../data/models/send_otp_params.dart';
 import '../../data/models/showroom_login_params.dart';
@@ -27,6 +28,11 @@ class AuthCubit extends BaseCubit {
     params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterSuccess(() => usecase.loginAsUser(params));
   }
+  Future<void> loginAsRealEstateDeveloper(LoginRealEstateDeveloperParams params) async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
+    executeEmitterSuccess(() => usecase.loginAsRealEstateDeveloper(params));
+  }
 
   Future<void> showRoomLogin(ShowroomLoginParams params) async {
     emit(LoadingStateListener());
@@ -44,6 +50,11 @@ class AuthCubit extends BaseCubit {
     emit(LoadingStateListener());
     params.fcmToken = await FirebaseNotification().getToken() ?? '';
     executeEmitterListener(() => usecase.registerAsShowroom(params));
+  }
+  Future<void> registerAsRealEstateDevelopers(RegisterParams params) async {
+    emit(LoadingStateListener());
+    params.fcmToken = await FirebaseNotification().getToken() ?? '';
+    executeEmitterListener(() => usecase.registerAsRealEstateDevelopers(params));
   }
 
   void fetchCities() {

@@ -64,10 +64,12 @@ class ProfileDto {
   String? coverImage;
   @JsonKey(name: 'token')
   String? token;
+  @JsonKey(name: 'license_number')
+  String? licenseNumber;
   @JsonKey(name: 'is_verified')
   int? isVerified;
-
-  ProfileDto({this.id, this.name, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.code, this.phone, this.anotherPhone1, this.anotherPhone2, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.avgRate, this.city, this.address, this.isBlocked, this.isHide, this.followers, this.isFollowed, this.image, this.coverImage, this.token, this.isVerified});
+//getProfile
+  ProfileDto({this.id, this.name, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.code, this.phone, this.anotherPhone1, this.anotherPhone2, this.whatsapp, this.endTaxCard, this.role, this.countCars, this.avgRate, this.city, this.address, this.isBlocked, this.isHide, this.followers, this.isFollowed, this.image, this.coverImage, this.token, this.licenseNumber, this.isVerified});
 
    factory ProfileDto.fromJson(Map<String, dynamic> json) => _$ProfileDtoFromJson(json);
 

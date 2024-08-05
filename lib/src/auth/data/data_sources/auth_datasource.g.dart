@@ -13,7 +13,7 @@ class _AuthDataSource implements AuthDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalalah.co/api';
+    baseUrl ??= 'https://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -36,6 +36,38 @@ class _AuthDataSource implements AuthDataSource {
             .compose(
               _dio.options,
               '/end-user/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<ProfileDto>.fromJson(
+      _result.data!,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> loginAsRealEstateDeveloper(
+      LoginRealEstateDeveloperParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/prop-developer/login',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -209,6 +241,111 @@ class _AuthDataSource implements AuthDataSource {
             .compose(
               _dio.options,
               '/showroom/register',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<ProfileDto>.fromJson(
+      _result.data!,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> registerAsRealEstateDevelopers(
+    String nameAr,
+    String nameEn,
+    String ownerNameAr,
+    String ownerNameEn,
+    String addressAr,
+    String addressEn,
+    String email,
+    String password,
+    String phone,
+    String whatsapp,
+    int cityId,
+    File logo,
+    String fcmToken,
+    String licenseNumber,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'name_ar',
+      nameAr,
+    ));
+    _data.fields.add(MapEntry(
+      'name_en',
+      nameEn,
+    ));
+    _data.fields.add(MapEntry(
+      'owner_name_ar',
+      ownerNameAr,
+    ));
+    _data.fields.add(MapEntry(
+      'owner_name_en',
+      ownerNameEn,
+    ));
+    _data.fields.add(MapEntry(
+      'description_ar',
+      addressAr,
+    ));
+    _data.fields.add(MapEntry(
+      'description_en',
+      addressEn,
+    ));
+    _data.fields.add(MapEntry(
+      'email',
+      email,
+    ));
+    _data.fields.add(MapEntry(
+      'password',
+      password,
+    ));
+    _data.fields.add(MapEntry(
+      'phone',
+      phone,
+    ));
+    _data.fields.add(MapEntry(
+      'whatsapp',
+      whatsapp,
+    ));
+    _data.fields.add(MapEntry(
+      'city_id',
+      cityId.toString(),
+    ));
+    _data.files.add(MapEntry(
+      'logo',
+      MultipartFile.fromFileSync(
+        logo.path,
+        filename: logo.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    _data.fields.add(MapEntry(
+      'fcm_token',
+      fcmToken,
+    ));
+    _data.fields.add(MapEntry(
+      'license_number',
+      licenseNumber,
+    ));
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/prop-developer/register',
               queryParameters: queryParameters,
               data: _data,
             )

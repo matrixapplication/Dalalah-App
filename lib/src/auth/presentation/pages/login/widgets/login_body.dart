@@ -11,10 +11,10 @@ import '../../../../data/models/login_params.dart';
 import '../../../widgets/auth_text_field.dart';
 
 class LoginBody extends BaseStatelessWidget {
-  final bool isUser;
+  final String type;
   final Function(LoginParams)? onLogin;
 
-  LoginBody({Key? key, this.onLogin, this.isUser = true}) : super(key: key);
+  LoginBody({Key? key, this.onLogin, this.type = Roles.USER}) : super(key: key);
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -23,8 +23,10 @@ class LoginBody extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(kDebugMode){
-     emailController = TextEditingController(text: kReleaseMode ? '' : isUser ? 'test@test.com' : '1463');
-     passwordController = TextEditingController(text: kReleaseMode ? '' :  isUser ? '123456789' : '123456789');
+     emailController = TextEditingController(text: kReleaseMode ? '' : type==Roles.USER ? 'test22@gmail.com' :
+     type== Roles.REALESTATEDEVELOPERS?'123456789':'1463');
+     passwordController = TextEditingController(text: kReleaseMode ? '' :  type==Roles.USER  ? '123456' :
+     type== Roles.REALESTATEDEVELOPERS? '123456':'123456789');
     }
     return SingleChildScrollView(
       padding: 8.paddingHoriz + 16.paddingTop,
@@ -42,10 +44,12 @@ class LoginBody extends BaseStatelessWidget {
                 context.bodySmall.copyWith(fontSize: 12)),
             20.ph,
             AuthTextField(
-              hint: isUser ? context.strings.email_or_phone : context.strings.code,
-              prefixIcon: isUser ? AppIcons.email : AppIcons.id_card,
+              hint:type==Roles.USER ? context.strings.email_or_phone :
+              type== Roles.REALESTATEDEVELOPERS?context.strings.phone_number:context.strings.code,
+              prefixIcon: type==Roles.USER? AppIcons.email : type== Roles.REALESTATEDEVELOPERS?
+              AppIcons.phone:AppIcons.id_card,
               controller: emailController,
-              keyboardType: isUser ? TextInputType.emailAddress : TextInputType.number,
+              keyboardType: type==Roles.USER ? TextInputType.emailAddress : TextInputType.number,
           //    validator: (phone) => Validation.validatePhone(phone ?? ''),
             ),
             10.ph,
@@ -61,7 +65,7 @@ class LoginBody extends BaseStatelessWidget {
               padding: 10.paddingHoriz,
               child: GestureDetector(
                 onTap: () {
-                  pushNamed(Routes.enterPhoneNumberPage, arguments: isUser ? Roles.USER : Roles.SHOWROOM);
+                  pushNamed(Routes.enterPhoneNumberPage, arguments:type);
                 },
                 child:  Text(strings.forgot_password,
                     style: context.bodySmall.copyWith(fontSize: 12)),

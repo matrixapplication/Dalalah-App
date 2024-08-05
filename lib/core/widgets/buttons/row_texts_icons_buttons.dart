@@ -14,6 +14,7 @@ class RowTextsIconsButtons extends StatelessWidget {
   final Color? backgroundColor1;
   final Color? iconColor2;
   final Color? backgroundColor2;
+  final bool? hasOneButton;
   final double? iconSize1;
   final double? iconSize2;
   final BorderRadiusGeometry? borderRadius1;
@@ -22,7 +23,7 @@ class RowTextsIconsButtons extends StatelessWidget {
   final Decoration? decoration2;
   final Widget? centerWidget;
   final TextStyle? titleStyle2;
-  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2, this.decoration1, this.decoration2, this.centerWidget, this.titleStyle2}) : super(key: key);
+  const RowTextsIconsButtons({Key? key, this.title1, this.title2, this.onPressed1, this.onPressed2, this.margin, required this.icon1, required this.icon2, this.iconColor1, this.backgroundColor1, this.iconColor2, this.backgroundColor2, this.iconSize1, this.iconSize2, this.borderRadius1, this.borderRadius2, this.decoration1, this.decoration2, this.centerWidget, this.titleStyle2, this.hasOneButton}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class RowTextsIconsButtons extends StatelessWidget {
             Expanded(
               child: centerWidget!,
             ),
+          if(hasOneButton==null)
           Expanded(
             child: PrimaryIconButton(
               title: title2,

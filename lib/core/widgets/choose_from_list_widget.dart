@@ -11,12 +11,14 @@ class ChooseFromListItemWidget extends BaseStatelessWidget {
   final double? radius;
   final double? width;
   final double? height;
-   ChooseFromListItemWidget({super.key,this.width, this.height,required this.onChoose,this.radius, required this.items, });
+  final bool? isHasInitailItem;
+  final String? value;
+   ChooseFromListItemWidget({super.key,this.width,this.value, this.height,required this.onChoose,this.radius,this.isHasInitailItem, required this.items, });
 
    @override
   Widget build(BuildContext context) {
 
-     String index = items[0].title;
+     String index =isHasInitailItem!=false? items[0].title:value!;
 
      return StatefulBuilder(builder: (context,setState){
       return SingleChildScrollView(

@@ -17,13 +17,14 @@ class EnterPhoneNumberPage
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
     return EnterPhoneNumberScreen(
-      isUser: getArguments(context) == Roles.USER,
+      type: getArguments(context),
       onEnterPhoneNumber: (String loginUse) {
         String type = getArguments(context);
         params = PasswordOTPParams(
           loginUse: loginUse,
           modelRole: type,
         );
+        print('ddddfff ${params.toJson().toString()}');
         bloc.enterPhoneNumber(params);
       },
     );

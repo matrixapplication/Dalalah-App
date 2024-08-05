@@ -81,7 +81,7 @@ class ProfileScreen extends BaseStatelessWidget {
                       routeName: Routes.followedShowroomsPage,
                       // arguments: strings.favorite_agencies,
                     ),
-                  if (profile.token != null && profile.role != Roles.USER)
+                  if (profile.token != null && profile.role == Roles.SHOWROOM)
                     ProfileItem(
                       title: strings.my_branches,
                       icon: AppIcons.box,
@@ -108,6 +108,7 @@ class ProfileScreen extends BaseStatelessWidget {
                       routeName: Routes.favoritesAndAdsTabs,
                       arguments: FavoritesAndAdsParams(
                           isAds: true,
+                          type: profile.role??'',
                           isUser: profile.role == Roles.USER,
                           isShowPayment: profile.isHidePayment ?? false),
                     ),

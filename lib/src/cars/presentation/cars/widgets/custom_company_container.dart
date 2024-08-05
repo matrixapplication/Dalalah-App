@@ -14,10 +14,12 @@ class CustomCompanyContainer extends BaseStatelessWidget {
   final Widget? centerWidget;
   final TextStyle? titleStyle2;
   final double? height;
+  final bool? hasOneButton;
 
-  CustomCompanyContainer({
+  CustomCompanyContainer( {
     super.key,
     this.decoration,
+    this.hasOneButton,
     required this.firstOnTap,
     required this.secondOnTap,
      this.secondButtonLabel,
@@ -50,12 +52,13 @@ class CustomCompanyContainer extends BaseStatelessWidget {
           SizedBox(
             height: 40,
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10),
               ),
               child: RowTextsIconsButtons(
                 icon1: AppIcons.call,
+                hasOneButton: hasOneButton,
                 icon2: secondButtonIcon ?? AppIcons.location_2,
                 iconColor2: iconColor2,
                 title1: strings.contact,

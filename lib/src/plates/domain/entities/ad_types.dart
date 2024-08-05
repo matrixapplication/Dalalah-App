@@ -4,5 +4,6 @@ class AdTypes{
 
   static const String car  = 'car';
   static const String plate = 'plate';
+  static const String property = 'property';
 
 }

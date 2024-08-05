@@ -13,7 +13,7 @@ class _ProfileDataSource implements ProfileDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalalah.co/api';
+    baseUrl ??= 'https://dalalah.co/api';
   }
 
   final Dio _dio;
@@ -35,6 +35,36 @@ class _ProfileDataSource implements ProfileDataSource {
             .compose(
               _dio.options,
               '/get-user',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<ProfileDto>.fromJson(
+      _result.data!,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> fetchProfileRealEstateDeveloper() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/prop-developer/profile',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -381,6 +411,38 @@ class _ProfileDataSource implements ProfileDataSource {
             .compose(
               _dio.options,
               '/edit-showroom',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<ProfileDto>.fromJson(
+      _result.data!,
+      (json) => ProfileDto.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<ProfileDto>> editProfileDataRealEstateDeveloper(
+      RegisterParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<ProfileDto>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/prop-developer/update-profile',
               queryParameters: queryParameters,
               data: _data,
             )

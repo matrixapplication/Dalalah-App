@@ -8,6 +8,7 @@ import 'package:dalalah/core/utils/constants.dart';
 import 'package:dalalah/src/auth/data/models/login_params.dart';
 import 'package:dalalah/core/network/api_response.dart';
 
+import '../models/login_real_estate_developer_params.dart';
 import '../models/register_params.dart';
 import '../models/send_otp_params.dart';
 import '../models/showroom_login_params.dart';
@@ -23,6 +24,9 @@ abstract class AuthDataSource {
 
   @POST('/end-user/login')
   Future<ApiResponse<ProfileDto>> loginAsUser(@Body() LoginParams params);
+
+  @POST('/prop-developer/login')
+  Future<ApiResponse<ProfileDto>> loginAsRealEstateDeveloper(@Body() LoginRealEstateDeveloperParams params);
 
   @POST('/showroom/login')
   Future<ApiResponse<ProfileDto>> loginAsShowroom(
@@ -49,6 +53,25 @@ abstract class AuthDataSource {
     @Part(name: 'whatsapp') String whatsapp,
     @Part(name: 'city_id') int cityId,
     @Part(name: 'logo') File logo,
+  );
+
+  @MultiPart()
+  @POST('/prop-developer/register')
+  Future<ApiResponse<ProfileDto>> registerAsRealEstateDevelopers(
+    @Part(name: 'name_ar') String nameAr,
+    @Part(name: 'name_en') String nameEn,
+    @Part(name: 'owner_name_ar') String ownerNameAr,
+    @Part(name: 'owner_name_en') String ownerNameEn,
+    @Part(name: 'description_ar') String addressAr,
+    @Part(name: 'description_en') String addressEn,
+    @Part(name: 'email') String email,
+    @Part(name: 'password') String password,
+    @Part(name: 'phone') String phone,
+    @Part(name: 'whatsapp') String whatsapp,
+    @Part(name: 'city_id') int cityId,
+    @Part(name: 'logo') File logo,
+    @Part(name: 'fcm_token') String fcmToken,
+    @Part(name: 'license_number') String licenseNumber,
   );
 
   @POST('/verify-account/generate-otp')

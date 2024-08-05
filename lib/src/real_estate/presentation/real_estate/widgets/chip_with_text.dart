@@ -17,9 +17,10 @@ class ChipWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: 3.paddingHoriz,
       decoration: Decorations.kDecorationRadius(
         radius: radius??5,
-        color: backgroundColor??AppColors.blue_49.withOpacity(0.2)
+        color: backgroundColor??AppColors.blue_49.withOpacity(0.05)
       ),
       child:
       Padding(
@@ -37,7 +38,7 @@ class ChipWithText extends StatelessWidget {
             ImageNetwork(
               height: 40,
               width: 40,
-              url: 'icon',
+              url: icon,
               color: context.primaryColor,size: 12,)
           ],
         ),

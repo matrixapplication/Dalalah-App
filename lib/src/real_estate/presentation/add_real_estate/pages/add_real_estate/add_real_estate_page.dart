@@ -12,7 +12,6 @@ import 'add_real_estate_screen.dart';
 class AddRealEstatePage extends BaseBlocWidget<DataSuccess<RealEstateCategoriesState>, AddRealEstatePageCubit> {
   AddRealEstatePage({Key? key}) : super(key: key);
 
-
    @override
    void loadInitialData(BuildContext context) {
      bloc.fetchRealEstateCategories();

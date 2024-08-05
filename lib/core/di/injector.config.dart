@@ -24,7 +24,7 @@ import '../../src/auth/domain/repositories/base_forgot_password_repo.dart'
 import '../../src/auth/domain/use_cases/auth_usecase.dart' as _i26;
 import '../../src/auth/domain/use_cases/forgot_password_usecase.dart' as _i58;
 import '../../src/auth/presentation/bloc/auth_bloc.dart' as _i81;
-import '../../src/auth/presentation/bloc/forgot_password_bloc.dart' as _i90;
+import '../../src/auth/presentation/bloc/forgot_password_bloc.dart' as _i91;
 import '../../src/cars/data/data_sources/cars_datasource.dart' as _i7;
 import '../../src/cars/data/repositories/cars_repo.dart' as _i29;
 import '../../src/cars/domain/repositories/base_cars_repo.dart' as _i28;
@@ -44,20 +44,22 @@ import '../../src/favorites_and_ads/domain/repositories/base_favorites_repo.dart
 import '../../src/favorites_and_ads/domain/use_cases/favorites_usecase.dart'
     as _i57;
 import '../../src/favorites_and_ads/presentation/favorites/bloc/favorite_cars_bloc.dart'
-    as _i86;
-import '../../src/favorites_and_ads/presentation/favorites/bloc/favorite_plates_bloc.dart'
     as _i87;
+import '../../src/favorites_and_ads/presentation/favorites/bloc/favorite_plates_bloc.dart'
+    as _i88;
 import '../../src/favorites_and_ads/presentation/my_ads/bloc/add_premium_ad_bloc.dart'
     as _i78;
 import '../../src/favorites_and_ads/presentation/my_ads/bloc/my_cars_bloc.dart'
     as _i61;
 import '../../src/favorites_and_ads/presentation/my_ads/bloc/my_plates_bloc.dart'
-    as _i93;
+    as _i94;
+import '../../src/favorites_and_ads/presentation/my_ads/bloc/my_real_estate_bloc.dart'
+    as _i95;
 import '../../src/home/data/data_sources/home_datasource.dart' as _i10;
 import '../../src/home/data/repositories/home_repo.dart' as _i35;
 import '../../src/home/domain/repositories/base_home_repo.dart' as _i34;
 import '../../src/home/domain/use_cases/home_usecase.dart' as _i59;
-import '../../src/home/presentation/bloc/home_bloc.dart' as _i91;
+import '../../src/home/presentation/bloc/home_bloc.dart' as _i92;
 import '../../src/installment/data/data_sources/installment_datasource.dart'
     as _i11;
 import '../../src/installment/data/repositories/installment_repo.dart' as _i37;
@@ -65,7 +67,7 @@ import '../../src/installment/domain/repositories/base_installment_repo.dart'
     as _i36;
 import '../../src/installment/domain/use_cases/installment_usecase.dart'
     as _i60;
-import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i92;
+import '../../src/installment/presentation/bloc/installment_bloc.dart' as _i93;
 import '../../src/map_picker/bloc/map_picker_cubit.dart' as _i13;
 import '../../src/notifications/data/data_sources/notifications_datasource.dart'
     as _i14;
@@ -76,12 +78,12 @@ import '../../src/notifications/domain/repositories/base_notifications_repo.dart
 import '../../src/notifications/domain/use_cases/notifications_usecase.dart'
     as _i62;
 import '../../src/notifications/presentation/bloc/notifications_bloc.dart'
-    as _i94;
+    as _i96;
 import '../../src/payment/data/data_sources/payment_datasource.dart' as _i15;
 import '../../src/payment/data/repositories/payment_repo.dart' as _i41;
 import '../../src/payment/domain/repositories/base_payment_repo.dart' as _i40;
 import '../../src/payment/domain/use_cases/payment_usecase.dart' as _i63;
-import '../../src/payment/presentation/bloc/payment_bloc.dart' as _i95;
+import '../../src/payment/presentation/bloc/payment_bloc.dart' as _i97;
 import '../../src/plates/data/data_sources/plates_datasource.dart' as _i16;
 import '../../src/plates/data/repositories/plates_repo.dart' as _i43;
 import '../../src/plates/domain/repositories/base_plates_repo.dart' as _i42;
@@ -89,8 +91,8 @@ import '../../src/plates/domain/use_cases/plates_usecase.dart' as _i64;
 import '../../src/plates/presentation/add_plate/bloc/add_plate_bloc.dart'
     as _i77;
 import '../../src/plates/presentation/plate_details/bloc/plates_details_bloc.dart'
-    as _i97;
-import '../../src/plates/presentation/plates/bloc/plates_bloc.dart' as _i96;
+    as _i99;
+import '../../src/plates/presentation/plates/bloc/plates_bloc.dart' as _i98;
 import '../../src/price_requests/data/data_sources/price_requests_datasource.dart'
     as _i17;
 import '../../src/price_requests/data/repositories/price_requests_repo.dart'
@@ -100,13 +102,13 @@ import '../../src/price_requests/domain/repositories/base_price_requests_repo.da
 import '../../src/price_requests/domain/use_cases/price_requests_usecase.dart'
     as _i65;
 import '../../src/price_requests/presentation/bloc/price_requests_bloc.dart'
-    as _i98;
+    as _i100;
 import '../../src/profile/data/data_sources/profile_datasource.dart' as _i18;
 import '../../src/profile/data/repositories/profile_repo.dart' as _i47;
 import '../../src/profile/domain/repositories/base_profile_repo.dart' as _i46;
 import '../../src/profile/domain/use_cases/profile_usecase.dart' as _i66;
 import '../../src/profile/presentation/bloc/edit_profile_bloc.dart' as _i85;
-import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i99;
+import '../../src/profile/presentation/bloc/profile_bloc.dart' as _i101;
 import '../../src/real_estate/data/data_sources/real_estate_datasource.dart'
     as _i19;
 import '../../src/real_estate/data/repositories/real_estate_repo.dart' as _i49;
@@ -116,10 +118,14 @@ import '../../src/real_estate/domain/use_cases/real_estate_usecase.dart'
     as _i67;
 import '../../src/real_estate/presentation/add_real_estate/bloc/add_real_estate_bloc.dart'
     as _i79;
+import '../../src/real_estate/presentation/edit_real_estate/bloc/edit_real_estate_bloc.dart'
+    as _i86;
 import '../../src/real_estate/presentation/filters_real_estate/bloc/filter_real_estate_bloc.dart'
-    as _i88;
+    as _i89;
+import '../../src/real_estate/presentation/properties_developers/bloc/properties_developers_bloc.dart'
+    as _i102;
 import '../../src/real_estate/presentation/real_estate/bloc/real_estate_bloc.dart'
-    as _i100;
+    as _i103;
 import '../../src/sell_car/data/data_sources/sell_car_datasource.dart' as _i20;
 import '../../src/sell_car/data/repositories/add_car_repo.dart' as _i22;
 import '../../src/sell_car/domain/repositories/base_add_car_repo.dart' as _i27;
@@ -150,16 +156,16 @@ import '../../src/showrooms/presentation/branches/add_branch/bloc/add_branch_blo
 import '../../src/showrooms/presentation/branches/bloc/branches_bloc.dart'
     as _i82;
 import '../../src/showrooms/presentation/showroom_details/bloc/showroom_cars_bloc.dart'
-    as _i101;
-import '../../src/showrooms/presentation/showroom_details/bloc/showroom_plates_bloc.dart'
-    as _i103;
-import '../../src/showrooms/presentation/showroom_details/bloc/showrooms_details_bloc.dart'
-    as _i102;
-import '../../src/showrooms/presentation/showrooms/bloc/followed_showrooms_bloc.dart'
-    as _i89;
-import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
     as _i104;
-import 'injection_module.dart' as _i105;
+import '../../src/showrooms/presentation/showroom_details/bloc/showroom_plates_bloc.dart'
+    as _i106;
+import '../../src/showrooms/presentation/showroom_details/bloc/showrooms_details_bloc.dart'
+    as _i105;
+import '../../src/showrooms/presentation/showrooms/bloc/followed_showrooms_bloc.dart'
+    as _i90;
+import '../../src/showrooms/presentation/showrooms/bloc/showrooms_bloc.dart'
+    as _i107;
+import 'injection_module.dart' as _i108;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -324,65 +330,76 @@ Future<_i1.GetIt> $initGetIt(
         gh<_i66.ProfileUseCase>(),
         gh<_i21.SellCarUseCase>(),
       ));
-  gh.factory<_i86.FavoriteCarsCubit>(() => _i86.FavoriteCarsCubit(
+  gh.factory<_i86.EditRealEstatePageCubit>(() => _i86.EditRealEstatePageCubit(
+        gh<_i67.RealEstateUseCase>(),
+        gh<_i21.SellCarUseCase>(),
+      ));
+  gh.factory<_i87.FavoriteCarsCubit>(() => _i87.FavoriteCarsCubit(
         gh<_i57.FavoritesUseCase>(),
         gh<_i65.PriceRequestsUseCase>(),
       ));
-  gh.factory<_i87.FavoritePlatesCubit>(
-      () => _i87.FavoritePlatesCubit(gh<_i57.FavoritesUseCase>()));
-  gh.factory<_i88.FilterRealEstatePageCubit>(
-      () => _i88.FilterRealEstatePageCubit(gh<_i67.RealEstateUseCase>()));
-  gh.factory<_i89.FollowedShowroomsCubit>(
-      () => _i89.FollowedShowroomsCubit(gh<_i73.ShowroomsUseCase>()));
-  gh.factory<_i90.ForgotPasswordCubit>(
-      () => _i90.ForgotPasswordCubit(gh<_i58.ForgotPasswordUseCase>()));
-  gh.factory<_i91.HomeCubit>(() => _i91.HomeCubit(
+  gh.factory<_i88.FavoritePlatesCubit>(
+      () => _i88.FavoritePlatesCubit(gh<_i57.FavoritesUseCase>()));
+  gh.factory<_i89.FilterRealEstatePageCubit>(
+      () => _i89.FilterRealEstatePageCubit(gh<_i67.RealEstateUseCase>()));
+  gh.factory<_i90.FollowedShowroomsCubit>(
+      () => _i90.FollowedShowroomsCubit(gh<_i73.ShowroomsUseCase>()));
+  gh.factory<_i91.ForgotPasswordCubit>(
+      () => _i91.ForgotPasswordCubit(gh<_i58.ForgotPasswordUseCase>()));
+  gh.factory<_i92.HomeCubit>(() => _i92.HomeCubit(
         gh<_i59.HomeUseCase>(),
         gh<_i57.FavoritesUseCase>(),
         gh<_i64.PlatesUseCase>(),
+        gh<_i67.RealEstateUseCase>(),
       ));
-  gh.factory<_i92.InstallmentBloc>(() => _i92.InstallmentBloc(
+  gh.factory<_i93.InstallmentBloc>(() => _i93.InstallmentBloc(
         gh<_i60.InstallmentUseCase>(),
         gh<_i65.PriceRequestsUseCase>(),
       ));
-  gh.factory<_i93.MyPlatesCubit>(() => _i93.MyPlatesCubit(
+  gh.factory<_i94.MyPlatesCubit>(() => _i94.MyPlatesCubit(
         gh<_i57.FavoritesUseCase>(),
         gh<_i64.PlatesUseCase>(),
       ));
-  gh.factory<_i94.NotificationsCubit>(
-      () => _i94.NotificationsCubit(gh<_i62.NotificationsUseCase>()));
-  gh.factory<_i95.PaymentBloc>(
-      () => _i95.PaymentBloc(gh<_i63.PaymentUseCase>()));
-  gh.factory<_i96.PlatesCubit>(() => _i96.PlatesCubit(
+  gh.factory<_i95.MyRealEstateCubit>(() => _i95.MyRealEstateCubit(
+        gh<_i57.FavoritesUseCase>(),
+        gh<_i67.RealEstateUseCase>(),
+      ));
+  gh.factory<_i96.NotificationsCubit>(
+      () => _i96.NotificationsCubit(gh<_i62.NotificationsUseCase>()));
+  gh.factory<_i97.PaymentBloc>(
+      () => _i97.PaymentBloc(gh<_i63.PaymentUseCase>()));
+  gh.factory<_i98.PlatesCubit>(() => _i98.PlatesCubit(
         gh<_i64.PlatesUseCase>(),
         gh<_i57.FavoritesUseCase>(),
       ));
-  gh.factory<_i97.PlatesDetailsCubit>(() => _i97.PlatesDetailsCubit(
+  gh.factory<_i99.PlatesDetailsCubit>(() => _i99.PlatesDetailsCubit(
         gh<_i64.PlatesUseCase>(),
         gh<_i57.FavoritesUseCase>(),
       ));
-  gh.factory<_i98.PriceRequestsCubit>(
-      () => _i98.PriceRequestsCubit(gh<_i65.PriceRequestsUseCase>()));
-  gh.factory<_i99.ProfileBloc>(() => _i99.ProfileBloc(
+  gh.factory<_i100.PriceRequestsCubit>(
+      () => _i100.PriceRequestsCubit(gh<_i65.PriceRequestsUseCase>()));
+  gh.factory<_i101.ProfileBloc>(() => _i101.ProfileBloc(
         gh<_i66.ProfileUseCase>(),
         gh<_i63.PaymentUseCase>(),
       ));
-  gh.factory<_i100.RealEstatePageCubit>(
-      () => _i100.RealEstatePageCubit(gh<_i67.RealEstateUseCase>()));
-  gh.factory<_i101.ShowroomCarsCubit>(() => _i101.ShowroomCarsCubit(
+  gh.factory<_i102.PropertiesDevelopersPageCubit>(
+      () => _i102.PropertiesDevelopersPageCubit(gh<_i67.RealEstateUseCase>()));
+  gh.factory<_i103.RealEstatePageCubit>(
+      () => _i103.RealEstatePageCubit(gh<_i67.RealEstateUseCase>()));
+  gh.factory<_i104.ShowroomCarsCubit>(() => _i104.ShowroomCarsCubit(
         gh<_i73.ShowroomsUseCase>(),
         gh<_i57.FavoritesUseCase>(),
         gh<_i65.PriceRequestsUseCase>(),
       ));
-  gh.factory<_i102.ShowroomDetailsCubit>(
-      () => _i102.ShowroomDetailsCubit(gh<_i73.ShowroomsUseCase>()));
-  gh.factory<_i103.ShowroomPlateCubit>(() => _i103.ShowroomPlateCubit(
+  gh.factory<_i105.ShowroomDetailsCubit>(
+      () => _i105.ShowroomDetailsCubit(gh<_i73.ShowroomsUseCase>()));
+  gh.factory<_i106.ShowroomPlateCubit>(() => _i106.ShowroomPlateCubit(
         gh<_i73.ShowroomsUseCase>(),
         gh<_i57.FavoritesUseCase>(),
       ));
-  gh.factory<_i104.ShowroomsCubit>(
-      () => _i104.ShowroomsCubit(gh<_i73.ShowroomsUseCase>()));
+  gh.factory<_i107.ShowroomsCubit>(
+      () => _i107.ShowroomsCubit(gh<_i73.ShowroomsUseCase>()));
   return getIt;
 }
 
-class _$InjectionModule extends _i105.InjectionModule {}
+class _$InjectionModule extends _i108.InjectionModule {}

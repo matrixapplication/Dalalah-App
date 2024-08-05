@@ -33,7 +33,6 @@ class EditProfilePage extends BaseBlocWidget<DataSuccess<List<City>>, EditProfil
   String? title(BuildContext context) {
     return strings.edit_profile;
   }
-
   @override
   onSuccessDismissed() async {
     bool isVerified = await HelperMethods.isVerified();

@@ -13,7 +13,7 @@ class _PlatesDatasource implements PlatesDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://dalalah.co/api';
+    baseUrl ??= 'https://dalalah.co/api';
   }
 
   final Dio _dio;

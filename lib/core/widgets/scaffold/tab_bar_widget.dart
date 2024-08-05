@@ -71,8 +71,11 @@ class TabBarScaffoldWidget extends StatelessWidget {
                 labelPadding: 2.paddingTop,
                 tabs: tabs.map((e) => SizedBox(
                   width: double.infinity,
-                  child: Tab(
-                    text: e.label,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Tab(
+                      text: e.label,
+                    ),
                   ),
                 )).toList(),
               ),

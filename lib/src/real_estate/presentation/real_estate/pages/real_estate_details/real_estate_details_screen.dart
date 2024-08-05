@@ -6,13 +6,14 @@ import '../../../../../../../core/widgets/icons/icon_text.dart';
 import '../../../../../../../core/widgets/images/image_network.dart';
 import '../../../../../cars/presentation/cars_details/widgets/ad_numbering.dart';
 import '../../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
-import '../../../../data/models/real_estate_model.dart';
+import '../../../../data/models/my_properties_response.dart';
 import '../../widgets/advantages_item.dart';
+import '../../widgets/prop_developer_widget.dart';
 import '../../widgets/real_details_item.dart';
 
 
 class RealEstateDetailsScreen extends BaseStatelessWidget {
-  final Properties realEstate;
+  final Property realEstate;
 
   RealEstateDetailsScreen( {super.key,required this.realEstate,});
    LatLng? initialLocation;
@@ -91,50 +92,7 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                               ),
                             ),
                             16.ph,
-                            Row(
-                              children: [
-                                const ImageNetworkCircle(
-                                  image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg/800px-Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg',
-                                  size: 65,
-                                ),
-                                12.pw,
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('المعلن',
-                                    style: bodySmall.copyWith(
-                                      color: Colors.grey
-                                    ),
-                                    ),
-                                    Text('صالح علي',
-                                    style: bodyMedium,
-                                    ),
-                                    5.ph,
-                                    Text('رقم الترخيص: 123456',
-                                      style: bodySmall.copyWith(
-                                          color: Colors.grey,
-                                        fontSize: 12
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                                const Spacer(),
-                                CircleAvatar(
-                                  radius: 18,
-                                  backgroundColor: AppColors.blue_49,
-                                  child:
-                                  const Icon(Icons.message,color: Colors.white,size: 18,),
-                                ),
-                                10.pw,
-                                CircleAvatar(
-                                  radius: 18,
-                                  backgroundColor: AppColors.blue_49,
-                                  child:
-                                  const Icon(Icons.phone,color: Colors.white,size: 18,),
-                                )
-                              ],
-                            ),
+                            PropDeveloperWidget(realEstate: realEstate,),
                             10.ph,
                             Text(strings.description,
                               style: bodyMedium,
@@ -151,9 +109,9 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                               style: bodyMedium,
                             ),
                             10.ph,
-                            RealDetailsItem(icon:AppIcons.pyano, title: '${strings.type}:', text: realEstate.category?.name??'',),
+                            RealDetailsItem(icon: realEstate.category?.icon??'', title: '${strings.type}:', text: realEstate.category?.name??'',),
                             ...realEstate.details?.map((e) =>
-                                     RealDetailsItem(icon:AppIcons.up, title: '${e.name??''}:', text: e.option??''),).toList()??[],
+                                     RealDetailsItem(icon:e.icon??'', title: '${e.name??''}:', text: e.option??''),).toList()??[],
                             10.ph,
                             Divider(
                               color: Colors.grey.shade300,
@@ -195,6 +153,7 @@ class RealEstateDetailsScreen extends BaseStatelessWidget {
                             ),
                             16.ph,
                             CustomGoogleMap(
+                              isOpenMap: true,
                               initialLocation: LatLng(double.parse(realEstate.lat.toString()??''), double.parse(realEstate.lng.toString()??'')),
                               onGetLocation: (lat, lng) {
                                 initialLocation = LatLng(lat, lng);

@@ -5,6 +5,7 @@ import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../../core/widgets/scaffold/tab_bar_widget.dart';
+import '../../../../installment/domain/entities/roles.dart';
 import '../../../../main_index.dart';
 import '../../../../sell_car/domain/entities/city.dart';
 import '../../../data/models/register_params.dart';
@@ -48,6 +49,7 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
           TabItemModel(
             label: context.strings.user,
             page: UserRegisterScreen(
+              registerType: Roles.USER,
               cities: state.data ?? [],
               onRegister: (RegisterParams params) {
                 bloc.register(params);
@@ -57,10 +59,20 @@ class RegisterPage extends BaseBlocWidget<DataSuccess<List<City>>, AuthCubit> {
           TabItemModel(
             label: context.strings.showroom,
             page: UserRegisterScreen(
-              isShowroom: true,
+              registerType: Roles.SHOWROOM,
               cities: state.data ?? [],
               onRegister: (RegisterParams params) {
                 bloc.registerAsShowroom(params);
+              },
+            ),
+          ),
+          TabItemModel(
+            label: context.strings.real_estate_developer,
+            page: UserRegisterScreen(
+              registerType: Roles.REALESTATEDEVELOPERS,
+              cities: state.data ?? [],
+              onRegister: (RegisterParams params) {
+                bloc.registerAsRealEstateDevelopers(params);
               },
             ),
           ),
