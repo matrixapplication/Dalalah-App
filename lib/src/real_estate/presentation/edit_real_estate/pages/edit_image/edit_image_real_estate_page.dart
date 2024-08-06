@@ -19,22 +19,26 @@ class EditImageRealEstatePage
       property: args.property,
       categoryName: args.categoryName,
       onShare: (param) {
-        print('ddddddd');
-        // args.addRealEstateParams.images = param.images;
-        // args.addRealEstateParams.cover = param.cover;
+        if(param.images!=null){
+          args.addRealEstateParams.images = param.images;
+        }
+        if(param.cover!=null){
+          args.addRealEstateParams.cover = param.cover;
+        }
         print('objffect ${args.addRealEstateParams.toJson().toString()}');
         bloc.editRealEstate(args.addRealEstateParams, args.property.id);
       },
-      onAddPropertyImage: (params) {
+      onAddPropertyImage: (images,id) {
         // params.carId = args.car?.id;
-        // bloc.addCarImage(params);
+        bloc.addPropertyImage(images,id);
       },
-      onEditPropertyImage: (params) {
+      onEditPropertyImage: (images,id) {
         // params.carId = args.car?.id;
-        // bloc.editCarImage(params);
+        bloc.addPropertyImage(images,id);
+        // bloc.editPropertyImage(images,id);
       },
       onDeletePropertyImage: (id) {
-        // bloc.deleteImage(id);
+        bloc.deletePropertyImage(id);
       },
     );
   }

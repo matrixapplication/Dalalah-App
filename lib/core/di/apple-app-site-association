@@ -8,8 +8,18 @@
         ],
         "paths": [
           "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
         ]
       }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "5L2F4NS698.com.dalalah.app"
     ]
   }
 }

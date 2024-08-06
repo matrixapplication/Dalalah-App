@@ -38,6 +38,8 @@ class EditRealEstateSecondPage
         newParams.lng = param.lng;
 
         args.addRealEstateParams = newParams;
+        print('EditRealStateSecondScreen ${args.addRealEstateParams.toJson().toString()}');
+
         pushNamed(
           Routes.editFeatureRealEstatePage,
           arguments: args,

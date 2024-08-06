@@ -24,7 +24,6 @@ class EditFeatureRealEstatePage extends BaseBlocWidget<UnInitState,EditRealEstat
       onTapNext: (features){
         args.addRealEstateParams.features = features;
         print('ttttt ${args.addRealEstateParams.toJson().toString()}');
-
         pushNamed(Routes.editImageRealEstatePage,arguments: args);
       },
       categoriesDetails:  args.categoryDetailsDto,

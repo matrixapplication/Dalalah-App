@@ -46,6 +46,7 @@ class EditRealStateScreen extends BaseStatelessWidget {
             status: status,
             categoryId: categoryId,
             detailsList: detailsList);
+        print('EditRealStateScreen ${addRealEstateParams.toJson().toString()}');
         onTapNext!(addRealEstateParams, categoryName);
       },
       child: SingleChildScrollView(

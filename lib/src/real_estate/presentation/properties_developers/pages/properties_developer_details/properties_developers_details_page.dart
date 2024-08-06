@@ -2,20 +2,22 @@ import 'package:dalalah/core/resources/data_state.dart';
 import 'package:dalalah/src/real_estate/presentation/properties_developers/pages/properties_developer_details/properties_developers_details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../../../../core/components/base_widget_bloc.dart';
-import '../../../../../favorites_and_ads/presentation/my_ads/bloc/my_real_estate_bloc.dart';
-import '../../../../data/models/my_properties_response.dart';
+import '../../../../data/models/properties_developer_details.dart';
 import '../../bloc/properties_developers_bloc.dart';
 
-class PropertiesDevelopersDetailsPage extends BaseBlocWidget< DataSuccess<List<Property>>,MyRealEstateCubit> {
+class PropertiesDevelopersDetailsPage extends BaseBlocWidget< DataSuccess<PropertiesDeveloperDetails>,PropertiesDevelopersPageCubit> {
   PropertiesDevelopersDetailsPage({Key? key}) : super(key: key);
+
   @override
   void loadInitialData(BuildContext context) {
-    bloc.fetchMyRealEstates();
+    bloc.fetchPropertiesDevelopersDetails( getArguments(context));
   }
+
   @override
-  Widget buildWidget(BuildContext context,  DataSuccess<List<Property>> state) {
+  Widget buildWidget(BuildContext context,  DataSuccess<PropertiesDeveloperDetails> state) {
    return PropertiesDevelopersDetailsScreen(
-     developer: getArguments(context), properties: state.data!,);
+       developerDetails:state.data!
+   );
   }
 
   @override

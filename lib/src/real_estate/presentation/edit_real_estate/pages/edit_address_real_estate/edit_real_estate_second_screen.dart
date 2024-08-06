@@ -54,6 +54,7 @@ class EditRealStateSecondScreen extends BaseStatelessWidget {
             lat: initialLocation!.latitude.toString(),
             lng: initialLocation!.longitude.toString(),
           );
+
           onTapNext!(addRealEstateParams);
         }
       },

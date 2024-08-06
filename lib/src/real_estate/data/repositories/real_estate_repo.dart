@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dalalah/src/real_estate/data/models/add_real_estate_params.dart';
 import 'package:dalalah/src/real_estate/data/models/get_real_estate_params.dart';
 import 'package:dalalah/src/real_estate/data/models/my_properties_response.dart';
@@ -11,6 +13,7 @@ import '../../domain/entities/real_estate.dart';
 import '../../domain/repositories/base_real_estate_repo.dart';
 import '../data_sources/real_estate_datasource.dart';
 import '../models/category_details_dto.dart';
+import '../models/properties_developer_details.dart';
 import '../models/real_estate_model.dart';
 import '../models/real_estate_params.dart';
 import '../models/real_estate_type_dto.dart';
@@ -44,8 +47,9 @@ class RealEstateRepo extends BaseRealEstateRepo {
 
   @override
   Future<String> addRealEstate(AddRealEstateParams params) async {
-    // print("ffff ${params.detailsList?.map((e) => e.id?.toString() ?? '0').toList() ?? []}");
-    // print("sssss ${params.detailsList?.map((e) => e.title?.toString() ?? '0').toList() ?? []}");
+
+    final ids=params.detailsList?.map((e) => e.id?.toString() ?? '0').toList() ?? [];
+    final values=params.detailsList?.map((e) => e.title?.toString() ?? '0').toList() ?? [];
     final data = await datasource.addRealEstate(
       params.type ?? '',
       params.status ?? '',
@@ -59,14 +63,19 @@ class RealEstateRepo extends BaseRealEstateRepo {
       params.features ?? [],
       params.cover!,
       params.images ?? [],
-      params.detailsList?.map((e) => e.id?.toString() ?? '0').toList() ?? [],
-      params.detailsList?.map((e) => e.title ?? '0').toList() ?? [],
+      ids,
+      values,
     );
 
     return data.message!;
   }
   @override
   Future<String> editRealEstate(AddRealEstateParams params,int id) async {
+    print("====================================================");
+    print('params ${params.toJson().toString()}');
+    print('detailsList ${params.detailsList!.map((e) => e.title)}');
+    print('images ${params.images!.map((e) => e.path)}');
+    print('cover ${params.cover}');
     final data = await datasource.editRealEstate(
       id,
       params.type ?? '',
@@ -125,8 +134,8 @@ class RealEstateRepo extends BaseRealEstateRepo {
   }
 
   @override
-  Future<ApiResponse> addPropertyImage(EditImageCarParams params) {
-    return datasource.addPropertyImage(params.carId, params.image!, params.imageId);
+  Future<ApiResponse> addPropertyImage(List<File> images, int id) {
+    return datasource.addPropertyImage(images, id);
   }
 
   @override
@@ -138,5 +147,11 @@ class RealEstateRepo extends BaseRealEstateRepo {
   Future<Property> fetchPropertyDetails(int id)async {
     final res=await datasource.fetchPropertyDetails(id);
    return res.data!;
+  }
+
+  @override
+  Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id)async {
+    final res=await datasource.fetchPropertiesDevelopersDetails(id);
+    return res.data!;
   }
 }

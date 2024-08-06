@@ -18,8 +18,8 @@ class EditImagesRealEstateScreen extends BaseStatelessWidget {
    final String categoryName;
    final Property property;
    final Function(AddRealEstateParams params)? onShare;
-  final Function(EditImageCarParams)? onEditPropertyImage;
-  final Function(EditImageCarParams)? onAddPropertyImage;
+  final Function(List<File> images, int id)? onEditPropertyImage;
+  final Function(List<File> images, int id)? onAddPropertyImage;
   final Function(int)? onDeletePropertyImage;
   File mainImage = File('');
 
@@ -53,9 +53,13 @@ class EditImagesRealEstateScreen extends BaseStatelessWidget {
                 10.ph,
                 PickerCarImages(
                   length: 10,
-                  onAddCarImage: onAddPropertyImage,
+                  onAddCarImage: (param){
+                    onAddPropertyImage!([param.image!],property.id);
+                  },
                   onDeleteCarImage: onDeletePropertyImage,
-                  onEditCarImage: onEditPropertyImage,
+                  onEditCarImage: (param){
+                    onEditPropertyImage!([param.image!],property.id);
+                  },
                   initialMainImage: property.cover??'',
                   initialImages:property.images?.map((e) => ImageDto(id: e.id,image: e.image)).toList(),
                   mainTitle:context.strings.add_main_image,
@@ -63,6 +67,8 @@ class EditImagesRealEstateScreen extends BaseStatelessWidget {
                   onImagesSelected: (File x, List<File> images) {
                     mainImage=x;
                     imagesList=images;
+                    print('mainImage ${mainImage.path}');
+                    print('imagesList ${imagesList.length}');
                   },
                 ),
 

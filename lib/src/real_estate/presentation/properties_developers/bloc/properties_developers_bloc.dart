@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/bloc/base_cubit.dart';
 import '../../../../../core/exceptions/empty_list_exception.dart';
 import '../../../../../core/resources/data_state.dart';
+import '../../../data/models/properties_developer_details.dart';
 import '../../../data/models/properties_developers.dart';
 import '../../../domain/use_cases/real_estate_usecase.dart';
 
@@ -10,9 +11,9 @@ class PropertiesDevelopersPageCubit extends BaseCubit {
   final RealEstateUseCase useCase;
   PropertiesDevelopersPageCubit(this.useCase);
 
-  // Future<List<PropertiesDevelopers>> fetchPropertiesDevelopers()async {
-  //  return executeSuccessNotLoading(() => useCase.fetchPropertiesDevelopers());
-  // }
+  Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id)async {
+   return executeSuccessNotLoading(() => useCase.fetchPropertiesDevelopersDetails(id));
+  }
   List<PropertiesDevelopers> allPropertiesDevelopers = [];
   List<PropertiesDevelopers> propertiesDevelopers = [];
   int page = 1;

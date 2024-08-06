@@ -22,7 +22,7 @@ class PropertiesDeveloperItem extends BaseStatelessWidget {
       onTap: () {
         pushNamed(
           Routes.propertiesDevelopersDetailsPage,
-          arguments: developer,
+          arguments: developer.id,
         );
       },
       child: CustomCompanyContainer(

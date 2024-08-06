@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dalalah/src/real_estate/data/models/real_estate_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,6 +13,7 @@ import '../../data/models/add_real_estate_params.dart';
 import '../../data/models/category_details_dto.dart';
 import '../../data/models/get_real_estate_params.dart';
 import '../../data/models/my_properties_response.dart';
+import '../../data/models/properties_developer_details.dart';
 import '../../data/models/properties_developers.dart';
 import '../../data/models/real_estate_params.dart';
 import '../../data/models/real_estate_type_dto.dart';
@@ -68,12 +71,8 @@ class RealEstateUseCase {
   Future<String> updatePropertyDate(int id) async {
     ProfileDto? profile = await HelperMethods.getProfile();
     final data = await repository.updatePropertyDate(
-      UpdateRealEstateParams(
-        // carId: id,
-        // modelId: profile?.id ?? 0,
-        // modelRole: profile?.role ?? '',
-      ),
-      5
+      UpdateRealEstateParams(),
+          id
     );
     return data.message ?? '';
   }
@@ -82,13 +81,16 @@ class RealEstateUseCase {
   Future<List<PropertiesDevelopers>> fetchPropertiesDevelopers(int page) async {
     return await repository.getPropertiesDevelopers(page);
   }
+  Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id) async {
+    return await repository.fetchPropertiesDevelopersDetails(id);
+  }
   Future<String> editPropertyImage(EditImageCarParams params) async{
     final data = await repository.editPropertyImage(params);
     return data.message ?? '';
   }
 
-  Future<String> addPropertyImage(EditImageCarParams params) async{
-    final data = await repository.addPropertyImage(params);
+  Future<String> addPropertyImage(List<File> images, int id) async{
+    final data = await repository.addPropertyImage(images,id);
     return data.message ?? '';
   }
 

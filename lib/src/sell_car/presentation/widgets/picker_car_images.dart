@@ -36,72 +36,86 @@ class PickerCarImages extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     File mainImage = File('');
     List<File> images = [];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        10.ph,
-        Text(
-          mainTitle??
-          strings.add_main_image,
-          style: context.bodySmall,
-        ),
-        20.ph,
-        PickerMainImage(
-          initialMainImage: initialMainImage,
-          onImageSelected: (file) {
-            mainImage = file;
-            onImagesSelected(mainImage, images);
-            if(initialMainImage != null || initialMainImage!.isEmpty) {
-              onEditCarImage?.call(EditImageCarParams(
-                image: file,
-              ));
-            }
-          },
-        ),
-        20.ph,
-        Text(
-          title??strings.add_car_image_at_most_10,
-          style: context.bodySmall,
-        ),
-        10.ph,
-        PickerSubImages(
-          length: length??0,
-          // initialImages: initialImages,
-         // onEditCarImage: onEditCarImage,
-          onImagesSelected: (files) {
+    return StatefulBuilder(builder: (context,setState){
+
+      return  Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          10.ph,
+          Text(
+            mainTitle??
+                strings.add_main_image,
+            style: context.bodySmall,
+          ),
+          20.ph,
+          PickerMainImage(
+            initialMainImage: initialMainImage,
+            onImageSelected: (file) {
+
+              mainImage = file;
+              onImagesSelected(mainImage, images);
+              if(initialMainImage != null || initialMainImage!.isEmpty) {
+                onEditCarImage?.call(EditImageCarParams(
+                  image: file,
+                ));
+              }
+            },
+          ),
+          20.ph,
+          Text(
+            title??strings.add_car_image_at_most_10,
+            style: context.bodySmall,
+          ),
+          10.ph,
+          PickerSubImages(
+            length: length??0,
+            // initialImages: initialImages,
+            // onEditCarImage: onEditCarImage,
+            onImagesSelected: (files) {
               images = files;
               onImagesSelected(mainImage, images);
-          },
-        ),
-        10.ph,
-        GridView.builder(
-          itemCount: initialImages?.length ?? 0,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
+            },
           ),
-          padding: 0.paddingAll,
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return SubImageItem(
-              urlImage: initialImages?[index].image ?? '',
-              onImagesSelected: (image) {
-                onAddCarImage?.call(EditImageCarParams(
-                  imageId: initialImages?[index].id ?? 0,
-                  image: image,
-                ));
-              },
-              onRemoveImage: () {
-                images.removeAt(index);
-                List<File> files = images.map((e) => e as File).toList();
-                onImagesSelected(mainImage, files);
-              },
-            );
-          },
-        ),
-      ],
-    );
+          10.ph,
+          GridView.builder(
+            itemCount: initialImages?.length ?? 0,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+            ),
+            padding: 0.paddingAll,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+
+              return SubImageItem(
+                urlImage: initialImages?[index].image ?? '',
+                onImagesSelected: (image) {
+                  onAddCarImage?.call(EditImageCarParams(
+                    imageId: initialImages?[index].id ?? 0,
+                    image: image,
+                  ));
+
+                },
+                onRemoveImage: (isNetwork) {
+
+                  if(isNetwork==false){
+                    images.removeAt(index);
+                  }
+                  List<File> files = images.map((e) => e as File).toList();
+                  onImagesSelected(mainImage, files);
+                  if(isNetwork==true){
+                    initialImages!.remove(initialImages![index]);
+                    onDeleteCarImage!(initialImages![index].id??0);
+                    setState((){});
+                  }
+                },
+              );
+            },
+          ),
+        ],
+      );
+    });
   }
 }
 class PickerSubImages extends StatelessWidget {

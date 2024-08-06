@@ -8,7 +8,7 @@ class SubImageItem extends StatelessWidget {
   final File? fileImage;
   final String urlImage;
   final Function(File)? onImagesSelected;
-  final Function()? onRemoveImage;
+  final Function(bool? isNetwork)? onRemoveImage;
   const SubImageItem({super.key, this.fileImage, required this.urlImage, this.onImagesSelected, this.onRemoveImage});
 
   @override
@@ -44,7 +44,7 @@ class SubImageItem extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              onRemoveImage?.call();
+              onRemoveImage?.call(urlImage.isNotEmpty);
             },
             child: Container(
               padding: 3.paddingAll,

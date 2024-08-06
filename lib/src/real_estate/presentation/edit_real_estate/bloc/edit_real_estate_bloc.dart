@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:dalalah/core/resources/data_state.dart';
 import 'package:dalalah/src/real_estate/data/models/category_details_dto.dart';
 import 'package:dalalah/src/real_estate/presentation/edit_real_estate/bloc/real_estate_categories_state.dart';
@@ -59,8 +61,8 @@ class EditRealEstatePageCubit extends BaseCubit {
     executeEmitterMessage(() => usecase.editPropertyImage(params));
   }
 
-  Future<void> addPropertyImage(EditImageCarParams params) async {
-    executeEmitterMessage(() => usecase.addPropertyImage(params));
+  Future<void> addPropertyImage(List<File> images, int id) async {
+    executeEmitterMessage(() => usecase.addPropertyImage(images,id));
   }
 
   Future<void> deletePropertyImage(int id) async {

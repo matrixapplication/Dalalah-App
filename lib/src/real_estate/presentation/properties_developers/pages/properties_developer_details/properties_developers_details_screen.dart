@@ -7,14 +7,14 @@ import '../../../../../../core/widgets/texts/row_texts.dart';
 import '../../../../../cars/presentation/cars_details/widgets/sliders_car_details.dart';
 import '../../../../../showrooms/presentation/showrooms/widgets/custom_exhibition_circle_logo.dart';
 import '../../../../data/models/my_properties_response.dart';
+import '../../../../data/models/properties_developer_details.dart';
 import '../../../../data/models/properties_developers.dart';
 import '../../../real_estate/widgets/real_estate_item.dart';
 
 class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
-  final PropertiesDevelopers developer;
-  final List<Property> properties;
+  final PropertiesDeveloperDetails developerDetails;
 
-  PropertiesDevelopersDetailsScreen( {super.key, required this.developer,required this.properties,});
+  PropertiesDevelopersDetailsScreen({super.key,required this.developerDetails,});
 
    @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
             children: [
               SlidersCarDetails(
                 height: 300,
-                images: [developer.logo ?? ''],
+                images: [developerDetails.logo ?? ''],
               ),
               // PrimaryButton(
               //   height: 40,
@@ -45,7 +45,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
                 end: 12,
                 child: CustomExhibitionCircleLogo(
                   logoPath: AppImages.splash_logo,
-                  name: developer.name ?? '',
+                  name: developerDetails.name ?? '',
                 ),
               ),
               PositionedDirectional(
@@ -53,9 +53,9 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
                 end: 15,
                 child: Row(
                   children: [
-                    ChatWhatsAppButton(phone: developer.whatsapp ?? ''),
+                    ChatWhatsAppButton(phone: developerDetails.whatsapp ?? ''),
                     10.pw,
-                    CallButton(phone: developer.phone ?? ''),
+                    CallButton(phone: developerDetails.phone ?? ''),
                   ],
                 ),
               )
@@ -68,7 +68,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
               children: [
                 10.ph,
                 RowTexts(
-                  title: developer.name ?? '',
+                  title: developerDetails.name ?? '',
                   value:
                   '',
                   titleStyle: context.bodyLarge,
@@ -79,7 +79,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconText(
-                      text: developer.city?.name ?? '',
+                      text: developerDetails.city?.name ?? '',
                       textStyle: context.textTheme.displayLarge!.copyWith(
                         color: AppColors.grey_68,
                       ),
@@ -105,18 +105,23 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: 16.paddingHoriz+16.paddingVert,
-            child: Text(
-              strings.real_estates,
-              style: theme.textTheme.bodyMedium!,
-            ),
-          ),
-          // ...properties.map((e) => RealStateItemWidget(
-          //   realEstate: e,
-          //   isMyProperty: false,
-          // )),
+         if(developerDetails.properties!=null &&developerDetails.properties!.isNotEmpty)
+         Column(
+           children: [
+             Padding(
+               padding: 16.paddingHoriz+16.paddingVert,
+               child: Text(
+                 strings.real_estates,
+                 style: theme.textTheme.bodyMedium!,
+               ),
+             ),
+             ...developerDetails.properties!.map((e) => RealStateItemWidget(
+               realEstate: e,
+               isMyProperty: false,
+             )),
 
+           ],
+         )
         ],
       ),
     );
