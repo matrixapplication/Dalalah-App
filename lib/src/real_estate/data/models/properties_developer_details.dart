@@ -45,10 +45,16 @@ class PropertiesDeveloperDetails {
   String? logo;
   @JsonKey(name: 'is_verified')
   int? isVerified;
+  @JsonKey(name: 'is_followed')
+  bool? isFollowed;
+  @JsonKey(name: 'followers_count')
+  int? followersCount;
+  @JsonKey(name: 'avg_rate')
+  String? avgRate;
   @JsonKey(name: 'properties')
   List<Property>? properties;
 
-  PropertiesDeveloperDetails({this.id, this.ownerName, this.name, this.description, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.phone, this.licenseNumber, this.whatsapp, this.role, this.city, this.isBlocked, this.logo, this.isVerified, this.properties});
+  PropertiesDeveloperDetails({this.id, this.ownerName,  this.isFollowed, this.avgRate,  this.followersCount, this.name, this.description, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.phone, this.licenseNumber, this.whatsapp, this.role, this.city, this.isBlocked, this.logo, this.isVerified, this.properties});
 
    factory PropertiesDeveloperDetails.fromJson(Map<String, dynamic> json) => _$PropertiesDeveloperDetailsFromJson(json);
 

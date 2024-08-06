@@ -17,7 +17,7 @@ class PropertiesDevelopersPage extends BaseBlocWidget<DataSuccess<List<Propertie
    void loadInitialData(BuildContext context) {
      bloc.fetchPropertiesDevelopers();
    }
-  RefreshController controller = RefreshController(initialRefresh: false);
+  RefreshController controller = RefreshController();
   ScrollController scrollController = ScrollController();
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<PropertiesDevelopers>> state) {
@@ -26,17 +26,21 @@ class PropertiesDevelopersPage extends BaseBlocWidget<DataSuccess<List<Propertie
      PaginationWidget(
        refreshController: controller,
        onRefresh: () {
-         loadInitialData(context);
-         controller.refreshCompleted();
+         bloc.fetchPropertiesDevelopers();
        },
        onLoading: () async {
          await bloc.fetchPropertiesDevelopers(isRefresh: false);
-         await Future.delayed(const Duration(milliseconds: 1200));
-         if (bloc.propertiesDevelopers.isEmpty) {
+         if (bloc.isLastPage) {
            controller.loadNoData();
          } else {
            controller.loadComplete();
          }
+         // await Future.delayed(const Duration(milliseconds: 1200));
+         // if (bloc.propertiesDevelopers.isEmpty) {
+         //   controller.loadNoData();
+         // } else {
+         //   controller.loadComplete();
+         // }
        },
        child:  PropertiesDevelopersScreen(
        developers: state.data??[],

@@ -113,7 +113,9 @@ class UserRegisterScreen extends BaseStatelessWidget {
               prefixIcon: AppIcons.smartphone,
               controller: phoneNumberController,
               keyboardType: TextInputType.phone,
-              validator: (phone) => Validation.validatePhoneRequired(phone ?? ''),
+              // validator: (phone) => Validation.validatePhoneRequired(phone ?? ''),
+              validator: (phone) =>  type== Roles.REALESTATEDEVELOPERS? Validation.validatePhone(phone ?? ''): Validation.validatePhoneRequired(phone ?? ''),
+
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             AuthTextField(

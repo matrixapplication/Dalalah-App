@@ -94,7 +94,7 @@ PropDeveloper _$PropDeveloperFromJson(Map<String, dynamic> json) =>
           ? null
           : PropertyCity.fromJson(json['city'] as Map<String, dynamic>),
       isBlocked: json['is_blocked'] as bool,
-      logo: json['logo'] as String,
+      image: json['image'] as String,
       isVerified: json['is_verified'] as int,
     );
 
@@ -117,7 +117,7 @@ Map<String, dynamic> _$PropDeveloperToJson(PropDeveloper instance) =>
       'role': instance.role,
       'city': instance.city,
       'is_blocked': instance.isBlocked,
-      'logo': instance.logo,
+      'image': instance.image,
       'is_verified': instance.isVerified,
     };
 

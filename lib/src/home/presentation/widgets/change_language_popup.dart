@@ -26,7 +26,8 @@ class ChangeLanguagePopup extends BaseStatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
       decoration: Decorations.kDecorationOnlyRadius(
           color: Colors.transparent, radius: 20),
-      child: BlocBuilder<LocaleCubit, LocalState>(
+      child:
+      BlocBuilder<LocaleCubit, LocalState>(
         bloc: LocaleCubit()..getLanguageData(),
         builder: (context, state) {
           return state.isLoading

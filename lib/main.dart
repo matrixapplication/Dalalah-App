@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
 
   const MyApp({super.key, required this.token});
 
-//push ios 5/8/2024
+//push Ios 25/8
   @override
   Widget build(BuildContext context) {
     FirebaseNotification firebase = FirebaseNotification();

@@ -97,7 +97,7 @@ class PropDeveloper {
   PropertyCity? city;
   @JsonKey(name: 'is_blocked')
   bool isBlocked;
-  String logo;
+  String image;
   @JsonKey(name: 'is_verified')
   int isVerified;
 
@@ -119,7 +119,7 @@ class PropDeveloper {
     required this.role,
     required this.city,
     required this.isBlocked,
-    required this.logo,
+    required this.image,
     required this.isVerified,
   });
 

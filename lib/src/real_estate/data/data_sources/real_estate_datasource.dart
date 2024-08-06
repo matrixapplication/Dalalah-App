@@ -1,19 +1,24 @@
 import 'dart:io';
 
+import 'package:dalalah/src/real_estate/presentation/real_estate/pages/real_estate_screen.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dalalah/core/network/api_response.dart';
 import 'package:dalalah/core/utils/constants.dart';
 import '../../../cars/data/models/add_special_params.dart';
+import '../../../showrooms/data/models/add_rate_params.dart';
+import '../models/add_rate_developer_params.dart';
 import '../models/add_real_estate_params.dart';
 import '../models/category_details_dto.dart';
 import '../models/get_real_estate_params.dart';
 import '../models/my_properties_response.dart';
+import '../models/properties_developer_details.dart';
 import '../models/properties_developers.dart';
 import '../models/real_estate_model.dart';
 import '../models/real_estate_params.dart';
 import '../models/real_estate_type_dto.dart';
+import '../models/update_real_estate_params.dart';
 import '../models/update_real_estate_params.dart';
 part 'real_estate_datasource.g.dart';
 @Injectable()
@@ -87,7 +92,7 @@ abstract class  RealEstateDatasource{
   Future<ApiResponse> deleteProperty(@Path('id') int id);
 
 
-  @POST('update-property/{id}')
+  @POST('/update-property/{id}')
   Future<ApiResponse> updatePropertyDate(@Body() UpdateRealEstateParams params,@Path('id') int id);
 
 
@@ -103,9 +108,8 @@ abstract class  RealEstateDatasource{
 
   @POST('/add-property-images/{id}')
   Future<ApiResponse> addPropertyImage(
-      @Part(name: 'car_id') int? carId,
-      @Part(name: 'image') File image,
-      @Part(name: 'image_id') int? imageId,
+      @Part(name: 'images[]') List<File> images,
+      @Path() int id,
       );
 
   @POST('/delete-property-image/{id}')
@@ -113,5 +117,13 @@ abstract class  RealEstateDatasource{
 
  @GET('/property-details/{id}')
   Future<ApiResponse<Property>> fetchPropertyDetails(@Path('id') int id);
+ @GET('/get-property-developer-profile/{id}')
+  Future<ApiResponse<PropertiesDeveloperDetails>> fetchPropertiesDevelopersDetails(@Path('id') int id);
 
+  @POST('/follow-prop-developer/{id}')
+  Future<ApiResponse> addFollowDeveloper(@Path('id') id);
+
+
+  @POST('/rate-prop-developer')
+  Future<ApiResponse> addRateDeveloper(@Body() AddRateDeveloperParams params);
 }

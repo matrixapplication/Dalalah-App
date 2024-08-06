@@ -1,11 +1,16 @@
 
+import 'dart:io';
+
 import '../../../../core/network/api_response.dart';
 import '../../../cars/data/models/add_special_params.dart';
 import '../../../sell_car/data/models/edit_image_params.dart';
+import '../../../showrooms/data/models/add_rate_params.dart';
+import '../../data/models/add_rate_developer_params.dart';
 import '../../data/models/add_real_estate_params.dart';
 import '../../data/models/category_details_dto.dart';
 import '../../data/models/get_real_estate_params.dart';
 import '../../data/models/my_properties_response.dart';
+import '../../data/models/properties_developer_details.dart';
 import '../../data/models/properties_developers.dart';
 import '../../data/models/real_estate_model.dart';
 import '../../data/models/real_estate_params.dart';
@@ -20,7 +25,8 @@ abstract class BaseRealEstateRepo {
   Future<Property> fetchPropertyDetails(int id);
   Future<dynamic> editRealEstate(AddRealEstateParams params,int id);
   Future<dynamic> addRealEstate(AddRealEstateParams params);
-  Future<List<PropertiesDevelopers>> getPropertiesDevelopers(int page);
+  Future<ApiResponse<List<PropertiesDevelopers>>> getPropertiesDevelopers(int page);
+  Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id);
 
 
   Future<ApiResponse> hideProperty(int id);
@@ -30,5 +36,7 @@ abstract class BaseRealEstateRepo {
   Future<ApiResponse> updatePropertyDate(UpdateRealEstateParams params,int id);
   Future<ApiResponse> editPropertyImage(EditImageCarParams params);
   Future<ApiResponse> deletePropertyImage(int id);
-  Future<ApiResponse> addPropertyImage(EditImageCarParams params);
+  Future<ApiResponse> addPropertyImage(List<File> images, int id);
+  Future<String> addFollowDeveloper(int id);
+  Future<String> addRateDeveloper(AddRateDeveloperParams params);
 }

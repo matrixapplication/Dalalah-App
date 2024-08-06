@@ -66,11 +66,17 @@ class Validation {
   }
 
   static String? validatePhone(String value) {
-    // if (value.isEmpty) {
-    //   return injector<ServicesLocator>().strings.this_field_is_required;
-    // }
-    if (value.length > 9) {
+    if (value.isEmpty) {
+      return injector<ServicesLocator>().strings.this_field_is_required;
+    }
+    if (value.length > 10) {
       return injector<ServicesLocator>().strings.must_be_at_least_11_characters;
+    }
+    if (value.length < 10) {
+      return injector<ServicesLocator>().strings.must_be_at_least_11_characters;
+    }
+    if (value[0] != '0') {
+      return injector<ServicesLocator>().strings.should_start_by_zero;
     }
     return null;
   }

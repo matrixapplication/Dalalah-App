@@ -65,13 +65,14 @@ class ShowroomsUseCase {
     return data.message ?? '';
   }
 
-  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(int page) async {
-    return await repository.fetchFollowShowrooms(page);
-  }
+
 
   Future<String> addRateShowroom(AddRateParams params) async {
     final data = await repository.addRateShowroom(params);
     return data.message ?? '';
+  }
+  Future<ApiResponse<List<ShowroomDto>>> fetchFollowShowrooms(int page) async {
+    return await repository.fetchFollowShowrooms(page);
   }
 
   Future<ApiResponse<List<PlateDto>>> fetchShowroomPlates(ShowroomPlatesParams params) async {

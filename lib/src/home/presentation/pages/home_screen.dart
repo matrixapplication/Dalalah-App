@@ -68,7 +68,7 @@ class HomeScreen extends BaseStatelessWidget {
                     onFavoritePlate: (id) async => await onFavoritePlate!(id),
                   ),
                   // RowSeeAllText(
-                  //   routeName: Routes.carsPage,
+                  //   routeName: Routes.realEstatePage,
                   //   title: context.strings.latest_properties,
                   // ),
                   // RealEstatesList(

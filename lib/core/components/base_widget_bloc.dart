@@ -256,7 +256,7 @@ abstract class BaseBlocWidget<T, B extends BlocBase<DataState>>
                           showOnlyMessage ? null : onSuccessDismissed();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: context.primaryColor,
+                          backgroundColor: context.primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

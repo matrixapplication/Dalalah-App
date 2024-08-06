@@ -1,6 +1,9 @@
 import 'package:dalalah/core/utils/navigator.dart';
 import '../../../../../core/components/base_widget_bloc.dart';
+import '../../../../../core/utils/helper_methods.dart';
+import '../../../../../navigation_pages.dart';
 import '../../../../main_index.dart';
+import '../../../../profile/data/models/profile_dto.dart';
 import '../../../data/models/add_real_estate_params.dart';
 import '../../../data/models/real_estate_params.dart';
 import '../../add_real_estate/bloc/real_estate_categories_state.dart';
@@ -12,14 +15,12 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
    final RealEstateParams? filterParams;
    RealEstatePage( {Key? key,this.showTitle,this.filterParams,}) : super(key: key);
 
-
    @override
-   void loadInitialData(BuildContext context) {
+   void loadInitialData(BuildContext context) async{
      bloc.fetchRealEstateCategories();
      RealEstateParams params =RealEstateParams();
      RealEstateParams params2 =RealEstateParams();
      if(filterParams!=null){
-       print('ffff ${filterParams!.propStatus}');
        params2.type=filterParams!.type;
         params2.status=filterParams!.propStatus;
        params2.categoryId=filterParams!.categoryId;
@@ -33,14 +34,10 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
 
    @override
    bool isAddButton() {
-     return false;
+     return isDeveloper;
    }
    @override
     onAddButtonPressed() {
-     // bloc.fetchRealEstates(AddRealEstateParams(
-     //   type: 'sell',
-     //   status: 'rent',
-     // ));sssssssis
      pushNamed(Routes.addRealEstatePage,);
    }
 
@@ -49,7 +46,9 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
 
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
-   return Container(
+   return
+     Container(
+
      child: Center(
        child: Text('قريبا .... '),
      ),
@@ -58,7 +57,7 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
    //   realEstateCategoriesList:bloc.categoriesList,
    //   realEstatesData: bloc.realEstatesData,
    //   categoriesDetails: bloc.categoriesDetails,
-   //   onGetDetailsType: (id)async{
+   //   onGetDetailsType: ( id)async{
    //     await bloc.fetchRealEstateCategoriesDetails(id);
    //   },
    //   onTapGetRealEstates: (RealEstateParams? params){

@@ -2,6 +2,7 @@ import 'package:dalalah/core/exceptions/api_exception.dart';
 import 'package:dalalah/core/utils/helper_methods.dart';
 
 import '../../../core/utils/navigator.dart';
+import '../../../navigation_pages.dart';
 import '../../main_index.dart';
 import '../../home/domain/entities/section.dart';
 import '../../plates/domain/entities/plate_args.dart';
@@ -33,7 +34,8 @@ class AddYourAdPage extends BaseStatelessWidget {
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
+                            if(isDeveloper==false)
+                              Expanded(
                               child: _SectionsItem(
                                 section: Section(
                                   title: strings.add_car,
@@ -46,6 +48,7 @@ class AddYourAdPage extends BaseStatelessWidget {
                               ),
                             ),
                             20.ph,
+                            if(isDeveloper==false)
                             Expanded(
                               child: _SectionsItem(
                                 section: Section(
@@ -76,17 +79,19 @@ class AddYourAdPage extends BaseStatelessWidget {
                             //   }
                             // ),
                             // 20.ph,
-                            // Expanded(
-                            //   child: _SectionsItem(
-                            //     section: Section(
-                            //       title: strings.add_real_estate,
-                            //       image: AppImages.add_real_estate,
-                            //       routeName: Routes.addRealEstatePage,
-                            //       width: double.infinity,
-                            //     ),
-                            //     index: 0,
-                            //   ),
-                            // ),
+                            if(isDeveloper==true)
+                              SizedBox(
+                                height: 270,
+                                child: _SectionsItem(
+                                  section: Section(
+                                    title: strings.add_real_estate,
+                                    image: AppImages.add_real_estate,
+                                    routeName: Routes.addRealEstatePage,
+                                    width: double.infinity,
+                                  ),
+                                  index: 0,
+                                ),
+                              )
                           ],
                         );
             }),

@@ -1,7 +1,6 @@
 import 'package:dalalah/core/exceptions/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/components/base_stateless_widget.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/utils/helper_methods.dart';
@@ -17,7 +16,7 @@ class PropDeveloperWidget extends BaseStatelessWidget {
     return Row(
       children: [
          ImageNetworkCircle(
-          image: realEstate.propDeveloper?.logo??'',
+          image: realEstate.propDeveloper?.image??'',
           size: 65,
         ),
         12.pw,

@@ -24,7 +24,7 @@ class ShowroomsAndBranchesTabs extends BaseStatelessWidget {
               label: context.strings.show_rooms,
               page: ShowroomsPage(),
             ),
-            TabItemModel(label: context.strings.real_estate_developers, page: PropertiesDevelopersPage()),
+            // TabItemModel(label: context.strings.real_estate_developers, page: PropertiesDevelopersPage()),
           ],
         ),
       ),

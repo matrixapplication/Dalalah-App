@@ -9,6 +9,8 @@ import '../../../cars/data/models/add_special_params.dart';
 import '../../../plates/data/models/plate_dto.dart';
 import '../../../profile/data/models/profile_dto.dart';
 import '../../../sell_car/data/models/edit_image_params.dart';
+import '../../../showrooms/data/models/add_rate_params.dart';
+import '../../data/models/add_rate_developer_params.dart';
 import '../../data/models/add_real_estate_params.dart';
 import '../../data/models/category_details_dto.dart';
 import '../../data/models/get_real_estate_params.dart';
@@ -78,7 +80,7 @@ class RealEstateUseCase {
   }
 
 
-  Future<List<PropertiesDevelopers>> fetchPropertiesDevelopers(int page) async {
+  Future<ApiResponse<List<PropertiesDevelopers>>> fetchPropertiesDevelopers(int page) async {
     return await repository.getPropertiesDevelopers(page);
   }
   Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id) async {
@@ -97,5 +99,18 @@ class RealEstateUseCase {
   Future<String> deletePropertyImage(int id) async{
     final data = await repository.deletePropertyImage(id);
     return data.message ?? '';
+  }
+
+
+  Future<String> addFollowDeveloper(int id) async {
+    final data = await repository.addFollowDeveloper(id);
+    return data ?? '';
+  }
+
+
+
+  Future<String> addRateDeveloper(AddRateDeveloperParams params) async {
+    final data = await repository.addRateDeveloper(params);
+    return data ?? '';
   }
 }

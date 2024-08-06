@@ -1,16 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'properties_developers.dart';
+part of 'properties_developer_details.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PropertiesDevelopers _$PropertiesDevelopersFromJson(
+PropertiesDeveloperDetails _$PropertiesDeveloperDetailsFromJson(
         Map<String, dynamic> json) =>
-    PropertiesDevelopers(
+    PropertiesDeveloperDetails(
       id: json['id'] as int?,
       ownerName: json['owner_name'] as String?,
+      isFollowed: json['is_followed'] as bool?,
+      avgRate: json['avg_rate'] as String?,
+      followersCount: json['followers_count'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
       ownerNameAr: json['owner_name_ar'] as String?,
@@ -28,12 +31,15 @@ PropertiesDevelopers _$PropertiesDevelopersFromJson(
           ? null
           : City.fromJson(json['city'] as Map<String, dynamic>),
       isBlocked: json['is_blocked'] as bool?,
-      image: json['image'] as String?,
+      logo: json['logo'] as String?,
       isVerified: json['is_verified'] as int?,
+      properties: (json['properties'] as List<dynamic>?)
+          ?.map((e) => Property.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$PropertiesDevelopersToJson(
-        PropertiesDevelopers instance) =>
+Map<String, dynamic> _$PropertiesDeveloperDetailsToJson(
+        PropertiesDeveloperDetails instance) =>
     <String, dynamic>{
       'id': instance.id,
       'owner_name': instance.ownerName,
@@ -52,18 +58,10 @@ Map<String, dynamic> _$PropertiesDevelopersToJson(
       'role': instance.role,
       'city': instance.city,
       'is_blocked': instance.isBlocked,
-      'image': instance.image,
+      'logo': instance.logo,
       'is_verified': instance.isVerified,
-    };
-
-City _$CityFromJson(Map<String, dynamic> json) => City(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-      cityPayment: json['city_payment'] as String?,
-    );
-
-Map<String, dynamic> _$CityToJson(City instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'city_payment': instance.cityPayment,
+      'is_followed': instance.isFollowed,
+      'followers_count': instance.followersCount,
+      'avg_rate': instance.avgRate,
+      'properties': instance.properties,
     };

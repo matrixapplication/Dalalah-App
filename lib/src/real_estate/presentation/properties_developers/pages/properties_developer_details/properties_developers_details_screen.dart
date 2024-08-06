@@ -13,8 +13,9 @@ import '../../../real_estate/widgets/real_estate_item.dart';
 
 class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
   final PropertiesDeveloperDetails developerDetails;
-
-  PropertiesDevelopersDetailsScreen({super.key,required this.developerDetails,});
+  final Function()? onAddRate;
+  final Function()? onFollow;
+  PropertiesDevelopersDetailsScreen({super.key,required this.developerDetails,this.onAddRate, this.onFollow, });
 
    @override
   Widget build(BuildContext context) {
@@ -29,17 +30,19 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
                 height: 300,
                 images: [developerDetails.logo ?? ''],
               ),
-              // PrimaryButton(
-              //   height: 40,
-              //   width: 20,
-              //   radius: 50,
-              //   margin: 10.paddingTop + 10.paddingStart,
-              //   padding: 12.paddingAll,
-              //   title: '4',
-              //   onPressed: () {
-              //     // onFollow?.call();
-              //   },
-              // ),
+              PrimaryButton(
+                height: 40,
+                width: 20,
+                radius: 50,
+                margin: 10.paddingTop + 10.paddingStart,
+                padding: 12.paddingAll,
+                title: developerDetails.isFollowed ==true
+                    ? context.strings.follower
+                    : context.strings.follow,
+                onPressed: () {
+                  onFollow?.call();
+                },
+              ),
               PositionedDirectional(
                 top: 12,
                 end: 12,
@@ -91,13 +94,11 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
                     IconTextButton(
                       icon: AppIcons.star,
                       iconSize: 20,
-                      text: '',
+                      text:developerDetails.avgRate??'',
                       textStyle: context.bodyMedium.copyWith(
                         color: context.yellow_00,
                       ),
-                      onTap: () async {
-                        // onAddRate?.call();
-                      },
+                      onTap:  onAddRate
                     ),
                   ],
                 ),
@@ -107,6 +108,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
           ),
          if(developerDetails.properties!=null &&developerDetails.properties!.isNotEmpty)
          Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
            children: [
              Padding(
                padding: 16.paddingHoriz+16.paddingVert,
@@ -117,7 +119,7 @@ class PropertiesDevelopersDetailsScreen extends BaseStatelessWidget {
              ),
              ...developerDetails.properties!.map((e) => RealStateItemWidget(
                realEstate: e,
-               isMyProperty: false,
+               isMyProperty: true,
              )),
 
            ],
