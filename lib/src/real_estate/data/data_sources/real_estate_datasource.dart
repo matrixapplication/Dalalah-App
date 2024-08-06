@@ -10,6 +10,7 @@ import '../models/add_real_estate_params.dart';
 import '../models/category_details_dto.dart';
 import '../models/get_real_estate_params.dart';
 import '../models/my_properties_response.dart';
+import '../models/properties_developer_details.dart';
 import '../models/properties_developers.dart';
 import '../models/real_estate_model.dart';
 import '../models/real_estate_params.dart';
@@ -87,7 +88,7 @@ abstract class  RealEstateDatasource{
   Future<ApiResponse> deleteProperty(@Path('id') int id);
 
 
-  @POST('update-property/{id}')
+  @POST('/update-property/{id}')
   Future<ApiResponse> updatePropertyDate(@Body() UpdateRealEstateParams params,@Path('id') int id);
 
 
@@ -103,9 +104,8 @@ abstract class  RealEstateDatasource{
 
   @POST('/add-property-images/{id}')
   Future<ApiResponse> addPropertyImage(
-      @Part(name: 'car_id') int? carId,
-      @Part(name: 'image') File image,
-      @Part(name: 'image_id') int? imageId,
+      @Part(name: 'images[]') List<File> images,
+      @Path() int id,
       );
 
   @POST('/delete-property-image/{id}')
@@ -113,5 +113,7 @@ abstract class  RealEstateDatasource{
 
  @GET('/property-details/{id}')
   Future<ApiResponse<Property>> fetchPropertyDetails(@Path('id') int id);
+ @GET('/get-property-developer-profile/{id}')
+  Future<ApiResponse<PropertiesDeveloperDetails>> fetchPropertiesDevelopersDetails(@Path('id') int id);
 
 }

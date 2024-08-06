@@ -76,17 +76,17 @@ class AddYourAdPage extends BaseStatelessWidget {
                             //   }
                             // ),
                             // 20.ph,
-                            // Expanded(
-                            //   child: _SectionsItem(
-                            //     section: Section(
-                            //       title: strings.add_real_estate,
-                            //       image: AppImages.add_real_estate,
-                            //       routeName: Routes.addRealEstatePage,
-                            //       width: double.infinity,
-                            //     ),
-                            //     index: 0,
-                            //   ),
-                            // ),
+                            Expanded(
+                              child: _SectionsItem(
+                                section: Section(
+                                  title: strings.add_real_estate,
+                                  image: AppImages.add_real_estate,
+                                  routeName: Routes.addRealEstatePage,
+                                  width: double.infinity,
+                                ),
+                                index: 0,
+                              ),
+                            ),
                           ],
                         );
             }),
