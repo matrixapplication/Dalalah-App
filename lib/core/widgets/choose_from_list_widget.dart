@@ -18,7 +18,7 @@ class ChooseFromListItemWidget extends BaseStatelessWidget {
    @override
   Widget build(BuildContext context) {
 
-     String index =isHasInitailItem!=false? items[0].title:value!;
+     String index =isHasInitailItem!=false? items[0].title:(value??'');
 
      return StatefulBuilder(builder: (context,setState){
       return SingleChildScrollView(

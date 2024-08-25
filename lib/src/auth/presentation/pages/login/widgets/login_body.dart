@@ -49,8 +49,9 @@ class LoginBody extends BaseStatelessWidget {
               prefixIcon: type==Roles.USER? AppIcons.email : type== Roles.REALESTATEDEVELOPERS?
               AppIcons.phone:AppIcons.id_card,
               controller: emailController,
+              maxLength: type== Roles.REALESTATEDEVELOPERS?10:null,
               keyboardType: type==Roles.USER ? TextInputType.emailAddress : TextInputType.number,
-          //    validator: (phone) => Validation.validatePhone(phone ?? ''),
+             // validator: (phone) =>  type== Roles.REALESTATEDEVELOPERS? Validation.validatePhone(phone ?? ''):null,
             ),
             10.ph,
             AuthTextField(

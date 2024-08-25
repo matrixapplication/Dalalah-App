@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen>
         tabs: [
           TabItemModel(label: context.strings.individuals, page: LoginBody(onLogin: widget.onLogin,type: Roles.USER,)),
           TabItemModel(label: context.strings.merchant, page: LoginBody(type: Roles.SHOWROOM, onLogin: widget.onShowRoomLogin)),
-          TabItemModel(label: context.strings.real_estate_developers, page: LoginBody(type: Roles.REALESTATEDEVELOPERS, onLogin: widget.onRealEstateDevelopersLogin)),
+          // TabItemModel(label: context.strings.real_estate_developers, page: LoginBody(type: Roles.REALESTATEDEVELOPERS, onLogin: widget.onRealEstateDevelopersLogin)),
         ],
       ),
     );

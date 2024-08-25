@@ -1,5 +1,6 @@
 import 'package:dalalah/core/utils/helper_methods.dart';
 import 'package:dalalah/src/add__ads/pages/sections_screen.dart';
+import 'package:dalalah/src/profile/data/models/profile_dto.dart';
 import 'package:dalalah/src/profile/presentation/pages/profile_page.dart';
 import 'package:dalalah/src/showrooms/presentation/showrooms_and_branches_tabs.dart';
 import 'core/widgets/base/bottom_navigator_bar_item.dart';
@@ -15,6 +16,7 @@ class NavigationPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _isPropertyDeveloper();
     final strings = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () => _onWillPop(context),
@@ -32,6 +34,7 @@ class NavigationPages extends StatelessWidget {
                   bottomNavigationBar:
                       snapshot.connectionState == ConnectionState.waiting
                           ? LoadingView()
+                      //change
                           : Container(
                               height: 65,
                               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -124,6 +127,13 @@ class NavigationPages extends StatelessWidget {
       ProfilePage(),
     ];
   }
+  _isPropertyDeveloper() async{
+    ProfileDto? profile = await HelperMethods.getProfile()?.then((value) {
+      if(value?.role == 'prop_developer' ){
+        isDeveloper=true;
+      }
+    });
+  }
 
   Future<bool> _onWillPop(BuildContext context) async {
     return (await DialogsManager.showInfoDialog(context, message: context.strings.exit_app_msg, onClickOk: (){
@@ -132,3 +142,4 @@ class NavigationPages extends StatelessWidget {
         false);
   }
 }
+bool isDeveloper =false;

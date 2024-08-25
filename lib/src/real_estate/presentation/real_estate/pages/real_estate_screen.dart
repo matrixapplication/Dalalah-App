@@ -5,6 +5,7 @@ import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/components/base_stateless_widget.dart';
 import '../../../../../core/components/loading_widget.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/themes/colors.dart';
 import '../../../../../core/widgets/buttons/icon_text_button.dart';
 import '../../../../../core/widgets/drop_down/drop_down.dart';
@@ -15,9 +16,7 @@ import '../../../data/models/category_details_dto.dart';
 import '../../../data/models/real_estate_model.dart';
 import '../../../data/models/real_estate_params.dart';
 import '../../../data/models/real_estate_type_dto.dart';
-import '../../../domain/entities/real_estate.dart';
 import '../widgets/custom_real_estate_list.dart';
-import '../widgets/custom_real_estates_map.dart';
 import '../widgets/search_rael_estate.dart';
 
 class RealEstateScreen extends BaseStatelessWidget {
@@ -42,9 +41,23 @@ class RealEstateScreen extends BaseStatelessWidget {
     );
     return Column(
         children: [
-          SearchRealEstate(
-            onSearch: (ca) {},
-            onToggleFavorite: (onToggleFavorite) {},
+          // SearchRealEstate(
+          //   onSearch: (ca) {},
+          //   onToggleFavorite: (onToggleFavorite) {},
+          // ),
+          FilterHome(
+            routeName: Routes.filterRealEstatePage,
+            onFilterOrder: (filterOrder) {
+              params.sortOrder=filterOrder;
+              onTapGetRealEstates!(params);
+
+              // order = filterOrder;
+              // bloc.fetchCars(CarFilterParams(
+              //   status: CarStatus.getStatusByIndex(tabIndex),
+              //   brand: brandId,
+              //   order: order,
+              // ));
+            },
           ),
           Expanded(
             child: Padding(
@@ -154,84 +167,95 @@ class RealEstateScreen extends BaseStatelessWidget {
                     ),
                   ),
                   16.ph,
-                  Row(
-                    children: [
-                      Expanded(
-                        child:
-                  StreamBuilder<RealEstatesModel?>(
-                      stream: realEstatesData.stream,
-                      builder: (context, snapshot) {
-                        final data = snapshot.data?.properties??[];
-                        if(snapshot.connectionState == ConnectionState.waiting
-                            ||data==null ||data.isEmpty){
-                          return const LoadingView();
-                        }else{
-
-                          return
-                            Text(
-                              '${data.length} ${strings.real_estates}',
-                              style: context.textTheme.displaySmall!.copyWith(
-                                color: AppColors.grey_95,
-                                fontSize: 16,
-                              ),
-                            );
-                        }
-                      })
-
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: StatefulBuilder(
-                          builder: (context, setState) {
-                            return IconTextButton(
-                              icon: filterOrder == FilterOrderTypes.asc
-                                  ? AppIcons.filter_order
-                                  : AppIcons.filter_order,
-                              text: context.strings.sort_by,
-                              textStyle: textStyle,
-                              iconColor: context.primaryColor,
-                              iconSize: 20,
-                              isFirstIcon: false,
-                              onTap: () {
-                                filterOrder = filterOrder == FilterOrderTypes.asc
-                                    ? FilterOrderTypes.desc
-                                    : FilterOrderTypes.asc;
-                                setState(() {
-                                    if(sortDesc==true){
-                                      params.sortOrder='asc';
-                                      sortDesc=false;
-                                    }else{
-                                      params.sortOrder='desc';
-                                      sortDesc=true;
-                                    }
-                                  onTapGetRealEstates!(params);
-                                  // onFilterOrder(filterOrder);
-                                });
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  16.ph,
-                  Expanded(
-                    child: CustomTabItemModel(
-                      tabs: [
-                        TabItemModel(
-                          label: 'القوائم',
-                          page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
-                        ),
-                        // TabItemModel(
-                        //   label: 'الخريطة',
-                        //   page: CustomRealEstatesMapWidget(realEstatesData: realEstatesData,),
-                        // ),
-                      ],
-                    ),
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child:
+                  // StreamBuilder<RealEstatesModel?>(
+                  //     stream: realEstatesData.stream,
+                  //     builder: (context, snapshot) {
+                  //       final data = snapshot.data?.properties??[];
+                  //       if(snapshot.connectionState == ConnectionState.waiting ){
+                  //         return const LoadingView();
+                  //       }else{
+                  //         if(data.isEmpty){
+                  //           return
+                  //             Text(
+                  //               '0 ${strings.real_estates}',
+                  //               style: context.textTheme.displaySmall!.copyWith(
+                  //                 color: AppColors.grey_95,
+                  //                 fontSize: 16,
+                  //               ),
+                  //             );
+                  //         }else{
+                  //           return
+                  //             Text(
+                  //               '${data.length} ${strings.real_estates}',
+                  //               style: context.textTheme.displaySmall!.copyWith(
+                  //                 color: AppColors.grey_95,
+                  //                 fontSize: 16,
+                  //               ),
+                  //             );
+                  //         }
+                  //
+                  //       }
+                  //     })
+                  //
+                  //     ),
+                  //     // Container(
+                  //     //   decoration: BoxDecoration(
+                  //     //     border: Border.all(color: Colors.grey),
+                  //     //     borderRadius: BorderRadius.circular(8),
+                  //     //   ),
+                  //     //   child: StatefulBuilder(
+                  //     //     builder: (context, setState) {
+                  //     //       return IconTextButton(
+                  //     //         icon: filterOrder == FilterOrderTypes.asc
+                  //     //             ? AppIcons.filter_order
+                  //     //             : AppIcons.filter_order,
+                  //     //         text: context.strings.sort_by,
+                  //     //         textStyle: textStyle,
+                  //     //         iconColor: context.primaryColor,
+                  //     //         iconSize: 20,
+                  //     //         isFirstIcon: false,
+                  //     //         onTap: () {
+                  //     //           filterOrder = filterOrder == FilterOrderTypes.asc
+                  //     //               ? FilterOrderTypes.desc
+                  //     //               : FilterOrderTypes.asc;
+                  //     //           setState(() {
+                  //     //               if(sortDesc==true){
+                  //     //                 params.sortOrder='asc';
+                  //     //                 sortDesc=false;
+                  //     //               }else{
+                  //     //                 params.sortOrder='desc';
+                  //     //                 sortDesc=true;
+                  //     //               }
+                  //     //             onTapGetRealEstates!(params);
+                  //     //             // onFilterOrder(filterOrder);
+                  //     //           });
+                  //     //         },
+                  //     //       );
+                  //     //     },
+                  //     //   ),
+                  //     // ),
+                  //   ],
+                  // ),
+                  // 16.ph,
+                  Expanded(child: CustomRealEstateListWidget(realEstatesData: realEstatesData,),)
+                  // Expanded(
+                  //   child: CustomTabItemModel(
+                  //     tabs: [
+                  //       TabItemModel(
+                  //         label: 'القوائم',
+                  //         page: CustomRealEstateListWidget(realEstatesData: realEstatesData,),
+                  //       ),
+                  //       // TabItemModel(
+                  //       //   label: 'الخريطة',
+                  //       //   page: CustomRealEstatesMapWidget(realEstatesData: realEstatesData,),
+                  //       // ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),

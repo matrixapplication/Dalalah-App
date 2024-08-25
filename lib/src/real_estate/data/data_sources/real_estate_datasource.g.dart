@@ -177,9 +177,9 @@ class _RealEstateDatasource implements RealEstateDatasource {
       'lng',
       lng,
     ));
-    features.forEach((i) {
-      _data.fields.add(MapEntry('features[]', i));
-    });
+    for (int e =0;e<=features.length-1;e++) {
+      _data.fields.add(MapEntry('features[$e]', features[e]));
+    }
     _data.files.add(MapEntry(
       'cover',
       MultipartFile.fromFileSync(
@@ -193,12 +193,12 @@ class _RealEstateDatasource implements RealEstateDatasource {
           i.path,
           filename: i.path.split(Platform.pathSeparator).last,
         ))));
-    ids.forEach((i) {
-      _data.fields.add(MapEntry('details_ids[]', i));
-    });
-    values.forEach((i) {
-      _data.fields.add(MapEntry('details_vals[]', i));
-    });
+    for (int a =0;a<=ids.length-1;a++) {
+      _data.fields.add(MapEntry('details_ids[$a]', ids[a]));
+    }
+    for (int i =0;i<=values.length-1;i++) {
+      _data.fields.add(MapEntry('details_vals[$i]', values[i]));
+    }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'POST',
@@ -687,6 +687,68 @@ class _RealEstateDatasource implements RealEstateDatasource {
       _result.data!,
       (json) =>
           PropertiesDeveloperDetails.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> addFollowDeveloper(dynamic id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/follow-prop-developer/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<dynamic>> addRateDeveloper(
+      AddRateDeveloperParams params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<dynamic>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/rate-prop-developer',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<dynamic>.fromJson(
+      _result.data!,
+      (json) => json as dynamic,
     );
     return value;
   }

@@ -38,12 +38,12 @@ class PropertiesDevelopers {
   City? city;
   @JsonKey(name: 'is_blocked')
   bool? isBlocked;
-  @JsonKey(name: 'logo')
-  String? logo;
+  @JsonKey(name: 'image')
+  String? image;
   @JsonKey(name: 'is_verified')
   int? isVerified;
 
-  PropertiesDevelopers({this.id, this.ownerName, this.name, this.description, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.phone, this.licenseNumber, this.whatsapp, this.role, this.city, this.isBlocked, this.logo, this.isVerified});
+  PropertiesDevelopers({this.id, this.ownerName, this.name, this.description, this.ownerNameAr, this.ownerNameEn, this.nameAr, this.nameEn, this.descriptionEn, this.descriptionAr, this.email, this.phone, this.licenseNumber, this.whatsapp, this.role, this.city, this.isBlocked, this.image, this.isVerified});
 
    factory PropertiesDevelopers.fromJson(Map<String, dynamic> json) => _$PropertiesDevelopersFromJson(json);
 

@@ -11,6 +11,9 @@ PropertiesDeveloperDetails _$PropertiesDeveloperDetailsFromJson(
     PropertiesDeveloperDetails(
       id: json['id'] as int?,
       ownerName: json['owner_name'] as String?,
+      isFollowed: json['is_followed'] as bool?,
+      avgRate: json['avg_rate'] as String?,
+      followersCount: json['followers_count'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
       ownerNameAr: json['owner_name_ar'] as String?,
@@ -57,5 +60,8 @@ Map<String, dynamic> _$PropertiesDeveloperDetailsToJson(
       'is_blocked': instance.isBlocked,
       'logo': instance.logo,
       'is_verified': instance.isVerified,
+      'is_followed': instance.isFollowed,
+      'followers_count': instance.followersCount,
+      'avg_rate': instance.avgRate,
       'properties': instance.properties,
     };

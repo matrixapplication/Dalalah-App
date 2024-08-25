@@ -67,14 +67,14 @@ class HomeScreen extends BaseStatelessWidget {
                     platesStream: platesStream,
                     onFavoritePlate: (id) async => await onFavoritePlate!(id),
                   ),
-                  RowSeeAllText(
-                    routeName: Routes.carsPage,
-                    title: context.strings.latest_properties,
-                  ),
-                  RealEstatesList(
-                    realEstatesStream: realEstatesStream,
-                    onFavoritePlate: (id) async => await onFavoritePlate!(id),
-                  ),
+                  // RowSeeAllText(
+                  //   routeName: Routes.realEstatePage,
+                  //   title: context.strings.latest_properties,
+                  // ),
+                  // RealEstatesList(
+                  //   realEstatesStream: realEstatesStream,
+                  //   onFavoritePlate: (id) async => await onFavoritePlate!(id),
+                  // ),
                 ],
               )
             ),

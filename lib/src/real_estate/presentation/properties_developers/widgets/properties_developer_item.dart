@@ -42,7 +42,7 @@ class PropertiesDeveloperItem extends BaseStatelessWidget {
           child: Row(
             children: [
               ImageNetwork(
-                url: developer.logo ?? '',
+                url: developer.image ?? '',
                 size: 70,
                 borderWidth: 1.5,
               ),

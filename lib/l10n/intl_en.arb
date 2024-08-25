@@ -10,6 +10,7 @@
   "announcement_date": "Announcement Date",
   "call": "Call",
   "whatsapp": "WhatsApp",
+  "message_not_data": "No Data Found",
   "financing_services": "Financing\nServices",
   "more": "More",
   "show_rooms": "Showrooms",
@@ -292,7 +293,9 @@
   "drive_types": "Drive Types",
   "engine": "Engine",
   "type_engine": "Type Engine",
-  "must_be_at_least_11_characters": "Must be at least 9 characters",
+  "must_be_at_least_11_characters": "Must be at least 10 Numbers",
+  "should_start_by_zero": "Should be the number started by Zero",
+
   "you_must_login_first": "You must login first",
   "price_must_be_a_number": "Price must be a number",
   "select_main_image": "Select Main Image",

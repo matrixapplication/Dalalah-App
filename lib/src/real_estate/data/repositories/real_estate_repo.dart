@@ -1,17 +1,15 @@
 import 'dart:io';
-
 import 'package:dalalah/src/real_estate/data/models/add_real_estate_params.dart';
-import 'package:dalalah/src/real_estate/data/models/get_real_estate_params.dart';
 import 'package:dalalah/src/real_estate/data/models/my_properties_response.dart';
 import 'package:dalalah/src/real_estate/data/models/properties_developers.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../../core/network/api_response.dart';
 import '../../../cars/data/models/add_special_params.dart';
 import '../../../sell_car/data/models/edit_image_params.dart';
-import '../../domain/entities/real_estate.dart';
 import '../../domain/repositories/base_real_estate_repo.dart';
+import '../../presentation/real_estate/pages/real_estate_screen.dart';
 import '../data_sources/real_estate_datasource.dart';
+import '../models/add_rate_developer_params.dart';
 import '../models/category_details_dto.dart';
 import '../models/properties_developer_details.dart';
 import '../models/real_estate_model.dart';
@@ -47,9 +45,10 @@ class RealEstateRepo extends BaseRealEstateRepo {
 
   @override
   Future<String> addRealEstate(AddRealEstateParams params) async {
-
-    final ids=params.detailsList?.map((e) => e.id?.toString() ?? '0').toList() ?? [];
+    final ids=params.detailsList?.map((e) => e.id?.toString() ?? '0').toList()?? [];
     final values=params.detailsList?.map((e) => e.title?.toString() ?? '0').toList() ?? [];
+    print('test ids ${ids}');
+    print('test values ${values}');
     final data = await datasource.addRealEstate(
       params.type ?? '',
       params.status ?? '',
@@ -63,12 +62,15 @@ class RealEstateRepo extends BaseRealEstateRepo {
       params.features ?? [],
       params.cover!,
       params.images ?? [],
-      ids,
-      values,
+      ids.toList(),
+      values.toList(),
     );
 
-    return data.message!;
+    return data.message??'';
   }
+
+
+
   @override
   Future<String> editRealEstate(AddRealEstateParams params,int id) async {
     print("====================================================");
@@ -123,9 +125,9 @@ class RealEstateRepo extends BaseRealEstateRepo {
   }
 
   @override
-  Future<List<PropertiesDevelopers>> getPropertiesDevelopers(int page) async{
+  Future<ApiResponse<List<PropertiesDevelopers>>> getPropertiesDevelopers(int page) async{
      var res = await datasource.getPropertiesDevelopers(page);
-     return res.data!;
+     return res!;
   }
 
   @override
@@ -153,5 +155,17 @@ class RealEstateRepo extends BaseRealEstateRepo {
   Future<PropertiesDeveloperDetails> fetchPropertiesDevelopersDetails(int id)async {
     final res=await datasource.fetchPropertiesDevelopersDetails(id);
     return res.data!;
+  }
+
+  @override
+  Future<String> addFollowDeveloper(int id)async {
+    final res=await datasource.addFollowDeveloper(id);
+    return res.message??'';
+  }
+
+  @override
+  Future<String> addRateDeveloper(AddRateDeveloperParams params) async{
+    final res=await datasource.addRateDeveloper(params);
+    return res.message??'';
   }
 }

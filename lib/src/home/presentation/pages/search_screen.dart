@@ -40,7 +40,7 @@ class TheSearch extends SearchDelegate<String> {
     var superThemeData = super.appBarTheme(context);
 
     return superThemeData.copyWith(
-      backgroundColor: Theme.of(context).primaryColor,
+      primaryColor: Theme.of(context).primaryColor,
       textTheme: Theme.of(context).textTheme,
       appBarTheme: AppBarTheme(
         color: Theme.of(context).primaryColor,

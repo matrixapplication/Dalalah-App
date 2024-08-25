@@ -20,6 +20,7 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("dddddt ${profile?.image??''}");
     return Container(
       width: double.infinity,
       height: 290,

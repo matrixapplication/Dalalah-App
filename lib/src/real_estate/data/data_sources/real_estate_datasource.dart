@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:dalalah/src/real_estate/presentation/real_estate/pages/real_estate_screen.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dalalah/core/network/api_response.dart';
 import 'package:dalalah/core/utils/constants.dart';
 import '../../../cars/data/models/add_special_params.dart';
+import '../../../showrooms/data/models/add_rate_params.dart';
+import '../models/add_rate_developer_params.dart';
 import '../models/add_real_estate_params.dart';
 import '../models/category_details_dto.dart';
 import '../models/get_real_estate_params.dart';
@@ -15,6 +18,7 @@ import '../models/properties_developers.dart';
 import '../models/real_estate_model.dart';
 import '../models/real_estate_params.dart';
 import '../models/real_estate_type_dto.dart';
+import '../models/update_real_estate_params.dart';
 import '../models/update_real_estate_params.dart';
 part 'real_estate_datasource.g.dart';
 @Injectable()
@@ -116,4 +120,10 @@ abstract class  RealEstateDatasource{
  @GET('/get-property-developer-profile/{id}')
   Future<ApiResponse<PropertiesDeveloperDetails>> fetchPropertiesDevelopersDetails(@Path('id') int id);
 
+  @POST('/follow-prop-developer/{id}')
+  Future<ApiResponse> addFollowDeveloper(@Path('id') id);
+
+
+  @POST('/rate-prop-developer')
+  Future<ApiResponse> addRateDeveloper(@Body() AddRateDeveloperParams params);
 }
