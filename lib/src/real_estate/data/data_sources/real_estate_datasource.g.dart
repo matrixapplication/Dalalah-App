@@ -2,18 +2,18 @@
 
 part of 'real_estate_datasource.dart';
 
-// **************************************************************************
+// **************************
 // RetrofitGenerator
-// **************************************************************************
+// **************************
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _RealEstateDatasource implements RealEstateDatasource {
   _RealEstateDatasource(
-    this._dio, {
-    this.baseUrl,
-  }) {
-    baseUrl ??= 'https://dalalah.co/api';
+      this._dio, {
+        this.baseUrl,
+      }) {
+    baseUrl ??= 'https://dalalah.com.sa/api';
   }
 
   final Dio _dio;
@@ -22,35 +22,35 @@ class _RealEstateDatasource implements RealEstateDatasource {
 
   @override
   Future<ApiResponse<List<RealEstateCategoryDto>>>
-      fetchRealEstateCategories() async {
+  fetchRealEstateCategories() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<List<RealEstateCategoryDto>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/get-prop-categories',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/get-prop-categories',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<List<RealEstateCategoryDto>>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
+          (json) => json is List<dynamic>
           ? json
-              .map<RealEstateCategoryDto>((i) =>
-                  RealEstateCategoryDto.fromJson(i as Map<String, dynamic>))
-              .toList()
+          .map<RealEstateCategoryDto>((i) =>
+          RealEstateCategoryDto.fromJson(i as Map<String, dynamic>))
+          .toList()
           : List.empty(),
     );
     return value;
@@ -58,31 +58,31 @@ class _RealEstateDatasource implements RealEstateDatasource {
 
   @override
   Future<ApiResponse<RealEstateCategoryDetailsDto>>
-      fetchRealEstateCategoriesDetails(int id) async {
+  fetchRealEstateCategoriesDetails(int id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<RealEstateCategoryDetailsDto>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/get-prop-category-assets/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/get-prop-category-assets/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<RealEstateCategoryDetailsDto>.fromJson(
       _result.data!,
-      (json) =>
+          (json) =>
           RealEstateCategoryDetailsDto.fromJson(json as Map<String, dynamic>),
     );
     return value;
@@ -98,45 +98,45 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<RealEstatesModel>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/get-properties',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/get-properties',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<RealEstatesModel>.fromJson(
       _result.data!,
-      (json) => RealEstatesModel.fromJson(json as Map<String, dynamic>),
+          (json) => RealEstatesModel.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
   Future<ApiResponse<dynamic>> addRealEstate(
-    String type,
-    String status,
-    int categoryId,
-    dynamic price,
-    String description,
-    int cityId,
-    String streetName,
-    String lat,
-    String lng,
-    List<String> features,
-    File cover,
-    List<File> images,
-    List<String> ids,
-    List<String> values,
-  ) async {
+      String type,
+      String status,
+      int categoryId,
+      dynamic price,
+      String description,
+      int cityId,
+      String streetName,
+      String lat,
+      String lng,
+      List<String> features,
+      File cover,
+      List<File> images,
+      List<String> ids,
+      List<String> values,
+      ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -201,45 +201,45 @@ class _RealEstateDatasource implements RealEstateDatasource {
     }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'multipart/form-data',
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+          contentType: 'multipart/form-data',
+        )
             .compose(
-              _dio.options,
-              '/store-property',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/store-property',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
 
   @override
   Future<ApiResponse<dynamic>> editRealEstate(
-    int id,
-    String type,
-    String status,
-    int categoryId,
-    dynamic price,
-    String description,
-    int cityId,
-    String streetName,
-    String lat,
-    String lng,
-    List<String> features,
-    List<String> ids,
-    List<String> values,
-  ) async {
+      int id,
+      String type,
+      String status,
+      int categoryId,
+      dynamic price,
+      String description,
+      int cityId,
+      String streetName,
+      String lat,
+      String lng,
+      List<String> features,
+      List<String> ids,
+      List<String> values,
+      ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -291,25 +291,25 @@ class _RealEstateDatasource implements RealEstateDatasource {
     });
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'multipart/form-data',
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+          contentType: 'multipart/form-data',
+        )
             .compose(
-              _dio.options,
-              '/update-property/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/update-property/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -322,24 +322,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/change-property-hide-status/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/change-property-hide-status/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -352,24 +352,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/is_sold/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/is_sold/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -384,24 +384,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/add_car_feature',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/add_car_feature',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -414,33 +414,33 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/delete-property/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/delete-property/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
 
   @override
   Future<ApiResponse<dynamic>> updatePropertyDate(
-    UpdateRealEstateParams params,
-    int id,
-  ) async {
+      UpdateRealEstateParams params,
+      int id,
+      ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -448,24 +448,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/update-property/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/update-property/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -479,28 +479,28 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<List<PropertiesDevelopers>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/get-property-developers',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/get-property-developers',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<List<PropertiesDevelopers>>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
+          (json) => json is List<dynamic>
           ? json
-              .map<PropertiesDevelopers>((i) =>
-                  PropertiesDevelopers.fromJson(i as Map<String, dynamic>))
-              .toList()
+          .map<PropertiesDevelopers>((i) =>
+          PropertiesDevelopers.fromJson(i as Map<String, dynamic>))
+          .toList()
           : List.empty(),
     );
     return value;
@@ -508,10 +508,10 @@ class _RealEstateDatasource implements RealEstateDatasource {
 
   @override
   Future<ApiResponse<dynamic>> editPropertyImage(
-    int? carId,
-    File image,
-    int? imageId,
-  ) async {
+      int? carId,
+      File image,
+      int? imageId,
+      ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
@@ -538,33 +538,33 @@ class _RealEstateDatasource implements RealEstateDatasource {
     }
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/edit_car_images',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/edit_car_images',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
 
   @override
   Future<ApiResponse<dynamic>> addPropertyImage(
-    List<File> images,
-    int id,
-  ) async {
+      List<File> images,
+      int id,
+      ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -577,24 +577,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
         ))));
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/add-property-images/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/add-property-images/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -607,24 +607,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/delete-property-image/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/delete-property-image/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -637,55 +637,55 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<Property>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/property-details/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/property-details/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<Property>.fromJson(
       _result.data!,
-      (json) => Property.fromJson(json as Map<String, dynamic>),
+          (json) => Property.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
   Future<ApiResponse<PropertiesDeveloperDetails>>
-      fetchPropertiesDevelopersDetails(int id) async {
+  fetchPropertiesDevelopersDetails(int id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<PropertiesDeveloperDetails>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/get-property-developer-profile/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/get-property-developer-profile/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<PropertiesDeveloperDetails>.fromJson(
       _result.data!,
-      (json) =>
+          (json) =>
           PropertiesDeveloperDetails.fromJson(json as Map<String, dynamic>),
     );
     return value;
@@ -699,24 +699,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/follow-prop-developer/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/follow-prop-developer/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -731,24 +731,24 @@ class _RealEstateDatasource implements RealEstateDatasource {
     _data.addAll(params.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<dynamic>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'POST',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/rate-prop-developer',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/rate-prop-developer',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as dynamic,
+          (json) => json as dynamic,
     );
     return value;
   }
@@ -767,9 +767,9 @@ class _RealEstateDatasource implements RealEstateDatasource {
   }
 
   String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+      String dioBaseUrl,
+      String? baseUrl,
+      ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

@@ -31,7 +31,7 @@ class MyRealEstateCubit extends BaseCubit {
       isRefresh: isRefresh,
           () => usecase.fetchMyRealEstate(page),
       onSuccess: (data) {
-        isLastPage = (data.pagination?.totalPages)! <= page;
+        isLastPage = data.pagination?.currentPage == data.pagination?.totalPages;
         properties = data.data!;
         allProperties.addAll(properties);
         if(allProperties.isEmpty){

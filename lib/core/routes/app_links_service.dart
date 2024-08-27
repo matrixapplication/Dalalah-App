@@ -70,6 +70,6 @@ class AppLinkingService {
   }
 
   static String getLink() {
-    return kBaseUrl.replaceAll('/api', '');
+    return baseApiUrlShare.replaceAll('/api', '');
   }
 }

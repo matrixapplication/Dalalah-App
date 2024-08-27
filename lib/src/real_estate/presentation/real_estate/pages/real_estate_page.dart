@@ -47,25 +47,25 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
    return
-     Container(
-
-     child: Center(
-       child: Text('قريبا .... '),
-     ),
-   );
-   //   RealEstateScreen(
-   //   realEstateCategoriesList:bloc.categoriesList,
-   //   realEstatesData: bloc.realEstatesData,
-   //   categoriesDetails: bloc.categoriesDetails,
-   //   onGetDetailsType: ( id)async{
-   //     await bloc.fetchRealEstateCategoriesDetails(id);
-   //   },
-   //   onTapGetRealEstates: (RealEstateParams? params){
-   //     print('ssss ${params!.toJson().toString()}');
-   //     bloc.fetchRealEstates(params!);
-   //   },
+   //   Container(
    //
+   //   child: Center(
+   //     child: Text('قريبا .... '),
+   //   ),
    // );
+     RealEstateScreen(
+     realEstateCategoriesList:bloc.categoriesList,
+     realEstatesData: bloc.realEstatesData,
+     categoriesDetails: bloc.categoriesDetails,
+     onGetDetailsType: ( id)async{
+       await bloc.fetchRealEstateCategoriesDetails(id);
+     },
+     onTapGetRealEstates: (RealEstateParams? params){
+       print('ssss ${params!.toJson().toString()}');
+       bloc.fetchRealEstates(params!);
+     },
+
+   );
   }
 
   @override

@@ -13,7 +13,7 @@ class _CarsDatasource implements CarsDatasource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://dalalah.co/api';
+    baseUrl ??= 'https://dalalah.com.sa/api';
   }
 
   final Dio _dio;

@@ -117,7 +117,6 @@ class CarHorizontalItem extends BaseStatelessWidget {
                     width: double.infinity,
                     height: 140,
                   ),
-
                   if (car.isFeatured ?? false)
                     const PositionedDirectional(
                       top: 8,

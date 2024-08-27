@@ -129,8 +129,7 @@ class AddRealStateScreen extends BaseStatelessWidget {
                             child: InputWidget(
                               title: e.name ?? '',
                               onChanged: (val) {
-                                if (detailsList
-                                    .map((w) => w.id == e.id)
+                                if (detailsList.map((w) => w.id == e.id)
                                     .isNotEmpty) {
                                   detailsList.removeWhere((w) => w.id == e.id);
                                   detailsList.add(DetailsItemModelDto(id: e.id, title: val));
@@ -162,20 +161,14 @@ class AddRealStateScreen extends BaseStatelessWidget {
                                         title: a.name.toString()))
                                         .toList(),
                                     onChanged: (item) {
-                                      if (detailsList
-                                          .map((w) => w.id == e.id)
-                                          .isNotEmpty) {
-                                        detailsList.removeWhere(
-                                                (w) => w.id == e.id);
-                                        detailsList.add(
-                                            DetailsItemModelDto(
-                                                id: e.id,
-                                                title: item!.title!));
+                                      if (detailsList.map((w) => w.id == e.id).isNotEmpty) {
+                                        detailsList.removeWhere((w) => w.id == e.id);
+                                        detailsList.add(DetailsItemModelDto(id: e.id, title: item!.id!));
                                       } else {
                                         detailsList.add(
                                             DetailsItemModelDto(
                                                 id: e.id,
-                                                title: item!.title!));
+                                                title: item!.id!));
                                       }
                                     },
                                   ),
@@ -213,12 +206,12 @@ class AddRealStateScreen extends BaseStatelessWidget {
                                         detailsList.add(
                                             DetailsItemModelDto(
                                                 id: e.id,
-                                                title: radio.title));
+                                                title: radio.value.toString()??''));
                                       } else {
                                         detailsList.add(
                                             DetailsItemModelDto(
                                                 id: e.id,
-                                                title: radio.title));
+                                                title: radio.value.toString()));
                                       }
                                     },
                                   ),

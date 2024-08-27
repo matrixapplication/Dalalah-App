@@ -7,6 +7,7 @@ import 'package:dalalah/src/settings/presentation/bloc/locale_state.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/routes/app_links_service.dart';
@@ -27,6 +28,7 @@ Future<void> main() async {
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
   await configureDependencies();
+  await GetStorage.init();
 
   ServicesLocator().init();
   injector.registerSingleton(ClientCreator(
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
 
   const MyApp({super.key, required this.token});
 
-//push Ios 25/8
+//push Ios27/8
   @override
   Widget build(BuildContext context) {
     FirebaseNotification firebase = FirebaseNotification();

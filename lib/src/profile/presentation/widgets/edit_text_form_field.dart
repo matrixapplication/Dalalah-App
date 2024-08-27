@@ -15,53 +15,62 @@ class EditTextField extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isValidator;
   final bool isPassword;
+  final bool isPdf;
   final TextInputType? keyboardType;
   final Widget? widget;
   final String? Function(String?)? validator;
   final int? maxLength;
+  final void Function()? onTap;
   final List<TextInputFormatter>? inputFormatters;
-  const EditTextField({Key? key, this.hintText, this.controller, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isValidator = true, this.isPassword = false, this.keyboardType, this.widget, this.validator, this.maxLength,
+  const EditTextField({Key? key, this.hintText, this.controller,this.onTap, this.icon, this.title, this.readOnly, this.suffixIcon, this.padding, this.isValidator = true, this.isPassword = false, this.isPdf = false, this.keyboardType, this.widget, this.validator, this.maxLength,
   this.inputFormatters,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 18, bottom: 16),
-      decoration: Decorations.kDecorationOnlyRadius(color: context.cardColor),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title ?? '',
-            style: context.bodySmall.copyWith(color: context.disabledColor, fontSize: 16),
-          ),
-          widget ?? CustomTextField(
-            hintText: hintText,
-            controller: controller,
-          //    isPasswordVisible: isPasswordVisible,
-            fillColor: context.cardColor,
-           //     readOnly: readOnly ?? false,
-            keyboardType: keyboardType,
-            inputFormatters: inputFormatters,
-            inputDecoration: InputDecoration(
-              fillColor:  context.cardColor,
-              filled: true,
-              contentPadding: EdgeInsets.zero,
-              focusColor: context.hintColor,
-              // focusedBorder:  OutlineInputBorder(
-              //   borderSide: Border.fromBorderSide(
-              //
-              //   ),
-              // ),
-            ),
-            isPassword: isPassword,
-            isValidator: isValidator,
-            validator: validator,
-            maxLength: maxLength,
-          ),
-        ],
-      ),
-    );
+    return
+     InkWell(
+       onTap:onTap,
+       child:  Container(
+         margin: const EdgeInsets.only(bottom: 16),
+         padding: const EdgeInsets.only(left: 16, right: 16, top: 18, bottom: 16),
+         decoration: Decorations.kDecorationOnlyRadius(color: context.cardColor),
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             Text(
+               title ?? '',
+               style: context.bodySmall.copyWith(color: context.disabledColor, fontSize: 16),
+             ),
+             widget ??
+                 CustomTextField(
+               hintText: hintText,
+               isPdf: isPdf,
+               controller: controller,
+               enabled: onTap!=null?false:null,
+               //    isPasswordVisible: isPasswordVisible,
+               fillColor: context.cardColor,
+               //     readOnly: readOnly ?? false,
+               keyboardType: keyboardType,
+               inputFormatters: inputFormatters,
+               inputDecoration: InputDecoration(
+                 fillColor:  context.cardColor,
+                 filled: true,
+                 contentPadding: EdgeInsets.zero,
+                 focusColor: context.hintColor,
+                 // focusedBorder:  OutlineInputBorder(
+                 //   borderSide: Border.fromBorderSide(
+                 //
+                 //   ),
+                 // ),
+               ),
+               isPassword: isPassword,
+               isValidator: isValidator,
+               validator: validator,
+               maxLength: maxLength,
+             ),
+           ],
+         ),
+       ),
+     );
   }
 }
