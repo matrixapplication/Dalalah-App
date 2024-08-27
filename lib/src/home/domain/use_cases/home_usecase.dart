@@ -17,16 +17,23 @@ class HomeUseCase {
 
   Future<List<Slide>> fetchSliders() async {
     final response = await repository.fetchSliders();
+    HelperMethods.saveSlider(response.data!);
+
     return response.data!.map((e) => Slide.fromDto(e)).toList();
   }
-
+  Future<List<Slide>> fetchSlidersCash() async{
+    final data  = await HelperMethods.getSliders();
+    return data!.map((e) =>Slide.fromDto(e)).toList();
+  }
   Future<List<Brand>> fetchBrands() async {
     final response = await repository.fetchBrands();
     return response.data!.map((e) => Brand.fromDto(e)).toList();
   }
 
   Future<ApiResponse<List<CarDto>>> fetchCars(CarFilterParams params) async {
-    return await repository.fetchCars(params);
+    final res = await repository.fetchCars(params);
+    HelperMethods.saveCars(res.data!);
+    return res;
     // return response.data!.map((e) => Car.fromDto(e)).toList();
   }
 }

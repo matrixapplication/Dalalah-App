@@ -2,15 +2,23 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dalalah/src/profile/domain/entities/roles.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../src/home/data/models/car_dto.dart';
+import '../../src/home/data/models/slide_dto.dart';
+import '../../src/home/domain/entities/slide.dart';
 import '../../src/main_index.dart';
+import '../../src/plates/data/models/plate_dto.dart';
 import '../../src/profile/data/models/profile_dto.dart';
+import '../../src/real_estate/data/models/real_estate_model.dart';
 import '../network/base_client.dart';
 import 'notification_service.dart';
 
@@ -182,8 +190,202 @@ class HelperMethods {
       prefs.setString('profile', jsonEncode(profile.toJson()));
     }
   }
+  static Future<List<SlideDto>?> getSliders() async {
+    print('Starting getSliders...');
+    try {
+      // Get the shared preferences instance
+      SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  // get ProfileDto from shared preferences
+      // Ensure the latest data is loaded
+      await prefs.reload();
+
+      // Retrieve the stored JSON string
+      final String? jsonString = prefs.getString('sliders');
+      print('Retrieved JSON string length: ${jsonString?.length ?? 'null'}');
+
+      // Check if the JSON string is null or empty
+      if (jsonString == null || jsonString.isEmpty) {
+        return null;
+      }
+
+      // Decode the JSON string into a List of dynamic maps
+      final List<dynamic> jsonList = jsonDecode(jsonString);
+
+      // Convert the List of dynamic maps to a List of SlideDto objects
+      final List<SlideDto> slides = jsonList.map((json) => SlideDto.fromJson(json)).toList();
+
+      // Debug print to check the conversion
+      print('Decoded slides: $slides');
+
+      // Return the list of SlideDto objects, or null if the list is empty
+      return slides.isNotEmpty ? slides : null;
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in getSliders: ${e.toString()}');
+      return null;
+    }
+  }
+  static saveSlider(List<SlideDto> slides) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('sliders', jsonEncode(slides.map((e) => e.toJson()).toList()));
+  }
+  static saveCars(List<CarDto> cars) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('cars', jsonEncode(cars.map((e) => e.toJson()).toList()));
+  }
+  static Future<List<CarDto>?> getCars() async {
+    try {
+      // Get the shared preferences instance
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // Ensure the latest data is loaded
+      await prefs.reload();
+
+      // Retrieve the stored JSON string
+      final String? jsonString = prefs.getString('cars');
+      print('Retrieved JSON string length: ${jsonString?.length ?? 'null'}');
+
+      // Check if the JSON string is null or empty
+      if (jsonString == null || jsonString.isEmpty) {
+        return null;
+      }
+
+      // Decode the JSON string into a List of dynamic maps
+      final List<dynamic> jsonList = jsonDecode(jsonString);
+
+      // Convert the List of dynamic maps to a List of SlideDto objects
+      final List<CarDto> slides = jsonList.map((json) => CarDto.fromJson(json)).toList();
+
+      // Debug print to check the conversion
+      print('Decoded slides: $slides');
+
+      // Return the list of SlideDto objects, or null if the list is empty
+      return slides.isNotEmpty ? slides : null;
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in getSliders: ${e.toString()}');
+      return null;
+    }
+  }
+  static savePlates(List<PlateDto> plates) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('plates', jsonEncode(plates.map((e) => e.toJson()).toList()));
+  }
+  static Future<List<PlateDto>?> getPlates() async {
+    try {
+      // Get the shared preferences instance
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // Ensure the latest data is loaded
+      await prefs.reload();
+
+      // Retrieve the stored JSON string
+      final String? jsonString = prefs.getString('plates');
+      print('Retrieved JSON string length: ${jsonString?.length ?? 'null'}');
+
+      // Check if the JSON string is null or empty
+      if (jsonString == null || jsonString.isEmpty) {
+        return null;
+      }
+
+      // Decode the JSON string into a List of dynamic maps
+      final List<dynamic> jsonList = jsonDecode(jsonString);
+
+      // Convert the List of dynamic maps to a List of SlideDto objects
+      final List<PlateDto> slides = jsonList.map((json) => PlateDto.fromJson(json)).toList();
+
+      // Debug print to check the conversion
+      print('Decoded slides pale: $slides');
+
+      // Return the list of SlideDto objects, or null if the list is empty
+      return slides.isNotEmpty ? slides : null;
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in getSliders: ${e.toString()}');
+      return null;
+    }
+  }
+  static saveProperties(RealEstatesModel realEstatesModel) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('properties', jsonEncode(realEstatesModel.toJson()));
+  }
+  static Future<RealEstatesModel?> getProperties() async {
+    try {
+      // Get the shared preferences instance
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // Ensure the latest data is loaded
+      await prefs.reload();
+
+      // Retrieve the stored JSON string
+      final String? jsonString = prefs.getString('properties');
+      print('Retrieved JSON string length: ${jsonString?.length ?? 'null'}');
+
+      // Check if the JSON string is null or empty
+      if (jsonString == null || jsonString.isEmpty) {
+        return null;
+      }
+
+      // Decode the JSON string into a List of dynamic maps
+      final  jsonData = jsonDecode(jsonString);
+
+      // Convert the List of dynamic maps to a List of SlideDto objects
+      final RealEstatesModel properties = RealEstatesModel.fromJson(jsonData);
+
+      // Debug print to check the conversion
+      print('Decoded slides pale: $properties');
+
+      // Return the list of SlideDto objects, or null if the list is empty
+      return properties;
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in getSliders: ${e.toString()}');
+      return null;
+    }
+  }
+  //Pdf
+  static Future<File> downloadPdf(String url, String fileName) async {
+    try {
+      final response = await HttpClient().getUrl(Uri.parse(url));
+      final bytes = await response.close().then((res) => res.fold<List<int>>([], (list, b) => list..addAll(b)));
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/$fileName.pdf');
+      await file.writeAsBytes(bytes);
+      return file;
+    } catch (e) {
+      print("Error downloading PDF: $e");
+      throw Exception('Failed to download PDF');
+    }
+  }
+  static Future<File?> pickPdf() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      return File(result.files.single.path!);
+    } else {
+      // المستخدم لم يختار ملف
+      return null;
+    }
+  }
+
+  // طريقة لعرض ملف PDF باستخدام Flutter PDFView
+  static Future<void> viewPdf(BuildContext context, File file) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PDFView(
+          filePath: file.path,
+        ),
+      ),
+    );
+  }
+
+
+
+// get ProfileDto from shared preferences
   static Future<ProfileDto?>? getProfile() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();

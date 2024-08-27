@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dalalah/src/installment/domain/entities/roles.dart';
 
 import '../../../../core/resources/validation.dart';
+import '../../../../core/utils/helper_methods.dart';
 import '../../../../core/widgets/drop_down/drop_down.dart';
 import '../../../auth/data/models/register_params.dart';
 import '../../../main_index.dart';
@@ -33,10 +34,16 @@ class EditProfileScreen extends BaseStatelessWidget {
   TextEditingController whatsAppController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController taxCardController = TextEditingController();
+  TextEditingController commercialController = TextEditingController();
   int cityId = 0;
 
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   File? imageFile;
+  File? taxCard;
+  File? commercial;
+  bool isVisibility =false;
+
   @override
   Widget build(BuildContext context) {
     _initData();
@@ -95,7 +102,8 @@ class EditProfileScreen extends BaseStatelessWidget {
                   ),
                 ],
               ),
-              EditTextField(
+
+                EditTextField(
                 title: strings.phone_number,
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
@@ -117,7 +125,7 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.another_phone_1,
                 controller: anotherPhone1Controller,
                 keyboardType: TextInputType.phone,
-                validator: (phone) => Validation.validatePhone(phone ?? ''),
+                // validator: (phone) => Validation.validatePhone(phone ?? ''),
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly
                 ],
@@ -126,12 +134,73 @@ class EditProfileScreen extends BaseStatelessWidget {
                 title: strings.another_phone_2,
                 controller: anotherPhone2Controller,
                 keyboardType: TextInputType.phone,
-                validator: (phone) => Validation.validatePhone(phone ?? ''),
+                // validator: (phone) => Validation.validatePhone(phone ?? ''),
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly
                 ],
               ),
-              EditTextField(
+              if(profile.role == Roles.SHOWROOM)
+                StatefulBuilder(builder: (context,setState){
+                  return  EditTextField(
+                      isPdf: true,
+                      controller: taxCardController,
+                      onTap: ()async{
+                        taxCard=await HelperMethods.pickPdf();
+                        taxCardController.text=taxCard?.path.characters.toString()??'';
+                        setState((){});
+                      },
+                      title: strings.tax_card,
+                      widget:
+                      Row(
+                        children: [
+                          Expanded(child:  Text(taxCardController.text,style: const TextStyle(color: Colors.blue),),),
+                          if(taxCard!=null)
+                            InkWell(
+                              onTap: ()async{
+                                HelperMethods.viewPdf(context, taxCard!);
+                                // setState((){
+                                // isVisibility =!isVisibility;
+                                //   });
+                              },
+                              child: Icon(isVisibility==false?Icons.visibility:Icons.visibility,color: isVisibility==false?Colors.grey:Colors.blue,),
+                            )
+                        ],
+                      )
+
+                  );
+                }),
+              if(profile.role == Roles.SHOWROOM)
+                StatefulBuilder(builder: (context,setState){
+                  return  EditTextField(
+                      isPdf: true,
+                      controller: commercialController,
+                      onTap: ()async{
+                        commercial=await HelperMethods.pickPdf();
+                        commercialController.text=commercial?.path.characters.toString()??'';
+                        setState((){});
+                      },
+                      title: strings.file_commercial,
+                      widget:
+                      Row(
+                        children: [
+                          Expanded(child:  Text(commercialController.text,style: TextStyle(color: Colors.blue),),),
+                          if(commercial!=null)
+                            InkWell(
+                          onTap: ()async{
+                               HelperMethods.viewPdf(context, commercial!);
+                              // setState((){
+                              // isVisibility =!isVisibility;
+                              //   });
+                              },
+                               child: Icon(isVisibility==false?Icons.visibility:Icons.visibility,color: isVisibility==false?Colors.grey:Colors.blue,),
+                              )
+                        ],
+                      )
+
+                  );
+                }),
+
+                EditTextField(
                 title: strings.city,
                 widget:  DropDownField(
                   items: cities.map((e) => DropDownItem(id: e.id?.toString() ?? '', title: e.name)).toList(),
@@ -178,6 +247,8 @@ class EditProfileScreen extends BaseStatelessWidget {
           descriptionEn: descEnController.text,
           // address: descArController.text,
           email: emailController.text,
+          commercial: commercial,
+          taxCard: taxCard,
           phone: phoneController.text,
           anotherPhone1: anotherPhone1Controller.text,
           anotherPhone2: anotherPhone2Controller.text,

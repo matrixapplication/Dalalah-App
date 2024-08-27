@@ -22,20 +22,23 @@ class CustomTextField extends BaseStatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final double? radius;
   final bool isValidator;
+  final bool isPdf;
   final double? maxHeight;
   final bool isHasConstraints;
   final TextStyle? labelStyle;
   final int?maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final AutovalidateMode? autovalidateMode;
-
+final bool? enabled;
   CustomTextField({
     Key? key,
+    this.enabled,
     this.controller,
     this.hintText,
     this.title,
     this.isPassword,
     this.onTap,
+    this.isPdf=false,
     this.onChanged,
     this.validator,
     this.inputDecoration,
@@ -80,6 +83,7 @@ class CustomTextField extends BaseStatelessWidget {
           ],
           TextFormField(
             onTap: onTap,
+            enabled: enabled,
             controller: controller,
             readOnly: onTap != null,
             textAlign: textAlign ?? TextAlign.start,

@@ -21,7 +21,9 @@ class PlatesUseCase {
 
   Future<ApiResponse<List<PlateDto>>> fetchPlates(
       PlateFilterParams params) async {
-    return await repository.fetchPlates(params);
+    final res =await repository.fetchPlates(params);
+    HelperMethods.savePlates(res.data!);
+    return res;
   }
 
   Future<Plate> fetchPlateDetails(int id) async {

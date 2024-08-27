@@ -17,19 +17,16 @@ class MyRealEstatesPage extends BaseBlocWidget<DataSuccess<List<Property>>, MyRe
 
 
 
-  RefreshController refreshController =
-      RefreshController(initialRefresh: false);
+  RefreshController refreshController = RefreshController();
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget buildWidget(BuildContext context, DataSuccess<List<Property>> state) {
-    print('isShowPayment $isHidePayment');
-    if (bloc.isLastPage) {
-      print('isLastPage ${bloc.isLastPage}');
-      refreshController.loadNoData();
-    }
+
     return PaginationWidget(
       refreshController: refreshController,
       onRefresh: () {
+
         bloc.fetchMyRealEstates();
         refreshController.refreshCompleted();
       },

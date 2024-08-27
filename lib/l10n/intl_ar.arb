@@ -370,6 +370,7 @@
   "tax_card": "البطاقة الضريبية",
   "cover_image": "صورة الغلاف",
   "commercial": "تجاري",
+  "file_commercial": "ملف تجاري",
   "upload_logo": "رفع الشعار",
   "feature_duration_price_zero_msg": "يجب أن يكون السعر أكبر من 0",
   "please_upload_logo": "من فضلك قم برفع الشعار",

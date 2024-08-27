@@ -295,6 +295,7 @@
   "type_engine": "Type Engine",
   "must_be_at_least_11_characters": "Must be at least 10 Numbers",
   "should_start_by_zero": "Should be the number started by Zero",
+  "file_commercial": "File Commercial",
 
   "you_must_login_first": "You must login first",
   "price_must_be_a_number": "Price must be a number",

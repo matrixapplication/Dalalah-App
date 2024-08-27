@@ -43,7 +43,10 @@ class RealEstateUseCase {
     return await repository.editRealEstate(params,id);
   }
   Future<RealEstatesModel> fetchRealEstates(RealEstateParams params) async {
-    return await repository.fetchRealEstates(params);
+    final res =await repository.fetchRealEstates(params);
+    HelperMethods.saveProperties(res);
+
+    return res;
   }
 
   Future<Property> fetchPropertyDetails(int id ) async {
