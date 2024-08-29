@@ -6,10 +6,10 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinkes:www.dalalah.co</string>
-		<string>applinkes:dalalah.co</string>
-		<string>applinkes:www.dalala.matrix-clouds.com</string>
-		<string>applinkes:dalala.matrix-clouds.com</string>
+		<string>applinks:www.dalalah.co</string>
+		<string>applinks:dalalah.com.sa</string>
+		<string>applinks:www.dalala.matrix-clouds.com</string>
+		<string>applinks:dalala.matrix-clouds.com</string>
 		<string>webcredentials:www.dalalah.co</string>
 		<string>webcredentials: dalalah.co</string>
 		<string>webcredentials:www.dalala.matrix-clouds.com</string>

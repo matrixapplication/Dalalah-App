@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/assets/app_icons.dart';
 import '../../../../../core/commen/common_state.dart';
 import '../../../../../core/decorations/decorations.dart';
+import '../../../../../core/widgets/images/custom_image.dart';
 import '../../../../home/domain/entities/brand.dart';
 
 ///  Created by harby on 9/6/2023.
@@ -78,7 +79,8 @@ class BrandsFilterList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: items.map(
                         (e) => ChoiceChip(
-                      label: ImageNetworkCircle(
+                      label:
+                      ImageNetworkCircle(
                         image: e.image,
                         fit: BoxFit.fill,
                         size: 25,

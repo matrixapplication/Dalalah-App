@@ -103,47 +103,57 @@ class HomeCubit extends BaseCubit {
   }
 
   fetchYourCars() async {
-    // yourCarsStream.setData(null);
-    final carCash = await HelperMethods.getCars();
-    try {
-      if(carCash != null){
-        final cars =carCash.map((e) => Car.fromDto(e)).toList();
-        yourCarsStream.setData(cars);
-        await usecase.fetchCars(CarFilterParams());
-      }else{
-        final response = await usecase.fetchCars(CarFilterParams());
-        yourCarsStream.setData(response.data?.map((e) => Car.fromDto(e)).toList());
-      }
-    } catch (e) {
-      yourCarsStream.setError(e);
-    }
-    // try { // CarFilterParams(startYear: DateTime.now().year)
-    //   final response = await usecase.fetchCars(CarFilterParams());
-    //   yourCarsStream.setData(response.data?.map((e) => Car.fromDto(e)).toList());
+    // final carCash = await HelperMethods.getCars();
+    // try {
+    //   if(carCash != null){
+    //     final cars =carCash.map((e) => Car.fromDto(e)).toList();
+    //     yourCarsStream.setData(cars);
+    //     await usecase.fetchCars(CarFilterParams());
+    //   }else{
+    //     final response = await usecase.fetchCars(CarFilterParams());
+    //     yourCarsStream.setData(response.data?.map((e) => Car.fromDto(e)).toList());
+    //   }
     // } catch (e) {
     //   yourCarsStream.setError(e);
     // }
+     yourCarsStream.setData(null);
+
+   try { // CarFilterParams(startYear: DateTime.now().year)
+      final response = await usecase.fetchCars(CarFilterParams());
+      yourCarsStream.setData(response.data?.map((e) => Car.fromDto(e)).toList());
+    } catch (e) {
+      yourCarsStream.setError(e);
+    }
   }
 
 
   fetchPlates() async {
     // otherCarsStream.setData(null);
-    final platesCash = await HelperMethods.getPlates();
-    try {
-      if(platesCash != null){
-        final plates =platesCash.map((e) => Plate.fromDto(e)).toList();
-        otherCarsStream.setData(plates);
-        await platesUseCase.fetchPlates(PlateFilterParams());
-      }else{
-        final response = await platesUseCase.fetchPlates(PlateFilterParams());
-        final data = response.data?.map((e) => Plate.fromDto(e)).toList();
-        otherCarsStream.setData(data);
-      }
+    // final platesCash = await HelperMethods.getPlates();
+    // try {
+    //   if(platesCash != null){
+    //     final plates =platesCash.map((e) => Plate.fromDto(e)).toList();
+    //     otherCarsStream.setData(plates);
+    //     await platesUseCase.fetchPlates(PlateFilterParams());
+    //   }else{
+    //     final response = await platesUseCase.fetchPlates(PlateFilterParams());
+    //     final data = response.data?.map((e) => Plate.fromDto(e)).toList();
+    //     otherCarsStream.setData(data);
+    //   }
+    // } catch (e) {
+    //   otherCarsStream.setError(e);
+    // }
+
+    otherCarsStream.setData(null);
+
+    try { // CarFilterParams(startYear: DateTime.now().year)
+      final response = await platesUseCase.fetchPlates(PlateFilterParams());
+      final data = response.data?.map((e) => Plate.fromDto(e)).toList();
+      otherCarsStream.setData(data);
+
     } catch (e) {
       otherCarsStream.setError(e);
     }
-
-
   }
 
   Future<void> toggleFavorite(int id) async {
@@ -164,29 +174,29 @@ class HomeCubit extends BaseCubit {
     return data.data?.map((e) => Car.fromDto(e)).toList() ?? [];
   }
   fetchRealEstates() async {
-    // realEstatesStream.setData(null);
-    final propertiesCash = await HelperMethods.getProperties();
-    try {
-      if(propertiesCash != null){
-        final properties =propertiesCash;
-        realEstatesStream.setData(properties);
-        await realEstateUseCase.fetchRealEstates(RealEstateParams());
-      }else{
-        final response = await realEstateUseCase.fetchRealEstates(RealEstateParams());
-        realEstatesStream.setData(response);
-      }
-    } catch (e) {
-      realEstatesStream.setError(e);
-    }
 
+    // final propertiesCash = await HelperMethods.getProperties();
     // try {
-    //   RealEstateParams params =RealEstateParams();
-    //   final response = await realEstateUseCase.fetchRealEstates(params);
-    //   realEstatesStream.setData(response);
+    //   if(propertiesCash != null){
+    //     final properties =propertiesCash;
+    //     realEstatesStream.setData(properties);
+    //     await realEstateUseCase.fetchRealEstates(RealEstateParams());
+    //   }else{
+    //     final response = await realEstateUseCase.fetchRealEstates(RealEstateParams());
+    //     realEstatesStream.setData(response);
+    //   }
     // } catch (e) {
     //   realEstatesStream.setError(e);
-    //   // rethrow;
     // }
+    realEstatesStream.setData(null);
+    try {
+      RealEstateParams params =RealEstateParams();
+      final response = await realEstateUseCase.fetchRealEstates(params);
+      realEstatesStream.setData(response);
+    } catch (e) {
+      realEstatesStream.setError(e);
+      // rethrow;
+    }
   }
 
 }

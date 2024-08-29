@@ -30,7 +30,7 @@
 				<string>https</string>
 			</array>
 			<key>CFBundleURLName</key>
-			<string>dalalah.co</string>
+			<string>dalalah.com.sa</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -44,7 +44,7 @@
 		<string>sms</string>
 		<string>tel</string>
 		<string>https</string>
-		<string>dalalah.co</string>
+		<string>dalalah.com.sa</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
