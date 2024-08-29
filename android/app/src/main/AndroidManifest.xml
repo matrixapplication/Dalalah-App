@@ -62,10 +62,10 @@
                 <data android:host="www.dalalah.co" />
                 <data
                     android:scheme="http"
-                    android:host="dalalah.co" />
+                    android:host="dalalah.com.sa" />
                 <data
                     android:scheme="https"/>
-                <data android:host="dalalah.co" />
+                <data android:host="dalalah.com.sa" />
                 <data
                     android:scheme="http"
                     android:host="www.dalala.matrix-clouds.com" />
