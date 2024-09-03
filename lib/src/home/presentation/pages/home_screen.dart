@@ -1,3 +1,5 @@
+import 'package:dalalah/src/home/presentation/pages/test.dart';
+
 import '../../../../core/routes/app_links_service.dart';
 import '../../../../core/widgets/buttons/row_see_all_text.dart';
 import '../../../main_index.dart';
@@ -42,6 +44,30 @@ class HomeScreen extends BaseStatelessWidget {
           SliderWidget(
             slidesStream: slidesStream,
           ),
+          // 25.ph,
+          // InkWell(
+          //   onTap: (){connectTimeout
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) => Test(images:
+          //         [
+          //           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb-NGEQDekk2BwsllLjk4tcIM_BPIzXECdsg&s',
+          //           'https://dalalah.com.sa/storage/3006/image_cropper_B27CB88F-F0E2-4568-8975-8B948100E056-6002-0000050EC5F2DB65.jpg',
+          //           'https://i.pinimg.com/236x/1a/df/7e/1adf7e06e332fe50506f03e8e6ee11a3.jpg',
+          //           'https://dalalah.com.sa/storage/2165/Jeep.png',
+          //           'https://dalalah.com.sa/storage/4121/resized.webp',
+          //           'https://dalalah.com.sa/storage/2644/IMG_0083.jpeg',
+          //           'https://i.pinimg.com/736x/96/3d/64/963d643c81ac09fa9beb117346a1b12c.jpg',
+          //           'https://dalalah.com.sa/storage/3652/image_cropper_904F5D4F-E8E3-412A-833D-9804758841B4-8373-000006263E5226E3.jpg',
+          //           'https://dalalah.com.sa/storage/2163/BMW.png',
+          //           'https://pbs.twimg.com/profile_images/1528775264204906498/oufC8Yu8_400x400.jpg',
+          //           'https://dalalah.com.sa/storage/2161/MG.png',
+          //           'https://dalalah.com.sa/storage/2158/Chevrolet.png',
+          //           'https://dalalah.com.sa/storage/2160/Geely.png',
+          //
+          //
+          //
+          //         ],)));
+          //   },child: Center(child: Text('Test',style: context.bodySmall,),),
+          // ),
           25.ph,
           const AdTypesList(),
           Container(
@@ -67,14 +93,14 @@ class HomeScreen extends BaseStatelessWidget {
                     platesStream: platesStream,
                     onFavoritePlate: (id) async => await onFavoritePlate!(id),
                   ),
-                  RowSeeAllText(
-                    routeName: Routes.realEstatePage,
-                    title: context.strings.latest_properties,
-                  ),
-                  RealEstatesList(
-                    realEstatesStream: realEstatesStream,
-                    onFavoritePlate: (id) async => await onFavoritePlate!(id),
-                  ),
+                  // RowSeeAllText(
+                  //   routeName: Routes.realEstatePage,
+                  //   title: context.strings.latest_properties,
+                  // ),
+                  // RealEstatesList(
+                  //   realEstatesStream: realEstatesStream,
+                  //   onFavoritePlate: (id) async => await onFavoritePlate!(id),
+                  // ),
                 ],
               )
             ),

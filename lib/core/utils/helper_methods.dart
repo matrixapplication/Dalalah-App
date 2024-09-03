@@ -12,6 +12,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../src/home/data/models/brand_dto.dart';
 import '../../src/home/data/models/car_dto.dart';
 import '../../src/home/data/models/slide_dto.dart';
 import '../../src/home/domain/entities/slide.dart';
@@ -190,6 +191,46 @@ class HelperMethods {
       prefs.setString('profile', jsonEncode(profile.toJson()));
     }
   }
+  static Future<List<BrandDto>?> getBrands() async {
+    print('Starting getSliders...');
+    try {
+      // Get the shared preferences instance
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // Ensure the latest data is loaded
+      await prefs.reload();
+
+      // Retrieve the stored JSON string
+      final String? jsonString = prefs.getString('brands');
+      print('Retrieved JSON string length: ${jsonString?.length ?? 'null'}');
+
+      // Check if the JSON string is null or empty
+      if (jsonString == null || jsonString.isEmpty) {
+        return null;
+      }
+
+      // Decode the JSON string into a List of dynamic maps
+      final List<dynamic> jsonList = jsonDecode(jsonString);
+
+      // Convert the List of dynamic maps to a List of SlideDto objects
+      final List<BrandDto> slides = jsonList.map((json) => BrandDto.fromJson(json)).toList();
+
+      // Debug print to check the conversion
+      print('Decoded slides: $slides');
+
+      // Return the list of SlideDto objects, or null if the list is empty
+      return slides.isNotEmpty ? slides : null;
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in getSliders: ${e.toString()}');
+      return null;
+    }
+  }
+  static saveBrands(List<BrandDto> brands) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('brands', jsonEncode(brands.map((e) => e.toJson()).toList()));
+  }
+
   static Future<List<SlideDto>?> getSliders() async {
     print('Starting getSliders...');
     try {

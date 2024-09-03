@@ -27,6 +27,7 @@ class HomeUseCase {
   }
   Future<List<Brand>> fetchBrands() async {
     final response = await repository.fetchBrands();
+    HelperMethods.saveBrands(response.data!);
     return response.data!.map((e) => Brand.fromDto(e)).toList();
   }
 
