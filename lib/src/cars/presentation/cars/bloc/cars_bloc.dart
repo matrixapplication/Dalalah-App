@@ -2,8 +2,10 @@ import 'package:injectable/injectable.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../../../core/exceptions/empty_list_exception.dart';
+import '../../../../../core/utils/helper_methods.dart';
 import '../../../../favorites_and_ads/data/models/add_to_favorite_params.dart';
 import '../../../../favorites_and_ads/domain/use_cases/favorites_usecase.dart';
+import '../../../../home/data/models/brand_dto.dart';
 import '../../../../home/data/models/car_filter_params.dart';
 import '../../../../home/domain/entities/brand.dart';
 import '../../../../home/domain/entities/car.dart';
@@ -58,15 +60,31 @@ class CarsCubit extends BaseCubit {
       },
     );
   }
-
-  void fetchBrands() async{
+  List<BrandDto>? brandDto=[];
+  List<Brand>? brands=[];
+  fetchBrands() async {
+    brandDto = await HelperMethods.getBrands();
     try {
-      final brands = await usecase.fetchBrands();
-      brandsStream.setData(brands);
+      if(brandDto != null){
+        brands =brandDto!.map((e) => Brand.fromDto(e)).toList();
+        brandsStream.setData(brands??[]);
+        await usecase.fetchBrands();
+      }else{
+        final brands = await usecase.fetchBrands();
+        brandsStream.setData(brands);
+      }
     } catch (e) {
       brandsStream.setError(e);
     }
   }
+  // void fetchBrands() async{
+  //   try {
+  //     final brands = await usecase.fetchBrands();
+  //     brandsStream.setData(brands);
+  //   } catch (e) {
+  //     brandsStream.setError(e);
+  //   }
+  // }
 
   void fetchBrandModels(int id) async{
     brandModelsStream.setData(null);

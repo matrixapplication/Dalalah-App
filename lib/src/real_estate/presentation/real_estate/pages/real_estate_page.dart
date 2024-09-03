@@ -47,12 +47,10 @@ class RealEstatePage extends BaseBlocWidget<UnInitState, RealEstatePageCubit> {
   @override
   Widget buildWidget(BuildContext context, UnInitState state) {
    return
-     Container(
-     child: Center(
+     Center(
        child: Text('قريبا .... '),
-     ),
-   );
-     // RealEstateScreen(
+     );
+   //   RealEstateScreen(
    //   realEstateCategoriesList:bloc.categoriesList,
    //   realEstatesData: bloc.realEstatesData,
    //   categoriesDetails: bloc.categoriesDetails,
