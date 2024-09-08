@@ -120,8 +120,9 @@ class FirebaseNotification {
 // support ticket
 
   Future<String?> getToken() async {
-    print('get token called');
     String? firebaseToken = await FirebaseMessaging.instance.getToken();
+    print('get token called ${firebaseToken}');
+
     firebaseNotificationToken = firebaseToken;
     if (kDebugMode) {
       print('firebaseToken =========================> $firebaseNotificationToken');
